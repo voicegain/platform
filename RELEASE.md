@@ -1,3 +1,28 @@
+# Release 1.1.0_beta.2
+
+This release adds functionaliy that did not make it into the initial release. It also fixes several bugs.
+
+## Major Features and Improvements
+* Added ASR engine resource status monitoring to Voicegain Portal
+
+## Known issues
+* Edge deployment is still in Alpha status - please contact us before attempting Edge Deployments
+* Cloud IVR has not passed full test suite yet. Also it lacks documentation. Please contact us if you would like to test Cloud IVR.
+* Audio Sender Daemon does not support encryption yet.
+
+## Breaking Changes
+none
+
+## Bug Fixes and Other Changes
+* buf #142: Provisioning Portal times out after login.
+* bug #143: ASR resets occasionally in the middle of transcription. Was due to empty request to NLM.
+* bug #144: Passowrd Lockout mas mistakenly set to occur onlu after one mistake. Has been increased to 5.
+* bug #145: 401 errors when logging in after a period of inactivity
+* bug #147: Service name at the end of the URL in the password (re)set email incorrect.
+* bug #148: New Language Models not shown unless user has Manager role
+* bug #149: Language Model created as Built-in shows up as User model
+* minor bugs #150
+
 # Release 1.1.0_beta.1
 
 This is a first public release of Voicegain Speech-to-Text Platform.

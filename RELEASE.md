@@ -17,9 +17,9 @@ This release adds functionaliy that did not make it into the initial release. It
 none
 
 ## Bug Fixes and Other Changes
-* buf #142: Provisioning Portal times out after login.
+* bug #142: Provisioning Portal times out after login.
 * bug #143: ASR resets occasionally in the middle of transcription. Was due to empty request to NLM.
-* bug #144: Passowrd Lockout mas mistakenly set to occur onlu after one mistake. Has been increased to 5.
+* bug #144: Password lockout was mistakenly set to occur only after one mistake. Has been increased to 5.
 * bug #145: 401 errors when logging in after a period of inactivity
 * bug #147: Service name at the end of the URL in the password (re)set email incorrect.
 * bug #148: New Language Models not shown unless user has Manager role
@@ -47,5 +47,5 @@ This being a first public release, here is a list of key features of the Voicega
 * none
 
 ## Bug Fixes and Other Changes
-* we will begin reporting bug fixes starting from the next release
+* We will begin reporting bug fixes starting from the next release
 

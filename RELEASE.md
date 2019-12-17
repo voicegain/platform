@@ -3,7 +3,10 @@
 This release adds functionaliy that did not make it into the initial release. It also fixes several bugs.
 
 ## Major Features and Improvements
-* Added ASR engine resource status monitoring to Voicegain Portal
+* Added ASR engine resource status monitoring to Voicegain Portal UI
+* Added Password strength checking
+* Added Release Notes info to Voicegain Portal UI
+* All three billing styles (manual-refill, auto-refill, invoice) now supported for Enterprise Voicegain customers. Speech.Works customers are created with manual-refill style.
 
 ## Known issues
 * Edge deployment is still in Alpha status - please contact us before attempting Edge Deployments

@@ -1,6 +1,6 @@
 # Release 1.1.0_beta.2
 
-This release adds functionaliy that did not make it into the initial release. It also fixes several bugs.
+This release adds functionality that did not make it into the initial release. It also fixes several bugs.
 
 ## Major Features and Improvements
 * Added ASR engine resource status monitoring to Voicegain Portal UI
@@ -24,6 +24,7 @@ none
 * bug #147: Service name at the end of the URL in the password (re)set email incorrect.
 * bug #148: New Language Models not shown unless user has Manager role
 * bug #149: Language Model created as Built-in shows up as User model
+* bug #153: Bad redirect from Password Set Dialog
 * minor bugs #150
 
 # Release 1.1.0_beta.1

@@ -26,7 +26,9 @@ none
 * bug #148: New Language Models not shown unless user has Manager role
 * bug #149: Language Model created as Built-in shows up as User model
 * bug #153: Bad redirect from Password Set Dialog
-* minor bugs #150
+* bug #158: Language Model card for a Context is not showing all the models
+* bug #159: Building a Built-In model fails
+* minor bugs #150, #157
 
 # Release 1.1.0_beta.1
 

@@ -1,4 +1,4 @@
-# Release 1.1.0_beta.2
+# *Release 1.1.0_beta.2*
 
 This release adds functionality that did not make it into the initial release. It also fixes several bugs.
 
@@ -30,7 +30,7 @@ none
 * bug #159: Building a Built-In model fails
 * minor bugs #150, #157
 
-# Release 1.1.0_beta.1
+# *Release 1.1.0_beta.1*
 
 This is a first public release of Voicegain Speech-to-Text Platform.
 

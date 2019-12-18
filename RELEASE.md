@@ -7,6 +7,7 @@ This release adds functionality that did not make it into the initial release. I
 * Added Password strength checking
 * Added Release Notes info to Voicegain Portal UI
 * All three billing styles (manual-refill, auto-refill, invoice) now supported for Enterprise Voicegain customers. Speech.Works customers are created with manual-refill style.
+* Admin Portal shows 3 new account fields: referer, referral, billingStyle.
 
 ## Known issues
 * Edge deployment is still in Alpha status - please contact us before attempting Edge Deployments

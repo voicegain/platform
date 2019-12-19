@@ -29,6 +29,7 @@ none
 * bug #158: Language Model card for a Context is not showing all the models
 * bug #160: Building a Built-In model fails
 * bug #161: Ensure correct results are returned from Language Model Query (built-in models, etc.)
+* bug #162: Transcription with built-in Language Models fails at initial checks
 * minor bugs #150, #157
 
 # *Release 1.1.0_beta.1*

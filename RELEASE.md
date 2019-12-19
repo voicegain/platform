@@ -18,6 +18,7 @@ This release adds functionality that did not make it into the initial release. I
 none
 
 ## Bug Fixes and Other Changes
+Most of the bugs fixed in this release are related to login/authentication and to working with Language Models.
 * bug #142: Provisioning Portal times out after login.
 * bug #143: ASR resets occasionally in the middle of transcription. Was due to empty request to NLM.
 * bug #144: Password lockout was mistakenly set to occur only after one mistake. Has been increased to 5.

@@ -7,11 +7,11 @@ This release adds functionality that did not make it into the initial release. I
 * Added Password strength checking
 * Added Release Notes info to Voicegain Portal UI
 * All three billing styles (manual-refill, auto-refill, invoice) now supported for Enterprise Voicegain customers. Speech.Works customers are created with manual-refill style.
-* Provisioning&Admin Portal shows 3 new account fields: referer, referral, billingStyle.
+* Provisioning&Admin Portal shows 3 new account fields: referrer, referral, billingStyle.
 
 ## Known issues
 * Edge deployment is still in Alpha status - please contact us before attempting Edge Deployments
-* Cloud IVR has not passed full test suite yet. Also it lacks documentation. Please contact us if you would like to test Cloud IVR.
+* Cloud IVR has not passed full test suite yet. Also, it lacks documentation. Please contact us if you would like to test Cloud IVR.
 * Audio Sender Daemon does not support encryption yet.
 
 ## Breaking Changes
@@ -31,6 +31,7 @@ Most of the bugs fixed in this release are related to login/authentication and t
 * bug #160: Building a Built-In model fails
 * bug #161: Ensure correct results are returned from Language Model Query (built-in models, etc.)
 * bug #162: Transcription with built-in Language Models fails at initial checks
+* bug #163: Offline transcription with built-in Language Model not working
 * minor bugs #150, #157
 
 # *Release 1.1.0_beta.1*

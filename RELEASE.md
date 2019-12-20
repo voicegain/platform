@@ -1,4 +1,4 @@
-# *Release 1.1.0_beta.2*
+# Release 1.1.0_beta.2
 
 This release adds functionality that did not make it into the initial release. It also fixes several bugs.
 
@@ -34,7 +34,7 @@ Most of the bugs fixed in this release are related to login/authentication and t
 * bug #163: Offline transcription with built-in Language Model not working
 * minor bugs #150, #157
 
-# *Release 1.1.0_beta.1*
+# Release 1.1.0_beta.1
 
 This is a first public release of Voicegain Speech-to-Text Platform.
 

@@ -5,6 +5,7 @@ This release adds control of features available to various types of accounts.
 ### Major Features and Improvements
 * More convenient Billing status and control from within the Portal.
 * Fine grained control of features enabled for each account.  This allows us to control access to features that still are in beta.
+* Enhanced Admin/Account Provisioning Portal - password reset, referrer/referral, premium features.
 
 ### Known issues
 * Edge deployment is still in Alpha status. Disabled by default. Can be enabled upon request.
@@ -15,7 +16,11 @@ This release adds control of features available to various types of accounts.
 none
 
 ### Bug Fixes and Other Changes
-
+* bug #167: Release Notes not being displayed.
+* bug #170: Fixed slow redraw of modified words in CC-App
+* bug #171: Login failing due to case difference is user email
+* enhancement #173: Favicons different between various apps and prod/QA/dev
+* enhancement #174: CC-App supports Account landing page
 
 ## Release 1.1.0_beta.2
 

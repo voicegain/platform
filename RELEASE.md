@@ -1,15 +1,15 @@
 ## Release 1.2.0_beta
 
-This release adds control of features available to various types of accounts.
+This release adds fine-grained control of features available to various types of accounts.
 
 ### Major Features and Improvements
-* More convenient Billing status and control from within the Portal.
-* Fine grained control of features enabled for each account.  This allows us to control access to features that still are in beta.
-* Enhanced Admin/Account Provisioning Portal - password reset, referrer/referral, premium features.
+* More convenient Billing status info and control from within the Portal.
+* Fine-grained control of features enabled for each account.  This allows Voicegain to control access to features that still are still in limited relase to certain accounts only.
+* Enhanced Admin/Account Provisioning Portal - password reset, referrer/referral, premium features, etc.
 
 ### Known issues
-* Edge deployment is still in Alpha status. Disabled by default. Can be enabled upon request.
-* Cloud IVR has not passed full test suite yet. Disabled by default. Can be enabled upon request.
+* Edge deployment is still in Alpha status. Disabled by default. Can be enabled per Customer Account upon request.
+* Cloud IVR has not passed full test suite yet. Disabled by default. Can be enabled per Customer Account upon request.
 * Audio Sender Daemon does not support encryption yet.
 
 ### Breaking Changes

@@ -1,14 +1,14 @@
 # Voicegain Platform
 
-Voicegain privides a Speech-to-Text Platform buit around a Deep Neural Network ASR engine.
+Voicegain privides a Speech-to-Text Platform built around a Deep Neural Network ASR engine.
 It supports open vocabulary speech transcription (real-time and off-line) and speech recognition (using context free grammars).
 Both are accessible via Web API. In addition, the recognizer is available with MRCP interface.
 Platform is accessible in the Cloud and can also be deployed at the Edge.
 
 This repository tracks public components of the Voicegain Platform. Things like:
 * [release notes](https://github.com/voicegain/platform/blob/master/RELEASE.md),
-* terms of use,
-* policy documents, etc.
+* [terms of service](https://github.com/voicegain/platform/blob/master/TERMS-OF-SERVICE.md),
+* [privacy policy](https://github.com/voicegain/platform/blob/master/PRIVACY.md), etc.
 
 The Voicegain platform consists of:
 * Voicegain Web API - key API methods are documented at https://voicegain.ai/api

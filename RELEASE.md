@@ -1,9 +1,9 @@
 ## Release 1.2.1_beta
 
-Maintenance release in order to fix issues with Preemptible GPU instance. 
+Maintenance release in order to fix issues with Preemptible GPU instances. 
 
 ### Major Features and Improvements
-* Flexible mechanism to allocate various types of GPUs to ASR instances. Circumvents the problem with certain GPUs temporarly not being available in the Cloud.
+* Flexible mechanism to allocate various types of GPUs to ASR instances. Circumvents the problem with certain GPUs temporarily not being available in the Cloud.
 
 ### Known issues
 * Edge deployment is still in Alpha status. Disabled by default. Can be enabled per Customer Account upon request.

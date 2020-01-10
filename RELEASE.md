@@ -1,3 +1,23 @@
+## Release 1.2.1_beta
+
+Maintenance release in order to fix issues with Preemptible GPU instance. 
+
+### Major Features and Improvements
+* Flexible mechanism to allocate various types of GPUs to ASR instances. Circumvents the problem with certain GPUs temporarly not being available in the Cloud.
+
+### Known issues
+* Edge deployment is still in Alpha status. Disabled by default. Can be enabled per Customer Account upon request.
+* Cloud IVR has not passed full test suite yet. Disabled by default. Can be enabled per Customer Account upon request.
+* Audio Sender Daemon does not support encryption yet.
+
+### Breaking Changes
+* Broadcast Websocket functionality not longer part of the default set of features.
+
+### Bug Fixes and Other Changes
+* bug #178: NullPointerException caused by an invalid request for /asr/recognize
+* bug #177: Fixed incorrect Uptime computation for Voicegain ASR
+* enhancement #176: Added Announcements on home page
+
 ## Release 1.2.0_beta
 
 This release adds fine-grained control of features available to various types of accounts.

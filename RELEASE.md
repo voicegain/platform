@@ -1,3 +1,22 @@
+## Release 1.2.2_beta
+
+Maintenance release in order to fix 2 breaking bugs.
+
+### Major Features and Improvements
+None in this maintenance Release.
+
+### Known issues
+* Edge deployment is still in Alpha status. Disabled by default. Can be enabled per Customer Account upon request.
+* Cloud IVR has not passed full test suite yet. Disabled by default. Can be enabled per Customer Account upon request.
+* Audio Sender Daemon does not support encryption yet.
+
+### Breaking Changes
+* Broadcast Websocket functionality not longer part of the default set of features.
+
+### Bug Fixes and Other Changes
+* bug #185: Unable to generate JWT from Portal (Context Web Settings not visible in Web UI)
+* bug #181: Websockets control page not visible in Web UI (even for accounts with the websocket broadcast feature)
+
 ## Release 1.2.1_beta
 
 Maintenance release in order to fix issues with Preemptible GPU instances. 

@@ -1,5 +1,5 @@
 ## January 13, 2020
-* Release 1.2.2_beta scheduled for 4:50pm GMT today will fix:
+* Release 1.2.2_beta scheduled for 4:50pm GMT has been completed. It fixes:
     - bug #181: Websockets control page not visible
     - bug #185: Unable to generate JWT from Portal
 

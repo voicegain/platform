@@ -2,7 +2,7 @@
 
 ### Install ###
 
-Run the provided install.sh script.
+Run the provided audio-daemon-setup.sh script.
 
 ### Check install ###
 

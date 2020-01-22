@@ -1,0 +1,46 @@
+{
+  "host" : "https://api.${domain}",
+  "ws": "wss://cc.${domain}/nats-websocket/port",
+  "jwt" : "${jwt}",
+  "payloadWS" : {
+    "messages" : [
+    {
+      "text": "Transcription will start soon ...",
+      "tags": [
+        "announce"
+      ]
+    }
+  ]
+  } ,
+  "payloadASR" : {
+        "sessions": [{
+                "asyncMode" : "REAL-TIME",
+                "websocket": {
+                        "name": "${websocketName}",
+                        "ifExists" : "kill"
+                },
+                "poll" : {
+                        "afterlife" :  15000,
+                        "persist" : 2592000000
+                }
+        }],
+        "audio": {
+                "source": {
+                        "stream": {
+                                "protocol": "ASCALON",
+                                "controlWebsocket": "${websocketName}"
+                        }
+                },
+                "rate" : 16000
+        },
+        "settings": {
+                "preemptible" : false,
+                "asr": {
+                        "langModel" : "${langModelId}",
+                        "noInputTimeout" : 59999,
+                        "incompleteTimeout" : 3599999
+                }
+        }
+    }
+  }
+}

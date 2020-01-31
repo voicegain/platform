@@ -1,3 +1,28 @@
+## Release 1.3.0_beta
+
+Minor release that adds extra IVR and Transcription functionality.
+
+### Major Features and Improvements
+* IVR
+  * Added to GREG ability to run Experiments on external ASR.
+  * Added downloadable IVR-Proxy for interfacinng local MRCP Clients to Voicegain ASR in the Cloud.
+* Transcription
+  * Redesigned the Transcript review UI.
+  * Added highlighting of non-speech sound, and unrecognized speech.
+  * Added microphone input capture.
+* Other
+  * Added sign-up dialog form (previously new accounts had to be created using Admin tool).
+
+### Known issues
+* Edge deployment is still in Alpha status. It is functional for Trial use. Can be enabled upon Customer request.
+* Audio Sender Daemon has to be deployed manually. It also does not support encryption yet. 
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+* bug #
+
 ## Release 1.2.2_beta
 
 Maintenance release in order to fix 2 breaking bugs.

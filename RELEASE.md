@@ -3,17 +3,19 @@
 Minor release that adds extra IVR and Transcription functionality.
 
 ### Major Features and Improvements
+* Core Functionality
+  * Support for multiple Acoustic models - may be configured in ASR Settings for each API request
 * IVR
-  * Added to GREG ability to run Experiments on external ASR.
+  * Added to GREG Tool ability to run Experiments on external ASR.
   * Added downloadable IVR-Proxy for interfacing local MRCP Clients to Voicegain ASR in the Cloud.
 * Transcription
   * Redesigned the Transcript Review UI.
   * Added highlighting of non-speech sound and unrecognized speech.
   * Added microphone input capture.
 * Other
-  * Added sign-up dialog form (previously new accounts had to be created using Admin tool).
+  * Added Voicegain sign-up dialog form (previously new accounts had to be created using Admin tool).
 * Speech.Works 
-  * Transcript Review page is the same as in Voicegain Portal
+  * Transcript Review page has been changed to be the same as the new page in Voicegain Portal
 
 ### Known issues
 * Edge deployment is still in Alpha status. It is functional for Trial use. Can be enabled upon Customer request.
@@ -23,10 +25,10 @@ Minor release that adds extra IVR and Transcription functionality.
 * none
 
 ### Bug Fixes and Other Changes
+Only bugs present in the previous 1.2.2_beta release are listed.
 * bug #190: Incorrect parsing of urls with websocket names containing dot '.'
 * bug #203: Gateway timeout when creating a Language Model
 * bug #206: Offline transcription does not report certain Errors (stuck on Fetched)
-* bug #
 
 ## Release 1.2.2_beta
 

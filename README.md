@@ -6,6 +6,7 @@ Both are accessible via Web API. In addition, the recognizer is available with M
 Platform is accessible in the Cloud and can also be deployed at the Edge.
 
 This repository tracks public components of the Voicegain Platform. Things like:
+* [announcements](https://github.com/voicegain/platform/blob/master/ANNOUNCE.md),
 * [release notes](https://github.com/voicegain/platform/blob/master/RELEASE.md),
 * [terms of service](https://github.com/voicegain/platform/blob/master/TERMS-OF-SERVICE.md),
 * [privacy policy](https://github.com/voicegain/platform/blob/master/PRIVACY.md), etc.

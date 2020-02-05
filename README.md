@@ -12,11 +12,16 @@ This repository tracks public components of the Voicegain Platform. Things like:
 
 The Voicegain platform consists of:
 * Voicegain Web API - key API methods are documented at https://voicegain.ai/api
-* Voicegain Enterprise Portal at https://portal.voicegain.ai
-* Voicegain Audio Sender Daemon
+* Voicegain Enterprise Portal at https://portal.voicegain.ai which provides access to:
+  * Voicegain Transcription (incl. real time)
+  * Voicegain Call Analytics
+  * Voicegain IVR (incl GREG tool)
 * Voicegain CC-App at https://cc.voicegain.ai (real-time transcription viewer)
 * Voicegain Transcribe App at https://transcribe.voicegain.ai (also known as (Speech.Works)[https://speech.works] app)
 * Voicegain Provisioning portal at https://admin.voicegain.ai
+* Tools and Utilities:
+  * Voicegain Audio Sender Daemon  
+  * IVR MRCP Proxy
 
 You can learn more about Voicegain at https://voicegain.ai.
 

@@ -1,1 +1,2 @@
-* Emergency Release 1.2.2_beta scheduled for 1/13/2020 at 4:50pm GMT has been completed.
+* Minor release 1.3.0_beta is scheduled for 2/5/2020 between 6pm and 9pm CST.
+  * Release notes are available [here](https://raw.githubusercontent.com/voicegain/platform/master/RELEASE.md)

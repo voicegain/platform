@@ -18,7 +18,7 @@ The Voicegain platform consists of:
   * Voicegain Call Analytics
   * Voicegain IVR (incl GREG tool)
 * Voicegain CC-App at https://cc.voicegain.ai (real-time transcription viewer)
-* Voicegain Transcribe App at https://transcribe.voicegain.ai (also known as (Speech.Works)[https://speech.works] app)
+* Voicegain Transcribe App at https://transcribe.voicegain.ai (also known as [Speech.Works](https://speech.works) app)
 * Voicegain Provisioning portal at https://admin.voicegain.ai
 * Tools and Utilities:
   * Voicegain Audio Sender Daemon  

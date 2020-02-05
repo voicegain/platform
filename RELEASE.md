@@ -4,7 +4,7 @@ Minor release that adds extra IVR and Transcription functionality.
 
 ### Major Features and Improvements
 * Core Functionality
-  * Support for multiple Acoustic models - may be configured in ASR Settings for each API request
+  * Support for multiple Acoustic models - may be configured in ASR Settings for Contexts and for each API request
 * IVR
   * Added to GREG Tool ability to run Experiments on external ASR.
   * Added downloadable IVR-Proxy for interfacing local MRCP Clients to Voicegain ASR in the Cloud.
@@ -18,6 +18,7 @@ Minor release that adds extra IVR and Transcription functionality.
   * Transcript Review page has been changed to be the same as the new page in Voicegain Portal
 
 ### Known issues
+* Audio-Sender bootstrap download not fully configured yet. Will make an announcement when it is ready.
 * Edge deployment is still in Alpha status. It is functional for Trial use. Can be enabled upon Customer request.
 * Audio Sender Daemon has to be deployed manually. It also does not support encryption yet. 
 

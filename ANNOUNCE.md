@@ -1,4 +1,4 @@
-## February 8, 20202
+## February 8, 2020
 * Known issues
   * SSO to Grafana analytics dashboard does not work (issue #283)
 

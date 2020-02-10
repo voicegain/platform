@@ -1,8 +1,8 @@
 ## February 8, 2020
 * Known issues
-  * SSO to Grafana analytics dashboard does not work (issue #283)
-  * Downloadable IVR-Proxy docker-compose has issues under load (multiple sessions) with UDP traffic crossing in and out of Docker Container. This causes silence packets inserted into MRCP audio stream within the jitter buffer. It also causes packet loss for outbound audio traffic to Voicegain cloud.</br>
-  The IVR-Proxy works fine for single session, so that functionality can still be tested.
+  * (issue #283) SSO to Grafana analytics dashboard does not work 
+  * (issue #284) Downloadable IVR-Proxy docker-compose has issues under load (multiple sessions) with UDP traffic crossing in and out of Docker Container. This causes silence packets inserted into MRCP audio stream within the jitter buffer. It also causes packet loss for outbound audio traffic to Voicegain cloud.</br>
+  The IVR-Proxy works fine for single session, so that functionality can still be tested. 
 
 ## February 5, 2020
 * Minor release 1.3.0_beta is scheduled for 2/5/2020 between 6pm and 9pm CST.

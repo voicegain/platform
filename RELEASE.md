@@ -34,7 +34,7 @@ Only bugs present in the previous 1.3.0_beta release are listed.
 * bug #292: Data usage not monitored propertly due to missing Cloud Function Permission
 * enchancement #270: Modified text of the Billing emails to add clarity
 * enchancements #275,277, 278: Add Corpus dialog specifies expected file type, size, storage cost, and prevents upload of files that are too large
-* acoustic model: VoiceGain-rt-ivr-en-us:13 (improved accuracy)
+* acoustic model: VoiceGain-rt-ivr-en-us:13 (reduced error from 0.0857 to 0.0831)
 
 
 ## Release 1.3.0_beta

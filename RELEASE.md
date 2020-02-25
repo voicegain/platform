@@ -29,6 +29,7 @@ Maintenance release that fixes several issues and adds minor enhancements.
 ### Bug Fixes and Other Changes
 Only bugs present in the previous 1.3.0_beta release are listed.
 * bug #280: Prevent opening transcription viewer in transcription is in error state
+* bug #283: SSO to Grafana analytics dashboard does not work
 * bug #284: MRCP and IVR-Proxy suffer packet loss under concurrent load
 * bug #286: Web-api in on-prem environment should not attempt to talk to Billing API directly 
 * bug #292: Data usage not monitored propertly due to missing Cloud Function Permission

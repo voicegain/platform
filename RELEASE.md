@@ -1,6 +1,6 @@
 ## Release 1.3.1_beta
 
-Maintenance release that fixes several issues and adds minor enchancements.
+Maintenance release that fixes several issues and adds minor enhancements.
 
 ### Major Features and Improvements
 (Info carried over from 1.3.0_beta)

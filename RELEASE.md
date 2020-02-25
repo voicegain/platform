@@ -1,3 +1,42 @@
+## Release 1.3.1_beta
+
+Maintenance release that fixes several issues and adds minor enchancements.
+
+### Major Features and Improvements
+(Info carried over from 1.3.0_beta)
+* Core Functionality
+  * Support for multiple Acoustic models - may be configured in ASR Settings for Contexts and for each API request
+* IVR
+  * Added to GREG Tool ability to run Experiments on external ASR. (1.3.1_beta adds preview of new GREG interface)
+  * Added downloadable IVR-Proxy for interfacing local MRCP Clients to Voicegain ASR in the Cloud.
+* Transcription
+  * Redesigned the Transcript Review UI.
+  * Added highlighting of non-speech sound and unrecognized speech.
+  * Added microphone input capture.
+* Other
+  * Added Voicegain sign-up dialog form (previously new accounts had to be created using Admin tool).
+* Speech.Works 
+  * Transcript Review page has been changed to be the same as the new page in Voicegain Portal
+
+### Known issues
+* Audio-Sender bootstrap download not fully configured yet. Will make an announcement when it is ready.
+* Edge deployment is still in Alpha status. It is functional for Trial use. Can be enabled upon Customer request.
+* Audio Sender Daemon has to be deployed manually. It also does not support encryption yet. 
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+Only bugs present in the previous 1.3.0_beta release are listed.
+* bug #280: Prevent opening transcription viewer in transcription is in error state
+* bug #284: MRCP and IVR-Proxy suffer packet loss under concurrent load
+* bug #286: Web-api in on-prem environment should not attempt to talk to Billing API directly 
+* bug #292: Data usage not monitored propertly due to missing Cloud Function Permission
+* enchancement #270: Modified text of the Billing emails to add clarity
+* enchancements #275,277, 278: Add Corpus dialog specifies expected file type, size, storage cost, and prevents upload of files that are too large
+* acoustic model: VoiceGain-rt-ivr-en-us:13 (improved accuracy)
+
+
 ## Release 1.3.0_beta
 
 Minor release that adds extra IVR and Transcription functionality.
@@ -30,6 +69,7 @@ Only bugs present in the previous 1.2.2_beta release are listed.
 * bug #190: Incorrect parsing of urls with websocket names containing dot '.'
 * bug #203: Gateway timeout when creating a Language Model
 * bug #206: Offline transcription does not report certain Errors (stuck on Fetched)
+
 
 ## Release 1.2.2_beta
 

@@ -1,3 +1,9 @@
+## February 26, 2020
+* Known issues:
+  * #309: Microphone capture preview not working - incorrect websocket url returned in request 
+  * #304: No ASR settings visible if Account has no premium features
+
+
 ## February 25, 2020
 * Minor release 1.3.1_beta is scheduled for 2/25/2020 between 6pm and 9pm CST.
   * Release notes are available [here](https://raw.githubusercontent.com/voicegain/platform/master/RELEASE.md)

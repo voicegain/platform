@@ -3,7 +3,13 @@
 
 ### Install ###
 
-Run the provided ./audio-daemon-setup.sh script.
+Run 
+
+ chmod u+x audio-daemon-setup.sh
+
+to make the setup script executable, then run the scrip:
+
+ ./audio-daemon-setup.sh script.
 
 If script reports no Java 9 present then please install it using e.g. these commands (Ubuntu)
 
@@ -14,13 +20,16 @@ Verify install running:
 
 java -version
 
+Once correct java is installed, rerun ./audio-daemon-setup.sh 
 
 ### Check install ###
 
 ### Check/ Modify the configuration ###
 
-It will be in the json file
+It will be in the json file. 
+
+You may have to change the SOURCE parameter in start-audio-daemon.sh
 
 ### Run Audio Daemon ###
 
-run
+./start-audio-daemon.sh

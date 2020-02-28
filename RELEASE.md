@@ -1,3 +1,47 @@
+## Release 1.3.2_beta
+
+Maintenance release that fixes several issues and adds minor enhancements.
+
+### Major Features and Improvements
+(Info carried over from 1.3.0_beta)
+* Core Functionality
+  * Support for multiple Acoustic models - may be configured in ASR Settings for Contexts and for each API request
+* IVR
+  * Added to GREG Tool ability to run Experiments on external ASR. (1.3.1_beta adds preview of new GREG interface)
+  * Added downloadable IVR-Proxy for interfacing local MRCP Clients to Voicegain ASR in the Cloud.
+* Transcription
+  * Redesigned the Transcript Review UI.
+  * Added highlighting of non-speech sound and unrecognized speech.
+  * Added microphone input capture.
+* Other
+  * Added Voicegain sign-up dialog form (previously new accounts had to be created using Admin tool).
+* Speech.Works 
+  * Transcript Review page has been changed to be the same as the new page in Voicegain Portal
+
+### Known issues
+* Edge deployment is still in Alpha status. It is functional for Trial use. Can be enabled upon Customer request.
+* Audio Sender Daemon does not support encryption yet. 
+* Grafana Dashboards are not configured yet
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+Only bugs present in the previous 1.3.1_beta release are listed.
+* bug #312: Wrong URL returned for Audio Sender bootstrap download link
+* bug #311: Expiry time for Audio Sender bootstrap download link is shown in UTC
+* bug #309: Wrong websocket url returned for real-time transcription on Prod
+* bug #306: Stop words shown in word cloud for Transcript Review page
+* bug #305: After sign-up from the form account web name is derived from owner name instead of company name
+* bug #304: No ASR settings visible if account has no premium features
+* enhancement #320: Sign-up form has been modified 
+* enhancement #313: Redeploy button has been added to Edge Deployment page
+* enhancement #307: Refresh button added to ASR Availability card
+* enhancement #301: Improved Wizard for EZSetup of Edge Deployment
+* enhancement #298: In new GREG show audio hash instead of id and allow copy of either
+* enhancement #295: Better file names for downloaded transcripts
+
+
 ## Release 1.3.1_beta
 
 Maintenance release that fixes several issues and adds minor enhancements.

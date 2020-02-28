@@ -6,4 +6,4 @@ GCLOG=gc-audio-daemon.$DATE.log
 HEAP=128m
 echo "GC log will be written to: $GCLOG"
 
-java -Xloggc:$GCLOG -XX:NewRatio=2 -XX:ParallelGCThreads=4 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:SurvivorRatio=8 -XX:TargetSurvivorRatio=90 -XX:MaxTenuringThreshold=15 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCApplicationStoppedTime -Xms$HEAP -Xmx$HEAP -jar vg-audio-sender-daemon-$VERSION "$@"
+java -Xlog:gc:$GCLOG -Xms$HEAP -Xmx$HEAP  -XX:MaxGCPauseMillis=5 -jar vg-audio-sender-daemon-$VERSION.jar "$@"

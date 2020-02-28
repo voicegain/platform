@@ -1,5 +1,8 @@
 #!/bin/bash
-echo "Setup for Voicegain Audio Sender Daemon"
+CODE_NAME=ascalon
+DEPLOYMENT=dev
+VG_VER=1.3.2_beta
+echo "Setup for Voicegain Audio Sender Daemon ver. $VG_VER"
 
 echo "Checking java version"
 
@@ -25,3 +28,8 @@ if [[ "$_java" ]]; then
         exit
     fi
 fi
+
+echo "Downloading Voicegain Audio Sender Daemon"
+sudo wget -N wget https://f002.backblazeb2.com/file/$CODE_NAME-cdn/vg-audio-sender-daemon-$VG_VER.jar
+echo "Downloading java launch script"
+

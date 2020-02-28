@@ -3,7 +3,7 @@
 
 ### Install ###
 
-Run the provided install.sh script.
+Run the provided ./audio-daemon-setup.sh script.
 
 If script reports no Java 9 present then please install it using e.g. these commands (Ubuntu)
 

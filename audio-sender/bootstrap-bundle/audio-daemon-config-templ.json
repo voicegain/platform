@@ -1,6 +1,6 @@
 {
-  "host" : "https://api.${domain}",
-  "ws": "wss://cc.${domain}/nats-websocket/port",
+  "host" : "${apiUrlBase}",
+  "ws": "${natsWebsocketUrlBase}/port",
   "jwt" : "${jwt}",
   "payloadWS" : {
     "messages" : [

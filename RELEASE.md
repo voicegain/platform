@@ -1,3 +1,41 @@
+## Release 1.3.3_beta
+
+Maintenance release that fixes several issues and adds minor enhancements.
+
+### Major Features and Improvements
+(Info carried over from 1.3.0_beta)
+* Core Functionality
+  * Support for multiple Acoustic models - may be configured in ASR Settings for Contexts and for each API request
+* IVR
+  * Added to GREG Tool ability to run Experiments on external ASR. (1.3.1_beta adds preview of new GREG interface)
+  * Added downloadable IVR-Proxy for interfacing local MRCP Clients to Voicegain ASR in the Cloud.
+* Transcription
+  * Redesigned the Transcript Review UI.
+  * Added highlighting of non-speech sound and unrecognized speech.
+  * Added microphone input capture.
+* Other
+  * Added Voicegain sign-up dialog form (previously new accounts had to be created using Admin tool).
+* Speech.Works 
+  * Transcript Review page has been changed to be the same as the new page in Voicegain Portal
+
+### Known issues
+* Edge deployment is still in Alpha status. It is functional for Trial use. Can be enabled upon Customer request.
+* Audio Sender Daemon does not support encryption yet. 
+* Grafana Dashboards configurations are very basic
+* issue #322: OAuth sign-in to Grafana does not work if a session has been open for a while
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+Only bugs present in the previous 1.3.2_beta release are listed.
+* bug #321: Error when creating a new account with business name containing a hyphen
+* bug #317: Deleting user via Admin Console does not work
+* bugs #314,316: Grafana - uses can see the main dashboard, but cannot see their Account dashboards
+* enhancement #320,325: Modifications for Sign-Up form and page (incl. email validation)
+* enhancement #318: Add IVR chart for MRCP messages
+
+
 ## Release 1.3.2_beta
 
 Maintenance release that fixes several issues and adds minor enhancements.

@@ -1,5 +1,5 @@
-## Steps to get Audio Sender Daemon running##
-(prod version)
+## Steps to get Audio Sender Daemon running ##
+Version 1.3.3_beta
 
 ### Install ###
 

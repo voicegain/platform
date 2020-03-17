@@ -1,3 +1,38 @@
+## Release 1.4.0
+
+Minor release adding features and improvements as well as bug fixes.
+
+### Major Features and Improvements
+Added in this version:
+* Core Functionality
+  * Web portal now has a built-in log viewer.
+  * Configurable inactivity timeout has been added.
+* Web UI
+  * Many small UI changes improving usability  
+* IVR-Proxy
+  * Encryption option has been added. Efficiency has been improved. It also now reports version, which makes it easy to spot when you are running an older version and need to update.
+* Edge Deployment has now been tested and is out of Alpha status.
+
+### Known issues
+* Audio Sender Daemon does not support encryption yet. 
+* Grafana Dashboards configurations are very basic
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+Only bugs present in the previous 1.3.3_beta release are listed.
+* bug #357: https://portal.voicegain.ai/billing url fixed
+* bug #338: Unable to control certain broadcast websockets
+* bug #337: Websocket detail page blank for certain websockets
+* bug #336: Audio Sender link downloads incorrect configuration if name mistyped
+* enhancement #367: SSO sends directly to destination if only one destination available
+* enhancement #362: Format of "My Status" card has been improved
+* enhancement #349: MRCP chart shows data specific to Context in which it is viewed
+* enhancement #342: Broadcast Websockets can now be deleted
+* enhancement #335: Add option to choose encryption for IVR Proxy at download link
+
+
 ## Release 1.3.3_beta
 
 Maintenance release that fixes several issues and adds minor enhancements.

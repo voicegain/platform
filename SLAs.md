@@ -49,7 +49,7 @@ The total maximum number of Financial Credits to be issued by Voicegain to Custo
 The SLA does not apply to any: (a) features designated Alpha or Beta (unless otherwise stated in the associated Documentation), (b) features excluded from the SLA (in the associated Documentation), or (c) errors: (i) caused by factors outside of Voicegain’s reasonable control; (ii) that resulted from Customer’s software or hardware or third party software or hardware, or both; (iii) that resulted from abuses or other behaviors that violate the Agreement; (iv) that resulted from quotas applied by the system or listed in the Admin Console; or (v) that resulted from Customer use of the Covered Service inconsistent with the Documentation, including but not limited to invalid request fields, unauthorized users, or inaccessible data.
 
 ## Indicative Connection Latencies
-Connection Latencies, defined as roundtrip time for start of TLS handshake, are **not part of the SLA**, as they depend partially on Customer's network provider.
+Connection Latencies, defined as roundtrip time for start of TLS handshake, are **not part of the SLA**, since they depend on the quality of service of Customer's network provider.
 For indication, below we list the Connection Latencies to be expected given the current location of Voicegain services.
 | From Region    | Expected Connection Latencies |
 |----------------|-------------------------------|

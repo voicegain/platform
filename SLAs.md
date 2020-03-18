@@ -6,13 +6,14 @@ During the Term of the agreement under which Voicegain has agreed to provide Voi
 | Covered Service      | Monthly Uptime Percentage |
 |----------------------|---------------------------|
 | Web API              | >= 99.9%                  |
-| Web API Pre-emptible | >= 99.0%                  |
+| Web API Preemptible | >= 99.0%                  |
 
 If Voicegain does not meet the SLO, and if Customer meets its obligations under this SLA, Customer will be eligible to receive the Financial Credits described below. This SLA states Customer’s sole and exclusive remedy for any failure by Voicegain to meet the SLO. Capitalized terms used in this SLA, but not defined in this SLA, have the meaning stated in the Agreement. 
 
 ## Definitions
 The following definitions apply to the SLA:
 
+* **"Preemptible"** means the request was made to preemptible resources as indicated by "preemptible" parameter in the request being se to "true"
 * **"Back-off Requirements"** means, when an error occurs, the Customer is responsible for waiting for a period of time before issuing another request. This means that after the first error, there is a minimum back-off interval of 1 second and for each consecutive error, the back-off interval increases exponentially up to 32 seconds.
 
 * **"Covered Service"** means all Web APIs provided to customer as well as the Web Portal
@@ -25,14 +26,14 @@ The following definitions apply to the SLA:
 
 * **"Financial Credit"** means the following:
 
-  |Covered Service     |Monthly Uptime Percentage	|Percentage of monthly bill for Covered Service which does not meet </br>SLO that will be credited to future monthly bills of Customer|
+  |Covered Service     |Monthly Uptime Percentage	|Percentage of monthly bill for Covered Service which does not meet SLO that will be credited to future monthly bills of Customer|
   |--------------------|---------------------------|---------------------------------------|
   |Web API             |99% – < 99.9%	 |10% |
   |Web API             |95.0% – < 99.0%  |25% |
   |Web API             |< 95.0%	         |50% |
-  |Web API Pre-emptible|95.0% – < 99.0%  |10% |
-  |Web API Pre-emptible|90.0% – < 95.0%  |20% |
-  |Web API Pre-emptible|< 90.0%	         |40% |
+  |Web API Preemptible|95.0% – < 99.0%  |10% |
+  |Web API Preemptible|90.0% – < 95.0%  |20% |
+  |Web API Preemptible|< 90.0%	         |40% |
 
 * **"Monthly Uptime Percentage"** means total number of minutes in a month, minus the number of minutes of Downtime suffered from all Downtime Periods in a month, divided by the total number of minutes in a month.
 
@@ -52,8 +53,8 @@ Connection Latencies, defined as roundtrip time for start of TLS handshake, are 
 For indication, below we list the Connection Latencies to be expected given the current location of Voicegain services.
 | From Region    | Expected Connection Latencies |
 |----------------|-------------------------------|
-| US East Coast  | <15ms                         |
-| US West Coast  | 60-80ms                       |
-| Europe         | 80-125ms                      |
-| East Asia      | 190-250ms                     |
+| [US East Coast](https://updown.io/xa7t)  | <15ms                         |
+| [US West Coast](https://updown.io/xa7t)  | 60-80ms                       |
+| [Europe](https://updown.io/onvf)         | 80-125ms                      |
+| [East Asia](https://updown.io/ntbh)      | 160-250ms                     |
 | India          | 250-300ms                     |

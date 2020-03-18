@@ -18,7 +18,7 @@ The following definitions apply to the SLA:
 
 * **"Covered Service"** means all Web APIs provided to customer as well as the Web Portal
 
-* **"Downtime"** means more than a 2.5% Error Rate. Downtime is measured based on server side Error Rate.
+* **"Downtime"** means more than a 3% Error Rate. Downtime is measured based on server side Error Rate.
 
 * **"Downtime Period"** means a period of one or more consecutive minutes of Downtime. Partial minutes or Intermittent Downtime for a period of less than one minute will not be counted towards any Downtime Periods.
 
@@ -29,11 +29,11 @@ The following definitions apply to the SLA:
   |Covered Service     |Monthly Uptime Percentage	|Percentage of monthly bill for Covered Service which does not meet SLO that will be credited to future monthly bills of Customer|
   |--------------------|---------------------------|---------------------------------------|
   |Web API             |99% – < 99.9%	 |10% |
-  |Web API             |95.0% – < 99.0%  |25% |
-  |Web API             |< 95.0%	         |50% |
+  |Web API             |95.0% – < 99.0%  |20% |
+  |Web API             |< 95.0%	         |35% |
   |Web API Preemptible|95.0% – < 99.0%  |10% |
   |Web API Preemptible|90.0% – < 95.0%  |20% |
-  |Web API Preemptible|< 90.0%	         |40% |
+  |Web API Preemptible|< 90.0%	         |35% |
 
 * **"Monthly Uptime Percentage"** means total number of minutes in a month, minus the number of minutes of Downtime suffered from all Downtime Periods in a month, divided by the total number of minutes in a month.
 

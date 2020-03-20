@@ -1,3 +1,35 @@
+## Release 1.4.1
+
+Maintenance release that fixes several issues and adds minor enhancements.
+
+### Major Features and Improvements
+Added in version 1.4.0:
+* Core Functionality
+  * Web portal now has a built-in log viewer.
+  * Configurable inactivity timeout has been added.
+* Web UI
+  * Many small UI changes improving usability  
+* IVR-Proxy
+  * Encryption option has been added. Efficiency has been improved. It also now reports version, which makes it easy to spot when you are running an older version and need to update.
+* Edge Deployment has now been tested and is out of Alpha status.
+
+### Known issues
+* Audio Sender Daemon does not support encryption yet. 
+* Grafana Dashboards configurations are very basic
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+Only bugs present in the previous 1.4.0 release are listed.
+* bug #385: Log query error messages not shown in the Web UI
+* bug #380: Filtering by service name in log query not working
+* bug #379: MRCP chart not showing data for IVR-Proxy sessions
+* bug #374: Edge portal has link to MRCP Proxy page
+* bug #373: Some Edge portal Cloud links point to dev
+* enhancement #378: Refresh button for MRCP proxy page.
+
+
 ## Release 1.4.0
 
 Minor release adding features and improvements as well as bug fixes.

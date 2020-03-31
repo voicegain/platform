@@ -1,6 +1,7 @@
 {
   "host" : "${apiUrlBase}",
   "ws": "${natsWebsocketUrlBase}/port",
+  "micrometer" : "${micrometerUrl}",
   "jwt" : "${jwt}",
   "payloadWS" : {
     "messages" : [

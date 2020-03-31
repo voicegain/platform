@@ -1,5 +1,5 @@
 #!/bin/bash
-CODE_NAME=ascalon
+CODE_NAME=voicegain
 DEPLOYMENT=dev
 VG_VER=1.5.0
 echo "Setup for Voicegain Audio Sender Daemon ver. $VG_VER"

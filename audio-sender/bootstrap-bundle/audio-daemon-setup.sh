@@ -29,18 +29,28 @@ if [[ "$_java" ]]; then
     fi
 fi
 
+echo ""
 echo "Downloading Voicegain Audio Sender Daemon"
 wget -N --backups=0 wget https://f002.backblazeb2.com/file/$CODE_NAME-cdn/vg-audio-sender-daemon-$VG_VER.jar
+echo ""
 echo "Downloading java launch script"
 wget -N --backups=0 https://raw.githubusercontent.com/voicegain/platform/$DEPLOYMENT/audio-sender/bootstrap-bundle/java-launch-audio-daemon.sh
 chmod u+x java-launch-audio-daemon.sh
+echo ""
+echo "Downloading list audio devices script"
+wget -N --backups=0 https://raw.githubusercontent.com/voicegain/platform/$DEPLOYMENT/audio-sender/bootstrap-bundle/list-audio-devices.sh
+chmod u+x list-audio-devices.sh
+echo ""
 echo "Downloading daemon start script"
 wget -N --backups=0 https://raw.githubusercontent.com/voicegain/platform/$DEPLOYMENT/audio-sender/bootstrap-bundle/start-audio-daemon.sh
 chmod u+x start-audio-daemon.sh
 echo ""
-echo "Setup done.
+echo "Setup done."
+echo ""
+echo "You can view available audio devices by running"
+echo " ./list-audio-devices.sh"
 echo ""
 echo "You can launch Voicegain Audio Daemon by running"
-echo " ./start-audio-daemon.sh
+echo " ./start-audio-daemon.sh"
 echo ""
 

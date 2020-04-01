@@ -26,7 +26,7 @@ The following definitions apply to the SLA:
 
 * **"Financial Credit"** means the following:
 
-  |Covered Service     |Monthly Uptime Percentage	|Percentage of monthly bill for Covered Service which does not meet SLO that will be credited to future monthly bills of Customer|
+  |Covered Service     |Monthly Uptime Percentage	|Percentage credit if SLO not met<sup>1</sup>|
   |--------------------|---------------------------|---------------------------------------|
   |Web API             |99% – < 99.9%	 |10% |
   |Web API             |95.0% – < 99.0%  |20% |
@@ -34,6 +34,8 @@ The following definitions apply to the SLA:
   |Web API Preemptible|95.0% – < 99.0%  |10% |
   |Web API Preemptible|90.0% – < 95.0%  |20% |
   |Web API Preemptible|< 90.0%	         |35% |
+
+<sup>1</sup> Percentage of monthly bill for Covered Service which does not meet SLO that will be credited to future monthly bills of Customer
 
 * **"Monthly Uptime Percentage"** means total number of minutes in a month, minus the number of minutes of Downtime suffered from all Downtime Periods in a month, divided by the total number of minutes in a month.
 

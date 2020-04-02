@@ -5,7 +5,7 @@ DATE=$(date +%F_%H-%M-%S)
 APPLOG=audio-daemon.$DATE.log
 
 # Source value may have to be modified to match the correct Audio Input Device
-SOURCE=2
+SOURCE=5
 
 JSON=audio-daemon-config.json
 

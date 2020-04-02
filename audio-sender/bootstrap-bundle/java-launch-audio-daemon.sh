@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=1.3.3_beta
+VERSION=1.5.0
 DATE=$(date +%F_%H-%M-%S)
 GCLOG=gc-audio-daemon.$DATE.log
 HEAP=128m

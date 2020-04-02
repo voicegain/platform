@@ -1,3 +1,27 @@
+## Release 1.5.0
+
+Minor release that modifies the Web Portal UI and updates the versions of some core 3rd party libraries.
+
+### Major Features and Improvements
+Added in version 1.5.0:
+* Web portal is now organized into Voicegain Apps (Transcribe, IVR, etc.) making it easier to navigate the many options by hiding those not applicable to the currently selected App. 
+* Changed New Account Signup form to a wizard style with better explanation of choices available. 
+* Edge deployment now has its own influxDb and Grafana instance.
+
+### Known issues
+* Audio Sender Daemon does not support encryption yet. 
+* Grafana Dashboards configurations are very basic
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+Only bugs present in the previous 1.4.1 release are listed.
+* bug #413: Logs query not respecting date range selection.
+* bug #393: Insufficient resources allocated to ElasticSearch node.
+* bug #388: Audio Daemon JVM stats sending to influxdb fails on prod.
+* enhancement #392: CC-App viewer embedded into Websocket control page.
+
 ## Release 1.4.1
 
 Maintenance release that fixes several issues and adds minor enhancements.

@@ -1,7 +1,7 @@
 #!/bin/bash
 CODE_NAME=voicegain
 DEPLOYMENT=master
-VG_VER=1.3.3_beta
+VG_VER=1.5.0
 echo "Setup for Voicegain Audio Sender Daemon ver. $VG_VER"
 
 echo "Checking java version"

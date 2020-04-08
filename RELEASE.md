@@ -1,3 +1,31 @@
+## Release 1.5.1
+
+Maintenance release that fixes several bugs.
+
+### Major Features and Improvements
+Added in version 1.5.0:
+* Web portal is now organized into Voicegain Apps (Transcribe, IVR, etc.) making it easier to navigate the many options by hiding those not applicable to the currently selected App. 
+* Changed New Account Signup form to a wizard style with better explanation of choices available. 
+* Edge deployment now has its own influxDb and Grafana instance.
+
+### Known issues
+* Audio Sender Daemon does not support encryption yet. 
+* Grafana Dashboards configurations are very basic
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+Only bugs present in the previous 1.5.0 release are listed.
+* bug #441: Links from Guide Card to support articles fail to login into Zendesk
+* bug #435: Training mode not supported correctly on Edge Portal
+* bug #433: New User Wizard (joyride) not reflecting changes in the UI
+* bug #432: Language Model selection now showing LMs published from other Contexts 
+* bug #431: Billing not tracking all the usage
+* enhancement #437: Added "Training" option to signup wizard
+* enhancement #430: Improved icons in Transcribe View playback controls 
+* enhancement #428: Grafana login - auto click OAuth button 
+
 ## Release 1.5.0
 
 Minor release that modifies the Web Portal UI and updates the versions of some core 3rd party libraries.

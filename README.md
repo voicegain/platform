@@ -28,6 +28,9 @@ You can learn more about Voicegain at https://voicegain.ai. BTW, we are offering
 
 You can learn more about Speech.Works at https://speech.works
 
+How-To Guides
+* [Deploy Voicegain into AWS](./how-to/deploy-voicegain-into-aws.md)
+
 ---
 
 [Voicegain Github Home](https://voicegain.github.io/)

@@ -2,12 +2,14 @@
 Step by step guide how to deploy Voicegain Speech-to-Text Platform into AWS
 ----
 Under the hood:
-   With or without the Vacuum tool, this guide will have you do the following:
+This guide will have you do the following:
 * Create an AWS Kubernetes cluster with GPU’s
 * Authorize Voicegain to authenticate with your cluster by editing the aws-auth configmap and uploading your kubeconfig file to the Voicegain Portal
 
+At step 4 we describe the option of using Vacuum CLI tool. This tool is not yet publicly available. We will modify this document as soon as we make it available with instructions on how  to download it.
+
 ## Table of Contents
-- [Step 1: Request GPUs from AWS](#Step-1:-Request-GPUs-from-AWS)
+- [Step 1: Request GPUs from AWS](#step1)
 - [Step 2: Create a User](#Step-2:-Create-a-User)
 - [Step 3: Create Roles](#Step-3:-Create-Roles)
 - [Step 4: Choose Between Automated or Manual K8s Setup](#Step-4:-Choose-Between-Automated-or-Manual-K8s-Setup)
@@ -21,9 +23,9 @@ Under the hood:
 - [Step 12: Allow Access to Voicegain-Portal on AWS](#Step-12:-Allow-Access-to-Voicegain-Portal-on-AWS)
 - [Step 13: Start Deployment of Chosen Features](#Step-13:-Start-Deployment-of-Chosen-Features)
 - [Step 14: Wait for Deployment to Finish](#Step-14:-Wait-for-Deployment-to-Finish)
-- [Step 15: Start Using Voicegain in AWS](#Step-15:-Start-Using-Voicegain-in-AWS)
+- [Step 15: Start Using Voicegain in AWS](#step15)
 
-## Step 1: Request GPUs from AWS
+## <a id="step1"/>Step 1: Request GPUs from AWS
 
 This may take a while so it is smart to do this at the very beginning
 
@@ -47,10 +49,8 @@ Under IAM:
 
 ### Method A
 
-1. Create Amazon EKS worker node role in IAM console:
-      https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html
-2. Create Amazon EKS Service role in IAM console:
-      https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html
+1. Create Amazon EKS worker node role in IAM console: [see AWS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html)
+2. Create Amazon EKS Service role in IAM console: [see AWS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
 
 ![Create Role Step 1](./create-role.png)
 
@@ -98,7 +98,7 @@ Either:
 
 Create Edge Cluster via Voicegain Portal and retrieve ClusterID, then  
 <pre>
-‘vacuum k8s provision -t cluster_name -u Cluster_ID’
+vacuum k8s provision -t cluster_name -u Cluster_ID
 </pre>
 
 Then skip to **Step 12**
@@ -126,8 +126,7 @@ Minimum 2xlarge (32 GiB memory) w/ minimum 2 nodes.
 
 ## Step 7: Install Kubectl
 
-Local system setup, install Kubectl
-https://kubernetes.io/docs/tasks/tools/install-kubectl/
+Local system setup, install Kubectl following [these instructions from kubernetes website](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ## Step 8: Install and Configure awscli
 
@@ -174,7 +173,7 @@ kubectl -n kube-system patch cm aws-auth --patch "$(< voicegain-auth.yaml )"
 
 ## Step 11: Upload kubeconfig to Voicegain
 
-If not using Vacuum: Install the Voicegain API access libraries and use your JWT token to upload your kubeconfig file, now located at `~/.kube/confg` to our portal.
+If not using Vacuum: Install the Voicegain API access libraries (at this point please send email to support@voicegain.ai to obtain them) and use your JWT token to upload your kubeconfig file, now located at `~/.kube/confg` to our portal.
 
 ## Step 12: Allow Access to Voicegain-Portal on AWS
 
@@ -195,8 +194,12 @@ From the [Voicegain Portal](https://portal.voicegain.ai "Voicegain Cloud Portal"
 ## Step 14: Wait for Deployment to Finish
 
 You can watch the progress of your cluster deployment via:
+<pre>
 watch `kubectl get po`
+</pre>
 
-## Step 15: Start Using Voicegain in AWS
+## <a id="step15"/>Step 15: Start Using Voicegain in AWS
 
-Once the deployment has settled, follow the Customer-portal link on your Edge Deployment page on [portal.voicegain.ai](https://portal.voicegain.ai "Voicegain Cloud Portal") , log in, and begin transcribing! All done!
+Once the deployment has settled, follow the Customer-portal link on your Edge Deployment page on [portal.voicegain.ai](https://portal.voicegain.ai "Voicegain Cloud Portal") , log in, and begin transcribing! 
+
+All done!

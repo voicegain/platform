@@ -1,3 +1,30 @@
+## Release 1.6.0
+
+Minor release that adds a much faster offline transcription and a more accurate acoustic model.
+
+### Major Features and Improvements
+
+* Offline transcription has been sped up by approximately a factor of 10x.  
+* New acoustic model for offline transcription has significantly improved accuracy. 
+* Previous IVR product has been renamed ASR to better reflect its core functionality. A new product supporting complete end-to-end functionality will be release in June/July.
+
+### Known issues
+* Audio Sender Daemon does not support encryption yet. 
+* Grafana Dashboards configurations are very basic
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+since Release 1.5.1
+* bug #459: Fixed issue that prevented Edge transcription when connection to Cloud was not possible.
+* bug #450: Fixed issue with resetting expired password.
+* bug #443: Fixed resource use issue for user log collection.
+* bug #442: Fixed logout issue from Edge portal.
+* bug #439: Resolved occasional failure of ASR resource reservation on Edge.
+* enhancement #460: Cache current balance on Edge to reduce number requests. 
+
+
 ## Release 1.5.1
 
 Maintenance release that fixes several bugs.

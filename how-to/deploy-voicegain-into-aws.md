@@ -1,4 +1,4 @@
-# Deploy Voicegain into AWS
+# <a id="top"></a>Deploy Voicegain into AWS
 Step by step guide how to deploy Voicegain Speech-to-Text Platform into AWS
 ----
 Under the hood:
@@ -8,28 +8,28 @@ This guide will have you do the following:
 
 At step 4 we describe the option of using Vacuum CLI tool. This tool is not yet publicly available. We will modify this document as soon as we make it available with instructions on how  to download it.
 
-## Table of Contents
+## <a id="toc"></a>Table of Contents
 - [Step 1: Request GPUs from AWS](#step1)
-- [Step 2: Create a User](#Step-2:-Create-a-User)
-- [Step 3: Create Roles](#Step-3:-Create-Roles)
-- [Step 4: Choose Between Automated or Manual K8s Setup](#Step-4:-Choose-Between-Automated-or-Manual-K8s-Setup)
-- [Step 5: Create Cluster](#Step-5:-Create-Cluster)
-- [Step 6: Create NodeGroup](#Step-6:-Create-NodeGroup)
-- [Step 7: Install Kubectl](#Step-7:-Install-Kubectl)
-- [Step 8: Install and Configure awscli](#Step-8:-Install-and-Configure-awscli)
-- [Step 9: Get kubeconfig](#Step-9:-Get-kubeconfig)
-- [Step 10: Give Voicegain Access to K8s](#Step-10:-Give-Voicegain-Access-to-K8s)
-- [Step 11: Upload kubeconfig to Voicegain](#Step-11:-Upload-kubeconfig-to-Voicegain)
-- [Step 12: Allow Access to Voicegain-Portal on AWS](#Step-12:-Allow-Access-to-Voicegain-Portal-on-AWS)
-- [Step 13: Start Deployment of Chosen Features](#Step-13:-Start-Deployment-of-Chosen-Features)
-- [Step 14: Wait for Deployment to Finish](#Step-14:-Wait-for-Deployment-to-Finish)
+- [Step 2: Create a User](#step2)
+- [Step 3: Create Roles](#step3)
+- [Step 4: Choose Between Automated or Manual K8s Setup](#step4)
+- [Step 5: Create Cluster](#step5)
+- [Step 6: Create NodeGroup](#step6)
+- [Step 7: Install Kubectl](#step7)
+- [Step 8: Install and Configure awscli](#step8)
+- [Step 9: Get kubeconfig](#step9)
+- [Step 10: Give Voicegain Access to K8s](#step10)
+- [Step 11: Upload kubeconfig to Voicegain](#step11)
+- [Step 12: Allow Access to Voicegain-Portal on AWS](#step12)
+- [Step 13: Start Deployment of Chosen Features](#step13)
+- [Step 14: Wait for Deployment to Finish](#step14)
 - [Step 15: Start Using Voicegain in AWS](#step15)
 
-## <a id="step1"/>Step 1: Request GPUs from AWS
+## <a id="step1"></a>Step 1: Request GPUs from AWS
 
 This may take a while so it is smart to do this at the very beginning
 
-## Step 2: Create a User
+## <a id="step2"></a>Step 2: Create a User
 
 Under IAM: 
 * Create a user with Console Access* and Programmatic API access and save your "access key ID" and "secret access key"
@@ -45,7 +45,7 @@ Under IAM:
 
 ![Add User Step 3](./add-user-3.png)
 
-## Step 3: Create Roles
+## <a id="step3"></a>Step 3: Create Roles
 
 ### Method A
 
@@ -88,7 +88,7 @@ With the following Trust Relationship:
 }
 ```
 
-## Step 4: Choose Between Automated or Manual K8s Setup
+## <a id="step4"></a>Step 4: Choose Between Automated or Manual K8s Setup
 
 Either:
 
@@ -101,21 +101,21 @@ Create Edge Cluster via Voicegain Portal and retrieve ClusterID, then
 vacuum k8s provision -t cluster_name -u Cluster_ID
 </pre>
 
-Then skip to **Step 12**
+Then skip to [Step 12](#step12)
 
 ### Provision Amazon K8S cluster manually
 
 Sign out of AWS Console and Sign In with the IAM User created in Step one. You will sign in with your Account ID, Username, and password.
 
-Then proceed with **Step 5**
+Then proceed with [Step 5](#step5)
 
-## Step 5: Create Cluster 
+## <a id="step5"></a>Step 5: Create Cluster 
 
 Create Cluster w/ EKSServiceRole:
 
 ![Create Cluster](./create-cluster.png)
 
-## Step 6: Create NodeGroup
+## <a id="step6"></a>Step 6: Create NodeGroup
 
 Create NodeGroup
 
@@ -124,11 +124,11 @@ Create NodeGroup
 When creating the NodeGroups, Voicegain will require GPU’s, thus choose the Amazon Linux 2 GPU Enabled (AL2_x86_64)) AMI type and a g4dn EC2 Instance Type. 
 Minimum 2xlarge (32 GiB memory) w/ minimum 2 nodes.
 
-## Step 7: Install Kubectl
+## <a id="step7"></a>Step 7: Install Kubectl
 
 Local system setup, install Kubectl following [these instructions from kubernetes website](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-## Step 8: Install and Configure awscli
+## <a id="step8"></a>Step 8: Install and Configure awscli
 
 Install and configure awscli:
 
@@ -142,7 +142,7 @@ You can test for successful configuration with:
 aws eks list-clusters
 </pre>
 
-## Step 9: Get kubeconfig
+## <a id="step9"></a>Step 9: Get kubeconfig
 
 Retreive kubernetes configuration file:
 <pre>
@@ -153,7 +153,7 @@ And test access with the following:
 kubectl get nodes
 </pre>
 
-## Step 10: Give Voicegain Access to K8s
+## <a id="step10"></a>Step 10: Give Voicegain Access to K8s
 
 Provide Voicegain with access to the Kubernetes (k8s) cluster:
 
@@ -171,11 +171,11 @@ And patch the aws-auth configmap with the following command:
 kubectl -n kube-system patch cm aws-auth --patch "$(< voicegain-auth.yaml )"
 </pre>
 
-## Step 11: Upload kubeconfig to Voicegain
+## <a id="step11"></a>Step 11: Upload kubeconfig to Voicegain
 
 If not using Vacuum: Install the Voicegain API access libraries (at this point please send email to support@voicegain.ai to obtain them) and use your JWT token to upload your kubeconfig file, now located at `~/.kube/confg` to our portal.
 
-## Step 12: Allow Access to Voicegain-Portal on AWS
+## <a id="step12"></a>Step 12: Allow Access to Voicegain-Portal on AWS
 
 Allow access to Voicegain-Portal on AWS by editing the Cluster’s Security-Group (Inbound Rules):
 
@@ -187,19 +187,22 @@ Add a new Inbound Rule w/ Custom TCP Port 31680 and Source of “My IP” (or an
 
 ![Edit Inbound Rules](./edit-inbound-rules.png)
 
-## Step 13: Start Deployment of Chosen Features
+## <a id="step13"></a>Step 13: Start Deployment of Chosen Features
 
 From the [Voicegain Portal](https://portal.voicegain.ai "Voicegain Cloud Portal"), choose the features you wish to utilize and submit. 
 
-## Step 14: Wait for Deployment to Finish
+## <a id="step14"></a>Step 14: Wait for Deployment to Finish
 
 You can watch the progress of your cluster deployment via:
 <pre>
 watch `kubectl get po`
 </pre>
 
-## <a id="step15"/>Step 15: Start Using Voicegain in AWS
+## <a id="step15"></a>Step 15: Start Using Voicegain in AWS
 
 Once the deployment has settled, follow the Customer-portal link on your Edge Deployment page on [portal.voicegain.ai](https://portal.voicegain.ai "Voicegain Cloud Portal") , log in, and begin transcribing! 
 
 All done!
+
+---
+Goto: [top of document](#top)

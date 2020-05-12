@@ -1,4 +1,4 @@
-### Minor release 1.6.1 is scheduled for 5/12/2020 between 6pm and 9pm CST.
+### Maintenance release 1.6.1 is scheduled for 5/12/2020 between 6pm and 9pm CST.
   * This maintenance release fixes the two Known Issues reported after Release 1.6.0 
   * More details in the Release Notes which are available [here](https://raw.githubusercontent.com/voicegain/platform/master/RELEASE.md)
 

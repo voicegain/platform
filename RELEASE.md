@@ -1,3 +1,10 @@
+## Release 1.6.1
+  This maintenance release fixes the two Issues reported after Release 1.6.0 
+
+### Bug Fixes and Other Changes
+  * bug# 468: IVR-Proxy not starting. 
+  * bug# 467: Offline transcription of long files sometimes does not report completion.
+
 ## Release 1.6.0
 
 Minor release that adds a much faster offline transcription and a more accurate acoustic model.

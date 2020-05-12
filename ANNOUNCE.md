@@ -1,3 +1,6 @@
+### Known Issue
+  * bug# 467: Offline transcription of long files sometimes does not report completion - so far narrowed down to interaction of specific python version with redis. Fix should be available by end of 5/12.
+
 ### Minor release 1.6.0 is scheduled for 5/11/2020 between 6pm and 9pm CST.
   * Offline transcription is now up to 10x faster. 
   * New offline Acoustic Model with higher accuracy, in particular on podcast type audio. 

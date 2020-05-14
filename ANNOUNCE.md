@@ -1,3 +1,6 @@
+### Maintenance release 1.6.2 is scheduled for 5/14/2020 between 6pm and 9pm CST.
+  * Fixes remaining issues related to bug# 467: Offline transcription of long files sometimes does not report completion.
+  
 ### Maintenance release 1.6.1 is scheduled for 5/12/2020 between 6pm and 9pm CST.
   * This maintenance release fixes the two Known Issues reported after Release 1.6.0 
     * bug# 468: IVR-Proxy not starting. 

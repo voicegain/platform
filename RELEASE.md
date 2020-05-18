@@ -1,3 +1,7 @@
+## Release 1.6.3
+  This maintenance release provides an improved acoustic model for off-line transcription. 
+
+
 ## Release 1.6.2
   This maintenance release fixes bug #467 
 

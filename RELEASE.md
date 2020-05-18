@@ -23,7 +23,7 @@ Minor release that adds a much faster offline transcription and a more accurate 
 
 ### Major Features and Improvements
 
-* Offline transcription has been sped up by approximately a factor of 10x.  
+* Offline transcription in Edge deployments has been sped up by approximately a factor of 10x.  
 * New acoustic model for offline transcription has significantly improved accuracy. 
 * Previous IVR product has been renamed ASR to better reflect its core functionality. A new product supporting complete end-to-end functionality will be release in June/July.
 

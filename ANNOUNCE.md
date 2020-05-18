@@ -1,4 +1,4 @@
-### Maintenance release 1.6.2 is scheduled for 5/18/2020 between 6pm and 9pm CST.
+### Maintenance release 1.6.3 is scheduled for 5/18/2020 between 6pm and 9pm CST.
   * This maintenance release provides an improved acoustic model for off-line transcription. 
 
 ### Maintenance release 1.6.2 is scheduled for 5/14/2020 between 6pm and 9pm CST.

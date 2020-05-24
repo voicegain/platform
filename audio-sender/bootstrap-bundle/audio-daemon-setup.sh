@@ -4,6 +4,16 @@ DEPLOYMENT=dev
 VG_VER=1.5.0
 echo "Setup for Voicegain Audio Sender Daemon ver. $VG_VER"
 
+echo "Checking wget"
+
+if type -p wget; then
+    echo "Found wget executable in PATH"
+    _wget=wget
+else
+    echo "Please install wget - See README.md for more info"
+    exit
+fi
+
 echo "Checking java version"
 
 if type -p java; then

@@ -18,6 +18,7 @@
                 "asyncMode" : "REAL-TIME",
                 "websocket": {
                         "name": "${websocketName}",
+                        "minimumDelay" : 4000,
                         "ifExists" : "kill"
                 },
                 "poll" : {

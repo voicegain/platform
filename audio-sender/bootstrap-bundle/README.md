@@ -1,37 +1,64 @@
-## Steps to get Audio Sender Daemon running ##
+# Steps to get Audio Sender Daemon running #
 Version 1.5.0 (dev)
 
-### Install ###
+## Install ##
 
 Run 
 
- chmod u+x audio-daemon-setup.sh
+`chmod u+x audio-daemon-setup.sh`
 
 to make the setup script executable, then run the script:
 
- ./audio-daemon-setup.sh
+`./audio-daemon-setup.sh`
 
+If the script reports no wget present then please install it.
+Here are example commands for Ubuntu or Debian:
 
-If the script reports no Java 9 present then please install it using e.g. these commands (Ubuntu)
+```
+sudo apt-get update
+sudo apt-get install -y wget
+```
 
+### Java install if necessary ###
+
+If the script reports no Java 9 present then please install Java 11 if avaiable or Java 9 if 11 is not available for your Linux version.
+
+Here are example commands for Ubuntu or Debian:
+
+```
+sudo apt-get update
+sudo apt-get install -y galternatives openjdk-11-jre
+```
+or
+```
 sudo apt-get update
 sudo apt-get install -y galternatives openjdk-9-jre
+```
 
 Verify install running:
 
-java -version
+`java -version`
 
-Once correct java is installed, rerun ./audio-daemon-setup.sh 
+Once correct java is installed, rerun `./audio-daemon-setup.sh` 
 
-### Check install ###
 
-### Check/ Modify the configuration ###
+## Check Audio Devices ##
 
-It will be in the json file. 
+Let's run this command to list the audio devices:
 
-You may have to change the SOURCE parameter in start-audio-daemon.sh
+`./list-audio-devices.sh`
 
-### Run Audio Daemon ###
+Pick the number next to the correct input device and change the `SOURCE` parameter in start-audio-daemon.sh to that value.
 
-./start-audio-daemon.sh
+
+## Check/Modify the configuration ##
+
+Configuration is in the json file. 
+
+Normally no changes are needed, but the configuration can always be modified for specific use case.
+
+
+## Launch Audio Daemon ##
+
+`./start-audio-daemon.sh`
 

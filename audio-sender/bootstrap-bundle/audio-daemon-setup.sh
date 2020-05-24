@@ -41,7 +41,7 @@ fi
 
 echo ""
 echo "Downloading Voicegain Audio Sender Daemon"
-wget -N --backups=0 wget https://f002.backblazeb2.com/file/$CODE_NAME-cdn/vg-audio-sender-daemon-$VG_VER.jar
+wget -N --backups=0 https://f002.backblazeb2.com/file/$CODE_NAME-cdn/vg-audio-sender-daemon-$VG_VER.jar
 echo ""
 echo "Downloading java launch script"
 wget -N --backups=0 https://raw.githubusercontent.com/voicegain/platform/$DEPLOYMENT/audio-sender/bootstrap-bundle/java-launch-audio-daemon.sh

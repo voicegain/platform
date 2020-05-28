@@ -18,6 +18,7 @@
                 "asyncMode" : "REAL-TIME",
                 "websocket": {
                         "name": "${websocketName}",
+                        "label" : "MY-LABEL",
                         "minimumDelay" : 4000,
                         "ifExists" : "kill"
                 },

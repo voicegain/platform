@@ -1,3 +1,37 @@
+## Release 1.7.0
+
+### Major Features and Improvements
+
+* Signup has been opened to gmail and other non-business email addresses 
+* Improved acoustic model for offline transcription. 
+* Improved efficiency of the core ASR recognizer.
+* Many fixes and enhancements around Live Transcription.
+
+### Known issues
+* Audio Sender Daemon does not support encryption yet. 
+* Grafana Dashboards configurations are very basic
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+since Release 1.6.3
+* bug #499: (and related) Session gets stuck in load testing.
+* bug #492: Unable to enter person's names with dashes.
+* bug #488: OutOfMemory error when processing many large requests with inline audio
+* bug #487: Stopped Live Transcription stuck in Online-Starting state
+* bug #485: Running Live Transcription with audio.capture flag does not result in working Transcript Preview
+* bug #481: Secondary output websocket shows controls enabled even though it is not a control websocket
+* bug #479: Unable to change delay for websocket
+* bug #474: Unable to change context for websocket
+* bug #473: "missing websocket name" error when running REAL-TIME together with SEMI-REAL-TIME sessions
+* bug #469: 504 error when submitting file for transcription - timeout
+* enhancement #503: IVR-Proxy will now work behind HTTP Proxy. 
+* enhancement #483: Add a label to each Live Transcription session
+* enhancement #482: Improve archives of Live Transcription
+* enhancement #478: Improve response of adding a new Websocket 
+
+
 ## Release 1.6.3
   This maintenance release provides an improved acoustic model for off-line transcription. 
 

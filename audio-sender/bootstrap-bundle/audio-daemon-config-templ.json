@@ -1,47 +1,49 @@
 {
-  "host" : "${apiUrlBase}",
-  "ws": "${natsWebsocketUrlBase}/port",
-  "micrometer" : "${micrometerUrl}",
-  "jwt" : "${jwt}",
-  "payloadWS" : {
-    "messages" : [
-    {
-      "text": "Transcription will start soon ...",
-      "tags": [
-        "announce"
-      ]
-    }
-  ]
-  } ,
-  "payloadASR" : {
-        "sessions": [{
-                "asyncMode" : "REAL-TIME",
-                "websocket": {
-                        "name": "${websocketName}",
-                        "ifExists" : "kill"
-                },
-                "poll" : {
-                        "afterlife" :  15000,
-                        "persist" : 2592000000
-                }
-        }],
-        "audio": {
-                "source": {
-                        "stream": {
-                                "protocol": "ASCALON",
-                                "controlWebsocket": "${websocketName}"
-                        }
-                },
-                "rate" : 16000
-        },
-        "settings": {
-                "preemptible" : false,
-                "asr": {
-                        "langModel" : "${langModelId}",
-                        "noInputTimeout" : 59999,
-                        "incompleteTimeout" : 3599999
-                }
+        "host" : "${apiUrlBase}",
+        "ws": "${natsWebsocketUrlBase}/port",
+        "micrometer" : "${micrometerUrl}",
+        "jwt" : "${jwt}",
+        "payloadWS" : {
+          "messages" : [
+          {
+            "text": "Transcription will start soon ...",
+            "tags": [
+              "announce"
+            ]
+          }
+        ]
+        } ,
+        "payloadASR" : {
+              "sessions": [{
+                      "asyncMode" : "REAL-TIME",
+                      "websocket": {
+                              "name": "${websocketName}",
+                              "label" : "${websocketName}-${DATE}",
+                              "minimumDelay" : 4000,
+                              "ifExists" : "kill"
+                      },
+                      "poll" : {
+                              "afterlife" :  15000,
+                              "persist" : 2592000000
+                      }
+              }],
+              "audio": {
+                      "source": {
+                              "stream": {
+                                      "protocol": "ASCALON",
+                                      "controlWebsocket": "${websocketName}"
+                              }
+                      },
+                      "rate" : 16000,
+                      "capture" : true
+              },
+              "settings": {
+                      "preemptible" : false,
+                      "asr": {
+                              "langModel" : "${langModelId}",
+                              "noInputTimeout" : 59999,
+                              "incompleteTimeout" : 3599999
+                      }
+              }
         }
-    }
-  }
 }

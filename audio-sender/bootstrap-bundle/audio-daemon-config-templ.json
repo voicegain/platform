@@ -18,7 +18,7 @@
                       "asyncMode" : "REAL-TIME",
                       "websocket": {
                               "name": "${websocketName}",
-                              "label" : "${websocketName}-${DATE}",
+                              "label" : "${websocketName}-DATE",
                               "minimumDelay" : 4000,
                               "ifExists" : "kill"
                       },

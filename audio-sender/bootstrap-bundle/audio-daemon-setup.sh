@@ -1,7 +1,7 @@
 #!/bin/bash
 CODE_NAME=voicegain
 DEPLOYMENT=dev
-VG_VER=1.5.0
+VG_VER=1.7.0
 echo "Setup for Voicegain Audio Sender Daemon ver. $VG_VER"
 
 echo "Checking wget"

@@ -18,7 +18,7 @@
                 "asyncMode" : "REAL-TIME",
                 "websocket": {
                         "name": "${websocketName}",
-                        "label" : "MY-LABEL",
+                        "label" : "${websocketName}-${DATE}",
                         "minimumDelay" : 4000,
                         "ifExists" : "kill"
                 },
@@ -34,7 +34,8 @@
                                 "controlWebsocket": "${websocketName}"
                         }
                 },
-                "rate" : 16000
+                "rate" : 16000,
+                "capture" : true
         },
         "settings": {
                 "preemptible" : false,

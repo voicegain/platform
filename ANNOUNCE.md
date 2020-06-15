@@ -1,3 +1,10 @@
+### Maintenance release 1.7.1 is scheduled for 6/15/2020 between 6pm and 9pm CST.
+This maintenance release provides fixes for following bugs:
+* #506: Frequency of timestamps in TXT transcript export too high.
+* #505: minimimumDelay setting for Live Transcription websocket has no effect.
+
+Signup form has been modified to reflect change from $1.25 free trial credit to 600 free minutes monthly. 600 free minutes monthly will be applied to all existing accounts.
+
 ### Minor release 1.7.0 is scheduled for 6/12/2020 between 5pm and 9pm CST.
 
 Note: While we deploy this release the system may be partially unavailable for up to 1 hour.

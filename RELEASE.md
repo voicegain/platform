@@ -1,3 +1,11 @@
+## Release 1.7.1
+
+This maintenance release provides fixes for following bugs:
+* bug #506: Frequency of timestamps in TXT transcript export too high.
+* bug #505: minimimumDelay setting for Live Transcription websocket has no effect.
+
+With this release the free $1.25 credit for new accounts has been reduced to $0.25 but **all accounts now get 600 free speech-to-text minutes monthly**. 
+
 ## Release 1.7.0
 
 ### Major Features and Improvements

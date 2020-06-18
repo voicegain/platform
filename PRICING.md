@@ -50,8 +50,8 @@ Note: it is possible to combine some of the Session Types in a single Web APi re
 
 Given the above definitions, below is the complete pricing list for all possible combinations.
 
-| API</br>method|Speech-to-Text</br>mode| Session </br>Type |Acoustic</br>Model|GPU</br>resource|Price:</br> standard model|Price:</br> custom model
-|--------------|--------------------|----------|---|---|---|----|----|
+| API</br>method|Speech-to-Text</br>mode| Session </br>Type |Acoustic</br>Model|GPU</br>resource|Price:</br> standard model|Price:</br> custom model|
+|--------------|--------------------|----------|---|---|---|----|
 |sync|recognize | n/a|high accuracy </br> high latency|preemptible|1.00 </br>cents/minute|1.50 </br>cents/minute|
 |sync|recognize | n/a|high accuracy </br> high latency|on-demand|1.25 </br>cents/minute|1.75 </br>cents/minute|
 |sync|transcribe | n/a|high accuracy </br> high latency|preemptible|1.00 </br>cents/minute|1.50 </br>cents/minute|

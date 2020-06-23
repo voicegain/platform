@@ -2,14 +2,21 @@ let websocketSendUrl, websocketReceiveUrl, websocketReceiveName, stompClient;
 
 //Obtain Voicegain websocket URL for async transcription. Requires JWT token for authorization.
 const connectVoicegainWebsocket = async () => {
-  const transcriptionApiUrl = "https://api.ascalon.ai/v1/asr/transcribe/async";
+  const transcriptionApiUrl = "https://api.voicegain.ai/v1/asr/transcribe/async";
   const bearer = "Bearer " + voicegainJwt;
 
+// this is the body of the request to /asr/transcribe/async
+// 1) the real time session - the recognition output will be directed to adHoc websocket
+// 2) the semi-real-time session - this is in order to obtain a more accurate transcript after real-time
+//    addtionally result of semi-real-time session is stored in the portal
+//
+// microphone audio is streamed over websocket to the recognizer
+// ASR setting shave very long timeouts so you will have to stop capture by pressing stop button
   const data = {
     sessions: [
       {
         asyncMode: "REAL-TIME",
-        websocket: { adHoc: true, minimumDelay: 2000 },
+        websocket: { adHoc: true, minimumDelay: 1000 },
       },
       {
         asyncMode: "SEMI-REAL-TIME",
@@ -22,7 +29,6 @@ const connectVoicegainWebsocket = async () => {
       rate: 16000,
     },
     settings: {
-      preemptible: false,
       asr: {
         noInputTimeout: 59999,
         incompleteTimeout: 3599999,
@@ -44,7 +50,10 @@ const connectVoicegainWebsocket = async () => {
     let transcriptionResponse = await fetch(transcriptionApiUrl, options);
     if (transcriptionResponse.ok) {
       let transcriptionData = await transcriptionResponse.json();
+      // retrieve relevant results from the reponse to POST /asr/transcribe/async
+      // websocket for sending audio
       websocketSendUrl = transcriptionData.audio.stream.websocketUrl;
+      // websocket for receiving transcription results
       websocketReceiveUrl = transcriptionData.sessions[0].websocket.url;
       websocketReceiveName = transcriptionData.sessions[0].websocket.name;
 
@@ -68,14 +77,16 @@ const startMicrophoneCapture = (
   websocketReceiveName
 ) => {
   showCaptureStatus(true);
+  // capture audio and send to websocket
   AudioCaptureStreamingService.start(websocketSendUrl);
 
-  // Connect to Websocket to receive data
+  // Connect to Websocket to receive data in STOMP format
   if (stompClient === undefined) {
     const client = new StompJs.Client({
       brokerURL: websocketReceiveUrl,
     });
     client.onConnect = (frame) => {
+      // subscribe to STOMP topic with transcribe results
       client.subscribe(`/topic/${websocketReceiveName}`, (message) => {
         const json = JSON.parse(message.body);
         const string = JSON.stringify(json);

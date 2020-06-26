@@ -6,14 +6,12 @@ During the Term of the agreement under which Voicegain has agreed to provide Voi
 | Covered Service      | Monthly Uptime Percentage |
 |----------------------|---------------------------|
 | Web API              | >= 99.9%                  |
-| Web API Preemptible | >= 99.0%                  |
 
 If Voicegain does not meet the SLO, and if Customer meets its obligations under this SLA, Customer will be eligible to receive the Financial Credits described below. This SLA states Customer’s sole and exclusive remedy for any failure by Voicegain to meet the SLO. Capitalized terms used in this SLA, but not defined in this SLA, have the meaning stated in the Agreement. 
 
 ## Definitions
 The following definitions apply to the SLA:
 
-* **"Preemptible"** means the request was made to preemptible resources as indicated by "preemptible" parameter in the request being se to "true"
 * **"Back-off Requirements"** means, when an error occurs, the Customer is responsible for waiting for a period of time before issuing another request. This means that after the first error, there is a minimum back-off interval of 1 second and for each consecutive error, the back-off interval increases exponentially up to 32 seconds.
 
 * **"Covered Service"** means all Web APIs provided to customer as well as the Web Portal
@@ -31,9 +29,7 @@ The following definitions apply to the SLA:
   |Web API             |99% – < 99.9%	 |10% |
   |Web API             |95.0% – < 99.0%  |20% |
   |Web API             |< 95.0%	         |35% |
-  |Web API Preemptible|95.0% – < 99.0%  |10% |
-  |Web API Preemptible|90.0% – < 95.0%  |20% |
-  |Web API Preemptible|< 90.0%	         |35% |
+
 
 <sup>1</sup> Percentage of monthly bill for Covered Service which does not meet SLO that will be credited to future monthly bills of Customer
 

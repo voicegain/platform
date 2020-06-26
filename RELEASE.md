@@ -1,3 +1,25 @@
+## Release 1.8.0
+
+### Major Features and Improvements
+
+* New `wordTree` format for delivering incremental transcription results.
+* GREG test grammars can be uploaded in addition to being retrieved from a URL.
+
+### Known issues
+* Audio Sender Daemon does not support encryption yet. 
+* Grafana Dashboards configurations are very basic
+
+### Breaking Changes
+* Preemptible flag is now reserved/internal use.
+
+### Bug Fixes and Other Changes
+since Release 1.7.1
+* bug #518: Details of tiered pricing not being shown
+* bug #515: Under-billing for long offline transcriptions
+* bug #513: In transcript review - speech audio is colored as if it was mere sound
+* enhancement #524: Allow to set the number of rows on one page for GREG experiment view
+* enhancement #523: Better GREG Data Upload instruction video
+
 ## Release 1.7.1
 
 This maintenance release provides fixes for following bugs:

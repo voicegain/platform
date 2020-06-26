@@ -24,6 +24,7 @@ class AudioCaptureStreamingService {
 }
 
 const BUFFER_SIZE = 1024;
+// sample rate is set to 16kHz
 const AUDIO_CONTEXT_OPTIONS = {
   sampleRate: 16000,
 };

@@ -1,3 +1,12 @@
+### Minor release 1.8.0 is scheduled for 6/26/2020 between 5pm and 9pm CST.
+
+Features in this release:
+  * GREG test grammars can be upload in addition to being retrieved from a URL.
+  * New `wordTree` format for delivering incremental transcription results.
+  * Preemptible flag is now reserved/internal use.
+  * Several bug fixes and enhancements mainly related to Billing information presentation.
+  * More details in the Release Notes which are available [here](https://raw.githubusercontent.com/voicegain/platform/master/RELEASE.md)
+
 ### Maintenance release 1.7.1 is scheduled for 6/15/2020 between 6pm and 9pm CST.
 This maintenance release provides fixes for following bugs:
 * #506: Frequency of timestamps in TXT transcript export too high.
@@ -17,14 +26,7 @@ Features in this release:
 ### Maintenance release 1.6.3 is scheduled for 5/18/2020 between 6pm and 9pm CST.
   * This maintenance release provides an improved acoustic model for off-line transcription. 
 
-### Maintenance release 1.6.2 is scheduled for 5/14/2020 between 6pm and 9pm CST.
-  * Fixes remaining issues related to bug# 467: Offline transcription of long files sometimes does not report completion.
-  
-### Maintenance release 1.6.1 is scheduled for 5/12/2020 between 6pm and 9pm CST.
-  * This maintenance release fixes the two Known Issues reported after Release 1.6.0 
-    * bug# 468: IVR-Proxy not starting. 
-    * bug# 467: Offline transcription of long files sometimes does not report completion.
-  * More details in the Release Notes which are available [here](https://raw.githubusercontent.com/voicegain/platform/master/RELEASE.md)
+
 
 
 

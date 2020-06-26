@@ -89,6 +89,8 @@ const startMicrophoneCapture = (
       // subscribe to STOMP topic with transcribe results
       client.subscribe(`/topic/${websocketReceiveName}`, (message) => {
         const json = JSON.parse(message.body);
+        // because this is a demo we are just dumping JSON from STOMP messages
+        // in real application the data would have to be processed to generate real-time transcript
         const string = JSON.stringify(json);
         const div = document.createElement("div");
         const text = document.createTextNode(string);

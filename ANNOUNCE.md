@@ -1,3 +1,9 @@
+### Maintenance release 1.8.1 is scheduled for 7/2/2020 between 6pm and 9pm CST.
+This maintenance release provides fixes for following bugs:
+* #534: Transcript Review page stops spinner before the audio file has finished loading
+* #530: Last part of incremental word-tree content missing in web api response
+* #528: GREG chart tool-tip showing incorrect values
+
 ### Minor release 1.8.0 is scheduled for 6/26/2020 between 5pm and 9pm CST.
 
 Features in this release:

@@ -1,3 +1,10 @@
+## Release 1.8.1
+
+This maintenance release provides fixes for following bugs:
+* #534: Transcript Review page stops spinner before the audio file has finished loading
+* #530: Last part of incremental word-tree content missing in web api response
+* #528: GREG chart tool-tip showing incorrect values
+
 ## Release 1.8.0
 
 ### Major Features and Improvements

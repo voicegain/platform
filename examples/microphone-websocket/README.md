@@ -6,10 +6,10 @@ What this code demonstrates:
 * receiving transcribed audio over another websocket
 
 The files included in this example are:
-* audio-services.js - a service that captures the microphone audio and a service that sends the captured audio via websocket to Voicegain 
-* config.js - has the JWT token
-* index.html - simple web page with Start/Stop buttons and a place for recognition output
-* microphone-capture.js
+* `audio-services.js` - a service that captures the microphone audio and a service that sends the captured audio via websocket to Voicegain 
+* `config.js` - has the JWT token
+* `index.html` - simple web page with Start/Stop buttons and a place for recognition output
+* `microphone-capture.js`
   * function that initiates connection to https://api.voicegain.ai/v1/asr/transcribe/async Web API - the response will contain the send websocket url (for audio) and the receive websocket url (for transcription results)   
 
 See comments throughout the code for details.
@@ -28,6 +28,6 @@ Running the demo:
 
 In this simple demo, the JWT token is accessible on client side plus we have issues with cross-origin.
 
-In real application, the request to https://api.voicegain.ai/v1/asr/transcribe/async would be wrapped in a server side code that would pass the JWT without exposing it to the web client.
+In a real application, the request to https://api.voicegain.ai/v1/asr/transcribe/async would be wrapped in a server-side http method that would pass the JWT without exposing it to the web client.
 
 The two websocket requests can be done directly from the web client because the websockets they reference have random one-time-use names. Also websockets can cross domain communication, and they are not limited by the SOP (Same Origin Policy).

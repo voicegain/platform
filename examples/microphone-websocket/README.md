@@ -18,7 +18,8 @@ Before you run the demo:
 * Disable same-origin policy in chrome: https://www.thegeekstuff.com/2016/09/disable-same-origin-policy/ </br>
 This is needed because we will run the web client on localhost and will be making web api requests to api.voicegain.ai</br>
 On Windows, the command may be:</br>
-`"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="c:/someFolderName`
+`"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="c:/someFolderName"`</br>
+If your chrome is not 32-bit but 64-bit then use `"C:\Program Files\.."` without `(x86)`
 * Add a valid Voicegain JWT-token in config.js file for authorization
 
 Running the demo:

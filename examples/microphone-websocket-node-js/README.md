@@ -7,7 +7,8 @@ What this code demonstrates:
 
 ## Steps to Run ##
 
+1. Install node js - https://nodejs.org/en/download/
 1. Set JWT in config.js 
-2. Run command "npm install" in project directory to install dependencies
-3. To start server, run command "node server.js" while in project directory
-4. Open index.html in browser (you can use library http-server also)
+1. Run command "npm install" in project directory to install dependencies
+1. To start server, run command "node server.js" while in project directory
+1. Open index.html in browser (you can use library http-server also)

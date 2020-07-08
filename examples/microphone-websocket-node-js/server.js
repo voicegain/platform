@@ -39,7 +39,7 @@ app.get("/api/capture", (req, res) => {
   });
 
   const options = {
-    hostname: "api.ascalon.ai",
+    hostname: "api.voicegain.ai",
     path: "/v1/asr/transcribe/async",
     method: "POST",
     headers: {

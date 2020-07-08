@@ -32,3 +32,8 @@ In this simple demo, the JWT token is accessible on client side plus we have iss
 In a real application, the request to https://api.voicegain.ai/v1/asr/transcribe/async would be wrapped in a server-side http method that would pass the JWT without exposing it to the web client.
 
 The two websocket requests can be done directly from the web client because the websockets they reference have random one-time-use names. Also websockets can cross domain communication, and they are not limited by the SOP (Same Origin Policy).
+
+**STOMP format for websocket messages**
+
+The example code just dumps the JSON from the STOMP messages coming over the websockets.
+This help-desk article describes the format that is used: https://support.voicegain.ai/hc/en-us/articles/360045569592-Websocket-STOMP-payload-for-real-time-transcription-results

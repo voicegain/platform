@@ -1,3 +1,11 @@
+### Minor release 1.9.0 is scheduled for 7/10/2020 between 5pm and 9pm CST.
+
+Features in this release:
+* New API to generate short-lived JWT authentication tokens. 
+* Ability to set `allowedOrigins` for web API requests to allow cross-origin web API requests (CORS)
+* More responsive TTS
+* Real-time Speech-to-Text price is now 1.25 cent/minute
+
 ### Maintenance release 1.8.1 is scheduled for 7/2/2020 between 6pm and 9pm CST.
 This maintenance release provides fixes for following bugs:
 * #534: Transcript Review page stops spinner before the audio file has finished loading

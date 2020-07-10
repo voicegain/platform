@@ -1,3 +1,15 @@
+
+## Release 1.9.0
+
+### Major Features and Improvements
+* New API to generate short-lived JWT authentication tokens. 
+* Ability to set `allowedOrigins` for web API requests to allow cross-origin  requests (CORS)
+* More responsive TTS - part of IVR functionality coming in 2.0.0
+* Real-time Speech-to-Text price is now 1.25 cent/minute
+
+### Breaking Changes
+* none
+
 ## Release 1.8.1
 
 This maintenance release provides fixes for following bugs:
@@ -9,7 +21,7 @@ This maintenance release provides fixes for following bugs:
 
 ### Major Features and Improvements
 
-* New `wordTree` format for delivering incremental transcription results.
+* New `word-tree` format for delivering incremental transcription results.
 * GREG test grammars can be uploaded in addition to being retrieved from a URL.
 
 ### Known issues

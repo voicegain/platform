@@ -1,5 +1,6 @@
 # Voicegain SaaS Subscription Agreement
 Effective: July 25th, 2019
+
 Last Updated: July 12th, 2020
 
 # 1. Acceptance of Terms

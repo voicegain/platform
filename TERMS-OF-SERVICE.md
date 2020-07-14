@@ -93,15 +93,21 @@ f.	Changes: Other than through Commitment Term, Resolvity reserves the sole righ
 # 5. Term, Termination
 
 a.	This Agreement is effective as soon as you receive confirmation of activation of Your Billing Account and your Subscription Term shall start on the date your account is activated and shall end upon termination either by Resolvity or You.
+
 b.	Either Resolvity or You may terminate this Agreement at any time at which time the Subscription Term shall end; however you must pay any and all amounts that are due for SaaS Service prior to termination.
+
 c.	This Agreement may be superseded by a signed Master SaaS Agreement between you and Resolvity, Inc in which case the terms and condition of access shall be governed by such Master SaaS Agreement.
 
 # 6. Confidential Information
 
 a.	Definitions. The term “Confidential Information” is defined above, but will be deemed to exclude any particular information that: (i) is already known to the Recipient without restrictions at the time of its disclosure by the Discloser; (ii) after its disclosure by the Discloser, is made known to the Recipient without restrictions by a third party having the right to do so; (iii) is or becomes publicly known without violation of this Agreement; or (iv) is independently developed by the Recipient without reference to the Discloser’s Confidential Information. 
+
 b.	Ownership. Confidential Information will remain the property of the Discloser (or the entities who provide their confidential information to the Discloser), and the Recipient will not be deemed by virtue of this Agreement or any access to the Discloser’s Confidential Information to have acquired any right or interest in or to any such Confidential Information. The Recipient agrees: (i) to limit disclosure of the Discloser’s Confidential Information to those employees and consultants of the Recipient who have a need to know the information for the purposes of this Agreement; (ii) not to disclose any such Confidential Information to any third party, without the Discloser’s prior written consent; (iii) to use the Discloser’s Confidential Information solely and exclusively in accordance with the terms of this Agreement in order to carry out its obligations and exercise its rights under this Agreement; (iv) to afford the Discloser’s Confidential Information at least the same level of protection against unauthorized disclosure or use as the Recipient normally uses to protect its own information of a similar character, but in no event less than reasonable care; and (v) to notify the Discloser promptly of any unauthorized use or disclosure of the Discloser’s Confidential Information and cooperate with and assist the Discloser in every reasonable way to stop or minimize such unauthorized use or disclosure. 
+
 c.	Compelled Disclosure. If the Recipient receives a subpoena or other validly issued administrative or judicial notice requiring the disclosure of the Discloser’s Confidential Information, unless prohibited by law the Recipient will promptly notify the Discloser and, if so requested, will provide reasonable cooperation to the Discloser in resisting the disclosure. Subject to its obligations stated in the preceding sentence, the Recipient will be entitled to comply with any binding subpoena or other process to the extent required by law, but will in doing so make every reasonable effort to secure confidential treatment of any materials it is compelled to disclose. 
+
 d.	Return of Confidential Information. Upon termination or expiration of this Agreement and any applicable Orders, the Recipient, at the Discloser’s option, will return or destroy all Confidential Information of the Discloser that the Recipient does not possess under a valid license; provided that each party may retain one (1) electronic copy of all of its work products (including deliverables, presentations, working papers, but excluding software and documentation) produced under this Agreement for archival purposes. The party’s obligations hereunder will continue to apply to such archival copies. 
+
 e.	Injunctive Relief. The Recipient agrees that if an arbitration panel, court or tribunal of competent jurisdiction determines that the Recipient has breached, or attempted or threatened to breach, its confidentiality obligations to the Discloser or the Discloser’s proprietary rights, the Discloser will be entitled to seek appropriate injunctive relief and other measures restraining further, attempted or threatened breaches of such obligations. Such relief or measures will be in addition to, and not in lieu of, any other rights and remedies available to the Discloser. 
 
 # 7. Warranties.
@@ -109,21 +115,30 @@ a.	Limited warranty
 (i)	SaaS Services. We warrant that the SaaS Services will meet the terms of the SLA during the Term. Your only remedies for breach of this warranty are those in the SLA.
 
 (ii)	Software. We warrant for one year from the date you first use the Software that it will perform substantially as described in the applicable user documentation. If Software fails to meet this warranty we will, at our option and as your exclusive remedy, either (1) return the price paid for the Software or (2) repair or replace the Software.
+
 b. Limited warranty exclusions. This limited warranty is subject to the following limitations:
 (i) any implied warranties, guarantees or conditions not able to be disclaimed as a matter of law will last one year from the start of the limited warranty;
 (ii) this limited warranty does not cover problems caused by accident, abuse or use of SaaS Service or Resolvity Software in a manner inconsistent with this agreement or our published documentation or guidance, or resulting from events beyond our reasonable control;
-(iii) this limited warranty does not apply to problems caused by a failure to meet minimum system requirements; and
+(iii) this limited warranty does not apply to problems caused by a failure to meet minimum system requirements
+
 c. DISCLAIMER. Other than this warranty, we provide no warranties, whether express, implied, statutory, or otherwise, including warranties of merchantability or fitness for a particular purpose. These disclaimers will apply except to the extent applicable law does not permit them.
+
 # 8. Defense of claims.
 a.	Defense.
 (i) We will defend you against any claims made by an unaffiliated third party that a SaaS Service or Resolvity Software infringes that third party's patent, copyright or trademark or makes unlawful use of its trade secret.
 (ii) You will defend us against any claims made by an unaffiliated third party that (1) any of Customer Data, Customer Solution, or Non-Resolvity Products, or services you provide, directly or indirectly, in using a SaaS Service or Resolvity Software infringes the third party's patent, copyright, or trademark or makes unlawful use of its trade secret; or (2) arises from violation of the Acceptable Use Policy.
+
 b.	Limitations. Our obligations in Section 8.a. will not apply to a claim or award based on: (i) any Customer Solution, Customer Data, Non-Resolvity Software, modifications you make to the SaaS Service or Resolvity Software, or services or materials you provide or make available as part of using the SaaS Service or Resolvity Software; (ii) your combination of the SaaS Service or Resolvity Software with, or damages based upon the value of, Customer Data or a Non-Resolvity Software, data, or business process; (iii) your use of a Resolvity trademark without our express written consent, or your use of the SaaS Service or Resolvity Software after we notify you to stop due to a third-party claim;(iv) your redistribution of the SaaS Service or Resolvity Software to, or use for the benefit of, any unaffiliated third party; or (v) any SaaS Service or Resolvity Software provided free of charge.
+
 c. Remedies. If we reasonably believe that a claim under Section 8.a.(i). may bar your use of the SaaS Service or Resolvity Software, we will seek to: (i) obtain the right for you to keep using it; or (ii) modify or replace it with a functional equivalent and notify you to stop use of the prior version of the SaaS Service or Resolvity Software. If these options are not commercially reasonable, we may terminate your rights to use the SaaS Service and then refund any advance payments for unused SaaS Services.
+
 d. Obligations. Each party must notify the other promptly of a claim under this Section. The party seeking protection must (i) give the other sole control over the defense and settlement of the claim; and (ii) give reasonable help in defending the claim. The party providing the protection will (1) reimburse the other for reasonable out-of-pocket expenses that it incurs in giving that help and (2) pay the amount of any resulting adverse final judgment or settlement. The parties' respective rights to defense and payment of judgments (or settlement the other consents to) under this Section 5 are in lieu of any common law or statutory indemnification rights or analogous rights, and each party waives such common law or statutory rights.
+
 # 9. Limitation of liability.
 a. Limitation. The aggregate liability of each party for all claims under this agreement is limited to direct damages up to the amount paid under this agreement for the SaaS Service during the 12 months before the cause of action arose; provided, that in no event will a party's aggregate liability for any SaaS Service exceed the amount paid for that SaaS Service during the Subscription. For SaaS provided free of charge, Resolvity’s liability is limited to direct damages up to $500.00 USD.
+
 b. EXCLUSION. Neither party will be liable for loss of revenue or indirect, special, incidental, consequential, punitive, or exemplary damages, or damages for lost profits, revenues, business interruption, or loss of business information, even if the party knew they were possible or reasonably foreseeable.
+
 c. Exceptions to limitations. The limits of liability in this Section apply to the fullest extent permitted by applicable law, but do not apply to: (1) the parties' obligations under Section 7; or (2) violation of the other's intellectual property rights.
 
 # 10: General Provisions
@@ -138,10 +153,15 @@ b. Notices. Notices must be in writing and will be treated as delivered on the d
 Notices to you will be sent to the address that you identify on your account as your contact for notices. Resolvity may send notices and other information to you by email or other electronic form.
 
 c. License Transfers and Assignment. You may not assign this agreement either in whole or in part or transfer licenses without Resolvity’s consent.
+
 d. Severability. If any part of this agreement is held unenforceable, the rest remains in full force and effect.
+
 e. Waiver. Failure to enforce any provision of this Agreement will not constitute a waiver.
+
 f. No agency. This Agreement does not create an agency, partnership, or joint venture.
+
 g. No third-party beneficiaries. There are no third-party beneficiaries to this Agreement.
+
 h. Entire agreement. This agreement is the entire agreement concerning its subject matter and supersedes any prior or concurrent communications. 
 
 j. Survival. The terms in Sections 1, 6, 7, 8, 9 and 10 will survive termination or expiration of this agreement.
@@ -149,7 +169,7 @@ j. Survival. The terms in Sections 1, 6, 7, 8, 9 and 10 will survive termination
 i. Force Majeure; Excused Performance. Neither party shall be liable for delays or any failure to perform its rights or responsibilities pursuant to this Agreement due to causes beyond its reasonable control (a “force majeure event”). Such delays include, but are not limited to, fire, explosion, severe storms, flood or other natural catastrophe, governmental legislation, acts, orders, or regulation, strikes or labor difficulties, terrorism, global pandemics to the extent not occasioned by the fault or negligence of the delayed party. 
 
 k. Export. Portions of SaaS Service or Resolvity Software may be subject to the export regulations of the United States of America and the SaaS Service, assistance, technical data, information, documents and materials provided by Resolvity to you (collectively, the “controlled items") may constitute defense services, technical data, or commercial or dual-use items or information controlled under the U.S. export control laws and regulations, including but not limited to the U.S. Arms Export Control Act, the International Traffic in Arms Regulations, and the Export Administration Regulations. You shall not either directly or indirectly use, sell or re-sell, transfer, transship, disclose, export or re-export, or otherwise dispose of any such controlled items to any foreign person (as defined under the International Traffic in Arms Regulations), either in original form or after being incorporated through an intermediate process into other end-items, without prior authorization from the U.S. Government.
-l. Contracting authority. If you are an individual accepting these terms on behalf of an entity, you represent that you have the legal authority to enter into this agreement on that entity's behalf. If you specify an entity, or you use an email address provided by an entity you are affiliated with (such as an employer) in connection with a SaaS Service subscription purchase or renewal, that entity will be treated as the owner of the subscription for purposes of this agreement.
 
+l. Contracting authority. If you are an individual accepting these terms on behalf of an entity, you represent that you have the legal authority to enter into this agreement on that entity's behalf. If you specify an entity, or you use an email address provided by an entity you are affiliated with (such as an employer) in connection with a SaaS Service subscription purchase or renewal, that entity will be treated as the owner of the subscription for purposes of this agreement.
 
 For any questions regarding this terms of service or the Privacy Policy please send an email to support@voicegain.ai

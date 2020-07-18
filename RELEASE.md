@@ -1,3 +1,16 @@
+## Release 1.10.0
+
+### Major Features and Improvements
+* Added basic JJSGF grammar support (no tags yet)
+* Changes to Transcription Mode UI
+* Microphone capture has better compatibility with different browsers
+* Only a single session is billed if running multiple sessions on same audio input
+
+### Breaking Changes
+* none
+
+### Known issues
+* JJSGF grammar does no support tags yet.
 
 ## Release 1.9.0
 

@@ -108,11 +108,11 @@ const startMicrophoneCapture = (
   let words = [];
   // Connect to Websocket to receive data
   if (stompClient === undefined) {
-    const client = new StompJs.Client({
+    stompClient = new StompJs.Client({
       brokerURL: websocketReceiveUrl,
     });
-    client.onConnect = () => {
-      client.subscribe(`/topic/${websocketReceiveName}`, (message) => {
+    stompClient.onConnect = () => {
+      stompClient.subscribe(`/topic/${websocketReceiveName}`, (message) => {
         const jsonData = JSON.parse(message.body);
 
         //Handle corrections/deletions of words
@@ -140,27 +140,26 @@ const startMicrophoneCapture = (
         result.innerHTML = string;
       });
     };
-    client.onDisconnect = () => {
+    stompClient.onDisconnect = () => {
+      console.log("...stomp disconnected");
       AudioCaptureStreamingService.stop();
     };
-    client.onWebSocketError = () => {
+    stompClient.onWebSocketError = () => {
       console.log("onWebsocketError");
     };
-    client.activate();
+    stompClient.activate();
   }
 };
 
 //Stop audio capturing services
 const stopMicrophoneCapture = () => {
-  const result = document.getElementById("transcription-result");
-  result.innerHTML = "";
   showCaptureStatus(false);
   AudioCaptureStreamingService.stop();
   pollTranscript();
   pollInterval = setInterval(() => pollTranscript(), 5000);
   if (stompClient !== undefined) {
     stompClient.deactivate();
-    setStompClient(undefined);
+    stompClient = undefined;
   }
 };
 
@@ -196,7 +195,10 @@ const pollTranscript = async () => {
     if (pollTranscriptResponse.ok) {
       let pollTranscriptData = await pollTranscriptResponse.json();
 
-      if (pollTranscriptData.result.final === true) {
+      if (
+        pollTranscriptData.result.final === true &&
+        pollTranscriptData.progress.phase !== "ERROR"
+      ) {
         clearInterval(pollInterval);
         showLoader(false);
         showFinalizingStatus(false);
@@ -205,6 +207,15 @@ const pollTranscript = async () => {
 
         result.style.display = "block";
         result.innerHTML = pollTranscriptData.result.transcript;
+      } else if (pollTranscriptData.progress.phase === "ERROR") {
+        result.style.display = "block";
+        let div = document.createElement("div");
+        let errorText = document.createTextNode(
+          "Error getting semi-real-time transcription."
+        );
+        div.appendChild(errorText);
+        div.style.textAlign = "center";
+        div.style.padding = "1rem";
       }
     } else throw new Error("Unable to poll transcript.");
   } catch (err) {

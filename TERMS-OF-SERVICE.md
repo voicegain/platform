@@ -19,11 +19,11 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 “Commitment” is an agreement that you and Resolvity may enter at any time during a Subscription Term for purchase of Commitment Quantity in exchange for lower Fees.
 
-	“Commitment Period” is the period during which you agree to use the Committed Quantity. Commitment Period is a month unless specified otherwise.
+“Commitment Period” is the period during which you agree to use the Committed Quantity. Commitment Period is a month unless specified otherwise.
 
-	“Committed Quantity” means the quantity of a SaaS Service or a Core Billing Metric that you commit to purchase in each Commitment Period. You shall pay for Committed Quantity upfront or during each Commitment Period irrespective of your actual usage.
+“Committed Quantity” means the quantity of a SaaS Service or a Core Billing Metric that you commit to purchase in each Commitment Period. You shall pay for Committed Quantity upfront or during each Commitment Period irrespective of your actual usage.
 
-	“Commitment Term” is that period of the Subscription Term of your SaaS Service during which your Commitment is effective.
+“Commitment Term” is that period of the Subscription Term of your SaaS Service during which your Commitment is effective.
 
 “Core Billing Metric” means a resource that is used to is meter usage of the Voicegain platform in order to calculate the fees for a SaaS Service in a Subscription. A SaaS Service may use one or more Core Billing Metrics each of which is measured independently. Some examples of Core Billing Metric are Offline Speech-to-Text, Realtime Speech-To-Text, Session Time, Storage, Phone Numbers, etc.
 
@@ -31,11 +31,11 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 “Data” means information. There are several different types of Data:
 
-	“Customer Data” means any Data owned or provided by you directly or indirectly to Resolvity, whether or not it is hosted by you or Resolvity.
+“Customer Data” means any Data owned or provided by you directly or indirectly to Resolvity, whether or not it is hosted by you or Resolvity.
 
-	“Resolvity Data” means any Data provided by Resolvity, whether or not it is hosted by Resolvity.
+“Resolvity Data” means any Data provided by Resolvity, whether or not it is hosted by Resolvity.
 
-	“Personal Data” means information that identifies an individual person.
+“Personal Data” means information that identifies an individual person.
 
 “Fees” means any amounts payable for any SaaS Service purchased through Subscription.
 
@@ -58,15 +58,15 @@ an alternate site that we identify.
 
 “Software” means computer programs. There are several different types of Software:
 
-	“Customer Software” means any Software owned, licensed or used by You, other than Resolvity Software.
+“Customer Software” means any Software owned, licensed or used by You, other than Resolvity Software.
 
-	“Resolvity Software” means any Software owned by Resolvity and provided to You as part of a SaaS Service pursuant to this Agreement. Resolvity Software can be accessed as Cloud Software or Edge Software or a combination of both.
+“Resolvity Software” means any Software owned by Resolvity and provided to You as part of a SaaS Service pursuant to this Agreement. Resolvity Software can be accessed as Cloud Software or Edge Software or a combination of both.
 
-	“Cloud Software” means the Resolvity Software that is hosted by Resolvity in its data center, and operated by Resolvity to process Customer Data.
+“Cloud Software” means the Resolvity Software that is hosted by Resolvity in its data center, and operated by Resolvity to process Customer Data.
 
-	“Edge Software” means the Resolvity Software that may be installed and run on one or more servers or computers controlled by You to process Customer Data. Edge Software is designed to connect to a Resolvity billing endpoint and is only provided as part of a Subscription. 
+“Edge Software” means the Resolvity Software that may be installed and run on one or more servers or computers controlled by You to process Customer Data. Edge Software is designed to connect to a Resolvity billing endpoint and is only provided as part of a Subscription. 
 
-	“Third Party Software” means Software owned, distributed or operated by third parties.
+“Third Party Software” means Software owned, distributed or operated by third parties.
 
 “Subscription” means enrollment for a SaaS Service for a defined Subscription Term; Subscriptions may be listed and administered on Portal.
 

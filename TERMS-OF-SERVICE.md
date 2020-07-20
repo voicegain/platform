@@ -1,7 +1,7 @@
 # Voicegain SaaS Subscription Agreement
 Effective: July 25th, 2019
 
-Last Updated: July 12th, 2020
+Last Updated: July 20th, 2020
 
 # 1. Acceptance of Terms
 
@@ -13,91 +13,102 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 # 2. Definitions
 
+“Available Balance” is the dollar amount that is displayed on the Voicegain portal as the amount that is currently available for purchase of SaaS Services after use of Free Tier. Available Balance is calculated periodically by Voicegain and so it may not reflect the actual amount that is available.
+
 “Confidential Information” means all information of whatsoever kind or nature belonging to or in the possession or control of a party (“Discloser”) which is of a confidential, proprietary or trade secret nature that is furnished or disclosed to the other party (“Recipient”) under this Agreement, either orally, in writing or in electronic formats, and which has been marked “Confidential” or with a similar term indicating confidential or proprietary status. 
 
-“Core Billing Metric” means a resource that is used to is meter usage of the Voicegain Platform in order to determine the fees for a SaaS Service. A SaaS Service may use one or more Core Billing Metrics each of which is measured independently. Examples of Core Billing Metric are Offline Speech-to-Text, Realtime Speech-To-Text, Session Time, Storage, Phone Numbers, etc.
+“Commitment” is an agreement that you and Resolvity may enter at any time during a Subscription Term for purchase of Commitment Quantity in exchange for lower Fees.
+
+	“Commitment Period” is the period during which you agree to use the Committed Quantity. Commitment Period is a month unless specified otherwise.
+
+	“Committed Quantity” means the quantity of a SaaS Service or a Core Billing Metric that you commit to purchase in each Commitment Period. You shall pay for Committed Quantity upfront or during each Commitment Period irrespective of your actual usage.
+
+	“Commitment Term” is that period of the Subscription Term of your SaaS Service during which your Commitment is effective.
+
+“Core Billing Metric” means a resource that is used to is meter usage of the Voicegain platform in order to calculate the fees for a SaaS Service in a Subscription. A SaaS Service may use one or more Core Billing Metrics each of which is measured independently. Some examples of Core Billing Metric are Offline Speech-to-Text, Realtime Speech-To-Text, Session Time, Storage, Phone Numbers, etc.
 
 “Customer Solution” means an application or any set of applications that you develop and adds primary and significant functionality to SaaS Service and that is not primarily a substitute for the SaaS Service.
 
 “Data” means information. There are several different types of Data:
 
-“Customer Data” means any Data owned or provided by you directly or indirectly to Resolvity, whether or not it is hosted by you or Resolvity.
+	“Customer Data” means any Data owned or provided by you directly or indirectly to Resolvity, whether or not it is hosted by you or Resolvity.
 
-“Resolvity Data” means any Data provided by Resolvity, whether or not it is hosted by Resolvity.
+	“Resolvity Data” means any Data provided by Resolvity, whether or not it is hosted by Resolvity.
 
-“Error” means a reproducible failure of a SaaS Service to perform in substantial conformity with the applicable written specifications as set forth in Resolvity’s current documentation.
+	“Personal Data” means information that identifies an individual person.
 
-“Fees” means any amounts payable for any SaaS Service.
-
-“Subscription Term” shall refer to the period of time when you are licensed to use/allowed to access one or more SaaS Services. 
+“Fees” means any amounts payable for any SaaS Service purchased through Subscription.
 
 “Mark” means a trademark, service mark or other brand associated with a Product or Service, in accordance with applicable law.
 
 “Open Source Software” means computer programs that are subject to the Open Source Definition at opensource.org/osd, including any computer programs that are (1) not public domain, (2) subject to some form of intellectual property ownership such as copyright or patent protection, (3) are made freely available at no charge to the general public by their owner, and (4) are licensed pursuant to a written document that may list one or more limitations on how licensees may use, modify and share the programs and derivative works (new versions) of the programs.
 
-“Personal Data” means information that identifies an individual person.
+"Portal" means the respective web sites for SaaS Services; websites may be at at https://portal.voicegain.ai, https://analytics.voicegain.ai or at an alternate website we identify.
 
 “Policies” means Resolvity’s current written policies on technical and administrative matters, including the Resolvity Privacy Policy.
 
 “Privacy Policy” means either Resolvity’s or Customer’s statement of data privacy practices.
 
-“SaaS Service” means any one of the different software-as-a-service subscription offerings of Resolvity Software that may be accessed by You through the Voicegain portal. You may use SaaS Service as is or develop Customer Solution using APIs that are provided as part of SaaS Service. associated with SaaS Service. 
+“Recharge Amount” means the net amount that is received by Resolvity in US Dollars for each individual deposit that you make using your debit or credit card using the Voicegain Portal. It may also mean the net amount received in Resolvity’s US bank account should we agree to accept payments directly to our bank account.
 
-“Site” means a website.
+“SaaS Service” means any one of the different software-as-a-service subscription offerings of Resolvity Software that may be accessed by You using the Voicegain Portal and ordered as a Subscription. You may access a SaaS Service as is or use SaaS Service to develop a Customer Solution. 
 
-“Voicegain Site” means Resolvity’s current website for Voicegain, https://www.voicegain.ai. 
+"SLA" means the commitments we make regarding delivery and/or performance of a SaaS Service, as published at or at https://github.com/voicegain/platform/blob/master/SLAs.md
+an alternate site that we identify.
 
 “Software” means computer programs. There are several different types of Software:
 
-“Customer Software” means any Software owned, licensed or used by You, other than Resolvity Software.
+	“Customer Software” means any Software owned, licensed or used by You, other than Resolvity Software.
 
-“Resolvity Software” means any Software owned by Resolvity and provided to You as part of a SaaS Service pursuant to this Agreement. Resolvity Software, provided as part of a SaaS Service pursuant to an Order, can be accessed as Cloud Software or Edge Software or a combination of both.
+	“Resolvity Software” means any Software owned by Resolvity and provided to You as part of a SaaS Service pursuant to this Agreement. Resolvity Software can be accessed as Cloud Software or Edge Software or a combination of both.
 
-“Cloud Software” means the Resolvity Software that is hosted by Resolvity in its data center, and operated by Resolvity to process Customer Data.
+	“Cloud Software” means the Resolvity Software that is hosted by Resolvity in its data center, and operated by Resolvity to process Customer Data.
 
-“Edge Software” means the Resolvity Software that may be installed and run on one or more servers or computers controlled by You to process Customer Data. Edge Software is designed to connect to a Resolvity billing endpoint and is only provided as part of a SaaS Service. 
+	“Edge Software” means the Resolvity Software that may be installed and run on one or more servers or computers controlled by You to process Customer Data. Edge Software is designed to connect to a Resolvity billing endpoint and is only provided as part of a Subscription. 
 
-“Third Party Software” means Software owned, distributed or operated by third parties.
+	“Third Party Software” means Software owned, distributed or operated by third parties.
+
+“Subscription” means enrollment for a SaaS Service for a defined Subscription Term; Subscriptions may be listed and administered on Portal.
+
+“Subscription Term” shall refer to the period of time when you are licensed to use/allowed to access a SaaS Service as part of a Subscription. 
 
 “User” means each person who You authorize to access or use any of Your accounts with Resolvity. 
 
+“Website” means Resolvity’s current website for Voicegain, https://www.voicegain.ai. 
+
+
 # 3. Use of Services
 
-a.	Right to Use: Resolvity grants you right to access and use SaaS Services and to install Edge Software included with your Subscription, as further stated in this Agreement. We reserve all other rights. 
-
+a.	Right to Use: Resolvity grants you the right to access and use SaaS Services and to install any Edge Software included with your Subscription, as further described in this Agreement. We reserve all other rights.
 b.	Ownership: All Resolvity Software and SaaS Services are and shall remain the property of Resolvity, and will be protected as Resolvity’s Confidential Information. 
-
-c.	Acceptable Use: You agree to use the SaaS service and Resolvity Software only in accordance with this Agreement. You shall not reverse engineer, decompile, disassemble or attempt to learn the source code, data structures, or any other non-public information in or regarding any Resolvity Software or SaaS Services at any time. You shall not, and will not allow third parties to use SaaS Service or data from SaaS Service to create, train, or improve (directly or indirectly) a similar or competing product or service. You may not disable, tamper with, or otherwise attempt to circumvent any billing mechanism that meters use of the SaaS Service. You may not rent, lease, lend, resell, transfer, or host the SaaS Service or Resolvity Software, or any portion thereof, to or for third parties except as expressly permitted in this section. This section shall survive any termination of this Agreement.
-
-d.	Customer Data: Customer Data is and shall remain your sole and exclusive property and you reserve all right, title, and interest in the same. You shall secure and maintain all rights in Customer Data necessary for Resolvity to provide SaaS Service to You without violating rights of any third party. Resolvity shall not assume not and will not assume any obligations with respect to Customer Data other than as expressly set forth in this agreement or as required by applicable law. You grant Resolvity a limited license to receive, store, process, create derivative works and display Customer Data for the sole and exclusive purpose of providing SaaS Services. Customer Data shall be treated by Resolvity as Your Confidential Information. Resolvity shall keep and maintain Customer Data in strict confidence, using such degree of care as is appropriate and consistent with its obligations as further described in this Agreement and applicable law to avoid unauthorized access, use, disclosure, or loss, and in no event less than a reasonable standard of care. This Section shall survive the termination of this Agreement.
-
+c.	Acceptable Use: You agree to use SaaS service and Resolvity Software only in accordance with this Agreement. You shall not reverse engineer, decompile, disassemble or attempt to learn the source code, data structures, or any other non-public information in or regarding any Resolvity Software or SaaS Services at any time. You shall not, and will not allow third parties to use SaaS Service or data from SaaS Service to create, train, or improve (directly or indirectly) a similar or competing product or service. You may not disable, tamper with, or otherwise attempt to circumvent any billing mechanism that meters use of the SaaS Service. You may not rent, lease, lend, resell, transfer, or host the SaaS Service or Resolvity Software, or any portion thereof, to or for third parties except as expressly permitted in this section. This section shall survive any termination of this Agreement.
+d.	Customer Data: Customer Data is and shall remain your sole and exclusive property and you reserve all right, title, and interest in the same. You shall secure and maintain all rights in Customer Data necessary for Resolvity to provide SaaS Service to You without violating rights of any third party. Resolvity shall not assume and will not assume any obligations with respect to Customer Data other than as expressly set forth in this agreement or as required by applicable law. You grant Resolvity a limited license to receive, store, process, create derivative works and display Customer Data for the sole and exclusive purpose of providing SaaS Services. Customer Data shall be treated by Resolvity as Your Confidential Information. Resolvity shall keep and maintain Customer Data in strict confidence, using such degree of care as is appropriate and consistent with its obligations as further described in this Agreement and applicable law to avoid unauthorized access, use, disclosure, or loss, and in no event less than a reasonable standard of care. This Section shall survive the termination of this Agreement.
 e.	Responsibility for your accounts. You are responsible for maintaining the confidentiality of any non-public authentication credentials associated with your use of SaaS Service. You shall be solely responsible and liable for any fees for SaaS Services from your registered account. You must promptly notify our customer support team about any possible misuse of your accounts or authentication credentials or any security incident related to the SaaS Services.
-
 f.	Creation of Customer Solution: You may create and maintain Customer Solution combining the SaaS Service, Customer Software and Customer Data together. Customer may permit third parties to access and use the SaaS Services in connection with the use of Customer Solution. You are responsible for that use and for ensuring that these terms and the terms and conditions of this Agreement are met by that use.
+g.	Termination of Service: We reserve the right to terminate or suspend your account at any time. We also reserve the right to refuse service without providing a reason. We may, but have no obligation to, terminate accounts and remove content containing what we determine, in good faith and on reasonable grounds, as unlawful, offensive, threatening, defamatory, obscene or otherwise objectionable material. We will remove content that violates any party's intellectual property, if we have been notified of such violation, or which violates such terms and conditions. Any Customer data associated with an account terminated by Voicegain shall be permanently deleted from our servers.
 
-g.	Termination of Service: We reserve the right to terminate or suspend your account at any time. We also reserve the right to refuse service without providing a reason.We may, but have no obligation to, terminate accounts and remove content containing what we determine, in good faith and on reasonable grounds, as unlawful, offensive, threatening, defamatory, obscene or otherwise objectionable material. We will remove content that violates any party's intellectual property, if we have been notified of such violation, or which violates these Terms of Service. Any Customer data associated with an account terminated by Voicegain shall be permanently deleted from our servers. If you create multiple accounts with the purpose of abusing Free Credit or other promotional offers, or with the purpose to circumvent account limitations we reserve the right to terminate all such accounts that you have created and prevent you from using the Service in the future.
 
 # 4. Ordering SaaS Service and Fees:
 
-a.	Free Tier: From time-to-time, Resolvity may provide a free tier of usage either for a SaaS Service or for an individual Core Billing Billing Metric that drives usage of SaaS Service. Resolvity may, in its sole discretion, continue to offer or discontinue this free tier of minutes.
+a.	Free Tier: From time-to-time, Resolvity may provide a free tier of usage for a Subscription or for an individual Core Billing Billing Metric. Resolvity may, in its sole discretion, continue to offer or discontinue this free tier of minutes.
+b.	Pre-payment: Unless Resolvity specifically approves billing in arrears, you shall deposit Recharge Amount to pay for usage of all your Subscriptions beyond the Free Tier. Resolvity shall promptly add Recharge Amount to your Available balance. You shall bear any costs related to foreign exchange conversion of your local currency to US Dollars. Resolvity shall not be responsible for any fees assessed by your bank or credit card issuer to transfer Recharge Amount. Unless it is subject to Commitment, Available Balance is not subject to any expiration. Upon your written request, Resolvity shall promptly (in less than 10 business days) refund Available Balance to credit card on file after deducting a 5% processing fee or $5, whichever is larger. Resolvity’s billing software shall be configured to deduct Fees from Available Balance as and when a SaaS Service is used and in no case shall such deduction happen in more than 36 hours from utilization of Service. At the end of each calendar month, Resolvity shall issue an electronic statement to you for all charges incurred above any Free Tier (if applicable) based on your use of SaaS Services during that month and any Commitment pricing as described in (e) below.
+c.	Billing in Arrears: Resolvity may in its sole discretion offer billing in arrears to you. In addition, Resolvity may set a Credit Limit. Should you choose to accept, at the end of each calendar month, Resolvity shall issue an electronic statement to you for all charges incurred above any Free Tier (if applicable) based on your use of SaaS Services during that month and any Commitment pricing as described in (e) below. Resolvity shall debit your stored credit card for the billed usage at the end of each calendar month.
 
-b.	Pre-payment: Unless Resolvity specifically approves billing in arrears, you shall deposit Fees in advance in US Dollars using a Credit Card on the Voicegain portal to pay for any usage beyond the Free Tier. Each individual payment in the amount received by Resolvity (“Recharge Amount”) shall be promptly posted to your available balance (“Available Balance”). You shall bear any costs related to foreign exchange conversion of your local currency to US Dollars. Resolvity shall not be responsible for any fees assessed by your bank or credit card issuer to transfer Recharge Amount. Available Balance is not subject to any expiration. Upon your written request, Resolvity shall promptly (in less than 10 business days) refund Available Balance to credit card on file after deducting a 5% processing fee or $5 whichever is larger. Resolvity’s billing software shall be configured to deduct Fees from Available Balance as and when the SaaS Service is used and in no case shall such deduction happen in more than 24 hours from utilization of Service. At the end of each calendar month, Resolvity shall issue an electronic statement to you for all charges incurred above any Free Tier (if applicable) based on your use of SaaS Services during that month and any Commitment pricing as described in (e) below.
+d.	Fees: Fees for each Subscription is based on the actual metered usage of one or more Core Billing Metrics that are used by SaaS Service. Currently Voicegain Portal displays the (a) the unit price for each Core Billing Metric and (b) cumulative consumption/usage of each Core Billing Metric across all Subscriptions. 
 
-c.	Billing in Arrears: Resolvity may in its sole discretion offer billing in arrears to you. In addition, Resolvity may set a dollar limit for maximum permitted usage during a month (“Credit Limit”). Should you choose to accept, at the end of each calendar month, Resolvity shall issue an electronic statement to you for all charges incurred above any Free Tier (if applicable) based on your use of SaaS Services during that month and any Commitment pricing as described in (e) below. Resolvity shall debit your stored credit card for the billed usage at the end of each calendar month.
+e.	Commitment pricing: At any time during your Subscription Term, you may enter into a Commitment to purchase Commitment Quantity of a Subscription during each Commitment Period through Commitment Term. In return for such Commitment, Resolvity shall not alter Fees for Subscription through Commitment Term. During Commitment Term, you shall be liable to pay for Committed Quantity irrespective of actual usage.
 
-d.	Pricing Model: Fees for each SaaS Service is based on the actual metered usage of one or more Core Billing Metrics that are used by the Service. Currently the Voicegain portal displays the (a) the unit price for each Core Billing Metric and (b) consumption/usage of each Core Billing Metric across all the SaaS Services ordered by You. 
+f.	Changes: For any Subscription that is under a Commitment, Resolvity reserves the sole right to alter, modify, change or withdraw the fees offered or quoted or stated on our Portal or Website through the Term of this Agrement or the Subscription Term.
 
-e.	Commitment pricing: At any time during your Subscription Term, you may commit in advance to purchase a minimum quantity or dollar value of SaaS Service (“Committed Quantity”) for use on a periodic basis (“Commitment Billing Period”) for a certain period (“Commitment Term”). You may choose to either pay upfront or pay on a periodic basis in advance of use. In return for such commitment, Resolvity shall not alter the pricing for SaaS Service through Commitment Term. During the Commitment Term, any Committed Quantity that is not used during each Commitment Billing period shall expire and Resolvity shall not reimburse any advances for SaaS Services after Commitment Term.
-
-f.	Changes: Other than through Commitment Term, Resolvity reserves the sole right to alter, modify, change or withdraw the fees offered or quoted or stated on our Website. 
 
 # 5. Term, Termination
 
-a.	This Agreement is effective as soon as you receive confirmation of activation of Your Billing Account and your Subscription Term shall start on the date your account is activated and shall end upon termination either by Resolvity or You.
+a.	This Agreement is effective as soon as you receive confirmation of activation of Your Billing Account. Each Subscription shall commence on the date your Subscription is activated and shall end upon termination either by Resolvity or You.
 
-b.	Either Resolvity or You may terminate this Agreement at any time at which time the Subscription Term shall end; however you must pay any and all amounts that are due for SaaS Service prior to termination.
+b.	Either Resolvity or You may terminate this Agreement at (1) any time if there are no Commitments and (b) at the end of Commitment Period should there be a Commitment for a Subscription. However you must pay any and all amounts that are due for Subscription prior to termination.
 
 c.	This Agreement may be superseded by a signed Master SaaS Agreement between you and Resolvity, Inc in which case the terms and condition of access shall be governed by such Master SaaS Agreement.
+
 
 # 6. Confidential Information
 

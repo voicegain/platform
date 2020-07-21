@@ -4,8 +4,7 @@ Effective: July 25th, 2019
 Last Updated: July 20th, 2020
 
 # 1. Acceptance of Terms
-
-By signing up for, accessing and using the software-as-a-service subscriptions provided through the Voicegain application portal (at https://portal.voicegain.ai) and/or accessing and using the Voicegain APIs (described at  https://api.voicegain.ai) (each referred to as a "SaaS Service") that are owned and operated by Resolvity Inc. ("Resolvity Inc.", “Company”, "Our", "Us", "We"), the entity you represent or if you do not designate an entity you individually (“You”, “Your”) are agreeing to be bound by this Voicegain SaaS Subscription Agreement ("Agreement"). 
+By signing up for, accessing and using SaaS Services that are owned and operated by Resolvity Inc. ("Resolvity Inc.", “Company”, "Our", "Us", "We"), the entity you represent or if you do not designate an entity you individually (“You”, “Your”) are agreeing to be bound by this Voicegain SaaS Subscription Agreement ("Agreement") that consists of the terms and conditions below.  
 
 The materials contained in this Website and Service are protected by applicable copyright and trademark law. 
 

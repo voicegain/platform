@@ -1,5 +1,6 @@
 
 Effective: June 20th, 2019
+
 Last Updated: July 20th, 2020
 
 

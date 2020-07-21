@@ -1,3 +1,8 @@
+
+Effective: June 20th, 2019
+Last Updated: July 20th, 2020
+
+
 ## 1 Voicegain Core Speech-To-Text APIs:
 **Voicegain Core Speech to Text APIs** are RESTful APIs that enable developers to embed both offline and realtime Speech-to-Text into their product, application 
 or Service. Developers may invoke these APIs over http, gRPC and WebSockets. Developers may use the Core Speech To Text APIs to our large vocabulary model or 

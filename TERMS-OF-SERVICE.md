@@ -52,8 +52,7 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 “SaaS Service” means any one of the different [software-as-a-service subscription offerings](https://github.com/voicegain/platform/blob/master/SaaS%20Services%20List.md) of Resolvity Software that may be accessed by You using the Voicegain Portal and ordered as a Subscription. You may access a SaaS Service as is or use SaaS Service to develop a Customer Solution. 
 
-"SLA" means the commitments we make regarding delivery and/or performance of a SaaS Service, as published at or at https://github.com/voicegain/platform/blob/master/SLAs.md
-an alternate site that we identify.
+"SLA" means the commitments we make regarding delivery and/or performance of a SaaS Service, as published [here] (https://github.com/voicegain/platform/blob/master/SLAs.md) an alternate site that we identify.
 
 “Software” means computer programs. There are several different types of Software:
 

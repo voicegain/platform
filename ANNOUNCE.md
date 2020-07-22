@@ -1,3 +1,8 @@
+### Known Issues 
+
+* Issue #572: on Firefox browser microphone capture end signal is not received on server side. The Transcription hangs in "Processing" stage.</br>
+There are no issues with microphone capture on Chrome ot latests Edge browsers.
+
 ### Minor release 1.10.0 is scheduled for 7/18/2020 between 8am and 10am CST.
 
 Features in this release:
@@ -20,14 +25,6 @@ This maintenance release provides fixes for following bugs:
 * #530: Last part of incremental word-tree content missing in web api response
 * #528: GREG chart tool-tip showing incorrect values
 
-### Minor release 1.8.0 is scheduled for 6/26/2020 between 5pm and 9pm CST.
-
-Features in this release:
-  * GREG test grammars can be upload in addition to being retrieved from a URL.
-  * New `wordTree` format for delivering incremental transcription results.
-  * Preemptible flag is now reserved/internal use.
-  * Several bug fixes and enhancements mainly related to Billing information presentation.
-  * More details in the Release Notes which are available [here](https://raw.githubusercontent.com/voicegain/platform/master/RELEASE.md)
 
 
 

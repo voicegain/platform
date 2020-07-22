@@ -50,9 +50,9 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 “Recharge Amount” means the net amount that is received by Resolvity in US Dollars for each individual deposit that you make using your debit or credit card using the Voicegain Portal. It may also mean the net amount received in Resolvity’s US bank account should we agree to accept payments directly to our bank account.
 
-“SaaS Service” means any one of the different [software-as-a-service subscription offerings](https://github.com/voicegain/platform/blob/master/SaaS%20Services%20List.md) of Resolvity Software that may be accessed by You using the Voicegain Portal and ordered as a Subscription. You may access a SaaS Service as is or use SaaS Service to develop a Customer Solution. 
+“SaaS Service” means any one of the different [software-as-a-service subscription offerings]!(https://github.com/voicegain/platform/blob/master/SaaS%20Services%20List.md) of Resolvity Software that may be accessed by You using the Voicegain Portal and ordered as a Subscription. You may access a SaaS Service as is or use SaaS Service to develop a Customer Solution. 
 
-"SLA" means the commitments we make regarding delivery and/or performance of a SaaS Service, as published at (https://github.com/voicegain/platform/blob/master/SLAs.md) or an an alternate site that we identify.
+"SLA" means the commitments we make regarding delivery and/or performance of a SaaS Service, as published at https://github.com/voicegain/platform/blob/master/SLAs.md or an an alternate site that we identify.
 
 “Software” means computer programs. There are several different types of Software:
 

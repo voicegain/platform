@@ -2,7 +2,7 @@
 # List of Voicegain SaaS Services
 Effective: June 20th, 2019
 
-Last Updated: July 20th, 2020
+Last Updated: July 23rd, 2020
 
 
 ## 1. Voicegain Speech-To-Text (STT) APIs:
@@ -23,12 +23,12 @@ in UCaaS or more. These recordings get accurately transcribed and analyzed using
 and topics. The annotated recordings can accessed using our full featured Web UI that is purpose built for (a) contact centers call coaching and (b) sales managers 
 to review performance of inside sales representatives.
 
-## 4. Voicegain Transcribe and Captioning
+## 4. Voicegain Transcribe and Captioning:
 **Voicegain Transcribe** offers offline transcription at very high accuracy and low cost. The Voiecgain Portal includes a web UI that makes it easy to review and 
 correct the transcript. **Voicegain Captioning** is our reatime transcription service for captioining live events, talks, and presentations. Streaming audio is 
 supported using WebSockets and gRPC. Transcripts include timestamps, punctuation and support for custom language models.
 
-## 5. Voicegain MRCP ASR
+## 5. Voicegain MRCP ASR:
 **Voicegain MRCP ASR** is a realtime speech recognition engine for traditional VoiceXML based IVR applications. It supports speech grammars using GRXML & 
 JSGF and provides n-best results. We also provide results from our large vocabulary model for utterances that are out-of-Grammar(OOG) or have
 low confidence results. 

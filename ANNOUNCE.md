@@ -1,7 +1,7 @@
 ### Known Issues 
 
-* Issue #572: on Firefox browser microphone capture end signal is not received on server side. The Transcription hangs in "Processing" stage.</br>
-There are no issues with microphone capture on Chrome ot latests Edge browsers.
+* Issue #572: on Firefox browser microphone capture end signal is not received on server side. The Transcription hangs in "Processing" stage.
+There are no issues with microphone capture on Chrome or latest Edge browsers.
 
 ### Minor release 1.10.0 is scheduled for 7/18/2020 between 8am and 10am CST.
 

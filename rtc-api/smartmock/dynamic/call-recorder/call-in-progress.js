@@ -88,7 +88,7 @@ else if (typeof callState.phone !== 'undefined' && callState.phone !== null) { /
 */
     body.transfer = {};
     body.transfer.prompt = {}
-    body.transfer.prompt.text = 'Dialing: <say-as interpret-as="telephone">'+callState.phone+'</say-as>';
+    body.transfer.prompt.text = 'Dialing: <say-as interpret-as="telephone" format="1">'+callState.phone+'</say-as>';
     body.transfer.prompt.audioProperties = {};
     body.transfer.prompt.audioProperties.voice = callState.voice;
     body.transfer.phone = {};

@@ -1,3 +1,30 @@
+## Release 1.11.0
+
+This Minor release introduces the RTC Callback API for telephony applications of speech recognition.
+
+### Major Features and Improvements
+* New RTC API Application mode -- provides tools and APIs to build speech-enabled telephone applications
+  * purchase phone numbers
+  * attach phone numbers to RTC Apps
+  * control flow of you RTC App using Web Callback API
+* Guide, Help, and API Spec information has been improved. 
+
+### Breaking Changes
+* Not really a breaking change but names of two Application Modes have changed:
+  * Dev API -> STT API (to differentiate from new RTC API)
+  * ASR -> MRCP ASR 
+
+### Known issues
+* JJSGF grammar does no support tags yet.
+* issue #582: Microphone transcription on Firefox gets stuck (never completes)
+
+### Bug Fixes and Other Changes
+since Release 1.10.1
+* bug #566: Link to Terms of Service not visible in Portal
+* enhancement #585: Alphabetical sorting of contexts
+* enhancement #583: Direct link to support ticket 
+* enhancement #567: Separate Guide Card for each App
+
 ## Release 1.10.0
 
 ### Major Features and Improvements

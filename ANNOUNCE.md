@@ -1,3 +1,8 @@
+### Minor release 1.11.0 is scheduled for 8/1/2020 between 2pm and 5pm CST.
+
+Features in this release:
+* First availability of RTC Callback API support. You can use it to build speech-enabled interactive telephone applications, e.g., IVR or Voicebots. For more info see our [Knowledge Base section about RTC Callback API](https://support.voicegain.ai/hc/en-us/categories/360003858271-RTC-Callback-API).
+
 ### Known Issues 
 
 * Issue #572: on Firefox browser microphone capture end signal is not received on server side. The Transcription hangs in "Processing" stage.
@@ -19,11 +24,7 @@ Features in this release:
 * More responsive TTS
 * Real-time Speech-to-Text price is now 1.25 cent/minute
 
-### Maintenance release 1.8.1 is scheduled for 7/2/2020 between 6pm and 9pm CST.
-This maintenance release provides fixes for following bugs:
-* #534: Transcript Review page stops spinner before the audio file has finished loading
-* #530: Last part of incremental word-tree content missing in web api response
-* #528: GREG chart tool-tip showing incorrect values
+
 
 
 

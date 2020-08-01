@@ -97,8 +97,13 @@ else if (typeof callState.phone !== 'undefined' && callState.phone !== null) { /
 }
 
 state.set(sid, callState,3600);
-
-res.status=200;
+// sanity check
+if(seq > 20) {
+    res.status=500;  
+}
+else {
+    res.status=200;
+}
 res.body=body;
 res.addHeader('Content-Type', 'application/json');
 

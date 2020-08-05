@@ -1,3 +1,10 @@
+### Minor release 1.12.0 is scheduled for 8/5/2020 between 5pm and 8pm CST.
+
+Features in this release:
+* TTS voice preview
+* Improved usability of User Management
+* Fixes to several bugs related to RTC Callback API
+
 ### Minor release 1.11.0 is scheduled for 8/1/2020 between 2pm and 5pm CST.
 
 Features in this release:

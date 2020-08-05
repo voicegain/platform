@@ -1,3 +1,10 @@
+### Minor release 1.12.0 is scheduled for 8/5/2020 between 5pm and 8pm CST.
+
+Features in this release:
+* TTS voice preview
+* Improved usability of User Management
+* Fixes to several bugs related to RTC Callback API
+
 ### Minor release 1.11.0 is scheduled for 8/1/2020 between 2pm and 5pm CST.
 
 Features in this release:
@@ -16,13 +23,7 @@ Features in this release:
 * Microphone capture has better compatibility with different browsers
 * Only a single session is billed if running multiple sessions on same audio input
 
-### Minor release 1.9.0 is scheduled for 7/10/2020 between 5pm and 9pm CST.
 
-Features in this release:
-* New API to generate short-lived JWT authentication tokens. 
-* Ability to set `allowedOrigins` for web API requests to allow cross-origin web API requests (CORS)
-* More responsive TTS
-* Real-time Speech-to-Text price is now 1.25 cent/minute
 
 
 

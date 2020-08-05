@@ -1,3 +1,29 @@
+## Release 1.12.0
+
+This Minor release fixes some bugs in the RTC Callback API release last week plus provides some usability enhancements
+
+### Major Features and Improvements
+* TTS preview added - you can no listen to the sound of the TTS voices before making a choice
+* API Spec document open in full frame - improves navigation within the Spec
+* Improved usability of User Management
+
+### Breaking Changes
+None
+
+### Known issues
+* JJSGF grammar does no support tags yet.
+* issue #607: some customers reported problem uploading some mp3 files
+* issue #582: Microphone transcription on Firefox gets stuck (never completes)
+
+### Bug Fixes and Other Changes
+since Release 1.11.1
+* bug #606: Failed use add was silently ignored
+* bug #601: Two DELETE callbacks in one session
+* bug #600: error termination value now supported
+* enhancement #606: Call Sessions table is by default now sorted in descending order
+* enhancement #604: Base `user` role is not explicitly present
+* enhancement #602: Add sanity stop for runaway RTC session
+
 ## Release 1.11.0
 
 This Minor release introduces the RTC Callback API for telephony applications of speech recognition.

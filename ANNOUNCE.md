@@ -4,7 +4,7 @@ Python SDK is now available at: https://pypi.org/project/voicegain-speech/ and h
 
 ### Maintenance release 1.12.1 is scheduled for 8/6/2020 between 4pm and 8pm CST.
 
-This release fixes several bugs adn provides one enhancement:
+This release fixes several bugs and provides one enhancement:
 * issue #610: Issues with Listen access to recording and transcript of just ended call
 * issue #609: Phone number deletion failing
 * enhancement #611: Provide info about time needed for new RTC App to become active

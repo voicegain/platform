@@ -1,3 +1,11 @@
+## Release 1.12.1
+
+This maintenance release provides fixes for following bugs plus provides 2 enhancements:
+* issue #610: Issues with Listen access to recording and transcript of just ended call
+* issue #609: Phone number deletion failing
+* enhancement #613: Disable Delete button for phone numbers used in app - delete would fail anyway
+* enhancement #611: Provide info about time needed for new RTC App to become active
+
 ## Release 1.12.0
 
 This Minor release fixes some bugs in the RTC Callback API release last week plus provides some usability enhancements

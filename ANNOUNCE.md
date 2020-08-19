@@ -1,3 +1,9 @@
+### Minor release 1.13.0 is scheduled for 8/19/2020 between 5pm and 8pm CST.
+
+Features in this release:
+* Websocket streaming now supports multiple formats, including u-Law 8000 Hz 
+* Added support for PCM Floating-Point 32-bit audio
+
 ### Python SDK released
 
 Python SDK is now available at: https://pypi.org/project/voicegain-speech/ and https://github.com/voicegain/python-sdk
@@ -21,21 +27,7 @@ Features in this release:
 Features in this release:
 * First availability of RTC Callback API support. You can use it to build speech-enabled interactive telephone applications, e.g., IVR or Voicebots.
 
-### Minor release 1.10.0 is scheduled for 7/18/2020 between 8am and 10am CST.
 
-Features in this release:
-* Added basic JJSGF grammar support (no tags yet)
-* Changes to Transcription Mode UI
-* Microphone capture has better compatibility with different browsers
-* Only a single session is billed if running multiple sessions on same audio input
-
-### Minor release 1.9.0 is scheduled for 7/10/2020 between 5pm and 9pm CST.
-
-Features in this release:
-* New API to generate short-lived JWT authentication tokens. 
-* Ability to set `allowedOrigins` for web API requests to allow cross-origin web API requests (CORS)
-* More responsive TTS
-* Real-time Speech-to-Text price is now 1.25 cent/minute
 
 
 

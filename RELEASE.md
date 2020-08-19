@@ -1,3 +1,34 @@
+## Release 1.13.0
+
+This Minor release focuses on improving websocket streaming.
+
+### Major Features and Improvements
+* Websocket streaming now supports multiple formats, including u-Law 8000 Hz 
+* Added support for PCM Floating-Point 32-bit audio
+* Added control for recording and transcription to RTC Apps
+
+### Breaking Changes
+None
+
+### Known issues
+* JJSGF grammar does no support tags yet.
+* issue #607: some customers reported problem uploading some mp3 files
+* issue #582: Microphone transcription on Firefox gets stuck (never completes)
+
+### Bug Fixes and Other Changes
+since Release 1.12.1
+* bug #631: No callback received from /asr/recognize
+* bug #630: Wrong Content-type returned from /data/{uuid}/file 
+* bug #629: Irrelevant parameters returned for audio stream WEBSOCKET
+* bug #617: Final DELETE callback has the event from previous sequence
+* bug #616: Transfer reported in RTC Callback misses prompt payback event
+* bug #573: Websocket streaming locks up due to issues inside 3rd-party library
+* enhancement #626: Pass value of default vice to RTC Callback
+* enhancement #625: Set the value of audio.channel in transcription result 
+* enhancement #624: Values of callIsBeingRecorded and toBeTranscribed passed to RTC Callback
+* enhancement #620: Add to AIVRApp two new fields: recordCalls and percentCallsToTranscribe
+
+
 ## Release 1.12.1
 
 This maintenance release provides fixes for following bugs plus provides 2 enhancements:

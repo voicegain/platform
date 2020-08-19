@@ -1,3 +1,8 @@
+### Minor release 1.13.0 is scheduled for 8/19/2020 between 5pm and 8pm CST.
+
+Features in this release:
+* Websocket streaming now supports multiple formats, including u-Law 8000 Hz 
+
 ### Python SDK released
 
 Python SDK is now available at: https://pypi.org/project/voicegain-speech/ and https://github.com/voicegain/python-sdk

@@ -1,6 +1,6 @@
 ### Known issue
 
-Transcription or Recognition Callback will fail if the url contains {sessionId}. This should be supported according to the API spec and a fix will be released by end of 8/20/20 
+Transcription or Recognition Callback will fail if the url contains {sessionId}. This should be supported according to the API spec and a fix will be released by end of 8/21/20 
 
 ### Minor release 1.13.0 is scheduled for 8/19/2020 between 5pm and 8pm CST.
 

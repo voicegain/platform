@@ -12,8 +12,9 @@ None
 
 ### Known issues
 * JJSGF grammar does no support tags yet.
+* issue #651: Microphone transcription on Firefox not working 
 * issue #607: some customers reported problem uploading some mp3 files
-* issue #582: Microphone transcription on Firefox gets stuck (never completes)
+
 
 ### Bug Fixes and Other Changes
 since Release 1.12.1

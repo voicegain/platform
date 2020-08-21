@@ -1,3 +1,7 @@
+### Maintenance release 1.13.1 is scheduled for 8/21/2020 between 6pm and 8pm CST.
+
+This release fixes the bug with {sessionId} in callback and improves response time in API requests. 
+
 ### Minor release 1.13.0 is scheduled for 8/19/2020 between 5pm and 8pm CST.
 
 Features in this release:
@@ -22,10 +26,7 @@ Features in this release:
 * Improved usability of User Management
 * Fixes to several bugs related to RTC Callback API
 
-### Minor release 1.11.0 is scheduled for 8/1/2020 between 2pm and 5pm CST.
 
-Features in this release:
-* First availability of RTC Callback API support. You can use it to build speech-enabled interactive telephone applications, e.g., IVR or Voicebots.
 
 
 

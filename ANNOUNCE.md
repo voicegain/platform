@@ -1,3 +1,7 @@
+### Maintenance release 1.13.1 is scheduled for 8/21/2020 between 6pm and 8pm CST.
+
+This release fixes the bug with {sessionId} in callback and improves response time in API requests. 
+
 ### Known issue
 
 Transcription or Recognition Callback will fail if the url contains {sessionId}. This should be supported according to the API spec and a fix will be released by end of 8/21/20 
@@ -26,10 +30,7 @@ Features in this release:
 * Improved usability of User Management
 * Fixes to several bugs related to RTC Callback API
 
-### Minor release 1.11.0 is scheduled for 8/1/2020 between 2pm and 5pm CST.
 
-Features in this release:
-* First availability of RTC Callback API support. You can use it to build speech-enabled interactive telephone applications, e.g., IVR or Voicebots. For more info see our [Knowledge Base section about RTC Callback API](https://support.voicegain.ai/hc/en-us/categories/360003858271-RTC-Callback-API).
 
 
 

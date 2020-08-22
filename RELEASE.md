@@ -1,3 +1,19 @@
+## Release 1.13.1
+
+This maintenance release provides fixes for the following bugs:
+* #661: User logs not accessible
+* #654: Callback URLs do not support {sessionId}
+* #651: Microphone transcription on Firefox not working - note: there is still a delay before the first words of the transcript appear in preview
+
+
+Following enhancements are added:
+* #657: Account lookup time has been reduced
+* #656: Log all callback failures to Elastic Search so that users are able to see them
+
+This release includes **latest acoustic models with significant improvements to accuracy**.
+
+This release also adds minor UI improvements on Transcripts page.
+
 ## Release 1.13.0
 
 This Minor release focuses on improving websocket streaming.

@@ -25,6 +25,7 @@ const connectVoicegainWebsocket = async () => {
     ],
     audio: {
       source: { stream: { protocol: "WEBSOCKET" } },
+      format: "F32",
       capture: true,
       rate: 16000,
     },

@@ -1,4 +1,4 @@
-### Release 1.14.0
+## Release 1.14.0
 
 ### Major Features and Improvements
 * Significantly reduced time for recognition and transcription session setup.

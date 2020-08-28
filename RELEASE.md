@@ -1,3 +1,14 @@
+### Release 1.14.0
+
+### Major Features and Improvements
+* Significantly reduced time for recognition and transcription session setup.
+* JJSGF now supports tags - both semantics/1.0-literals and semantics/1.0 formats.
+* Improved accuracy for both offline and real-time acoustic models.
+
+### Breaking Changes
+Size of inline audio submitted to /asr/recognize or /asr/transcribe has been limited to 4MB
+
+
 ## Release 1.13.1
 
 This maintenance release provides fixes for the following bugs:

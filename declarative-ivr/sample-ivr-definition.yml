@@ -1,0 +1,59 @@
+---
+ENTRY:
+  type: VOID
+  voice: catherine
+  next: Welcome
+ERROR:
+  type: DISCONNECT
+  prompt: Sorry, there was an error. Please call back later
+  reason: ERROR
+Welcome:
+  type: OUTPUT
+  prompt: Welcome to Call Recorder
+  next: AcquirePhoneNumber
+AcquirePhoneNumber:
+  type: INPUT
+  name: phone
+  prompt: Say or Enter the number you want to call
+  bargeIn: true
+  grammar:
+  - type: BUILT-IN
+    name: phone
+  - type: BUILT-IN
+    name: dtmf/phone
+  noInput:
+  - Sorry, I did not hear it. Say or Enter the number you want to call
+  - Sorry, I still did not hear it. Say or Enter the number you want to call
+  noMatch:
+  - Sorry, I did not get it. Say or Enter the number you want to call
+  - Sorry, I still did not get it. Enter the number you want to call
+  confirmation:
+    threshold: 0.5
+    prompt: That was ${phone.phone}, right?
+  fail: CallHealth
+  next: GotIt
+GotIt:
+  type: OUTPUT
+  prompt: Got it.
+  next: DoSomeWork
+DoSomeWork:
+  type: EVAL
+  eval: 2 + 2
+  case:
+  - expr: "${1} != 4"
+    next: ERROR
+  next: Transfer
+Transfer:
+  type: TRANSFER
+  prompt: Dialing the number
+  phone:
+    phoneNumber: "${phone.phone}"
+  fail: TransferFailed
+TransferFailed:
+  type: DISCONNECT
+  prompt: Sorry, the transfer failed. Good bye.
+  reason: Transfer Failed
+CallHealth:
+  type: DISCONNECT
+  prompt: I have trouble understanding you. Please call back later
+  reason: CALL-HEALTH

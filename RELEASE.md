@@ -1,3 +1,24 @@
+## Release 1.15.0
+
+### Major Features and Improvements
+* Support for speech recognition on Twilio Media Streams via TwiML `<Connect><Stream>` command
+  * [Voicegain Speech-to-Text integrates with Twilio Media Streams](https://www.voicegain.ai/post/announcing-twilio-twiml-connect-stream-support) blog post
+  * [How to use Voicegain with Twilio Media Streams](https://www.voicegain.ai/post/how-to-use-voicegain-with-twilio-media-streams) blog post
+* Prompt Manager for dynamic concatenation for prerecorded prompts - can be combined with TTS - currently available only from TwiML `<Connect><Stream>`
+* Offline transcription supports output of [music] labels
+* Improved accuracy from ASR through enhancements to the search algorithm 
+* DTMF detection from audio stream
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+since Release 1.14.
+* enhancement #693: Limit duration of microphone transcription to 100 minutes - prevents runaway transcription if someone leaves the microphone on.
+* enhancement #692: Support externally controlled start of timers on ASR
+* enhancement #691: Add password strength check to Portal password change page
+* enhancement #683: Signup will auto-approve all requests for RTC-API feature
+
 ## Release 1.14.0
 
 ### Major Features and Improvements

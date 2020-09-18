@@ -1,3 +1,12 @@
+## Release 1.15.1
+
+This maintenance release provides fixes for the following bugs:
+* #711: Failed to play audio in RTC-API
+* #709: Adding a clip to clipstore fails on production
+* #707: Occasional IllegalStateException in Twilio Media Stream 
+
+It also is a beta release of the speaker diarization feature.
+
 ## Release 1.15.0
 
 ### Major Features and Improvements

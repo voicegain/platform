@@ -1,3 +1,10 @@
+### Maintenance release 1.15.1 is scheduled for 9/18/2020 between 6pm and 8pm CST.
+
+This release fixes bugs related to clipstore (Prompt Manager) and Twilio Media Stream.
+
+It also adds speaker diarization (beta).
+
+
 ### Minor release 1.15.0 is scheduled for 9/15/2020 between 5pm and 8pm CST.
 
 Features in this release:
@@ -17,9 +24,6 @@ Features in this release:
 
 This release fixes the bug with {sessionId} in callback and improves response time in API requests. 
 
-### Known issue
-
-Transcription or Recognition Callback will fail if the url contains {sessionId}. This should be supported according to the API spec and a fix will be released by end of 8/21/20 
 
 
 

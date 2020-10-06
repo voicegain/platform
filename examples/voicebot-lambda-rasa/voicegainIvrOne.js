@@ -140,15 +140,19 @@ exports.handler = async (event, context) => {
                     respBody.question = {};
                     // in Voicegain each question needs a name 
                     respBody.question.name = "answer"+respBody.sequence;
-                    // set the actual question prompt
-                    // NOTE: this will change in next Voicegain release
-                    respBody.question.text = statement+". "+question; 
+                    // non-bargeinable intro prompt
+                    if(statement!="") {
+                        respBody.question.text = cleanupString(statement); 
+                    }
                     respBody.question.audioResponse = {};
-                    // we want to enable barge-in
-                    respBody.question.audioResponse.bargeIn = true;
+                    // now the bargineable 
+                    respBody.question.audioResponse.questionPrompt = cleanupString(question);
                     // some standard timeouts
                     respBody.question.audioResponse.noInputTimeout = 5000;
                     respBody.question.audioResponse.completeTimeout = 2000;
+                    // set the voice
+                    respBody.question.audioProperties = {}; 
+                    respBody.question.audioProperties.voice = "catherine";
                 }
                 const respBodyStr = JSON.stringify(respBody);
                 console.info("Response for VG: "+respBodyStr);
@@ -175,3 +179,7 @@ exports.handler = async (event, context) => {
     return promise;
        
 };
+
+function cleanupString(str) {
+    return str.replace(/[\[\]]/g, '');
+}

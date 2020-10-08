@@ -1,4 +1,4 @@
-### Minor release 1.16.0 is scheduled for 10/8/2020 between 5pm and 8pm CST.
+### Minor release 1.16.0 is scheduled for 10/9/2020 between 5pm and 8pm CST.
 
 Features in this release:
 * Support for transcription on Twilio Media Streams - provides `TwiML <Gather>` like functionality

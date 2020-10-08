@@ -1,3 +1,13 @@
+### Minor release 1.16.0 is scheduled for 10/8/2020 between 5pm and 8pm CST.
+
+Features in this release:
+* Support for transcription on Twilio Media Streams - provides `TwiML <Gather>` like functionality
+* Ability to select different audio channel per session
+* RTC-API supports large vocabulary transcription
+* RTC-API supports prompt playback from external URLs
+* RTC-API `input` action supports non-bargeinable intro prompt and bargeinable main question prompt 
+* added continuous recognition option
+
 ### Maintenance release 1.15.1 is scheduled for 9/18/2020 between 6pm and 8pm CST.
 
 This release fixes bugs related to clipstore (Prompt Manager) and Twilio Media Stream.
@@ -20,9 +30,6 @@ Features in this release:
 * JJSGF now supports tags - both semantics/1.0-literals and semantics/1.0 formats.
 * Improved accuracy for both offline and real-time acoustic models.
 
-### Maintenance release 1.13.1 is scheduled for 8/21/2020 between 6pm and 8pm CST.
-
-This release fixes the bug with {sessionId} in callback and improves response time in API requests. 
 
 
 

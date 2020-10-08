@@ -1,3 +1,32 @@
+## Release 1.16.0
+
+### Major Features and Improvements
+* Support for transcription on Twilio Media Streams - provides `TwiML <Gather>` like functionality
+* Ability to select different audio channel per session
+* RTC-API supports large vocabulary transcription
+* RTC-API supports prompt playback from external URLs
+* RTC-API `input` action supports non-bargeinable intro prompt and bargeinable main question prompt 
+* added continuous recognition option
+
+### Breaking Changes
+* `audio.channel` parameter has been deprecated  in /asr/recognize and /asr/transcribe APIs
+
+### Bug Fixes and Other Changes
+since Release 1.15.1
+* bug #738: Unable to create accounts starting on digit  
+* bug #736: 'vars' not returned when using literal tags in grammar
+* bug #735: Creating a new broadcast websocket makes the old ones temporarily disappear
+* bug #733: Prompt text field not returned in events for AIVR Sessions
+* enhancement #729: Add question.audioResponse.questionPrompt to AIVR Callback response
+* enhancement #728: Allow AIVR App to send csid either in path or in query or in the body
+* enhancement #727: add support for start timers in /asr/transcribe
+* enhancement #726: add DTMF support for JJSGF grammars
+* enhancement #723: add support for large vocabulary transcription to AIVR
+* enhancement #722: add to AIVR support for prompts where text is an http URL to the audio to be used
+* enhancement #721: add support for start timers in AIVR processing loop
+* enhancement #718: JJSGF tweak - do not require rule names on the left side to be <>
+* enhancement #716: allow timeout to control the stop of transcription
+
 ## Release 1.15.1
 
 This maintenance release provides fixes for the following bugs:

@@ -163,7 +163,9 @@ exports.handler = async (event, context) => {
                reject(e.message);
            });
            // send the request
-           req.write(JSON.stringify(rasaReq));
+           const rasaReqStr = JSON.stringify(rasaReq);
+           console.info("To RASA: "+rasaReqStr);
+           req.write(rasaReqStr);
            req.end();
        });
        return promise;  

@@ -1,9 +1,3 @@
-### Known defect in Continuous Recognition ##
-
-A NOMATCH callback may contain result.alternatives value of the previous MATCH event. Please inspect the result.status value before accessing result.alternatives
-
-This will be fixed in the maintenance release 1.16.1
-
 ### Minor release 1.16.0 is scheduled for 10/9/2020 between 5pm and 8pm CST.
 
 Features in this release:

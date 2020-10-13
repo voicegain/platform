@@ -1,3 +1,17 @@
+## Release 1.17.0
+
+### Major Features and Improvements
+* Added support for large vocabulary transcription over MRCP
+* Websocket that returns transcription results is now configurable to be either: a plain websocket, or a websocket that uses STOMP protocol.
+
+### Breaking Changes
+* none
+
+### Bug Fixes and Other Changes
+since Release 1.16.0
+* bug #741: Programmable IVR does not wait with start timers till prompt finishes playing to human
+* enhancement #742: remove underscore from variable values inserted into TTS prompts
+
 ## Release 1.16.0
 
 ### Major Features and Improvements

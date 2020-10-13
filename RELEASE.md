@@ -157,7 +157,7 @@ None
 
 ### Bug Fixes and Other Changes
 since Release 1.11.1
-* bug #606: Failed use add was silently ignored
+* bug #606: Failed user add was silently ignored
 * bug #601: Two DELETE callbacks in one session
 * bug #600: error termination value now supported
 * enhancement #606: Call Sessions table is by default now sorted in descending order

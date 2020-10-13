@@ -1,3 +1,12 @@
+### Minor release 1.17.0 is scheduled for 10/13/2020 between 7pm and 9pm CST.
+
+Features in this release:
+* Added support for large vocabulary transcription over MRCP
+* Websocket that returns transcription results is now configurable to be either: a plain websocket, or a websocket that uses STOMP protocol.
+
+#### Bug Fixes 
+* bug #741: Programmable IVR does not wait with start timers till prompt finishes playing to human
+
 ### Minor release 1.16.0 is scheduled for 10/9/2020 between 5pm and 8pm CST.
 
 Features in this release:

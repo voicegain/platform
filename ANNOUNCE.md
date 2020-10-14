@@ -1,4 +1,4 @@
-### Minor release 1.17.0 is scheduled for 10/13/2020 between 7pm and 9pm CST.
+### Minor release 1.17.0 is rescheduled for 10/14/2020 between 7pm and 9pm CST.
 
 Features in this release:
 * Added support for large vocabulary transcription over MRCP

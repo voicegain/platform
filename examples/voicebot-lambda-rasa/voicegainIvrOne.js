@@ -1,46 +1,48 @@
-// pick one according to the protocol you will use
+// start of endpoint configuration
+const optionsMock = {
+    hostname: 'rasa-nlu.app.mock.io',
+    port: 443,
+    path: '/flight/start',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+};
+
+const optionsRasa = {
+    hostname: 'ec2-18-224-xxx-yy.us-east-2.compute.amazonaws.com',
+    port: 5005,
+    path: '/webhooks/rest/webhook',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+};  
+// end of endpoint configuration
+
+// external requireds
 const https = require('https');
 const http = require('http');
 
+// chose how to connect to RASA
+const options = optionsRasa;
+const httpInvoker = http;
+
+/////////////////////
+// Lambda Entry Point
+/////////////////////
 exports.handler = async (event, context) => {
 
-// for switching between mock and real RASA back-end     
-// https://my-rasa-app.smartmock.io/flight
-// http://ec2-18-224-xxx-yy.us-east-2.compute.amazonaws.com:5005/webhooks/rest/webhook
-
-    // options for making http request to RASA api
-    const optionsMock = {
-        hostname: 'my-rasa-app.smartmock.io',
-        port: 443,
-        path: '/flight',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
-    const optionsRasa = {
-        hostname: 'ec2-18-224-xxx-yy.us-east-2.compute.amazonaws.com',
-        port: 5005,
-        path: '/webhooks/rest/webhook',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };    
-
-    const options = optionsRasa;
-    const httpInvoker = http;
-
-    // initial message to RASA - it will trigger the "how can i help you question"
+    // initial message to RASA - it will trigger the "how can i help you" question
     const sayHiToRasa = "Hi";
     // final message to RASA
     const sayByeToRasa = "Goodbye"; 
+
     // message to RASA in the middle of the dialogue
     // will be overwritten by actual response captured by voicegain
     let messageForRasa = "none";
 
-    console.info("START "+JSON.stringify(event));
+    console.info("START "+JSON.stringify(event)); // debug
 
     // get parameters from incoming AWS Lambda request
     const method = event.requestContext.http.method; // POST, PUT, or DELETE expected
@@ -55,11 +57,10 @@ exports.handler = async (event, context) => {
     
     // local (customer) session id defaults to AWS request id
     let csid = context.awsRequestId;
-    let vuiResult = "ERROR";
+    let vuiResult = "ERROR"; // speech recognition status
 
     // init response to be sent back to Voicegain 
-    const respBody = {};
-    respBody.sid = sid;
+    const respBody = { sid : sid };
     
     if(method == 'POST') { // start of session
         respBody.sequence = seq;
@@ -69,7 +70,7 @@ exports.handler = async (event, context) => {
         respBody.sequence = queryParams.seq; // sequence is obtained from query param 
         csid = queryParams.csid; // customer session id from query param
         
-        // search events for input, i.e. answer
+        // search voicegain IVR events for input, i.e. answer
         const events = body.events;
 
         for(const event of events) {
@@ -77,10 +78,15 @@ exports.handler = async (event, context) => {
                 vuiResult = event.vuiResult;
                 // only in case of match we will send data to RASA
                 if(vuiResult == "MATCH") {
-                    const vuiAlt = event.vuiAlternatives[0];
-                    const utt = vuiAlt.utterance;
-                    // set message to RASA based on the utterance captured by Voicegain
-                    messageForRasa = utt; 
+                    // workaround for a bug in Voicegain 1.17.0
+                    if(typeof event.vuiAlternatives == 'undefined') {
+                        vuiResult == "NOMATCH";
+                    }
+                    else {
+                        const vuiAlt = event.vuiAlternatives[0];
+                        // set message to RASA based on the utterance captured by Voicegain
+                        messageForRasa = vuiAlt.utterance; 
+                    }
                 }
                 break;
             }
@@ -92,6 +98,7 @@ exports.handler = async (event, context) => {
         messageForRasa = sayByeToRasa;
     }
 
+    // set the local sid in the response
     respBody.csid = csid;
 
     if(messageForRasa == 'none') {
@@ -101,24 +108,26 @@ exports.handler = async (event, context) => {
         else if(vuiResult=='NOMATCH') {
             respBody.question = questionData(respBody.sequence, "I did not get it", "Can you say it again");
         }
-        const promise = new Promise(function(resolve, reject) {
+        // just return a generic reprompt to VG
+        return new Promise(function(resolve, reject) {
             resolve(responseFromLambda(respBody));
         });
-        return promise;
     }
     else {
         // Promise that we will return back to AWS Lambda 
         const promise = new Promise(function(resolve, reject) {
 
-            // init request to be sent to RASA
-            let rasaReq = {};
-            rasaReq.sender = "voicegain-"+csid; // sender name unique to this session
-            rasaReq.message = messageForRasa; // the message for RASA
+            // request to be sent to RASA
+            let rasaReq = {
+                sender : "voicegain-"+csid, // sender name unique to this session
+                message : messageForRasa // the message for RASA
+            };
             console.info("Message for RASA: "+messageForRasa);
 
             // function that will send request to RASA and process the response
             const req = httpInvoker.request(options, (res) => {
                 if (res.statusCode < 200 || res.statusCode >= 300) {
+                    // TODO: add error message to say
                     return reject(new Error('statusCode=' + res.statusCode));
                 }
                 var body = [];
@@ -153,9 +162,9 @@ exports.handler = async (event, context) => {
                     }
                     else {
                         // for POST or PUT send the data received from RASA
-                        respBody.question = questionData(respBody.sequence, statement, question)
+                        respBody.question = questionData(respBody.sequence, statement, question);
                     }
-                    // pass the good response to resolve
+                    // send the good response via resolve
                     resolve(responseFromLambda(respBody));
                 });
             });
@@ -172,10 +181,10 @@ exports.handler = async (event, context) => {
     }
 }
 
+// package response into what Lambda understands
 function responseFromLambda(respBody) {
     const respBodyStr = JSON.stringify(respBody);
     console.info("Response for VG: "+respBodyStr);
-
     // tell AWS Lambda how to respond
     const response = {
         statusCode: 200,
@@ -187,27 +196,31 @@ function responseFromLambda(respBody) {
     return response;
 }
 
+// generate question data response for VG
 function questionData(sequence, statementPrompt, questionPrompt) {
-    // for POST or PUT send the data received from RASA
-    let question = {};
-    // in Voicegain each question needs a name 
-    question.name = "answer"+sequence;
-    // non-bargeinable intro prompt
+    // for POST or PUT send back the data received from RASA
+    let question = {
+        // in Voicegain each question needs a name 
+        name : "answer"+sequence,
+        audioResponse : {
+            // the bargineable question prompt 
+            questionPrompt : cleanupString(questionPrompt),
+            // some standard timeouts
+            noInputTimeout : 5000,
+            completeTimeout : 2000
+        },
+        // set the voice
+        audioProperties : { voice : "catherine"}
+    };
+
     if(statementPrompt!="") {
+        // non-bargeinable intro prompt
         question.text = cleanupString(statementPrompt); 
-    }
-    question.audioResponse = {};
-    // now the bargineable 
-    question.audioResponse.questionPrompt = cleanupString(questionPrompt);
-    // some standard timeouts
-    question.audioResponse.noInputTimeout = 5000;
-    question.audioResponse.completeTimeout = 2000;
-    // set the voice
-    question.audioProperties = {}; 
-    question.audioProperties.voice = "catherine";
+    }   
     return question;
 }
 
+// sometimes RASA message strings have brackets
 function cleanupString(str) {
     return str.replace(/[\[\]]/g, '');
 }

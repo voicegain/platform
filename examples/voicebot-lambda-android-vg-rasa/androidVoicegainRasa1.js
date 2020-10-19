@@ -54,7 +54,7 @@ const optionsVoicegain =  {
      }
 }; 
 
-const lambdaCallbackUrl = "https://dqe7mrxxxx.execute-api.us-east-2.amazonaws.com/default/twilioVoicegainRasa1?seq=";
+const lambdaCallbackUrl = "https://4mfta9xxxx.execute-api.us-east-2.amazonaws.com/default/androidVoicegainRasa1?seq=";
 const s3bucket = "my-bucket-lambda-1";
 // end of endpoint configuration
 
@@ -107,9 +107,9 @@ exports.handler = async (event, context) => {
 // 2) for subsequent requests within session - it needs to wait for data from Voicegain
 //
 function handleAndroidRequest(context, queryParams) {
-    console.info("handle Android request: "+queryParams.seq);
+    console.info("handle Android request");
 
-    if(typeof queryParams.seq != 'undefined') {
+    if(typeof queryParams != 'undefined' && typeof queryParams.seq != 'undefined') {
         // we are already in a session - turn sequence is provided
         sequence = parseInt(queryParams.seq, 10);
     }
@@ -117,7 +117,7 @@ function handleAndroidRequest(context, queryParams) {
 
     // local (customer) session id defaults to AWS request id
     csid = context.awsRequestId;
-    if(typeof queryParams.csid != 'undefined') {
+    if(typeof queryParams != 'undefined' && typeof queryParams.csid != 'undefined') {
         // for session in progress use csid from the query parameter
         csid = queryParams.csid;
     }
@@ -275,7 +275,7 @@ function voicegainThenAndroid(resolve, reject, statement, question) {
         // assemble data received from VG
         res.on('data', function(chunk) {
             vgBody.push(chunk);
-            console.info('chunk: '+chunk);
+            console.info('VG chunk: '+chunk);
         });
         // finalize response from VG 
         res.on('end', function() {
@@ -339,7 +339,8 @@ function bodyForVgRequest(csid, sequence) {
 function bodyForAndroidErrorResponse(errMsg) {
     let body = [
         { say : cleanupString(errMsg) },
-        { say : 'Please call back later. Goodbye!'} 
+        { say : 'Please call back later. Goodbye!'}, 
+        { hangup : true}
     ];
     return body;
 }
@@ -350,22 +351,22 @@ function bodyForAndroidErrorResponse(errMsg) {
 function bodyForAndroidResponse(csid, sequence, websocketUrl, statementPrompt, questionPrompt) {
     let body = [];
     if(typeof statementPrompt !== 'undefined') {
-        let say = { say : cleanupString(statementPromp };
+        let say = { say : cleanupString(statementPrompt) };
         body.push(say);
     }
     const stream = {
         url : websocketUrl,
         parameters : [
-            {name : bargeIn, value : enable},
-            {name : voice, value : claire},
-            {name : prompt01, value : cleanupString(questionPrompt)}
+            {name : 'bargeIn', value : 'enable'},
+            {name : 'voice', value : 'claire'},
+            {name : 'prompt01', value : cleanupString(questionPrompt)}
         ]
     }; 
     body.push(stream);
     const redirect = {
-        method : GET,
-        url : lambdaCallbackUrl+(sequence+1)+"&amp;csid="+csid
-    }
+        method : 'GET',
+        url : lambdaCallbackUrl+(sequence+1)+"&csid="+csid
+    };
     body.push(redirect);
     return body;
 }

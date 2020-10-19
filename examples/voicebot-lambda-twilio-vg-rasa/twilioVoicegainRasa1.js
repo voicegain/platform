@@ -54,7 +54,7 @@ const optionsVoicegain =  {
      }
 }; 
 
-const lambdaCallbackUrl = "https://dqe7mrw2jh.execute-api.us-east-2.amazonaws.com/default/twilioVoicegainRasa1?seq=";
+const lambdaCallbackUrl = "https://dqe7mrxxxx.execute-api.us-east-2.amazonaws.com/default/twilioVoicegainRasa1?seq=";
 const s3bucket = "my-bucket-lambda-1";
 // end of endpoint configuration
 
@@ -107,9 +107,9 @@ exports.handler = async (event, context) => {
 // 2) for subsequent requests within session - it needs to wait for data from Voicegain
 //
 function handleTwilioRequest(context, queryParams) {
-    console.info("handle Twilio request: "+queryParams.seq);
+    console.info("handle Twilio request");
 
-    if(typeof queryParams.seq != 'undefined') {
+    if(typeof queryParams != 'undefined' && typeof queryParams.seq != 'undefined') {
         // we are already in a session - turn sequence is provided
         sequence = parseInt(queryParams.seq, 10);
     }
@@ -117,7 +117,7 @@ function handleTwilioRequest(context, queryParams) {
 
     // local (customer) session id defaults to AWS request id
     csid = context.awsRequestId;
-    if(typeof queryParams.csid != 'undefined') {
+    if(typeof queryParams != 'undefined' && typeof queryParams.csid != 'undefined') {
         // for session in progress use csid from the query parameter
         csid = queryParams.csid;
     }

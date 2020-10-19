@@ -54,7 +54,7 @@ const optionsVoicegain =  {
      }
 }; 
 
-const lambdaCallbackUrl = "https://dqe7mrw2jh.execute-api.us-east-2.amazonaws.com/default/twilioVoicegainRasa1?seq=";
+const lambdaCallbackUrl = "https://dqe7mrxxxx.execute-api.us-east-2.amazonaws.com/default/twilioVoicegainRasa1?seq=";
 const s3bucket = "my-bucket-lambda-1";
 // end of endpoint configuration
 
@@ -89,8 +89,8 @@ exports.handler = async (event, context) => {
     console.info("method="+method);
 
     if(method == "GET") {
-        // Twilio makes callbacks using GET
-        return handleTwilioRequest(context, queryParams);
+        // Android makes callbacks using GET
+        return handleAndroidRequest(context, queryParams);
     }
     else if (method == "POST") {
         // Voicegain makes callbacks using POST
@@ -101,13 +101,13 @@ exports.handler = async (event, context) => {
     }
 }
 
-// Twilio callback handler
+// Android callback handler
 // it has two flows
 // 1) for initial request at start of session
 // 2) for subsequent requests within session - it needs to wait for data from Voicegain
 //
-function handleTwilioRequest(context, queryParams) {
-    console.info("handle Twilio request: "+queryParams.seq);
+function handleAndroidRequest(context, queryParams) {
+    console.info("handle Android request: "+queryParams.seq);
 
     if(typeof queryParams.seq != 'undefined') {
         // we are already in a session - turn sequence is provided
@@ -197,10 +197,10 @@ function handleTwilioRequest(context, queryParams) {
 function handleRasaThenVG(messageForRasa, vuiResult, resolve, reject) {
     if(messageForRasa == 'none') {
         if(vuiResult=='NOINPUT') {
-            voicegainThenTwilio(resolve, reject, "I did not hear you", "Please speak");
+            voicegainThenAndroid(resolve, reject, "I did not hear you", "Please speak");
         }
         else if(vuiResult=='NOMATCH') {
-            voicegainThenTwilio(resolve, reject, "I did not get it", "Can you say it again");
+            voicegainThenAndroid(resolve, reject, "I did not get it", "Can you say it again");
         }
     }
     else {
@@ -216,7 +216,7 @@ function handleRasaThenVG(messageForRasa, vuiResult, resolve, reject) {
             if (res.statusCode < 200 || res.statusCode >= 300) {
                 console.warn(`RASA error response: `);
                 // say the error message and hang up
-                resolve(xmlResponseFromLambda( bodyForTwilioErrorResponse("Bad response from Rasa: code "+res.statusCode) ));
+                resolve(jsonResponseFromLambda( bodyForAndroidErrorResponse("Bad response from Rasa: code "+res.statusCode) ));
             }
             var body = [];
             // assemble data received from RASA
@@ -244,14 +244,14 @@ function handleRasaThenVG(messageForRasa, vuiResult, resolve, reject) {
                 const question = body[i].text;
 
                 // make request to Voicegain to start recognition
-                // and the return response to Twilio
-                voicegainThenTwilio(resolve, reject, statement, question);
+                // and the return response to Android
+                voicegainThenAndroid(resolve, reject, statement, question);
 
             });
         });
         rasaReq.on('error', (e) => {
             // say the error message and hang up
-            resolve(xmlResponseFromLambda( bodyForTwilioErrorResponse("Error invoking Rasa: "+e.message) ));
+            resolve(jsonResponseFromLambda( bodyForAndroidErrorResponse("Error invoking Rasa: "+e.message) ));
         });
         // send the request
         const rasaReqStr = JSON.stringify(rasaReqBody);
@@ -263,13 +263,13 @@ function handleRasaThenVG(messageForRasa, vuiResult, resolve, reject) {
 }
 
 // make request to Voicegain to start recognition
-// and the return response to Twilio
-function voicegainThenTwilio(resolve, reject, statement, question) {
+// and the return response to Android
+function voicegainThenAndroid(resolve, reject, statement, question) {
     const vgReq = https.request(optionsVoicegain, (res) => {
         if (res.statusCode < 200 || res.statusCode >= 300) {
             console.warn(`VG error response: `+res.statusCode);
             // say the error message and hang up
-            resolve(xmlResponseFromLambda( bodyForTwilioErrorResponse("Bad response from Voicegain: code "+res.statusCode) ));
+            resolve(jsonResponseFromLambda( bodyForAndroidErrorResponse("Bad response from Voicegain: code "+res.statusCode) ));
         }
         var vgBody = [];
         // assemble data received from VG
@@ -287,19 +287,19 @@ function voicegainThenTwilio(resolve, reject, statement, question) {
                 reject(e);
             }
             // process response from voicegain
-            // we are looking for websocket url so that Twilio can stream audio to it
+            // we are looking for websocket url so that Android can stream audio to it
             const audio = vgBody.audio;
             const stream =  audio.stream;
             const websocketUrl = stream.websocketUrl;
 
             console.info("websocketUrl: "+websocketUrl);
-            // have resolve return the response to Twilio
-            resolve(xmlResponseFromLambda( bodyForTwilioResponse(csid, sequence, websocketUrl, statement, question) ));
+            // have resolve return the response to Android
+            resolve(jsonResponseFromLambda( bodyForAndroidResponse(csid, sequence, websocketUrl, statement, question) ));
         });
     });
     vgReq.on('error', (e) => {
         // say the error message and hang up
-        resolve(xmlResponseFromLambda( bodyForTwilioErrorResponse("Error invoking Voicegain: "+e.message) ));
+        resolve(jsonResponseFromLambda( bodyForAndroidErrorResponse("Error invoking Voicegain: "+e.message) ));
     });    
     // send the request
     vgReq.write(JSON.stringify(bodyForVgRequest(csid, sequence)));
@@ -335,51 +335,39 @@ function bodyForVgRequest(csid, sequence) {
     return body;
 }
 
-// Generate response for Twilio in case of an error
-function bodyForTwilioErrorResponse(errMsg) {
-    let body = "";
-    body += '<Response>\r\n'; 
-    body += '  <Say voice="woman" language="en-US">'+cleanupString(errMsg)+'</Say>\r\n';
-    body += '  <Say voice="woman" language="en-US">Please call back later. Goodbye!</Say>\r\n';
-    body += '  <Hangup/>\r\n';
-    body += '</Response>\r\n';
-    console.info("body for Twilio: "+body);
+// Generate response for Android in case of an error
+function bodyForAndroidErrorResponse(errMsg) {
+    let body = [
+        { say : cleanupString(errMsg) },
+        { say : 'Please call back later. Goodbye!'} 
+    ];
     return body;
 }
 
-// Generate response for Twilio which 
+// Generate response for Android which 
 // 1) optionally says something
 // 2) makes a <Connect><Stream> request to Voicegain 
-function bodyForTwilioResponse(csid, sequence, websocketUrl, statementPrompt, questionPrompt) {
-    let body = "";
-    body += '<Response>\r\n';
+function bodyForAndroidResponse(csid, sequence, websocketUrl, statementPrompt, questionPrompt) {
+    let body = [];
     if(typeof statementPrompt !== 'undefined') {
-        body += '  <Say voice="woman" language="en-US">'+cleanupString(statementPrompt)+'</Say>\r\n';
+        let say = { say : cleanupString(statementPromp };
+        body.push(say);
     }
-    body += '  <Connect>\r\n';
-    body += '    <Stream url="'+websocketUrl+'">\r\n';
-    body += '      <Parameter name="bargeIn" value ="enable"/>\r\n';
-    body += '      <Parameter name="voice" value ="claire"/>\r\n';
-    body += '      <Parameter name="prompt01" value ="'+cleanupString(questionPrompt)+'"/>\r\n';
-    body += '    </Stream>\r\n';
-    body += '  </Connect>\r\n';
-    body += '  <Redirect method="GET">'+lambdaCallbackUrl+(sequence+1)+"&amp;csid="+csid+'</Redirect>\r\n';
-    body += '</Response>\r\n';
-    console.info("body for Twilio: "+body);
+    const stream = {
+        url : websocketUrl,
+        parameters : [
+            {name : bargeIn, value : enable},
+            {name : voice, value : claire},
+            {name : prompt01, value : cleanupString(questionPrompt)}
+        ]
+    }; 
+    body.push(stream);
+    const redirect = {
+        method : GET,
+        url : lambdaCallbackUrl+(sequence+1)+"&amp;csid="+csid
+    }
+    body.push(redirect);
     return body;
-}
-
-// xml response from Lambda
-function xmlResponseFromLambda(xmlStr) {
-    console.info("Response for Twilio: "+xmlStr);
-
-    // tell AWS Lambda how to respond
-    const response = {
-        statusCode: 200,
-        headers: { 'Content-Type': 'application/xml' },
-        body: xmlStr
-    };
-    return response;
 }
 
 // json response from Lambda

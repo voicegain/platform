@@ -39,7 +39,7 @@ if not os.path.exists(output_path):
 
 index = 0
 while True:
-    time.sleep(0.99)
+    time.sleep(4.9)
     poll_response = requests.get(polling_url+"?full=false", headers=headers).json()
     # write poll_response to JSON
     poll_response_path = os.path.join(output_path, "{}--{}.json".format(session_id, index))

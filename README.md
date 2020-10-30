@@ -10,6 +10,9 @@ This repository tracks public components of the Voicegain Platform. Things like:
 * [release notes](https://github.com/voicegain/platform/blob/master/RELEASE.md),
 * [terms of service](https://github.com/voicegain/platform/blob/master/TERMS-OF-SERVICE.md),
 * [privacy policy](https://github.com/voicegain/platform/blob/master/PRIVACY.md), etc.
+* [example code](https://github.com/voicegain/platform/tree/master/examples)
+* utilities, e.g.
+  * [test-transcribe.py](https://github.com/voicegain/platform/tree/master/utility-scripts/test-transcribe)
 
 The Voicegain platform consists of:
 * Voicegain Web API - key API methods are documented at https://voicegain.ai/api

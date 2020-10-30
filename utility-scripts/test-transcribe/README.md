@@ -4,7 +4,7 @@ If reference transcripts are provided then it will compute and report WER in an 
 If reference transcripts are not provided then it will do a diff of Voicegain vs Google transcription.
 
 # Setup #
-Copy `test-trascribe.py` to a directory of your choice. 
+Copy `test-trascribe.py` and `requirements.txt` to a directory of your choice. 
 Additionally, you need two other directories (may be subdirectories of where `test-trascribe.py` is located) - one for input audio files and one for the output results.
 
 The input to `test-trascribe.py` consists of:
@@ -23,6 +23,11 @@ The output will contain:
 * *-google-right.txt - transcription of right channel of stereo audio from Google API
 * *-left.html - the WER and diff report for transcription of left channel of stereo audio 
 * *-right.html - the WER and diff report for transcription of right channel of stereo audio 
+
+Before you run `test-trascribe.py` install all required python dependencies using:
+<pre>
+pip install -r requirements.txt
+</pre>
 
 # How to run #
 

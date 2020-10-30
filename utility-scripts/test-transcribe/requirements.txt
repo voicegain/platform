@@ -1,0 +1,3 @@
+transcribe-compare >=0.2.0
+voicegain-speech >= 1.17.0
+google-cloud-speech == 1.3.2 

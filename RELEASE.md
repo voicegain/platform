@@ -1,3 +1,20 @@
+## Release 1.18.0
+
+### Major Features and Improvements
+Features in this release:
+* Transcribe+ page (beta)
+* Switching main url from https://portal.voicegain.ai to https://console.voicegain.ai
+
+### Breaking Changes
+* Old portal url https://portal.voicegain.ai is now a redirect to new url https://console.voicegain.ai
+
+#### Bug Fixes 
+* bug #764: API requests to incorrect URLs sometimes did not return 404
+* bug #755: The account without billing permission cannot see transcript result
+
+### Known Issues
+* bug #751: If voice is omitted from `<Connect><Stream>` request then the audio will play garbled
+
 ## Release 1.17.0
 
 ### Major Features and Improvements

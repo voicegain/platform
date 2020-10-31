@@ -16,7 +16,7 @@ This repository tracks public components of the Voicegain Platform. Things like:
 
 The Voicegain platform consists of:
 * Voicegain Web API - key API methods are documented at https://voicegain.ai/api
-* Voicegain Enterprise Portal at https://portal.voicegain.ai which provides access to:
+* Voicegain Enterprise Portal at https://console.voicegain.ai which provides access to:
   * Voicegain Transcription (incl. Live Transcription)
   * Voicegain MRCP ASR (incl GREG tool)
   * Voicegain Programmable IVR 

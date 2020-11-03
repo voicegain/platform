@@ -38,5 +38,17 @@ python test-transcribe.py iYJhbGciOiJIUzI1NiIssrqcCI6IkpXVCJ9.eyJhdWQiOiJodHRwcz
 the components are:
 * the JWT token - see this [helpdesk article on how to get JWT](https://support.voicegain.ai/hc/en-us/articles/360028023691-JWT-Authentication)
 * the input directory
-* the outpu directory
+* the output directory
 * optional file with Google Cloud credentials in json format - if missing then only Voicegain transcription will be done
+* optional type of Google speech-to-text recognizer to use
+  * value `default` will use Google Standard recognizer
+  * value `video` will use Google Enhanced (Video) recognizer 
+
+# Notes and Limitations #
+
+Voicegain recognizer is run in OFF-LINE mode. Google recognizer is run in streaming mode.
+
+* Google recognizer in streaming mode can process an audio file with **maximum 5 minutes length**.
+* Because of the setup overhead for Voicegain OFF-LINE mode, for short files you will notice that Google recognizer processes them faster. However, larger audio files will benefit from faster processing of the OFF-LINE mode and they will be completed significantly faster than on Google.
+* We will soon provide a version that allows you to process files larger than 5 minutes on Google - but it will require that files are first uploaded to Google Storage.
+

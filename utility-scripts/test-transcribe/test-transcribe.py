@@ -30,14 +30,14 @@ THREAD_NUMBER = 1
 
 
 class GoogleStreamRequests:
-    def __init__(self, stream_file, sleep_time=0.1):
+    def __init__(self, stream_file, n_channels, sleep_time=0.1):
 
         with wave.open(stream_file, mode='rb') as wavread:
             sample_rate = wavread.getframerate()
             content = wavread.readframes(wavread.getnframes())
             sampwidth = wavread.getsampwidth()
 
-        n = int(sample_rate * sleep_time * sampwidth)
+        n = int(sample_rate * sleep_time * sampwidth* n_channels)
         n_group_content = [content[i * n:(i + 1) * n] for i in range((len(content) + n - 1) // n)]
         self.n_group_len = len(n_group_content)
 
@@ -74,12 +74,13 @@ class GoogleStreamRequests:
 
 def print_help():
     help_msg = '''
-    python 8x8.py <JWT> <input_dir> <output_dir> <google_api_cred>
+    python 8x8.py <JWT> <input_dir> <output_dir> <google_api_cred> <google_model>
     
     JWT: Voicegain JWT token
     input_dir: input directory with all wav files (*.wav) and reference txt (*-reference.txt [Optional])
     output_dir: output directory for Voicegain and Google result, and transcription compare HTML
     google_api_cred: Path to google json file. Optional
+    google_model: Which model(default/video) to select for Google recognizer. The default would be Google Standard. Optional
     '''
     print(help_msg)
 
@@ -211,7 +212,10 @@ def run_voicegain_recognizer(audio_file, output_dir, voicegain_api_client, n_cha
     return voicegain_result_txt_path_list
 
 
-def run_google_recognizer(audio_file, output_dir, google_api_client, n_channel, sample_rate_hertz):
+def run_google_recognizer(audio_file, output_dir, google_api_client, n_channel, sample_rate_hertz, model="default"):
+    """
+        "default" for GoogleStandard test, and select "video" for GoogleVideo test.
+    """
     if google_api_client is None:
         logging.info("Google json key is not configured. Will not run google recognizer")
         return None
@@ -223,7 +227,7 @@ def run_google_recognizer(audio_file, output_dir, google_api_client, n_channel, 
     logging.info("Start to run Google recognizer")
 
     # In practice, stream should be a generator yielding chunks of audio data.
-    requests = GoogleStreamRequests(audio_file)
+    requests = GoogleStreamRequests(audio_file, n_channel)
 
     # config = types.RecognitionConfig(
     #     encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
@@ -235,7 +239,7 @@ def run_google_recognizer(audio_file, output_dir, google_api_client, n_channel, 
             encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
             sample_rate_hertz=sample_rate_hertz,
             language_code='en-US',
-            model="video",
+            model=model,
             audio_channel_count=2,
             enable_separate_recognition_per_channel=True
         )
@@ -245,7 +249,7 @@ def run_google_recognizer(audio_file, output_dir, google_api_client, n_channel, 
             encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
             sample_rate_hertz=sample_rate_hertz,
             language_code='en-US',
-            model="video"
+            model=model
 
         )
 
@@ -404,7 +408,7 @@ def process_one_audio(recognizer_queue):
         if item is None:
             logging.info("Get None in transcribe queue")
             break
-        audio_file, output_dir, voicegain_api_client, google_api_client = item
+        audio_file, output_dir, voicegain_api_client, google_api_client, google_model = item
 
         logging.info("Start to process audio {}".format(audio_file))
 
@@ -422,8 +426,12 @@ def process_one_audio(recognizer_queue):
         voicegain_result_txt_path_list = run_voicegain_recognizer(
             audio_file, output_dir, voicegain_api_client, n_channel)
         # google
-        google_result_txt_path_list = run_google_recognizer(
-            audio_file, output_dir, google_api_client, n_channel, sample_rate_hertz)
+        try:
+            google_result_txt_path_list = run_google_recognizer(
+                audio_file, output_dir, google_api_client, n_channel, sample_rate_hertz, google_model)
+        except Exception as e:
+            logging.warning(e)
+            google_result_txt_path_list = None
         # compare
         compare(audio_file, output_dir, voicegain_result_txt_path_list, google_result_txt_path_list, n_channel)
 
@@ -448,14 +456,27 @@ def main():
     output_dir = sys.argv[3]
 
     # optional
-    if len(sys.argv) > 4:
+    len_of_argv = len(sys.argv)
+    if len_of_argv > 4:
         google_api_cred = sys.argv[4]
         google_creds = service_account.Credentials.from_service_account_file(google_api_cred)
         google_client = speech.SpeechClient(credentials=google_creds)
 
+        if len_of_argv == 6:
+            google_model = sys.argv[5]
+            if google_model == "default":
+                logging.info("Using 'default' model for Google recognizer")
+            else:
+                logging.info("Using 'video' model for Google recognizer")
+        else:
+            google_model = "default"
+            logging.info("Using 'default' model for Google recognizer")
+
+
     else:
         # google_api_cred = None
         google_client = None
+        google_model = None
 
     recognizer_queue = MultiThreadQueue()
 
@@ -470,7 +491,7 @@ def main():
     logging.info("In total, we have {} files".format(len(audio_files)))
     for audio_file in audio_files:
         # process_one_audio(audio_file, output_dir, voicegain_api_client, google_client)
-        recognizer_queue.put((audio_file, output_dir, voicegain_api_client, google_client))
+        recognizer_queue.put((audio_file, output_dir, voicegain_api_client, google_client, google_model))
 
     recognizer_queue.join()
 

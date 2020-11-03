@@ -40,7 +40,7 @@ the components are:
 * the input directory
 * the output directory
 * optional file with Google Cloud credentials in json format - if missing then only Voicegain transcription will be done
-* optional type of Google speech-to-text recognizer to use
+* optional [type of Google speech-to-text recognizer to use](https://cloud.google.com/speech-to-text/pricing#pricing_table) - Standard or [Enhanced](https://cloud.google.com/speech-to-text/docs/enhanced-models)
   * value `default` will use Google Standard recognizer
   * value `video` will use Google Enhanced (Video) recognizer 
 

@@ -33,7 +33,7 @@ pip install -r requirements.txt
 
 The command line to run `test-transcribe.py` looks as follows:
 <pre>
-python test-transcribe.py iYJhbGciOiJIUzI1NiIssrqcCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2Fwspun32ljZWdhaW4uYWkvdjEiLCJzdWIiOiJiZDE0ZmQ5NC0wYdjj7aTRjOWEtODJlZS1jY2YwZGJlZjY3MjkifQ.K5hBcjZCksjaFXR7MWMclGKvuQeXFTFhvGSwmwoiA6z input/ output/ acme-dev-3093553eb66c.json default
+python test-transcribe.py iYJhbGciOiJIUzI1NiIssrqcCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2Fwspun32ljZWdhaW4uYWkvdjEiLCJzdWIiOiJiZDE0ZmQ5NC0wYdjj7aTRjOWEtODJlZS1jY2YwZGJlZjY3MjkifQ.K5hBcjZCksjaFXR7MTMclGKvuQeXFTFhvGSwlwoiA6z input/ output/ acme-dev-3093553eb66c.json default
 </pre>
 the components are:
 * the JWT token - see this [helpdesk article on how to get JWT](https://support.voicegain.ai/hc/en-us/articles/360028023691-JWT-Authentication)
@@ -43,6 +43,7 @@ the components are:
 * optional [type of Google speech-to-text recognizer to use](https://cloud.google.com/speech-to-text/pricing#pricing_table) - Standard or [Enhanced](https://cloud.google.com/speech-to-text/docs/enhanced-models)
   * value `default` will use Google Standard recognizer
   * value `video` will use Google Enhanced (Video) recognizer 
+  * value `phone_call` will use Google Enhanced (Phone Call) recognizer 
 
 # Notes and Limitations #
 

@@ -102,7 +102,7 @@ def print_help():
     input_dir: input directory with all wav files (*.wav) and reference txt (*-reference.txt [Optional])
     output_dir: output directory for Voicegain and Google result, and transcription compare HTML
     google_api_cred: Path to google json file. Optional
-    google_model: Which model(default/video) to select for Google recognizer. The default would be Google Standard. Optional
+    google_model: Which model(default/video/phone_call) to select for Google recognizer. The default would be Google Standard. Optional
     '''
     print(help_msg)
 
@@ -261,6 +261,7 @@ def run_google_recognizer(audio_file, output_dir, google_api_client, n_channel, 
             encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
             sample_rate_hertz=sample_rate_hertz,
             language_code='en-US',
+            use_enhanced=True,
             model=model,
             audio_channel_count=2,
             enable_separate_recognition_per_channel=True
@@ -271,6 +272,7 @@ def run_google_recognizer(audio_file, output_dir, google_api_client, n_channel, 
             encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
             sample_rate_hertz=sample_rate_hertz,
             language_code='en-US',
+            use_enhanced=True,
             model=model
 
         )
@@ -488,8 +490,10 @@ def main():
             google_model = sys.argv[5]
             if google_model == "default":
                 logging.info("Using 'default' model for Google recognizer")
-            else:
+            elif google_model == "video":
                 logging.info("Using 'video' model for Google recognizer")
+            else:
+                logging.info("Using 'phone_call' model for Google recognizer")
         else:
             google_model = "default"
             logging.info("Using 'default' model for Google recognizer")

@@ -1,3 +1,7 @@
+### Known Defect ###
+
+Bug #766: Websocket that returns recognition results is incompatible with OkHttp3  -- this has already been fixed and tested and awaits deployment scheduling.
+
 ### Minor release 1.18.0 is scheduled for 10/30/2020 between 6pm and 9pm CST.
 
 Features in this release:

@@ -1,3 +1,11 @@
+### Maintenance release 1.18.1 is scheduled for 11/8/2020 between 2pm and 4pm CST.
+
+This release fixes a.o. the following bugs:
+* bug #766: Websocket that returns recognition results is incompatible with OkHttp3
+* bug #764: Websocket that returns recognition results is incompatible with OkHttp3
+
+The release also improves the look of transcripts on Transcript+ (beta) page
+
 ### Known Defect ###
 
 Bug #766: Websocket that returns recognition results is incompatible with OkHttp3  -- this has already been fixed and tested and awaits deployment scheduling.
@@ -21,21 +29,7 @@ Features in this release:
 #### Bug Fixes 
 * bug #741: Programmable IVR does not wait with start timers till prompt finishes playing to human
 
-### Minor release 1.16.0 is scheduled for 10/9/2020 between 5pm and 8pm CST.
 
-Features in this release:
-* Support for transcription on Twilio Media Streams - provides `TwiML <Gather>` like functionality
-* Ability to select different audio channel per session
-* RTC-API supports large vocabulary transcription
-* RTC-API supports prompt playback from external URLs
-* RTC-API `input` action supports non-bargeinable intro prompt and bargeinable main question prompt 
-* added continuous recognition option
-
-### Maintenance release 1.15.1 is scheduled for 9/18/2020 between 6pm and 8pm CST.
-
-This release fixes bugs related to clipstore (Prompt Manager) and Twilio Media Stream.
-
-It also adds speaker diarization (beta).
 
 
 

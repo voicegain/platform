@@ -1,3 +1,10 @@
+## Release 1.18.1
+
+This maintenance release provides fixes for the following bugs:
+* bug #766: Websocket that returns recognition results is incompatible with OkHttp3
+
+The release also improves the look of transcripts on Transcript+ (beta) page
+
 ## Release 1.18.0
 
 ### Major Features and Improvements

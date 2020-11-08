@@ -2,7 +2,6 @@
 
 This release fixes a.o. the following bugs:
 * bug #766: Websocket that returns recognition results is incompatible with OkHttp3
-* bug #764: Websocket that returns recognition results is incompatible with OkHttp3
 
 The release also improves the look of transcripts on Transcript+ (beta) page
 

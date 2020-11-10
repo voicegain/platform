@@ -8,6 +8,14 @@ What this code demonstrates:
 * waiting for the transcription to be finalized
 * retrieving complete transcript
 
+## CORS Configuration
+
+The allowed origin must be added in the API Security settings menu under settings on the console to prevent CORS 403 error from occuring.
+
+1. Go to API Security settings page under the settings menu in the side bar of the console.
+2. In the Allowed Origins settings input, enter the origin on which the index.html page is running on (localhost:8080 etc.)
+3. Press save to save the settings.
+
 ## Steps to Run ##
 
 1. Install node js - https://nodejs.org/en/download/

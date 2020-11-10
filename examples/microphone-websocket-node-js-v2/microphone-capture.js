@@ -5,7 +5,6 @@ let websocketSendUrl,
   jwtToken,
   semiRtSessionid,
   pollInterval;
-
 //Fetch temporary JWT Token and make call to Voicegain API to get websocket URL's
 const connectWebsocket = async () => {
   const audioContext = new AudioContext();

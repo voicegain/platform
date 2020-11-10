@@ -11,9 +11,7 @@ app.use(cors());
 
 app.get("/api/jwt", async (req, res) => {
   let voicegainApiUrl = new URL("https://api.voicegain.ai/v1/security/jwt");
-  const bearer =
-    "Bearer " +
-    "<Your JWT Here>";
+  const bearer = "Bearer " + "<Your JWT Here>";
   const options = {
     headers: {
       Authorization: bearer,

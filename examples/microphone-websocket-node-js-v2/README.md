@@ -12,9 +12,10 @@ What this code demonstrates:
 
 The allowed origin must be added in the API Security settings menu under settings on the console to prevent CORS 403 error from occuring.
 
+1. Switch to the Context that you have used to generate JWT
 1. Go to API Security settings page under the settings menu in the side bar of the console.
-2. In the Allowed Origins settings input, enter the origin on which the index.html page is running on (localhost:8080 etc.)
-3. Press save to save the settings.
+1. In the Allowed Origins settings input, enter the origin on which the index.html page is running on (localhost:8080 etc.)
+1. Press save to save the settings.
 
 ## Steps to Run ##
 

@@ -1,3 +1,13 @@
+### Maintenance release 1.18.2 is scheduled for 11/11/2020 between 7:15pm and 9pm CST.
+
+This release fixes the following bug:
+* bug #768: Problems with accounts with business name containing comma.
+
+and ads the following enhancement:
+* enhancement #770: add `builtin:speech/transcribe` as another option to specify transcription in MRCP 
+
+The release also includes a higher accuracy offline Acoustic Model
+
 ### Maintenance release 1.18.1 is scheduled for 11/8/2020 between 2pm and 4pm CST.
 
 This release fixes a.o. the following bugs:
@@ -15,14 +25,6 @@ Features in this release:
 * bug #764: API requests to incorrect URLs sometimes did not return 404
 * bug #755: The account without billing permission cannot see transcript result
 
-### Minor release 1.17.0 is re-scheduled for 10/14/2020 between 6pm and 9pm CST.
-
-Features in this release:
-* Added support for large vocabulary transcription over MRCP
-* Websocket that returns transcription results is now configurable to be either: a plain websocket, or a websocket that uses STOMP protocol.
-
-#### Bug Fixes 
-* bug #741: Programmable IVR does not wait with start timers till prompt finishes playing to human
 
 
 

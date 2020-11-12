@@ -1,3 +1,13 @@
+## Release 1.18.2
+
+This maintenance release fixes the following bug:
+* bug #768: Problems with accounts with business name containing comma.
+
+and ads the following enhancement:
+* enhancement #770: add `builtin:speech/transcribe` as another option to specify transcription in MRCP 
+
+The release also includes a higher accuracy offline Acoustic Model
+
 ## Release 1.18.1
 
 This maintenance release provides fixes for the following bugs:

@@ -1,3 +1,14 @@
+## Release 1.19.0
+
+New features in this release:
+* Keyword and profanity detection in Transcribe+ page (beta)
+* Ability to choose real-time or off-line acoustic models for single-GPU Edge deployments
+* Delete function added to Transcribe page
+* More accurate real-time acoustic model
+
+#### Bug Fixes 
+* bug #779: Audio receiving websocket closed too late
+
 ## Release 1.18.2
 
 This maintenance release fixes the following bug:

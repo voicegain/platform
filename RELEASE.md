@@ -1,3 +1,8 @@
+## Release 1.19.1
+
+This maintenance release fixes the following bug:
+* bug #rcj147: Async transcribe result cannot be viewed in cc-app
+
 ## Release 1.19.0
 
 New features in this release:

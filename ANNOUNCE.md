@@ -1,3 +1,8 @@
+### Maintenance release 1.19.1 is scheduled for 11/23/2020 between 5:30pm and 7pm CST.
+
+This release fixes the following bug:
+* bug #rcj147: Async transcribe result cannot be viewed in cc-app
+
 ### Minor release 1.19.0 is scheduled for 11/20/2020 between 6pm and 9pm CST.
 
 New features in this release:

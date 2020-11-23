@@ -1,3 +1,8 @@
+### Maintenance release 1.19.1 is scheduled for 11/23/2020 between 5:30pm and 7pm CST.
+
+This release fixes the following bug:
+* bug #rcj147: Async transcribe result cannot be viewed in cc-app
+
 ### Minor release 1.19.0 is scheduled for 11/20/2020 between 6pm and 9pm CST.
 
 New features in this release:
@@ -19,12 +24,7 @@ and ads the following enhancement:
 
 The release also includes a higher accuracy offline Acoustic Model
 
-### Maintenance release 1.18.1 is scheduled for 11/8/2020 between 2pm and 4pm CST.
 
-This release fixes a.o. the following bugs:
-* bug #766: Websocket that returns recognition results is incompatible with OkHttp3
-
-The release also improves the look of transcripts on Transcript+ (beta) page
 
 
 

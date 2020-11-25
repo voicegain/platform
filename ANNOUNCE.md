@@ -1,3 +1,10 @@
+### Maintenance release 1.19.2 is scheduled for 11/25/2020 between 5:30pm and 7pm CST.
+
+This release fixes the following bug:
+* bug #vgp-758: Error when trying to transcribe audio from URL via portal
+
+It also adjusts the CPU and memory settings for a couple of services in order to be able to handle larger loads.
+
 ### Maintenance release 1.19.1 is scheduled for 11/23/2020 between 5:30pm and 7pm CST.
 
 This release fixes the following bug:

@@ -1,3 +1,10 @@
+## Release 1.19.2
+
+This maintenance release fixes the following bug:
+* bug #vgp-758: Error when trying to transcribe audio from URL via portal
+
+It also adjusts the CPU and memory settings for a couple of services in order to be able to handle larger loads.
+
 ## Release 1.19.1
 
 This maintenance release fixes the following bug:

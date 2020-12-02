@@ -252,7 +252,7 @@ public class WebsocketStreamingExample  {
                 .url(wssUrlStr)
                 .build();
 
-        // open websocket for receiving recognition results
+        // open websocket for sending audio data
         WebsocketStreamingExample.MyListener audioListener = new WebsocketStreamingExample.MyListener("audio");
         WebSocket audioWebSocket = audioClient.newWebSocket(audioRequest, audioListener);
 
@@ -264,6 +264,7 @@ public class WebsocketStreamingExample  {
                 .url(outputUrl)
                 .build();
 
+	// open websocket for receiving recognition results
         WebsocketStreamingExample.MyListener resultsListener = new WebsocketStreamingExample.MyListener("result");
         WebSocket resultsWebSocket = resultsClient.newWebSocket(resultsRequest, resultsListener);		
 

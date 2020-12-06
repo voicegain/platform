@@ -47,7 +47,7 @@ import threading
 import nltk
 nltk.download('wordnet')
 
-
+# set this to the number of processing threads you want to run
 THREAD_NUMBER = 1
 
 

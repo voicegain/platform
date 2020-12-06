@@ -58,4 +58,26 @@ class AudioCaptureService {
         .catch((error) => console.error(error));
     }
   };
+
+  static stop = () => {
+    console.debug("Stop audio capture");
+    const { mediaStream, processor, source } = AudioCaptureService;
+    if (AudioCaptureService.isCapturing) {
+      if (
+        mediaStream !== undefined &&
+        processor !== undefined &&
+        source !== undefined
+      ) {
+        processor.disconnect();
+        source.disconnect();
+        mediaStream
+          .getTracks()
+          .forEach((mediaStreamTrack) => mediaStreamTrack.stop());
+        AudioCaptureService.isCapturing = false;
+        AudioCaptureService.mediaStream = undefined;
+        AudioCaptureService.processor = undefined;
+        AudioCaptureService.source = undefined;
+      }
+    }
+  };
 }

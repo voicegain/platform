@@ -1,10 +1,10 @@
 let websocketSendUrl,
   websocketReceiveUrl,
-  websocketReceiveName,
   stompClient,
   jwtToken,
   semiRtSessionid,
-  pollInterval;
+  pollInterval,
+  websocket;
 //Fetch temporary JWT Token and make call to Voicegain API to get websocket URL's
 const connectWebsocket = async () => {
   const audioContext = new AudioContext();
@@ -28,7 +28,7 @@ const connectWebsocket = async () => {
           sessions: [
             {
               asyncMode: "REAL-TIME",
-              websocket: { adHoc: true, minimumDelay: 2000 },
+              websocket: { adHoc: true, minimumDelay: 175, useSTOMP: false },
             },
             {
               asyncMode: "SEMI-REAL-TIME",
@@ -67,15 +67,9 @@ const connectWebsocket = async () => {
             let fetchWebsocketData = await fetchWebsocketResponse.json();
             websocketSendUrl = fetchWebsocketData.audio.stream.websocketUrl;
             websocketReceiveUrl = fetchWebsocketData.sessions[0].websocket.url;
-            websocketReceiveName =
-              fetchWebsocketData.sessions[0].websocket.name;
             semiRtSessionid = fetchWebsocketData.sessions[1].sessionId;
 
-            startMicrophoneCapture(
-              websocketSendUrl,
-              websocketReceiveUrl,
-              websocketReceiveName
-            );
+            startMicrophoneCapture(websocketSendUrl, websocketReceiveUrl);
           }
         } catch (err) {
           window.alert("Unable to start capture.");
@@ -96,26 +90,19 @@ const connectWebsocket = async () => {
 };
 
 //Start audio capturing services using microphone input
-const startMicrophoneCapture = (
-  websocketSendUrl,
-  websocketReceiveUrl,
-  websocketReceiveName
-) => {
+const startMicrophoneCapture = (websocketSendUrl, websocketReceiveUrl) => {
   let stopButton = document.getElementById("stop-capture-button");
   stopButton.disabled = false;
   showCaptureStatus(true);
   AudioCaptureStreamingService.start(websocketSendUrl);
   let words = [];
   // Connect to Websocket to receive data
-  if (stompClient === undefined) {
-    stompClient = new StompJs.Client({
-      brokerURL: websocketReceiveUrl,
-    });
-    stompClient.onConnect = () => {
-      stompClient.subscribe(`/topic/${websocketReceiveName}`, (message) => {
-        const jsonData = JSON.parse(message.body);
+  if (websocket === undefined) {
+    const socket = new WebSocket(websocketReceiveUrl);
+    socket.onopen = () => {
+      socket.addEventListener("message", (event) => {
+        const jsonData = JSON.parse(event.data);
 
-        //Handle corrections/deletions of words
         const interpretTranscriptionMessage = (message) => {
           const isTranscriptionResult = message.hasOwnProperty("utt");
           const isWordCorrection = message.hasOwnProperty("del");
@@ -139,15 +126,16 @@ const startMicrophoneCapture = (
         const result = document.getElementById("transcription-result");
         result.innerHTML = string;
       });
+
+      socket.addEventListener("close", () => {
+        console.log("Websocket closed.");
+        AudioCaptureStreamingService.stop();
+      });
+
+      socket.addEventListener("error", (event) =>
+        console.log("Websocket error:", event)
+      );
     };
-    stompClient.onDisconnect = () => {
-      console.log("...stomp disconnected");
-      AudioCaptureStreamingService.stop();
-    };
-    stompClient.onWebSocketError = () => {
-      console.log("onWebsocketError");
-    };
-    stompClient.activate();
   }
 };
 
@@ -157,9 +145,9 @@ const stopMicrophoneCapture = () => {
   AudioCaptureStreamingService.stop();
   pollTranscript();
   pollInterval = setInterval(() => pollTranscript(), 5000);
-  if (stompClient !== undefined) {
-    stompClient.deactivate();
-    stompClient = undefined;
+  if (websocket !== undefined) {
+    websocket.close();
+    websocket = undefined;
   }
 };
 

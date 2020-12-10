@@ -8,6 +8,7 @@ This folder contains code for a simple Voicebot built using:
 Included files:
 * voicegainIvrOne.js - AWS Lambda function code (node.js)
 
+![Sequence Diagram](./sequence-diagram.png)
 
 ## License ##
 

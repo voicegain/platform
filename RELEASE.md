@@ -1,3 +1,18 @@
+## Release 1.20.0
+
+New features in this release:
+* improved Edge related web UI
+* improved Transcribe UI (#vgp-759 -  multiple enhancements)
+* improvements to API around websockets (performance and resource use)
+* admin tool improvements
+
+#### Bug Fixes and Enhancements
+* bug #rcj-164: Certain WAV files with ulaw encoding not being transcribed
+* bug #vgp-757: Show message when refill attempt fails
+* enhancement #vgp-761: Enable Delete on expired transcription sessions
+* enhancement #rcj-158: Terminate sessions which have not received any audio within 30 seconds of being created
+* enhancement #rcj-157: Terminate real-time sessions with an audio gap of more than 30 seconds
+
 ## Release 1.19.2
 
 This maintenance release fixes the following bug:

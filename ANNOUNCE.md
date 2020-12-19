@@ -1,3 +1,13 @@
+### Minor release 1.21.0 is scheduled for 12/18/2020 between 6pm and 9pm CST.
+
+New features in this release:
+* Telephone Bot API now supports SIP INVITE
+* Transcript table caching in the UI to improve responsiveness
+* Improved how asr.sensitivity is used for start-of-speech detection
+
+Fixes:
+* bug #rcj-179: Hints generating misrecognitions
+
 ### Minor release 1.20.0 is scheduled for 12/14/2020 between 6pm and 9pm CST.
 
 New features in this release:

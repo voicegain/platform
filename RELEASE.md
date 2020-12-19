@@ -1,3 +1,14 @@
+## Release 1.21.0
+
+New features in this release:
+* Telephone Bot API now supports SIP INVITE
+* Transcript table caching in the UI to improve responsiveness
+* Improved how asr.sensitivity is used for start-of-speech detection
+
+Fixes:
+* bug #rcj-179: Hints generating misrecognitions
+* bug #rcj-178: AWS Exception when creating new AIVR app
+
 ## Release 1.20.0
 
 New features in this release:

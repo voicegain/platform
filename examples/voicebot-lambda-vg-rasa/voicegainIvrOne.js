@@ -74,16 +74,16 @@ exports.handler = async (event, context) => {
     const bodyStr = event.body;
     const body = JSON.parse(bodyStr);
     const sid = body.sid; // Voicegain session id
-    const seq = body.sequence; // sequence within single voicegain session
+    const seq = body.sequence; // sequence within single Voicegain session
 
     console.info("method="+method);
     console.info("   sid="+sid);
     
     // local (customer) session id defaults to AWS request id
     let csid = context.awsRequestId;
-    let vuiResult = "ERROR"; // speech recognition status
+    let vuiResult = "ERROR"; // speech recognition status (VUI = voice UI)
 
-    // init response to be sent back to Voicegain 
+    // initialize response to be sent back to Voicegain 
     const respBody = { sid : sid };
     
     if(method == 'POST') { // start of session
@@ -92,7 +92,7 @@ exports.handler = async (event, context) => {
     }
     else if (method == 'PUT') { // mid session
         respBody.sequence = queryParams.seq; // sequence is obtained from query param 
-        csid = queryParams.csid; // customer session id from query param
+        csid = queryParams.csid; // customer session id also from query param
         
         // search voicegain IVR events for input, i.e. answer
         const events = body.events;
@@ -107,7 +107,7 @@ exports.handler = async (event, context) => {
                         vuiResult == "NOMATCH";
                     }
                     else {
-                        const vuiAlt = event.vuiAlternatives[0];
+                        const vuiAlt = event.vuiAlternatives[0]; // pick the top alternative
                         // set message to RASA based on the utterance captured by Voicegain
                         messageForRasa = vuiAlt.utterance; 
                     }
@@ -126,13 +126,16 @@ exports.handler = async (event, context) => {
     respBody.csid = csid;
 
     if(messageForRasa == 'none') {
+        // speech recognition returned no utterance
         if(vuiResult=='NOINPUT') {
+            // generic reprompt in case of no input
             respBody.question = questionData(respBody.sequence, "I did not hear you", "Please speak");
         }
         else if(vuiResult=='NOMATCH') {
+            // generic reprompt in case of no match
             respBody.question = questionData(respBody.sequence, "I did not get it", "Can you say it again");
         }
-        // just return a generic reprompt to VG
+        // just return the generic reprompt to VG
         return new Promise(function(resolve, reject) {
             resolve(responseFromLambda(respBody));
         });
@@ -144,7 +147,7 @@ exports.handler = async (event, context) => {
             // request to be sent to RASA
             let rasaReq = {
                 sender : "voicegain-"+csid, // sender name unique to this session
-                message : messageForRasa // the message for RASA
+                message : messageForRasa // the message for RASA - this is the recognized utterance
             };
             console.info("Message for RASA: "+messageForRasa);
 
@@ -155,7 +158,7 @@ exports.handler = async (event, context) => {
                     return reject(new Error('statusCode=' + res.statusCode));
                 }
                 var body = [];
-                // assemble data received from RASA
+                // assemble http data received from RASA
                 res.on('data', function(chunk) {
                     body.push(chunk);
                 });
@@ -183,6 +186,7 @@ exports.handler = async (event, context) => {
                     if(method=='DELETE') {
                         // acknowledge termination
                         respBody.termination = "normal";
+                        // note: we are ignoring whatever RASA may have returned
                     }
                     else {
                         // for POST or PUT send the data received from RASA
@@ -193,6 +197,7 @@ exports.handler = async (event, context) => {
                 });
             });
             req.on('error', (e) => {
+                // TODO: add error message to say
                 reject(e.message);
             });
             // send the request
@@ -231,9 +236,10 @@ function questionData(sequence, statementPrompt, questionPrompt) {
             questionPrompt : cleanupString(questionPrompt),
             // some standard timeouts
             noInputTimeout : 5000,
-            completeTimeout : 2000
+            // complete timeout may be reduced to give faster responses
+            completeTimeout : 2000 
         },
-        // set the voice
+        // set the voice, can be commented out if the default is to be used
         audioProperties : { voice : "catherine"}
     };
 
@@ -244,7 +250,7 @@ function questionData(sequence, statementPrompt, questionPrompt) {
     return question;
 }
 
-// sometimes RASA message strings have brackets
+// sometimes RASA message strings have brackets, need to remove them
 function cleanupString(str) {
     return str.replace(/[\[\]]/g, '');
 }

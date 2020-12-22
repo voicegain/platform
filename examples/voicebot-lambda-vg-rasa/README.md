@@ -1,12 +1,17 @@
 # Lambda Function Voicebot using Voicegain and RASA #
 
 This folder contains code for a simple Voicebot built using:
-* Voicegain Programmable IVR (RTC-API)
+* Voicegain Telephone Bot API
 * AWS Lambda
 * RASA
 
 Included files:
 * voicegainIvrOne.js - AWS Lambda function code (node.js)
+
+## Sequence diagram
+NOTE: AIVR is the Voicegain internal name for the Service on top of which the Telephone Bot API runs.
+The diagram is very simple, but that was the point of the design behind the Telephone Bot API - to make implementing voice bots very easy.  
+</br>
 
 ![Sequence Diagram](./sequence-diagram.png)
 

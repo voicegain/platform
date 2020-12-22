@@ -51,7 +51,8 @@ const optionsVoicegain =  {
     headers: {
         'Authorization' : 'Bearer <JWT Token Here>',
         'Content-Type': 'application/json'
-     }
+     },
+     timeout: 10000
 }; 
 
 const lambdaCallbackUrl = "https://4mfta9xxxx.execute-api.us-east-2.amazonaws.com/default/androidVoicegainRasa1?seq=";
@@ -99,7 +100,7 @@ exports.handler = async (event, context) => {
     else {
         return handleUnexpectedRequest(method);
     }
-}
+};
 
 // Android callback handler
 // it has two flows
@@ -112,6 +113,10 @@ function handleAndroidRequest(context, queryParams) {
     if(typeof queryParams != 'undefined' && typeof queryParams.seq != 'undefined') {
         // we are already in a session - turn sequence is provided
         sequence = parseInt(queryParams.seq, 10);
+    }
+    else {
+        console.info("Initial Android request");
+        sequence = 0;
     }
     console.info("Sequence: "+sequence);    
 
@@ -140,6 +145,7 @@ function handleAndroidRequest(context, queryParams) {
                 const params = {
                     Bucket: s3bucket,
                     Key: s3key(csid, sequence),
+
                 };
                 s3.waitFor('objectExists', params, function (err, metadata) {  
                     if (err) {  
@@ -197,10 +203,10 @@ function handleAndroidRequest(context, queryParams) {
 function handleRasaThenVG(messageForRasa, vuiResult, resolve, reject) {
     if(messageForRasa == 'none') {
         if(vuiResult=='NOINPUT') {
-            voicegainThenAndroid(resolve, reject, "I did not hear you", "Please speak");
+            voicegainThenAndroid(resolve, reject, "...", "I did not hear you", "Please speak");
         }
         else if(vuiResult=='NOMATCH') {
-            voicegainThenAndroid(resolve, reject, "I did not get it", "Can you say it again");
+            voicegainThenAndroid(resolve, reject, "???", "I did not get it", "Can you say it again");
         }
     }
     else {
@@ -245,7 +251,7 @@ function handleRasaThenVG(messageForRasa, vuiResult, resolve, reject) {
 
                 // make request to Voicegain to start recognition
                 // and the return response to Android
-                voicegainThenAndroid(resolve, reject, statement, question);
+                voicegainThenAndroid(resolve, reject, messageForRasa, statement, question);
 
             });
         });
@@ -264,7 +270,7 @@ function handleRasaThenVG(messageForRasa, vuiResult, resolve, reject) {
 
 // make request to Voicegain to start recognition
 // and the return response to Android
-function voicegainThenAndroid(resolve, reject, statement, question) {
+function voicegainThenAndroid(resolve, reject, youSaidFromVG, statement, question) {
     const vgReq = https.request(optionsVoicegain, (res) => {
         if (res.statusCode < 200 || res.statusCode >= 300) {
             console.warn(`VG error response: `+res.statusCode);
@@ -288,21 +294,30 @@ function voicegainThenAndroid(resolve, reject, statement, question) {
             }
             // process response from voicegain
             // we are looking for websocket url so that Android can stream audio to it
+            const sessions = vgBody.sessions;
+            const session = sessions[0];
+            const sessionId = session.sessionId;
             const audio = vgBody.audio;
             const stream =  audio.stream;
             const websocketUrl = stream.websocketUrl;
 
             console.info("websocketUrl: "+websocketUrl);
             // have resolve return the response to Android
-            resolve(jsonResponseFromLambda( bodyForAndroidResponse(csid, sequence, websocketUrl, statement, question) ));
+            resolve(jsonResponseFromLambda( bodyForAndroidResponse(sessionId, csid, sequence, youSaidFromVG, websocketUrl, statement, question) ));
         });
     });
     vgReq.on('error', (e) => {
         // say the error message and hang up
         resolve(jsonResponseFromLambda( bodyForAndroidErrorResponse("Error invoking Voicegain: "+e.message) ));
     });    
+    vgReq.on('timeout', function () {
+        console.log("timeout! " + (options.timeout / 1000) + " seconds expired");
+        resolve(jsonResponseFromLambda( bodyForAndroidErrorResponse("Timeout invoking Voicegain") ));
+    });
     // send the request
-    vgReq.write(JSON.stringify(bodyForVgRequest(csid, sequence)));
+    const reqToVG = JSON.stringify(bodyForVgRequest(csid, sequence));
+    console.log("request to voicegain: "+reqToVG);
+    vgReq.write(reqToVG);
     vgReq.end();
 
 }
@@ -320,7 +335,7 @@ function bodyForVgRequest(csid, sequence) {
         format : "PCMU",
         rate : 8000,
         channels : "mono",
-        capture : false
+        capture : true
     };
     body.settings = {
         asr : {
@@ -348,16 +363,21 @@ function bodyForAndroidErrorResponse(errMsg) {
 // Generate response for Android which 
 // 1) optionally says something
 // 2) makes a <Connect><Stream> request to Voicegain 
-function bodyForAndroidResponse(csid, sequence, websocketUrl, statementPrompt, questionPrompt) {
+function bodyForAndroidResponse(sessionId, csid, sequence, youSaidFromVG, websocketUrl, statementPrompt, questionPrompt) {
     let body = [];
+    if(typeof youSaidFromVG !== 'undefined') {
+        let youSaid = { youSaid : cleanupString(youSaidFromVG) };
+        body.push(youSaid);
+    }
     if(typeof statementPrompt !== 'undefined') {
         let say = { say : cleanupString(statementPrompt) };
         body.push(say);
     }
     const stream = {
+        vgSid : sessionId,
         url : websocketUrl,
         parameters : [
-            {name : 'bargeIn', value : 'enable'},
+            {name : 'bargeIn', value : 'disable'}, // set to enable after initial testing
             {name : 'voice', value : 'claire'},
             {name : 'prompt01', value : cleanupString(questionPrompt)}
         ]

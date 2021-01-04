@@ -24,7 +24,7 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 “Commitment Term” is that period of the Subscription Term of your SaaS Service during which your Commitment is effective.
 
-“Core Billing Metric” means a resource that is used to is meter usage of the Voicegain platform in order to calculate the fees for a SaaS Service in a Subscription. A SaaS Service may use one or more Core Billing Metrics each of which is measured independently. Some examples of Core Billing Metric are Speech-to-Text Standard, Speech-To-Text Premium, Real-time Session, Storage, Phone Numbers, etc.
+“Core Billing Metric” means a metric used to meter usage of the Voicegain platform resource in order to calculate the fees for a SaaS Service in a Subscription. A SaaS Service may involve use of one or more Core Billing Metrics each of which is measured independently. Some examples of Core Billing Metric are Speech-to-Text Standard, Speech-To-Text Premium, Real-time Session, Storage, Phone Numbers, etc.
 
 “Customer Solution” means an application or any set of applications that you develop and adds primary and significant functionality to SaaS Service and that is not primarily a substitute for the SaaS Service.
 
@@ -42,7 +42,7 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 “Open Source Software” means computer programs that are subject to the Open Source Definition at opensource.org/osd, including any computer programs that are (1) not public domain, (2) subject to some form of intellectual property ownership such as copyright or patent protection, (3) are made freely available at no charge to the general public by their owner, and (4) are licensed pursuant to a written document that may list one or more limitations on how licensees may use, modify and share the programs and derivative works (new versions) of the programs.
 
-"Portal" means the respective web sites for SaaS Services; websites may be at at https://portal.voicegain.ai, https://analytics.voicegain.ai or at an alternate website we identify.
+"Portal" means the respective web sites for SaaS Services; websites may be at at https://console.voicegain.ai, https://analytics.voicegain.ai or at an alternate website we identify.
 
 “Policies” means Resolvity’s current written policies on technical and administrative matters, including the Resolvity Privacy Policy.
 
@@ -62,7 +62,7 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 “Cloud Software” means the Resolvity Software that is hosted by Resolvity in its data center, and operated by Resolvity to process Customer Data.
 
-“Edge Software” means the Resolvity Software that may be installed and run on one or more servers or computers controlled by You to process Customer Data. Edge Software is designed to connect to a Resolvity billing endpoint and is only provided as part of a Subscription. 
+“Edge Software” means the Resolvity Software that may be installed and run on one or more servers or computers controlled by You (including virtual private cloud) to process Customer Data. Edge Software is designed to connect to a Resolvity billing endpoint and is only provided as part of a Subscription. 
 
 “Third Party Software” means Software owned, distributed or operated by third parties.
 

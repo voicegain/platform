@@ -1,7 +1,7 @@
 # Voicegain SaaS Subscription Agreement
 Effective: July 25th, 2019
 
-Last Updated: July 20th, 2020
+Last Updated: Jan 4th, 2021
 
 # 1. Acceptance of Terms
 By signing up for, accessing and using SaaS Services that are owned and operated by Resolvity Inc. ("Resolvity Inc.", “Company”, "Our", "Us", "We"), the entity you represent or if you do not designate an entity you individually (“You”, “Your”) are agreeing to be bound by this Voicegain SaaS Subscription Agreement ("Agreement") that consists of the terms and conditions below.  
@@ -24,7 +24,7 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 “Commitment Term” is that period of the Subscription Term of your SaaS Service during which your Commitment is effective.
 
-“Core Billing Metric” means a resource that is used to is meter usage of the Voicegain platform in order to calculate the fees for a SaaS Service in a Subscription. A SaaS Service may use one or more Core Billing Metrics each of which is measured independently. Some examples of Core Billing Metric are Offline Speech-to-Text, Realtime Speech-To-Text, Session Time, Storage, Phone Numbers, etc.
+“Core Billing Metric” means a resource that is used to is meter usage of the Voicegain platform in order to calculate the fees for a SaaS Service in a Subscription. A SaaS Service may use one or more Core Billing Metrics each of which is measured independently. Some examples of Core Billing Metric are Speech-to-Text Standard, Speech-To-Text Premium, Real-time Session, Storage, Phone Numbers, etc.
 
 “Customer Solution” means an application or any set of applications that you develop and adds primary and significant functionality to SaaS Service and that is not primarily a substitute for the SaaS Service.
 

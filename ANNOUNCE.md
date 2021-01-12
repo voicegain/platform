@@ -1,3 +1,16 @@
+### Minor release 1.22.0 is scheduled for 1/12/2021 between 6pm and 9pm CST.
+
+New features in this release:
+* Recognition API now able to return results using websockets (previously only transcription API was using websockets for results)
+* Added support for simultaneous grammar recognition and large-vocabulary transcription.  
+* Offline Speech Analytics API released (**beta**)
+* Phone calls made to Telephony Bot API now being processed using Speech Analytics in addition to being transcribed
+* Improvements in the Language Model feature
+
+Fixes:
+* bug #rcj-182: certain short audio files (<1.5s) not being transcribed 
+* bug #rcj-180: edits arrive out of order over websocket (issue with ExactTimeCorrectingWordQueue)
+
 ### Minor release 1.21.0 is scheduled for 12/18/2020 between 6pm and 9pm CST.
 
 New features in this release:
@@ -17,25 +30,8 @@ New features in this release:
 * fix to ulaw decoding (bug rcj-164)
 * admin tool improvements
 
-### Maintenance release 1.19.2 is scheduled for 11/25/2020 between 5:30pm and 7pm CST.
+.
 
-This release fixes the following bug:
-* bug #vgp-758: Error when trying to transcribe audio from URL via portal
-
-It also adjusts the CPU and memory settings for a couple of services in order to be able to handle larger loads.
-
-### Maintenance release 1.19.1 is scheduled for 11/23/2020 between 5:30pm and 7pm CST.
-
-This release fixes the following bug:
-* bug #rcj147: Async transcribe result cannot be viewed in cc-app
-
-### Minor release 1.19.0 is scheduled for 11/20/2020 between 6pm and 9pm CST.
-
-New features in this release:
-* Keyword and profanity detection in Transcribe+ page (beta)
-* Ability to choose real-time or off-line acoustic models for single-GPU Edge deployments
-* Delete function added to Transcribe page
-* More accurate real-time acoustic model
 
 
 

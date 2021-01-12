@@ -1,3 +1,16 @@
+## Release 1.22.0
+
+New features in this release:
+* Recognition API now able to return results using websockets (previously only transcription API was using websockets for results)
+* Added support for simultaneous grammar recognition and large-vocabulary transcription.  
+* Offline Speech Analytics API released (**beta**)
+* Phone calls made to Telephony Bot API now being processed using Speech Analytics in addition to being transcribed
+* Improvements in the Language Model feature
+
+Fixes:
+* bug #rcj-182: certain short audio files (<1.5s) not being transcribed 
+* bug #rcj-180: edits arrive out of order over websocket (issue with ExactTimeCorrectingWordQueue)
+
 ## Release 1.21.0
 
 New features in this release:

@@ -3,8 +3,8 @@
 What this code demonstrates:
 * microphone capture in a browser
 * sending captured audio over one websocket
-* receiving transcribed audio over another websocket
-* processing STOMP messages - in `microphone-capture.js` under `//Handle corrections/deletions of words`
+* receiving transcribed text over another websocket
+* processing messages returned from Voicegain - in `microphone-capture.js` under `//Handle corrections/deletions of words`
 * waiting for the transcription to be finalized
 * retrieving complete transcript
 

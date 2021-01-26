@@ -14,6 +14,10 @@ What this code demonstrates:
 
 ![Screenshot of the demo app](./images/demo-offline-transcribe.PNG)
 
+## Prerequisites
+* Account with Voicegain: https://console.voicegain.ai/signup
+* JWT token for authentication: https://support.voicegain.ai/hc/en-us/articles/360028023691-JWT-Authentication
+
 ## Steps to Install and Run ##
 
 1. In the Voicegain Portal add `localhost:8081` to allowed domains (Settings ->  API Security) - this is needed to prevent CORS rejects in the browser

@@ -5,6 +5,10 @@ What this code demonstrates:
 * sending captured audio over one websocket
 * receiving transcribed audio over another websocket
 
+## Prerequisites
+* Account with Voicegain: https://console.voicegain.ai/signup
+* JWT token for authentication: https://support.voicegain.ai/hc/en-us/articles/360028023691-JWT-Authentication
+
 ## Steps to Run ##
 
 1. Install node js - https://nodejs.org/en/download/

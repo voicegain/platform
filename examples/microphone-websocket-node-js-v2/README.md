@@ -22,7 +22,7 @@ The allowed origin must be added in the API Security settings menu under setting
 1. Press save to save the settings.
 
 
-![Example CORS setting in the Web Console](cors.png)*Example CORS setting in the Web Console*
+![Example CORS setting in the Web Console](./cors.png)*Example CORS setting in the Web Console*
 
 ## Steps to Run ##
 
@@ -38,4 +38,4 @@ For Firefox you need to read the actual sample rate and pass it in the body of t
 
 </br>
 
-![Screenshot of the microphone capture app running.](mic-capture.png) *Screenshot of the microphone capture app running.*
+![Screenshot of the microphone capture app running.](./mic-capture.png) *Screenshot of the microphone capture app running.*

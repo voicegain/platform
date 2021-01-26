@@ -27,7 +27,7 @@ The allowed origin must be added in the API Security settings menu under setting
 1. Set JWT and `aud` origin in server.js 
 1. Run command "npm install" in project directory to install dependencies
 1. To start server, run command "node server.js" while in project directory
-1. Open index.html in browser (you can use library http-server also)
+1. Open index.html in browser (you can use http-server from npm to serve the page)
 
 **NOTE:** this example with run on Chrome and latest Edge browsers.
 It will not run on Firefox because of inability to set the audio sample rate.

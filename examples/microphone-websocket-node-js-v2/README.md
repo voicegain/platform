@@ -21,14 +21,21 @@ The allowed origin must be added in the API Security settings menu under setting
 1. In the Allowed Origins settings input, enter the origin on which the index.html page is running on (localhost:8080 etc.)
 1. Press save to save the settings.
 
+
+![Example CORS setting in the Web Console](cors.png)*Example CORS setting in the Web Console*
+
 ## Steps to Run ##
 
 1. Install node js - https://nodejs.org/en/download/
-1. Set JWT and `aud` origin in server.js 
+1. Set JWT and `aud` origin in server.js - `aud` setting has to match the CORS setting made above.
 1. Run command "npm install" in project directory to install dependencies
 1. To start server, run command "node server.js" while in project directory
-1. Open index.html in browser (you can use http-server from npm to serve the page)
+1. Open index.html in browser (you can use `http-server` from npm to serve the page)
 
 **NOTE:** this example with run on Chrome and latest Edge browsers.
 It will not run on Firefox because of inability to set the audio sample rate.
 For Firefox you need to read the actual sample rate and pass it in the body of the request to https://api.voicegain.ai/v1/asr/transcribe/async 
+
+</br>
+
+![Screenshot of the microphone capture app running.](mic-capture.png) *Screenshot of the microphone capture app running.*

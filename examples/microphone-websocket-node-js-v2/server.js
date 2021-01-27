@@ -28,9 +28,8 @@ app.get("/api/jwt", async (req, res) => {
     jwt_token = jwtResponse.body;
     res.send({ jwtToken: jwt_token });
   } catch (err) {
-    alert("Error with JWT authentication.")
-    console.log(err);
-    res.send(err);
+    console.log(err)
+    res.status(err.response.statusCode).send(err.response.body);
   }
 });
 

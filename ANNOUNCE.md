@@ -1,3 +1,9 @@
+### Minor release 1.23.0 is scheduled for 1/27/2021 between 6pm and 9pm CST.
+
+New features in this release:
+* Support for RTP streaming fully tested and working - includes ulaw and L16 audio formats
+* Improved support for simultaneous grammar recognition and large-vocabulary transcription - use of custom language models for large-vocabulary transcription now possible
+
 ### Minor release 1.22.0 is scheduled for 1/12/2021 between 6pm and 9pm CST.
 
 New features in this release:
@@ -21,14 +27,6 @@ New features in this release:
 Fixes:
 * bug #rcj-179: Hints generating misrecognitions
 
-### Minor release 1.20.0 is scheduled for 12/14/2020 between 6pm and 9pm CST.
-
-New features in this release:
-* improved Edge related web UI
-* improved Transcribe UI
-* improvements to API around websockets (performance and resource use)
-* fix to ulaw decoding (bug rcj-164)
-* admin tool improvements
 
 
 

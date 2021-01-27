@@ -1,3 +1,9 @@
+## Release 1.23.0
+
+New features in this release:
+* Support for RTP streaming fully tested and working - includes ulaw and L16 audio formats
+* Improved support for simultaneous grammar recognition and large-vocabulary transcription - use of custom language models for large-vocabulary transcription now possible
+
 ## Release 1.22.0
 
 New features in this release:

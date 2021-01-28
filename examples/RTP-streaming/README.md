@@ -17,3 +17,6 @@ This python script does the following:
 * uses `ffmpeg` to stream audio real-time to RTP ip:port provided in response to opening Voicegain session
 * opens websocket to url provided in response to opening Voicegain session
 * receives messages via websocket and assembles them into transcript which is printed to console
+
+If everything is fine you can expect the following output:
+![Example output](ffmpeg-example-output.PNG) 

@@ -21,5 +21,8 @@ This python script does the following:
 
 NOTE: RTP streaming uses UDP so if the load on your test machine is very high or the connection to internet is indirect (e.g. via VPN) then recognition result may be affected by UDP packet loss.  
 
+Here is a Zendesk article that discusses the various parts for the ffmpeg-rtp-ws.py code:
+https://support.voicegain.ai/hc/en-us/articles/360055973591-Example-of-streaming-audio-via-RTP-and-receiving-result-via-websocket  
+
 If everything is fine you can expect the following output:
 ![Example output](ffmpeg-example-output.PNG) 

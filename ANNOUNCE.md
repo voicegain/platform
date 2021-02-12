@@ -1,3 +1,16 @@
+## Spanish language Speech-to-Text coming soon!
+
+We plan to release a beta of Spanish language Acoustic Model end of February / early March.
+We are now in the process of training on additional data to improve accuracy.
+
+If you are interested in using the Spanish model send us an email at support@voicegain.ai or submit a ticket via Zendesk.
+
+### Maintenance release 1.23.1 is scheduled for 2/12/2021 between 6pm and 9pm CST.
+
+This release has fixes for the following issues:
+* bug #rcj-195: Some short speech audio not being recognized in OFFLINE mode
+* bug #rcj-194: RTP streaming in 8-bit format fails intermittently
+
 ### Minor release 1.23.0 is scheduled for 1/27/2021 between 6pm and 9pm CST.
 
 New features in this release:
@@ -17,15 +30,7 @@ Fixes:
 * bug #rcj-182: certain short audio files (<1.5s) not being transcribed 
 * bug #rcj-180: edits arrive out of order over websocket (issue with ExactTimeCorrectingWordQueue)
 
-### Minor release 1.21.0 is scheduled for 12/18/2020 between 6pm and 9pm CST.
 
-New features in this release:
-* Telephone Bot API now supports SIP INVITE
-* Transcript table caching in the UI to improve responsiveness
-* Improved how asr.sensitivity is used for start-of-speech detection
-
-Fixes:
-* bug #rcj-179: Hints generating misrecognitions
 
 
 

@@ -1,3 +1,11 @@
+## Release 1.23.1
+
+This maintenance release has fixes for the following issues:
+* bug #rcj-195: Some short speech audio not being recognized in OFFLINE mode
+* bug #rcj-194: RTP streaming in 8-bit format fails intermittently
+
+In this release also the accuracy of the real-time and offline acoustic models has been improved.
+
 ## Release 1.23.0
 
 New features in this release:

@@ -1,3 +1,14 @@
+## Release 1.24.0
+
+New features in this release:
+* Spanish language support for off-line transcription. This is beta. Please email us at support@voicegain.ai if you would like Spanish recognizer to be enabled on your account.
+* PII Redaction has been added to Speech Analytics API. Can be used to remove any chosen Named Entities from the audio and the transcript.
+* Added support for 3 more new Named Entities that are recognized: ADDRESS, CC (credit card), and SSN. 
+
+This release has fixes for the following issues:
+* bug #vgp-766: Links to Transcript from Context Dash do not work
+* bug #rcj-196: Microphone transcribe from Web Console is not working on Edge
+
 ## Release 1.23.1
 
 This maintenance release has fixes for the following issues:

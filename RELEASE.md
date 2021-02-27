@@ -1,3 +1,9 @@
+## Release 1.25.0
+
+New features in this release:
+* New Signup - we have simplified it
+* Improved WordCloud - we are using smarter algorithm to generate words and two-word phrases for it. It also now draws faster. 
+
 ## Release 1.24.0
 
 New features in this release:

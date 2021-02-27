@@ -1,4 +1,10 @@
-### Minor release 1.24.0 is scheduled for 1/27/2021 between 3pm and 5pm CST.
+### Minor release 1.25.0 is scheduled for 2/26/2021 between 6pm and 9pm CST.
+
+New features in this release:
+* New Signup - we have simplified it
+* Improved WordCloud - we are using smarter algorithm to generate words and two-word phrases for it. It also now draws faster. 
+
+### Minor release 1.24.0 is scheduled for 2/20/2021 between 3pm and 5pm CST.
 
 New features in this release:
 * Spanish language support for off-line transcription. This is beta. Please email us at support@voicegain.ai if you would like Spanish recognizer to be enabled on your account.

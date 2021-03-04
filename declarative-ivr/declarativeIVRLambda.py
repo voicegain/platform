@@ -2,6 +2,9 @@ import json
 import boto3
 import time
 
+s3BucketName='jacek-lambda-1'
+jsonIvrDefKey='PizzaPizza_3_json_good'
+
 def setErrorResponse(debug,detail,reason):
     errorResponse = {
         "debug":debug,
@@ -92,7 +95,7 @@ def ackOutputFunc(body,declarativeJSON,stateInformation):
     seq = stateInformation["sequence"]
     noInputCount = stateInformation['noInputCount']
     noMatchCount = stateInformation['noMatchCount']
-    vuiResult = stateInformation['vuiResult']
+    vuiResult = stateInformation.get('vuiResult')
     newStateInformation = setNewStateInformation(stateInformation,seq,nextState,noInputCount,noMatchCount,vuiResult)
     elapsed_time = time.time() - t3
     logText = "Time spent in ackOutputFunc is "+str(elapsed_time)+" seconds"
@@ -155,7 +158,16 @@ def inputFunc(body,declarativeJSON,stateInformation):
         vuiResult = stateInformation['vuiResult']
         newStateInformation = setNewStateInformation(stateInformation,seq,currState,noInputCount,noMatchCount,vuiResult)
         statusCode = 200
-        grammarName = declarativeJSON[currState]['grammar'][0]
+        grammars = declarativeJSON[currState]['grammar']
+        finalGrammars = []
+        for gr in grammars:
+            print("gr type of: "+str(type(gr)))
+            if (type(gr) == type("str")):
+                # do a lookup of grammar by name
+                finalGrammars.append( declarativeJSON['GRAMMARS'][gr] )
+            else:
+                # we have the grammar definition already
+                finalGrammars.append( gr ) 
         response = {
             "csid": stateInformation['csid'],
             "sid":stateInformation['sid'],
@@ -168,14 +180,14 @@ def inputFunc(body,declarativeJSON,stateInformation):
                 },
                 "audioResponse":{
                     "bargeIn":declarativeJSON[currState]['bargeIn'],
-                    "grammar":declarativeJSON['GRAMMARS'][grammarName]
+                    "grammar": finalGrammars
                 }
             }
         }
-    except:
+    except Exception as e:
         statusCode = 500
         debug = "Something wrong with the inputFunc"
-        detail = "inputFunc failed execution",
+        detail = "inputFunc failed execution: currState="+currState+" exception="+str(e),
         reason = "Internal error"
         response = setErrorResponse(debug,detail,reason)
         newStateInformation = stateInformation
@@ -506,12 +518,14 @@ def evalFunc(body,declarativeJSON,stateInformation):
     
 #Start here
 def main(event,context):
+    print(str(event))
     t14 = time.time()
     declarativeJSON = getJSON()
     body = json.loads(event['body'])
-    if event['httpMethod'] == 'POST':
+    print('Body: '+str(body))
+    if event['requestContext']['http']['method'] == 'POST':
         state = 'ENTRY'
-        csid = "Cust-"+body['sid']
+        csid = "Cust-"+body['sid'] 
         seq = 0
         stateInformation = {
             "sid":body['sid'],
@@ -530,9 +544,9 @@ def main(event,context):
         print(x)
         return x
 
-    elif event['httpMethod'] == 'PUT': #For all intermediate cases
+    elif event['requestContext']['http']['method'] == 'PUT': #For all intermediate cases
         stateInformation = getS3Content(body)
-        if(stateInformation['vuiResult']=='TO-CONFIRM'):
+        if('TO-CONFIRM' == stateInformation.get('vuiResult')):
             x = mainResponse(ackConfirmationFunc(body,declarativeJSON,stateInformation))
             elapsed_time = time.time() - t14
             logText = "Total time spent is "+str(elapsed_time)+" seconds"
@@ -549,7 +563,7 @@ def main(event,context):
             print(x)
             return x    
     
-    elif event['httpMethod'] == 'DELETE': #When the call ends naturally
+    elif event['requestContext']['http']['method'] == 'DELETE': #When the call ends naturally
         stateInformation = getS3Content(body)
         x = mainResponse(endCall(body,declarativeJSON,stateInformation))
         elapsed_time = time.time() - t14
@@ -571,13 +585,18 @@ def main(event,context):
     
 #Responses with statusCode
 def mainResponse(response):
+    respBodyStr = json.dumps(response)
+    print("Response for VG: "+respBodyStr)
+
     if(response['statusCode']==200): #Default statusCode = 200
         temp = {
             'vars':response['stateInformation']
         }
         response['body'].update(temp)
         return {
-            "body": json.dumps(response['body'])
+            "statusCode":200,
+            "headers" : {'Content-Type': 'application/json'},
+            "body":json.dumps(response['body'])
         }
     else: #Override 200 statusCode
         statusCode = response['statusCode']
@@ -587,6 +606,7 @@ def mainResponse(response):
         response['body'].update(temp)
         return {
             "statusCode":statusCode,
+            "headers" : {'Content-Type': 'application/json'},
             "body":json.dumps(response['body'])
         }
 
@@ -596,13 +616,13 @@ def getS3Content(body):
     stateInformation = body['vars']
     elapsed_time = time.time() - t15
     logText = "Time spent in getS3Content is "+str(elapsed_time)+" seconds"
-    print(logText)
+    print(logText+" -> "+str(stateInformation))
     return stateInformation
 
 #Reads declarativeJSON from #saveS3
 def getJSON():
     t16 = time.time()
-    s3_object = boto3.client('s3').get_object(Bucket='aditya-lambda-bucket-1',Key='pizza-pizza-JSON')
+    s3_object = boto3.client('s3').get_object(Bucket=s3BucketName,Key=jsonIvrDefKey)
     result = json.loads(s3_object['Body'].read().decode('utf-8'))
     elapsed_time = time.time() - t16
     logText = "Time spent in getJSON is "+str(elapsed_time)+" seconds"

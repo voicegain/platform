@@ -1,3 +1,9 @@
+### Maintenance release 1.25.1 is scheduled for 3/9/2021 between 6pm and 9pm CST.
+
+This release has fixes for the following issues:
+* bug #rcj-208: Long audio prompts not played completely in AIVR (Telephone Bot API)
+* bug #rcj-205: TTS preview not working in Web Console
+
 ### Minor release 1.25.0 is scheduled for 2/26/2021 between 6pm and 9pm CST.
 
 New features in this release:

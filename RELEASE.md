@@ -1,3 +1,9 @@
+## Release 1.25.1
+
+This maintenance release has fixes for the following issues:
+* bug #rcj-208: Long audio prompts not played completely in AIVR (Telephone Bot API)
+* bug #rcj-205: TTS preview not working in Web Console
+
 ## Release 1.25.0
 
 New features in this release:

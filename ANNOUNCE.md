@@ -1,3 +1,9 @@
+### Defect
+
+**Sign-up form is currently not functioning.**
+
+ Fix should be available later today. Please visit us later if your intent is to sign up for Voicegain services.
+
 ### Maintenance release 1.25.1 is scheduled for 3/9/2021 between 6pm and 9pm CST.
 
 This release has fixes for the following issues:

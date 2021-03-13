@@ -1,3 +1,9 @@
+
+### Maintenance release 1.25.2 is scheduled for 3/12/2021 between 6:30pm and 9pm CST.
+
+This release fixes the following issue:
+* bug #rcj-212: Creating new account results in NPE. This resolves the sign-up issue reported earlier.
+
 ### Defect
 
 **Sign-up form is currently not functioning.**

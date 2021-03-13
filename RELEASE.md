@@ -1,3 +1,8 @@
+## Release 1.25.2
+
+This maintenance release fixes the following issue:
+* bug #rcj-212: Creating new account results in NPE. This resolves the sign-up issue reported earlier.
+
 ## Release 1.25.1
 
 This maintenance release has fixes for the following issues:

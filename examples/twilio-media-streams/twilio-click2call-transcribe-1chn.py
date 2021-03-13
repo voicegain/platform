@@ -170,6 +170,7 @@ call = client.calls.create(
 
 print("Twilio call sid: "+call.sid, flush=True)
 
+# show progress of the call and terminate when call is "compelted"
 while True:
     call = client.calls(call.sid).fetch()
     print(call.status, flush=True)

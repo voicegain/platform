@@ -1,3 +1,8 @@
+### Maintenance release 1.25.2 is scheduled for 3/12/2021 between 6:30pm and 9pm CST.
+
+This release fixes the following issue:
+* bug #rcj-212: Creating new account results in NPE
+
 ### Maintenance release 1.25.1 is scheduled for 3/9/2021 between 6pm and 9pm CST.
 
 This release has fixes for the following issues:
@@ -21,18 +26,7 @@ This release has fixes for the following issues:
 * bug #vgp-766: Links to Transcript from Context Dash do not work
 * bug #rcj-196: Microphone transcribe from Web Console is not working on Edge
 
-### Maintenance release 1.23.1 is scheduled for 2/12/2021 between 6pm and 9pm CST.
 
-This release has fixes for the following issues:
-* bug #rcj-195: Some short speech audio not being recognized in OFFLINE mode
-* bug #rcj-194: RTP streaming in 8-bit format fails intermittently
-
-
-### Minor release 1.23.0 is scheduled for 1/27/2021 between 6pm and 9pm CST.
-
-New features in this release:
-* Support for RTP streaming fully tested and working - includes ulaw and L16 audio formats
-* Improved support for simultaneous grammar recognition and large-vocabulary transcription - use of custom language models for large-vocabulary transcription now possible
 
 
 

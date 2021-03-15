@@ -9,13 +9,13 @@ from twilio.rest import Client
 # Twilio credentials
 # Your Account Sid and Auth Token from twilio.com/console
 # and set the environment variables. See http://twil.io/secure
-twilio_account_sid = 'AC054c13f4dexxxxxxxxxxxxx4b04f2f710160'
-twilio_auth_token = '51007bf9094exxxxxxxxxxxxxxxxxee973557f46'
+twilio_account_sid = 'AC054c13f4de...............4b04f2f710160'
+twilio_auth_token = '51007bf9094e....................ee973557f46'
 
 # VG credentials
 # voicegain
 # replace with your token obtained from https://console.voicegain.ai
-JWT = "eyJhbGciOiJIxxxxxxxxxxxxxxInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2FwaS5xxxxxxxxxxxxxxxxW4uYWkvdjEiLCJzdWIiOiJhZWRiNjAwxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx2lIAwx0AnhiBwEttD2VHI"
+JWT = "eyJhbGciOiJI.............InR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2Fwa.......................YWkvdjEiLCJzdWIiOiJhZWRiNjA...........................Awx0AnhiBwEttD2VHI"
 vg_api_url="https://api.voicegain.ai/v1/asr/transcribe/async"
 
 
@@ -164,8 +164,8 @@ print(twiml_cmd, flush=True)
 
 call = client.calls.create(
                         twiml=twiml_cmd,
-                        to='+18174002096',
-                        from_='+14694895554'
+                        to='+1817.....96',
+                        from_='+1469.....54'
                     )
 
 print("Twilio call sid: "+call.sid, flush=True)

@@ -1,3 +1,8 @@
+### Minor release 1.26.0 is scheduled for 3/16/2021 between 6pm and 9pm CST.
+
+New features in this release:
+* Support for "stereo" audio in TWIML audio streaming protocol. This allows for real-time transcription of calls made to Twilio Platform - inbound and outbound channels are transcribed individually. Audio capture (recording) for this audio format is also supported.
+
 ### Maintenance release 1.25.2 is scheduled for 3/12/2021 between 6:30pm and 9pm CST.
 
 This release fixes the following issue:

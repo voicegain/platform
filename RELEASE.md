@@ -1,3 +1,8 @@
+## Release 1.26.0
+
+New features in this release:
+* Support for "stereo" audio in TWIML audio streaming protocol. This allows for real-time transcription of calls made to Twilio Platform - inbound and outbound channels are transcribed individually. Audio capture (recording) for this audio format is also supported.
+
 ## Release 1.25.2
 
 This maintenance release fixes the following issue:

@@ -1,14 +1,12 @@
+### Minor release 1.26.0 is scheduled for 3/16/2021 between 6pm and 9pm CST.
+
+New features in this release:
+* Support for "stereo" audio in TWIML audio streaming protocol. This allows for real-time transcription of calls made to Twilio Platform - inbound and outbound channels are transcribed individually. Audio capture (recording) for this audio format is also supported.
 
 ### Maintenance release 1.25.2 is scheduled for 3/12/2021 between 6:30pm and 9pm CST.
 
 This release fixes the following issue:
-* bug #rcj-212: Creating new account results in NPE. This resolves the sign-up issue reported earlier.
-
-### Defect
-
-**Sign-up form is currently not functioning.**
-
- Fix should be available later today. Please visit us later if your intent is to sign up for Voicegain services.
+* bug #rcj-212: Creating new account results in NPE. 
  
  ### Maintenance release 1.25.1 is scheduled for 3/9/2021 between 6pm and 9pm CST.
 

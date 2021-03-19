@@ -1,3 +1,8 @@
+## Release 1.27.0
+
+New features in this release:
+* The signup process has been switched from using 2 emails (one from billing and one for the password set link) to using just a single email - it will contain both the info about the billing account created and the link to set the password. This will make the process simpler and reduce the number of password set emails going to a Spam folder. 
+
 ## Release 1.26.0
 
 New features in this release:
@@ -17,7 +22,7 @@ This maintenance release has fixes for the following issues:
 ## Release 1.25.0
 
 New features in this release:
-* New Signup - we have simplified it
+* New Signup - we have simplified the form
 * Improved WordCloud - we are using smarter algorithm to generate words and two-word phrases for it. It also now draws faster. 
 
 ## Release 1.24.0

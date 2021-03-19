@@ -1,3 +1,8 @@
+### Minor release 1.27.0 is scheduled for 3/19/2021 between 6pm and 9pm CST.
+
+New features in this release:
+* We are switching the signup process from using 2 emails (one from billing and one for the password set link) to using just a single email - it will contain both the info about the billing account created and the link to set the password. This will make the process simpler and reduce the number of password set emails going to a Spam folder. 
+
 ### Minor release 1.26.0 is scheduled for 3/16/2021 between 6pm and 9pm CST.
 
 New features in this release:
@@ -17,19 +22,10 @@ This release has fixes for the following issues:
 ### Minor release 1.25.0 is scheduled for 2/26/2021 between 6pm and 9pm CST.
 
 New features in this release:
-* New Signup - we have simplified it
+* New Signup - we have simplified the form
 * Improved WordCloud - we are using smarter algorithm to generate words and two-word phrases for it. It also now draws faster. 
 
-### Minor release 1.24.0 is scheduled for 2/20/2021 between 3pm and 5pm CST.
 
-New features in this release:
-* Spanish language support for off-line transcription. This is beta. Please email us at support@voicegain.ai if you would like Spanish recognizer to be enabled on your account.
-* PII Redaction has been added to Speech Analytics API. Can be used to remove any chosen Named Entities from the audio and the transcript.
-* Added support for 3 more new Named Entities that are recognized: ADDRESS, CC (credit card), and SSN. 
-
-This release has fixes for the following issues:
-* bug #vgp-766: Links to Transcript from Context Dash do not work
-* bug #rcj-196: Microphone transcribe from Web Console is not working on Edge
 
 
 

@@ -1,0 +1,175 @@
+---
+DEFAULTS:
+  prefixes:
+    noInput:
+    - Sorry, I did not hear it.
+    - Sorry, I still did not hear it.
+    noMatch:
+    - Sorry, I did not get it.
+    - Sorry, I still did not get it.
+  repromtOnDisconfirm: Sorry, let's try again.
+  thresholds:
+    confirmation: 0.75
+GRAMMARS:
+  ## will callee participate
+  participate:
+    type: JJSGF
+    parameters:
+      tag-format: semantics/1.0-literals
+    grammar: participate
+    public:
+      root: "(<now> {now}) | (<later> {later}) | (<never> {never})"
+    rules:
+      now: "(yes [participate] [now]) | ([participate] now)"
+      later: "(later)"
+      never: "(no) | (never)"
+  ## answer to the question about satisfaction
+  satisfactionLevel:
+    type: JJSGF
+    parameters:
+      tag-format: semantics/1.0-literals
+    grammar: satisfied
+    public:
+      vDisSat: "(somewhat dissatisfied)"
+      root: "(<vSat> {very_satisfied}) | (<sSat> {somewhat_satisfied}) | (<neither> {neither}) | (<sDisSat> {somewhat_dissatisfied}) | (<vDisSat> {very_dissatisfied})"
+    rules:
+      vSat: "(very satisfied)"
+      sSat: "([somewhat] satisfied)"
+      neither: "(neither [satisfied] [nor | or] [dissatisfied]) | (middle [one])"
+      sDisSat: "(somewhat dissatisfied)"
+      vDisSat: "([very] dissatisfied)"
+  ## answer to question about Santa eating cookies
+  yesNoCookies:
+    type: JJSGF
+    parameters:
+      tag-format: semantics/1.0-literals
+    grammar: ateAllCookies
+    public:
+      root: "(<yes> {yes}) | (<no> {no})"
+    rules:
+      yes: "(yes [he] [ate [them]] [all])"
+      no: "(no [he didn't [eat them [all]]])" 
+  ## Order Number grammar
+  orderNumber:
+    type: JJSGF
+    grammar: order-number
+    public:
+      root: "(<digit> {d1=rules.digit.d;}) (<digit> {d2=rules.digit.d;}) (<digit>
+        {d3=rules.digit.d;}) (<digit> {d4=rules.digit.d;}) (<digit> {d5=rules.digit.d;})
+        {out.num=d1+d2+d3+d4+d5;}"
+    rules:
+      digit: "(zero {out.d='0';}) | (one {out.d='1';}) | (two {out.d='2';})   | (three
+        {out.d='3';}) | (four {out.d='4';})  | (five {out.d='5';}) | (six {out.d='6';})
+        | (seven {out.d='7';}) | (eight {out.d='8';}) | (nine {out.d='9';})"
+ENTRY:
+  type: VOID
+  voice: catherine
+  next: Welcome
+ERROR:
+  type: DISCONNECT
+  voice: catherine
+  prompt: Sorry, there was an error. Please call back later
+  reason: ERROR
+Welcome:
+  type: OUTPUT
+  voice: catherine
+  prompt: |
+    Hello, this is a call from Santa North Pole, LLC. 
+    We would like to ask you a few questions regarding your satisfaction with the recent visit from Santa. 
+    It will not take more than two minutes.  
+  next: AgreeToParticipate
+AgreeToParticipate:
+  type: INPUT
+  name: agreeToParticipate
+  voice: catherine
+  prompt: 'Would you like to participate now, or would you rather have us call you later.'
+  bargeIn: true
+  grammar: 
+  - participate
+  noInputMax: 1
+  noMatchMax: 1
+  confirmation:
+    threshold: 0.33
+    prompt: "Was it: ${agreeToParticipate} ?"
+  fail: CallHealth
+  next: ParticipateDecision  
+ParticipateDecision:
+  type: EVAL
+  eval: "'${agreeToParticipate}'"
+  case:
+  - expr: "'${1}'=='now'"
+    next: ParticipateNow
+  - expr: "'${1}'=='later'"
+    next: ParticipateLater
+  next: ParticipateNever
+ParticipateNow:
+  type: OUTPUT
+  voice: catherine
+  prompt: Great, let's start then.
+  next: StartSurvey
+ParticipateLater:
+  type: OUTPUT
+  voice: catherine
+  prompt: Ok, we will call you back later.
+  next: GoodBye
+ParticipateNever:
+  type: OUTPUT
+  voice: catherine
+  prompt: Sorry to hear that.
+  next: GoodBye
+StartSurvey:
+  type: OUTPUT
+  voice: catherine
+  prompt: | 
+    Okay, I will ask you three questions. 
+    Unless instructed otherwise, the questions expect answers on a scale ranging from very satisfied, 
+    through somewhat satisfied, neither satisfied nor dissatisfied, somewhat dissatisfied, to very dissatisfied. 
+  next: QuestionOne
+QuestionOne:
+  type: INPUT
+  name: questionOne
+  voice: catherine
+  prompt: 'On a scale just mentioned, how satisfied are you with the presents that Santa delivered.'
+  bargeIn: true
+  grammar: 
+  - satisfactionLevel
+  noInputMax: 2
+  noMatchMax: 2
+  confirmation:
+    threshold: 0.33
+    prompt: That was ${questionOne}, correct?
+  fail: CallHealth
+  next: QuestionTwo
+QuestionTwo:
+  type: INPUT
+  name: questionTwo
+  voice: catherine
+  prompt: 'Did Santa eat all of the cookies?'
+  bargeIn: true
+  grammar: 
+  - yesNoCookies
+  noInputMax: 2
+  noMatchMax: 2
+  confirmation:
+    threshold: 0.33
+    prompt: You answered ${questionTwo}, correct?
+  fail: CallHealth
+  next: QuestionThree
+QuestionThree:
+  type: INPUT
+  name: questionThree
+  voice: catherine
+  prompt: 'If there is anything else you would like to add to this survey, you can say it now'
+  bargeIn: true
+  fail: CallHealth
+  next: GoodBye        
+GoodBye:
+  type: DISCONNECT
+  voice: catherine
+  prompt: Thank you for your time, goodbye.
+  reason: NORMAL
+CallHealth:
+  type: DISCONNECT
+  voice: catherine
+  prompt: I have trouble understanding you. Please call back later
+  reason: CALL-HEALTH

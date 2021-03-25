@@ -164,10 +164,15 @@ To configure and run the IVR you need:
 * A Phone App configured via Voicegain Web Console
 * A phone number, e.g. from Twilio or SignalWire
   * You can also purchase a phone number from Voicegain, but currently we do no support outbound calling
+  * If you are using Twilio or SignalWire you will have to plug Voicegain SIP URI (see image below) into those platforms, for example see: `twilio-dial-outbound.py`
 * Account with AWS
     * You will use AWS Lambda to host the python script that interprets the declarative IVR.
     * S3 will be used to host the configuration script. 
     * Note: You could also modify the script to run on your own server (the script is under MIT License) and you also can host the script elsewhere (just need to modify the code that retrieves it).
 * The YAML file where you put your IVR definition
+
+You need to tie the Voicegain Phone App to the Lambda function url using the callback URL, see image below. Note, in the image we have a DNIS defined - if you are using Twilio or SignalWire this is not needed.
+
+![Phone App Configuration](AIVR-App-Config.PNG)
 
 Note: currently the declarativeIVRLambda.py can read only json, so you will need to convert YAML to JSON before deployment. (Lambda does not natively support libraries for YAML->JSON conversion.)

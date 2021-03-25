@@ -1,9 +1,12 @@
 import json
 import boto3
 import time
+from string import Template 
 
 s3BucketName='jacek-lambda-1'
-jsonIvrDefKey='PizzaPizza_3_json_good'
+#jsonIvrDefKey='PizzaPizza_3_json_good'
+jsonIvrDefKey='outbound-survey-ivr_json_10'
+declarativeJSON = {}
 
 def setErrorResponse(debug,detail,reason):
     errorResponse = {
@@ -16,15 +19,25 @@ def setErrorResponse(debug,detail,reason):
     return errorResponse
 
 def setNewStateInformation(stateInformation,seq,nextState,noInputCount,noMatchCount,vuiResult):
-    newStateInformation = {
-        "sid":stateInformation['sid'],
-        "csid":stateInformation['csid'],
-        "sequence":seq,
-        "state":nextState,
-        "noInputCount":noInputCount,
-        "noMatchCount":noMatchCount,
-        "vuiResult":vuiResult
-    }
+    newStateInformation =  stateInformation
+    # newStateInformation = {
+    #     "sid":stateInformation['sid'],
+    #     "csid":stateInformation['csid'],
+    #     "sequence":seq,
+    #     "state":nextState,
+    #     "noInputCount":noInputCount,
+    #     "noMatchCount":noMatchCount,
+    #     "vuiResult":vuiResult
+    # }
+    
+    # let's merge instead
+    
+    newStateInformation['sequence'] = seq
+    newStateInformation['state'] = nextState
+    newStateInformation['noInputCount'] = noInputCount
+    newStateInformation['noMatchCount'] = noMatchCount
+    newStateInformation['vuiResult'] = vuiResult
+    
     return newStateInformation
 
 def finalResponse(statusCode,response,newStateInformation):
@@ -36,7 +49,7 @@ def finalResponse(statusCode,response,newStateInformation):
 
 
 #VOID is simply a connecting function
-def voidFunc(body,declarativeJSON,stateInformation):
+def voidFunc(body,stateInformation):
     t1 = time.time()
     currState = stateInformation["state"]
     nextState = declarativeJSON[currState]["next"]
@@ -49,10 +62,10 @@ def voidFunc(body,declarativeJSON,stateInformation):
     elapsed_time = time.time() - t1
     logText = "Time spent in voidFunc is "+str(elapsed_time)+" seconds"
     print(logText)
-    return getNormalFuncs(funcType,body,declarativeJSON,newStateInformation)
+    return getNormalFuncs(funcType,body,newStateInformation)
 
 #This function handles OUTPUT states and returns response to Voicegain
-def outputFunc(body,declarativeJSON,stateInformation):
+def outputFunc(body,stateInformation):
     t2 = time.time()
     try:
         currState = stateInformation["state"]
@@ -74,10 +87,10 @@ def outputFunc(body,declarativeJSON,stateInformation):
                 }
             }
         }
-    except:
+    except Exception as e:
         statusCode = 500
         debug = "Something wrong with the outputFunc"
-        detail = "outputFunc failed execution",
+        detail = "outputFunc failed execution: exception="+str(e)
         reason = "Internal error"
         response = setErrorResponse(debug,detail,reason)
         newStateInformation = stateInformation
@@ -87,10 +100,10 @@ def outputFunc(body,declarativeJSON,stateInformation):
     return finalResponse(statusCode,response,newStateInformation)
 
 #This function acknowledges the completion of OUTPUT states
-def ackOutputFunc(body,declarativeJSON,stateInformation):
+def ackOutputFunc(body,stateInformation):
     t3 = time.time()
     currState = stateInformation['state']
-    nextState = declarativeJSON[currState]['next']
+    nextState = getNextState(currState)
     funcType = declarativeJSON[nextState]['type']
     seq = stateInformation["sequence"]
     noInputCount = stateInformation['noInputCount']
@@ -100,10 +113,10 @@ def ackOutputFunc(body,declarativeJSON,stateInformation):
     elapsed_time = time.time() - t3
     logText = "Time spent in ackOutputFunc is "+str(elapsed_time)+" seconds"
     print(logText)
-    return getNormalFuncs(funcType,body,declarativeJSON,newStateInformation)
+    return getNormalFuncs(funcType,body,newStateInformation)
 
 #This function handles INPUT states    
-def inputFunc(body,declarativeJSON,stateInformation):
+def inputFunc(body,stateInformation):
     
     t4 = time.time()
     currState = stateInformation['state']
@@ -132,7 +145,7 @@ def inputFunc(body,declarativeJSON,stateInformation):
             noMatchCount = stateInformation['noMatchCount']
             vuiResult = 'ERROR'
             newStateInformation = setNewStateInformation(stateInformation,seq,nextState,noInputCount,noMatchCount,vuiResult)
-            return getNormalFuncs(funcType,body,declarativeJSON,newStateInformation)
+            return getNormalFuncs(funcType,body,newStateInformation)
     
     #If it is NOINPUT
     elif(stateInformation['vuiResult']=='NOINPUT'):
@@ -149,7 +162,7 @@ def inputFunc(body,declarativeJSON,stateInformation):
             noMatchCount = stateInformation['noMatchCount']
             vuiResult = 'ERROR'
             newStateInformation = setNewStateInformation(stateInformation,seq,nextState,noInputCount,noMatchCount,vuiResult)
-            return getNormalFuncs(funcType,body,declarativeJSON,newStateInformation)
+            return getNormalFuncs(funcType,body,newStateInformation)
     
     #First time entry of INPUT state
     else:
@@ -158,32 +171,50 @@ def inputFunc(body,declarativeJSON,stateInformation):
         vuiResult = stateInformation['vuiResult']
         newStateInformation = setNewStateInformation(stateInformation,seq,currState,noInputCount,noMatchCount,vuiResult)
         statusCode = 200
-        grammars = declarativeJSON[currState]['grammar']
-        finalGrammars = []
-        for gr in grammars:
-            print("gr type of: "+str(type(gr)))
-            if (type(gr) == type("str")):
-                # do a lookup of grammar by name
-                finalGrammars.append( declarativeJSON['GRAMMARS'][gr] )
-            else:
-                # we have the grammar definition already
-                finalGrammars.append( gr ) 
-        response = {
-            "csid": stateInformation['csid'],
-            "sid":stateInformation['sid'],
-            "sequence":seq,
-            "question":{
-                "name":declarativeJSON[currState]['name'],
-                "text":text,
-                "audioProperties":{
-                    "voice":declarativeJSON[currState]['voice']
-                },
-                "audioResponse":{
-                    "bargeIn":declarativeJSON[currState]['bargeIn'],
-                    "grammar": finalGrammars
+        grammars = declarativeJSON[currState].get('grammar')
+        if(grammars is not None):
+            finalGrammars = []
+            for gr in grammars:
+                print("gr type of: "+str(type(gr)))
+                if (type(gr) == type("str")):
+                    # do a lookup of grammar by name
+                    finalGrammars.append( declarativeJSON['GRAMMARS'][gr] )
+                else:
+                    # we have the grammar definition already
+                    finalGrammars.append( gr ) 
+            response = {
+                "csid": stateInformation['csid'],
+                "sid":stateInformation['sid'],
+                "sequence":seq,
+                "question":{
+                    "name":declarativeJSON[currState]['name'],
+                    "text":text,
+                    "audioProperties":{
+                        "voice":declarativeJSON[currState]['voice']
+                    },
+                    "audioResponse":{
+                        "bargeIn":declarativeJSON[currState]['bargeIn'],
+                        "grammar": finalGrammars
+                    }
                 }
             }
-        }
+        else:
+            # no grammar - means large vocabulary recognition
+            response = {
+                "csid": stateInformation['csid'],
+                "sid":stateInformation['sid'],
+                "sequence":seq,
+                "question":{
+                    "name":declarativeJSON[currState]['name'],
+                    "text":text,
+                    "audioProperties":{
+                        "voice":declarativeJSON[currState]['voice']
+                    },
+                    "audioResponse":{
+                        "bargeIn":declarativeJSON[currState]['bargeIn']
+                    }
+                }
+            }            
     except Exception as e:
         statusCode = 500
         debug = "Something wrong with the inputFunc"
@@ -197,26 +228,32 @@ def inputFunc(body,declarativeJSON,stateInformation):
     return finalResponse(statusCode,response,newStateInformation)
 
 def  getConfidence(declarativeJSON,currState):
-    if(declarativeJSON[currState]['confirmation'].get('threshold')==None):
+    if(declarativeJSON[currState].get('confirmation')==None
+    or declarativeJSON[currState]['confirmation'].get('threshold')==None):
         return declarativeJSON['DEFAULTS']['thresholds']['confirmation']
     return declarativeJSON[currState]['confirmation']['threshold']
 
-#This function acknowledges the completion of INPUT states    
-def ackInputFunc(body,declarativeJSON,stateInformation):
+#This function handles the callback from INPUT     
+def ackInputFunc(body,stateInformation):
     
     t5 = time.time()
     currState = stateInformation['state']
     if(body['events'][1]['vuiResult'] == 'MATCH'):
         minConfidence = getConfidence(declarativeJSON,currState)
-        if(body['events'][1]['vuiAlternatives'][0]['confidence']>minConfidence or body['events'][1]['vuiAlternatives'][0].get('confidence')==None):
+        recoConf = body['events'][1]['vuiAlternatives'][0].get('confidence')
+        grmrName = body['events'][1]['vuiAlternatives'][0].get('grammar')
+        # we confirm only grammar recognition
+        if((grmrName is not None) and ((recoConf is None) or recoConf<minConfidence)):
+            # need to confirm
+            return confirmationFunc(body,stateInformation)            
+        else:
             #This is executed if it's a match with confidence above threshold
-            nextState = declarativeJSON[currState]['next']
+            print("Recognition with High confidence")
+            nextState = getNextState(currState)
             funcType = declarativeJSON[nextState]['type']
             seq = stateInformation["sequence"]
             newStateInformation = setNewStateInformation(stateInformation,seq,nextState,0,0,None)
             #keys in state information are set to 0 and None (basically reset) so that inputFunc starts fresh when next INPUT comes in
-        else:
-            return confirmationFunc(body,declarativeJSON,stateInformation)
     
     elif(body['events'][1]['vuiResult'] == 'NOMATCH'): 
     #vuiResult set to NOMATCH, state remains currState, goes back to inputFunc and increments noMatch count   
@@ -250,10 +287,10 @@ def ackInputFunc(body,declarativeJSON,stateInformation):
     elapsed_time = time.time() - t5
     logText = "Time spent in ackInputFunc is "+str(elapsed_time)+" seconds"
     print(logText)
-    return getNormalFuncs(funcType,body,declarativeJSON,newStateInformation)
+    return getNormalFuncs(funcType,body,newStateInformation)
 
 #This function confirms the input from ackInput function
-def confirmationFunc(body,declarativeJSON,stateInformation):
+def confirmationFunc(body,stateInformation):
     t6 = time.time()
     try:
         currState = stateInformation['state']
@@ -281,9 +318,9 @@ def confirmationFunc(body,declarativeJSON,stateInformation):
                 }
             }
         }
-    except:
+    except Exception as e:
         statusCode = 500
-        debug = "Something wrong with the confirmationFunc"
+        debug = "Something wrong with the confirmationFunc: exception="+str(e)
         detail = "confirmationFunc failed execution",
         reason = "Internal error"
         response = setErrorResponse(debug,detail,reason)
@@ -294,13 +331,13 @@ def confirmationFunc(body,declarativeJSON,stateInformation):
     return finalResponse(statusCode,response,newStateInformation)
 
 #This function acknowledges confirmation function    
-def ackConfirmationFunc(body,declarativeJSON,stateInformation):
+def ackConfirmationFunc(body,stateInformation):
 
     t7 = time.time()
     currState = stateInformation['state']
     varName = declarativeJSON[currState]['name']+".MEANING"
     if((body['events'][1]['vuiResult'] == 'MATCH') and body['vars'][varName] == "true"): 
-        nextState = declarativeJSON[currState]['next']
+        nextState = getNextState(currState)
         funcType = declarativeJSON[nextState]['type']
         seq = stateInformation["sequence"]
         noInputCount = stateInformation['noInputCount']
@@ -317,10 +354,10 @@ def ackConfirmationFunc(body,declarativeJSON,stateInformation):
     elapsed_time = time.time() - t7
     logText = "Time spent in ackConfirmation is "+str(elapsed_time)+" seconds"
     print(logText)
-    return getNormalFuncs(funcType,body,declarativeJSON,newStateInformation)
+    return getNormalFuncs(funcType,body,newStateInformation)
 
 #This function disconnects the call from server side
-def disconnectFunc(body,declarativeJSON,stateInformation):
+def disconnectFunc(body,stateInformation):
     
     t8 = time.time()
     try:
@@ -345,9 +382,9 @@ def disconnectFunc(body,declarativeJSON,stateInformation):
                 "reason":declarativeJSON[currState]['reason']
             }
         }
-    except:
+    except Exception as e:
         statusCode = 500
-        debug = "Something wrong with the disconnectFunc"
+        debug = "Something wrong with the disconnectFunc: exception="+str(e)
         detail = "disconnectFunc failed execution",
         reason = "Internal error"
         response = setErrorResponse(debug,detail,reason)
@@ -358,7 +395,7 @@ def disconnectFunc(body,declarativeJSON,stateInformation):
     return finalResponse(statusCode,response,newStateInformation)
 
 #This function handles TRANSFER states    
-def transferFunc(body,declarativeJSON,stateInformation):
+def transferFunc(body,stateInformation):
 
     t9 = time.time()
     try:
@@ -384,9 +421,9 @@ def transferFunc(body,declarativeJSON,stateInformation):
                 "phone":declarativeJSON[currState]['prompt']
             }
         }
-    except:
+    except Exception as e:
         statusCode = 500
-        debug = "Something wrong with the transferFunc"
+        debug = "Something wrong with the transferFunc: exception="+str(e)
         detail = "transferFunc failed execution",
         reason = "Internal error"
         response = setErrorResponse(debug,detail,reason)
@@ -397,7 +434,7 @@ def transferFunc(body,declarativeJSON,stateInformation):
     return finalResponse(statusCode,response,newStateInformation)
     
 #This function acknowledges the completion of Transfer states    
-def ackTransferFunc(body,declarativeJSON,stateInformation):
+def ackTransferFunc(body,stateInformation):
 
     t10 = time.time()
     try:
@@ -423,10 +460,10 @@ def ackTransferFunc(body,declarativeJSON,stateInformation):
             noMatchCount = stateInformation['noMatchCount']
             vuiResult = stateInformation['vuiResult']
             newStateInformation = setNewStateInformation(stateInformation,seq,nextState,noInputCount,noMatchCount,vuiResult)
-            return getNormalFuncs(funcType,body,declarativeJSON,newStateInformation)
-    except:
+            return getNormalFuncs(funcType,body,newStateInformation)
+    except Exception as e:
         statusCode = 500
-        debug = "Something wrong with the transferFunc"
+        debug = "Something wrong with the ack transferFunc: exception="+str(e)
         detail = "transferFunc failed execution",
         reason = "Internal error"
         response = setErrorResponse(debug,detail,reason)
@@ -441,7 +478,7 @@ def ackTransferFunc(body,declarativeJSON,stateInformation):
     }
         
 #When DELETE request comes in    
-def endCall(body,declarativeJSON,stateInformation):
+def endCall(body,stateInformation):
 
     t11 = time.time()
     try:
@@ -452,9 +489,9 @@ def endCall(body,declarativeJSON,stateInformation):
             "sequence":int(stateInformation['sequence'])+1,
             "termination":"normal"
         }
-    except:
+    except Exception as e:
         statusCode = 500
-        debug = "Something wrong with the endCall"
+        debug = "Something wrong with the endCall: exception="+str(e)
         detail = "endCall failed execution",
         reason = "Internal error"
         response = setErrorResponse(debug,detail,reason)
@@ -465,22 +502,29 @@ def endCall(body,declarativeJSON,stateInformation):
     return finalResponse(statusCode,response,newStateInformation)
 
 def checkExpr(expr,ans):
-
+    
     t12 = time.time()
     expr = expr.replace('${1}',ans)
     x = eval(expr)
     elapsed_time = time.time() - t12
-    logText = "Time spent in checkExpr is "+str(elapsed_time)+" seconds"
+    logText = "Expr: "+expr+" evaluated to "+str(x)+" :Time spent in checkExpr is "+str(elapsed_time)+" seconds"
     print(logText)
     return x
 
 #To be further implemented by developer
-def evalFunc(body,declarativeJSON,stateInformation):
+def evalFunc(body,stateInformation):
     t13 = time.time()
     try:
         currState = stateInformation['state']
-        ans = body['vars']['mainChoice']
-        ans = "'"+ans+"'"
+        evalExpr = declarativeJSON[currState]['eval']
+        print("Eval "+currState+": expr="+evalExpr)
+        templ = Template(evalExpr)
+        print("State: "+json.dumps(stateInformation))
+        afterSubst = templ.safe_substitute(**stateInformation)
+        print("After substitution: "+afterSubst)
+        ans = eval(afterSubst)
+        ##ans = "'"+ans+"'"
+        print("Eval result: "+str(ans))
         length = len(declarativeJSON[currState]['case'])
         for i in range(length):
             if(checkExpr(declarativeJSON[currState]['case'][i]['expr'],ans)):
@@ -491,9 +535,9 @@ def evalFunc(body,declarativeJSON,stateInformation):
                 noMatchCount = stateInformation['noMatchCount']
                 vuiResult = stateInformation['vuiResult']
                 newStateInformation = setNewStateInformation(stateInformation,seq,nextState,noInputCount,noMatchCount,vuiResult)
-                return getNormalFuncs(funcType,body,declarativeJSON,newStateInformation)
+                return getNormalFuncs(funcType,body,newStateInformation)
         #If none of the expressions are satisfied, flow control reachs here
-        nextState = declarativeJSON[currState]['next'] 
+        nextState = getNextState(currState) 
         funcType = declarativeJSON[nextState]['type']
         seq = stateInformation["sequence"]
         noInputCount = stateInformation['noInputCount']
@@ -503,10 +547,10 @@ def evalFunc(body,declarativeJSON,stateInformation):
         elapsed_time = time.time() - t13
         logText = "Time spent in evalFunc is "+str(elapsed_time)+" seconds"
         print(logText)
-        return getNormalFuncs(funcType,body,declarativeJSON,newStateInformation)
-    except:
+        return getNormalFuncs(funcType,body,newStateInformation)
+    except Exception as e:
         statusCode = 500
-        debug = "Something wrong with the evalFunc"
+        debug = "Something wrong with the evalFunc: exception="+str(e)
         detail = "evalFunc failed execution",
         reason = "Internal error"
         response = setErrorResponse(debug,detail,reason)
@@ -520,10 +564,11 @@ def evalFunc(body,declarativeJSON,stateInformation):
 def main(event,context):
     print(str(event))
     t14 = time.time()
-    declarativeJSON = getJSON()
+    getJSON()
     body = json.loads(event['body'])
     print('Body: '+str(body))
     if event['requestContext']['http']['method'] == 'POST':
+        print('POST')
         state = 'ENTRY'
         csid = "Cust-"+body['sid'] 
         seq = 0
@@ -537,7 +582,7 @@ def main(event,context):
             "vuiResult": None
         }
         funcType = declarativeJSON[state]['type']
-        x = mainResponse(getNormalFuncs(funcType,body,declarativeJSON,stateInformation))
+        x = mainResponse(getNormalFuncs(funcType,body,stateInformation))
         elapsed_time = time.time() - t14
         logText = "Total time spent is "+str(elapsed_time)+" seconds"
         print(logText)
@@ -545,9 +590,11 @@ def main(event,context):
         return x
 
     elif event['requestContext']['http']['method'] == 'PUT': #For all intermediate cases
-        stateInformation = getS3Content(body)
+        print('PUT')
+        stateInformation = getStateVars(body)
         if('TO-CONFIRM' == stateInformation.get('vuiResult')):
-            x = mainResponse(ackConfirmationFunc(body,declarativeJSON,stateInformation))
+            print('need to confirm')
+            x = mainResponse(ackConfirmationFunc(body,stateInformation))
             elapsed_time = time.time() - t14
             logText = "Total time spent is "+str(elapsed_time)+" seconds"
             print(logText)
@@ -556,7 +603,8 @@ def main(event,context):
         else:    
             state = stateInformation['state']
             funcType = declarativeJSON[state]['type']
-            x = mainResponse(getAckFuncs(funcType,body,declarativeJSON,stateInformation))
+            print('function type: '+funcType)
+            x = mainResponse(getAckFuncs(funcType,body,stateInformation))
             elapsed_time = time.time() - t14
             logText = "Total time spent is "+str(elapsed_time)+" seconds"
             print(logText)
@@ -564,8 +612,9 @@ def main(event,context):
             return x    
     
     elif event['requestContext']['http']['method'] == 'DELETE': #When the call ends naturally
-        stateInformation = getS3Content(body)
-        x = mainResponse(endCall(body,declarativeJSON,stateInformation))
+        print('DELETE')
+        stateInformation = getStateVars(body)
+        x = mainResponse(endCall(body,stateInformation))
         elapsed_time = time.time() - t14
         logText = "Total time spent is "+str(elapsed_time)+" seconds"
         print(logText)
@@ -573,6 +622,7 @@ def main(event,context):
         return x
     
     else:
+        print('UNKNOWN')
         debug = "Invalid HTTP Request (Invalid Method) received at backend"
         detail = "Invalid HTTP Method",
         reason = "Invalid request"
@@ -585,6 +635,10 @@ def main(event,context):
     
 #Responses with statusCode
 def mainResponse(response):
+    ## workaround - but we do not need to pass SIP headers back
+    if(response['stateInformation'].get('sip') is not None ):
+        response['stateInformation']['sip'] = None
+        
     respBodyStr = json.dumps(response)
     print("Response for VG: "+respBodyStr)
 
@@ -611,38 +665,36 @@ def mainResponse(response):
         }
 
 #Return JSON stored in #saveS3 - all the information about state    
-def getS3Content(body):
-    t15 = time.time()
+def getStateVars(body):
     stateInformation = body['vars']
-    elapsed_time = time.time() - t15
-    logText = "Time spent in getS3Content is "+str(elapsed_time)+" seconds"
-    print(logText+" -> "+str(stateInformation))
+    print("State Vars -> "+str(stateInformation))
     return stateInformation
 
 #Reads declarativeJSON from #saveS3
 def getJSON():
+    global declarativeJSON
     t16 = time.time()
     s3_object = boto3.client('s3').get_object(Bucket=s3BucketName,Key=jsonIvrDefKey)
-    result = json.loads(s3_object['Body'].read().decode('utf-8'))
+    declarativeJSON = json.loads(s3_object['Body'].read().decode('utf-8'))
     elapsed_time = time.time() - t16
     logText = "Time spent in getJSON is "+str(elapsed_time)+" seconds"
     print(logText)
-    return result
+    return
 
 #Directs request to functions based on funcType
-def getNormalFuncs(funcType,body,declarativeJSON,stateInformation):
+def getNormalFuncs(funcType,body,stateInformation):
     if funcType == "INPUT":
-        return inputFunc(body,declarativeJSON,stateInformation)
+        return inputFunc(body,stateInformation)
     elif funcType == "OUTPUT":
-        return outputFunc(body,declarativeJSON,stateInformation)    
+        return outputFunc(body,stateInformation)    
     elif funcType == "DISCONNECT":
-        return disconnectFunc(body,declarativeJSON,stateInformation)
+        return disconnectFunc(body,stateInformation)
     elif funcType == "TRANSFER":
-        return transferFunc(body,declarativeJSON,stateInformation)
+        return transferFunc(body,stateInformation)
     elif funcType == "EVAL":
-        return evalFunc(body,declarativeJSON,stateInformation)
+        return evalFunc(body,stateInformation)
     elif funcType == "VOID":
-        return voidFunc(body,declarativeJSON,stateInformation)
+        return voidFunc(body,stateInformation)
     else:
         debug = "Invalid funcType in getNormalFuncs"
         detail = "Invalid funcType",
@@ -653,14 +705,14 @@ def getNormalFuncs(funcType,body,declarativeJSON,stateInformation):
             "body":errorResponse
         }
     
-#Same as above, but for ackFuncs
-def getAckFuncs(funcType,body,declarativeJSON,stateInformation):
+#Same as above, but for ackFuncs -- these handle callback responses from AIVR 
+def getAckFuncs(funcType,body,stateInformation):
     if funcType == "INPUT":
-        return ackInputFunc(body,declarativeJSON,stateInformation)
+        return ackInputFunc(body,stateInformation)
     elif funcType == "OUTPUT":
-        return ackOutputFunc(body,declarativeJSON,stateInformation)    
+        return ackOutputFunc(body,stateInformation)    
     elif funcType == "TRANSFER":
-        return ackTransferFunc(body,declarativeJSON,stateInformation)
+        return ackTransferFunc(body,stateInformation)
     else:
         debug = "Invalid funcType in getAckFunc"
         detail = "Invalid funcType",
@@ -670,3 +722,14 @@ def getAckFuncs(funcType,body,declarativeJSON,stateInformation):
             "statusCode":500,
             "body":errorResponse
         }
+
+def getNextState(currState):
+    if(declarativeJSON.get(currState)==None):
+        print("!! current state not in JSON definition: "+currState)
+        return None
+    nextStateName = declarativeJSON[currState]['next']
+    if(declarativeJSON.get(nextStateName)==None):
+        print("!! next state not in JSON definition: "+nextStateName)
+        return None
+    print("next state: "+nextStateName)
+    return nextStateName

@@ -2,7 +2,16 @@
 
 This folder contains an AWS Lambda python script that together with Voicegain Telephony Bot API offers an easy method for building simple to moderately complex IVRs. 
 
-## The declarative YAML for specifying IVRs - actions
+The declarative IVR has built-in logic for re-prompts and confirmations, making it easier to develop the IVR app logic.
+
+## Files
+* LICENSE.md - MIT license
+* declarativeIVRLambda.py - the python code to be deployed on AWS Lambda
+* outbound-survey-ivr.yaml - sample IVR definition in YAML format
+* outbound-survey-ivr.json - JSON file converted from the above YAML  
+* twilio-dial-outbound.py - sample python script that makes an outbound call and connects it to Voicegain Telephone Bot API
+
+## The declarative YAML for specifying IVR: actions
 
 Below are examples of all available IVR actions:
 
@@ -79,7 +88,86 @@ Plays the specified prompt and disconnects the call. Disconnect will result eith
 
 The `reason` will be stored in the session.
 
-## The declarative YAML for specifying IVRs - special elements
+## The declarative YAML for specifying IVR: special elements
 
 The YAML has several special elements:
 
+### ENTRY
+```
+ENTRY:
+  type: VOID
+  voice: catherine
+  next: Welcome
+```
+The first action executed when the call comes in.
+
+### ERROR
+```
+ERROR:
+  type: DISCONNECT
+  voice: catherine
+  prompt: Sorry, there was an error. Please call back later
+  reason: ERROR
+```
+
+Action executed if there was an error.
+
+### DEFAULTS
+```
+DEFAULTS:
+  prefixes:
+    noInput:
+    - Sorry, I did not hear it.
+    - Sorry, I still did not hear it.
+    noMatch:
+    - Sorry, I did not get it.
+    - Sorry, I still did not get it.
+  repromtOnDisconfirm: Sorry, let's try again.
+  thresholds:
+    confirmation: 0.75
+```
+Various defaults for the IVR application
+
+### GRAMMARS
+```
+GRAMMARS:
+  ## will callee participate
+  participate:
+    type: JJSGF
+    parameters:
+      tag-format: semantics/1.0-literals
+    grammar: participate
+    public:
+      root: "(<now> {now}) | (<later> {later}) | (<never> {never})"
+    rules:
+      now: "(yes [participate] [now]) | ([participate] now)"
+      later: "(later)"
+      never: "(no) | (never)"
+  ## answer to question about Santa eating cookies
+  yesNoCookies:
+    type: JJSGF
+    parameters:
+      tag-format: semantics/1.0-literals
+    grammar: ateAllCookies
+    public:
+      root: "(<yes> {yes}) | (<no> {no})"
+    rules:
+      yes: "(yes [he] [ate [them]] [all])"
+      no: "(no [he didn't [eat them [all]]])" 
+```
+Place to define the grammars. They can be then referenced from INPUT actions.
+
+## How It works
+
+To configure and run the IVR you need:
+* Account with Voicegain
+* A Phone App configured via Voicegain Web Console
+* A phone number, e.g. from Twilio or SignalWire
+  * You can also purchase a phone number from Voicegain, but currently we do no support outbound calling
+* Account with AWS
+    * You will use AWS Lambda to host the python script that interprets the declarative IVR.
+    * S3 will be used to host the configuration script. 
+    * Note: You could also modify the script to run on your own server (the script is under MIT License) and you also can host the script elsewhere (just need to modify the code that retrieves it).
+* The YAML file where you put your IVR definition
+
+Note: currently the declarativeIVRLambda.py can read only json, so you will need to convert YAML to JSON before deployment. (Lambda does not natively support libraries for YAML->JSON conversion.)

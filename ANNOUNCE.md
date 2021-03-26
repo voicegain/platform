@@ -2,8 +2,8 @@
 
 This release fixes the following issues:
 * bug #vgp-769: show informative error message when submitting audio in unsupported/bad format
-* buf #rcj-219: deleted user account difficult to recover
-* buf #rcj-218: gaps in audio being played in Telephony Bot API
+* bug #rcj-219: deleted user account difficult to recover
+* bug #rcj-218: gaps in audio being played in Telephony Bot API
 * bug #rcj-216: Call transcripts from Call Sessions not being shown sometimes
 
 ### Minor release 1.27.0 is scheduled for 3/19/2021 between 6pm and 9pm CST.

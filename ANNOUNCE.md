@@ -1,3 +1,11 @@
+### Maintenance release 1.27.1 is scheduled for 3/26/2021 between 6:00pm and 9pm CST.
+
+This release fixes the following issue:
+* bug #vgp-769: show informative error message when submitting audio in unsupported/bad format
+* buf #rcj-219: deleted user account difficult to recover
+* buf #rcj-218: gaps in audio being played in Telephony Bot API
+* bug #rcj-216: Call transcripts from Call Sessions not being shown sometimes
+
 ### Minor release 1.27.0 is scheduled for 3/19/2021 between 6pm and 9pm CST.
 
 New features in this release:
@@ -19,11 +27,7 @@ This release has fixes for the following issues:
 * bug #rcj-208: Long audio prompts not played completely in AIVR (Telephone Bot API)
 * bug #rcj-205: TTS preview not working in Web Console
 
-### Minor release 1.25.0 is scheduled for 2/26/2021 between 6pm and 9pm CST.
-
-New features in this release:
-* New Signup - we have simplified the form
-* Improved WordCloud - we are using smarter algorithm to generate words and two-word phrases for it. It also now draws faster. 
+ 
 
 
 

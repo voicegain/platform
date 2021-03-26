@@ -1,3 +1,11 @@
+## Release 1.27.1
+
+This maintenance release fixes the following issues:
+* bug #vgp-769: show informative error message when submitting audio in unsupported/bad format
+* buf #rcj-219: deleted user account difficult to recover
+* buf #rcj-218: gaps in audio being played in Telephony Bot API
+* bug #rcj-216: Call transcripts from Call Sessions not being shown sometimes
+
 ## Release 1.27.0
 
 New features in this release:

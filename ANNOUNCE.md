@@ -1,7 +1,8 @@
-### Maintenance release 1.27.1 is scheduled for 3/26/2021 between 6:00pm and 9pm CST.
+### Maintenance release 1.27.1 has been rescheduled to 3/29/2021 between 6:00pm and 9pm CST.
 
 This release fixes the following issues:
 * bug #vgp-769: show informative error message when submitting audio in unsupported/bad format
+* bug #rcj-220: recordings of long Telephony Bot API calls not playable
 * bug #rcj-219: deleted user account difficult to recover
 * bug #rcj-218: gaps in audio being played in Telephony Bot API
 * bug #rcj-216: Call transcripts from Call Sessions not being shown sometimes

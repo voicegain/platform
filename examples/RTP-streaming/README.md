@@ -26,3 +26,7 @@ https://support.voicegain.ai/hc/en-us/articles/360055973591-Example-of-streaming
 
 If everything is fine you can expect the following output:
 ![Example output](ffmpeg-example-output.PNG) 
+
+# ffmpeg-rtp-ws-with-diarization.py
+
+Similar to ffmpeg-rtp-ws.py but uses a real-time diarization to transcribe a wav file with a two-speaker conversation. Words of the second speaker are printed in uppercase.

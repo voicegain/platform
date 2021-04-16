@@ -68,7 +68,14 @@ body = {
   }
 }
 
-init_response = requests.post("https://api.voicegain.ai/v1/asr/transcribe/async", json=body, headers=headers).json()
+init_response_raw = requests.post("https://api.voicegain.ai/v1/asr/transcribe/async", json=body, headers=headers)
+init_response = init_response_raw.json()
+if(init_response.get("sessions") is None):
+  print("did not obtain session")
+  print(init_response_raw.status_code)
+  print(init_response_raw.text)
+  exit()
+  
 # retrieve values from response
 # sessionId and capturedAudio are printed for debugging purposes
 session_id = init_response["sessions"][0]["sessionId"]

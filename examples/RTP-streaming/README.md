@@ -30,3 +30,7 @@ If everything is fine you can expect the following output:
 # ffmpeg-rtp-ws-with-diarization.py
 
 Similar to ffmpeg-rtp-ws.py but uses a real-time diarization to transcribe a wav file with a two-speaker conversation. Words of the second speaker are printed in uppercase.
+
+# ffpmeg-grammar-test.py
+
+Illustrates recognition using a built-in credit card grammar. In this example the recognition result will come back over websocket as a single message so there is no need for processing small component messages into a final whole like in case of real-time transcription. 

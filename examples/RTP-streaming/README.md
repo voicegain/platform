@@ -34,3 +34,5 @@ Similar to ffmpeg-rtp-ws.py but uses a real-time diarization to transcribe a wav
 # ffpmeg-grammar-test.py
 
 Illustrates recognition using a built-in credit card grammar. In this example the recognition result will come back over websocket as a single message so there is no need for processing small component messages into a final whole like in case of real-time transcription. 
+
+Note: the credit card numbers in the sample files are just made up. good_cc.wav has been constructed to pass the Luhn checksum.

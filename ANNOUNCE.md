@@ -3,7 +3,7 @@
 New features in this release:
 * real-time diarization - in addition to off-line diarization which has been supported since October 2020, Voicegain transcribe now support real-time diarization
 * German language is supported for offline and semi-real-time transcription and recognition 
-* Built-in creditcard grammar supports Luhn check for higher accuracy
+* Built-in creditcard grammar supports Luhn check for higher accuracy. Also added Diners Card support.
 
 This release fixes the following issues:
 * vgp-773 - Incorrect NOMATCH audio zone shown in Transcribe+ for file 4490_pcm_stereo.wav

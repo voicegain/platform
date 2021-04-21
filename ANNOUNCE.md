@@ -14,8 +14,7 @@ This release fixes the following issues:
 * vgp-770 - Update NER list
 * rcj-224 - Comparison method violates its general contract!
 * rcj-223 - NullPointerException related to a /asr/transcribe request
-* rcj-222 - NullPointerException related to a /asr/transcribe request
-
+* rcj-222 - Diarization and speaker result in virtual dual channel session displayed on UI is wrong
 
 ### German and Spanish language available
 

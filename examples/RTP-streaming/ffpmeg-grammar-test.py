@@ -48,7 +48,7 @@ body = {
   }
 }
 
-init_response_raw = requests.post("https://api.ascalon.ai/v1/asr/recognize/async", json=body, headers=headers)
+init_response_raw = requests.post("https://api.voicegain.ai/v1/asr/recognize/async", json=body, headers=headers)
 init_response = init_response_raw.json()
 if(init_response.get("sessions") is None):
   print("did not obtain session")

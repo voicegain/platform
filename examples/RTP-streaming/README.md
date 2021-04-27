@@ -33,7 +33,9 @@ Similar to ffmpeg-rtp-ws.py but uses a real-time diarization to transcribe a wav
 
 # ffmpeg-2chn-test.py
 
-Illustrates 2-channel RTP streaming. ffmpeg is slitting stereo audio and streaming it via two separate RTP channels. The channels are then combined back to stereo audio in the receiver. This covers a common use case in telephony where a telco platform (e.g. Asterisk, Cisco, Avaya) provides a mechanism to stream inbound and outbound audio over separate RTP channels.
+Illustrates 2-channel RTP streaming. ffmpeg utility is used to split stereo audio and stream it to voicegain via two separate RTP channels (the IP and ports are returned in the response to POST /asr/transcribe/async API). The channels are then combined back to stereo audio in the receiver. Then we apply two transcription sessions separately to the left and right channel. The results of transcription are sent back over websocket.  
+
+This covers a common use case in telephony where a telco platform (e.g. Asterisk, Cisco, Avaya) provides a mechanism to stream inbound and outbound audio over separate RTP channels.
 
 This will be supported from 1.29.0 Release, scheduled for 4/27/21.
 

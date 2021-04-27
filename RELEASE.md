@@ -1,3 +1,10 @@
+## Release 1.29.0
+
+New features in this release:
+* Support for 2-channel audio streaming via RTP. This is intended mainly for telephony applications where 1 channel is e.g. caller and the 2nd channel is e.g. agent.  
+An example script that demonstrates this new functionality is on our [github](https://github.com/voicegain/platform/tree/master/examples/RTP-streaming#ffmpeg-2chn-testpy).
+* Added support for MRCP Recognition-Timeout parameter.
+
 ## Release 1.28.0
 
 New features in this release:

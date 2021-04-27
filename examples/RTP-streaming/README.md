@@ -35,6 +35,8 @@ Similar to ffmpeg-rtp-ws.py but uses a real-time diarization to transcribe a wav
 
 Illustrates 2-channel RTP streaming. ffmpeg is slitting stereo audio and streaming it via two separate RTP channels. The channels are then combined back to stereo audio in the receiver. This covers a common use case in telephony where a telco platform (e.g. Asterisk, Cisco, Avaya) provides a mechanism to stream inbound and outbound audio over separate RTP channels.
 
+This will be supported from 1.29.0 Release, scheduled for 4/27/21.
+
 # ffmpeg-grammar-test.py
 
 Illustrates recognition using a built-in credit card grammar. In this example the recognition result will come back over websocket as a single message so there is no need for processing small component messages into a final whole like in case of real-time transcription. 

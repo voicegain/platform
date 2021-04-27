@@ -63,7 +63,11 @@ body = {
   "settings": {
     "asr": {
       "noInputTimeout": 60000,
-      "completeTimeout": 0
+      "completeTimeout": 0,
+      "diarization" : {
+        "minSpeakers" : 2,
+        "maxSpeakers" : 2
+      }
     }
   }
 }
@@ -95,6 +99,7 @@ print("    Websocket Url: {}".format(ws_url), flush=True)
 stack = []
 
 # function to process JSON with incremental transcription results sent as messages over websocket
+# we are printing the 2nd speaker in UPPERCASE
 def process_ws_msg(wsMsg):
   #print(wsMsg, flush=True)
   try:
@@ -103,19 +108,22 @@ def process_ws_msg(wsMsg):
     if( utter is None ):
       toDel = data.get('del')
       if( toDel is None):
-        # unknown edit
         print("EDIT->"+wsMsg, flush=True)
       else:
-        # delete and edits
         for i in range(toDel):
           stack.pop()
         edits = data.get('edit')
         if(not (edits is None)):
           for edit in edits:
             utter = edit.get('utt')
+            spk = edit.get('spk')
+            if(spk==2):
+              utter = utter.upper()
             stack.append(utter)
     else:
-      # simple utterance
+      spk = data.get('spk')
+      if(spk==2):
+        utter = utter.upper()      
       stack.append(utter)
     print(' '.join(stack), flush=True)
   except Exception as e: 
@@ -125,7 +133,7 @@ def process_ws_msg(wsMsg):
 # note that we are using the -re parameter to stream at about real-time speed
 def stream_audio():
   ff = FFmpeg(
-      inputs={'ENS_ending.wav': ['-re']},
+      inputs={'radio-talk.wav': ['-re']},
       outputs={'rtp://'+rtp_ip+':'+str(rtp_port) : ['-ar', '8000', '-f', 'mulaw', '-f', 'rtp']}
       #outputs={'mono-52sec.ulaw' : ['-ar', '8000', '-f', 'mulaw']}
   )

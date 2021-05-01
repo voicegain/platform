@@ -10,7 +10,7 @@ Apart from bare-bones speech recognition we provide other APIs that build on top
 
 Voicegain Platform is accessible in the Cloud and can also be deployed at the [Edge](https://www.voicegain.ai/post/benefits-of-edge-deployment) (on-prem Edge Computing).
 
-# What is available on in this Github repository 
+# What is available in this Github repository 
 
 ## Public information
 This repository tracks public components of the Voicegain Platform. Things like:
@@ -22,6 +22,8 @@ This repository tracks public components of the Voicegain Platform. Things like:
 ## Source code
 Repostory also provides a lot of useful code:
 * [example code](https://github.com/voicegain/platform/tree/master/examples)
+* [audio-sender bootstrap bundle](https://github.com/voicegain/platform/tree/master/audio-sender/bootstrap-bundle) - this is for [Live Transcription](https://support.voicegain.ai/hc/en-us/articles/360050677791-Live-Transcription-Overview). 
+Normally you would download it via the [Web Console](https://console.voicegain.ai). Here is [Zendesk help article](https://support.voicegain.ai/hc/en-us/articles/360041262731-Deploying-and-using-Audio-Sender-Daemon) which describes the whole process.
 * utilities, e.g.
   * [test-transcribe.py](https://github.com/voicegain/platform/tree/master/utility-scripts/test-transcribe)
 

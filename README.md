@@ -34,10 +34,10 @@ Repostory also provides a lot of useful code:
   *  [AWS lambda script for a Voicebot using Twilio](https://github.com/voicegain/platform/tree/master/examples/voicebot-lambda-twilio-vg-rasa) - this is similar to the bot above but uses normal Voicegain Speech-to-Text API together with Twilio Streams - it is quite a bit more complex
   *  [websocket streaming example in Java](https://github.com/voicegain/platform/tree/master/examples/websocket-streaming) - it send audio over websocket and receives real-time transcript result over websocket
 * [declarative ivr](https://github.com/voicegain/platform/tree/master/declarative-ivr) - Declarative IVR is a way to specify a complete IVR flow using a simple yaml file. The yaml file gets interpreted by a Lambda fuction and uses Voicegain Telephone Bot API to hear and talk over the phone. Included is a yam file for a simple outbound survey IVR application.
+* utilities:
+  * [test-transcribe.py](https://github.com/voicegain/platform/tree/master/utility-scripts/test-transcribe) - takes audio files from a directory and runs it through Voicegain and Google speech-to-text - if reference transcripts are available it will report WER for both 
 * [audio-sender bootstrap bundle](https://github.com/voicegain/platform/tree/master/audio-sender/bootstrap-bundle) - this is for [Live Transcription](https://support.voicegain.ai/hc/en-us/articles/360050677791-Live-Transcription-Overview). 
 Normally you would download it via the [Web Console](https://console.voicegain.ai). Here is [Zendesk help article](https://support.voicegain.ai/hc/en-us/articles/360041262731-Deploying-and-using-Audio-Sender-Daemon) which describes the whole process.
-* utilities, e.g.
-  * [test-transcribe.py](https://github.com/voicegain/platform/tree/master/utility-scripts/test-transcribe)
 
 ## How-To Guides
 * [Deploy Voicegain into AWS](./how-to/deploy-voicegain-into-aws.md)

@@ -3,37 +3,33 @@
 Voicegain provides a Speech-to-Text Platform built around a Deep Neural Network ASR engine.
 It supports open vocabulary speech transcription (real-time and off-line) and speech recognition (using context-free grammars).
 Both are accessible via Web API. In addition, the recognizer is available with MRCP interface.
-Platform is accessible in the Cloud and can also be deployed at the [Edge](https://www.voicegain.ai/post/benefits-of-edge-deployment) (on-prem Edge Computing).
 
+Apart from bare-bones speech recognition we provide other APIs that build on top of that:
+* Telephone Bot API - it is a callback api suitable to building IVRs and Voicebots
+* Speech Analytics API
+
+Voicegain Platform is accessible in the Cloud and can also be deployed at the [Edge](https://www.voicegain.ai/post/benefits-of-edge-deployment) (on-prem Edge Computing).
+
+# What is available on in this Github repository 
+
+## Public information
 This repository tracks public components of the Voicegain Platform. Things like:
 * [announcements](https://github.com/voicegain/platform/blob/master/ANNOUNCE.md),
 * [release notes](https://github.com/voicegain/platform/blob/master/RELEASE.md),
 * [terms of service](https://github.com/voicegain/platform/blob/master/TERMS-OF-SERVICE.md),
 * [privacy policy](https://github.com/voicegain/platform/blob/master/PRIVACY.md), etc.
+
+## Source code
+Repostory also provides a lot of useful code:
 * [example code](https://github.com/voicegain/platform/tree/master/examples)
 * utilities, e.g.
   * [test-transcribe.py](https://github.com/voicegain/platform/tree/master/utility-scripts/test-transcribe)
 
-The Voicegain platform consists of:
-* Voicegain Web API - key API methods are documented at https://voicegain.ai/api
-* Voicegain Enterprise Portal at https://console.voicegain.ai which provides access to:
-  * Voicegain Transcription (incl. Live Transcription)
-  * Voicegain MRCP ASR (incl GREG tool)
-  * Voicegain Programmable IVR 
-* Voicegain CC-App at https://cc.voicegain.ai (live transcription viewer)
-* Voicegain Transcribe App at https://transcribe.voicegain.ai (also known as [Speech.Works](https://speech.works) app)
-* Voicegain Provisioning portal at https://admin.voicegain.ai
-* Tools and Utilities:
-  * Voicegain Audio Sender Daemon  
-  * IVR MRCP Proxy
-
-You can learn more about Voicegain at https://voicegain.ai. BTW, we are offering a generous free tier that renews each month so [Signup Now](https://www.voicegain.ai/trial).
-
-You can learn more about Speech.Works at https://speech.works
-
-How-To Guides
+## How-To Guides
 * [Deploy Voicegain into AWS](./how-to/deploy-voicegain-into-aws.md)
 
 ---
+
+You can learn more about Voicegain at https://voicegain.ai. BTW, we are offering a generous free tier that renews each month so [Signup Now](https://www.voicegain.ai/trial).
 
 [Voicegain Github Home](https://voicegain.github.io/)

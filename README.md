@@ -45,6 +45,6 @@ Normally you would download it via the [Web Console](https://console.voicegain.a
 
 ---
 
-You can learn more about Voicegain at https://voicegain.ai. BTW, we are offering a generous free tier that renews each month so [Signup Now](https://www.voicegain.ai/trial).
+You can learn more about Voicegain at our main website (https://voicegain.ai)[https://voicegain.ai]. BTW, we are offering a generous free tier that renews each month so [Signup Now](https://www.voicegain.ai/trial).
 
 [Voicegain Github Home](https://voicegain.github.io/)

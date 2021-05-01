@@ -22,7 +22,7 @@ This repository tracks public components of the Voicegain Platform. Things like:
 * [privacy policy](https://github.com/voicegain/platform/blob/master/PRIVACY.md), etc.
 
 ## Source code
-Repostory also provides a lot of useful code:
+Repository also provides a lot of useful code:
 * [example code](https://github.com/voicegain/platform/tree/master/examples) - we have examples of:
   * [RTP streaming](https://github.com/voicegain/platform/tree/master/examples/RTP-streaming) for real-time transcription or recognition
   * [simple python scripts illustrating use of various APIs](https://github.com/voicegain/platform/tree/master/examples/api-use-cases--python)

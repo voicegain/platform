@@ -1,4 +1,4 @@
-We have examples of:
+Here you can find example code for:
   * [RTP streaming](https://github.com/voicegain/platform/tree/master/examples/RTP-streaming) for real-time transcription or recognition
   * [simple python scripts illustrating use of various APIs](https://github.com/voicegain/platform/tree/master/examples/api-use-cases--python)
   * [node.js web app that shows use of grammars for commands](https://github.com/voicegain/platform/tree/master/examples/command-grammar-web-app) 

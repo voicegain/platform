@@ -1,5 +1,7 @@
-#pip install websockets
-#pip install ffmpy
+"""
+pip install websockets
+pip install ffmpy
+"""
 
 from ffmpy import FFmpeg
 

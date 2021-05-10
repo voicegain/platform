@@ -2,7 +2,7 @@
 * Python - to prepare this example we used version **3.8.3**
 * Account with Voicegain: https://console.voicegain.ai/signup
 * JWT token for authentication: https://support.voicegain.ai/hc/en-us/articles/360028023691-JWT-Authentication
-* If you are behind a corporate firewall, make sure that it does not block outbound UDP traffic in port range 5000-5050 
+* If you are behind a corporate firewall, make sure that it **does not block outbound UDP traffic in port range 5000-5200**. If UDP traffic gets blocked no RTP audio packets will reach Voicegain and you will get either empty transcription or no NOINPUT result from recognition 
 
 # ffmpeg-rtp-ws.py
 

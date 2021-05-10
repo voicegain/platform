@@ -14,7 +14,7 @@ With Twilio TwiML `<Start> <Stream>` command you can send inbound, outbound, or 
 
 Below is sample output:
 ```
-$ python launch-twilio-recorder.py
+$ python twilio-click2call-transcribe-in-out-chn.py
 Connecting to: https://api.ascalon.ai/v1/asr/transcribe/async
 response code: 200
            SessionId L: 0-0kmatf40e06m2e0fmcgkizs7sswr

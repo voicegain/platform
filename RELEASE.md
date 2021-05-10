@@ -1,3 +1,11 @@
+## Release 1.30.0
+
+New features in this release:
+* Improved accuracy of the acoustic models - offline and real-time
+* Improved accuracy of the recognizer in Voicebot scenarios
+* Ability to set default sensitivity settings from Console Web UI
+* Returning ERROR instead of NOINPUT if no bytes were received by the recognizer. This makes troubleshooting of RTP streaming easier. 
+
 ## Release 1.29.0
 
 New features in this release:

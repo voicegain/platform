@@ -71,6 +71,7 @@ body = {
       "noInputTimeout": 5000,
       "incompleteTimeout" : 2000,
       "completeTimeout": 1000,
+      "sensitivity" : 0.5,
       "speedVsAccuracy" : 0.75
     }
   }

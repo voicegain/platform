@@ -1,4 +1,4 @@
-### Minor release 1.30.0 is scheduled for 4/27/2021 between 6pm and 9pm CST
+### Minor release 1.30.0 is scheduled for 5/10/2021 between 6pm and 9pm CST
 
 New features in this release:
 * Improved accuracy of the acoustic models - offline and real-time

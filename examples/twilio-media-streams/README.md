@@ -12,6 +12,9 @@ With Twilio TwiML `<Start> <Stream>` command you can send inbound, outbound, or 
 * Start an outbound telephone call using Twilio Client API. We pass the initial TwiML code that contains `<Start> <Stream>` and has some prompts that will be said on the outbound channel.
 * Wait for the Twilio call to be completed. During this time the two threads will print the transcription results received from Voicegain.
 
+`twilio-click2call-bridge-transcribe-in-out-chn.py` script is similar to the above but after calling the 1st number it will call the 2nd provided number and will bridge them. You will see real-time transcript of the bridged call.
+
+
 Below is sample output:
 ```
 $ python twilio-click2call-transcribe-in-out-chn.py

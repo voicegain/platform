@@ -69,7 +69,7 @@ body = {
       ],
       "maxAlternatives" : 10,
       "noInputTimeout": 5000,
-      "incompleteTimeout" : 2000,
+      "incompleteTimeout" : 4000,
       "completeTimeout": 1000,
       "sensitivity" : 0.5,
       "speedVsAccuracy" : 0.75
@@ -116,7 +116,7 @@ def process_ws_msg(wsMsg, fname):
 def stream_audio(file_name, rtp_ip, rtp_port):
   ff = FFmpeg(
       inputs={file_name: ['-re']},
-      outputs={'rtp://'+rtp_ip+':'+str(rtp_port) : ['-ar', '8000', '-f', 'mulaw', '-f', 'rtp']}
+      outputs={'rtp://'+rtp_ip+':'+str(rtp_port) : ['-ar', '8000', '-f', 'mulaw', '-f', 'rtp', '-map_channel', '0.0.0']}
       #outputs={'mono-52sec.ulaw' : ['-ar', '8000', '-f', 'mulaw']}
   )
   ff.cmd

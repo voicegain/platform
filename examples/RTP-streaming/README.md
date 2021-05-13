@@ -74,3 +74,8 @@ You can switch between 3 different built-in grammars by uncommenting the appropr
           }
       ],
 ```   
+
+# ffmpeg-ws-grammar-test-set.py
+
+Use this script if `ffmpeg-grammar-test-set.py` is not working due to RTP traffic being blocked on router/firewall.
+It is identical to `ffmpeg-grammar-test-set.py` except that it streams using websocket instead of RTP. 

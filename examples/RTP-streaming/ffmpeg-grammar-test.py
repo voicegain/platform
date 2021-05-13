@@ -42,7 +42,7 @@ body = {
       ],
       "maxAlternatives" : 10,
       "noInputTimeout": 5000,
-      "incompleteTimeout" : 2000,
+      "incompleteTimeout" : 4000,
       "completeTimeout": 1000
     }
   }

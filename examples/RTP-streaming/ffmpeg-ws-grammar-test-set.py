@@ -73,7 +73,7 @@ body = {
       ],
       "maxAlternatives" : 10,
       "noInputTimeout": 5000,
-      "incompleteTimeout" : 2000,
+      "incompleteTimeout" : 4000,
       "completeTimeout": 1000,
       "speedVsAccuracy" : 0.75,
       "sensitivity" : 0.5
@@ -119,7 +119,7 @@ async def stream_audio(file_name, audio_ws_url):
   conv_fname = (file_name+'.ulaw').replace(input_path, "./")
   ff = FFmpeg(
       inputs={file_name: []},
-      outputs={conv_fname : ['-ar', '8000', '-f', 'mulaw', '-y']}
+      outputs={conv_fname : ['-ar', '8000', '-f', 'mulaw', '-y', '-map_channel', '0.0.0']}
   )
   ff.cmd
   ff.run()

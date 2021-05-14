@@ -1,3 +1,9 @@
+## Release 1.30.1
+
+This maintenance release fixes the following issues:
+* bug #rcj-228: Noise detected as speech
+* bug #rcj-227: Real-time transcription of stereo audio files from Amazon S3 fails  
+
 ## Release 1.30.0
 
 New features in this release:

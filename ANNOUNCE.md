@@ -1,3 +1,9 @@
+### Maintenance release 1.30.1 is scheduled for 5/14/2021 between 6pm and 9pm CST
+
+This release fixes the following issues:
+* bug #rcj-228: Noise detected as speech
+* bug #rcj-227: Real-time transcription of stereo audio files from Amazon S3 fails  
+ 
 ### Minor release 1.30.0 is scheduled for 5/10/2021 between 6pm and 9pm CST
 
 New features in this release:

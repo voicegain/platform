@@ -42,7 +42,6 @@
               "settings": {
                       "preemptible" : false,
                       "asr": {
-                              "langModel" : "${langModelId}",
                               "noInputTimeout" : 59999,
                               "incompleteTimeout" : 3599999
                       }

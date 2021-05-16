@@ -19,7 +19,7 @@
                       "websocket": {
                               "name": "${websocketName}",
                               "label" : "${websocketName}-DATE",
-                              "minimumDelay" : 4000,
+                              "minimumDelay" : 2000,
                               "ifExists" : "kill"
                       },
                       "poll" : {
@@ -35,6 +35,8 @@
                               }
                       },
                       "rate" : 16000,
+                      "channels" : "mono",
+                      "format" : "L16",
                       "capture" : true
               },
               "settings": {

@@ -1,7 +1,7 @@
 #!/bin/bash
 CODE_NAME=voicegain
 DEPLOYMENT=master
-VG_VER=1.7.0
+VG_VER=1.30.1
 echo "Setup for Voicegain Audio Sender Daemon ver. $VG_VER"
 
 echo "Checking wget"
@@ -41,7 +41,7 @@ fi
 
 echo ""
 echo "Downloading Voicegain Audio Sender Daemon"
-wget -N --backups=0 https://f002.backblazeb2.com/file/$CODE_NAME-cdn/vg-audio-sender-daemon-$VG_VER.jar
+wget -N --backups=0 https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/vg-audio-sender-daemon-$VG_VER.jar
 echo ""
 echo "Downloading java launch script"
 wget -N --backups=0 https://raw.githubusercontent.com/voicegain/platform/$DEPLOYMENT/audio-sender/bootstrap-bundle/java-launch-audio-daemon.sh

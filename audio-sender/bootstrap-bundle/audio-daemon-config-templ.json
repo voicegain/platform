@@ -42,8 +42,8 @@
               "settings": {
                       "preemptible" : false,
                       "asr": {
-                              "noInputTimeout" : 59999,
-                              "incompleteTimeout" : 3599999
+                              "noInputTimeout" : -1,
+                              "completeTimeout" : -1
                       }
               }
         }

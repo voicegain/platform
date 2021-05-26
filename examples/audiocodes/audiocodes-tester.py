@@ -59,7 +59,7 @@ async def ws_conn_receive():
     wsUrl, 
     extra_headers={"Authorization":JWT},
     # we need to lower the buffer size - otherwise the sender will buffer for too long
-    write_limit=3*8000, 
+    write_limit=4096, 
     # compression needs to be disabled otherwise will buffer for too long
     compression=None) as ws:
       print ("Connected to: "+wsUrl, flush=True)
@@ -72,7 +72,7 @@ async def ws_conn_receive():
         await ws.close(code=1002, reason="stopped by request")
         print ("Stopped", flush=True)
       except Exception as e: 
-        print(e)  
+        print ("Stopped by exception from ws receive: "+str(e), flush=True)  
 
   print("  END ws_conn_receive", flush=True)
 
@@ -80,8 +80,11 @@ async def sendMsg(msg):
   msgStr = json.dumps(msg)
   
   print ("Sending "+str(msgStr), flush=True)
-  await websocket.send(msgStr)
-  print ("Done Sending "+str(msgStr), flush=True)
+  try:
+    await websocket.send(msgStr)
+    print ("Done Sending "+str(msgStr), flush=True)
+  except Exception as e:
+    print ("Exception while sending "+str(e), flush=True)
 
 # function to read audio from file and convert it to ulaw and send to websocket
 async def stream_audio(file_name):
@@ -110,15 +113,8 @@ async def stream_audio(file_name):
 
   print(str(datetime.datetime.now())+" done streaming audio", flush=True)
 
-async def ws_send(file_name):
-  print("START ws_send", flush=True)
-
-  while websocket is None:
-    print("^", end =" ", flush=True)
-    await asyncio.sleep(0.25)
-
-  print ("Connected: "+str(websocket), flush=True)
-
+async def ws_send_one(file_name):
+  print("START ws_send_one: "+file_name, flush=True)
   await sendMsg( 
   { "type": "start",
     "language": "en-US",
@@ -132,7 +128,21 @@ async def ws_send(file_name):
 
   await asyncio.sleep(2.0)
 
-  await sendMsg( {"type" : "stop"}) 
+  await sendMsg( {"type" : "stop"})
+
+  print("  END ws_send_one: "+file_name, flush=True)
+
+async def ws_send(file_name):
+  print("START ws_send", flush=True)
+
+  while websocket is None:
+    print("^", end =" ", flush=True)
+    await asyncio.sleep(0.25)
+
+  print ("Connected: "+str(websocket), flush=True)
+
+  for aFile in list_of_files:
+    await ws_send_one(file_name)
 
   await asyncio.sleep(5.0)
   keepRunning = False

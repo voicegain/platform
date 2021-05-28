@@ -61,22 +61,23 @@ body = {
             "type" : "BUILT-IN",
           ## credit card recognition ##
             "name" : "creditcard"
-          ## CVV recognition ##
+          ## digit sequence recognition ##
             # "name" : "digit",
             # "parameters" : {
-            #   "minlength" : 3,
-            #   "maxlength" : 3
+            #   "minlength" : 16,
+            #   "maxlength" : 19
             # }
           ## Yes/No recognition ##
             # "name" : "boolean"
           }
       ],
       "maxAlternatives" : 10,
-      "noInputTimeout": 5000,
-      "incompleteTimeout" : 4000,
-      "completeTimeout": 1000,
-      "speedVsAccuracy" : 0.75,
-      "sensitivity" : 0.5
+      "noInputTimeout": 7000,
+      "incompleteTimeout" : 5000,
+      "completeTimeout": 2000,
+      "speedVsAccuracy" : 1.0,
+      "sensitivity" : 0.5,
+      "acousticModelRealTime" : "VoiceGain-rt-ivr-en-us" # this is the model optimized for IVR use
     }
   }
 }
@@ -127,7 +128,7 @@ async def stream_audio(file_name, audio_ws_url):
   with open(conv_fname, "rb") as f:
     async with websockets.connect(audio_ws_url, 
       # we need to lower the buffer size - otherwise the sender will buffer for too long
-      write_limit=3*8000, 
+      write_limit=4096, 
       # compression needs to be disabled otherwise will buffer for too long
       compression=None) as websocket:
       try:

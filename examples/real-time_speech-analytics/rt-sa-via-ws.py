@@ -317,7 +317,7 @@ def handleNER(ner):
 
 # function to print results sent as messages over websocket
 def process_ws_msg(wsMsg):
-  print("json: "+wsMsg, flush=True)
+  #print("json: "+wsMsg, flush=True)
   data = json.loads(wsMsg)
   global sa_results, utts 
   for key in data:

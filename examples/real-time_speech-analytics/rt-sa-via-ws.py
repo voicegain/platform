@@ -9,15 +9,148 @@ import asyncio
 import websockets
 import datetime
 
-#ascalon
-JWT = "<Your JWT here>"
+
+JWT = "<Your JWT here>" # get it from the Web Console
 headers = {"Authorization":JWT}
 
-#audio_fname = 'pcm_stereo_10sec.wav'
-audio_fname = "wtB19-stereo.wav"
+audio_fname = 'your-stereo-test-file.wav'
+
+
+sa_config_name = "SA-RTAA-Demo-test-001"
+
+# Speech Analytics Configuration
+sa_body = {
+    "name": sa_config_name,
+ 
+    "sentiment": True,
+    "summary": False,
+    "wordCloud": False,
+    "gender": True,
+    "age": False,
+    "profanity": True,    
+    "overtalkTotalPercentageThreshold": 1.0,
+    "overtalkSingleDurationMaximumThreshold": 1,
+    "silenceTotalPercentageThreshold": 10.0,
+    "silenceSingleDurationMaximumThreshold": 3,
+
+    "moods": [
+        "anger"
+    ],
+
+    "entities": [
+        "ADDRESS",
+        "PHONE",
+        "PERSON",
+        "MONEY",
+        "DATE",
+        "TIME"
+    ],
+
+    "keywords": [
+        {
+            "tag": "CANCEL",
+            "examples": [
+                {
+                    "phrase": "cancel",
+                    # "usage": null
+                }
+            ],
+            "expand": False,
+            "hide": False
+        },
+        {
+            "tag": "EXPENSIVE",
+            "examples": [
+                {"phrase": "expensive"}, {"phrase": "pricey"}, {"phrase": "costs a lot"}
+            ],
+            "expand": False,
+            "hide": False
+        }
+    ],
+
+    "phrases": [
+        {
+            "tag": "AGENT_GREETING",
+            "builtIn": False,
+            "examples": [
+                {
+                    "sentence": "hello, good morning my name is Jane",
+                    "sensitivity": 0.4
+                },
+                {
+                    "sentence": "well, good morning my name is John",
+                    "sensitivity": 0.4
+                },
+                {
+                    "sentence": "good morning my name is Anne, I'll be happy",
+                    "sensitivity": 0.4
+                }
+            ],
+            "slots" : {
+              "entities" : [
+                {
+                  "entity" : "PERSON",
+                  "required" : True
+                }
+              ]
+            },
+            # "location" : {
+            #   "channel" : "agent",
+            #   "time" : 33
+            # },
+            "hideIfGroup": False
+        },         
+        {
+            "tag": "ACCOUNT_VERIFY",
+            "builtIn": False,
+            "examples": [
+                {
+                    "sentence": "can you please verify your phone number for me",
+                    "sensitivity": 0.75
+                }
+            ],
+            "hideIfGroup": False
+        },
+        {
+            "tag": "ANYTHING_ELSE_HELP",
+            "builtIn": False,
+            "examples": [
+                {
+                    "sentence": "is there anything else I can help you with",
+                    "sensitivity": 0.75
+                }
+            ],
+            "hideIfGroup": False
+        },
+        {
+            "tag": "NOT_FUNCTIONING",
+            "builtIn": False,
+            "examples": [
+                {
+                    "sentence": "my radio quit working",
+                    "sensitivity": 0.4
+                },
+                {
+                    "sentence": "receiver doesn't work anymore",
+                    "sensitivity": 0.6
+                },     
+                {
+                    "sentence": "it is completely dead",
+                    "sensitivity": 0.4
+                },  
+                {
+                    "sentence": "it does not power on at all",
+                    "sensitivity": 0.4
+                }                  
+            ],
+            "hideIfGroup": False
+        },
+    ]
+}
+sa_config_id = None
 
 # new SA session request
-# it specifies audio input via a websocket stream
+# it specifies audio input via an RTP stream
 # and output is via a plain websocket
 body = {
   "asyncMode": "REAL-TIME",
@@ -37,7 +170,7 @@ body = {
     "completeTimeout": 5000,
     "sensitivity" : 0.0
   },
-  "saConfig":"zbii0HGJlPTfuqZtzjcM"
+  "saConfig":sa_config_id
 }
 
 
@@ -54,8 +187,47 @@ output[2] = ""
 
 keep_running = True
 
+# setup SA configuration
+def web_api_request_sa_config(headers, body):
+  print("create new SA config")
+  init_response_raw = requests.post("https://api.voicegain.ai/v1/sa/config", json=body, headers=headers)
+  init_response = init_response_raw.json()
+  if("BAD_REQUEST" == init_response.get("status") and  "the specified name is being used" in  init_response.get("message")):
+    print(init_response.get("message"))
+    init_response_raw = requests.get("https://api.voicegain.ai/v1/sa/config?name={}".format(sa_config_name), headers=headers)
+    sa_config_list = init_response_raw.json()
+    existing_sa_config_id = None
+    for sa_config in sa_config_list:
+      if(sa_config_name == sa_config.get("name")):
+        existing_sa_config_id = sa_config.get("saConfId")
+        print("existing SA config: "+existing_sa_config_id)
+    if(existing_sa_config_id is None):
+      exit()
+    ## delete old config
+    print("delete old SA config: "+existing_sa_config_id)
+    init_response_raw = requests.delete("https://api.voicegain.ai/v1/sa/config/{}".format(existing_sa_config_id), headers=headers)
+    print(init_response_raw.status_code)
+    print(init_response_raw.text)
+    ## create new config
+    web_api_request_sa_config(headers, sa_body)
+    return
+  elif(init_response.get("saConfId") is None):
+    print("did not start create SA config")
+    print(init_response_raw.status_code)
+    print(init_response_raw.text)
+    exit()
+  else:
+    print("response: {}".format(str(init_response)))
+
+  # retrieve values from response
+  global sa_config_id
+  sa_config_id = init_response["saConfId"]
+
+  print("          SA Config: {}".format(sa_config_id))
+
 def web_api_request(headers, body):
-  init_response_raw = requests.post("https://api.ascalon.ai/v1/sa", json=body, headers=headers)
+  body["saConfig"] = sa_config_id
+  init_response_raw = requests.post("https://api.voicegain.ai/v1/sa", json=body, headers=headers)
   init_response = init_response_raw.json()
   if(init_response.get("saSessionId") is None):
     print("did not start SA session")
@@ -95,8 +267,10 @@ def appendUtt(spk, utt, start, end):
     utts[spk] = [] # clear
   utts[spk].append(utt)
   n = len(utts[spk])
-  while(n > 40):
-    utts[spk].pop(0)
+  if(n > 40):
+    # drop first 20 words
+    for i in range(20):
+      utts[spk].pop(0)
     n = len(utts[spk])
   ends[spk] = end
 
@@ -143,6 +317,7 @@ def handleNER(ner):
 
 # function to print results sent as messages over websocket
 def process_ws_msg(wsMsg):
+  print("json: "+wsMsg, flush=True)
   data = json.loads(wsMsg)
   global sa_results, utts 
   for key in data:
@@ -269,6 +444,12 @@ def process_audio(file_name):
   # wait for websocket thread to join 
   threadWs.join()
   print("END processing: "+file_name)
+
+
+## end of function and variable definitions
+## main run starts here
+
+web_api_request_sa_config(headers, sa_body)
 
 process_audio(audio_fname)
 

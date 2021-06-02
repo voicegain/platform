@@ -1,3 +1,11 @@
+## Release 1.31.1
+
+This release fixes the following issues:
+* bug #rcj-238: concurrent offline transcription fails due to VAD issue
+* bug #rcj-237: submitting very short files for diarization fails with ERROR
+
+It also adds a new offline acoustic model with higher accuracy.
+
 ## Release 1.31.0
 
 New features in this minor release:

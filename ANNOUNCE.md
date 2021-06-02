@@ -1,3 +1,9 @@
+### Maintenance release 1.31.1 is scheduled for 6/1/2021 between 8pm and 11pm CST
+
+This release fixes the following issues:
+* bug #rcj-238: concurrent offline transcription fails due to VAD issue
+* bug #rcj-237: submitting very short files for diarization fails with ERROR
+
 ### Minor release 1.31.0 is scheduled for 5/28/2021 between 6pm and 9pm CST
 
 New features in this release:

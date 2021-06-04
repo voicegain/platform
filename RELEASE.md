@@ -1,3 +1,7 @@
+## Release 1.32.0
+
+Limited access Beta release of the Speech Analytics App. To learn more email us at info@voicegain.ai 
+
 ## Release 1.31.1
 
 This release fixes the following issues:

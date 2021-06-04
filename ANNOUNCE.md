@@ -1,3 +1,7 @@
+## Minor release 1.32.0 is scheduled for 6/4/2021 between 8pm and 11pm CST
+
+Limited access Beta release of the Speech Analytics App. To learn more email us at info@voicegain.ai 
+
 ### Maintenance release 1.31.1 is scheduled for 6/1/2021 between 8pm and 11pm CST
 
 This release fixes the following issues:
@@ -20,14 +24,6 @@ This release fixes the following issues:
 * bug #rcj-228: Noise detected as speech
 * bug #rcj-227: Real-time transcription of stereo audio files from Amazon S3 fails  
  
-### Minor release 1.30.0 is scheduled for 5/10/2021 between 6pm and 9pm CST
-
-New features in this release:
-* Improved accuracy of the acoustic models - offline and real-time
-* Improved accuracy of the recognizer in Voicebot scenarios
-* Ability to set default sensitivity settings from Console Web UI
-* Returning ERROR instead of NOINPUT if no bytes were received by the recognizer. This makes troubleshooting of RTP streaming easier. 
-
 ### German and Spanish language available
 
 Voicegain Speech-to-Text Platform now supports German and Spanish languages in addition to English.

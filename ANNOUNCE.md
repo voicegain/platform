@@ -5,7 +5,7 @@ This release updates the SSL certificates and also fixes the following issues:
 * bug #rcj-258: Sometimes incidents count not showing on call analysis page
 * bug #rcj-253: PII Redacted entities shown in audio player view
 
-## Minor release 1.32.0 is scheduled for 6/4/2021 between 8pm and 11pm CST
+### Minor release 1.32.0 is scheduled for 6/4/2021 between 8pm and 11pm CST
 
 Limited access Beta release of the Speech Analytics App. To learn more email us at info@voicegain.ai 
 

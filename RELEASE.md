@@ -1,3 +1,10 @@
+## Release 1.32.1
+
+This maintenance release updates the SSL certificates and also fixes the following issues:
+* issue #vgp-798: show the incidents on the small audio bar same way as they are shown on the detailed view 
+* bug #rcj-258: Sometimes incidents count not showing on call analysis page
+* bug #rcj-253: PII Redacted entities shown in audio player view
+
 ## Release 1.32.0
 
 Limited access Beta release of the Speech Analytics App. To learn more email us at info@voicegain.ai 

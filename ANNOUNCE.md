@@ -1,3 +1,9 @@
+### Maintenance release 1.32.2 is scheduled for 6/8/2021 between 8pm and 11pm CST
+
+A demo token has been added to control access to Demo Integration in Speech Analytics.
+
+API documentation for Speech Analytics section has been improved.
+
 ### Maintenance release 1.32.1 is scheduled for 6/7/2021 between 6pm and 9pm CST
 
 This release updates the SSL certificates and also fixes the following issues:
@@ -24,12 +30,6 @@ New features in this release:
 * asr.speechContext parameter to provide hint to the recognizer if a lot of digits are expected
 * sessions.vadMode parameter to control music rejection - meant to be used mainly for call-center audio to reject music-on-hold
 * adjusted behavior of the asr.sensitivity parameter - 0 value now corresponds to -40dbFS
-
-### Maintenance release 1.30.1 is scheduled for 5/14/2021 between 6pm and 9pm CST
-
-This release fixes the following issues:
-* bug #rcj-228: Noise detected as speech
-* bug #rcj-227: Real-time transcription of stereo audio files from Amazon S3 fails  
  
 ### German and Spanish language available
 

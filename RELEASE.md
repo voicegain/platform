@@ -1,3 +1,9 @@
+## Release 1.32.2
+
+This maintenance release adds two small improvements:
+* A demo token has been added to control access to Demo Integration in Speech Analytics.
+* API documentation for Speech Analytics section has been improved.
+
 ## Release 1.32.1
 
 This maintenance release updates the SSL certificates and also fixes the following issues:

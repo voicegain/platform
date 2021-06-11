@@ -1,3 +1,10 @@
+### Minor release 1.33.0 is scheduled for 6/11/2021 between 7pm and 11pm CST
+
+This release has the following changes:
+* We are switching to AWS SES as our provider for outbound emails. This should makes Password Reset and other emails more reliable.
+* The Named Entity Recognition (NER) model has been improved.
+* The beta Speech Analytics App adds: Account time and profile settings, users table and add new users to accounts, full time-zones list.
+
 ### Maintenance release 1.32.3 is scheduled for 6/10/2021 between 8pm and 11pm CST
 
 This release has fixes for:

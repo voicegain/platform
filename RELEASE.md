@@ -1,3 +1,10 @@
+## Release 1.32.3
+
+This maintenance release has fixes for:
+* bug #rcj-262: Word Cloud has no content on Demo Integration Dash
+
+Our mail provider has an issue that forces us to temporarily switch to a very simple forgot-password email.
+
 ## Release 1.32.2
 
 This maintenance release adds two small improvements:

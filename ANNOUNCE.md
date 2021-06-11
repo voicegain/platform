@@ -5,6 +5,11 @@ This release has the following changes:
 * The Named Entity Recognition (NER) model has been improved.
 * The beta Speech Analytics App adds: Account time and profile settings, users table and add new users to accounts, full time-zones list.
 
+This release also fixes the following issues:
+* #rcj-265: validate each email address for POST /user
+* #rcj-260: in phrase detection - location.time setting should be in seconds
+* #rcj-259: PII Redaction enhancement (defaults)
+
 ### Maintenance release 1.32.3 is scheduled for 6/10/2021 between 8pm and 11pm CST
 
 This release has fixes for:

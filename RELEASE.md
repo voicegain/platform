@@ -1,3 +1,15 @@
+## Release 1.33.0
+
+This minor release has the following changes:
+* We are switching to AWS SES as our provider for outbound emails. This should makes Password Reset and other emails more reliable.
+* The Named Entity Recognition (NER) model has been improved.
+* The beta Speech Analytics App adds: Account time and profile settings, users table and add new users to accounts, full time-zones list.
+
+This release also fixes the following issues:
+* #rcj-265: validate each email address for POST /user
+* #rcj-260: in phrase detection - location.time setting should be in seconds
+* #rcj-259: PII Redaction enhancement (defaults)
+
 ## Release 1.32.3
 
 This maintenance release has fixes for:

@@ -2,9 +2,11 @@
 # List of Voicegain SaaS Services
 Effective: June 20th, 2019
 
-Last Updated: June 1st, 2021
+Last Updated: June 18th, 2021
 
-## A. Developer oriented SaaS Services - APIs
+## A. Developer PaaS Services
+Developer PaaS Services are accessed through Voicegain Developer Web Console. Voicegain offers the following PaaS Services
+
 ## A1. Voicegain Speech-To-Text (STT) APIs:
 **Voicegain  Speech to Text (STT) APIs** are RESTful APIs that enable developers to embed both offline and realtime Speech-to-Text into their product, application 
 or Service. Developers may invoke these APIs over http, gRPC and WebSockets. Developers may use the STT APIs with our large vocabulary model or 
@@ -17,11 +19,9 @@ they can also invoke these APIs with Speech Grammars.
 **Voicegain Speech Analytics APIs** are Voicegain's APIs that convert speech-to-text (transcription)and then analyze the text for sentiment, keywords, phrases, entities and intents. Voicegain offers both realtime and offline Speech Analytics APIs.
 
 ## A4. Voicegain MRCP ASR:
-**Voicegain MRCP ASR** is a real-time speech recognition engine for traditional VoiceXML based IVR applications. It supports speech grammars using GRXML & 
-JSGF and provides n-best results. We also provide results from our large vocabulary model for utterances that are out-of-Grammar(OOG) or have
-low confidence results. 
+**Voicegain MRCP ASR** is a real-time speech recognition service accessed over MRCP (Media Resource Control Protocol) and is built for access by VoiceXML compliant platforms. It supports speech grammars using GRXML & JSGF and provides n-best results. We also provide results from our large vocabulary model for utterances that are either out-of-Grammar(OOG) or have low confidence. 
 
-## B. End-User/Business-User oriented SaaS Services - SaaS Apps
+## B. End-User/Business-User SaaS Apps
 
 ## B1. Voicegain Speech Analytics: 
 **Voicegain Speech Analytics** is a full featured product for analyzing audio recordings of calls in contact centers, web meetings in sales/enterprise, voicemails 
@@ -30,7 +30,7 @@ and topics. The annotated recordings can accessed using our full featured Web UI
 to review performance of inside sales representatives.
 
 ## B2. Voicegain Transcribe:
-**Voicegain Transcribe** offers both offline and realtime transcription at very high accuracy and low cost using the Voicegain Web Console. With an intuitive UI, users can easily view and correct the transcript. Our offline transcription can be used for call recordings, voicemails and podcasts and our real-time transcription can be used for meetings, live virtual events, talks, and presentations. Streaming audio is supported using WebSockets and gRPC. Transcripts include timestamps, punctuation and support for custom language models.
+**Voicegain Transcribe** allows end-users to transcribe audio both offline and realtime transcription using the Voicegain Transcribe app. With an intuitive UI, users can easily view and correct the transcript. Our offline transcription can be used for call recordings, voicemails and podcasts and our real-time transcription can be used for meetings, live virtual events, talks, and presentations. Streaming audio is supported using WebSockets and gRPC. Transcripts include timestamps, punctuation and support for custom language models.
 
 
 

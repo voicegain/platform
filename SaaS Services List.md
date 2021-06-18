@@ -19,7 +19,7 @@ they can also invoke these APIs with Speech Grammars.
 **Voicegain Speech Analytics APIs** are Voicegain's APIs that convert speech-to-text (transcription)and then analyze the text for sentiment, keywords, phrases, entities and intents. Voicegain offers both realtime and offline Speech Analytics APIs.
 
 ## A4. Voicegain MRCP ASR:
-**Voicegain MRCP ASR** is a real-time speech recognition service accessed over MRCP (Media Resource Control Protocol) and is for use by VoiceXML based IVR applications. It supports speech grammars using GRXML & JSGF and provides n-best results. We also provide results from our large vocabulary model for utterances that are either out-of-Grammar(OOG) or have low confidence. 
+**Voicegain MRCP ASR** is a real-time speech recognition service accessed over MRCP (Media Resource Control Protocol) and is built for access by VoiceXML compliant platforms. It supports speech grammars using GRXML & JSGF and provides n-best results. We also provide results from our large vocabulary model for utterances that are either out-of-Grammar(OOG) or have low confidence. 
 
 ## B. End-User/Business-User SaaS Apps
 

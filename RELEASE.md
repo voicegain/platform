@@ -1,3 +1,18 @@
+## Release 1.34.0
+
+This minor release has the following changes:
+* We are releasing a beta of an API compatible with **AudioCodes Voice AI Gateway**. Once it is in prod we will do integration testing and once AudioCodes confirms compatibility we will make an official announcement about availability.
+* A `completeTimeout` setting has been added to the Context settings. This is needed for AudioCodes.
+* We have added a file upload functionality to the Speech Analytics App. Now you can upload and process your own files in addition to exploring the demo content. You can find the file upload under Settings -> Integrations
+* We have added a digit formatter to our transcription engine.
+* The NER accuracy has been improved.
+* A change to the CC-App which improves usability on mobile phones. 
+
+This release also fixes the following issues:
+* #vgp-793: Ensure that SA config does not allow use of the same tag for a Keyword and a KeywordGroup
+* #rcj-236: gap value present in the json transcript export
+* #rcj-261: in phrase detection - location.channel setting not working ok
+
 ## Release 1.33.0
 
 This minor release has the following changes:

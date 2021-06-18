@@ -59,7 +59,7 @@ async def ws_conn_receive():
     wsUrl, 
     extra_headers={"Authorization":JWT},
     # we need to lower the buffer size - otherwise the sender will buffer for too long
-    write_limit=4096, 
+    write_limit=1024, 
     # compression needs to be disabled otherwise will buffer for too long
     compression=None) as ws:
       print ("Connected to: "+wsUrl, flush=True)
@@ -79,7 +79,7 @@ async def ws_conn_receive():
 async def sendMsg(msg):
   msgStr = json.dumps(msg)
   
-  print ("Sending "+str(msgStr), flush=True)
+  print (str(datetime.datetime.now())+" Sending "+str(msgStr), flush=True)
   try:
     await websocket.send(msgStr)
     print ("Done Sending "+str(msgStr), flush=True)
@@ -89,7 +89,7 @@ async def sendMsg(msg):
 # function to read audio from file and convert it to ulaw and send to websocket
 async def stream_audio(file_name):
   print("START stream_audio", flush=True)
-  conv_fname = (file_name+'.ulaw').replace(input_path, "./")
+  conv_fname = (file_name+'.wav').replace(input_path, "./")
   ff = FFmpeg(
       inputs={file_name: []},
       outputs={conv_fname : ['-ar', '16000', '-f', 's16le', '-y', '-map_channel', '0.0.0']}
@@ -100,14 +100,33 @@ async def stream_audio(file_name):
   with open(conv_fname, "rb") as f:
     try:
       print(str(datetime.datetime.now())+" start streaming", flush=True)
-      n_buf = 2 * 1024
+      # n_buf = 2 * 1024
+      # byte_buf = f.read(n_buf)
+      # while byte_buf:
+      #   n = len(byte_buf)
+      #   print(".", end =" ", flush=True)
+      #   await websocket.send(byte_buf)
+      #   time.sleep(n/32000.0) # to simulate real time streaming
+      #   byte_buf = f.read(n_buf)
+
+      n_buf = 1 * 1024
       byte_buf = f.read(n_buf)
+      start = time.time()
+      elapsed_time_fl = 0
+      count = 0
       while byte_buf:
         n = len(byte_buf)
         print(".", end =" ", flush=True)
         await websocket.send(byte_buf)
-        time.sleep(n/32000.0) # to simulate real time streaming
+        count += n
+        elapsed_time_fl = (time.time() - start)
+        expected_time_fl = count / 32000.0
+        time_to_wait = expected_time_fl - elapsed_time_fl
+        if time_to_wait >= 0: 
+          time.sleep(time_to_wait) # to simulate real time streaming
         byte_buf = f.read(n_buf)
+      elapsed_time_fl = (time.time() - start)
+      print(str(datetime.datetime.now())+" done streaming audio in "+str(elapsed_time_fl), flush=True)
     except Exception as e:
       print("Exception when sending audio via websocket: "+str(e)) # usually because the session closed due to NOMATCH or NOINPUT
 
@@ -126,13 +145,13 @@ async def ws_send_one(file_name):
 
   await( stream_audio(file_name) )
 
-  await asyncio.sleep(2.0)
+  await asyncio.sleep(4.5)
 
   await sendMsg( {"type" : "stop"})
 
   print("  END ws_send_one: "+file_name, flush=True)
 
-async def ws_send(file_name):
+async def ws_send():
   print("START ws_send", flush=True)
 
   while websocket is None:
@@ -142,10 +161,13 @@ async def ws_send(file_name):
   print ("Connected: "+str(websocket), flush=True)
 
   for aFile in list_of_files:
-    await ws_send_one(file_name)
+    await ws_send_one(aFile)
 
-  await asyncio.sleep(5.0)
+  print ("sleeping before stop...", flush=True)
+  await asyncio.sleep(3.0)
+  global keepRunning
   keepRunning = False
+  print ("requested a stop", flush=True)
 
   print("  END ws_send", flush=True)
 
@@ -156,7 +178,7 @@ async def main():
   """
   await asyncio.gather(
     asyncio.create_task(ws_conn_receive()),
-    asyncio.create_task(ws_send(list_of_files[0]))
+    asyncio.create_task(ws_send())
    )
 
   print("  END main", flush=True)

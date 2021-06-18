@@ -23,14 +23,12 @@ they can also invoke these APIs with Speech Grammars.
 
 ## B. End-User/Business-User SaaS Apps
 
-## B1. Voicegain Speech Analytics: 
-**Voicegain Speech Analytics** is a full featured product for analyzing audio recordings of calls in contact centers, web meetings in sales/enterprise, voicemails 
-in UCaaS or more. These recordings get accurately transcribed and analyzed using AI. We inspect both audio and the transcript to extract keywords, sentiment 
-and topics. The annotated recordings can accessed using our full featured Web UI that is purpose built for (a) contact centers call coaching and (b) sales managers 
-to review performance of inside sales representatives.
+## B1. Call Center Speech Analytics: 
+**Call Center Speech Analytics** is a web application for analyzing audio recordings of voice customer service interactions in contact centers for quality management and gathering customer experience and business insights. These recordings get accurately transcribed and analyzed using AI. We analyze both audio and 
+the text transcript using AI to extract keywords, sentiment, named entities and topics. The web user interface allows Operations Manager, Team Leads and Call Coaches to view key metrics and annotated transcript of the call along with audio playback.
 
 ## B2. Voicegain Transcribe:
-**Voicegain Transcribe** allows end-users to transcribe audio both offline and realtime transcription using the Voicegain Transcribe app. With an intuitive UI, users can easily view and correct the transcript. Our offline transcription can be used for call recordings, voicemails and podcasts and our real-time transcription can be used for meetings, live virtual events, talks, and presentations. Streaming audio is supported using WebSockets and gRPC. Transcripts include timestamps, punctuation and support for custom language models.
+**Voicegain Transcribe** is a web application that allows business users to transcribe and analyze audio/speech - both offline and realtime. Transcribe offers an intuitive UI where users can upload files or transcribe audio captured realtime from the browser or using the microphone capture. Users can easily view and correct the transcript too. Our offline transcription can be used for call recordings, voicemails and podcasts and our real-time transcription can be used for taking meetings notes, or captioning live virtual events, talks, and presentations. Transcripts include timestamps, punctuation and support for custom language models. Text Analytics features allow annotation of the transcript with keywords, named entities and sentiment.
 
 
 

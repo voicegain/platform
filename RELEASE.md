@@ -1,3 +1,10 @@
+## Release 1.35.0
+
+This minor release has the following changes:
+* POST /sa now supports notifying subscribers to a STOMP topic
+* Added lightweight GET /sa/{saSesId}/status polling method
+* Added `detailed` query parameter to GET /sa query method
+
 ## Release 1.34.0
 
 This minor release has the following changes:

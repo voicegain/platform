@@ -1,3 +1,10 @@
+### Minor release 1.35.0 is scheduled for 6/23/2021 between 6pm and 9pm CST
+
+This release has the following changes:
+* POST /sa now supports notifying subscribers to a STOMP topic
+* Added lightweight GET /sa/{saSesId}/status polling method
+* Added `detailed` query parameter to GET /sa query method
+
 ### Minor release 1.34.0 is scheduled for 6/18/2021 between 6pm and 9pm CST
 
 This release has the following changes:
@@ -32,11 +39,6 @@ This release has fixes for:
 
 Our mail provider has an issue that forces us to temporarily switch to a very simple forgot-password email.
 
-### Maintenance release 1.32.2 is scheduled for 6/8/2021 between 8pm and 11pm CST
-
-A demo token has been added to control access to Demo Integration in Speech Analytics.
-
-API documentation for Speech Analytics section has been improved.
 
 
 

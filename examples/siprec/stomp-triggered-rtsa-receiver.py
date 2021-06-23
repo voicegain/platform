@@ -61,6 +61,15 @@ def process_ws_msg(wsMsg):
       return
     url = msgObj.get("websocket").get("url")
     print("received WS url: "+str(url), flush=True)
+
+    ## show metadata
+    meta = msgObj.get("metadata")
+    if meta is not None:
+      print("SIPREC metadata: ", flush=True)
+      for elem in meta:
+        print("\t{}:\t{}".format(elem.get("name"), elem.get("value")), flush=True)
+
+
     ## set the future
     if url is not None:
       fut.set_result(url)

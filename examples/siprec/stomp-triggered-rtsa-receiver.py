@@ -41,17 +41,29 @@ output[2] = ""
 # function to print results sent as messages over websocket
 def process_ws_msg(wsMsg):
   print(str(datetime.datetime.now())+" received -> "+wsMsg, flush=True)
+  if wsMsg.startswith("CONNECTED"):
+    return
   global from_stomp 
   from_stomp.append( wsMsg )
   groups = wsMsg.split('\n\n') 
-  msg = groups[1]
-  print("Msg: "+msg, flush=True)
-  msgObj = json.loads(msg)
-  if msgObj.get("websocket") is None:
-    return
-  url = msgObj.get("websocket").get("url")
-  ## set the future
-  #fut.set_result("url")
+  if len(groups) > 1:
+    msg = groups[1]
+    msg = rx.sub(r'\p{C}', '', msg)
+    msg = msg.strip()
+    print("Msg: >"+msg+"<", flush=True)
+    try:
+      msgObj = json.loads(msg)
+    except Exception as e:
+      print("exception parsing to JSON: "+str(e), flush=True)
+      return
+
+    if msgObj.get("websocket") is None:
+      return
+    url = msgObj.get("websocket").get("url")
+    print("received WS url: "+str(url), flush=True)
+    ## set the future
+    if url is not None:
+      fut.set_result(url)
 
 # try to receive from websocket
 async def receiveWs():
@@ -199,16 +211,10 @@ async def ws_conn_to_results():
   wsUrlResults = fut.result()
   print ("Connecting to: "+wsUrlResults, flush=True)
   global websocketRes, keepRunning
-  async with websockets.connect(
-    wsUrlResults, 
-    extra_headers={"Authorization":JWT},
-    # we need to lower the buffer size - otherwise the sender will buffer for too long
-    write_limit=1024, 
-    # compression needs to be disabled otherwise will buffer for too long
-    compression=None) as ws:
+  async with websockets.connect( wsUrlResults ) as ws:
       print ("Connected to: "+wsUrlResults, flush=True)
 
-      wsUrlResults = ws # store to a global
+      websocketRes = ws # store to a global
       try:
         while keepRunning:
           ws_msg = await receiveWsRes()

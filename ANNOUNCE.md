@@ -1,3 +1,27 @@
+### Minor release 1.36.0 is scheduled for 6/27/2021 between 6pm and 11pm CST
+
+This release improves the Speech Analytics App.
+
+This release addresses the following issues:
+* #rcj-288: currentSentiment is all 0 for 30D period
+* #rcj-286: Call resolution seems to be not calculated correctly
+* #rcj-285: average Agent Score is incorrect
+* #rcj-284: latest demo integration gives us empty Differential Word Cloud 
+* #rcj-283: changes to sentiment in the response of GET /sa/call-stats
+* #rcj-282: changes to how we show sentiment for dashboard
+* #rcj-281: ensure that output from GET /sa/call-stats uses the subperiod definitions 
+* #saa-13: something wrong with how the sentiment is displayed on the dash
+* #saa-11: show the value of the sentiment next to smiley on call details page
+* #saa-10: something wrong with the incident count
+* #saa-9: tweaks to QA Form read-only view
+* #saa-8: show Phrases on the analytics page
+* #saa-7: show tooltip with the Phrase Tag when hovering over highlighted phrase
+* #saa-6: show PROFANITY keyword in red font
+* #saa-5: add values of sentiment to the Calls table
+* #saa-3: Highlight Demo Information part about accuracy
+* #saa-2: Edited Call Review questions do not persists
+* #saa-1: wasted space on SA dashboard - 3 bottom cards
+
 ### Minor release 1.35.0 is scheduled for 6/23/2021 between 6pm and 9pm CST
 
 This release has the following changes:
@@ -33,29 +57,7 @@ This release also fixes the following issues:
 * #rcj-260: in phrase detection - location.time setting should be in seconds
 * #rcj-259: PII Redaction enhancement (defaults)
 
-### Maintenance release 1.32.3 is scheduled for 6/10/2021 between 8pm and 11pm CST
 
-This release has fixes for:
-* bug #rcj-262: Word Cloud has no content on Demo Integration Dash
-
-Our mail provider has an issue that forces us to temporarily switch to a very simple forgot-password email.
-
-### Maintenance release 1.32.2 is scheduled for 6/8/2021 between 8pm and 11pm CST
-
-A demo token has been added to control access to Demo Integration in Speech Analytics.
-
-API documentation for Speech Analytics section has been improved.
-
-### Maintenance release 1.32.1 is scheduled for 6/7/2021 between 6pm and 9pm CST
-
-This release updates the SSL certificates and also fixes the following issues:
-* issue #vgp-798: show the incidents on the small audio bar same way as they are shown on the detailed view 
-* bug #rcj-258: Sometimes incidents count not showing on call analysis page
-* bug #rcj-253: PII Redacted entities shown in audio player view
-
-### Minor release 1.32.0 is scheduled for 6/4/2021 between 8pm and 11pm CST
-
-Limited access Beta release of the Speech Analytics App. To learn more email us at info@voicegain.ai 
 
 
 

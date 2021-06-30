@@ -1,3 +1,8 @@
+### Maintenance release 1.36.1 is scheduled for 6/30/2021 between 6p:30m and 11pm CST
+
+This release switches the new account email to AWS SES and it fixes 1 issue:
+* #rcj-293: differential word cloud empty on Voicegain
+
 ### Minor release 1.36.0 is scheduled for 6/27/2021 between 6pm and 11pm CST
 
 This release improves the Speech Analytics App.
@@ -45,17 +50,6 @@ This release also fixes the following issues:
 * #rcj-236: gap value present in the json transcript export
 * #rcj-261: in phrase detection - location.channel setting not working ok
 
-### Minor release 1.33.0 is scheduled for 6/11/2021 between 7pm and 11pm CST
-
-This release has the following changes:
-* We are switching to AWS SES as our provider for outbound emails. This should makes Password Reset and other emails more reliable.
-* The Named Entity Recognition (NER) model has been improved.
-* The beta Speech Analytics App adds: Account time and profile settings, users table and add new users to accounts, full time-zones list.
-
-This release also fixes the following issues:
-* #rcj-265: validate each email address for POST /user
-* #rcj-260: in phrase detection - location.time setting should be in seconds
-* #rcj-259: PII Redaction enhancement (defaults)
 
 
 

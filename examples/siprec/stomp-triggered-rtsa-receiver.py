@@ -17,7 +17,7 @@ received_results = []
 
 JWT = "<Your JWT here>"
 wsUrl = "wss://cc.voicegain.ai/nats-websocket/port"
-topic = "/topic/1234567890987654321"
+topic = "/topic/12345678900987654321"
 
 headers = {"Authorization":JWT}
 

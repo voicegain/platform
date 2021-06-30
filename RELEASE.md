@@ -1,3 +1,8 @@
+## Release 1.36.1
+
+This maintenance release switches the new account email to AWS SES and it fixes 1 issue:
+* #rcj-293: differential word cloud empty on Voicegain
+
 ## Release 1.36.0
 
 This minor release improves the Speech Analytics App.

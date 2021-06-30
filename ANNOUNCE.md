@@ -1,3 +1,8 @@
+### Maintenance release 1.36.1 is scheduled for 6/30/2021 between 6p:30m and 11pm CST
+
+This release switches the new account email to AWS SES and it fixes 1 issue:
+* #rcj-293: differential word cloud empty on Voicegain
+
 ### Minor release 1.36.0 is scheduled for 6/27/2021 between 6pm and 11pm CST
 
 This release improves the Speech Analytics App.

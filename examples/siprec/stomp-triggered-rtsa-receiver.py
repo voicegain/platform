@@ -4,6 +4,7 @@ pip install ffmpy
 """
 
 import requests, time, os, json, random
+import regex as rx
 import threading
 import asyncio
 import websockets

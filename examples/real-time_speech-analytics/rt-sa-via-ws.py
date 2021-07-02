@@ -12,11 +12,12 @@ import datetime
 
 JWT = "<Your JWT here>" # get it from the Web Console
 headers = {"Authorization":JWT}
+platform="voicegain"
 
 audio_fname = 'your-stereo-test-file.wav'
 
 
-sa_config_name = "SA-RTAA-Demo-test-001"
+sa_config_name = "SA-RTAA-Demo-script-test"
 
 # Speech Analytics Configuration
 sa_body = {
@@ -94,10 +95,10 @@ sa_body = {
                 }
               ]
             },
-            # "location" : {
-            #   "channel" : "agent",
-            #   "time" : 33
-            # },
+             "location" : {
+               "channel" : "agent",
+               "time" : 20
+            },
             "hideIfGroup": False
         },         
         {
@@ -150,7 +151,7 @@ sa_body = {
 sa_config_id = None
 
 # new SA session request
-# it specifies audio input via an RTP stream
+# it specifies audio input via a a websocket
 # and output is via a plain websocket
 body = {
   "asyncMode": "REAL-TIME",
@@ -166,9 +167,9 @@ body = {
     { "audioChannelSelector" : "right", "isAgent" :'false', "vadMode" : "normal"}
   ],
   "asr": {
-    "noInputTimeout": 60000,
-    "completeTimeout": 5000,
-    "sensitivity" : 0.0
+    "noInputTimeout": -1,
+    "completeTimeout": -1,
+    "sensitivity" : 0.3
   },
   "saConfig":sa_config_id
 }
@@ -187,14 +188,16 @@ output[2] = ""
 
 keep_running = True
 
+epoch_start_audio_stream = None
+
 # setup SA configuration
 def web_api_request_sa_config(headers, body):
   print("create new SA config")
-  init_response_raw = requests.post("https://api.voicegain.ai/v1/sa/config", json=body, headers=headers)
+  init_response_raw = requests.post("https://api.{}.ai/v1/sa/config".format(platform), json=body, headers=headers)
   init_response = init_response_raw.json()
   if("BAD_REQUEST" == init_response.get("status") and  "the specified name is being used" in  init_response.get("message")):
     print(init_response.get("message"))
-    init_response_raw = requests.get("https://api.voicegain.ai/v1/sa/config?name={}".format(sa_config_name), headers=headers)
+    init_response_raw = requests.get("https://api.{}.ai/v1/sa/config?name={}".format(platform, sa_config_name), headers=headers)
     sa_config_list = init_response_raw.json()
     existing_sa_config_id = None
     for sa_config in sa_config_list:
@@ -205,7 +208,7 @@ def web_api_request_sa_config(headers, body):
       exit()
     ## delete old config
     print("delete old SA config: "+existing_sa_config_id)
-    init_response_raw = requests.delete("https://api.voicegain.ai/v1/sa/config/{}".format(existing_sa_config_id), headers=headers)
+    init_response_raw = requests.delete("https://api.{}.ai/v1/sa/config/{}".format(platform, existing_sa_config_id), headers=headers)
     print(init_response_raw.status_code)
     print(init_response_raw.text)
     ## create new config
@@ -227,7 +230,7 @@ def web_api_request_sa_config(headers, body):
 
 def web_api_request(headers, body):
   body["saConfig"] = sa_config_id
-  init_response_raw = requests.post("https://api.voicegain.ai/v1/sa", json=body, headers=headers)
+  init_response_raw = requests.post("https://api.{}.ai/v1/sa".format(platform), json=body, headers=headers)
   init_response = init_response_raw.json()
   if(init_response.get("saSessionId") is None):
     print("did not start SA session")
@@ -274,50 +277,52 @@ def appendUtt(spk, utt, start, end):
     n = len(utts[spk])
   ends[spk] = end
 
-def outputUtt():
-  outputSpkUtt(1)
-  outputSpkUtt(2)  
+def outputUtt(audio_pos):
+  outputSpkUtt(audio_pos, 1)
+  outputSpkUtt(audio_pos, 2)  
 
-def outputSpkUtt(spk):
+def outputSpkUtt(audio_pos, spk):
   global utts, output, sa_results, ends
   out = " ".join(utts[spk])
   if(out != output[spk]):
     output[spk] = out
-    txt = ("SPK "+str(spk)+" [{:6d}] "+out).format(ends[spk])
+    txt = ("SPK "+str(spk)+" <{:5d}>[{:6d}] "+out).format(audio_pos-ends[spk], ends[spk])
     print("\n"+txt, flush=True)
     sa_results.append(txt)
 
-def handleEmotion(start, end, spk, sentiment, mood):
+def handleEmotion(audio_pos, start, end, spk, sentiment, mood):
   if sentiment is not None:
-    txt = ("SPK "+str(spk)+" [{:6d} - {:6d}] {} sentiment={:6.4f}").format(start, end, "NEGATIVE" if sentiment<0 else "POSITIVE", sentiment)
+    txt = ("SPK "+str(spk)+" <{:5d}>[{:6d} - {:6d}] {} sentiment={:6.4f}").format(audio_pos-end, start, end, "NEGATIVE" if sentiment<0 else "POSITIVE", sentiment)
     print("\n"+txt, flush=True)
     sa_results.append(txt)
   if mood is not None:
     moods = []
     for moodName in mood:
       moods.append((moodName+"={}").format(+mood[moodName]))
-    txt = ("SPK "+str(spk)+" [{:6d} - {:6d}] moods: "+" ".join(moods)).format(start, end)
+    txt = ("SPK "+str(spk)+" <{:5d}>[{:6d} - {:6d}] moods: "+" ".join(moods)).format(audio_pos-end, start, end)
     print("\n"+txt, flush=True)
     sa_results.append(txt)
 
-def handleKwd(kwd):
-  txt = ("SPK "+str(kwd.get("spk"))+" [{:6d} - {:6d}] keyword {}: {}").format(kwd.get("start"), kwd.get("end"),  kwd.get("tag"),  kwd.get("phrase"))
+def handleKwd(audio_pos, kwd):
+  txt = ("SPK "+str(kwd.get("spk"))+" <{:5d}>[{:6d} - {:6d}] keyword {}: {}").format(audio_pos-kwd.get("end"), kwd.get("start"), kwd.get("end"),  kwd.get("tag"),  kwd.get("phrase"))
   print("\n"+txt, flush=True)
   sa_results.append(txt)
 
-def handlePhrase(phrase):
-  txt = ("SPK "+str(phrase.get("spk"))+" [{:6d} - {:6d}] phrase {}: {} [slots:{}]").format(phrase.get("start"), phrase.get("end"),  phrase.get("tag"),  phrase.get("phrase"), phrase.get("slots"))
+def handlePhrase(audio_pos, phrase):
+  txt = ("SPK "+str(phrase.get("spk"))+" <{:5d}>[{:6d} - {:6d}] phrase {}: {} [slots:{}]").format(audio_pos-phrase.get("end"), phrase.get("start"), phrase.get("end"),  phrase.get("tag"),  phrase.get("phrase"), phrase.get("slots"))
   print("\n"+txt, flush=True)
   sa_results.append(txt)
 
-def handleNER(ner):
-  txt = ("SPK "+str(ner.get("spk"))+" [{:6d} - {:6d}] named entity {}: {} [concepts:{}]").format(ner.get("start"), ner.get("end"),  ner.get("entity"),  ner.get("phrase"), ner.get("concepts"))
+def handleNER(audio_pos, ner):
+  txt = ("SPK "+str(ner.get("spk"))+" <{:5d}>[{:6d} - {:6d}] named entity {}: {} [concepts:{}]").format(audio_pos-ner.get("end"), ner.get("start"), ner.get("end"),  ner.get("entity"),  ner.get("phrase"), ner.get("concepts"))
   print("\n"+txt, flush=True)
   sa_results.append(txt)
 
 # function to print results sent as messages over websocket
 def process_ws_msg(wsMsg):
   #print("json: "+wsMsg, flush=True)
+  now = time.time()
+  audio_pos = 1000*int(round(now - epoch_start_audio_stream))
   data = json.loads(wsMsg)
   global sa_results, utts 
   for key in data:
@@ -328,28 +333,29 @@ def process_ws_msg(wsMsg):
     if(key == "emotion"):
       emotions = data["emotion"]
       for emotion in emotions:
-        handleEmotion(emotion.get("start"), emotion.get("end"), emotion.get("spk"), emotion.get("sentiment"), emotion.get("mood"))
+        handleEmotion(audio_pos, emotion.get("start"), emotion.get("end"), emotion.get("spk"), emotion.get("sentiment"), emotion.get("mood"))
     if(key == "keyword"):
       keywords = data["keyword"]
       for kwd in keywords:
-        handleKwd(kwd)
+        handleKwd(audio_pos,kwd)
     if(key == "phrase"):
       phrases = data["phrase"]
       for phrase in phrases:
-        handlePhrase(phrase)
+        handlePhrase(audio_pos, phrase)
     if(key == "ner"):
       ners = data["ner"]
       for ner in ners:
-        handleNER(ner)
+        handleNER(audio_pos, ner)
 
 
-    outputUtt()
+    outputUtt(audio_pos)
 
  #   sa_results.append( wsMsg )
 
 
 # function to read audio from file and convert it to ulaw and send to websocket
 async def stream_audio(file_name, audio_ws_url):
+  global epoch_start_audio_stream
   print("START stream_audio", flush=True)
   conv_fname = (file_name+'.ulaw')
   ff = FFmpeg(
@@ -370,12 +376,17 @@ async def stream_audio(file_name, audio_ws_url):
         n_buf = 1 * 1024
         byte_buf = f.read(n_buf)
         start = time.time()
+        epoch_start_audio_stream = start
         elapsed_time_fl = 0
         count = 0
         while byte_buf:
           n = len(byte_buf)
           print(".", end =" ", flush=True)
-          await websocket.send(byte_buf)
+          try:
+            await websocket.send(byte_buf)
+          except Exception as e:
+              print(str(datetime.datetime.now())+" Exception 1 when sending audio via websocket: "+str(e)) # usually because the session closed due to NOMATCH or NOINPUT
+              break
           count += n
           elapsed_time_fl = (time.time() - start)
           expected_time_fl = count / 16000.0
@@ -393,7 +404,7 @@ async def stream_audio(file_name, audio_ws_url):
         await websocket.close()
         print(str(datetime.datetime.now())+" websocket closed", flush=True)
       except Exception as e:
-        print("Exception when sending audio via websocket: "+str(e)) # usually because the session closed due to NOMATCH or NOINPUT
+        print(str(datetime.datetime.now())+" Exception 2 when sending audio via websocket: "+str(e)) 
 
   
 
@@ -428,7 +439,7 @@ async def websocket_receive(uri):
             await receiveWs(websocket)
           print("keep_running="+str(keep_running)) 
         except Exception as e: 
-          print("Exception: "+str(e))  
+          print("Exception within receive: "+str(e))  
 
 def process_audio(file_name):
   print("START processing: "+file_name)

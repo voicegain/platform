@@ -322,7 +322,7 @@ def handleNER(audio_pos, ner):
 def process_ws_msg(wsMsg):
   #print("json: "+wsMsg, flush=True)
   now = time.time()
-  audio_pos = 1000*int(round(now - epoch_start_audio_stream))
+  audio_pos = int(round(1000.0*(now - epoch_start_audio_stream)))
   data = json.loads(wsMsg)
   global sa_results, utts 
   for key in data:

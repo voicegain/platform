@@ -1,3 +1,9 @@
+## Release 1.36.2
+
+This maintenance release fixes one issue and adds one enhancement
+* #rcj-303: 'missing websocket name' error in audiocodes API 
+* #rcj-304: flush RT SA data faster if hypotheses allow it
+
 ## Release 1.36.1
 
 This maintenance release switches the new account email to AWS SES and it fixes 1 issue:

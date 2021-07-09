@@ -1,3 +1,12 @@
+### Maintenance release 1.36.3 is scheduled for 7/9/2021 between 6:00pm and 10pm CST
+
+This release adds various improvements to the Speech Analytics App (beta).
+
+The release also adds the following enhancements to the API:
+* max fetchTimeout for getting audio from a URL has been increased from 60 to 90 seconds
+* it is now possible to set a diarization speaker range starting at 1
+* GET /sa?detailed=false now returns numIncidents, numChannels, and numSpeakers
+
 ### Maintenance release 1.36.2 is scheduled for 7/6/2021 between 7:30pm and 10pm CST
 
 This release fixes one issue and adds one enhancement
@@ -33,12 +42,6 @@ This release addresses the following issues:
 * #saa-2: Edited Call Review questions do not persists
 * #saa-1: wasted space on SA dashboard - 3 bottom cards
 
-### Minor release 1.35.0 is scheduled for 6/23/2021 between 6pm and 9pm CST
-
-This release has the following changes:
-* POST /sa now supports notifying subscribers to a STOMP topic
-* Added lightweight GET /sa/{saSesId}/status polling method
-* Added `detailed` query parameter to GET /sa query method
 
 
 

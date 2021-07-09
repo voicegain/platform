@@ -1,3 +1,12 @@
+## Release 1.36.3
+
+This maintenance release adds various improvements to the Speech Analytics App (beta).
+
+The release also adds the following enhancements to the API:
+* max fetchTimeout for getting audio from a URL has been increased from 60 to 90 seconds
+* it is now possible to set a diarization speaker range starting at 1
+* GET /sa?detailed=false now returns numIncidents, numChannels, and numSpeakers
+
 ## Release 1.36.2
 
 This maintenance release fixes one issue and adds one enhancement

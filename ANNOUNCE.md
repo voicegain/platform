@@ -1,11 +1,11 @@
-### Maintenance release 1.36.3 is scheduled for 7/9/2021 between 6:0pm and 10pm CST
+### Maintenance release 1.36.3 is scheduled for 7/9/2021 between 6:00pm and 10pm CST
 
 This release adds various improvements to the Speech Analytics App (beta).
 
 The release also adds the following enhancements to the API:
 * max fetchTimeout for getting audio from a URL has been increased from 60 to 90 seconds
 * it is now possible to set a diarization speaker range starting at 1
-* GET /sa?detailed=false not returns numIncidents, numChannels, and numSpeakers
+* GET /sa?detailed=false now returns numIncidents, numChannels, and numSpeakers
 
 ### Maintenance release 1.36.2 is scheduled for 7/6/2021 between 7:30pm and 10pm CST
 

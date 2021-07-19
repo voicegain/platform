@@ -1,3 +1,17 @@
+## Release 1.37.0
+
+This minor release improves the Speech Analytics App.
+* We added a new type of construct that can be detected in a call. It is called Criteria and allows to conditionally combine NERs, Keywords, Phrases, etc.
+* Improvements to Call Review view 
+
+Our STT API now supports Pause and Mute for real-time transcription.
+
+An improved offline Acoustic Model for English language is also part of this release. 
+
+This release addresses the following issues:
+* #rcj-308: A mic transcription is terminated after 10 minutes
+* #rcj-305: improve handling for invalid values of fetchTimeout
+
 ## Release 1.36.3
 
 This maintenance release adds various improvements to the Speech Analytics App (beta).

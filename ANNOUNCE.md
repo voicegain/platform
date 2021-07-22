@@ -1,3 +1,9 @@
+### Maintenance release 1.37.1 is scheduled for 7/22/2021 between 6:00pm and 10pm CST
+
+This release:
+* improves the internal thread Executor setup to make it more resilient
+* improves on the alerting service to better notify Voicegain support of production issues
+
 ### Minor release 1.37.0 is scheduled for 7/19/2021 between 6pm and 11pm CST
 
 This release improves the Speech Analytics App.
@@ -31,8 +37,6 @@ This release fixes one issue and adds one enhancement
 
 This release switches the new account email to AWS SES and it fixes 1 issue:
 * #rcj-293: differential word cloud empty on Voicegain
-
-### Minor release 1.36.0 is scheduled for 6/27/2021 between 6pm and 11pm CST
 
 
 

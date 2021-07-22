@@ -1,3 +1,9 @@
+## Release 1.37.1
+
+This maintenance release:
+* improves the internal thread Executor setup to make it more resilient
+* improves on the alerting service to better notify Voicegain support of production issues
+
 ## Release 1.37.0
 
 This minor release improves the Speech Analytics App.

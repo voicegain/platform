@@ -65,9 +65,9 @@ body = {
   },
   "settings": {
     "asr": {
-      "noInputTimeout": 60000,
-      "completeTimeout": 0,
-      "sensitivity" : 0.5
+      "noInputTimeout": -1,
+      "completeTimeout": -1,
+      "sensitivity" : 0.3
     }
   }
 }

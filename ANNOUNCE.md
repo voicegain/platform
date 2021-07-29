@@ -1,3 +1,17 @@
+### Minor release 1.38.0 is scheduled for 7/29/2021 between 6pm and 11pm CST
+
+This release adds the following features:
+* `authConf` setting for callback authentication
+* support for new mechanism to specify configuration of services deployed on Edge
+* invoice API added
+* changes to user-group API to support attaching groups to Contexts
+
+The release also provides improvements in ML algorithms used for Speech Analytics.
+
+Finally the release fixes the following issues:
+* #rcj-315: Missed packet timestamps from dual RTP stream not handled correctly
+* #rcj-314: user.role is set to User by mistake
+
 ### Maintenance release 1.37.1 is scheduled for 7/22/2021 between 6:00pm and 10pm CST
 
 This release:
@@ -17,26 +31,6 @@ An improved offline Acoustic Model for English language is also part of this rel
 This release addresses the following issues:
 * #rcj-308: A mic transcription is terminated after 10 minutes
 * #rcj-305: improve handling for invalid values of fetchTimeout
-
-### Maintenance release 1.36.3 is scheduled for 7/9/2021 between 6:00pm and 10pm CST
-
-This release adds various improvements to the Speech Analytics App (beta).
-
-The release also adds the following enhancements to the API:
-* max fetchTimeout for getting audio from a URL has been increased from 60 to 90 seconds
-* it is now possible to set a diarization speaker range starting at 1
-* GET /sa?detailed=false now returns numIncidents, numChannels, and numSpeakers
-
-### Maintenance release 1.36.2 is scheduled for 7/6/2021 between 7:30pm and 10pm CST
-
-This release fixes one issue and adds one enhancement
-* #rcj-303: 'missing websocket name' error in audiocodes API 
-* #rcj-304: flush RT SA data faster if hypotheses allow it
-
-### Maintenance release 1.36.1 is scheduled for 6/30/2021 between 6:30pm and 11pm CST
-
-This release switches the new account email to AWS SES and it fixes 1 issue:
-* #rcj-293: differential word cloud empty on Voicegain
 
 
 

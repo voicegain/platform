@@ -7,7 +7,7 @@ This code demonstrates real-time transcription of audio obtained from a [Telnyx]
 You need account with Voicegain. From the Voicegain Web Console you need to obtain:
 * JWT token
 
-# from Telnyx
+## from Telnyx
 
 You need account with Telnyx. From the Telnyx Web Console you need to obtain:
 * phone number (will be used to dial the outbound call first leg)

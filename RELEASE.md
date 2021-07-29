@@ -1,3 +1,17 @@
+## Release 1.38.0
+
+This minor release adds the following features:
+* `authConf` setting for callback authentication
+* support for new mechanism to specify configuration of services deployed on Edge
+* invoice API added
+* changes to user-group API to support attaching groups to Contexts
+
+The release also provides improvements in ML algorithms used for Speech Analytics.
+
+Finally, the release fixes the following issues:
+* #rcj-315: Missed packet timestamps from dual RTP stream not handled correctly
+* #rcj-314: user.role is set to User by mistake
+
 ## Release 1.37.1
 
 This maintenance release:

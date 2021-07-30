@@ -1,3 +1,10 @@
+### Minor release 1.39.0 is scheduled for 7/30/2021 between 5pm and 11pm CST
+
+This release adds the following features:
+* SIP INVITE for Telephony Bot API supports now also UDP protocol in addition to TCP
+* Announcements API now supports html format in addition to Markdown (md)
+* Added ability to download invoices from the Web Console
+
 ### Minor release 1.38.0 is scheduled for 7/29/2021 between 6pm and 11pm CST
 
 This release adds the following features:

@@ -1,7 +1,8 @@
 import os
 from twilio.rest import Client
 
-
+# simple script to dial a number from Twilio and then bridge it to a Voicegain SIP endpoint 
+ 
 # Your Account Sid and Auth Token from twilio.com/console
 # and set the environment variables. See http://twil.io/secure
 account_sid = 'AC054c13f4xxxxxxxxxxxxxxxb04f2f710160'

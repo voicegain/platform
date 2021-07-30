@@ -9,7 +9,8 @@ The declarative IVR has built-in logic for re-prompts and confirmations, making 
 * declarativeIVRLambda.py - the python code to be deployed on AWS Lambda
 * **outbound-survey-ivr.yaml - sample IVR definition in YAML format - this implements an outbound survey**
 * outbound-survey-ivr.json - JSON file converted from the above YAML  
-* twilio-dial-outbound.py - sample python script that makes an outbound call and connects it to Voicegain Telephone Bot API
+* twilio-dial-outbound.py - sample python script that makes an outbound call from Twilio and connects it to Voicegain Telephone Bot API
+* telnyx-dial-outbound-lambda.py - sample python script for AWS Lambda function that makes an outbound call from Telnyx and connects it to Voicegain Telephone Bot API
 
 ## The declarative YAML for specifying IVR: actions
 

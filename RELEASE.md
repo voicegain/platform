@@ -1,5 +1,11 @@
-## Release 1.38.0
+## Release 1.39.0
 
+This minor release adds the following features:
+* SIP INVITE for Telephony Bot API supports now also UDP protocol in addition to TCP
+* Announcements API now supports html format in addition to Markdown (md)
+* Added ability to download invoices from the Web Console
+
+## Release 1.38.0
 This minor release adds the following features:
 * `authConf` setting for callback authentication
 * support for new mechanism to specify configuration of services deployed on Edge

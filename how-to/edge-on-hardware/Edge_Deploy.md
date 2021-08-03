@@ -199,8 +199,10 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
 
 - Click on the Configuration Tab
 - Select one of the available Cluster Configurations (only ones compatible with you K8S cluster will be shown).
+  - If you do not see a suitable configuration among the available choices please contact Voicegain support. 
 - Under Acoustic Models select if you would like to use real-time or offline models. If this is a single GPU system you can only choose one. 
-- (Ignore the external Storage settings)
+  - If you are going to use only the MRCP interface then select a real-time model.
+- (Ignore the external Storage settings. This applies to custom large configurations only.)
 - Choose to Save to begin the deployment
 
 ![Deploy](./11-1.png)
@@ -212,8 +214,9 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
 
 ![Login](./11-3.png)
 
-
-- Now you can test your new deployment. If you chose an off-line acoustic model you can test by uploading a file for transcription.
+- Now you can test your new deployment. 
+  - If you chose an off-line acoustic model you can test by uploading a file for transcription.
+  - Currently, you cannot test real-time model from the UI. A way to do this will be provided in then next release.
 
 ![Transcribe](./11-4.png)
 

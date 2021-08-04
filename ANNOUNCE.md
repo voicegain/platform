@@ -1,3 +1,9 @@
+### Minor release 1.40.0 is scheduled for 8/4/2021 between 6:30pm and 11pm CST
+
+This release adds the following features:
+* New format parameter to control payload of /asr API callbacks 
+* Test button for quick check of the functionality of an Edge Deployment
+
 ### Minor release 1.39.0 is scheduled for 7/30/2021 between 5pm and 11pm CST
 
 This release adds the following features:

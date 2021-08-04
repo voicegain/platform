@@ -1,3 +1,9 @@
+## Release 1.40.0
+
+This minor release adds the following features:
+* New format parameter to control payload of /asr API callbacks 
+* Test button for quick check of the functionality of an Edge Deployment
+
 ## Release 1.39.0
 
 This minor release adds the following features:

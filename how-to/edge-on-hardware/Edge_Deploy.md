@@ -215,8 +215,8 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
 ![Login](./11-3.png)
 
 - Now you can test your new deployment. 
-  - If you chose an off-line acoustic model you can test by uploading a file for transcription.
-  - Currently, you cannot test real-time model from the UI. A way to do this will be provided in then next release.
+  - On the home page click on the "Run test" button on the Function Tests card.
+  - If you chose an off-line acoustic model you can also test by uploading a file for transcription.
 
 ![Transcribe](./11-4.png)
 

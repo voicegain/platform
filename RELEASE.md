@@ -1,3 +1,9 @@
+## Release 1.40.1
+
+This maintenance release:
+* fixes issue #rcj-319: diarization setting of minSpeakers:1 and maxSpeakers:2 results in only 1 speaker identified
+* adds better error handling of invalid request parameters
+
 ## Release 1.40.0
 
 This minor release adds the following features:

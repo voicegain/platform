@@ -22,6 +22,7 @@ TODO: Manual provisioning requirements and steps to upload your preexisting kube
 - [Step 9: Reboot](#step9)
 - [Step 10: Ensure Cluster is functional](#step10)
 - [Step 11: Deploy Voicegain Application](#step11)
+- [Billing and Licensing](#license)
 
 ## <a name="step1"></a>Step 1: Configure your server for UEFI Boot 
 
@@ -223,5 +224,15 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
 ### All done!
 
 ---
+
+## <a name="license"></a>Billing and Licensing
+
+By default the Edge Setup will be deployed with usage based biling (per minute of the API time).
+
+If you would rather be be billed per port please contact us to setup a per port license for you Edge cluster.
+All that we need is your account id, the name of the cluster that you would like to apply the license to, and of'course the number of ports you would like to license.
+
+
+
 
 Goto: [top of document](#top)

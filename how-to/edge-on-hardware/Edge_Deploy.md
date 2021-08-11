@@ -233,7 +233,7 @@ If you would rather be billed per port please contact us to setup a per port lic
 
 All that we need is your account id, the name of the cluster that you would like to apply the license to (see image below), and of course the number of ports you would like to license.
 
-![List of Edge Clusters with names](./Edge-CLusters-list.PNG)
+![List of Edge Clusters with names](./Edge-clusters-list.PNG)
 
 
 Goto: [top of document](#top)

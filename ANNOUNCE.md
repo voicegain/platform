@@ -1,7 +1,7 @@
 ### Maintenance release 1.40.1 is scheduled for 8/11/2021 between 7:00pm and 10pm CST
 
 This release:
-* fixes issue #rcj-319: diarization setting of minSpeakers:1 and maxSepakers:2 results in only 1 speaker identified
+* fixes issue #rcj-319: diarization setting of minSpeakers:1 and maxSpeakers:2 results in only 1 speaker identified
 * adds better error handling of invalid request parameters
 
 ### Minor release 1.40.0 is scheduled for 8/4/2021 between 6:30pm and 11pm CST

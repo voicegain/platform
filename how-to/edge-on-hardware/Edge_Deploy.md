@@ -229,10 +229,11 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
 
 By default the Edge Setup will be deployed with usage based biling (per minute of the API time).
 
-If you would rather be be billed per port please contact us to setup a per port license for you Edge cluster.
-All that we need is your account id, the name of the cluster that you would like to apply the license to, and of'course the number of ports you would like to license.
+If you would rather be billed per port please contact us to setup a per port license for you Edge cluster.
 
+All that we need is your account id, the name of the cluster that you would like to apply the license to (see image below), and of course the number of ports you would like to license.
 
+![List of Edge Clusters with names](./Edge-CLusters-list.PNG)
 
 
 Goto: [top of document](#top)

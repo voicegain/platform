@@ -150,6 +150,10 @@ You will likely also be prompted by the "Software Updater" to, well, update. Clo
 
 ## <a name="step8"></a>Step 8: Run EZInit Script
 Paste the copied Command Script into a terminal session on the Edge System, hit enter and provide your password for sudo when prompted. 
+
+* **NOTE:** Ubuntu 20 handles sudo commands differently than other distros and previous versions. It is **required** to run sudo while preserving the home directory:
+``` sudo --preserve-env=HOME bash voicegain-init.sh ``` 
+
 ![EZInitScript](./8-1.png)
 
 The script will perform a system update and ensure that the supported Nvidia Drivers are installed then prompt you to Press any key to continue with the provisioning process.

@@ -1,3 +1,10 @@
+## Release 1.40.2
+
+This maintenance release:
+* fixes a small bug in EZInit script
+* improves diarization algorithm
+* adds alerts in the recognizer 
+
 ## Release 1.40.1
 
 This maintenance release:

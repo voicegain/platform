@@ -131,8 +131,9 @@ You will likely also be prompted by the "Software Updater" to, well, update. Clo
 ## <a name="step7"></a>Step 7: Create Cluster on VoiceGain
 > **System Provisioning Considerations:** For the sake of simplicity; the remainder of this guide will assume we are solely using the Ubuntu system we have just installed to complete all the remaining steps. However, it is entirely possible to complete this remotely. To do this, you would open a terminal and run `sudo apt install openssh-server -y`. You can, then, create the Cluster on the Voicegain portal from the system of your choosing and paste the EZInitCommand to the Ubuntu system over ssh.
 
-1. On your new Ubuntu system: open Firefox and go to: http://console.voicegain.ai
-2. Log in to the console and go to the "[Edge Deployment](https://console.voicegain.ai/specific/edge-deployments)" view. Click "**+ ADD**" and name your Cluster and choose **EZ Setup**.
+1. On your new Ubuntu system: open Firefox and go to: https://console.voicegain.ai
+2. If you do not have a developer account, you would need to sign up first. Detailed instructions are provided [here](https://www.voicegain.ai/post/how-to-signup-for-a-developer-account-and-start-using-voicegain-voice-ai).
+3. Log in to the console and go to the "[Edge Deployment](https://console.voicegain.ai/specific/edge-deployments)" view. Click "**+ ADD**" and name your Cluster and choose **EZ Setup**.
 
 ![Add new Edge Deployment](./7-1.png)
 

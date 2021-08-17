@@ -1,3 +1,10 @@
+### Maintenance release 1.40.2 is scheduled for 8/17/2021 between 6:00pm and 10pm CST
+
+This release:
+* fixes a small bug in EZInit script
+* improves diarization algorithm
+* adds alerts in the recognizer 
+
 ### Maintenance release 1.40.1 is scheduled for 8/11/2021 between 7:00pm and 10pm CST
 
 This release:

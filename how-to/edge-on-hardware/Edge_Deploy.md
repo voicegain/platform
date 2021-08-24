@@ -22,6 +22,7 @@ TODO: Manual provisioning requirements and steps to upload your preexisting kube
 - [Step 9: Reboot](#step9)
 - [Step 10: Ensure Cluster is functional](#step10)
 - [Step 11: Deploy Voicegain Application](#step11)
+- [Step 12: Reboots, Notes and Caveats(#step12)
 - [Billing and Licensing](#license)
 
 ## <a name="step1"></a>Step 1: Configure your server for UEFI Boot 
@@ -225,6 +226,23 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
   - If you chose an off-line acoustic model you can also test by uploading a file for transcription.
 
 ![Transcribe](./11-4.png)
+
+## <a name="step12"></a>Step 12: Reboots, Notes and Caveats
+The EZInit script has enabled all required services for the cluster to start automatically upon reboot. After rebooting the system you may need to wait up to 10 minutes for all of the individual components to start and settle. 
+
+The cluster configuration is ran as the non-root user who ran the EZInit script. If you require other users on the system to have access to the kubectl command line tool you will want to copy the kubernetes configuration file to their home directory. 
+
+For example, you create a new user named 'bobert' who needs to be able to run kubectl commands and administer the cluster. After adding the user to Ubuntu (adduser or useradd). Run the following commands, making certain to assign the newly created user to the Newuser variable:
+```
+Newuser=bobert ### replace bobert with new user
+Newhome=/home/${Newuser}
+Newkube=${Newhome}/.kube
+Newconfig=${Newkube}/config
+sudo mkdir -p ${Newkube}
+sudo cp /etc/kubernetes/admin.conf ${Newconfig}
+sudo chown ${Newuser}. -R ${Newkube}
+echo export KUBECONFIG=${Newconfig} | sudo tee -a ${Newhome}/.bashrc
+```
 
 ### All done!
 

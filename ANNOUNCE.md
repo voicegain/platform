@@ -1,3 +1,11 @@
+### Minor release 1.41.0 is scheduled for 8/27/2021 between 6:00pm and 11pm CST
+
+This release adds the following:
+* MRCP server's 3rd-party dependencies get updated to their latest versions
+* Offline transcription tasks get optimized to increase the throughput
+* Ability to enable digit formatting as default for a Context
+* Ability to enable audio capture for all transcriptions in a Context 
+
 ### Maintenance release 1.40.2 is scheduled for 8/17/2021 between 6:00pm and 10pm CST
 
 This release:
@@ -38,11 +46,6 @@ Finally the release fixes the following issues:
 * #rcj-315: Missed packet timestamps from dual RTP stream not handled correctly
 * #rcj-314: user.role is set to User by mistake
 
-### Maintenance release 1.37.1 is scheduled for 7/22/2021 between 6:00pm and 10pm CST
-
-This release:
-* improves the internal thread Executor setup to make it more resilient
-* improves on the alerting service to better notify Voicegain support of production issues
 
 
 

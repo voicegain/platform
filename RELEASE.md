@@ -1,3 +1,11 @@
+## Release 1.41.0
+
+This minor release adds the following:
+* MRCP server's 3rd-party dependencies get updated to their latest versions
+* Offline transcription tasks get optimized to increase the throughput
+* Ability to enable digit formatting as default for a Context
+* Ability to enable audio capture for all transcriptions in a Context 
+
 ## Release 1.40.2
 
 This maintenance release:

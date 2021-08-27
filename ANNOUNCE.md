@@ -1,3 +1,11 @@
+### Minor release 1.41.0 is scheduled for 8/27/2021 between 6:00pm and 11pm CST
+
+This release adds the following:
+* MRCP server's 3rd-party dependencies get updated to their latest versions
+* Offline transcription tasks get optimized to increase the throughput
+* Ability to enable digit formatting as default for a Context
+* Ability to enable audio capture for all transcriptions in a Context 
+
 ### Maintenance release 1.40.2 is scheduled for 8/17/2021 between 6:00pm and 10pm CST
 
 This release:

@@ -4,7 +4,7 @@ import requests, time, os, json, re
 ## specify here the directory with input audio files to test
 input_path = "./my-files/"
 
-spanish = True
+spanish = False
 
 #voicegain
 platform = "voicegain"

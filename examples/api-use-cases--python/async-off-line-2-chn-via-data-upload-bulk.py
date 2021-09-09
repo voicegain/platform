@@ -7,7 +7,7 @@ input_path = "./my-2-chn/"
 spanish = False
 
 #voicegain
-platform = "ascalon"
+platform = "voicegain"
 JWT = "< JWT token obtained from Web Console https://console.voicegain.ai >"
 
 asr_body = {

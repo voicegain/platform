@@ -1,4 +1,4 @@
-### Minor release 1.42.0 is scheduled for 9/9/2021 between 6:00pm and 11pm CST
+### Minor release 1.42.0 is scheduled for 9/10/2021 between 6:00pm and 11pm CST
 
 This release adds the following:
 * OFFLINE transcription now uses ffmpeg to transcode audio - see [the list of supported audio formats](https://support.voicegain.ai/hc/en-us/articles/360050477331-Supported-Audio-Formats)
@@ -14,6 +14,7 @@ Edge specific notes:
 * We have changed the `result.incrementalTranscript` field in the response from `GET  https://api.voicegain.ai/v1/asr/transcribe/{sessionId}` - the new design will better support the changing hypotheses, in particular in commbination with digit and other formatters.
 
 This release fixes the following issues:
+* #rcj-339: v1/asr/transcribe/{}/transcript?format=text API does not behave like spec w/o interval parameter
 * #rcj-338: Exception in data-api when upload multiple files concurrently on Edge
 
 ### Minor release 1.41.0 is scheduled for 8/27/2021 between 6:00pm and 11pm CST

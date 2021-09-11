@@ -30,8 +30,19 @@ save_all_json_results = False
 output_path = "output"
 ## name of the file will all results - date will be inserted in place of {}
 all_results_file = "all_results_{}.txt"
+sampleRate = 8000
+format = "PCMU"
+ffmpegFormat = "mulaw"
+#format = "L16"
+#ffmpegFormat = "s16le"
+pollingInterval = 0.75
 
+#voicegain
+host = "api.voicegain.ai"
 JWT = "<JWT obtained from the Voicegain Developer Console (https://console.voicegain.ai)>"
+
+## ALL settings above this line ##
+
 headers = {"Authorization":JWT}
 
 # new transcription session request
@@ -53,9 +64,9 @@ body = {
   ],
   "audio": {
     "source": { "stream": { "protocol": "WEBSOCKET" } },
-    "format": "PCMU",
+    "format": format,
     "channel" : "mono",
-    "rate": 8000, 
+    "rate": sampleRate, 
     "capture": 'true'
   },
   "settings": {
@@ -63,8 +74,9 @@ body = {
       "speechContext" : "digits",
       "noInputTimeout": -1,
       "completeTimeout": -1,
-      "sensitivity" : 0.3,
+      "sensitivity" : 0.5,
       "speedVsAccuracy" : 0.5
+      #, "hints" : ["Hydebad", "third", "amazon"]
     },
     "formatters" : [{"type" : "digits"}]
   }
@@ -93,7 +105,7 @@ current_results = {}
 
 
 def web_api_request(headers, body):
-  init_response_raw = requests.post("https://api.ascalon.ai/v1/asr/transcribe/async", json=body, headers=headers)
+  init_response_raw = requests.post("https://{}/v1/asr/transcribe/async".format(host), json=body, headers=headers)
   try:
     init_response = init_response_raw.json()
     if(init_response.get("sessions") is None):
@@ -130,7 +142,7 @@ async def stream_audio(file_name, audio_ws_url):
   conv_fname = (file_name+'.ulaw').replace(input_path, "./")
   ff = FFmpeg(
       inputs={file_name: []},
-      outputs={conv_fname : ['-ar', '8000', '-f', 'mulaw', '-y', '-map_channel', '0.0.0']}
+      outputs={conv_fname : ['-ar', ''+str(sampleRate), '-f', ffmpegFormat, '-y', '-map_channel', '0.0.0']}
   )
   ff.cmd
   ff.run()
@@ -161,7 +173,7 @@ async def stream_audio(file_name, audio_ws_url):
           count += n
           elapsed_time_fl = (time.time() - start)
 
-          expected_time_fl = count / 8000.0
+          expected_time_fl = count / (1.0 * sampleRate)
           time_to_wait = expected_time_fl - elapsed_time_fl
           if time_to_wait >= 0: 
             time.sleep(time_to_wait) # to simulate real time streaming
@@ -208,13 +220,24 @@ def poll(index, session_id, polling_url):
       is_final = poll_response["result"]["final"]
       incrementalTranscript = poll_response["result"].get('incrementalTranscript')
       if(incrementalTranscript is not None):
-        corrections = poll_response["result"].get('corrections')
-        transcriptPlusCorrections = incrementalTranscript
-        if(corrections is not None):
-          transcriptPlusCorrections += "  (corrections: {})".format(str(corrections))
+        print("debug: {} ".format(str(incrementalTranscript)), flush=True)
+        trFinal = incrementalTranscript.get("final")
+        trHypo = incrementalTranscript.get("hypothesis")
 
-        print("increment transcript: {} ".format(transcriptPlusCorrections), flush=True)
-        current_results["incremental"].append(transcriptPlusCorrections)
+        trFinalPlusHypo = None
+
+        if(trFinal is not None and trHypo is not None):
+          trFinalPlusHypo = trFinal + " :: (" + trHypo + ")"
+        elif trFinal is not None:
+          trFinalPlusHypo = trFinal
+        elif trHypo is not None:
+          trFinalPlusHypo = "("+trHypo+")"
+        else:
+          trFinalPlusHypo = None
+
+        if(trFinalPlusHypo is not None):
+          print("increment transcript: {} ".format(trFinalPlusHypo), flush=True)
+          current_results["incremental"].append(trFinalPlusHypo)
     if save_all_json_results:
       # write poll_response to JSON
       poll_response_path = os.path.join(output_path, "{}-{}.json".format(session_id, index))
@@ -248,7 +271,7 @@ async def poll_results(sid, uri, fname):
   index = 0
   try:
     while True:
-      time.sleep(0.5)
+      time.sleep(pollingInterval)
       is_final = poll(index, sid, uri)
 
       index += 1

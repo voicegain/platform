@@ -24,17 +24,22 @@ import datetime
 
 ## specify here the directory with input audio files to test
 input_path = "./m4a/"
-## set to True if you want to save all the json responses received 
+## set to True if you want to save all the json responses received (for debugging)
 save_all_json_results = False
 ## this is the directory where output will be saved
 output_path = "output"
 ## name of the file will all results - date will be inserted in place of {}
 all_results_file = "all_results_{}.txt"
+## sample rate for streaming: either 8000 or 16000
 sampleRate = 8000
+## streaming audio format (for Voicegain)
 format = "PCMU"
+## equivalent audio format for ffmpeg
 ffmpegFormat = "mulaw"
 #format = "L16"
 #ffmpegFormat = "s16le"
+
+## incremental polling interval
 pollingInterval = 0.75
 
 #voicegain
@@ -71,14 +76,16 @@ body = {
   },
   "settings": {
     "asr": {
-      "speechContext" : "digits",
+      ## set speechContext to digits if audio contains a lot of digits
+      "speechContext" : "normal",
       "noInputTimeout": -1,
       "completeTimeout": -1,
       "sensitivity" : 0.5,
       "speedVsAccuracy" : 0.5
       #, "hints" : ["Hydebad", "third", "amazon"]
-    },
-    "formatters" : [{"type" : "digits"}]
+    }
+    ## comment out if you do not need digit formatter
+    , "formatters" : [{"type" : "digits"}]
   }
 }
 
@@ -95,6 +102,9 @@ for root, dirs, files in os.walk(input_path):
 print("files to test")
 for name in list_of_files:
     print(name)
+
+if not os.path.exists(output_path):
+    os.mkdir(output_path)
 
 # global
 collected_results = []
@@ -314,6 +324,7 @@ for aFile in list_of_files:
 
 print("RESULTS")
 results_path = os.path.join(output_path, all_results_file)
+print("writing all results to: "+results_path)
 with open(results_path, 'w') as outfile:
   for result in collected_results:
     print("AUDIO: "+result["audio"])

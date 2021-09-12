@@ -12,13 +12,24 @@ retrieved from URL - this example processes a single file and shows details of a
 # Install
 To run these scripts you will need Python (we have tested the scripts using python 3.8). You will need to install the required dependencies using `pip`.
 
-# async-real-time-from-websocket-with-polling.py
+# Details of scripts
+## Script: async-real-time-from-websocket-with-polling.py
 
+### **Overview** 
+This script performs REAL-TIME transcription of audio files streamed via a websocket. The transcript results (incremental and full) are retrieved via polling. This script is setup to process all audio input files from input directory (`input_path`) and report results in a single text file (`all_results_file`). 
+
+For streaming the script uses ffmpeg to transcode input audio files to a format (`format`, `ffmpegFormat`) suitable for seding over websocket, e.g., to mulaw. ffmpeg is also used to change the sample rate to the target one (`sampleRate`)  
+
+### **Install**
 This script requires **ffmpeg**. This [video](https://www.youtube.com/watch?v=HmoCT7Km0wo) may be useful for Windows 10 users in demonstrating how to setup Git Bash, Python, and FFMpeg.  
+
+### **Settings**
 
 Various settings are in the top part of the python file.
 
-You can also modify the body of the request. 
+You can also modify the body of the request. For example you can change `settings.asr.speechContext` from `normal` to `digits`, or you can enable/disable `settings.formatters`
+
+### **Output**
 
 Here is a sample output
 ```

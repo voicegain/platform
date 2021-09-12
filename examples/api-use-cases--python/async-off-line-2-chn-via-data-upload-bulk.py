@@ -33,13 +33,11 @@ asr_body = {
         }
     },
     "settings" : {
-        "formatters" : [
-            {"type" : "digits"}
-        ],
         "asr" : {
-            "sensitivity" : 0.3,
+            "sensitivity" : 0.5,
             "speedVsAccuracy" : 0.5
         }
+        , "formatters" : [{"type" : "digits"}]
     }
 }
 

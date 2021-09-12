@@ -2,13 +2,14 @@ import requests, time, os, json, re
 
 
 ## specify here the directory with input audio files to test
-input_path = "./my-files/"
+input_path = "./my-mono-audio/"
 
 spanish = False
 
 #voicegain
-platform = "voicegain"
+host = "https://api.voicegain.ai/v1"
 JWT = "< JWT token obtained from Web Console https://console.voicegain.ai >"
+JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2FwaS52b2ljZWdhaW4uYWkvdjEiLCJzdWIiOiJhZmE0ZGM5OS04ZGUwLTQyNTMtYjc3My1hNmNhNTU2MWRiYTYifQ.Yj4TlKQ92B8gxi-wme5nUyCAGKBv-3qEa_FIEttK8yI"
 
 asr_body = {
     "sessions": [
@@ -32,13 +33,11 @@ asr_body = {
         }
     },
     "settings" : {
-        "formatters" : [
-            {"type" : "digits"}
-        ],
         "asr" : {
-            "sensitivity" : 0.3,
+            "sensitivity" : 0.5,
             "speedVsAccuracy" : 0.5
         }
+        , "formatters" : [{"type" : "digits"}]
     }
 }
 
@@ -51,7 +50,7 @@ audio_type = "audio/wav"
 
 output_path = "output-{}".format(time.strftime("%Y-%m-%d_%H-%M-%S"))
 
-data_url = "https://api.{}.ai/v1/data/file?reuse=true&transcode=enable".format(platform)
+data_url = "{}/data/file?reuse=true&transcode=disable".format(host)
 
 headers = {"Authorization":JWT}
 
@@ -73,8 +72,21 @@ def process_one_file(audio_fname):
         'objectdata': (None, json.dumps(data_body), "application/json")
     }
     print("uploading audio data {} ...".format(audio_fname), flush=True)
-    data_response = requests.post(data_url, files=multipart_form_data, headers=headers).json()
+    data_response = None
+    data_response_raw = None
+    try:
+        data_response_raw = requests.post(data_url, files=multipart_form_data, headers=headers)
+        data_response = data_response_raw.json()
+    except Exception as e:
+        print(str(data_response_raw))
+        exit() 
+
     print("data response: {}".format(data_response), flush=True)
+
+    if data_response.get("status") is not None and data_response.get("status") == "BAD_REQUEST":
+        print("error uploading file {}".format(audio_fname), flush=True)
+        exit()
+
     object_id = data_response["objectId"]
     print("objectId: {}".format(object_id), flush=True)
 
@@ -83,7 +95,7 @@ def process_one_file(audio_fname):
 
 
     print("making asr request ...", flush=True)
-    asr_response = requests.post("https://api.{}.ai/v1/asr/transcribe/async".format(platform), json=asr_body, headers=headers).json()
+    asr_response = requests.post("{}/asr/transcribe/async".format(host), json=asr_body, headers=headers).json()
     session_id = asr_response["sessions"][0]["sessionId"]
     polling_url = asr_response["sessions"][0]["poll"]["url"]
 
@@ -123,7 +135,7 @@ def process_one_file(audio_fname):
 
     # get result as text file
 
-    txt_url = "https://api.{}.ai/v1/asr/transcribe/{}/transcript?format=text".format(platform, session_id)
+    txt_url = "{}/asr/transcribe/{}/transcript?format=text".format(host, session_id)
     print("Retrieving transcript using url: {}".format(txt_url), flush=True)
     txt_response = requests.get(txt_url, headers=headers)
     transcript_text_path = os.path.join(output_path, "{}.txt".format(fname))

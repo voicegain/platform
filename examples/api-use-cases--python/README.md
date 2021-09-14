@@ -12,6 +12,25 @@ retrieved from URL - this example processes a single file and shows details of a
 # Install
 To run these scripts you will need Python (we have tested the scripts using python 3.8). You will need to install the required dependencies using `pip`.
 
+# JWT
+
+All scripts need JWT token to be inserted in the specified place in the script, e.g.
+
+```
+...
+## incremental polling interval
+pollingInterval = 0.75
+
+#voicegain
+host = "api.voicegain.ai"
+JWT = "<JWT obtained from the Voicegain Developer Console (https://console.voicegain.ai)>"
+
+## ALL settings above this line ##
+...
+```
+
+replace all the text between quotes with the JWT (do not leave <>).
+
 # Details of scripts
 ## Script: async-real-time-from-websocket-with-polling.py
 

@@ -1,5 +1,5 @@
 
-# List of Voicegain SaaS Services or On-Premise Subscription Products
+# List of Voicegain SaaS Services or Edge/On-Prem Subscription Products
 Effective: June 20th, 2019
 
 Last Updated: June 18th, 2021

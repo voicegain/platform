@@ -1,5 +1,5 @@
 
-# List of Voicegain SaaS Services or Edge/On-Prem Subscription Products
+# Voicegain Software SKU List - Can be delivered as a SaaS Service or Edge/On-Prem Subscription Product
 Effective: June 20th, 2019
 
 Last Updated: June 18th, 2021

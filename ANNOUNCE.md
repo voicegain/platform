@@ -1,3 +1,8 @@
+## Maintenance release 1.42.1 is scheduled for 9/15/2021 between 6:00pm and 10pm CST
+
+This release:
+* Reduces the amount of memory used by the offline transcription tasks leaving more space that may be used for transcoding audio files. Should reduce change of failed offline transcription.
+
 ### Minor release 1.42.0 is scheduled for 9/10/2021 between 6:00pm and 11pm CST
 
 This release adds the following:

@@ -9,7 +9,6 @@ spanish = False
 #voicegain
 host = "https://api.voicegain.ai/v1"
 JWT = "< JWT token obtained from Web Console https://console.voicegain.ai >"
-JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2FwaS52b2ljZWdhaW4uYWkvdjEiLCJzdWIiOiJhZmE0ZGM5OS04ZGUwLTQyNTMtYjc3My1hNmNhNTU2MWRiYTYifQ.Yj4TlKQ92B8gxi-wme5nUyCAGKBv-3qEa_FIEttK8yI"
 
 asr_body = {
     "sessions": [

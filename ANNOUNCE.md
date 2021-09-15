@@ -1,3 +1,8 @@
+## Maintenance release 1.42.1 is scheduled for 9/15/2021 between 6:00pm and 10pm CST
+
+This release:
+* Reduces the amount of memory used by the offline transcription tasks leaving more space that may be used for transcoding audio files. Should reduce chance of failed offline transcription.
+
 ### Minor release 1.42.0 is scheduled for 9/10/2021 between 6:00pm and 11pm CST
 
 This release adds the following:
@@ -32,24 +37,8 @@ This release:
 * improves diarization algorithm
 * adds alerts in the recognizer 
 
-### Maintenance release 1.40.1 is scheduled for 8/11/2021 between 7:00pm and 10pm CST
 
-This release:
-* fixes issue #rcj-319: diarization setting of minSpeakers:1 and maxSpeakers:2 results in only 1 speaker identified
-* adds better error handling of invalid request parameters
 
-### Minor release 1.40.0 is scheduled for 8/4/2021 between 6:30pm and 11pm CST
-
-This release adds the following features:
-* New format parameter to control payload of /asr API callbacks 
-* Test button for quick check of the functionality of an Edge Deployment
-
-### Minor release 1.39.0 is scheduled for 7/30/2021 between 5pm and 11pm CST
-
-This release adds the following features:
-* SIP INVITE for Telephony Bot API supports now also UDP protocol in addition to TCP
-* Announcements API now supports html format in addition to Markdown (md)
-* Added ability to download invoices from the Web Console
 
 
 

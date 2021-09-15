@@ -1,3 +1,8 @@
+## Release 1.42.1
+
+This maintenance release:
+* Reduces the amount of memory used by the offline transcription tasks leaving more space that may be used for transcoding audio files. Should reduce chance of failed offline transcription.
+
 ## Release 1.42.0
 
 This minor release adds the following:

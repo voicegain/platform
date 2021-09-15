@@ -3,6 +3,10 @@
 This maintenance release:
 * Reduces the amount of memory used by the offline transcription tasks leaving more space that may be used for transcoding audio files. Should reduce chance of failed offline transcription.
 
+Edge specific notes:
+* It is recommended to apply this release to your Edge deployment if you are doing offline-transcription.
+* This release is not relevant to Edge users using only MRCP ASR or only real-time transcription.
+
 ## Release 1.42.0
 
 This minor release adds the following:

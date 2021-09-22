@@ -1,8 +1,8 @@
 ### September 22, 2021
 
-### September 19, 2021
-
 53 issues to clear. Our goal is to have zero issues by Friday (except for `sticky` ones)
+
+### September 19, 2021
 
 58 issues to clear. Our goal is to have zero issues by Friday.
 

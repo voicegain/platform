@@ -39,3 +39,19 @@ For Firefox you need to read the actual sample rate and pass it in the body of t
 </br>
 
 ![Screenshot of the microphone capture app running.](./mic-capture.PNG) *Screenshot of the microphone capture app running.*
+
+## Tweaks ##
+
+You can control the delay and the amount of corrections by modifying the `minimumDelay` parameter in file microphone-capture.js
+
+```
+websocket: { adHoc: true, minimumDelay: 175, useSTOMP: false },
+```
+
+`minimumDelay` = 0 will give fastest response but also most corrections. You can increase the value of `minimumDelay` if you do not mind some delay but would like to see fewer rewrites of the text.
+
+## API ##
+
+The core API used is documented here: https://console.voicegain.ai/api-documentation#operation/asrTranscribeAsyncPost
+
+If you want to know the format of the messages sent over webscoket look here: https://console.voicegain.ai/api-documentation#operation/wsTranscribeWords

@@ -1,3 +1,19 @@
+## Release 1.43.0
+
+This minor release:
+* Significantly improves Hint and Language Model functionality. You can now achieve much higher accuracy using Hints and/or Language Model
+* Available configurations for Edge deployments now are annotated with the compatible release range - the Web UI ensures that you can apply to your Edge cluster only compatible configurations
+* New accounts get $50 credit instead of the monthly 300 minutes allowance. Old accounts retain 300 minutes allowance.
+
+Two new Applications are being released:
+* Speech Analytics App - analyze call-center calls
+* Transcribe App - transcribe audio from meetings and other audio files
+
+See [www.voicegain.ai](https://www.voicegain.ai) for how to signup.
+
+Issues fixed:
+* Memory issue affecting Offline transcription which occasionally would cause the transcription to be stuck in Processing
+
 ## Release 1.42.1
 
 This maintenance release:

@@ -55,3 +55,5 @@ websocket: { adHoc: true, minimumDelay: 175, useSTOMP: false },
 The core API used is documented here: https://console.voicegain.ai/api-documentation#operation/asrTranscribeAsyncPost
 
 If you want to know the format of the messages sent over webscoket look here: https://console.voicegain.ai/api-documentation#operation/wsTranscribeWords
+
+BTW, you need to be logged into the Voicegain Web Console for these links to work.

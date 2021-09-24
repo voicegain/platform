@@ -1,18 +1,18 @@
-### September 22, 2021
+### September 24, 2021
 
-53 issues to clear. Our goal is to have zero issues by Friday (except for `sticky` ones)
 
-### September 19, 2021
+Today we release the Voicegain Transcribe App. 
 
-58 issues to clear. Our goal is to have zero issues by Friday.
+Watch this place for announcements of new features coming soon.
 
-### September 16, 2021
+We will also use the Latest News to inform you of any major issues with the app as soon as they are discovered.
 
-57 issues to clear
+#### Known Issues
 
-### September 15. 2021
-
-Alpha release coming soon!
+* Named Entities and Keywords are not being highlighted in the text
+* Pause and Mute on Microphone Transcription is glitchy
+* Navigating away from Microphone Transcription may result is transcription not properly terminated
+* Downgrading of the Billing Plans does not work
 
 
 

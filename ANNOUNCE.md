@@ -1,3 +1,19 @@
+### Minor release 1.43.0 is scheduled for 9/24/2021 between 7:00pm and 11pm CST
+
+This release:
+* Significantly improves Hint and Language Model functionality. You can now achieve much higher accuracy using Hints and/or Language Model
+* Available configurations for Edge deployments now are annotated with the compatible release range - the Web UI ensures that you can apply to your Edge cluster only compatible configurations
+* New accounts get $50 credit instead of the monthly 300 minutes allowance. Old accounts retain 300 minutes allowance.
+
+Two new Applications are being released:
+* Speech Analytics App - analyze call-center calls
+* Transcribe App - transcribe audio from meetings and other audio files
+
+See [www.voicegain.ai](https://www.voicegain.ai) for how to signup.
+
+Issues fixed:
+* Memory issue affecting Offline transcription which occasionally would cause the transcription to be stuck in Processing
+
 ## Maintenance release 1.42.1 is scheduled for 9/15/2021 between 6:00pm and 10pm CST
 
 This release:
@@ -30,12 +46,6 @@ This release adds the following:
 * Ability to enable digit formatting as default for a Context
 * Ability to enable audio capture for all transcriptions in a Context 
 
-### Maintenance release 1.40.2 is scheduled for 8/17/2021 between 6:00pm and 10pm CST
-
-This release:
-* fixes a small bug in EZInit script
-* improves diarization algorithm
-* adds alerts in the recognizer 
 
 
 

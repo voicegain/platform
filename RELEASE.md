@@ -1,3 +1,8 @@
+## Release 1.43.1
+
+This maintenance release:
+* Changes signup text for Developer Web Console from "300 free monthly minutes available" to "$50 one-time credit available" 
+
 ## Release 1.43.0
 
 This minor release:

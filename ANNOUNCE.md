@@ -1,7 +1,7 @@
 ### Maintenance release 1.43.1 is scheduled for 9/26/2021 between 8:00pm and 10pm CST
 
 This release:
-* Changes signup text for Developer Web Console from "300 free monthly minutes available" to "$50 credit available" 
+* Changes signup text for Developer Web Console from "300 free monthly minutes available" to "$50 one-time credit available" 
 
 ### Minor release 1.43.0 is scheduled for 9/24/2021 between 7:00pm and 11pm CST
 

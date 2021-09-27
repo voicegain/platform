@@ -1,3 +1,11 @@
+### September 27, 2021
+
+Released the following fixes:
+* Fixed several small UI issues 
+* Fixed pricing values shown on Billing Plans page - was reporting price/user/month as price/month
+* Fixed double counting usage for microphone transcriptions.
+* Fixed error when doing transcription with Expiry set to longer than 1 Week.
+
 ### September 24, 2021
 
 

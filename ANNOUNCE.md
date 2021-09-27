@@ -1,3 +1,15 @@
+### Maintenance release 1.43.2 is scheduled for 9/27/2021 between 7:00pm and 10pm CST
+
+This release fixes issues:
+* #rcj-345: On ACP, Edge configuration selection is not filtered by selected version
+* #rcj-347: Invalid value for `persist`, must be a value less than or equal to `604800000`
+
+For Transcribe App:
+* Fixed several small UI issues 
+* Fixed pricing values shown on Billing Plans page - was reporting price/user/month as price/month
+* Fixed double counting usage for microphone transcriptions.
+* Fixed error when doing transcription with Expiry set to longer than 1 Week.
+
 ### Maintenance release 1.43.1 is scheduled for 9/26/2021 between 8:00pm and 10pm CST
 
 This release:

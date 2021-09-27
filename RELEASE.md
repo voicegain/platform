@@ -1,3 +1,15 @@
+## Release 1.43.2
+
+This release fixes issues:
+* #rcj-345: On ACP, Edge configuration selection is not filtered by selected version
+* #rcj-347: Invalid value for `persist`, must be a value less than or equal to `604800000`
+
+For Transcribe App:
+* Fixed several small UI issues 
+* Fixed pricing values shown on Billing Plans page - was reporting price/user/month as price/month
+* Fixed double counting usage for microphone transcriptions.
+* Fixed error when doing transcription with Expiry set to longer than 1 Week.
+
 ## Release 1.43.1
 
 This maintenance release:

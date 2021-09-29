@@ -32,6 +32,8 @@ JWT = "<JWT obtained from the Voicegain Developer Console (https://console.voice
 
 replace all the text between quotes with the JWT (do not leave <>).
 
+Here are [instructions on how to obtain a JWT](https://support.voicegain.ai/hc/en-us/articles/360028023691-JWT-Authentication).
+
 # Details of scripts
 ## Script: async-real-time-from-websocket-with-polling.py
 

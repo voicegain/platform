@@ -1,3 +1,15 @@
+### Maintenance release 1.43.3 is scheduled for 9/28/2021 between 8:00pm and 10pm CST
+
+This release fixes issues:
+* #rcj-349: Acoustic model setting in context is not used in offline transcribe
+
+For Transcribe App released fixes for the following:
+* Issue with navigating away from microphone capture which would break the recording
+* Not able to upgrade in a single step from monthly to annual and to a higher Plan
+* Computation of remaining days till usage reset
+* Minor issues in password entry for a new password
+* Several small UI issues 
+
 ### Maintenance release 1.43.2 is scheduled for 9/27/2021 between 7:00pm and 10pm CST
 
 This release fixes issues:

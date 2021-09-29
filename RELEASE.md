@@ -1,3 +1,15 @@
+## Release 1.43.3
+
+This release fixes issues:
+* #rcj-349: Acoustic model setting in context is not used in offline transcribe
+
+For Transcribe App released fixes for the following:
+* Issue with navigating away from microphone capture which would break the recording
+* Not able to upgrade in a single step from monthly to annual and to a higher Plan
+* Computation of remaining days till usage reset
+* Minor issues in password entry for a new password
+* Several small UI issues 
+
 ## Release 1.43.2
 
 This release fixes issues:

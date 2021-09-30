@@ -1,3 +1,10 @@
+## Release 1.43.4
+
+This maintenance release fixes the following issues:
+* Certain fields not saved on a transcription record due to NPE
+* Uploaded LM corpus files incorrectly reported as having wrong format/encoding
+* Edge Web Console not showing all Application Modes correctly
+
 ## Release 1.43.3
 
 This release fixes issues:

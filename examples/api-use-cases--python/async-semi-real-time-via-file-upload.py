@@ -50,6 +50,13 @@ asr_body = {
                 "uuid": object_id
             }
         }
+    },
+    "settings" : {
+        "asr" :{
+            "noInputTimeout" : 15000,
+            "completeTimeout" : -1
+
+        }
     }
 }
 

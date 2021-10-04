@@ -1,3 +1,10 @@
+### Maintenance release 1.43.5 is scheduled for 10/4/2021 between 6:00pm and 10pm CST
+
+This release fixes the following issues:
+* #rcj-353: completeTimeout not working in SEMI-REAL-TIME mode
+* #rcj-351: submitting an offline SA session with stereo audio ended up with mono audio - this was introduced in release 1.42.0
+* #vgp-820: allow : in hint names - new weight property
+
 ### Maintenance release 1.43.4 is scheduled for 9/30/2021 between 6:30pm and 10pm CST
 
 This release fixes the following issues:
@@ -50,10 +57,7 @@ See [www.voicegain.ai](https://www.voicegain.ai) for how to signup.
 Issues fixed:
 * Memory issue affecting Offline transcription which occasionally would cause the transcription to be stuck in Processing
 
-## Maintenance release 1.42.1 is scheduled for 9/15/2021 between 6:00pm and 10pm CST
 
-This release:
-* Reduces the amount of memory used by the offline transcription tasks leaving more space that may be used for transcoding audio files. Should reduce chance of failed offline transcription.
 
 
 

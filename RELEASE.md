@@ -1,3 +1,10 @@
+## Release 1.43.5
+
+This maintenance release fixes the following issues:
+* #rcj-353: completeTimeout not working in SEMI-REAL-TIME mode
+* #rcj-351: submitting an offline SA session with stereo audio ended up with mono audio - this bug was introduced in release 1.42.0
+* #vgp-820: allow : in hint names - new weight property
+
 ## Release 1.43.4
 
 This maintenance release fixes the following issues:

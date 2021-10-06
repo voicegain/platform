@@ -38,7 +38,7 @@ asr_body = {
             "completeTimeout": -1,
             "sensitivity" : 0.5,
             "speedVsAccuracy" : 0.5 
-            #, "hints" : ["rupees:10", "Hyderabad:10", "lakh:10", "lakhs:10"]
+            #, "hints" : ["rupees:10", "Hyderabad:10", "lakh:10", "lakhs:10", "lakh_rupees"]
             #, "langModel": "af1433a5-4e81-4df8-bf86-a48e0f409157"
         }
         #,"formatters" : [{"type" : "digits"}]

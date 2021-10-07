@@ -77,8 +77,8 @@ body = {
       "noInputTimeout": -1,
       "completeTimeout": -1,
       "sensitivity" : 0.5,
-      "speedVsAccuracy" : 0.5
-      #, "hints" : ["Hyderabad", "third", "amazon"]
+      "speedVsAccuracy" : 0.5 
+      #, "hints" : ["Max_Kellerman:10, James_Harden"]
     }
     #,"formatters" : [{"type" : "digits"}]
   }

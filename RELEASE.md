@@ -1,3 +1,8 @@
+## Release 1.43.6
+
+This maintenance release fixes the following issue:
+* #vgp-821: availableFeatureDetails field not retrieved properly by Edge Web Console
+
 ## Release 1.43.5
 
 This maintenance release fixes the following issues:

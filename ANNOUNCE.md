@@ -1,3 +1,8 @@
+### Maintenance release 1.43.6 is scheduled for 10/7/2021 between 6:00pm and 10pm CST
+
+This release fixes the following issue:
+* #vgp-821: availableFeatureDetails field not retrieved properly by Edge Web Console
+
 ### Maintenance release 1.43.5 is scheduled for 10/4/2021 between 6:00pm and 10pm CST
 
 This release fixes the following issues:

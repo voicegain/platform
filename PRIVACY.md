@@ -66,9 +66,9 @@ Having accurate information about you permits us to provide you with a smooth, e
 - Solicit support for the Site and our application.
 
 
-# USE OF YOUR CUSTOMERS INFORMATION (AUDIO DERIVED CUSTOMER DATA)
+# USE OF YOUR CUSTOMERS INFORMATION
 
-This section describes how Voicegain may strictly and narrowly use Audio Derived Customer Data 
+This section describes how Voicegain may strictly and narrowly use your Customers Information (i.e Audio Derived Customer Data) 
 
 - Assist law enforcement and respond to subpoena.
 - Enforce legal terms that govern our services.
@@ -80,7 +80,7 @@ This section describes how Voicegain may strictly and narrowly use Audio Derived
 
 # DISCLOSURE OF YOUR INFORMATION 
 
-This section is not applicable to Audio Derived Customer Data (your customers information). We may share information we have collected about you in certain situations. Your information may be disclosed as follows:
+This section is only applicable for your information and does not apply to your customers information (Audio Derived Customer Data). We may share information we have collected about you in certain situations. Your information may be disclosed as follows:
 
 ## By Law or to Protect Rights
 

@@ -66,7 +66,7 @@ Having accurate information about you permits us to provide you with a smooth, e
 - Solicit support for the Site and our application.
 
 
-# USE OF AUDIO DERIVED CUSTOMER DATA (YOUR CUSTOMERS INFORMATION)
+# USE OF YOUR CUSTOMERS INFORMATION (AUDIO DERIVED CUSTOMER DATA)
 
 This section describes how Voicegain may strictly and narrowly use Audio Derived Customer Data 
 

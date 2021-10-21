@@ -1,11 +1,11 @@
 #
 # VOICEGAIN PRIVACY POLICY
 
-Last updated January 7th, 2020
+Last updated October 14th, 2021
 
 **INTRODUCTION**
 
-Voicegain (&quot;we&quot; or &quot;us&quot; or &quot;our&quot;) respects the privacy of our users (&quot;user&quot; or &quot;you&quot;). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.voicegain.ai and Voicegain online application, including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the &quot;Site&quot;). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
+Welcome to the websites of Voicegain (Resolvity, Inc). Voicegain (&quot;we&quot; or &quot;us&quot; or &quot;our&quot;) respects the privacy of our users (&quot;user&quot; or &quot;you&quot;). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.voicegain.ai and Voicegain online application, including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the &quot;Site&quot;). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
 
 We reserve the right to make changes to this Privacy Policy at any time and for any reason. We will alert you about any changes by updating the &quot;Last Updated&quot; date of this Privacy Policy. Any changes or modifications will be effective immediately upon posting the updated Privacy Policy on the Site, and you waive the right to receive specific notice of each such change or modification.
 
@@ -31,9 +31,18 @@ Financial information, such as data related to your payment method (e.g. valid c
 
 Personal and other information you may provide when entering contests or giveaways and/or responding to surveys.
 
+# COLLECTION OF YOUR CUSTOMERS INFORMATION
+
+We may collect information about your customers as described below. 
+
+## Audio Derived Customer Data 
+
+Personal data of your customers that you ask us to process on your behalf, which will include any personal data of your customers that you provide to us to transcribe, caption, recognize, or otherwise process for them. When Voicegain processes personal data on behalf of you, Voicegain is just the processor of the data under applicable law, and you are the controller. You will solely control the extent of storage of such data in our systems.
+
+
 # USE OF YOUR INFORMATION
 
-Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site or our application to:
+Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. This section does not applicable to Audio Derived Customer Information. Specifically, we may use information collected about you via the Site or our application to:
 
 - Administer sweepstakes, promotions, and contests.
 - Assist law enforcement and respond to subpoena.
@@ -56,9 +65,22 @@ Having accurate information about you permits us to provide you with a smooth, e
 - Send you a newsletter.
 - Solicit support for the Site and our application.
 
-# DISCLOSURE OF YOUR INFORMATION
 
-We may share information we have collected about you in certain situations. Your information may be disclosed as follows:
+# USE OF YOUR CUSTOMERS INFORMATION
+
+This section describes how Voicegain may strictly and narrowly use your Customers Information (i.e Audio Derived Customer Data) 
+
+- Assist law enforcement and respond to subpoena.
+- Enforce legal terms that govern our services.
+- Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.
+- Comply with law.
+- Provide, maintain and improve our services.
+- Resolve disputes and troubleshoot problems.
+- Respond to product and customer service requests.
+
+# DISCLOSURE OF YOUR INFORMATION 
+
+This section is only applicable for your information and does not apply to your customers information (Audio Derived Customer Data). We may share information we have collected about you in certain situations. Your information may be disclosed as follows:
 
 ## By Law or to Protect Rights
 
@@ -90,7 +112,30 @@ If we reorganize or sell all or a portion of our assets, undergo a merger, or ar
 
 We are not responsible for the actions of third parties with whom you share personal or sensitive data, and we have no authority to manage or control third-party solicitations. If you no longer wish to receive correspondence, emails or other communications from third parties, you are responsible for contacting the third party directly.
 
+# DISCLOSURE OF YOUR CUSTOMERS INFORMATION 
+
+We may only disclose your customers information in the following situation.
+
+## By Law or to Protect Rights
+
+If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your customer information as permitted or required by any applicable law, rule, or regulation. This includes exchanging information with other entities for fraud protection and credit risk reduction.
+
+## Sale or Bankruptcy
+
+If we reorganize or sell all or a portion of our assets, undergo a merger, or are acquired by another entity, we may transfer your information to the successor entity. If we go out of business or enter bankruptcy, your information would be an asset transferred or acquired by a third party. You acknowledge that such transfers may occur and that the transferee may decline honor commitments we made in this Privacy Policy.
+
+We are not responsible for the actions of third parties with whom you share personal or sensitive data, and we have no authority to manage or control third-party solicitations. If you no longer wish to receive correspondence, emails or other communications from third parties, you are responsible for contacting the third party directly.
+
+## Permitted by You 
+
+If you provide written permission to disclose this data for specific purposes.
+
+## Agents, Consultants and Related Third Parties: 
+Voicegain, like many businesses, sometimes hires other companies to perform certain business-related functions. Examples of such functions include monitoring or maintaining databases.
+
+
 # TRACKING TECHNOLOGIES
+This section is only applicable for your information and is not applicable to your customers information or Audio Derived Personal Data.
 
 ## Cookies and Web Beacons
 
@@ -102,7 +147,7 @@ Additionally, we may use third-party software to serve ads on the Site and our a
 
 ## Website Analytics
 
-We may also partner with selected third-party vendors, such as[Google Analytics](https://support.google.com/analytics/answer/6004245?hl=en) and others, to allow tracking technologies and remarketing services on the Site and our application through the use of first party cookies and third-party cookies, to, among other things, analyze and track users&#39; use of the Site and our application , determine the popularity of certain content and better understand online activity. By accessing the Site, our application, you consent to the collection and use of your information by these third-party vendors. You are encouraged to review their privacy policy and contact them directly for responses to your questions. We do not transfer personal information to these third-party vendors. However, if you do not want any information to be collected and used by tracking technologies, you can visit the third-party vendor or the [Network Advertising Initiative Opt-Out Tool](http://www.networkadvertising.org/choices/) or [Digital Advertising Alliance Opt-Out Tool](http://www.aboutads.info/choices/).
+We may also partner with selected third-party vendors, such as [Google Analytics](https://support.google.com/analytics/answer/6004245?hl=en) and others, to allow tracking technologies and remarketing services on the Site and our application through the use of first party cookies and third-party cookies, to, among other things, analyze and track users&#39; use of the Site and our application , determine the popularity of certain content and better understand online activity. By accessing the Site, our application, you consent to the collection and use of your information by these third-party vendors. You are encouraged to review their privacy policy and contact them directly for responses to your questions. We do not transfer personal information to these third-party vendors. However, if you do not want any information to be collected and used by tracking technologies, you can visit the third-party vendor or the [Network Advertising Initiative Opt-Out Tool](http://www.networkadvertising.org/choices/) or [Digital Advertising Alliance Opt-Out Tool](http://www.aboutads.info/choices/).
 
 You should be aware that getting a new computer, installing a new browser, upgrading an existing browser, or erasing or otherwise altering your browser&#39;s cookies files may also clear certain opt-out cookies, plug-ins, or settings.
 
@@ -148,6 +193,20 @@ If you no longer wish to receive correspondence, emails, or other communications
 California Civil Code Section 1798.83, also known as the &quot;Shine The Light&quot; law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided below.
 
 If you are under 18 years of age, reside in California, and have a registered account with the Site or our application, you have the right to request removal of unwanted data that you publicly post on the Site or our application. To request removal of such data, please contact us using the contact information provided below, and include the email address associated with your account and a statement that you reside in California. We will make sure the data is not publicly displayed on the Site or our application, but please be aware that the data may not be completely or comprehensively removed from our systems.
+
+# YOUR EU RIGHTS AND CHOICES:
+We offer the options described below for exercising rights and choices under applicable law, which are subject to important limits or exceptions under applicable law.
+
+For Audio Derived Personal Data: To exercise rights or choices with respect to Audio Derived Personal Data, please make your request directly to our customer for whom we process the personal data.
+
+For Your Information:
+To keep your personal data accurate, current, and complete, please contact us as specified below. We will take reasonable steps to update or correct personal data in our possession that you have previously submitted via this Site or Services.
+The law of your jurisdiction (for example, within the European Economic Area) may give you additional rights to request access to and rectification or erasure of certain of your personal data we hold. In some cases, you may be entitled to receive a copy of the personal data you provided to us in portable form or to request that we transmit it to a third party. The law may also give you the right to request restrictions on the processing of your personal data, to object to processing of your personal data, or to withdraw consent for the processing of your personal data (which will not affect the legality of any processing that happened before your request takes effect). You may contact us as described below to make these requests.
+For example, residents of the European Economic Area and certain other jurisdictions may have a right to opt out of our processing of Your Information for direct marketing purposes. You can exercise this right by contacting us as described below. Our marketing emails and certain other communications include unsubscribe instructions, which you can use to limit or stop the relevant communications. Opt-out processes may take some time to complete, consistent with applicable law. Certain communications (such as certain billing-related communications or emergency service messages) are not subject to opt-out.
+
+You may contact us with any concern or complaint regarding our privacy practices, and you also may lodge a complaint with the relevant governmental authority.
+
+
 
 # CONTACT US
 

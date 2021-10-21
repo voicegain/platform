@@ -1,3 +1,14 @@
+## Release 1.44.0
+
+This minor release provides:
+* New versions of the models used for real-time and offline transcription. They provide improved accuracy. This improvement in accuracy is particularly noticeable for short real-time transcripts, like e.g. encountered in voice-bots.
+* The hints feature provides new misspellings capability. 
+For more info about hints see [this Knowledge Base article](https://support.voicegain.ai/hc/en-us/articles/4407993206548-Using-Hints)
+
+This release fixes the following issues:
+* #rcj-358: web-api returns "missing websocket name" by mistake
+* #rcj-355: ContentType.word-tree was serialized as WordTree by mistake
+
 ## Release 1.43.6
 
 This maintenance release fixes the following issue:

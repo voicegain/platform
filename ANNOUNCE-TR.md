@@ -1,3 +1,7 @@
+## October 25, 2021
+
+Much improved accuracy of real-time and offline transcription.
+
 ### September 28, 2021
 
 Released fixes for the following:

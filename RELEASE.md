@@ -1,3 +1,8 @@
+## Release 1.44.1
+
+This maintenance release provides:
+* Further improved accuracy of the real-time/command model.
+
 ## Release 1.44.0
 
 This minor release provides:

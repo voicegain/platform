@@ -4,7 +4,7 @@ Step by step guide how to deploy Voicegain Speech-to-Text Platform into AWS
 Under the hood:
 This guide will have you do the following:
 * Create an AWS Kubernetes cluster with GPU’s
-* Authorize Voicegain to authenticate with your cluster by editing the aws-auth configmap and uploading your kubeconfig file to the Voicegain Portal
+* Authorize Voicegain to authenticate with your cluster by editing the aws-auth configmap and uploading your kubeconfig file to the Voicegain Console
 
 At step 4 we describe the option of using Vacuum CLI tool. This tool is not yet publicly available. We will modify this document as soon as we make it available with instructions on how  to download it.
 
@@ -20,7 +20,7 @@ At step 4 we describe the option of using Vacuum CLI tool. This tool is not yet 
 - [Step 9: Get kubeconfig](#step9)
 - [Step 10: Give Voicegain Access to K8s](#step10)
 - [Step 11: Upload kubeconfig to Voicegain](#step11)
-- [Step 12: Allow Access to Voicegain-Portal on AWS](#step12)
+- [Step 12: Allow Access to Voicegain Cloud on AWS](#step12)
 - [Step 13: Start Deployment of Chosen Features](#step13)
 - [Step 14: Wait for Deployment to Finish](#step14)
 - [Step 15: Start Using Voicegain in AWS](#step15)
@@ -96,7 +96,7 @@ Either:
 
 **Recommended:** Set up ‘vacuum’ tool on your administration system, you will need your AWS credentials, EKS Worker Role, and subnet IDs from AWS.
 
-Create Edge Cluster via Voicegain Portal and retrieve ClusterID, then  
+Create Edge Cluster via Voicegain Console and retrieve ClusterID, then  
 <pre>
 vacuum k8s provision -t cluster_name -u Cluster_ID
 </pre>
@@ -173,23 +173,30 @@ kubectl -n kube-system patch cm aws-auth --patch "$(< voicegain-auth.yaml )"
 
 ## <a id="step11"></a>Step 11: Upload kubeconfig to Voicegain
 
-If not using Vacuum: Install the Voicegain API access libraries (at this point please send email to support@voicegain.ai to obtain them) and use your JWT token to upload your kubeconfig file, now located at `~/.kube/confg` to our portal.
+If not using Vacuum: Install the Voicegain API access libraries (at this point please send email to support@voicegain.ai to obtain them) and use your JWT token to upload your kubeconfig file, now located at `~/.kube/confg` to the Voicegain Cloud using PUT https://api.voicegain.ai/v1/cluster/{uuid} - request body has to contain `k8sConfig` field.
 
-## <a id="step12"></a>Step 12: Allow Access to Voicegain-Portal on AWS
+You can also copy/paste kubeconfig file via the Web Console - into the Configuration edit box
+![Paste kubeconfig into Web Console](./Edge-config-connection.PNG) 
 
-Allow access to Voicegain-Portal on AWS by editing the Cluster’s Security-Group (Inbound Rules):
+## <a id="step12"></a>Step 12: Allow Access to Voicegain Cloud on AWS
+
+Allow access to Voicegain Cloud on AWS by editing the Cluster’s Security-Group (Inbound Rules):
 
 ![EKC Cluster Configuration](./eks-cluster-config.png)
 
 ![Cluster Security Group](./cluster-security-group.png)
 
-Add a new Inbound Rule w/ Custom TCP Port 31680 and Source of “My IP” (or any IP’s you want to be able to reach your cluster management portal):
+Add a new Inbound Rule w/ Custom TCP Port 31680 and Source of “My IP” (or any IP’s you want to be able to reach your cluster management console):
 
 ![Edit Inbound Rules](./edit-inbound-rules.png)
 
 ## <a id="step13"></a>Step 13: Start Deployment of Chosen Features
 
-From the [Voicegain Portal](https://portal.voicegain.ai "Voicegain Cloud Portal"), choose the features you wish to utilize and submit. 
+From the [Voicegain Console](https://console.voicegain.ai "Voicegain Cloud Console"), choose the software version, the configuration, and the model type you wish to utilize and press `(Re)Build Cluster` button at the bottom of the page. 
+
+![Choose the software version](./Edge-config-config-version.PNG)
+
+![Choose the configuration and model type](./Edge-config-config-config.PNG)
 
 ## <a id="step14"></a>Step 14: Wait for Deployment to Finish
 
@@ -200,7 +207,7 @@ watch `kubectl get po`
 
 ## <a id="step15"></a>Step 15: Start Using Voicegain in AWS
 
-Once the deployment has settled, follow the Customer-portal link on your Edge Deployment page on [portal.voicegain.ai](https://portal.voicegain.ai "Voicegain Cloud Portal") , log in, and begin transcribing! 
+Once the deployment has settled, follow the Customer-console link on your Edge Deployment page on [console.voicegain.ai](https://console.voicegain.ai "Voicegain Cloud Console") , log in, and begin transcribing! 
 
 All done!
 

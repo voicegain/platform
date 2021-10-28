@@ -173,7 +173,9 @@ kubectl -n kube-system patch cm aws-auth --patch "$(< voicegain-auth.yaml )"
 
 ## <a id="step11"></a>Step 11: Upload kubeconfig to Voicegain
 
-If not using Vacuum: Install the Voicegain API access libraries (at this point please send email to support@voicegain.ai to obtain them) and use your JWT token to upload your kubeconfig file, now located at `~/.kube/confg` to the Voicegain Cloud using PUT https://api.voicegain.ai/v1/cluster/{uuid} - request body has to contain `k8sConfig` field.
+If you are using Vacuum the kubeconfig will be automatically submitted to Voicegain Cloud.
+
+If not, you will have to install the Voicegain API access libraries (at this point please send email to support@voicegain.ai to obtain them) and use your JWT token to upload your kubeconfig file, now located at `~/.kube/confg` to the Voicegain Cloud using PUT https://api.voicegain.ai/v1/cluster/{uuid} - request body has to contain `k8sConfig` field.
 
 You can also copy/paste kubeconfig file via the Web Console - into the Configuration edit box
 ![Paste kubeconfig into Web Console](./Edge-config-connection.PNG) 
@@ -192,9 +194,9 @@ Add a new Inbound Rule w/ Custom TCP Port 31680 and Source of “My IP” (or an
 
 ## <a id="step13"></a>Step 13: Start Deployment of Chosen Features
 
-From the [Voicegain Console](https://console.voicegain.ai "Voicegain Cloud Console"), choose the software version, the configuration, and the model type you wish to utilize and press `(Re)Build Cluster` button at the bottom of the page. 
+From the [Voicegain Console](https://console.voicegain.ai "Voicegain Cloud Console"), choose the build version, the configuration, and the model type you wish to utilize and press `(Re)Build Cluster` button at the bottom of the page. 
 
-![Choose the software version](./Edge-config-config-version.PNG)
+![Choose the build version](./Edge-config-config-version.PNG)
 
 ![Choose the configuration and model type](./Edge-config-config-config.PNG)
 

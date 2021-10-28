@@ -173,11 +173,12 @@ kubectl -n kube-system patch cm aws-auth --patch "$(< voicegain-auth.yaml )"
 
 ## <a id="step11"></a>Step 11: Upload kubeconfig to Voicegain
 
-If you are using Vacuum the kubeconfig will be automatically submitted to Voicegain Cloud.
+If you are using Vacuum the kubeconfig will be automatically submitted to Voicegain Cloud. Alternatively, you may use one of the following methods:
 
-If not, you will have to install the Voicegain API access libraries (at this point please send email to support@voicegain.ai to obtain them) and use your JWT token to upload your kubeconfig file, now located at `~/.kube/confg` to the Voicegain Cloud using PUT https://api.voicegain.ai/v1/cluster/{uuid} - request body has to contain `k8sConfig` field.
+* You will have to install the Voicegain API access libraries (at this point please send email to support@voicegain.ai to obtain them) and use your JWT token to upload your kubeconfig file, now located at `~/.kube/confg` to the Voicegain Cloud using PUT https://api.voicegain.ai/v1/cluster/{uuid} - request body has to contain `k8sConfig` field.
 
-You can also copy/paste kubeconfig file via the Web Console - into the Configuration edit box
+* You can also copy/paste kubeconfig file via the Web Console - into the Configuration edit box
+
 ![Paste kubeconfig into Web Console](./Edge-config-connection.PNG) 
 
 ## <a id="step12"></a>Step 12: Allow Access to Voicegain Cloud on AWS

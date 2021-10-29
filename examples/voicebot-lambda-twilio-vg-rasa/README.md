@@ -14,6 +14,7 @@ The setup allows you to call a phone number and then interact with a Voicebot th
 * **[AWS Lambda function](https://aws.amazon.com/lambda/)** - a single Node.js function with an API Gateway trigger (simple HTTP API type). 
 * **[Voicegain STT API](https://www.voicegain.ai/api)** - we are using /asr/transcribe/async api with input via websocket stream and output via a callback. Callback is to the same AWS Lambda function but Voicegain callback is POST while Twilio callback is GET.
 * **[RASA](https://rasa.com/)** - dialog logic is provided by RASA NLU Dialog server which is accessible over [RestInput API](https://rasa.com/docs/rasa/connectors/your-own-website/#restinput). 
+   * If you do not have a running RASA bot ready yet, you can use `lambda-echo-bot.py` to simulate a simple Echo Bot for testing  
 * **[AWS S3](https://aws.amazon.com/s3/)** for storing the transcription results at each dialog turn
 
 Requests to RASA look as follows:

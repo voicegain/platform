@@ -14,10 +14,11 @@ def lambda_handler(event, context):
         request = json.loads(rawRequest);
         
         msg = request.get('message')
-        msgStr = str(msg)
+        msgStr = str(msg)+"."
         
-        response.append({"text" : "You said:"})
+        response.append({"text" : "You said."})
         response.append({"text" : msgStr})
+        response.append({"text" : "Say something else."})
 
     except Exception as e:
         eStr = str(e)

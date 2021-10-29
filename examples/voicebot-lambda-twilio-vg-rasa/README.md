@@ -16,6 +16,22 @@ The setup allows you to call a phone number and then interact with a Voicebot th
 * **[RASA](https://rasa.com/)** - dialog logic is provided by RASA NLU Dialog server which is accessible over [RestInput API](https://rasa.com/docs/rasa/connectors/your-own-website/#restinput). 
 * **[AWS S3](https://aws.amazon.com/s3/)** for storing the transcription results at each dialog turn
 
+Requests to RASA look as follows:
+```
+{
+  "sender": "test_user",  // sender ID of the user sending the message
+  "message": "Hi there!"
+}
+```
+Responses from RASA have this format:
+```
+[
+  {"text" : "some statement"},
+  {"text" : "another statement"},
+  {"text" : "some question"}
+]
+```
+
 ### The Steps ###
 
 The sequence diagram is provided below. Basically, the sequence of operations is as follows:

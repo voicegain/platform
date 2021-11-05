@@ -1,9 +1,12 @@
 ### Minor release 1.45.0 is scheduled for 11/5/2021 between 6:00pm and 10pm CST
 
-This release provides these main changes:
+This release has these main changes:
 * Introduces a uniform way to handle kubeconfg in Edge deployments. This makes it easy to deploy Voicegain Edge to various Cloud Platforms.
+* For Edge: moved to a different GPU runtime framework which uses GPU resource more efficiently. Allows to run more recognition sessions on same hardware.
+* Optimized offline task queue - significantly higher throughput is now possible (more hours of audio transcribed in the same period of time). 
 * The latency of the callback response in real-time transcription has been reduced to better support voicebot scenarios.
 * Polling now goes via load-balancer URL instead of directly to individual services in order to better support rolling deployments. 
+* Microphone capture in web browser applications moved away from deprecated methods
 
 This release fixes the following issues:
 * #rcj-368: callback from recognition not working (introduced when adding redis:// callback method)
@@ -12,6 +15,9 @@ This release fixes the following issues:
 
 It also provides these enhancements:
 * #vgp-822: naming changes in Edge management ACP pages - uses less ambiguous names in Web Console
+
+Additional announcements:
+* We now offer advanced monitoring for Edge deployments (for a slight per-port price premium).
 
 ### Maintenance release 1.44.1 is scheduled for 10/25/2021 between 6:00pm and 10pm CST
 

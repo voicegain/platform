@@ -13,6 +13,10 @@ This release fixes the following issues:
 * #rcj-365: Transcripts of Telephony Bot Session cannot be viewed in Web Console
 * #rcj-359: Reduce delay between end of recognition and call-back response 
 
+Known issue that is not fixed in this release:
+* #rcj-380: polling requests fail to return transcript after poll.afterlife -- the workaround is to make sure that content.full includes both ["transcript", "words"]
+* #rcj-377: if content.full is only ["transcript"] then the callback will not have the transcript -- it is necessary to specify ["transcript", "words"] to get any transcript in the callback 
+
 It also provides these enhancements:
 * #vgp-822: naming changes in Edge management ACP pages - uses less ambiguous names in Web Console
 
@@ -47,24 +51,7 @@ This release fixes the following issues:
 * #rcj-351: submitting an offline SA session with stereo audio ended up with mono audio - this bug was introduced in release 1.42.0
 * #vgp-820: allow : in hint names - new weight property
 
-### Maintenance release 1.43.4 is scheduled for 9/30/2021 between 6:30pm and 10pm CST
 
-This release fixes the following issues:
-* Certain fields not saved on a transcription record due to NPE
-* Uploaded LM corpus files incorrectly reported as having wrong format/encoding
-* Edge Web Console now showing all Application Modes correctly
-
-### Maintenance release 1.43.3 is scheduled for 9/28/2021 between 8:00pm and 10pm CST
-
-This release fixes issues:
-* #rcj-349: Acoustic model setting in context is not used in offline transcribe
-
-For Transcribe App released fixes for the following:
-* Issue with navigating away from microphone capture which would break the recording
-* Not able to upgrade in a single step from monthly to annual and to a higher Plan
-* Computation of remaining days till usage reset
-* Minor issues in password entry for a new password
-* Several small UI issues 
 
 
 

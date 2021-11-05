@@ -1,3 +1,28 @@
+### Minor release 1.45.0 is scheduled for 11/5/2021 between 6:00pm and 10pm CST
+
+This release has these main changes:
+* Introduces a uniform way to handle kubeconfg in Edge deployments. This makes it easy to deploy Voicegain Edge to various Cloud Platforms.
+* For Edge: moved to a different GPU runtime framework which uses GPU resource more efficiently. Allows to run more recognition sessions on same hardware.
+* Optimized offline task queue - significantly higher throughput is now possible (more hours of audio transcribed in the same period of time). 
+* The latency of the callback response in real-time transcription has been reduced to better support voicebot scenarios.
+* Polling now goes via load-balancer URL instead of directly to individual services in order to better support rolling deployments. 
+* Microphone capture in web browser applications moved away from deprecated methods
+
+This release fixes the following issues:
+* #rcj-368: callback from recognition not working (introduced when adding redis:// callback method)
+* #rcj-365: Transcripts of Telephony Bot Session cannot be viewed in Web Console
+* #rcj-359: Reduce delay between end of recognition and call-back response 
+
+Known issue that is not fixed in this release:
+* #rcj-380: polling requests fail to return transcript after poll.afterlife -- the workaround is to make sure that content.full includes both ["transcript", "words"]
+* #rcj-377: if content.full is only ["transcript"] then the callback will not have the transcript -- it is necessary to specify ["transcript", "words"] to get any transcript in the callback 
+
+It also provides these enhancements:
+* #vgp-822: naming changes in Edge management ACP pages - uses less ambiguous names in Web Console
+
+Additional announcements:
+* We now offer advanced monitoring for Edge deployments (for a slight per-port price premium).
+
 ### Maintenance release 1.44.1 is scheduled for 10/25/2021 between 6:00pm and 10pm CST
 
 This release provides:
@@ -23,70 +48,9 @@ This release fixes the following issue:
 
 This release fixes the following issues:
 * #rcj-353: completeTimeout not working in SEMI-REAL-TIME mode
-* #rcj-351: submitting an offline SA session with stereo audio ended up with mono audio - this was introduced in release 1.42.0
+* #rcj-351: submitting an offline SA session with stereo audio ended up with mono audio - this bug was introduced in release 1.42.0
 * #vgp-820: allow : in hint names - new weight property
 
-### Maintenance release 1.43.4 is scheduled for 9/30/2021 between 6:30pm and 10pm CST
-
-This release fixes the following issues:
-* Certain fields not saved on a transcription record due to NPE
-* Uploaded LM corpus files incorrectly reported as having wrong format/encoding
-* Edge Web Console not showing all Application Modes correctly
-
-### Maintenance release 1.43.3 is scheduled for 9/28/2021 between 8:00pm and 10pm CST
-
-This release fixes issues:
-* #rcj-349: Acoustic model setting in context is not used in offline transcribe
-
-For Transcribe App released fixes for the following:
-* Issue with navigating away from microphone capture which would break the recording
-* Not able to upgrade in a single step from monthly to annual and to a higher Plan
-* Computation of remaining days till usage reset
-* Minor issues in password entry for a new password
-* Several small UI issues 
-
-### Maintenance release 1.43.2 is scheduled for 9/27/2021 between 7:00pm and 10pm CST
-
-This release fixes issues:
-* #rcj-345: On ACP, Edge configuration selection is not filtered by selected version
-* #rcj-347: Invalid value for `persist`, must be a value less than or equal to `604800000`
-
-For Transcribe App:
-* Fixed several small UI issues 
-* Fixed pricing values shown on Billing Plans page - was reporting price/user/month as price/month
-* Fixed double counting usage for microphone transcriptions.
-* Fixed error when doing transcription with Expiry set to longer than 1 Week.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
 
 
 
@@ -119,6 +83,46 @@ For Transcribe App:
 
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

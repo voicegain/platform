@@ -1,3 +1,11 @@
+## Release 1.45.1
+
+This maintenance release fixes the following issues:
+* #rcj-386: multiple callback requests are sent for a given request
+* #rcj-385: occasionally responses from recognition take extra long (incompleteTimeout) - incompleteTimeout was not behaving as per spec
+* #rcj-384: Realtime session takes 1-2s to start - requests to billing were not being cached efficiently
+* #rcj-383: Audio from AIVR transcription shows in the Portal under normal Transcribe 
+
 ## Release 1.45.0
 
 The release has these main changes:

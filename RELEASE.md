@@ -1,3 +1,9 @@
+## Release 1.45.2 
+
+This maintenance release fixes the following issues:
+* #rcj-393: New session takes few extra msec to start after a loger pause between request 
+* #rcj-379: customer reports that Expired transcripts are still visible (Edge deployment)
+
 ## Release 1.45.1
 
 This maintenance release fixes the following issues:

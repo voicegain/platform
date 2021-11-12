@@ -1,7 +1,7 @@
 ### Maintenance release 1.45.2 is scheduled for 11/12/2021 between 6:00pm and 10pm CST
 
 This release fixes the following issues:
-* #rcj-393: New session takes few extra msec to start after a loger pause between request 
+* #rcj-393: New session takes few extra msec to start after a longer pause between request 
 * #rcj-379: customer reports that Expired transcripts are still visible (Edge deployment)
 
 ### Maintenance release 1.45.1 is scheduled for 11/9/2021 between 6:00pm and 10pm CST

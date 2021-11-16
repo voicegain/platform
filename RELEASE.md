@@ -1,3 +1,10 @@
+## Release 1.45.3
+
+This maintenance release includes the following changes:
+* Results of speech recognition which get assigned the `__garbage__` semantic tag will now be returned as NOMATCH irrespective of the confidence value w.r.t threshold.
+* Diarization has been made more memory efficient
+* API documentation includes info about rate limiting 
+
 ## Release 1.45.2 
 
 This maintenance release fixes the following issues:

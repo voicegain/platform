@@ -1,3 +1,10 @@
+### Maintenance release 1.45.3 is scheduled for 11/15/2021 between 7:00pm and 10pm CST
+
+This release includes the following changes:
+* Results of speech recognition which get assigned the `__garbage__` semantic tag will now be returned as NOMATCH irrespective of the confidence value w.r.t threshold.
+* Diarization has been made more memory efficient
+* API documentation includes info about rate limiting 
+
 ### Maintenance release 1.45.2 is scheduled for 11/12/2021 between 6:00pm and 10pm CST
 
 This release fixes the following issues:

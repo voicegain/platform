@@ -1,6 +1,7 @@
 # Overview
 
 This folder has sample code that illustrates uses cases for Twilio Streams with Voicegain Speech-to-Text (and soon Voicegain Speech Analytics). 
+For the examples to work you need at least twilio python library ver 6.35.0 which supports the twiml argument. 
 
 # `<Start> <Stream>`
 

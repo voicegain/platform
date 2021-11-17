@@ -8,6 +8,7 @@ retrieved from URL - this example processes a single file and shows details of a
 * async-off-line-2-chn-via-data-upload-bulk.py - same as the script above except for being configured to process 2-channel audio (stereo files where left and right channels contain different speakers). We are doing basically 2 offline transcriptions - one for left channel and one for right channel.
 * async-real-time-word-tree.py - REAL-TIME transcription of audio file retrieved from URL. It uses the word-tree output which provides more recognition alternatives/hypotheses.
 * async-real-time-from-websocket-with-polling.py - REAL-TIME transcription of audio file streamed via a websocket. The transcript results (incremental and full) are retrieved via polling. This script is setup to process all audio input files from input directory and report results in a single text file. It transcodes input audio files to a format suitable for websocket streaming, e.g. mulaw. 
+* async-real-time-websocket-in-and-out.py - REAL-TIME transcription of audio file streamed via a websocket. Results (words) are received also using a websocket.
 * edge-async-real-time-from-websocket-with-polling.py - similar to async-real-time-from-websocket-with-polling.py but adapted to run against edge deployment
 * async-semi-real-time-via-file-upload.py - SEMI-REAL-TIME transcription - will work also on Edge either with Offline or Real-Time Model
 

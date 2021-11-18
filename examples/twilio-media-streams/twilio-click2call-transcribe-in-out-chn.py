@@ -205,7 +205,11 @@ class wsThread (threading.Thread):
 
 # function that connects to the websocket and receives the results
 async def websocket_receive(uri, stack, prefix):
-    async with websockets.connect(uri) as websocket:
+    async with websockets.connect(uri, 
+      # we need to lower the buffer size - otherwise the sender will buffer for too long
+      write_limit=480, 
+      # compression needs to be disabled otherwise will buffer for too long
+      compression=None) as websocket:
         try:
           print(prefix+" connected to "+uri, flush=True)
           while True:

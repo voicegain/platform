@@ -3,7 +3,7 @@ Step by step guide how to deploy Voicegain Speech-to-Text Platform on your own H
 ----
 Under the hood:
 This guide will have you do the following:
-* Configure your server to UEFI boot
+* Configure your server BIOS
 * Install Ubuntu LTS 20.04 with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs
 * Provision your server using the Voicegain EZ Init script.
 * Deploy the Voicegain Application to your environment. 
@@ -11,7 +11,8 @@ This guide will have you do the following:
 TODO: Manual provisioning requirements and steps to upload your preexisting kubeconfig file to the Voicegain Portal
 
 ## <a id="toc"></a>Table of Contents
-- [Step 1: Configure your server for UEFI Boot](#step1)
+- [Before you Start](#before)
+- [Step 1: Configure your server BIOS](#step1)
 - [Step 2: Boot to Installation Media](#step2)
 - [Step 3: Configure Network](#step3)
 - [Step 4: Configure Installation](#step4)
@@ -25,15 +26,25 @@ TODO: Manual provisioning requirements and steps to upload your preexisting kube
 - [Step 12: Reboots, Notes and Caveats(#step12)
 - [Billing and Licensing](#license)
 
-## <a name="step1"></a>Step 1: Configure your server for UEFI Boot 
+## <a name="before"></a>Before you Start 
+In order to deploy Voicegain on Edge your account needs to have the Edge feature enabled - otherwise you will not see the relevant pages in the [Voicegain Web Console](https://www.voicegain.ai). Please contact support@voicegain.ai to have that enabled.
+
+When you contact us we will ask you to describe your intended usage (e.g. offline transcription or MRCP ASR) so that we can enable an appropriate Edge configuration for your use case. If you are only exploring we can enable several generic configurations to allow you to test a variety of uses. For production use we will prepare a custom configuration that makes the best use of resources on your server(s). We will also configure port based licensing if desired (default is usage-based billing). 
+
+## <a name="step1"></a>Step 1: Configure your Server BIOS 
 
 Boot your server and enter BIOS Configuration Menu: [Common Manufacturer BIOS Keys](https://www.tomshardware.com/reviews/bios-keys-to-access-your-firmware,5732.html#:~:text=BIOS%20Keys%20by%20Manufacturer%201%20ASRock%3A%20F2%20or,Lenovo%20%28ThinkPads%29%3A%20Enter%20then%20F1.%20More%20items...%20)
 
+### UEFI settings
 You will want to find the Boot Settings section of your BIOS and select UEFI rather than BIOS/Legacy.
 
 Example of DELL UEFI Mode Selection:
 ![UEFI Mode Selection](./UEFI.png)
 
+### 4G decoding
+Most of modern (say made after 2015) motherboards have option “Above 4G decoding” in bios (or something similarly named), and it should be enabled for Nvidia data-center GPUs. It’s generally not enabled by default except for very recent servers, so it is necessary to verify that setting and enable it if needed. It could be difficult to find, it’s usually buried in the advanced PCI settings.
+
+If not enabled the card will not be detected by Nvidia driver and you may see errors in the dmesg log
 
 ## <a name="step2"></a>Step 2: Boot to Installation Media
 

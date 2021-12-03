@@ -77,7 +77,7 @@ def upload_one_file(audio_path):
         if(retry_after is None):
             print("rate limit exceeded but response missing Retry-After")
             exit()
-        return retry_after
+        return int(retry_after)
 
     data_response = data_response_raw.json()
     print("data response: {}".format(data_response), flush=True)

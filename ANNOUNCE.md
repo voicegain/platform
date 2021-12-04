@@ -1,3 +1,19 @@
+
+### Minor release 1.46.0 is scheduled for 12/3/2021 between 7:00pm and 10pm CST
+
+This release starts to **enforce rate limiting**. 
+For details of about rate limiting, including the default values, 
+please see this [knowledge base article](https://support.voicegain.ai/hc/en-us/articles/4411882926868-Rate-Limiting).
+
+This release adds:
+* ability to disable punctuation and capitalization in the output (rcj-411)
+* session specific diarization settings for transcription (rcj-398)
+* `longPersist` parameter to POST /data API (rcj-397)
+* Second real-time model (faster but less accurate): `VoiceGain-rho-en-us`
+
+This release fixes the following issues:
+* rcj-414: Remove archaic words from British English dictionary
+* rcj-396: Polling request is slow when there are multiple web-api instances
 ### Maintenance release 1.45.3 is scheduled for 11/15/2021 between 7:00pm and 10pm CST
 
 This release includes the following changes:
@@ -44,21 +60,7 @@ It also provides these enhancements:
 Additional announcements:
 * We now offer advanced monitoring for Edge deployments (for a slight per-port price premium).
 
-### Maintenance release 1.44.1 is scheduled for 10/25/2021 between 6:00pm and 10pm CST
 
-This release provides:
-* Further improved accuracy of the real-time/command model.
-
-### Minor release 1.44.0 is scheduled for 10/21/2021 between 6:00pm and 11pm CST
-
-This release provides:
-* New versions of the models used for real-time and offline transcription. They provide improved accuracy. This improvement in accuracy is particularly noticeable for short real-time transcripts, like e.g. encountered in voice-bots.
-* The hints feature provides new misspellings capability. 
-For more info about hints see [this Knowledge Base article](https://support.voicegain.ai/hc/en-us/articles/4407993206548-Using-Hints)
-
-This release fixes the following issues:
-* #rcj-358: web-api returns "missing websocket name" by mistake
-* #rcj-355: ContentType.word-tree was serialized as WordTree by mistake
 
 
 

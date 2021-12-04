@@ -1,3 +1,19 @@
+## Release 1.46.0
+
+This minor release starts to **enforce rate limiting**. 
+For details of about rate limiting, including the default values, 
+please see this [knowledge base article](https://support.voicegain.ai/hc/en-us/articles/4411882926868-Rate-Limiting).
+
+This release adds:
+* ability to disable punctuation and capitalization in the output (rcj-411)
+* session specific diarization settings for transcription (rcj-398)
+* `longPersist` parameter to POST /data API (rcj-397)
+* Second real-time model (faster but less accurate): `VoiceGain-rho-en-us`
+
+This release fixes the following issues:
+* rcj-414: Remove archaic words from British English dictionary
+* rcj-396: Polling request is slow when there are multiple web-api instances
+
 ## Release 1.45.3
 
 This maintenance release includes the following changes:

@@ -1,3 +1,10 @@
+### Maintenance release 1.46.1 is scheduled for 12/9/2021 between 6:00pm and 10pm CST
+
+This release fixes the following issues:
+* #rcj-419: POST /sa sessions failing (stuck in PROCESSING)
+* #rcj-418: account login API returns fields incompatible with older Edge versions
+* #rcj-417: first callback always fails after idle
+
 ### Minor release 1.46.0 is scheduled for 12/3/2021 between 7:00pm and 10pm CST
 
 This release starts to **enforce rate limiting**. 

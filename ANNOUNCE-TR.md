@@ -1,6 +1,9 @@
 ## December 9, 2021
 
-Today we will have a release which fixes the issue with transcriptions being stuck in "Processing" state.
+Maintenance release 1.46.1 is scheduled for 12/9/2021 between 6:00pm and 10pm CST
+
+This release fixes the following issue relevant to Transcribe App:
+* #rcj-419: POST /sa sessions failing (stuck in PROCESSING)
 
 ## October 25, 2021
 

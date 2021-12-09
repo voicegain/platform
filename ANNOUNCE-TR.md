@@ -1,11 +1,11 @@
-## December 9, 2021
+### December 9, 2021
 
 Maintenance release 1.46.1 is scheduled for 12/9/2021 between 6:00pm and 10pm CST
 
 This release fixes the following issue relevant to Transcribe App:
 * #rcj-419: POST /sa sessions failing (stuck in PROCESSING)
 
-## October 25, 2021
+### October 25, 2021
 
 Much improved accuracy of real-time and offline transcription.
 

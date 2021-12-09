@@ -1,3 +1,7 @@
+## December 9, 2021
+
+Today we will have a release which fixes the issue with transcriptions being stuck in "Processing" state.
+
 ## October 25, 2021
 
 Much improved accuracy of real-time and offline transcription.

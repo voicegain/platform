@@ -1,3 +1,10 @@
+## Release 1.46.1
+
+This maintenance release fixes the following issues:
+* #rcj-419: POST /sa sessions failing (stuck in PROCESSING)
+* #rcj-418: account login API returns fields incompatible with older Edge versions
+* #rcj-417: first callback always fails after idle
+
 ## Release 1.46.0
 
 This minor release starts to **enforce rate limiting**. 

@@ -1,3 +1,7 @@
+### How to contact Voicegain
+
+If you encounter any problems, just give us a shout at support@voicegain.ai
+
 ### December 9, 2021
 
 Maintenance release 1.46.1 is scheduled for 12/9/2021 between 6:00pm and 10pm CST

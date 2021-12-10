@@ -4,7 +4,7 @@ Step by step guide how to deploy Voicegain Speech-to-Text Platform on your own H
 Under the hood:
 This guide will have you do the following:
 * Configure your server BIOS
-* Install Ubuntu LTS 20.04 with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs
+* Install Ubuntu **LTS 20.04 Desktop** with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs
 * Provision your server using the Voicegain EZ Init script.
 * Deploy the Voicegain Application to your environment. 
 

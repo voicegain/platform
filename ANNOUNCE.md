@@ -1,3 +1,7 @@
+### Support for ACH Payments
+
+ACH payments have been recently added to our billing portal, however, the various Voicegain applications still need to be modified to fully support ACH. Please do not choose yet ACH as a payment method until we notify that it is fully supported and ready to be used. 
+
 ### Minor release 1.47.0 is scheduled for 12/16/2021 between 6:00pm and 10pm CST
 
 This release adds:

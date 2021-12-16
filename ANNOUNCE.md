@@ -1,3 +1,21 @@
+### Minor release 1.47.0 is scheduled for 12/16/2021 between 6:00pm and 10pm CST
+
+This release adds:
+* Ability to host more than one model per GPU - this is of importance to Edge users who no longer will have to allocate one GPU per model.
+* Improved transcript paragraph splits both in the Web Console and in the downloaded TXT file
+* Improved accuracy of the Spanish offline model (the real-time model is still available only upon request)
+* Improved backwards compatibility of the Cloud with the Edge deployments - it mainly relates to login behavior (SSO, etc). 
+* Improved EZInit script for Edge installs. Two core improvements are:
+  * uses a `voicegain` user for deployment - in the past it was using one of existing user accounts on the server
+  * has been adapted and tested with Ubuntu Server - although we still recommend using Ubuntu Desktop due to its better GPU support
+
+**Backwards incompatibility:**
+* requests to `/asr/transcribe/async` API with `portal` field value but no `portal.label` specified will fail - `portal.label` is now a required value 
+
+This release fixes the following issues:
+* #rcj-427: web-api should reject requests with invalid dataobject UUID
+* #ocp-767: offline process throughput rate-limit checking error when ffmpeg cannot detect input audio duration
+
 ### Maintenance release 1.46.1 is scheduled for 12/9/2021 between 6:00pm and 10pm CST
 
 This release fixes the following issues:
@@ -42,30 +60,10 @@ This release fixes the following issues:
 * #rcj-384: Realtime session takes 1-2s to start - requests to billing were not being cached efficiently
 * #rcj-383: Audio from AIVR transcription shows in the Portal under normal Transcribe 
 
-### Minor release 1.45.0 is scheduled for 11/5/2021 between 6:00pm and 10pm CST
+---
+**You can vew all release notes [here](https://github.com/voicegain/platform/releases)** 
 
-This release has these main changes:
-* Introduces a uniform way to handle kubeconfg in Edge deployments. This makes it easy to deploy Voicegain Edge to various Cloud Platforms.
-* For Edge: moved to a different GPU runtime framework which uses GPU resource more efficiently. Allows to run more recognition sessions on same hardware.
-* Optimized offline task queue - significantly higher throughput is now possible (more hours of audio transcribed in the same period of time). 
-* The latency of the callback response in real-time transcription has been reduced to better support voicebot scenarios.
-* Polling now goes via load-balancer URL instead of directly to individual services in order to better support rolling deployments. 
-* Microphone capture in web browser applications moved away from deprecated methods
 
-This release fixes the following issues:
-* #rcj-368: callback from recognition not working (introduced when adding redis:// callback method)
-* #rcj-365: Transcripts of Telephony Bot Session cannot be viewed in Web Console
-* #rcj-359: Reduce delay between end of recognition and call-back response 
-
-Known issue that is not fixed in this release:
-* #rcj-380: polling requests fail to return transcript after poll.afterlife -- the workaround is to make sure that content.full includes both ["transcript", "words"]
-* #rcj-377: if content.full is only ["transcript"] then the callback will not have the transcript -- it is necessary to specify ["transcript", "words"] to get any transcript in the callback 
-
-It also provides these enhancements:
-* #vgp-822: naming changes in Edge management ACP pages - uses less ambiguous names in Web Console
-
-Additional announcements:
-* We now offer advanced monitoring for Edge deployments (for a slight per-port price premium).
 
 
 

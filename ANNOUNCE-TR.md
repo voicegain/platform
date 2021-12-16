@@ -2,6 +2,14 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### December 16, 2021
+
+Minor release 1.47.0 is scheduled for 12/16/2021 between 6:00pm and 10pm CST
+
+This release adds:
+* Improved transcript paragraph splits 
+* Improved accuracy of the Spanish transcription (upload only)
+
 ### December 9, 2021
 
 Maintenance release 1.46.1 is scheduled for 12/9/2021 between 6:00pm and 10pm CST

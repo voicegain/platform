@@ -133,12 +133,19 @@ The partitions will use the ext4 filesystem, and default settings such as "Prima
 
 Click **Install Now** -> Continue -> Continue and finish the remainder of the install (create user and password. Assign hostname, etc...). Choose to require password to log in, and restart the system when prompted (remove installation media or otherwise ensure that the boot drive is higher in the boot order).
 
+**A NOTE ABOUT USERS:**
+
+During the EZInit Script process a system user named `voicegain` will be created (if one does not already exist). The `voicegain` user will be used for interacting with and running the voicegain application. If this is going to be a single user system (you do not need multple user logins) then you can (if you wish) create the `voicegain` user yourself during the Ubuntu installation process. If this system will be accessed by multple people you may wish to simply create the first admin account during the Ubuntu installation and allow the EZInit script to generate the `voicegain` user. 
+
 ## <a name="step6"></a>Step 6: Finalize Provisioning
 
 Your first boot into Ubuntu will prompt you to set up some features: Connecting online accounts, Livepatch and Help Ubuntu. Skip these steps or approve the default choices. (Naturally, you can choose to not send any data to Canonical)
 
 You will likely also be prompted by the "Software Updater" to, well, update. Close out of this **without** updating. The packages will be updated during the cluster provisioning phase via our EZInitScript.
 
+***OPTIONAL:*** At this time you may wish to install SSH server and complete the process over an SSH session. To do so open a terminal (either by right-clicking on the desktop and choosing to "Open in terminal" or you can search for Terminal from the Activites menu in the top left corner.
+
+In the terminal execute: `sudo apt install openssh-server -y`
 
 ## <a name="step7"></a>Step 7: Create Cluster on VoiceGain
 > **System Provisioning Considerations:** For the sake of simplicity; the remainder of this guide will assume we are solely using the Ubuntu system we have just installed to complete all the remaining steps. However, it is entirely possible to complete this remotely. To do this, you would open a terminal and run `sudo apt install openssh-server -y`. You can, then, create the Cluster on the Voicegain portal from the system of your choosing and paste the EZInitCommand to the Ubuntu system over ssh.
@@ -169,8 +176,15 @@ Paste the copied Command Script into a terminal session on the Edge System, hit 
 
 ![EZInitScript](./8-1.png)
 
-The script will perform a system update and ensure that the supported Nvidia Drivers are installed then prompt you to Press any key to continue with the provisioning process.
-![EZInit continue](./8-2.png)
+The script will check to see if the `voicegain` user exists and create it if not. If the script is not being ran by the `voicegain` user it will ask you to proceed with the following steps:
+
+```
+sudo su -
+su voicegain
+vginstall
+```
+
+**INFO:** if the EZInit script is used to create the `voicegain` user, it will be created as a system user with passwordless sudo and no password. This user cannot log into the system directory or remotely. The script will then be copied to the system user directory `/opt/voicegain/bin/` and aliased as `vginstall`
 
 ## <a name="step9"></a>Step 9: Reboot
 
@@ -216,14 +230,16 @@ And leave this session open and running, this will allow us to monitor the progr
 Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Console
 
 - Click on the Configuration Tab
+- Select Build Version. Generally the most recent is recommended.
 - Select one of the available Cluster Configurations (only ones compatible with you K8S cluster will be shown).
   - If you do not see a suitable configuration among the available choices please contact Voicegain support. 
-- Under Acoustic Models select if you would like to use real-time or offline models. If this is a single GPU system you can only choose one. 
-  - If you are going to use only the MRCP interface then select a real-time model.
+- OPTIONAL: Enter Host Name for Web Edge Console access. This applies if your Edge system has a custom internal address or DNS name required to access it.
 - (Ignore the external Storage settings. This applies to custom large configurations only.)
 - Choose to Save to begin the deployment
 
-![Deploy](./11-1.png)
+![Deploy1](./11-1-1.png)
+![Deploy2](./11-1-2.png)
+![Deploy3](./11-1-3.png)
 - Monitor the progress on the terminal session we created in step 10.
 - Check the status on the Console to see when the deployment is finished, then you can click the link to open your local portal.
 

@@ -23,7 +23,7 @@ TODO: Manual provisioning requirements and steps to upload your preexisting kube
 - [Step 9: Reboot](#step9)
 - [Step 10: Ensure Cluster is functional](#step10)
 - [Step 11: Deploy Voicegain Application](#step11)
-- [Step 12: Reboots, Notes and Caveats(#step12)
+- [Step 12: Reboots, Notes and Caveats](#step12)
 - [Billing and Licensing](#license)
 
 ## <a name="before"></a>Before you Start 

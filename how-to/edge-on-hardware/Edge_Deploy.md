@@ -235,7 +235,7 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
   - If you do not see a suitable configuration among the available choices please contact Voicegain support. 
 - OPTIONAL: Enter Host Name for Web Edge Console access. This applies if your Edge system has a custom internal address or DNS name required to access it.
 - (Ignore the external Storage settings. This applies to custom large configurations only.)
-- Choose to Save to begin the deployment
+- Choose to (Re)Build cluster to begin the deployment
 
 ![Deploy1](./11-1-1.png)
 ![Deploy2](./11-1-2.png)

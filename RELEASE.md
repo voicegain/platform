@@ -1,3 +1,14 @@
+
+## Release 1.47.1
+
+This maintenance release fixes the following issues:
+* #rcj-434: web-api throws LowAccountBalanceException in an **Edge** environment with a port-based license
+* #rcj-433: endTimeOfCurrentBillingPeriod is found in some Developer-only accounts in prod and dev environments
+* #rcj-432: NoHttpResponseException: some callbacks failing - old http library
+* #rcj-431: ConverterNotFoundException: No converter found capable of converting from type [java.lang.Integer] to type [java.time.Instant]
+* #rcj-430: An offline SA session (mono, no diarization) is not showing up in Dev Console
+* #rcj-428: ACH payments not working
+
 ## Release 1.47.0
 
 This minor release adds:

@@ -1,6 +1,16 @@
 ### Support for ACH Payments
 
-ACH payments have been recently added to our billing portal, however, the various Voicegain applications still need to be modified to fully support ACH. Please do not choose yet ACH as a payment method until we notify that it is fully supported and ready to be used. 
+ACH payments are now available.
+
+### Maintenance release 1.47.1 is scheduled for 12/21/2021 between 6:00pm and 10pm CST
+
+This release fixes the following issues:
+* #rcj-434: web-api throws LowAccountBalanceException in an **Edge** environment with a port-based license
+* #rcj-433: endTimeOfCurrentBillingPeriod is found in some Developer-only accounts in prod and dev environments
+* #rcj-432: NoHttpResponseException: some callbacks failing - old http library
+* #rcj-431: ConverterNotFoundException: No converter found capable of converting from type [java.lang.Integer] to type [java.time.Instant]
+* #rcj-430: An offline SA session (mono, no diarization) is not showing up in Dev Console
+* #rcj-428: ACH payments not working
 
 ### Minor release 1.47.0 is scheduled for 12/16/2021 between 6:00pm and 10pm CST
 
@@ -49,20 +59,6 @@ This release includes the following changes:
 * Results of speech recognition which get assigned the `__garbage__` semantic tag will now be returned as NOMATCH irrespective of the confidence value w.r.t threshold.
 * Diarization has been made more memory efficient
 * API documentation includes info about rate limiting 
-
-### Maintenance release 1.45.2 is scheduled for 11/12/2021 between 6:00pm and 10pm CST
-
-This release fixes the following issues:
-* #rcj-393: New session takes few extra msec to start after a longer pause between request 
-* #rcj-379: customer reports that Expired transcripts are still visible (Edge deployment)
-
-### Maintenance release 1.45.1 is scheduled for 11/9/2021 between 6:00pm and 10pm CST
-
-This release fixes the following issues:
-* #rcj-386: multiple callback requests are sent for a given request
-* #rcj-385: occasionally responses from recognition take extra long (incompleteTimeout) - incompleteTimeout was not behaving as per spec
-* #rcj-384: Realtime session takes 1-2s to start - requests to billing were not being cached efficiently
-* #rcj-383: Audio from AIVR transcription shows in the Portal under normal Transcribe 
 
 ---
 **You can vew all release notes [here](https://github.com/voicegain/platform/releases)** 

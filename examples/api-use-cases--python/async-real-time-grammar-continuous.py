@@ -3,8 +3,9 @@ pip install websockets
 pip install ffmpy
 """
 
-# same as ffmpeg-grammar-test-set.py but uses websocket instead of RTP
-# try it in case RTP is blocked on router/firewall
+# example of continuous recognition with grammars
+# audio is streamed via websocket
+# results are received via websocket
 
 from ffmpy import FFmpeg
 

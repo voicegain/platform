@@ -61,7 +61,7 @@ This release includes the following changes:
 * API documentation includes info about rate limiting 
 
 ---
-**You can vew all release notes [here](https://github.com/voicegain/platform/releases)** 
+**You can view all release notes [here](https://github.com/voicegain/platform/releases)** 
 
 
 

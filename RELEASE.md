@@ -1,4 +1,15 @@
 
+## Release 1.48.0
+
+This minor release adds or changes:
+* Punctuation/capitalization and digit formatting for Spanish Transcription is now available.
+* Rate limit for Edge offline queue throughput is now expressed per hour rather than per day.
+* Modifications were made to allow for transcription on Edge without connection to Internet.
+
+This release fixes the following issues:
+* #rcj-439: responses of polling requests don't include word.spk for diarized requests
+* #rcj-435: NullPointerException when polling a transcription session
+
 ## Release 1.47.1
 
 This maintenance release fixes the following issues:

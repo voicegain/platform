@@ -1,3 +1,14 @@
+### Minor release 1.48.0 is scheduled for 1/12/2022 between 6:00pm and 10pm CST
+
+This release adds or changes:
+* Punctuation/capitalization and digit formatting for Spanish Transcription is now available.
+* Rate limit for Edge offline queue throughput is now expressed per hour rather than per day.
+* Modifications were made to allow for transcription on Edge without connection to Internet.
+
+This release fixes the following issues:
+* #rcj-439: responses of polling requests don't include word.spk for diarized requests
+* #rcj-435: NullPointerException when polling a transcription session
+
 ### Support for ACH Payments
 
 ACH payments are now available.
@@ -30,13 +41,6 @@ This release fixes the following issues:
 * #rcj-427: web-api should reject requests with invalid dataobject UUID
 * #ocp-767: offline process throughput rate-limit checking error when ffmpeg cannot detect input audio duration
 
-### Maintenance release 1.46.1 is scheduled for 12/9/2021 between 6:00pm and 10pm CST
-
-This release fixes the following issues:
-* #rcj-419: POST /sa sessions failing (stuck in PROCESSING)
-* #rcj-418: account login API returns fields incompatible with older Edge versions
-* #rcj-417: first callback always fails after idle
-
 ### Minor release 1.46.0 is scheduled for 12/3/2021 between 7:00pm and 10pm CST
 
 This release starts to **enforce rate limiting**. 
@@ -52,13 +56,6 @@ This release adds:
 This release fixes the following issues:
 * rcj-414: Remove archaic words from British English dictionary
 * rcj-396: Polling request is slow when there are multiple web-api instances
-### Maintenance release 1.45.3 is scheduled for 11/15/2021 between 7:00pm and 10pm CST
-
-This release includes the following changes:
-* Results of speech recognition which get assigned the `__garbage__` semantic tag will now be returned as NOMATCH irrespective of the confidence value w.r.t threshold.
-* Diarization has been made more memory efficient
-* API documentation includes info about rate limiting 
-
 
 
 ---

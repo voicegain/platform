@@ -1,3 +1,10 @@
+### Maintenance release 1.48.1 is scheduled for 1/13/2021 between 6:00pm and 10pm CST
+
+This release fixes the following issues (which impacted Edge deployments with no Internet connection):
+* #rcj-442: Consider empty context model name same as null
+* #rcj-441: Web Console goes blank if unable to obtain status info
+
+
 ### Minor release 1.48.0 is scheduled for 1/12/2022 between 6:00pm and 10pm CST
 
 Known Issue:
@@ -44,21 +51,6 @@ This release fixes the following issues:
 * #rcj-427: web-api should reject requests with invalid dataobject UUID
 * #ocp-767: offline process throughput rate-limit checking error when ffmpeg cannot detect input audio duration
 
-### Minor release 1.46.0 is scheduled for 12/3/2021 between 7:00pm and 10pm CST
-
-This release starts to **enforce rate limiting**. 
-For details of about rate limiting, including the default values, 
-please see this [knowledge base article](https://support.voicegain.ai/hc/en-us/articles/4411882926868-Rate-Limiting).
-
-This release adds:
-* ability to disable punctuation and capitalization in the output (rcj-411)
-* session specific diarization settings for transcription (rcj-398)
-* `longPersist` parameter to POST /data API (rcj-397)
-* Second real-time model (faster but less accurate): `VoiceGain-rho-en-us`
-
-This release fixes the following issues:
-* rcj-414: Remove archaic words from British English dictionary
-* rcj-396: Polling request is slow when there are multiple web-api instances
 
 
 

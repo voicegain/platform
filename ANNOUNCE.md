@@ -1,5 +1,8 @@
 ### Minor release 1.48.0 is scheduled for 1/12/2022 between 6:00pm and 10pm CST
 
+Known Issue:
+* Custom Language Models in the Cloud cannot be generated. This will soon be fixed in 1.48.1 
+
 This release adds or changes:
 * Punctuation/capitalization and digit formatting for Spanish Transcription is now available.
 * Rate limit for Edge offline queue throughput is now expressed per hour rather than per day.

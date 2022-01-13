@@ -1,4 +1,10 @@
 
+## Release 1.48.1
+
+This maintenance release fixes the following issues (which impacted Edge deployments with no Internet connection):
+* #rcj-442: Consider empty context model name same as null
+* #rcj-441: Web Console goes blank if unable to obtain status info
+
 ## Release 1.48.0
 
 This minor release adds or changes:

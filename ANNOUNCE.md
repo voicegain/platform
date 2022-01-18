@@ -1,3 +1,8 @@
+### Maintenance release 1.48.2 is scheduled for 1/18/2021 between 6:00pm and 10pm CST
+
+This release fixes the following issue:
+* #rcj-444: Unnecessary check for audio file format
+
 ### Maintenance release 1.48.1 is scheduled for 1/13/2021 between 6:00pm and 10pm CST
 
 This release fixes the following issues (which impacted Edge deployments with no Internet connection):

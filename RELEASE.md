@@ -1,3 +1,7 @@
+## Release 1.48.2
+
+This maintenance release fixes the following issue:
+* #rcj-444: Unnecessary check for audio file format
 
 ## Release 1.48.1
 

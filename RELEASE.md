@@ -1,3 +1,11 @@
+## Release 1.48.3
+
+This maintenance release fixes the following issues:
+* #rcj-447: New Language Model build not working due to Cloud Function issue/change
+* #ocp-768: offline process cannot transcribe mlp and truehd file because of rate limiting bug
+   * This applies also to other formats which do not provide audio duration information. In addition to these files not being transcribed, other files were delayed in processing.
+* #rcj-445: NullPointerException while processing sync /asr/recognize and /asr/transcribe requests with dataStore as audio
+
 ## Release 1.48.2
 
 This maintenance release fixes the following issue:

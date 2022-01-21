@@ -1,3 +1,11 @@
+### Maintenance release 1.48.3 is scheduled for 1/20/2021 between 6:00pm and 10pm CST
+
+This release fixes the following issues:
+* #rcj-447: New Language Model build not working due to Cloud Function issue/change
+* #ocp-768: offline process cannot transcribe mlp and truehd file because of rate limiting bug
+   * This applies also to other formats which do not provide audio duration information. In addition to these files not being transcribed, other files were delayed in processing.
+* #rcj-445: NullPointerException while processing sync /asr/recognize and /asr/transcribe requests with dataStore as audio
+
 ### Maintenance release 1.48.2 is scheduled for 1/18/2021 between 6:00pm and 10pm CST
 
 This release fixes the following issue:
@@ -38,23 +46,10 @@ This release fixes the following issues:
 * #rcj-430: An offline SA session (mono, no diarization) is not showing up in Dev Console
 * #rcj-428: ACH payments not working
 
-### Minor release 1.47.0 is scheduled for 12/16/2021 between 6:00pm and 10pm CST
-
-This release adds:
-* Ability to host more than one model per GPU - this is of importance to Edge users who no longer will have to allocate one GPU per model.
-* Improved transcript paragraph splits both in the Web Console and in the downloaded TXT file
-* Improved accuracy of the Spanish offline model (the real-time model is still available only upon request)
-* Improved backwards compatibility of the Cloud with the Edge deployments - it mainly relates to login behavior (SSO, etc). 
-* Improved EZInit script for Edge installs. Two core improvements are:
-  * uses a `voicegain` user for deployment - in the past it was using one of existing user accounts on the server
-  * has been adapted and tested with Ubuntu Server - although we still recommend using Ubuntu Desktop due to its better GPU support
-
 **Backwards incompatibility:**
 * requests to `/asr/transcribe/async` API with `portal` field value but no `portal.label` specified will fail - `portal.label` is now a required value 
 
-This release fixes the following issues:
-* #rcj-427: web-api should reject requests with invalid dataobject UUID
-* #ocp-767: offline process throughput rate-limit checking error when ffmpeg cannot detect input audio duration
+
 
 
 

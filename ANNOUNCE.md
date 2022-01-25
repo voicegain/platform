@@ -1,3 +1,12 @@
+### Maintenance release 1.48.4 is scheduled for 1/20/2021 between 6:00pm and 10pm CST
+
+This release add the following feature:
+* vadMode "disabled" is now supported - this turns off the VAD and may give higher accuracy where there is constant speech in presence of high volume background noise/hum
+* offline processor configuration has been modified to handle more offline requests
+
+This release includes the latest offline model. For info about improved accuracy see update on this [blog post](https://www.voicegain.ai/post/speech-to-text-accuracy-benchmark-october-2021).
+
+
 ### Maintenance release 1.48.3 is scheduled for 1/20/2021 between 6:00pm and 10pm CST
 
 This release fixes the following issues:

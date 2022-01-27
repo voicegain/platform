@@ -1,3 +1,10 @@
+### Minor release 1.49.0 is scheduled for 1/27/2022 between 6:00pm and 10pm CST
+
+This release has numerous back-end changes to improve Voicegain platform ability to handle large loads.
+
+This release fixes the following issues:
+* #rcj-448: User logs not available.
+
 ### Maintenance release 1.48.4 is scheduled for 1/20/2021 between 6:00pm and 10pm CST
 
 This release adds the following features:

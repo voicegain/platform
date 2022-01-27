@@ -1,3 +1,10 @@
+## Release 1.49.0
+
+This minor release has numerous back-end changes to improve Voicegain platform ability to handle large loads.
+
+This release fixes the following issues:
+* #rcj-448: User logs not available.
+
 ## Release 1.48.4
 
 This maintenance release adds the following features:

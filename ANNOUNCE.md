@@ -1,3 +1,7 @@
+### Maintenance release 1.49.1 is scheduled for 1/28/2021 between 6:00pm and 10pm CST
+
+This release upgrades the Redis server and clients to a newer version and makes changes to their configuration to prevent certain issues affecting High Availability.
+
 ### Minor release 1.49.0 is scheduled for 1/27/2022 between 6:00pm and 10pm CST
 
 This release has numerous back-end changes to improve Voicegain platform ability to handle large loads.
@@ -46,17 +50,6 @@ This release fixes the following issues:
 ### Support for ACH Payments
 
 ACH payments are now available.
-
-### Maintenance release 1.47.1 is scheduled for 12/21/2021 between 6:00pm and 10pm CST
-
-This release fixes the following issues:
-* #rcj-434: web-api throws LowAccountBalanceException in an **Edge** environment with a port-based license
-* #rcj-433: endTimeOfCurrentBillingPeriod is found in some Developer-only accounts in prod and dev environments
-* #rcj-432: NoHttpResponseException: some callbacks failing - old http library
-* #rcj-431: ConverterNotFoundException: No converter found capable of converting from type [java.lang.Integer] to type [java.time.Instant]
-* #rcj-430: An offline SA session (mono, no diarization) is not showing up in Dev Console
-* #rcj-428: ACH payments not working
-
 
 **Backwards incompatibility:**
 * requests to `/asr/transcribe/async` API with `portal` field value but no `portal.label` specified will fail - `portal.label` is now a required value 

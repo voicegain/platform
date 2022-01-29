@@ -1,3 +1,7 @@
+## Release 1.49.1
+
+This maintenance release upgrades the Redis server and clients to a newer version and makes changes to their configuration to prevent certain issues affecting High Availability.
+
 ## Release 1.49.0
 
 This minor release has numerous back-end changes to improve Voicegain platform ability to handle large loads.

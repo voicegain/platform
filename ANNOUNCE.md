@@ -1,3 +1,9 @@
+### Maintenance release 1.49.2 was deployed on 2/3/2021 between 6:00pm and 6:45pm CST
+
+This release modified how offline transcription billing information is submitted to Billing in order to:
+* make it more efficient,
+* correct underbilling. 
+
 ### Maintenance release 1.49.1 is scheduled for 1/28/2021 between 6:00pm and 10pm CST
 
 This release upgrades the Redis server and clients to a newer version and makes changes to their configuration to prevent certain issues affecting High Availability.

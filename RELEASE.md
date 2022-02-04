@@ -1,3 +1,9 @@
+## Release 1.49.2
+
+This maintenance release modified how offline transcription billing information is submitted to Billing in order to:
+* make it more efficient,
+* correct underbilling. 
+
 ## Release 1.49.1
 
 This maintenance release upgrades the Redis server and clients to a newer version and makes changes to their configuration to prevent certain issues affecting High Availability.

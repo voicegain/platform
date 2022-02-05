@@ -1,3 +1,11 @@
+## Release 1.49.3
+
+This maintenance release fixes the following issues:
+* #rcj-457: Missing influxDB entries due to identical timestamp
+* #rcj-456: Long audio files (e.g. 24 hours) cause OOM
+  * Max audio file duration has been limited to 8 hours
+* #rcj-455: Offline session time reported to billing as real-time session
+
 ## Release 1.49.2
 
 This maintenance release modified how offline transcription billing information is submitted to Billing in order to:

@@ -2,6 +2,7 @@
 
 These examples are similar in that they all use **async** api and also use **polling** to obtain the result of transcription. Here are the differences: 
 * async-off-line-from-url.py - OFF-LINE transcription of audio file retrieved from URL
+* async-off-line-from-url-two-channel-callback.py - OFF-LINE transcription of audio file retrieved from URL. It is assumed that the audio is 2-channel (stereo) with one speaker in left channel and second speaker in the right channel. The result of transcription will be submitted via callback.
 * async-off-line-via-file-upload.py - OFF-LINE transcription of audio file uploaded using /data API (multipart/form-data)
 retrieved from URL - this example processes a single file and shows details of all polling request
 * async-off-line-via-file-upload-bulk.py - this is similar to the example above but processes all files from a directory (the name of which you set inside the script) and stores only the final results in text format (no intermediate polling results are stored). This is a handy script to process a lot of files in offline mode. Note: it submits 1 file at a time so it is not optimized for throughput.  

@@ -6,13 +6,15 @@ import requests, time, os, json
 platform= "voicegain"
 JWT = "<put your JWT here - get it from https://console.voicegain.ai>"
 #audio_url = "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/3sec.wav"
-audio_url = "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/radio-talk.wav"
+audio_url = "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/4547_pcm_stereo.wav"
 
 headers = {"Authorization":JWT}
 body = {
     "sessions": [
         {
             "asyncMode": "OFF-LINE",
+            # the option below will transcribe two channel (one speaker per channel) audio
+            "audioChannelSelector" : "two-channel",
             "poll": {
                 "afterlife": 60000,
                 "persist": 86400000
@@ -20,6 +22,13 @@ body = {
             "content": {
                 "incremental": ["progress"],
                 "full" : ["transcript", "words"]
+            }
+            # put your callback URL here
+            # if you do not need callback comments this out
+            , "callback" : {
+              "uri" : "https://callback.app.smartmock.io/asr/callback",
+              "format" : "text",
+              "timeStampInterval" : 15
             }
         }
     ],
@@ -43,6 +52,7 @@ output_path = "output"
 if not os.path.exists(output_path):
     os.mkdir(output_path)
 
+# polling is not needed if you specify callback
 index = 0
 while True:
     time.sleep(4.9)
@@ -59,15 +69,15 @@ while True:
         break
 
 poll_response = requests.get(polling_url+"?full=true", headers=headers).json()
-# write poll_response to JSON
+# write final full poll_response to JSON
 poll_response_path = os.path.join(output_path, "{}--{}.json".format(session_id, index))
 with open(poll_response_path, 'w') as outfile:
     json.dump(poll_response, outfile)
 print("Save final result to {}".format(poll_response_path), flush=True)
 
-# get result as text file
+# get result as text file - this is optional if you have selected callback
 
-txt_url = "https://api.{}.ai/v1/asr/transcribe/{}/transcript?format=text".format(platform, session_id)
+txt_url = "https://api.{}.ai/v1/asr/transcribe/{}/transcript?format=text&interval=15".format(platform, session_id)
 print("Retrieving transcript using url: {}".format(txt_url), flush=True)
 txt_response = requests.get(txt_url, headers=headers)
 transcript_text_path = os.path.join(output_path, "{}.txt".format(session_id))

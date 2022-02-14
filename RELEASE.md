@@ -1,3 +1,10 @@
+## Release 1.50.0
+
+This minor release addresses the following issues and enhancements:
+* #rcj-461: the body of a callback request with callback.format=text is empty
+* #rcj-460: better handling of billing system rate-limiting errors
+* #rcj-459: new audio selector for call center calls to be processed offline
+
 ## Release 1.49.3
 
 This maintenance release fixes the following issues:

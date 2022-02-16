@@ -1,3 +1,8 @@
+### Maintenance release 1.50.1 is scheduled for 2/16/2021 between 11:00am and noon CST
+
+This release fixes the following issue:
+* #rcj-463: call duration reported from offline transcription to billing is 1/1000th of what it should be
+
 ### Minor release 1.50.0 is scheduled for 2/14/2022 between 4:00pm and 10pm CST
 
 This release addresses the following issues and enhancements:

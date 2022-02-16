@@ -1,3 +1,8 @@
+## Release 1.50.1
+
+This maintenance release fixes the following issue:
+* #rcj-463: call duration reported from offline transcription to billing is 1/1000th of what it should be
+
 ## Release 1.50.0
 
 This minor release addresses the following issues and enhancements:

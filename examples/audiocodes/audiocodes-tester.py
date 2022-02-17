@@ -1,4 +1,5 @@
 """
+pip install requests
 pip install websockets
 pip install ffmpy
 """
@@ -11,7 +12,15 @@ import websockets
 import datetime
 
 ## specify here the directory with files to test
-input_path = "./m4a/"
+## all of the files in the directory will be submitted for recognition one by one
+input_path = "./2-identical/"
+
+
+platform ="voicegain"
+## the WS configuration id - get from ASR Settings on the Web Console (last part of the wss URL)
+wsConfId = "243f8d4f-68c8-445a-8cc7-1050e301ae67"
+JWT = "<your JWT token - has to be from the same context as wsConfId - get it from the Web Console at https://console.voicegain.ai>"
+
 list_of_files = []
 
 for root, dirs, files in os.walk(input_path):
@@ -26,13 +35,10 @@ for name in list_of_files:
 # map from filename to recognition result
 recognition_results = []
 
-#ascalon
-JWT = "eyJhbGciOiJIUxxxxInR5cCI6IkpXVCJ9.eyJhdWQiOiIqLmFzY2FsbG9uLmFpIiwic3VxxxxxWI1LWIxNTEtZDY5NzI0OGExNDM5In0.5ihsWN3q0HXz7oxxxHA5vZb6Tw"
-wsConfId = "a68a43f7-xxxxx-d697248a1439"
-#voicegain
-#JWT = "eyJhbGciOiJIUzIxxxx5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2FwaS52b2ljZWdxxxyNTMtYjc3My1hNmNhNTU2MWRiYTYifQ.Yj4TlKQ92B8gxixxxxv-3qEa_FIEttK8yI"
+wsUrl = "wss://api.{}.ai/v1/ws/asr/{}".format(platform, wsConfId)
+
 headers = {"Authorization":JWT}
-wsUrl = "wss://api.voicegain.ai/v1/ws/asr/"+wsConfId
+
 websocket = None
 keepRunning = True
 
@@ -76,6 +82,7 @@ async def ws_conn_receive():
 
   print("  END ws_conn_receive", flush=True)
 
+# function to send a message over a websocket
 async def sendMsg(msg):
   msgStr = json.dumps(msg)
   
@@ -86,7 +93,7 @@ async def sendMsg(msg):
   except Exception as e:
     print ("Exception while sending "+str(e), flush=True)
 
-# function to read audio from file and convert it to ulaw and send to websocket
+# function to read audio from file and convert it to L16 and send to websocket
 async def stream_audio(file_name):
   print("START stream_audio", flush=True)
   conv_fname = (file_name+'.wav').replace(input_path, "./")
@@ -100,15 +107,6 @@ async def stream_audio(file_name):
   with open(conv_fname, "rb") as f:
     try:
       print(str(datetime.datetime.now())+" start streaming", flush=True)
-      # n_buf = 2 * 1024
-      # byte_buf = f.read(n_buf)
-      # while byte_buf:
-      #   n = len(byte_buf)
-      #   print(".", end =" ", flush=True)
-      #   await websocket.send(byte_buf)
-      #   time.sleep(n/32000.0) # to simulate real time streaming
-      #   byte_buf = f.read(n_buf)
-
       n_buf = 1 * 1024
       byte_buf = f.read(n_buf)
       start = time.time()
@@ -132,6 +130,7 @@ async def stream_audio(file_name):
 
   print(str(datetime.datetime.now())+" done streaming audio", flush=True)
 
+# function to stream content of one file
 async def ws_send_one(file_name):
   print("START ws_send_one: "+file_name, flush=True)
   await sendMsg( 
@@ -151,6 +150,7 @@ async def ws_send_one(file_name):
 
   print("  END ws_send_one: "+file_name, flush=True)
 
+# function to stream all files from directory one after another
 async def ws_send():
   print("START ws_send", flush=True)
 
@@ -171,6 +171,7 @@ async def ws_send():
 
   print("  END ws_send", flush=True)
 
+## main function
 async def main():
   print("START main", flush=True)
   """

@@ -126,7 +126,7 @@ async def stream_audio(file_name):
       elapsed_time_fl = (time.time() - start)
       print(str(datetime.datetime.now())+" done streaming audio in "+str(elapsed_time_fl), flush=True)
     except Exception as e:
-      print("Exception when sending audio via websocket: "+str(e)) # usually because the session closed due to NOMATCH or NOINPUT
+      print("Exception when sending audio via websocket: "+str(e)) 
 
   print(str(datetime.datetime.now())+" done streaming audio", flush=True)
 

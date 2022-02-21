@@ -255,6 +255,9 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
 ![Transcribe](./11-4.png)
 
 ## <a name="step12"></a>Step 12: Reboots, Notes and Caveats
+
+IMPORTANT NOTE ON SYSTEM UPDATES: Frequently, versions of Nvidia-driver vs nvidia-container-runtime vs containerd vs etc... may cause the nvidia driver to no longer function with other components. As such, automatic system update has been disabled and **system-wide updates are highly discouraged** instead, individual packages should be updated as vulnerabilities are reported. System-wide updates may result in the cluster requiring reprovisioning from scratch.
+
 The EZInit script has enabled all required services for the cluster to start automatically upon reboot. After rebooting the system you may need to wait up to 10 minutes for all of the individual components to start and settle. 
 
 The cluster configuration is ran as the non-root user who ran the EZInit script. If you require other users on the system to have access to the kubectl command line tool you will want to copy the kubernetes configuration file to their home directory. 

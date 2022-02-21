@@ -274,7 +274,6 @@ echo export KUBECONFIG=${Newconfig} | sudo tee -a ${Newhome}/.bashrc
 ```
 ## <a name="updates"></a>CRITICAL NOTE ON SYSTEM UPDATES
 
-### IMPORTANT NOTE ON SYSTEM UPDATES: 
 Frequently, versions of Nvidia-driver vs nvidia-container-runtime vs containerd vs etc... may cause the nvidia driver to no longer function with other components. As such, automatic system update has been disabled and **system-wide updates are highly discouraged**. Instead, individual packages should be updated as vulnerabilities are reported. System-wide updates may result in the cluster requiring reprovisioning from scratch.
 
 ### All done!

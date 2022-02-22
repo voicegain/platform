@@ -1,30 +1,4 @@
-# Lambda Function Voicebot using Voicegain and RASA #
-
-This folder contains code for a simple Voicebot built using:
-* Voicegain Telephone Bot API
-* AWS Lambda
-* RASA
-
-Included files:
-* voicegainIvrOne.py - AWS Lambda function code (python version)
-  * if you have a bot other than RAS you will need to modify implementation of `make_bot_request(sender, messageForBot)`
-  * voicegainIvrOne.js - AWS Lambda function code (node.js version)
-* lambdaEchoRasa.py - a lambda function that simulates an Echo RASA bot
-
-Settings:
-* In Voicegain Web Console you need to configure your Phone App to use `query` as value for `CSID Callback` - this is what the lambda function expects
-
-## Sequence diagram
-NOTE: AIVR is the Voicegain internal name for the Service on top of which the Telephone Bot API runs.
-The diagram is very simple, but that was the point of the design behind the Telephone Bot API - to make implementing voice bots very easy.  
-</br>
-
-![Sequence Diagram](./sequence-diagram.png)
-
-## License ##
-
-License applies to files in this folder.
-
+'''
 The MIT License
 
 Copyright (c) Voicegain.
@@ -46,3 +20,41 @@ THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+'''
+
+"""
+Simple Lambda function implementing an Echo bot that follows the RASA interface.
+You can use it for testing before integrating with actual RASA bot
+"""
+
+import json
+
+
+print('Loading function')
+
+
+def lambda_handler(event, context):
+    print("Received event: " + json.dumps(event, indent=2))
+    response = []
+    try:
+        rawRequest = event['body']
+        
+        print("Raw request: "+rawRequest)
+        
+        request = json.loads(rawRequest);
+        
+        msg = request.get('message')
+        if(msg is None or msg == ""):
+            response.append({"text" : "Say something."})
+        else:
+            msgStr = str(msg)+"."
+            
+            response.append({"text" : "You said."})
+            response.append({"text" : msgStr}) # play back the received message
+            response.append({"text" : "Say something else."})
+
+    except Exception as e:
+        eStr = str(e)
+        response.append({"text" : eStr})
+        
+    return response

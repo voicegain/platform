@@ -16,10 +16,13 @@ Settings:
 
 ## Sequence diagram
 NOTE: AIVR is the Voicegain internal name for the Service on top of which the Telephone Bot API runs.
-The diagram is very simple, but that was the point of the design behind the Telephone Bot API - to make implementing voice bots very easy.  
+
+Currently Voicegain cannot make outbound calls. If you need to make outbound calls, you can use a CPaaS like e.g. Twilio to place the outbound call and the SIP INVITE Voicegain into that established call. For more see ]this blog post](https://www.voicegain.ai/post/sip-invite-voicegain-from-twilio-signalwire-cpaas).   
 </br>
 
 ![Sequence Diagram](./sequence-diagram.png)
+
+![Sequence Diagram (outbound call)](./sequence-diagram-outbound.png)
 
 ## License ##
 

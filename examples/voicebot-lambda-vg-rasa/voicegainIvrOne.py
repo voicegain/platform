@@ -22,11 +22,12 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 '''
 
-
 import json, re, urllib3
 
+# these are the options for the web request to the Bot
 options = {
-    "url" : 'http://ec2-18-224-xxx-xx.us-east-2.compute.amazonaws.com:5005/webhooks/rest/webhook',
+    "url" : 'http://ec2-18-xxxxxx-98.us-east-2.compute.amazonaws.com:5005/webhooks/rest/webhook',
+    #"url" : 'https://anxxxxxy3.execute-api.us-east-2.amazonaws.com/default/EchoBot',
     "headers" : {
         'Content-Type': 'application/json'
     }
@@ -46,9 +47,9 @@ def questionData(sequence, statementPrompt, questionPrompt):
             # the bargineable question prompt 
             "questionPrompt" : cleanupString(questionPrompt),
             # some standard timeouts
-            "noInputTimeout" : 5000,
+            "noInputTimeout" : 5005,
             # complete timeout may be reduced to give faster responses
-            "completeTimeout" : 2000
+            "completeTimeout" : 1001
         },
         # set the voice, can be commented out if the default is to be used
         "audioProperties" : { "voice" : "catherine"}
@@ -60,7 +61,7 @@ def questionData(sequence, statementPrompt, questionPrompt):
 
     return question
 
-# package response into what Lambda understands
+# package response into what AWS Lambda understands
 def responseFromLambda(respBody):
     respBodyStr = json.dumps(respBody)
     print("Response for VG: "+respBodyStr)
@@ -75,15 +76,16 @@ def responseFromLambda(respBody):
     return response
 
 def lambda_handler(event, context):
-    #initial message to RASA - it will trigger the "how can i help you" question
-    sayHiToRasa = "Hi"
-    # final message to RASA
+    #initial message to the Bot - it will trigger the "how can i help you" question
+    sayHiToBot = "Hi"
+    # final message to the Bot
     sayByeToRasa = "Goodbye" 
 
-    # message to RASA in the middle of the dialogue
-    # will be overwritten by actual response captured by voicegain
-    messageForRasa = "none"
+    # message to the Bot in the middle of the dialogue
+    # will be overwritten by actual response captured by Voicegain
+    messageForBot = "none"
 
+    # Extract method and sid from received Lambda request 
     print("START   event "+json.dumps(event))   # debug
     
     method = event['requestContext']['http']['method']
@@ -92,12 +94,9 @@ def lambda_handler(event, context):
     bodyStr = event['body']
     body = json.loads(bodyStr)
     sid = body['sid']; # Voicegain session id
-    seq = body.get('sequence') # sequence within single Voicegain session
+    seq = 0 # initial value
 
-    if seq is None:
-        seq = 0
-
-    print('method: '+method)
+    print('method: '+method) # POST, PUT, DELETE
     print('   sid: '+sid)
     print('   seq: '+str(seq))
 
@@ -106,13 +105,13 @@ def lambda_handler(event, context):
     vuiResult = "ERROR" # speech recognition status (VUI = voice UI)
 
     # initialize response to be sent back to Voicegain 
-    respBody = { "sid" : sid }
+    respBodyForVG = { "sid" : sid }
 
     if method == 'POST': # start of session
-        respBody['sequence'] = seq
-        messageForRasa = sayHiToRasa
+        respBodyForVG['sequence'] = seq
+        messageForBot = sayHiToBot
     elif (method == 'PUT'): # mid session
-        respBody['sequence'] = queryParams['seq'] # sequence is obtained from query param 
+        respBodyForVG['sequence'] = queryParams['seq'] # sequence is obtained from query param 
         csid = queryParams['csid'] # customer session id also from query param
         
         # search voicegain IVR events for input, i.e. answer
@@ -129,64 +128,80 @@ def lambda_handler(event, context):
                     else:
                         vuiAlt = event['vuiAlternatives'][0]; # pick the top alternative
                         # set message to RASA based on the utterance captured by Voicegain
-                        messageForRasa = vuiAlt['utterance'] 
+                        messageForBot = vuiAlt['utterance'] 
                 break
     else:
         # assuming end session (DELETE)
-        respBody['sequence'] = queryParams['seq']
+        respBodyForVG['sequence'] = queryParams['seq']
         csid = queryParams['csid']
-        messageForRasa = sayByeToRasa
+        messageForBot = sayByeToRasa
     
     # set the local sid in the response
-    respBody['csid'] = csid
+    respBodyForVG['csid'] = csid
 
-    if messageForRasa == 'none':
+    if messageForBot == 'none':
         # speech recognition returned no utterance        
         if vuiResult=='NOINPUT':
             # generic reprompt in case of no input            
-            respBody['question'] = questionData(respBody.sequence, "I did not hear you", "Please speak")
+            respBodyForVG['question'] = questionData(respBodyForVG.sequence, "I did not hear you", "Please speak")
         elif vuiResult=='NOMATCH':
             # generic reprompt in case of no match
-            respBody['question'] = questionData(respBody.sequence, "I did not get it", "Can you say it again")
+            respBodyForVG['question'] = questionData(respBodyForVG.sequence, "I did not get it", "Can you say it again")
         
         # just return the generic reprompt to VG
-        return responseFromLambda(respBody)
+        return responseFromLambda(respBodyForVG)
     else:
-        # request to be sent to RASA
-        rasaReq = {
-            "sender" : "voicegain-"+csid, # sender name unique to this session
-            "message" : messageForRasa # the message for RASA - this is the recognized utterance
-        }
-        print("Message for RASA: "+messageForRasa)
-        http = urllib3.PoolManager()
-
-        rasa_response = http.urlopen("POST", options['url'], headers=options['headers'], body=json.dumps(rasaReq))
-        print("Response from RASA: "+str(rasa_response))
-        decoded_r = rasa_response.data.decode("utf8")
-        print("Response from RASA: "+str(decoded_r))
-        body = json.loads(decoded_r)
-
-        # process the response from RASA
-        # response from RASA is an array of statements followed by a question
-        # we concatenate the statements first 
-        statement = ""
-        i=0
-        while i<len(body)-1:
-            statement += " "+body[i]['text']
-            i  += 1
-        print("RASA statement: "+statement)
-        # final element is the actual question from RASA
-        question = body[i]['text']
-        print("RASA  question: "+question)
+        # request to be sent to Bot
+        sender = "voicegain-"+csid # sender name unique to this session
+        statement, question = make_bot_request(sender, messageForBot)
 
         # now fill in the data for the response to be sent back to Voicegain
         if method=='DELETE':
             # acknowledge termination
-            respBody['termination'] = "normal"
+            respBodyForVG['termination'] = "normal"
             # note: we are ignoring whatever RASA may have returned                        
         else:
             # for POST or PUT send the data received from RASA
-            respBody['question'] = questionData(respBody['sequence'], statement, question)
+            respBodyForVG['question'] = questionData(respBodyForVG['sequence'], statement, question)
         
         # send the good response via resolve
-        return responseFromLambda(respBody)
+        return responseFromLambda(respBodyForVG)
+
+# This function make a request to the Bot logic
+# inputs are (this is what we are sending to the Bot):
+# * sender : some unique identifier of this conversation session
+# * messageForBot : this is what voicegain recognized as a response to the question
+# outputs are (this is what we receive from the Bot):
+# * statement : this is the prompt or prompts that will be played suing TTS to the caller - may be empty
+# * question : this is the question that follows the (optional) prompt(s)
+#
+# The implementation below is specific for RASA Bot
+# You will need to change this if you wan to use a different Bot framework
+def make_bot_request(sender, messageForBot):
+    rasaReq = {
+            "sender" : sender,
+            "message" : messageForBot # the message for RASA - this is the recognized utterance
+        }
+    print("Message for RASA: "+messageForBot)
+    http = urllib3.PoolManager()
+
+    rasa_response = http.urlopen("POST", options['url'], headers=options['headers'], body=json.dumps(rasaReq))
+    print("    Raw response from RASA: "+str(rasa_response))
+    decoded_r = rasa_response.data.decode("utf8")
+    print("Decoded response from RASA: "+str(decoded_r))
+    body = json.loads(decoded_r)
+
+        # process the response from RASA
+        # response from RASA is an array of statements followed by a question
+        # we concatenate the statements first 
+    statement = ""
+    i=0
+    while i<len(body)-1:
+        statement += " "+body[i]['text']
+        i  += 1
+    print("RASA statement: "+statement)
+        # final element is the actual question from RASA
+    question = body[i]['text']
+    print("RASA  question: "+question)
+    return statement,question
+        

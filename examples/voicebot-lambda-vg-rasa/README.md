@@ -1,23 +1,27 @@
-# Lambda Function Voicebot using Voicegain and RASA #
+# Lambda Function Voicebot using Voicegain and RASA (or other Bot framework) #
 
 This folder contains code for a simple Voicebot built using:
 * Voicegain Telephone Bot API
-* AWS Lambda
-* RASA
+* RASA (this is used in the example but you can modify the code to use other bot framework)
+* AWS Lambda (this is the "glue" between Voicegain Telephone Bot API and the Bot)
+
 
 Included files:
 * `voicegainIvrOne.py` - AWS Lambda function code (python version)
-  * if you have a bot other than RASA you will need to modify the implementation of `make_bot_request(sender, messageForBot)` function
-  * voicegainIvrOne.js - AWS Lambda function code (node.js version)
-* `lambdaEchoRasa.py` - a simple lambda function that simulates an Echo RASA bot, you can point `voicegainIvrOne.py` to this function to do so some testing before integration with RASA  
+  * If you have a bot other than RASA you will need to modify the implementation of `make_bot_request(sender, messageForBot)` function
+  * voicegainIvrOne.js - node.js version AWS Lambda function code 
+* `lambdaEchoRasa.py` - a simple lambda function that simulates an Echo Bot, you can point `voicegainIvrOne.py` to this function to do so some testing before integration with RASA  
 
 Settings:
 * In [Voicegain Web Console](https://console.voicegain.ai) you need to configure your Phone App to use `query` as value for `CSID Callback` - this is what the lambda function expects
 
 ## Sequence diagram
-NOTE: AIVR is the Voicegain internal name for the Service on top of which the Telephone Bot API runs.
+NOTE: **AIVR** mentioned in the diagrams is the Voicegain internal name for the Service on top of which the Telephone Bot API runs.
 
-Currently Voicegain cannot make outbound calls. If you need to make outbound calls, you can use a CPaaS like e.g. Twilio to place the outbound call and then SIP INVITE Voicegain into that established call. For more see [this blog post](https://www.voicegain.ai/post/sip-invite-voicegain-from-twilio-signalwire-cpaas).   
+Currently, Voicegain Telephony Bot API can take inbound calls over a normal phone number or over SIP.
+It cannot make outbound calls on its own. 
+If you need to make outbound calls, you can use a CPaaS like e.g. Twilio to place the outbound call and then SIP INVITE Voicegain into that established call. 
+For more info about SIP INVITE see [this blog post](https://www.voicegain.ai/post/sip-invite-voicegain-from-twilio-signalwire-cpaas).   
 </br>
 
 ![Sequence Diagram](./sequence-diagram.png)

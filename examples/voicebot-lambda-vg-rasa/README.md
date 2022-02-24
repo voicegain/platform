@@ -15,22 +15,31 @@ Included files:
 Settings:
 * In [Voicegain Web Console](https://console.voicegain.ai) you need to configure your Phone App to use `query` as value for `CSID Callback` - this is what the lambda function expects
 
-## Sequence diagram
-NOTE: **AIVR** mentioned in the diagrams is the Voicegain internal name for the Service on top of which the Telephone Bot API runs.
+## Sequence diagrams
 
 Currently, Voicegain Telephony Bot API can take inbound calls over a normal phone number or over SIP.
 It cannot make outbound calls on its own. 
+
 If you need to make outbound calls, you can use a CPaaS like e.g. Twilio to place the outbound call and then SIP INVITE Voicegain into that established call. 
+
 For more info about SIP INVITE see [this blog post](https://www.voicegain.ai/post/sip-invite-voicegain-from-twilio-signalwire-cpaas).   
 </br>
 
-![Sequence Diagram](./sequence-diagram.png)
+Inbound call via CPaaS
 
-![Sequence Diagram (outbound call)](./sequence-diagram-outbound.png)
+![Sequence Diagram (inbound call via CPaaS)](./VG-AWS-RASA-inb.png)
+
+Outbound call via CPaaS
+
+![Sequence Diagram (outbound call via CPaaS)](./VG-AWS-RASA-outb.png)
+
+Direct inbound call via embedded AWS VoiceConnect. (Direct outbound not supported yet.)
+
+![Sequence Diagram (direct inbound call)](./VG-AWS-RASA.png)
 
 ## License ##
 
-License applies to files in this folder.
+License applies only to example files in this folder.
 
 The MIT License
 

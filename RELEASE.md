@@ -1,3 +1,26 @@
+## Release 1.51.0
+
+This minor release provides the following more accurate models:
+* English real-time (streaming)
+* Spanish off-line
+
+This release addresses the following issues:
+* #rcj-477: AIVR - attempt to play empty questionPrompt results in error
+* #rcj-476: AIVR -the last prompt in disconnect is not being played and the hangup is not done
+* #rcj-474: REX returns incorrect long result for certain utterances in recent benchmark
+* #vgp-833: The startTime field datatype is "String in the spec, but web-api returns integer
+* #rcj-472: Get exception when submit silence to SA
+* #rcj-470: Cannot GET SA transcript
+* #vgp-830: DEL SA session and DEL SA config need to be in the public API spec
+* #ocp-773: offline-process occasionally return empty result
+* #vgp-831: "name" field should be required when creating SA config
+* #rcj-469: attempt to get /sa results returns INTERNAL_SERVER_ERROR
+* #ocp-770: diarization is not returned when audio is short
+
+Two enhancements:
+* Old and/or orphan data cleanup has been moved to separate task and made faster
+* Time filter has been added to the GET /data query method  
+
 ## Release 1.50.1
 
 This maintenance release fixes the following issue:

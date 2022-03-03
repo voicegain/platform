@@ -1,3 +1,26 @@
+### Minor release 1.51.0 is scheduled for 3/3/2022 between 5:00pm and 10pm CST
+
+This release provides the following more accurate models:
+* English real-time (streaming)
+* Spanish off-line
+
+This release addresses the following issues:
+* #rcj-477: AIVR - attempt to play empty questionPrompt results in error
+* #rcj-476: AIVR -the last prompt in disconnect is not being played and the hangup is not done
+* #rcj-474: REX returns incorrect long result for certain utterances in recent benchmark
+* #vgp-833: The startTime field datatype is "String in the spec, but web-api returns integer
+* #rcj-472: Get exception when submit silence to SA
+* #rcj-470: Cannot GET SA transcript
+* #vgp-830: DEL SA session and DEL SA config need to be in the public API spec
+* #ocp-773: offline-process occasionally return empty result
+* #vgp-831: "name" field should be required when creating SA config
+* #rcj-469: attempt to get /sa results returns INTERNAL_SERVER_ERROR
+* #ocp-770: diarization is not returned when audio is short
+
+Two enhancements:
+* Old and/or orphan data cleanup has been moved to separate task and made faster
+* Time filter has been added to the GET /data query method  
+
 ### Maintenance release 1.50.1 is scheduled for 2/16/2021 between 11:00am and noon CST
 
 This release fixes the following issue:
@@ -43,24 +66,6 @@ This release adds the following features:
 
 This release includes the latest offline model. For info about improved accuracy see update on this [blog post](https://www.voicegain.ai/post/speech-to-text-accuracy-benchmark-october-2021).
 
-### Maintenance release 1.48.3 is scheduled for 1/20/2021 between 6:00pm and 10pm CST
-
-This release fixes the following issues:
-* #rcj-447: New Language Model build not working due to Cloud Function issue/change
-* #ocp-768: offline process cannot transcribe mlp and truehd file because of rate limiting bug
-   * This applies also to other formats which do not provide audio duration information. In addition to these files not being transcribed, other files were delayed in processing.
-* #rcj-445: NullPointerException while processing sync /asr/recognize and /asr/transcribe requests with dataStore as audio
-
-### Maintenance release 1.48.2 is scheduled for 1/18/2021 between 6:00pm and 10pm CST
-
-This release fixes the following issue:
-* #rcj-444: Unnecessary check for audio file format
-
-### Maintenance release 1.48.1 is scheduled for 1/13/2021 between 6:00pm and 10pm CST
-
-This release fixes the following issues (which impacted Edge deployments with no Internet connection):
-* #rcj-442: Consider empty context model name same as null
-* #rcj-441: Web Console goes blank if unable to obtain status info
 
 ### Support for ACH Payments
 

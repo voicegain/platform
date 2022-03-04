@@ -8,6 +8,8 @@ Minor release 1.52.0 is scheduled for 3/4/2022 between 3:00pm and 6:00pm CST
 
 This release includes **Browser Capture** feature available in the transcribe app. This allows you to capture and transcribe full audio of e.g. Zoom or MS Teams meetings.
 
+**Known Issue:** Browser Capture preview will stop after more than 60 seconds silence (each channel separately). 
+
 
 ### December 16, 2021
 

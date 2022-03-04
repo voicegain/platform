@@ -2,9 +2,12 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
-### Support for ACH Payments
+### March 4, 2022
 
-ACH payments are now available.
+Minor release 1.52.0 is scheduled for 3/4/2022 between 3:00pm and 6:00pm CST
+
+This release includes **Browser Capture** feature available in the transcribe app. This allows you to capture and transcribe full audio of e.g. Zoom or MS Teams meetings.
+
 
 ### December 16, 2021
 

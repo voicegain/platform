@@ -1,3 +1,12 @@
+### Minor release 1.52.0 is scheduled for 3/4/2022 between 3:00pm and 6:00pm CST
+
+This release includes:
+* Browser Capture feature available in the transcribe app. This allows you to capture full audio of e.g. Zoom or MS Teams meetings.
+
+This release addresses the following issues:
+* #rcj-477: AIVR - attempt to play empty questionPrompt results in error (was re-opened)
+* #rcj-475: Unable to listen to recordings of Telephone Bot API sessions
+
 ### Minor release 1.51.0 is scheduled for 3/3/2022 between 5:00pm and 10pm CST
 
 This release provides the following more accurate models:
@@ -57,14 +66,6 @@ This release has numerous back-end changes to improve Voicegain platform ability
 
 This release fixes the following issues:
 * #rcj-448: User logs not available.
-
-### Maintenance release 1.48.4 is scheduled for 1/20/2021 between 6:00pm and 10pm CST
-
-This release adds the following features:
-* vadMode "disabled" is now supported - this turns off the VAD and may give higher accuracy where there is constant speech in presence of high volume background noise/hum
-* offline processor configuration has been modified to handle more offline requests
-
-This release includes the latest offline model. For info about improved accuracy see update on this [blog post](https://www.voicegain.ai/post/speech-to-text-accuracy-benchmark-october-2021).
 
 
 ### Support for ACH Payments

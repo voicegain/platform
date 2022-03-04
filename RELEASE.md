@@ -1,3 +1,12 @@
+## Release 1.52.0
+
+This minor release includes:
+* Browser Capture feature available in the transcribe app. This allows you to capture full audio of e.g. Zoom or MS Teams meetings.
+
+This release addresses the following issues:
+* #rcj-477: AIVR - attempt to play empty questionPrompt results in error (was re-opened)
+* #rcj-475: Unable to listen to recordings of Telephone Bot API sessions
+
 ## Release 1.51.0
 
 This minor release provides the following more accurate models:

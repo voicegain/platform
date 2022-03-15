@@ -1,3 +1,13 @@
+### Minor release 1.53.0 is scheduled for 3/15/2022 between 6:00pm and 10:00pm CST
+
+This release includes:
+* Telephony Bot API uses a more efficient method to stream audio to the recognizer. The response latency has been reduced a bit.
+* Model selection mechanism has been changed. A single Acoustic Model can now support multiple languages; therefore, we added a extra language parameter that can be provided together with a model name.
+* MRCP ASR now supports a dual language mode - it is possible to do recognition not knowing what language is spoken. Currently, only en/es combination is available.
+* Profanity masking has been added to the Transcribe API
+* In Web Console - the audio display now shows milliseconds in tooltip and when zoomed in.
+    
+
 ### Minor release 1.52.0 is scheduled for 3/4/2022 between 3:00pm and 6:00pm CST
 
 This release includes:
@@ -42,31 +52,6 @@ This release addresses the following issues and enhancements:
 * #rcj-461: the body of a callback request with callback.format=text is empty
 * #rcj-460: better handling of billing system rate-limiting errors
 * #rcj-459: new audio selector for call center calls to be processed offline 
-
-### Maintenance release 1.49.3 is scheduled for 2/4/2021 between 8:00pm and 10pm CST
-
-This release fixes the following issues:
-* #rcj-457: Missing influxDB entries due to identical timestamp
-* #rcj-456: Long audio files (e.g. 24 hours) cause OOM
-  * Max audio file duration has been limited to 8 hours
-* #rcj-455: Offline session time reported to billing as real-time session
-
-### Maintenance release 1.49.2 was deployed on 2/3/2021 between 6:00pm and 6:45pm CST
-
-This release modified how offline transcription billing information is submitted to Billing in order to:
-* make it more efficient,
-* correct underbilling. 
-
-### Maintenance release 1.49.1 is scheduled for 1/28/2021 between 6:00pm and 10pm CST
-
-This release upgrades the Redis server and clients to a newer version and makes changes to their configuration to prevent certain issues affecting High Availability.
-
-### Minor release 1.49.0 is scheduled for 1/27/2022 between 6:00pm and 10pm CST
-
-This release has numerous back-end changes to improve Voicegain platform ability to handle large loads.
-
-This release fixes the following issues:
-* #rcj-448: User logs not available.
 
 
 ### Support for ACH Payments

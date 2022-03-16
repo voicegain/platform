@@ -1,3 +1,7 @@
+### Acoustic Model VoiceGain-rt-en-us no longer available
+
+With Release 1.53.0 the Acoustic model named `VoiceGain-rt-en-us` is no longer available. If you still use it in your API requests you will get "Resource available error". Please replace references to it with `VoiceGain-kappa`.
+
 ### Minor release 1.53.0 is scheduled for 3/15/2022 between 6:00pm and 10:00pm CST
 
 This release includes:

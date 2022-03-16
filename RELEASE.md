@@ -1,3 +1,8 @@
+## Release 1.53.1
+
+This maintenance release addresses the following issue:
+* #TranscribeApp-338: Fix countries images icon at Transcribe App - Acoustic model selection
+
 ## Release 1.53.0
 
 This minor release includes:

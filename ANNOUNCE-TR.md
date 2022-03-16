@@ -2,6 +2,11 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### March 15, 2022
+
+Release 1.53.0 has a know defect:
+* The current Acoustic Model settings are not displayed. The choices are saved and used, just not displayed. 
+
 ### March 4, 2022
 
 Minor release 1.52.0 is scheduled for 3/4/2022 between 3:00pm and 6:00pm CST

@@ -2,6 +2,11 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### March 16, 2022
+
+Release 1.53.1 addresses the following issue:
+* #TranscribeApp-338: Fix countries images icon at Transcribe App - Acoustic model selection
+
 ### March 15, 2022
 
 Release 1.53.0 has a know defect:

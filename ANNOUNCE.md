@@ -1,3 +1,8 @@
+### Maintenance release 1.53.1 is scheduled for 3/16/2021 between 5:00pm and 10:00pm CST
+
+This release addresses the following issue:
+* #TranscribeApp-338: Fix countries images icon at Transcribe App - Acoustic model selection
+
 ### Acoustic Model VoiceGain-rt-en-us no longer available
 
 With Release 1.53.0 the Acoustic model named `VoiceGain-rt-en-us` is no longer available. If you still use it in your API requests you will get "Resource available error". Please replace references to it with `VoiceGain-kappa`.

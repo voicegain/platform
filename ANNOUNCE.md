@@ -1,4 +1,4 @@
-### Maintenance release 1.53.1 is scheduled for 3/16/2021 between 5:00pm and 10:00pm CST
+### Maintenance release 1.53.1 is scheduled for 3/16/2022 between 5:00pm and 10:00pm CST
 
 This release addresses the following issue:
 * #TranscribeApp-338: Fix countries images icon at Transcribe App - Acoustic model selection

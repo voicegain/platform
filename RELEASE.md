@@ -1,3 +1,11 @@
+## Release 1.53.2
+
+This release adds:
+* Choice of 4 high quality TTS voices in Indian English (en-IN)
+
+This release fixes the following issue:
+* #rcj-486: support using context.asrSettingsRecognition.acousticModelRealTime for Rex resource reservation for AIVR sessions if present
+
 ## Release 1.53.1
 
 This maintenance release addresses the following issue:

@@ -1,3 +1,11 @@
+### Maintenance release 1.53.2 is scheduled for 3/17/2022 between 6:00pm and 10:00pm CST
+
+This release adds:
+* Choice of 4 high quality TTS voices in Indian English (en-IN)
+
+This release fixes the following issue:
+* #rcj-486: support using context.asrSettingsRecognition.acousticModelRealTime for Rex resource reservation for AIVR sessions if present
+
 ### Maintenance release 1.53.1 is scheduled for 3/16/2022 between 5:00pm and 10:00pm CST
 
 This release addresses the following issue:

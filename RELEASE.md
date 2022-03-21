@@ -1,3 +1,11 @@
+## Release 1.53.3
+
+This maintenance release adds:
+* improved food-kappa model 
+
+This release fixes the following issue:
+* #rcj-488: spanish offline transcription ignores languages defined in the associated context
+
 ## Release 1.53.2
 
 This release adds:

@@ -1,3 +1,11 @@
+### Maintenance release 1.53.3 is scheduled for 3/21/2022 between 6:00pm and 10:00pm CST
+
+This release adds:
+* improved food-kappa model 
+
+This release fixes the following issue:
+* #rcj-488: spanish offline transcription ignores languages defined in the associated context
+
 ### Maintenance release 1.53.2 is scheduled for 3/17/2022 between 6:00pm and 10:00pm CST
 
 This release adds:
@@ -62,13 +70,6 @@ Two enhancements:
 
 This release fixes the following issue:
 * #rcj-463: call duration reported from offline transcription to billing is 1/1000th of what it should be
-
-### Minor release 1.50.0 is scheduled for 2/14/2022 between 4:00pm and 10pm CST
-
-This release addresses the following issues and enhancements:
-* #rcj-461: the body of a callback request with callback.format=text is empty
-* #rcj-460: better handling of billing system rate-limiting errors
-* #rcj-459: new audio selector for call center calls to be processed offline 
 
 
 ### Support for ACH Payments

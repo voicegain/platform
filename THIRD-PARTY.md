@@ -1,5 +1,5 @@
-# Third-party Jars
-
+# Third-party Jars (Complete List of Open Source Libraries)
+[List of the Open Source libraries used in Edge/On-Premise deployment is listed here](https://github.com/voicegain/platform/blob/master/THIRD-PARTY-Edge.md)
 Jar Name|Version|Use
 ---|---|---
 ch.hsr.geohash.jar | 1.3.0 | compile

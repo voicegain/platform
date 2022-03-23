@@ -65,7 +65,6 @@ javax.servlet.javax.servlet-api.jar | 4.0.1 | provided
 javax.speech.jsapi.jar | 1.0 | compile
 joda-time.joda-time.jar | 2.9.9 | compile
 junit.junit.jar | 4.12 | compile
-log4j.log4j.jar | 1.2.17 | compile
 mysql.mysql-connector-java.jar | 8.0.21 | compile
 net.jodah.expiringmap.jar | 0.5.10 | compile
 net.minidev.json-smart.jar | 2.4.7 | compile

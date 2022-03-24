@@ -1,3 +1,6 @@
+If you have trouble running any of the examples below, you can contact us at support@voicegain.ai
+
+
 # Overview
 
 These examples are similar in that they all use **async** api and also use **polling** to obtain the result of transcription. Here are the differences: 

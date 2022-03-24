@@ -18,10 +18,10 @@ asr_body = {
     "audio":{
         "source": {
             "inline": {
-                "data": "to be filled later"
+                "data": "base64 encoded audio to be filled later"
             }
         },
-        "format" : "L16",
+        "format" : "L16", # web browser audio will generally be F32 encoded
         "rate" : 16000,
         "channels" : "mono"
     },
@@ -31,7 +31,15 @@ asr_body = {
             "noInputTimeout": -1,
             "completeTimeout": -1,
             "sensitivity" : 0.5,
-            "speedVsAccuracy" : 0.5 
+            "speedVsAccuracy" : 0.5
+            , "languages" : "en" ## "es" is also available for some models
+            ## OFFLINE models
+            , "acousticModelNonRealTime" : "VoiceGain-omega" ## default OFFLINE model (supports English and Spanish)
+            ## REAL-TIME models
+            #, "acousticModelRealTime" : "VoiceGain-rho-en-us" ## low-latency REAL-TIME model (less accurate)
+            #, "acousticModelRealTime" : "VoiceGain-kappa" ## default REAL-TIME model (supports English and Spanish)
+            #, "acousticModelRealTime" : "food-kappa" ## REAL-TIME model customized for Indian Dishes
+            
             #, "hints" : ["rupees:10", "Hyderabad:10", "lakh:10", "lakhs:10", "lakh_rupees", "Yen", "GB RAM", "MB RAM"]
             #, "langModel": "af1433a5-4e81-4df8-bf86-a48e0f409157"
         }
@@ -44,13 +52,9 @@ asr_body = {
 results = {}
 
 if(spanish):
-    asr_body["settings"]["asr"]["acousticModelNonRealTime"] = "VoiceGain-ol-es"
-
-audio_type = "audio/wav"
+    asr_body["settings"]["asr"]["languages"] = "es"
 
 output_path = "output-{}".format(time.strftime("%Y-%m-%d_%H-%M-%S"))
-
-data_url = "{}/data/file?reuse=true&transcode=disable".format(host)
 
 headers = {"Authorization":JWT}
 

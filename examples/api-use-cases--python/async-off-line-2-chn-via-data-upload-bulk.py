@@ -35,7 +35,8 @@ asr_body = {
     "settings" : {
         "asr" : {
             "sensitivity" : 0.5,
-            "speedVsAccuracy" : 0.5
+            "speedVsAccuracy" : 0.5,
+            "languages" : ["en"]
         }
         , "formatters" : [{"type" : "digits"}]
     }
@@ -44,7 +45,8 @@ asr_body = {
 #### all settings above this line ####
 
 if(spanish):
-    asr_body["settings"]["asr"]["acousticModelNonRealTime"] = "VoiceGain-ol-es"
+    asr_body["settings"]["asr"]["languages"] = []
+    asr_body["settings"]["asr"]["languages"].append("es")
 
 audio_type = "audio/wav"
 

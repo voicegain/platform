@@ -37,7 +37,8 @@ asr_body = {
             "noInputTimeout": -1,
             "completeTimeout": -1,
             "sensitivity" : 0.5,
-            "speedVsAccuracy" : 0.5 
+            "speedVsAccuracy" : 0.5,
+            "languages" : ["en"] 
             #, "hints" : ["rupees:10", "Hyderabad:10", "lakh:10", "lakhs:10", "lakh_rupees"]
             #, "langModel": "af1433a5-4e81-4df8-bf86-a48e0f409157"
         }
@@ -48,7 +49,8 @@ asr_body = {
 #### all settings above this line ####
 
 if(spanish):
-    asr_body["settings"]["asr"]["acousticModelNonRealTime"] = "VoiceGain-ol-es"
+    asr_body["settings"]["asr"]["languages"] = []
+    asr_body["settings"]["asr"]["languages"].append("es")
 
 audio_type = "audio/wav"
 

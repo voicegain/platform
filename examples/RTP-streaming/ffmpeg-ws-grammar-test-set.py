@@ -77,7 +77,7 @@ body = {
       "completeTimeout": 2000,
       "speedVsAccuracy" : 1.0,
       "sensitivity" : 0.5,
-      "acousticModelRealTime" : "VoiceGain-rt-ivr-en-us" # this is the model optimized for IVR use
+      "acousticModelRealTime" : "VoiceGain-kappa" 
     }
   }
 }

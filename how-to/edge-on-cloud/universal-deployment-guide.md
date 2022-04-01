@@ -20,16 +20,19 @@ This guide will have you do the following:
 - [Billing and Licensing](#license)
 
 ## <a name="before"></a>Before you Start 
+**Request GPU Access from your Cloud Provider:**
+Many cloud providers, including AWS and GCP, require you to specifically request GPUs for your account. This process can take a few days to be processed so it's best to start this early.
+
+**Voicegain Specific Steps:**
 In order to deploy Voicegain on Edge your account needs to have the Edge feature enabled - otherwise you will not see the relevant pages in the [Voicegain Web Console](https://www.voicegain.ai). Please contact support@voicegain.ai to have that enabled.
 
 When you contact us we will ask you to describe your intended usage (e.g. offline transcription or MRCP ASR) so that we can enable an appropriate Edge configuration for your use case. If you are only exploring we can enable several generic configurations to allow you to test a variety of uses. For production use we will prepare a custom configuration that makes the best use of resources on your server(s). We will also configure port based licensing if desired (default is usage-based billing). 
 
 ## <a name="step1"></a>Step 1: Create Cluster on VoiceGain
-> **System Provisioning Considerations:** For the sake of simplicity; the remainder of this guide will assume we are solely using the Ubuntu system we have just installed to complete all the remaining steps. However, it is entirely possible to complete this remotely. To do this, you would open a terminal and run `sudo apt install openssh-server -y`. You can, then, create the Cluster on the Voicegain portal from the system of your choosing and paste the EZInitCommand to the Ubuntu system over ssh.
 
-1. On your new Ubuntu system: open Firefox and go to: https://console.voicegain.ai
+1. Go to: https://console.voicegain.ai
 2. If you do not have a developer account, you would need to sign up first. Detailed instructions are provided [here](https://www.voicegain.ai/post/how-to-signup-for-a-developer-account-and-start-using-voicegain-voice-ai).
-3. Log in to the console and go to the "[Edge Deployment](https://console.voicegain.ai/specific/edge-deployments)" view. Click "**+ ADD**" and name your Cluster and choose **EZ Setup**.
+3. Log in to the console and go to the "[Edge Deployment](https://console.voicegain.ai/specific/edge-deployments)" view. Click "**+ ADD**" and name your Cluster and choose **User-configured Kubernetes cluster**.
 
 ![Add new Edge Deployment](./Universal-1a.png)
 
@@ -38,32 +41,12 @@ When you contact us we will ask you to describe your intended usage (e.g. offlin
 ![Load Cluster](./Universal-1b.png)
 
 
-4. Define the Connection parameters relevant to your circumstance. Ideally your Edge Deployment will be in your DMZ or "Edge" and, as such, is reachable from the internet. If so, choose the top radio button: "Reachable from internet" and provide the IP Address or Fully Qualified Domain Name as well as the K8S API port (by default this is 6443). Alternatively, if you do not have a DMZ or the ability to add a pinhole in your firewall; you should choose: "Set up control tunnel". Then Click "**Apply**" and "**> Next**"
-> **What is the control tunnel?:** In order to connect to systems behind a strict Firewall your Edge system will leverage autossh to establish an SSH tunnel with our network over the HTTPS (port 443) protocol. This is a non interactive shell session that solely creates a reverse port forward so that we can reach your Kubernetes API from within our network.
-![Connection Parameters](./7-3.png)
+4. 
 
-5. Click "**Generate**" and then "**Copy**". You now have the Command script in your clipboard. 
-![Generate Command Script](./7-4.png)
-## <a name="step2"></a>Step 2: Boot to Installation Media
+## <a name="step2"></a>Step 2: Cloud Provider Specific Guides
 
-If you have not already; you can download the Ubuntu 20 LTS Desktop Image [here](https://ubuntu.com/download/desktop).
+[AWS Specific Steps](aws-specific-steps.md)
 
-You can burn the installation image on to DVD, however, we recommend creating a Bootable USB drive as it is faster and becoming the new standard.
-
-Steps to creating a bootable Ubuntu USB Drive based on your current OS:
-
-[Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu)
-
-[Windows](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows)
-
-[MacOS](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos)
-
-
-[Generic Overall Guide](https://linuxhint.com/create_bootable_linux_usb_flash_drive/)
-
-Insert the USB drive and ensure that your system will either prioritize USB Drive in the boot order, or otherwise, manually enter the UEFI One Time Boot Menu and boot from the USB Drive. 
-
-When the Live Ubuntu system has booted select "Try Ubuntu" (NOT "Install Ubuntu")
 
 ## <a name="step3"></a>Step 3: Configure Network
 

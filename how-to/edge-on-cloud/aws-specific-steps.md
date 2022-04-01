@@ -1,24 +1,17 @@
-# <a id="top"></a>Deploy Voicegain into AWS
-Step by step guide how to deploy Voicegain Speech-to-Text Platform into AWS
+# <a id="top"></a>AWS Specific Steps
+Required Steps, AWS Provided documentation, and recommended best practices
 ----
-Under the hood:
-This guide will have you do the following:
-* Create an AWS Kubernetes cluster with GPU’s
-* Authorize Voicegain to authenticate with your cluster by editing the aws-auth configmap and uploading your kubeconfig file to the Voicegain Console
-
-At step 4 we describe the option of using Vacuum CLI tool. This tool is not yet publicly available. We will modify this document as soon as we make it available with instructions on how  to download it.
+**Overview:**
+>* Create an AWS Kubernetes cluster with GPU’s and whitelist Voicegain IP's
+>* Authorize Voicegain to authenticate by creating a Kubernetes Service Account
 
 ## <a id="toc"></a>Table of Contents
 - [Step 1: Request GPUs from AWS](#step1)
-- [Step 2: Create a User](#step2)
-- [Step 3: Create Roles](#step3)
-- [Step 4: Choose Between Automated or Manual K8s Setup](#step4)
-- [Step 5: Create Cluster](#step5)
-- [Step 6: Create NodeGroup](#step6)
-- [Step 7: Install Kubectl](#step7)
-- [Step 8: Install and Configure awscli](#step8)
-- [Step 9: Get kubeconfig](#step9)
-- [Step 10: Give Voicegain Access to K8s](#step10)
+- [Step 2: Create Cluster](#step2)
+- [Step 3: Install Kubectl](#step3)
+- [Step 4: Install and Configure awscli](#step4)
+- [Step 5: Get kubeconfig](#step5)
+TODO: - [Step 6: Give Voicegain Access to K8s](#step6)
 - [Step 11: Upload kubeconfig to Voicegain](#step11)
 - [Step 12: Allow Access to Voicegain Cloud on AWS](#step12)
 - [Step 13: Start Deployment of Chosen Features](#step13)
@@ -26,109 +19,32 @@ At step 4 we describe the option of using Vacuum CLI tool. This tool is not yet 
 - [Step 15: Start Using Voicegain in AWS](#step15)
 
 ## <a id="step1"></a>Step 1: Request GPUs from AWS
+In order to use GPUs you must request a Quota increase for them from AWS
+The types (P type, G type/ On-demand, Spot instances) that you require are dependent on your Organizations needs.
+AWS Link: [Instance Types](https://aws.amazon.com/ec2/instance-types/)
 
-This may take a while so it is smart to do this at the very beginning
+Be certain you are requesting them for the AWS Region you wish to run your cluster in.
+AWS Link: [EC2 Quota Requests](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas)
 
-## <a id="step2"></a>Step 2: Create a User
+## <a id="step2"></a>Step 2: Create Cluster
 
-Under IAM: 
-* Create a user with Console Access* and Programmatic API access and save your "access key ID" and "secret access key"
-* Create a password<sup>*</sup> and identify a default regions such as ‘us-east-2’ (For simplicity you can provide full AWS service/resource access by adding user to a Group with AdministratorAccess)
+Link: [AWS Current Guide for Kubernetes Cluster creation](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
+Link: [Creating Amazon EKS Cluster Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role)
+[Create Cluster](AWS-1a.png)
 
-<sup>*</sup> NOTE: Console Access and Password creation not required for Vacuum CLI users.
+When you reach the "Cluster endpoint access" card in Cluster Creation; it is required that the API server enpoint is Publically available, 
+however it is recommended that you limit access to your Organization's access IP and Voicegain's access IP. For security purposes this IP address is avaialble upon request. **Please contact Voicegain to receive the required Voicegain Access IP address.**
 
-![IAM Create Group](./IAM-create-group.png)
+[Cluster endpoint access](AWS-2a.png)
 
-![Add User Step 1](./add-user.png)
+Afterward you will need to create nodegroups for your GPU Instasnces for the cluster
+Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
 
-![Add User Step 2](./add-user-2.png)
-
-![Add User Step 3](./add-user-3.png)
-
-## <a id="step3"></a>Step 3: Create Roles
-
-### Method A
-
-1. Create Amazon EKS worker node role in IAM console: [see AWS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html)
-2. Create Amazon EKS Service role in IAM console: [see AWS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
-
-![Create Role Step 1](./create-role.png)
-
-![Create Role Step 2](./create-role-2.png)
-
-Caveat: The EKS Role will not appear available in Cluster Creation until you either completely refresh the page or close and renavigate to Cluster Creation. (Navigating away and back to Cluster Creation has not ever worked in all of our tests.)
-
-Alternatively, you can create Roles using method B
-
-### Method B
-
-Create a role in Amazon IAM with the following 5 policies:
-* [AmazonEKSClusterPolicy](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy$jsonEditor)
-* AmazonEKSServicePolicy
-* [AmazonEKSWorkerNodePolicy](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy$jsonEditor)
-* [AmazonEKS_CNI_Policy](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy$jsonEditor)
-* [AmazonEC2ContainerRegistryReadOnly](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly$jsonEditor)
-
-With the following Trust Relationship:
-```javascript
-{
-  "Version": "2020-01-01",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": [
-          "eks.amazonaws.com",
-          "ec2.amazonaws.com"
-        ]
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
-
-## <a id="step4"></a>Step 4: Choose Between Automated or Manual K8s Setup
-
-Either:
-
-### Provision Amazon K8S cluster using Vacuum tool
-
-**Recommended:** Set up ‘vacuum’ tool on your administration system, you will need your AWS credentials, EKS Worker Role, and subnet IDs from AWS.
-
-Create Edge Cluster via Voicegain Console and retrieve ClusterID, then  
-<pre>
-vacuum k8s provision -t cluster_name -u Cluster_ID
-</pre>
-
-Then skip to [Step 12](#step12)
-
-### Provision Amazon K8S cluster manually
-
-Sign out of AWS Console and Sign In with the IAM User created in Step one. You will sign in with your Account ID, Username, and password.
-
-Then proceed with [Step 5](#step5)
-
-## <a id="step5"></a>Step 5: Create Cluster 
-
-Create Cluster w/ EKSServiceRole:
-
-![Create Cluster](./create-cluster.png)
-
-## <a id="step6"></a>Step 6: Create NodeGroup
-
-Create NodeGroup
-
-![Node Group](./node-group.png)
-
-When creating the NodeGroups, Voicegain will require GPU’s, thus choose the Amazon Linux 2 GPU Enabled (AL2_x86_64)) AMI type and a g4dn EC2 Instance Type. 
-Minimum 2xlarge (32 GiB memory) w/ minimum 2 nodes.
-
-## <a id="step7"></a>Step 7: Install Kubectl
+## <a id="step3"></a>Step 3: Install Kubectl
 
 Local system setup, install Kubectl following [these instructions from kubernetes website](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-## <a id="step8"></a>Step 8: Install and Configure awscli
+## <a id="step4"></a>Step 4: Install and Configure awscli
 
 Install and configure awscli:
 
@@ -146,7 +62,7 @@ aws eks list-clusters
 
 Retreive kubernetes configuration file:
 <pre>
-aws eks update-kubeconfig –name YOUR_CLUSTER_NAME
+aws eks update-kubeconfig --name YOUR_CLUSTER_NAME
 </pre>
 And test access with the following:  
 <pre>

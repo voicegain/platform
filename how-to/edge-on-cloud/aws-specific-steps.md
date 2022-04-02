@@ -24,15 +24,15 @@ AWS Link: [EC2 Quota Requests](https://console.aws.amazon.com/servicequotas/home
 
 AWS Link: [AWS Current Guide for Kubernetes Cluster creation](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)  
 AWS Link: [Creating Amazon EKS Cluster Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role)  
-[Create Cluster](AWS-1a.png)
+![Create Cluster](./AWS-1a.png)
 
 When you reach the "Cluster endpoint access" card in Cluster Creation; it is required that the API server enpoint is Publically and Privately available, 
 however it is recommended that you limit access to your Organization's access IP and Voicegain's access IP. For security purposes this IP address is avaialble upon request. **Please contact Voicegain to receive the required Voicegain Access IP address.**
 
-[Cluster endpoint access](AWS-2a.png)
+![Cluster endpoint access](./AWS-2a.png)
 
 Afterward you will need to create nodegroups for your GPU Instasnces for the cluster
-Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
+AWS Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
 
 ## <a id="step3"></a>Step 3: Install Kubectl
 

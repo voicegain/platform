@@ -1,4 +1,5 @@
-# <a id="top"></a>Deploy Voicegain to Cloud Provider Managed Kubernetes Cluster
+# <a id="top"></a> WIP DRAFT: In Progess. Do not Refer to this as a guide.
+Deploy Voicegain to Cloud Provider Managed Kubernetes Cluster
 Step by step guide how to deploy Voicegain Speech-to-Text Platform on your Cloud Managed Kubernetes Cluster
 ----
 Under the hood:
@@ -10,10 +11,10 @@ This guide will have you do the following:
 
 ## <a id="toc"></a>Table of Contents
 - [Before you Start](#before)
-- [Step 1: Create Cluster on VoiceGain](#step1)
-- [Step 2: Cloud Provider Specific Guides](#step2)
-- [Step 3: Connect Voicegain to your Kubernetes Cluster](#step3)
-- [Step 10: Ensure Cluster is functional](#step10)
+- [Step 1: Cloud Provider Specific Guides](#step1)
+- [Step 2: Create Voicegain service account on your Cluster](#step2)
+- [Step 3: Create Cluster on VoiceGain](#step3)
+- [Step 4: Upload your Kubeconfig file to Voicegain](#step4)
 - [Step 11: Deploy Voicegain Application](#step11)
 - [Step 12: Reboots, Notes and Caveats](#step12)
 - [CRITICAL NOTE ON SYSTEM UPDATES](#updates)
@@ -28,7 +29,42 @@ In order to deploy Voicegain on Edge your account needs to have the Edge feature
 
 When you contact us we will ask you to describe your intended usage (e.g. offline transcription or MRCP ASR) so that we can enable an appropriate Edge configuration for your use case. If you are only exploring we can enable several generic configurations to allow you to test a variety of uses. For production use we will prepare a custom configuration that makes the best use of resources on your server(s). We will also configure port based licensing if desired (default is usage-based billing). 
 
-## <a name="step1"></a>Step 1: Create Cluster on VoiceGain
+## <a name="step1"></a>Step 1: Cloud Provider Specific Guides
+
+[AWS Specific Steps](aws-specific-steps.md)
+
+
+## <a name="step2"></a>Step 2: Create Voicegain service account on your Cluster
+<pre>
+kubectl -n kube-system create serviceaccount voicegain-manage
+kubectl create clusterrolebinding voicegain-manage --clusterrole=cluster-admin --serviceaccount=kube-system:voicegain-manage
+TOKENNAME=`kubectl -n kube-system get serviceaccount/voicegain-manage -o jsonpath='{.secrets[0].name}'`
+CA=$(kubectl get -n kube-system secret/$TOKENNAME -o jsonpath='{.data.ca\.crt}')
+TOKEN=$(kubectl get -n kube-system secret/$TOKENNAME -o jsonpath='{.data.token}' | base64 --decode)
+SERVER_URL=$(kubectl cluster-info | head -n1 |awk '/Kubernetes/ {print $NF}'| sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g')
+
+echo "
+apiVersion: v1
+kind: Config
+clusters:
+- name: vg-edge-cluster
+  cluster:
+    certificate-authority-data: ${CA}
+    server: ${SERVER_URL}
+contexts:
+- name: vg-edge-context
+  context:
+    cluster: vg-edge-cluster
+    user: vg-edge-user
+current-context: vg-edge-context
+users:
+- name: vg-edge-user
+  user:
+    token: ${TOKEN}
+" > vg_kubeconfig.yaml
+</pre>
+
+## <a name="step4"></a>Step 4: Create Cluster on VoiceGain
 
 1. Go to: https://console.voicegain.ai
 2. If you do not have a developer account, you would need to sign up first. Detailed instructions are provided [here](https://www.voicegain.ai/post/how-to-signup-for-a-developer-account-and-start-using-voicegain-voice-ai).
@@ -42,93 +78,9 @@ When you contact us we will ask you to describe your intended usage (e.g. offlin
 
 
 4. 
-
-## <a name="step2"></a>Step 2: Cloud Provider Specific Guides
-
-[AWS Specific Steps](aws-specific-steps.md)
-
-
-## <a name="step3"></a>Step 3: Configure Network
-
-The reason for choosing to "Try Ubuntu" is that you can manually configure your network settings before Installing. This saves a lot of time and heartbreak. 
-
-Selecting the network icon in the top right you can then choose to edit the wired settings, click the gear icon and select the IPV4 tab and provide the static IP address of your new server and relevant network information.
-
-![Wired Settings](./Edge-network1.png)
-![IPv4 Settings](./Edge-network2.png)
-
-Now you can toggle the Wired Network off and then back on for the new settings to take effect. 
-
-Next, DoubleClick the "Install Ubuntu 20.xx.x LTS" icon on the desktop. 
-
-## <a name="step4"></a>Step 4: Configure Installation
-
-Choose your language/keyboard etc...
-
-On the "Updates and Other Software" screen, select "Minimal Installation" and "Download updates while installing Ubuntu" and ensure that all other boxes are NOT checked (Third Party software). See Below:
-
-![Install Settings](./4-1.png)
-
-Then proceed with [Step 5](#step5)
-
-## <a name="step5"></a>Step 5: Manually Create Partitions
-
-In short, the spirit behind the partitions are as such: 
-- EFI partition: Required 
-- No Swap: Kubernetes requires swap to be off so no need to waste disk space here.
-- Partition for NFS-Server: dynamically provisioned storage consumed by the k8s cluster.
- 
-Kubernetes doesn't support Swap, and the Storage should not impact the host system if it's ever filled. Detailed walk-through follows:
-
-### Installation Type:
-* On the "Installation Type" screen: Choose "Something else" and then "Continue"
-
-![Something Else](./5-1.png)
-
-### Partition Layout: 
-
-* **NOTE:** *If this disk has previous partitions you will want to select the drive itself (usually /dev/sda) and then select "New Partition Table..." this WILL destroy all data previously on the disk.*
-
-#### Allotment:
-
-**Recommendation:** *We recommend using at least 250 GB for the / (root) partition and 750 GB (at least) for the storage partition `/nfs`. In the below example we are using a single 1TB Drive*
-
-* **For Each Partition we create do the following:** Click on "**free space**" which should be the entire disk, and click on the "**+**" below to create your new partitions. 
-The partitions will use the ext4 filesystem, and default settings such as "Primary" and their Location.
-
-* Create a 535 MB Partition on your boot drive and chose "EFI System Partition" from the "Use as:" dropdown box.
-![EFI System Partition](./5-2.png)
-
-* Create a partition of 250,000MB keep the default radio button options and choose `/` (root) as the *Mount point*.
-
-![Root Partition](./5-3.png)
-
-* For the remaining ~750GB (or however much you have left over), create a new partition and manually type the *Mount point* as: `/nfs`  
-**NOTE:** *Obviously this could also be done with multiple drives. Dedicating a device to `/` and another solely to `/nfs`. Another option would be to combine multiple partitions/disks into a single LVM for `/nfs`*
-
-![NFS Partition](./5-4.png)
-
-* **NOTE:** If this disk has previous partitions as discussed above be certain that the check boxes to *"format"* the partitions is checked for `/` and `nfs`.
-
-![Ready to Install](./5-5.png)
-
-Click **Install Now** -> Continue -> Continue and finish the remainder of the install (create user and password. Assign hostname, etc...). Choose to require password to log in, and restart the system when prompted (remove installation media or otherwise ensure that the boot drive is higher in the boot order).
-
-**A NOTE ABOUT USERS:**
-
-During the EZInit Script process a system user named `voicegain` will be created (if one does not already exist). The `voicegain` user will be used for interacting with and running the voicegain application. If this is going to be a single user system (you do not need multple user logins) then you can (if you wish) create the `voicegain` user yourself during the Ubuntu installation process. If this system will be accessed by multple people you may wish to simply create the first admin account during the Ubuntu installation and allow the EZInit script to generate the `voicegain` user. 
-
-## <a name="step6"></a>Step 6: Finalize Provisioning
-
-Your first boot into Ubuntu will prompt you to set up some features: Connecting online accounts, Livepatch and Help Ubuntu. Skip these steps or approve the default choices. (Naturally, you can choose to not send any data to Canonical)
-
-You will likely also be prompted by the "Software Updater" to, well, update. Close out of this **without** updating. The packages will be updated during the cluster provisioning phase via our EZInitScript.
-
-***OPTIONAL:*** At this time you may wish to install SSH server and complete the process over an SSH session. To do so open a terminal (either by right-clicking on the desktop and choosing to "Open in terminal" or you can search for Terminal from the Activites menu in the top left corner.
-
-In the terminal execute: `sudo apt install openssh-server -y`
-
-## <a name="step7"></a>Step 7: Create Cluster on VoiceGain
+5. 
+6. 
+7. Create Cluster on VoiceGain
 > **System Provisioning Considerations:** For the sake of simplicity; the remainder of this guide will assume we are solely using the Ubuntu system we have just installed to complete all the remaining steps. However, it is entirely possible to complete this remotely. To do this, you would open a terminal and run `sudo apt install openssh-server -y`. You can, then, create the Cluster on the Voicegain portal from the system of your choosing and paste the EZInitCommand to the Ubuntu system over ssh.
 
 1. On your new Ubuntu system: open Firefox and go to: https://console.voicegain.ai

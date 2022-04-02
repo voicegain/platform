@@ -1,4 +1,5 @@
-# <a id="top"></a>AWS Specific Steps
+# <a id="top"></a>WIP DRAFT: In Progess. Do not Refer to this as a guide. 
+AWS Specific Steps
 Required Steps, AWS Provided documentation, and recommended best practices
 ----
 **Overview:**
@@ -32,7 +33,7 @@ Link: [AWS Current Guide for Kubernetes Cluster creation](https://docs.aws.amazo
 Link: [Creating Amazon EKS Cluster Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role)
 [Create Cluster](AWS-1a.png)
 
-When you reach the "Cluster endpoint access" card in Cluster Creation; it is required that the API server enpoint is Publically available, 
+When you reach the "Cluster endpoint access" card in Cluster Creation; it is required that the API server enpoint is Publically and Privately available, 
 however it is recommended that you limit access to your Organization's access IP and Voicegain's access IP. For security purposes this IP address is avaialble upon request. **Please contact Voicegain to receive the required Voicegain Access IP address.**
 
 [Cluster endpoint access](AWS-2a.png)

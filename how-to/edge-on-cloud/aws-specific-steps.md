@@ -14,10 +14,10 @@ Required Steps, AWS Provided documentation, and recommended best practices
 
 ## <a id="step1"></a>Step 1: Request GPUs from AWS
 In order to use GPUs you must request a Quota increase for them from AWS
-The types (P type, G type/ On-demand, Spot instances) that you require are dependent on your Organizations needs.
+The types (P type, G type/ On-demand, Spot instances) that you require are dependent on your Organizations needs.  
 AWS Link: [Instance Types](https://aws.amazon.com/ec2/instance-types/)
 
-Be certain you are requesting them for the AWS Region you wish to run your cluster in.
+Be certain you are requesting them for the AWS Region you wish to run your cluster in.  
 AWS Link: [EC2 Quota Requests](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas)
 
 ## <a id="step2"></a>Step 2: Create Cluster

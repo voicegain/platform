@@ -1,4 +1,3 @@
-# <a id="top"></a> WIP DRAFT: In Progess. Do not Refer to this as a guide.
 # <a id="top"></a> Deploy Voicegain to Cloud Provider Managed Kubernetes Cluster
 Step by step guide how to deploy Voicegain Speech-to-Text Platform on your Cloud Managed Kubernetes Cluster
 ----
@@ -17,7 +16,8 @@ Step by step guide how to deploy Voicegain Speech-to-Text Platform on your Cloud
 - [Step 3: Create Cluster on VoiceGain](#step3)
 - [Step 4: Upload your Kubeconfig file to Voicegain](#step4)
 - [Step 5: Deploy Voicegain Application](#step5)
-- [Step 6: Reboots, Notes and Caveats](#step6)
+- [Step 6: Monitor Deployment](#step6)
+- [Step 7: Start Using Voicegain in AWS(#step7)
 - [Billing and Licensing](#license)
 
 ## <a name="before"></a>Before you Start 
@@ -27,7 +27,7 @@ Many cloud providers, including AWS and GCP, require you to specifically request
 **Kubectl:**  
 During this process you will need to interact with the kubernetes cluster using the CLI tool: kubectl
 You will need to install kubectl on a network connected system.
-While kubectl is available for Windows, MacOS and Linux; this guide assumes a Linux environment is being used for specific commands when [creating the Voicegain service account](#Step2)
+While kubectl is available for Windows, MacOS and Linux; this guide assumes a Linux environment is being used for specific commands when [creating the Voicegain service account](#step2)
 
 **Voicegain Specific Steps:**  
 In order to deploy Voicegain on Edge your account needs to have the Edge feature enabled - otherwise you will not see the relevant pages in the [Voicegain Web Console](https://www.voicegain.ai). Please contact support@voicegain.ai to have that enabled.
@@ -74,7 +74,7 @@ users:
 " > vg_kubeconfig.yaml
 </pre>
 
-## <a name="step4"></a>Step 4: Create Cluster on VoiceGain
+## <a name="step3"></a>Step 3: Create Cluster on VoiceGain
 
 1. Go to: https://console.voicegain.ai
 2. If you do not have a developer account, you would need to sign up first. Detailed instructions are provided [here](https://www.voicegain.ai/post/how-to-signup-for-a-developer-account-and-start-using-voicegain-voice-ai).
@@ -86,8 +86,36 @@ users:
 3. Find your newly created cluster in the Edge Deployment list and Load it by clicking the button to the right of the entry (left of the Delete/Trash button) 
 ![Load Cluster](./Universal-1b.png)
 
+## <a name="step4"></a>Step 4: Upload your Kubeconfig file to Voicegain
+On the Cluster management page there are three fields you can populate. We are going to paste the entire contents of the `vg_kubeconfig.yaml` file created in the previous step into the **Kubeconfig** field.
+![Cluter Management](./Universal-4a.png)
 
-### All done!
+**IMPORTANT NOTE ON CURRENT CONSOLE FUNCTION:**
+At the time of this writing you will see the *External port:* field is autopopulated with the number 0. You will need to manually delete this in order to upload the configuration. Delete `0` then click *Test*, then *Update*
+
+**ONCE UPLOADED: Contact Voicegain to issue your license to the cluster**
+
+## <a name="step5"></a>Step 5: Deploy Voicegain Application
+Once you have received confirmation that your license has been updated (see [Step 4](#step4)) you are ready to deploy the Voicegain application to your cluster.
+
+From the [Voicegain Console](https://console.voicegain.ai "Voicegain Cloud Console"), choose the build version, the configuration, and the model type you wish to utilize and press `(Re)Build Cluster` button at the bottom of the page. 
+
+![Choose the build version](./Edge-config-config-version.PNG)
+
+![Choose the configuration and model type](./Edge-config-config-config.PNG)
+
+## <a id="step6"></a>Step 6: Monitor Deployment
+
+You can watch the progress of your cluster deployment via:
+<pre>
+watch `kubectl get po`
+</pre>
+
+## <a id="step7"></a>Step 7: Start Using Voicegain in AWS
+Once the deployment has settled, follow the Customer-console link on your Edge Deployment page on [console.voicegain.ai](https://console.voicegain.ai "Voicegain Cloud Console") , log in, and begin transcribing! 
+
+
+### All done. Congratulations!
 
 ---
 

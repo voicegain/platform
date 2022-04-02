@@ -8,7 +8,7 @@ Required Steps, AWS Provided documentation, and recommended best practices
 ## <a id="toc"></a>Table of Contents
 - [Step 1: Request GPUs from AWS](#step1)
 - [Step 2: Create Cluster](#step2)
-- [Step 3: Install Kubectl](#step3)
+- [Step 3: Allow Access to your Customer Console](#step3)
 - [Step 4: Install and Configure awscli](#step4)
 - [Step 5: Get kubeconfig](#step5)
 
@@ -38,12 +38,24 @@ however it is recommended that you limit access to your Organization's access IP
 Afterward you will need to create nodegroups for your GPU Instasnces for the cluster  
 AWS Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
 
-## <a id="step3"></a>Step 3: Install Kubectl
+## <a id="step3"></a>Step 3: Allow Access to Voicegain Cloud on AWS
+
+Allow access to Voicegain Cloud on AWS by editing the Cluster’s Security-Group (Inbound Rules):
+
+![EKC Cluster Configuration](./eks-cluster-config.png)
+
+![Cluster Security Group](./cluster-security-group.png)
+
+Add a new Inbound Rule w/ Custom TCP Port 31680 and Source of “My IP” (or any IP’s you want to be able to reach your cluster management console):
+
+![Edit Inbound Rules](./edit-inbound-rules.png)
+
+
+## <a id="step4"></a>Step 4: Install and Configure kubectl and awscli
+Install Kubectl
 
 As stated in the Universal Steps guide, Kubectl is required and assumed to be running on a linux system able to reach to the K8s Cluster:  
 Local system setup, install Kubectl following [these instructions from kubernetes website](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-
-## <a id="step4"></a>Step 4: Install and Configure awscli
 
 Install and configure awscli:
 

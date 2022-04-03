@@ -17,7 +17,7 @@ Step by step guide how to deploy Voicegain Speech-to-Text Platform on your Cloud
 - [Step 4: Upload your Kubeconfig file to Voicegain](#step4)
 - [Step 5: Deploy Voicegain Application](#step5)
 - [Step 6: Monitor Deployment](#step6)
-- [Step 7: Start Using Voicegain in AWS(#step7)
+- [Step 7: Start Using Voicegain in AWS](#step7)
 - [Billing and Licensing](#license)
 
 ## <a name="before"></a>Before you Start 

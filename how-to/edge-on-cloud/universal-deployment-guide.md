@@ -17,8 +17,7 @@ Step by step guide how to deploy Voicegain Speech-to-Text Platform on your Cloud
 - [Step 4: Upload your Kubeconfig file to Voicegain](#step4)
 - [Step 5: Deploy Voicegain Application](#step5)
 - [Step 6: Monitor Deployment](#step6)
-- [Step 7: Start Using Voicegain in AWS](#step7)
-- [Billing and Licensing](#license)
+- [Step 7: Start Using Voicegain](#step7)
 
 ## <a name="before"></a>Before you Start 
 **Request GPU Access from your Cloud Provider:**  
@@ -111,23 +110,12 @@ You can watch the progress of your cluster deployment via:
 watch `kubectl get po`
 </pre>
 
-## <a id="step7"></a>Step 7: Start Using Voicegain in AWS
+## <a id="step7"></a>Step 7: Start Using Voicegain
 Once the deployment has settled, follow the Customer-console link on your Edge Deployment page on [console.voicegain.ai](https://console.voicegain.ai "Voicegain Cloud Console") , log in, and begin transcribing! 
 
 
 ### All done. Congratulations!
 
 ---
-
-## <a name="license"></a>Billing and Licensing
-
-By default the Edge Setup will be deployed with usage based biling (per minute of the API time).
-
-If you would rather be billed per port please contact us to setup a per port license for you Edge cluster.
-
-All that we need is your account id, the name of the cluster that you would like to apply the license to (see image below), and of course the number of ports you would like to license.
-
-![List of Edge Clusters with names](./Edge-clusters-list.PNG)
-
 
 Goto: [top of document](#top)

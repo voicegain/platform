@@ -100,9 +100,9 @@ Once you have received confirmation that your license has been updated (see [Ste
 
 From the [Voicegain Console](https://console.voicegain.ai "Voicegain Cloud Console"), choose the build version, the configuration, and the model type you wish to utilize and press `(Re)Build Cluster` button at the bottom of the page. 
 
-![Choose the build version](./Edge-config-config-version.PNG)
+![Choose the build version](./Edge-config-config-version.png)
 
-![Choose the configuration and model type](./Edge-config-config-config.PNG)
+![Choose the configuration and model type](./Edge-config-config-config.png)
 
 ## <a id="step6"></a>Step 6: Monitor Deployment
 

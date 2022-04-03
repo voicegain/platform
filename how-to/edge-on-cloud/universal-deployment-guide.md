@@ -94,6 +94,7 @@ On the Cluster management page there are three fields you can populate. We are g
 
 **IMPORTANT NOTE ON CURRENT CONSOLE FUNCTION:**
 At the time of this writing you will see the *External port:* field is autopopulated with the number 0. You will need to manually delete this in order to upload the configuration. Delete `0` then click *Test*, then *Update*
+![External port](./Universal-4b.png)
 
 **ONCE UPLOADED: Contact Voicegain to issue your license to the cluster**
 

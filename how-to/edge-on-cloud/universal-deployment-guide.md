@@ -105,7 +105,7 @@ From the [Voicegain Console](https://console.voicegain.ai "Voicegain Cloud Conso
 
 ![Choose the build version](./Edge-config-config-version.png)
 
-![Choose the configuration and model type](./Edge-config-config-config.png)
+![Choose the configuration and model type](./Universal-5b.png)
 
 ## <a id="step6"></a>Step 6: Monitor Deployment
 

@@ -56,12 +56,12 @@ Add a new Inbound Rule w/ Custom TCP Port 31680 and Source of “My IP” (or an
 
 
 ## <a id="step4"></a>Step 4: Install and Configure kubectl and awscli
-Install Kubectl
+### Install Kubectl
 
 As stated in the Universal Steps guide, Kubectl is required and assumed to be running on a linux system able to reach to the K8s Cluster:  
 Local system setup, install Kubectl following [these instructions from kubernetes website](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-Install and configure awscli:
+### Install and configure awscli
 
 If using Python: 
 <pre>

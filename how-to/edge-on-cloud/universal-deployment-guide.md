@@ -44,7 +44,7 @@ Oracle: Coming Soon
 ## <a name="step2"></a>Step 2: Create Voicegain service account on your Cluster
 Many cloud providers take a unique approach to authenticating and interacting with your k8s cluster. In many cases this may require authintication or roles on the Cloud account level. This following step will create a kubernetes specific service account for Voicegain so to ensure a uniform experience as well on not requiring any access to your Cloud account. We will only be interacting directly with the Kubernetes API endpoint with a kubernetes cluster role.
 
-You will want to copy and paste the enrire code block below into the terminal of your linux system that has kubectl configued and connected to your new cluster as outlined in our Cloud Specific Guides:. 
+You will want to copy and paste the entire code block below into the terminal of your linux system that has kubectl configued and connected to your new cluster as outlined in our Cloud Specific Guides:. 
 <pre>
 kubectl -n kube-system create serviceaccount voicegain-manage
 kubectl create clusterrolebinding voicegain-manage --clusterrole=cluster-admin --serviceaccount=kube-system:voicegain-manage

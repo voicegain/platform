@@ -95,9 +95,14 @@ On the Cluster management page there are three fields you can populate. We are g
 
 **IMPORTANT NOTE ON CURRENT CONSOLE FUNCTION:**
 At the time of this writing you will see the *External port:* field is autopopulated with the number 0. You will need to manually delete this in order to upload the configuration. Delete `0` then click *Test*, then *Update*
+
 ![External port](./Universal-4b.png)
 
 **>> ONCE UPLOADED: Contact Voicegain (support@voicegain.ai) to issue your license to the cluster <<**
+
+### Note about FQDN Value
+
+You need to provide FQDN value only if you have assigned a hostname (either directly or via a proxy) to the IP that will be used to access the Voicegain Web Console/API on the cluster. 
 
 ## <a name="step5"></a>Step 5: Deploy Voicegain Application
 Once you have received confirmation that your license has been updated (see [Step 4](#step4)) you are ready to deploy the Voicegain application to your cluster.

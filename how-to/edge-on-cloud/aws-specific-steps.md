@@ -8,7 +8,7 @@ Required Steps, AWS Provided documentation, and recommended best practices
 ## <a id="toc"></a>Table of Contents
 - [Step 1: Request GPUs from AWS](#step1)
 - [Step 2: Create Cluster](#step2)
-- [Step 3: Allow Access to your Customer Console](#step3)
+- [Step 3: Permit Access to your Edge Console](#step3)
 - [Step 4: Install and Configure awscli](#step4)
 - [Step 5: Get kubeconfig](#step5)
 
@@ -38,7 +38,7 @@ however it is recommended that you limit access to your Organization's access IP
 Afterward you will need to create nodegroups for your GPU Instasnces for the cluster  
 AWS Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
 
-## <a id="step3"></a>Step 3: Allow Access to Voicegain Cloud on AWS
+## <a id="step3"></a>Step 3: Permit Access to your Edge Console on AWS
 
 Allow access to Voicegain Cloud on AWS by editing the Cluster’s Security-Group (Inbound Rules):
 

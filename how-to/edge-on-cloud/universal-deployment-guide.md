@@ -42,7 +42,7 @@ GCP: Coming Soon
 Oracle: Coming Soon 
 
 ## <a name="step2"></a>Step 2: Install kubectl and create Voicegain service account on your Cluster
-The following assumes you have a linux system in which you would like to 
+The following assumes you have installed kubectl onto a network connected linux system as outlined in our Cloud Specific Guides: 
 
 <pre>
 kubectl -n kube-system create serviceaccount voicegain-manage

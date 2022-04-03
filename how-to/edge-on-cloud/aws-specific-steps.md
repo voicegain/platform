@@ -39,7 +39,7 @@ however it is recommended that you limit access to your Organization's access IP
 
 ![Cluster endpoint access](./AWS-2a.png)
 
-Afterward you will need to create nodegroups for your GPU Instasnces for the cluster  
+Afterward you will need to create nodegroups for your GPU Instances for the cluster  
 AWS Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
 
 ## <a id="step3"></a>Step 3: Permit Access to your Edge Console on AWS

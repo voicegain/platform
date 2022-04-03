@@ -30,6 +30,7 @@ Log into your AWS Console and go to EKS and create your cluster. This will requi
 AWS Links: 
 * [AWS Current Guide for Kubernetes Cluster creation](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)  
 * [Creating Amazon EKS Cluster Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role)  
+
 ![Create Cluster](./AWS-1a.png)
 
 When you reach the "Cluster endpoint access" card in Cluster Creation; it is required that the API server enpoint is Publically and Privately available, 

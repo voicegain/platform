@@ -19,7 +19,7 @@ Step by step guide how to deploy Voicegain Speech-to-Text Platform on your Cloud
 - [Step 6: Monitor Deployment](#step6)
 - [Step 7: Start Using Voicegain](#step7)
 
-## <a name="before"></a>Before you Start 
+## <a name="before"></a>Step 0: Before you Start 
 **Request GPU Access from your Cloud Provider:**  
 Many cloud providers, including AWS and GCP, require you to specifically request GPUs for your account. This process can take a few days to be processed so it's best to start this early. You may find more details on this process in our [Cloud Provider Specific Guides](#step1)
 

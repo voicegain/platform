@@ -75,7 +75,7 @@ aws eks list-clusters
 
 ## <a id="step5"></a>Step 5: Get kubeconfig
 
-Retreive kubernetes configuration file:
+Retrieve kubernetes configuration file:
 <pre>
 aws eks update-kubeconfig --name YOUR_CLUSTER_NAME
 </pre>

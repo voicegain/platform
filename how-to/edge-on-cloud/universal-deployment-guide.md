@@ -114,11 +114,12 @@ And to deploy: press `(Re)Build Cluster` button at the bottom of the page.
 
 ## <a id="step6"></a>Step 6: Monitor Deployment
 
-You can watch the progress of your cluster deployment via:
+You can watch the progress of your cluster deployment on your kubectl system via:
 <pre>
 watch `kubectl get po`
 </pre>
 
+When you see the rex-0 pods in a Running state you can refresh your Voicegain Console session to see if your Edge Deployment is in a `Ready` state.
 ## <a id="step7"></a>Step 7: Start Using Voicegain
 Once the deployment has settled, follow the Customer-console link on your Edge Deployment page on [console.voicegain.ai](https://console.voicegain.ai "Voicegain Cloud Console") , log in, and begin transcribing! 
 

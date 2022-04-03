@@ -1,5 +1,5 @@
 # <a id="top"></a> Deploy Voicegain to Cloud Provider Managed Kubernetes Cluster
-Step by step guide how to deploy Voicegain Speech-to-Text Platform on your Cloud Managed Kubernetes Cluster
+Step by step guide how to deploy Voicegain Speech-to-Text Platform on your Cloud Managed Kubernetes Cluster (e.g. Amazon EKS or Google GKE)
 ----
 **Overview:**
 * Request GPU instances from your Cloud Provider and create a GPU enabled Kubernetes cluster.

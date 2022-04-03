@@ -42,9 +42,9 @@ however it is recommended that you limit access to your Organization's access IP
 Afterward you will need to create nodegroups for your GPU Instances for the cluster  
 AWS Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
 
-## <a id="step3"></a>Step 3: Permit Access to your Edge Voicegain Web Console on AWS
+## <a id="step3"></a>Step 3: Permit Access to your Edge Voicegain Web Console and the Voicegain Web API on AWS
 
-Allow access to Voicegain Web Console on your AWS by editing the Cluster’s Security-Group (Inbound Rules):
+Allow access to Voicegain Web Console and the Voicegain Web API on your AWS by editing the Cluster’s Security-Group (Inbound Rules):
 
 ![EKC Cluster Configuration](./eks-cluster-config.png)
 

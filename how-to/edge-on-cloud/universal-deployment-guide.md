@@ -12,7 +12,7 @@ Step by step guide how to deploy Voicegain Speech-to-Text Platform on your Cloud
 ## <a id="toc"></a>Table of Contents
 - [Step 0: Before you Start](#before)
 - [Step 1: Cloud Provider Specific Guides](#step1)
-- [Step 2: Install Kubectl and create Voicegain service account on your Cluster](#step2)
+- [Step 2: Create Voicegain service account on your Cluster](#step2)
 - [Step 3: Create Cluster on VoiceGain](#step3)
 - [Step 4: Upload your Kubeconfig file to Voicegain](#step4)
 - [Step 5: Deploy Voicegain Application](#step5)
@@ -41,9 +41,10 @@ These guides will take you through the basics and provide resources and links do
 GCP: Coming Soon  
 Oracle: Coming Soon 
 
-## <a name="step2"></a>Step 2: Install kubectl and create Voicegain service account on your Cluster
-The following assumes you have installed kubectl onto a network connected linux system as outlined in our Cloud Specific Guides: 
+## <a name="step2"></a>Step 2: Create Voicegain service account on your Cluster
+Many cloud providers take a unique approach to authenticating and interacting with your k8s cluster. In many cases this may require authintication or roles on the Cloud account level. This following step will create a kubernetes specific service account for Voicegain so to ensure a uniform experience as well on not requiring any access to your Cloud account. We will only be interacting directly with the Kubernetes API endpoint with a kubernetes cluster role.
 
+You will want to copy and paste the enrire code block below into the terminal of your linux system that has kubectl configued and connected to your new cluster as outlined in our Cloud Specific Guides:. 
 <pre>
 kubectl -n kube-system create serviceaccount voicegain-manage
 kubectl create clusterrolebinding voicegain-manage --clusterrole=cluster-admin --serviceaccount=kube-system:voicegain-manage
@@ -72,6 +73,8 @@ users:
     token: ${TOKEN}
 " > vg_kubeconfig.yaml
 </pre>
+
+In addition to creating the role this has also created a kubeconfig file for the vg-edge-user account. The contents of this vg_kubeconfig.yaml file will be uploaded in a later step.
 
 ## <a name="step3"></a>Step 3: Create Cluster on VoiceGain
 

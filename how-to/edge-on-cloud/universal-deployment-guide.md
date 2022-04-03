@@ -101,13 +101,14 @@ At the time of this writing you will see the *External port:* field is autopopul
 ## <a name="step5"></a>Step 5: Deploy Voicegain Application
 Once you have received confirmation that your license has been updated (see [Step 4](#step4)) you are ready to deploy the Voicegain application to your cluster.
 
-From the [Voicegain Console](https://console.voicegain.ai "Voicegain Cloud Console")
-Next, choose the build version:
+From the [Voicegain Console](https://console.voicegain.ai "Voicegain Cloud Console") Load the Edge Cluster.  
+
+Next, choose the build version:  
 
 ![Choose the build version](./Edge-config-config-version.png)
 
-Then, select the configuration:
-![Choose the configuration and model type](./Universal-5b.png)
+Then, select the configuration:  
+![Choose the configuration and model type](./Universal-5b.png)  
 
 And to deploy: press `(Re)Build Cluster` button at the bottom of the page. 
 

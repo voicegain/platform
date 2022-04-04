@@ -42,6 +42,12 @@ however it is recommended that you limit access to your Organization's access IP
 Afterward you will need to create nodegroups for your GPU Instances for the cluster  
 AWS Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
 
+When creating the NodeGroup make certain that you are setting the systems to have at least 50gb disks.
+![NodeGroup Config Disk](./AWS-2b.png)
+
+Additionally, under Node Group scaling configuration; set your Minimum size, Maximum size and Desired size to the same number of nodes you've determined your organization requires. 
+![NodeGroup Scaling](./AWS-2c.png)
+
 ## <a id="step3"></a>Step 3: Permit Access to your Edge Voicegain Web Console and the Voicegain Web API on AWS
 
 Allow access to Voicegain Web Console and the Voicegain Web API on your AWS by editing the Cluster’s Security-Group (Inbound Rules):

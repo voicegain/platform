@@ -32,7 +32,7 @@ While kubectl is available for Windows, MacOS and Linux; this guide assumes a Li
 **Voicegain Specific Steps:**  
 In order to deploy Voicegain on Edge your account needs to have the Edge feature enabled - otherwise you will not see the relevant pages in the [Voicegain Web Console](https://www.voicegain.ai). Please contact support@voicegain.ai to have that enabled.
 
-When you contact us we will ask you to describe your intended usage (e.g. offline transcription or MRCP ASR) so that we can enable an appropriate Edge configuration for your use case. If you are only exploring we can enable several generic configurations to allow you to test a variety of uses. For production use we will prepare a custom configuration that makes the best use of resources on your server(s). We will also configure port based licensing if desired (default is usage-based billing). 
+When you contact us we will ask you to describe your intended usage (e.g. offline transcription or MRCP ASR) so that we can enable an appropriate Edge configuration for your use case. We will also share recommended compute instances based on the volumes you plan to handle. If you are only exploring we can enable several generic configurations to allow you to test a variety of uses. For production use we will prepare a custom configuration that makes the best use of resources on your server(s). We shall also configure licensing based on your agreement with Voicegain. 
 
 ## <a name="step1"></a>Step 1: Cloud Provider Specific Guides
 

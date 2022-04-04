@@ -7,7 +7,7 @@ Required Steps, AWS Provided documentation, and recommended best practices
 
 ## <a id="toc"></a>Table of Contents
 - [Step 1: Request GPUs from AWS](#step1)
-- [Step 2: Create Cluster](#step2)
+- [Step 2: Create Cluster and Node Groups](#step2)
 - [Step 3: Permit Access to your Edge Console](#step3)
 - [Step 4: Install and Configure awscli](#step4)
 - [Step 5: Get kubeconfig](#step5)
@@ -24,7 +24,7 @@ AWS Links:
 Be certain you are requesting them for the AWS Region you wish to run your cluster in.  
 AWS Link: [EC2 Quota Requests](https://console.aws.amazon.com/servicequotas/home/services/ec2/quotas)
 
-## <a id="step2"></a>Step 2: Create Cluster
+## <a id="step2"></a>Step 2: Create Cluster and Node Groups
 
 Log into your AWS Console and go to EKS and create your cluster. This will require a Cluster Role and Node Group  
 AWS Links: 
@@ -39,7 +39,7 @@ however it is recommended that you limit access to your Organization's access IP
 
 ![Cluster endpoint access](./AWS-2a.png)
 
-Afterward you will need to create nodegroups for your GPU Instances for the cluster  
+Afterward you will need to create nodegroups for your GPU Instances for the cluster. This is what will spin up the EC2 instances as worker nodes for your cluster.  
 AWS Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
 
 When creating the NodeGroup make certain that you are setting the systems to have at least 50gb disks.

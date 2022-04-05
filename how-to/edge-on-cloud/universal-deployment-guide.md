@@ -77,6 +77,8 @@ users:
 
 In addition to creating the role this has also created a kubeconfig file for the vg-edge-user account. The contents of this vg_kubeconfig.yaml file will be uploaded in a later step.
 
+![Run kubectl commands](./Universal-kubectl-cmds.png)
+
 ## <a name="step3"></a>Step 3: Create Cluster on VoiceGain
 
 1. Go to: https://console.voicegain.ai

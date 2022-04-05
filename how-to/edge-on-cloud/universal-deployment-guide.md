@@ -75,9 +75,10 @@ users:
 " > vg_kubeconfig.yaml
 </pre>
 
-In addition to creating the role this has also created a kubeconfig file for the vg-edge-user account. The contents of this vg_kubeconfig.yaml file will be uploaded in a later step.
 
 ![Run kubectl commands](./Universal-kubectl-cmds.png)
+
+In addition to creating the role this has also created a kubeconfig file for the vg-edge-user account. The contents of this `vg_kubeconfig.yaml` file will be uploaded in a later step.
 
 ## <a name="step3"></a>Step 3: Create Cluster on VoiceGain
 
@@ -99,6 +100,10 @@ On the Cluster management page there are three fields you can populate. We are g
 At the time of this writing you will see the *External port:* field is autopopulated with the number 0. You will need to manually delete this in order to upload the configuration. Delete `0` then click *Test*, then *Update*
 
 ![External port](./Universal-4b.png)
+
+After Update you will see the values of the Externale IP/FQDN and port populated.
+
+Click Test and wait until it shows `Connection: SUCCESS`. You may have to refresh the page several times and wait several minutes (3 to 5 minutes).
 
 **>> ONCE UPLOADED: Contact Voicegain (support@voicegain.ai) to issue your license to the cluster <<**
 

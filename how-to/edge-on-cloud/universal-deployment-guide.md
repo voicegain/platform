@@ -151,11 +151,11 @@ Once the deployment has settled, follow the Customer-console link on your Edge D
 
 Edge Web Console has different header look from the Cloud Web Console
 
-![Edge Web Console](./Universal-Edge-Console.png)
+![Edge Web Console](./Universal-Edge-Console.PNG)
 
 Once you log into the Edge Web Console you can run a simple functionality Test.
 
-![Edge Web Console test](./Universal-Edge-Console-Test.png)
+![Edge Web Console test](./Universal-Edge-Console-Test.PNG)
 
 
 ### All done. Congratulations!

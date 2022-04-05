@@ -11,17 +11,17 @@
 Add CloudWatchAgentServerPolicy Permissions to your User:
 - In your AWS Console: Go to IAM (Identity and Access Management)
 - Select Users and then select your User account
-- Click "Add Permissions" 
-- Select "Attach existing policies directly" 
-- Search for CloudWatchAgentServerPolicy, then check the box and click `Next: Review` then complete the prompts to accept.
+- Click **"Add Permissions"** 
+- Select **"Attach existing policies directly"** 
+- Search for CloudWatchAgentServerPolicy, then check the box and click **"Next: Review"** then complete the prompts to accept.
 ![Add Permission](./AWS-Cloudwatch-1a.png)
 ![CloudWatchAgentServerPolicy](./AWS-Cloudwatch-1b.png)
 
 ## <a id="step2"></a>Step 2: Enable CloudWatch Logging on EKS
 - In your AWS Console: Go to EKS and select your Cluster
-- Choose the `Configuration` tab
-- Select the `Logging` sub-tab
-- Click `Manage logging` 
+- Choose the **"Configuration"** tab
+- Select the **"Logging"** sub-tab
+- Click **"Manage logging"** 
 - Enable and save all logging options
 
 ![Enable Logging](./AWS-Cloudwatch-2a.png)

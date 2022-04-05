@@ -126,7 +126,8 @@ Then, select the configuration:
 
 Edge Web Console value is needed only of you will have a proxy fronting the HTTP(s) access to the Web UI deployed on the cluster. 
 
-Do not change anything in the Databases fields (unless you have external S3 and/or MondoDB you would like to use). 
+If you have external S3 and/or MondoDB you you can enter the connection parameters here.
+If you do not enter anything here then the system will use internal MongoDB and Minio S3. Note that the internal storage services are currently not deployed in HA configuraion. 
 
 And to deploy: press `(Re)Build Cluster` button at the bottom of the page. 
 
@@ -137,10 +138,24 @@ You can watch the progress of your cluster deployment on your kubectl system via
 watch `kubectl get po`
 </pre>
 
+This process may take while, for a 3 node cluster about 30 minutes.
+
 When you see all rex-* pods in a Running state you can refresh your Voicegain Console session to see if your Edge Deployment is in a `Ready` state.
+
+![Rebuild completed](./Universal-ready.png) 
+
+You can click the URL to get to the Voicegain Edge Web Console.
 
 ## <a id="step7"></a>Step 7: Start Using Voicegain
 Once the deployment has settled, follow the Customer-console link on your Edge Deployment page on [console.voicegain.ai](https://console.voicegain.ai "Voicegain Cloud Console") , log in, and begin transcribing! 
+
+Edge Web Console has different header look from the Cloud Web Console
+
+![Edge Web Console](./Universal-Edge-Console.png)
+
+Once you log into the Edge Web Console you can run a simple functionality Test.
+
+![Edge Web Console test](./Universal-Edge-Console-Test.png)
 
 
 ### All done. Congratulations!

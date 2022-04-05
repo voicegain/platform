@@ -49,7 +49,7 @@ however it is recommended that you limit access to your Organization's access IP
 ![Cluster endpoint access](./AWS-2a.png)
 
 Networking add-ons can we left with the default values:
-![Networking Add-Ons](./AWS-net-add-ons.png)
+![Networking Add-Ons](./AWS-net-add-ons.PNG)
 
 You can choose to send EKS logs to CloudWatch
 ![EKS logs](./AWS-ctrl-plane-log.PNG)
@@ -101,21 +101,6 @@ Of the two security groups we need to configure the `elb` one:
 
 We can edit the inbound rules on the security group, in particular here the HTTP port 80 inbound rule:
 ![AWS LB security group detail ](./AWS-LB-elb-sec-grp-detail.PNG)
-
----
-
-## <a id="step3"></a>Step 3: Permit Access to your Edge Voicegain Web Console and the Voicegain Web API on AWS
-
-Allow access to Voicegain Web Console and the Voicegain Web API on your AWS by editing the Cluster’s Security-Group (Inbound Rules):
-
-![EKC Cluster Configuration](./eks-cluster-config.png)
-
-![Cluster Security Group](./cluster-security-group.png)
-
-Add a new Inbound Rule w/ Custom TCP Port 31680 and Source of “My IP” (or any IP’s you want to be able to reach your cluster management console):
-
-![Edit Inbound Rules](./edit-inbound-rules.png)
-
 
 ## <a id="step4"></a>Step 4: Install and Configure kubectl and awscli
 ### Install Kubectl

@@ -56,21 +56,29 @@ You can choose to send EKS logs to CloudWatch
 
 On the next page we leave all values default.
 
-The page after that is where the cluster gets created - takes about 10 minutes.
+The page after that is where the cluster gets created - takes about 15 minutes.
 ![EKS - creating cluster](./EKS-creating.PNG)
 
-
-
-Afterward you will need to create nodegroups for your GPU Instances for the cluster. This is what will spin up the EC2 instances as worker nodes for your cluster.  
+Once the cluster becomes active we can add and define Node Groups.
+Node Groups define which GPU and non-GPU Compute Instances are to be used for the cluster. This is what will spin up the EC2 instances as worker nodes for your cluster.  
 AWS Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
+![EKS - Add Node Group](./AWS-add-node-group.PNG)
+
+We generally create two Node Groups: one for GPU instances and one for non-GPU instances.
+
+On the first page of node group creation this is all we need to enter:
+![EKS - GPU Node Group](./AWS-GPU-node-group.PNG)
+
 
 When creating the NodeGroup make certain that you are setting the systems to have at least 50gb disks.
 ![NodeGroup Config Disk](./AWS-2b.png)
 
+Additionally, under Node Group scaling configuration; set your Minimum size, Maximum size and Desired size to the same number of nodes you've determined your organization requires. In this case we create a node group that will have exactly 3 instances:
 
+![NodeGroup Scaling](./AWS-single-zone.png)
 
-Additionally, under Node Group scaling configuration; set your Minimum size, Maximum size and Desired size to the same number of nodes you've determined your organization requires. 
-![NodeGroup Scaling](./AWS-2c.png)
+Until we test multi-zone capable Persistent Volumes, on the next page you will need to deselect all but one zone. (This document will be updated accordingly once we have determined correct configuration where persistent volumes behave correctly in a multi-zone cluster.)
+![NodeGroup Single Zone](./AWS-2c.png)
 
 ## <a id="step3"></a>Step 3: Permit Access to your Edge Voicegain Web Console and the Voicegain Web API on AWS
 

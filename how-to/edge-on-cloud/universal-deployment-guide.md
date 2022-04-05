@@ -142,7 +142,7 @@ This process may take while, for a 3 node cluster about 30 minutes.
 
 When you see all rex-* pods in a Running state you can refresh your Voicegain Console session to see if your Edge Deployment is in a `Ready` state.
 
-![Rebuild completed](./Universal-ready.PNG) 
+![Rebuild completed](./Universal-Ready.PNG) 
 
 You can click the URL to get to the Voicegain Edge Web Console.
 

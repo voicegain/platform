@@ -26,12 +26,21 @@ AWS Link: [EC2 Quota Requests](https://console.aws.amazon.com/servicequotas/home
 
 ## <a id="step2"></a>Step 2: Create Cluster and Node Groups
 
-Log into your AWS Console and go to EKS and create your cluster. This will require a Cluster Role and Node Group  
-AWS Links: 
-* [AWS Current Guide for Kubernetes Cluster creation](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)  
-* [Creating Amazon EKS Cluster Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role)  
+Log into your AWS Console and go to EKS.
 
+![Goto EKS](./AWS-EKS.PNG)
+
+Now create your cluster. This will require a Cluster Role and Node Group  
+AWS Links: 
+* [Creating Amazon EKS Cluster Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role)  
+* [AWS Current Guide for Kubernetes Cluster creation](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)  
+
+Below are some screenshots (for generic details see the above two links).
+
+Cluster creation
 ![Create Cluster](./AWS-1a.png)
+
+
 
 When you reach the "Cluster endpoint access" card in Cluster Creation; it is required that the API server enpoint is Publically and Privately available, 
 however it is recommended that you limit access to your Organization's access IP and Voicegain's access IP. For security purposes this IP address is avaialble upon request.  
@@ -39,11 +48,26 @@ however it is recommended that you limit access to your Organization's access IP
 
 ![Cluster endpoint access](./AWS-2a.png)
 
+Networking add-ons can we left with the default values:
+![Networking Add-Ons](./AWS-net-add-ons.png)
+
+You can choose to send EKS logs to CloudWatch
+![EKS logs](./AWS-ctrl-plane-log.PNG)
+
+On the next page we leave all values default.
+
+The page after that is where the cluster gets created - takes about 10 minutes.
+![EKS - creating cluster](./EKS-creating.PNG)
+
+
+
 Afterward you will need to create nodegroups for your GPU Instances for the cluster. This is what will spin up the EC2 instances as worker nodes for your cluster.  
 AWS Link: [Creating Amazon Node Group](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
 
 When creating the NodeGroup make certain that you are setting the systems to have at least 50gb disks.
 ![NodeGroup Config Disk](./AWS-2b.png)
+
+
 
 Additionally, under Node Group scaling configuration; set your Minimum size, Maximum size and Desired size to the same number of nodes you've determined your organization requires. 
 ![NodeGroup Scaling](./AWS-2c.png)

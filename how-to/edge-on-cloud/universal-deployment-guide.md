@@ -96,10 +96,11 @@ In addition to creating the role this has also created a kubeconfig file for the
 On the Cluster management page there are three fields you can populate. We are going to paste the entire contents of the `vg_kubeconfig.yaml` file created in the previous step into the **Kubeconfig** field.
 ![Cluter Management](./Universal-4a.png)
 
-**IMPORTANT NOTE ON CURRENT CONSOLE FUNCTION:**
-At the time of this writing you will see the *External port:* field is autopopulated with the number 0. You will need to manually delete this in order to upload the configuration. Delete `0` then click *Test*, then *Update*
+Like this:
 
 ![External port](./Universal-4b.png)
+
+Then click the `Update` button.
 
 After Update you will see the values of the Externale IP/FQDN and port populated.
 
@@ -123,6 +124,10 @@ Next, choose the build version:
 Then, select the configuration:  
 ![Choose the configuration and model type](./Universal-5b.png)  
 
+Edge Web Console value is needed only of you will have a proxy fronting the HTTP(s) access to the Web UI deployed on the cluster. 
+
+Do not change anything in the Databases fields (unless you have external S3 and/or MondoDB you would like to use). 
+
 And to deploy: press `(Re)Build Cluster` button at the bottom of the page. 
 
 ## <a id="step6"></a>Step 6: Monitor Deployment
@@ -132,7 +137,8 @@ You can watch the progress of your cluster deployment on your kubectl system via
 watch `kubectl get po`
 </pre>
 
-When you see the rex-0 pods in a Running state you can refresh your Voicegain Console session to see if your Edge Deployment is in a `Ready` state.
+When you see all rex-* pods in a Running state you can refresh your Voicegain Console session to see if your Edge Deployment is in a `Ready` state.
+
 ## <a id="step7"></a>Step 7: Start Using Voicegain
 Once the deployment has settled, follow the Customer-console link on your Edge Deployment page on [console.voicegain.ai](https://console.voicegain.ai "Voicegain Cloud Console") , log in, and begin transcribing! 
 

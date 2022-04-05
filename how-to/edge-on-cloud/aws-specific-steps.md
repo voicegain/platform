@@ -8,9 +8,10 @@ Required Steps, AWS Provided documentation, and recommended best practices
 ## <a id="toc"></a>Table of Contents
 - [Step 1: Request GPUs from AWS](#step1)
 - [Step 2: Create Cluster and Node Groups](#step2)
-- [Step 3: Permit Access to your Edge Console](#step3)
-- [Step 4: Install and Configure awscli](#step4)
-- [Step 5: Get kubeconfig](#step5)
+- [Step 3: Install and Configure awscli](#step3)
+- [Step 4: Get kubeconfig](#step4)
+- [Step 5: Continue on Voicegain Web Console](#step5)
+- [Step 6: Configure LB if needed](#step6)
 
 ## <a id="step1"></a>Step 1: Request GPUs from AWS
 In order to use GPUs you must request a Quota increase for them from AWS.
@@ -88,21 +89,7 @@ For non-GPU node group we also select just one networking zone - the same that w
 Eventually, we will have two node groups (they will not take much time to finish creating):
 ![EKS - 2 Node Groups](./AWS-2-node-grp-creating.PNG)
 
-## <a id="step3"></a>Step 3: Setup a Load Balancer for Access to your Edge Voicegain Web Console and the Voicegain Web API on AWS
-
-We will use the EC2 Feature Load Balancer
-![AWS LB type choice](./AWS-which-LB.PNG)
-
-Here is what a basic configuration of the load balancer looks like:
-![AWS LB basic config](./AWS-LB-basic-conf.PNG)
-
-Of the two security groups we need to configure the `elb` one:
-![AWS LB security groups](./AWS-LB-elb-sec-grp.PNG)
-
-We can edit the inbound rules on the security group, in particular here the HTTP port 80 inbound rule:
-![AWS LB security group detail ](./AWS-LB-elb-sec-grp-detail.PNG)
-
-## <a id="step4"></a>Step 4: Install and Configure kubectl and awscli
+## <a id="step3"></a>Step 3: Install and Configure kubectl and awscli
 ### Install Kubectl
 
 As stated in the Universal Steps guide, Kubectl is required and assumed to be running on a linux system able to reach to the K8s Cluster:  
@@ -120,7 +107,7 @@ You can test for successful configuration with:
 aws eks list-clusters
 </pre>
 
-## <a id="step5"></a>Step 5: Get kubeconfig
+## <a id="step4"></a>Step 4: Get kubeconfig
 
 Retrieve kubernetes configuration file:
 <pre>
@@ -135,7 +122,26 @@ kubectl get nodes
 
 All done here!
 
+## <a id="step5"></a>Step 5: Continue on Voicegain Web Console 
+
 [Continue with universal deployment guide Step 2](./universal-deployment-guide.md#Step2)
+
+## <a id="step6"></a>Step 6: Configure the Load Balancer for Access to your Edge Voicegain Web Console and the Voicegain Web API on AWS
+
+The load balancer was created during Voicegain Edge deployment
+
+We use the EC2 Feature Load Balancer
+![AWS LB type choice](./AWS-which-LB.PNG)
+
+Here is what a basic configuration of the load balancer looks like. 
+If you had other load balancers, you can find the one assigned to your new Edge cluster by checking the hostname - it will be the one in the URL to access Edge Web Console.
+![AWS LB basic config](./AWS-LB-basic-conf.PNG)
+
+Of the two security groups we need to configure the `elb` one:
+![AWS LB security groups](./AWS-LB-elb-sec-grp.PNG)
+
+We can edit the inbound rules on the security group, in particular here the HTTP port 80 inbound rule, you can e.g. add ACL for IPs:
+![AWS LB security group detail ](./AWS-LB-elb-sec-grp-detail.PNG)
 
 ---
 Goto: [top of document](#top)

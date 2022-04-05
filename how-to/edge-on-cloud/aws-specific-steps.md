@@ -80,6 +80,15 @@ Additionally, under Node Group scaling configuration; set your Minimum size, Max
 Until we test multi-zone capable Persistent Volumes, on the next page you will need to deselect all but one zone. (This document will be updated accordingly once we have determined correct configuration where persistent volumes behave correctly in a multi-zone cluster.)
 ![NodeGroup Single Zone](./AWS-2c.png)
 
+Next page is fine with the defaults so you can click the Create button at the bottom of it. While this node group is being created, we can proceed and create the second node group for non-GPU instances. The scaling setting for this group also needs to be 3 - 3 - 3.
+![EKS - non-GPU Node Group](./AWS-non-GPU-node-group.PNG)
+
+For non-GPU node group we also select just one networking zone - the same that we selected for the GPU node group.
+
+Eventually, we will have two node groups (they will not take much time to finish creating):
+![EKS - 2 Node Groups](./AWS-2-node-grp-creating.PNG)
+
+
 ## <a id="step3"></a>Step 3: Permit Access to your Edge Voicegain Web Console and the Voicegain Web API on AWS
 
 Allow access to Voicegain Web Console and the Voicegain Web API on your AWS by editing the Cluster’s Security-Group (Inbound Rules):
@@ -121,6 +130,8 @@ And test access with the following:
 <pre>
 kubectl get nodes
 </pre>
+
+![Kubeconfig and get nodes](./AWS-kube-list-nodes.png)
 
 All done here!
 

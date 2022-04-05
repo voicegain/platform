@@ -84,7 +84,7 @@ Additionally, under Node Group scaling configuration; set your Minimum size, Max
 
 Until we test multi-zone capable Persistent Volumes, on the next page you will need to deselect all but one zone. (This document will be updated accordingly once we have determined correct configuration where persistent volumes behave correctly in a multi-zone cluster.)
 
-![NodeGroup Single Zone](./AWS-single-zone.png)
+![NodeGroup Single Zone](./AWS-single-zone.PNG)
 
 Next page is fine with the defaults so you can click the Create button at the bottom of it. 
 

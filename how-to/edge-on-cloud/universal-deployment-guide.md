@@ -112,7 +112,7 @@ Click Test and wait until it shows `Connection: SUCCESS`. You may have to refres
 You need to provide FQDN value only if you have assigned a hostname (either directly or via a proxy) to the IP that will be used to access the Voicegain Web Console/API on the cluster. 
 
 ## <a name="step5"></a>Step 5: Deploy Voicegain Application
-Once you have received confirmation that your license has been updated (see [Step 4](#step4)) you are ready to deploy the Voicegain application to your cluster.
+Once you have received confirmation from Voicegain that your license has been updated (see [Step 4](#step4)) you are ready to deploy the Voicegain application to your cluster.
 
 From the [Voicegain Console](https://console.voicegain.ai "Voicegain Cloud Console") Load the Edge Cluster and under Cluster management select the Configuration tab.  
 

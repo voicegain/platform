@@ -80,7 +80,7 @@ Additionally, under Node Group scaling configuration; set your Minimum size, Max
 Until we test multi-zone capable Persistent Volumes, on the next page you will need to deselect all but one zone. (This document will be updated accordingly once we have determined correct configuration where persistent volumes behave correctly in a multi-zone cluster.)
 ![NodeGroup Single Zone](./AWS-2c.png)
 
-Next page is fine with the defaults so you can click the Create button at the bottom of it. While this node group is being created, we can proceed and create the second node group for non-GPU instances. The scaling setting for this group also needs to be 3 - 3 - 3.
+Next page is fine with the defaults so you can click the Create button at the bottom of it. While this node group is being created, we can proceed and create the second node group for non-GPU instances. The scaling setting for this group also needs to be 3 - 3 - 3.</br>
 ![EKS - non-GPU Node Group](./AWS-non-GPU-node-group.PNG)
 
 For non-GPU node group we also select just one networking zone - the same that we selected for the GPU node group.

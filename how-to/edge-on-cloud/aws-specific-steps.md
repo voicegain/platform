@@ -53,7 +53,9 @@ Networking add-ons can be left with the default values:
 
 ![Networking Add-Ons](./AWs-net-add-ons.PNG)
 
-You can choose to send EKS logs to CloudWatch
+You can choose to send EKS logs to CloudWatch.
+
+More about sending logs to Cloudwatch is [here](https://github.com/voicegain/platform/blob/master/how-to/edge-on-cloud/AWS-Advanced-Cloudwatch.md).
 
 ![EKS logs](./AWS-ctrl-plane-log.PNG)
 

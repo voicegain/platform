@@ -80,13 +80,15 @@ When creating the NodeGroup make certain that you are setting the systems to hav
 
 Additionally, under Node Group scaling configuration; set your Minimum size, Maximum size and Desired size to the same number of nodes you've determined your organization requires. In this case we create a node group that will have exactly 3 instances:
 
-![NodeGroup Scaling](./AWS-single-zone.png)
+![NodeGroup Scaling](./AWS-2c.png)
 
 Until we test multi-zone capable Persistent Volumes, on the next page you will need to deselect all but one zone. (This document will be updated accordingly once we have determined correct configuration where persistent volumes behave correctly in a multi-zone cluster.)
 
-![NodeGroup Single Zone](./AWS-2c.png)
+![NodeGroup Single Zone](./AWS-single-zone.png)
 
-Next page is fine with the defaults so you can click the Create button at the bottom of it. While this node group is being created, we can proceed and create the second node group for non-GPU instances. The scaling setting for this group also needs to be 3 - 3 - 3.
+Next page is fine with the defaults so you can click the Create button at the bottom of it. 
+
+While this node group is being created, we can proceed and create the second node group for non-GPU instances. The scaling setting for this group also needs to be 3 - 3 - 3.
 
 ![EKS - non-GPU Node Group](./AWS-non-GPU-node-group.PNG)
 
@@ -125,7 +127,7 @@ And test access with the following:
 kubectl get nodes
 </pre>
 
-![Kubeconfig and get nodes](./AWS-kube-list-nodes.png)
+![Kubeconfig and get nodes](./AWS-kube-list-nodes.PNG)
 
 All done here!
 

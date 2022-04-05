@@ -30,7 +30,7 @@ Add CloudWatchAgentServerPolicy Permissions to your User:
 
 Log in to your EKS administrative system that has `awscli` and `kubectl` configured for your cluster
 
-Copy the code block below and edit it so that your **ClusterName** and **RegionName**
+Copy the code block below and edit it for your **ClusterName** and **RegionName**
 
 <pre>
 

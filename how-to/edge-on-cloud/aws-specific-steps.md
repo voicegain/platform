@@ -88,6 +88,21 @@ For non-GPU node group we also select just one networking zone - the same that w
 Eventually, we will have two node groups (they will not take much time to finish creating):
 ![EKS - 2 Node Groups](./AWS-2-node-grp-creating.PNG)
 
+## <a id="step3"></a>Step 3: Setup a Load Balancer for Access to your Edge Voicegain Web Console and the Voicegain Web API on AWS
+
+We will use the EC2 Feature Load Balancer
+![AWS LB type choice](./AWS-which-LB.PNG)
+
+Here is what a basic configuration of the load balancer looks like:
+![AWS LB basic config](./AWS-LB-basic-conf.PNG)
+
+Of the two security groups we need to configure the `elb` one:
+![AWS LB security groups](./AWS-LB-elb-sec-grp.PNG)
+
+We can edit the inbound rules on the security group, in particular here the HTTP port 80 inbound rule:
+![AWS LB security group detail ](./AWS-LB-elb-sec-grp-detail.PNG)
+
+---
 
 ## <a id="step3"></a>Step 3: Permit Access to your Edge Voicegain Web Console and the Voicegain Web API on AWS
 

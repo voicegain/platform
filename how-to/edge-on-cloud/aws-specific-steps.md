@@ -49,7 +49,7 @@ however it is recommended that you limit access to your Organization's access IP
 
 ![Cluster endpoint access](./AWS-2a.png)
 
-Networking add-ons can we left with the default values:
+Networking add-ons can be left with the default values:
 
 ![Networking Add-Ons](./AWs-net-add-ons.PNG)
 

@@ -7,15 +7,23 @@
 - [Step 2: Enable CloudWatch Logging on EKS](#step2)
 - [Step 3: Deploy CloudWatch Agent to k8s Cluster](#step3)
 
-## <a id="step1"></a>Step 1: Ensure proper User Permissions
-Add CloudWatchAgentServerPolicy Permissions to your User:
-- In your AWS Console: Go to IAM (Identity and Access Management)
-- Select Users and then select your User account
+## <a id="step1"></a>Step 1: Ensure proper NodeGroup Role Permissions
+Add CloudWatchAgentServerPolicy Permissions to your NodeGroup Role:
+
+*If you do not know your NodeGroup Role:*
+- In your AWS Console: Go to EKS and your cluster
+- Choose the *Configuration* tab and the *Compute* sub-tab
+- Select your NodeGroup Role
+
+*If you do know your NodeGroup Role:*
+- Select the IAM (Identity and Access Management)
+- Select Role and then select your NodeGroup Role account
+
+*Add Permission*
 - Click **"Add Permissions"** 
 - Select **"Attach existing policies directly"** 
 - Search for CloudWatchAgentServerPolicy, then check the box and click **"Next: Review"** then complete the prompts to accept.
-![Add Permission](./AWS-Cloudwatch-1a.png)
-![CloudWatchAgentServerPolicy](./AWS-Cloudwatch-1b.png)
+![Add Permission](./AWS-Cloudwatch-1.png)
 
 ## <a id="step2"></a>Step 2: Enable CloudWatch Logging on EKS
 - In your AWS Console: Go to EKS and select your Cluster

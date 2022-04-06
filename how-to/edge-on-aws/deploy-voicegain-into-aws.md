@@ -49,8 +49,9 @@ Under IAM:
 
 ### Method A
 
-1. Create Amazon EKS worker node role in IAM console: [see AWS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html)
-2. Create Amazon EKS Service role in IAM console: [see AWS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
+1. Create Amazon EKS Service role in IAM console: [see AWS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
+2. Create Amazon EKS worker node role in IAM console: [see AWS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html)
+
 
 ![Create Role Step 1](./create-role.png)
 

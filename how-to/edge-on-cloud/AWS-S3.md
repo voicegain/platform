@@ -18,6 +18,11 @@ If the voicegain Edge is also running on AWS, it's better to create a bucket in 
 
  [AWS Instructions for access policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html)
 
+ You can create the required policy from the [AWS IAM Console](https://console.aws.amazon.com/iam/)
+
+Choose: Policies -> Create Policy -> JSON
+
+
 Replace BUCKET-NAME with you actual bucket name.
 
 ```
@@ -39,6 +44,8 @@ Replace BUCKET-NAME with you actual bucket name.
 ## Step 3: Create a user
 
 Create a user, and attach the policy created in Step 2 to the user. Get access key and secret key of the new user
+
+ You can do this from the [AWS IAM Console](https://console.aws.amazon.com/iam/)
 
 ## Step 4: Provide information to Voicegain
 

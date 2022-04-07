@@ -51,6 +51,6 @@ Create a user, and attach the policy created in Step 2 to the user. Get access k
 
 Soon you will be able to enter it into Voicegain Web Console. For now you will need to communicate this information directly to Voicegain (via email, chat, etc).
 
-* Server URL: https://s3.<REGION>.amazonaws.com
+* Server URL: `https://s3.<REGION>.amazonaws.com`
 * Bucket name: bucket name created in Step 2
 * Access Key and Secret Key: keys created in Step 3

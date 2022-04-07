@@ -127,6 +127,9 @@ Then, select the configuration:
 Edge Web Console value is needed only of you will have a proxy fronting the HTTP(s) access to the Web UI deployed on the cluster. 
 
 If you have external S3 and/or MondoDB you you can enter the connection parameters here.
+
+See this [document regarding Setup of S3 suitable for Voicegain Edge Use](./AWS-S3.md).
+
 If you do not enter anything here then the system will use internal MongoDB and Minio S3. Note that the internal storage services are currently not deployed in HA configuraion. 
 
 And to deploy: press `(Re)Build Cluster` button at the bottom of the page. 

@@ -4,6 +4,14 @@
 
 [AWS Instructions for bucket creation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
 
+You can create s3 bucket from the [AWS S3 Console](https://console.aws.amazon.com/s3/)
+
+Some relevant settings:
+* Object Ownership: ACLs disabled / Bucket owner enforced
+* Block public access: Block **all** public access
+* Bucket Versioning: disabled
+
+
 If the voicegain Edge is also running on AWS, it's better to create a bucket in the same region as the Edge Deployment.
 
  ## Step 2: Create IAM policy

@@ -1,3 +1,28 @@
+## Release 1.54.0
+
+This minor release includes:
+* Edge deployment improvements:
+  * Support for external S3-compatible object storage
+  * Support for SSL Certificates
+  * Support for Kubernetes clusters with no GPU
+  * Configurable Grafana Dashboard for visualizing API use 
+* Other improvements:
+  * Beta version of new /asr/meeting API suitable for transcribing per-speaker audio from e.g. a Zoom Meeting 
+  * Beta version of encryption for the /data API
+  * Faster offline transcribe, including optimized pipeline for audio coming from S3 (or other external URL)
+  * Improved English acoustic model (offline mode) - about 1.5% better accuracy on meeting / lecture type of audio
+  * Beta version of a German offline acoustic model
+  * Language settings in the Web Console improved - only acoustic models compatible with a selected language are shown
+  * Added profanity masking option to the Transcribe Dialog
+
+Backwards incompatibility:
+* the `reuse` parameter in the /data API will now be ignored - each POST request will create a new Data Object
+
+Fixed issues:
+* #ocp-777: When afterlife is 0, offline process does not submit ERROR status to asr-api (no error callback)
+* #rcj-484: better error handling for Fusebill
+* #rcj-496: audio redaction no longer works for mono audio
+
 ## Release 1.53.3
 
 This maintenance release adds:

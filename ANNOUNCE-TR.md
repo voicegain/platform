@@ -52,23 +52,7 @@ This release fixes the following issue relevant to Transcribe App:
 
 Much improved accuracy of real-time and offline transcription.
 
-### September 28, 2021
 
-Released fixes for the following:
-* Issue with navigating away from microphone capture which would break the recording
-* Not able to upgrade in a single step from monthly to annual and to a higher Plan
-* Computation of remaining days till usage reset
-* Minor issues in password entry for a new password
-* Several small UI issues 
-
-
-### September 27, 2021
-
-Released the following fixes:
-* Fixed several small UI issues 
-* Fixed pricing values shown on Billing Plans page - was reporting price/user/month as price/month
-* Fixed double counting usage for microphone transcriptions.
-* Fixed error when doing transcription with Expiry set to longer than 1 Week.
 
 
 

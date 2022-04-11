@@ -1,12 +1,14 @@
-### Minor release 1.54.0 is scheduled for 4/11/2022 between 6:00pm and 10:00pm CST
+### Minor release 1.54.0 is scheduled for 4/11/2022 between 4:00pm and 10:00pm CST
 
 This release includes:
 * Edge deployment improvements:
   * Support for external S3-compatible object storage
   * Support for SSL Certificates
+  * Support for Kubernetes clusters with no GPU
   * Configurable Grafana Dashboard for visualizing API use 
 * Other improvements:
-  * beta version of new /asr/meeting API suitable for transcribing per-speaker audio from e.g. a Zoom Meeting 
+  * Beta version of new /asr/meeting API suitable for transcribing per-speaker audio from e.g. a Zoom Meeting 
+  * Beta version of encryption for the /data API
   * Faster offline transcribe, including optimized pipeline for audio coming from S3 (or other external URL)
   * Improved English acoustic model (offline mode) - about 1.5% better accuracy on meeting / lecture type of audio
   * Beta version of a German offline acoustic model
@@ -17,6 +19,7 @@ Backwards incompatibility:
 * the `reuse` parameter in the /data API will now be ignored - each POST request will create a new Data Object
 
 Fixed issues:
+* #ocp-777: When afterlife is 0, offline process does not submit ERROR status to asr-api (no error callback)
 * #rcj-484: better error handling for Fusebill
 * #rcj-496: audio redaction no longer works for mono audio
 
@@ -63,35 +66,6 @@ This release includes:
 This release addresses the following issues:
 * #rcj-477: AIVR - attempt to play empty questionPrompt results in error (was re-opened)
 * #rcj-475: Unable to listen to recordings of Telephone Bot API sessions
-
-### Minor release 1.51.0 is scheduled for 3/3/2022 between 5:00pm and 10pm CST
-
-This release provides the following more accurate models:
-* English real-time (streaming)
-* Spanish off-line
-
-This release addresses the following issues:
-* #rcj-477: AIVR - attempt to play empty questionPrompt results in error
-* #rcj-476: AIVR -the last prompt in disconnect is not being played and the hangup is not done
-* #rcj-474: REX returns incorrect long result for certain utterances in recent benchmark
-* #vgp-833: The startTime field datatype is "String in the spec, but web-api returns integer
-* #rcj-472: Get exception when submit silence to SA
-* #rcj-470: Cannot GET SA transcript
-* #vgp-830: DEL SA session and DEL SA config need to be in the public API spec
-* #ocp-773: offline-process occasionally return empty result
-* #vgp-831: "name" field should be required when creating SA config
-* #rcj-469: attempt to get /sa results returns INTERNAL_SERVER_ERROR
-* #ocp-770: diarization is not returned when audio is short
-
-Two enhancements:
-* Old and/or orphan data cleanup has been moved to separate task and made faster
-* Time filter has been added to the GET /data query method  
-
-
-### Maintenance release 1.50.1 is scheduled for 2/16/2021 between 11:00am and noon CST
-
-This release fixes the following issue:
-* #rcj-463: call duration reported from offline transcription to billing is 1/1000th of what it should be
 
 
 ### Support for ACH Payments

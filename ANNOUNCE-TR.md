@@ -2,7 +2,7 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
-## April 11, 2022
+### April 11, 2022
 
 Release 1.54.0 introduces the following changes:
 * Improvements in the terminology used in the Web UI to make the meaning of various settings clearer.

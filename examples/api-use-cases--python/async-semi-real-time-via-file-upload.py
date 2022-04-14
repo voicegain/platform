@@ -10,7 +10,7 @@ audio_type =    "audio/wav"         # <-= mime type of your audio if not WAV
 audio_basename = os.path.basename(audio_path)
 
 headers = {"Authorization":JWT}
-data_url = WEB_API_URL + "/data/file?reuse=true&transcode=enable"
+data_url = WEB_API_URL + "/data/file?transcode=enable"
 
 data_body = {
     "name" : re.sub("[^A-Za-z0-9]+", "-", audio_basename),

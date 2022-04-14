@@ -9,7 +9,7 @@ audio_type =    "audio/wav"         # <-= mime type of your audio if not WAV
 
 
 headers = {"Authorization":JWT}
-data_url = "https://api.{}.ai/v1/data/file?reuse=true&transcode=enable".format(platform)
+data_url = "https://api.{}.ai/v1/data/file".format(platform)
 
 data_body = {
     "name" : re.sub("[^A-Za-z0-9]+", "-", audio_fname),

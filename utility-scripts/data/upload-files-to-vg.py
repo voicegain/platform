@@ -20,7 +20,7 @@ JWT = "<put your JWT token here - obtain from console.voicegain.ai>"
 
 
 
-data_url_post = "{}/data/file?reuse=true&transcode=disable".format(host)
+data_url_post = "{}/data/file".format(host)
 data_url_get = "{}/data?tagsIncl={}".format(host, unique_tag)
 print("upload url: {}".format(data_url_post))
 print(" query url: {}".format(data_url_get))

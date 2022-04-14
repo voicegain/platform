@@ -52,7 +52,7 @@ audio_type = "audio/wav"
 
 output_path = "output-{}".format(time.strftime("%Y-%m-%d_%H-%M-%S"))
 
-data_url = "https://api.{}.ai/v1/data/file?reuse=true&transcode=enable".format(platform)
+data_url = "https://api.{}.ai/v1/data/file".format(platform)
 
 headers = {"Authorization":JWT}
 

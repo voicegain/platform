@@ -56,7 +56,7 @@ audio_type = "audio/wav"
 
 output_path = "output-{}".format(time.strftime("%Y-%m-%d_%H-%M-%S"))
 
-data_url = "{}/data/file?reuse=true&transcode=disable".format(host)
+data_url = "{}/data/file".format(host)
 
 headers = {"Authorization":JWT}
 

@@ -18,7 +18,7 @@ audio_fname = "wtB19-stereo.wav" ## cancel radio -- 1 minute 36 seconds
 
 audio_type = "audio/wav"
 
-data_url = "https://api.{}.ai/v1/data/file?reuse=true&transcode=enable".format(platform)
+data_url = "https://api.{}.ai/v1/data/file".format(platform)
 
 data_body = {
     "name" : re.sub("[^A-Za-z0-9]+", "-", audio_fname),
@@ -236,7 +236,7 @@ def web_api_request_sa_config(headers, body):
 
 # api request to upload data
 def web_api_request_post_data(headers, audio_fname, audio_type):
-  data_url = "https://api.{}.ai/v1/data/file?reuse=true&transcode=enable".format(platform)
+  data_url = "https://api.{}.ai/v1/data/file".format(platform)
 
   data_body = {
       "name" : re.sub("[^A-Za-z0-9]+", "-", audio_fname),

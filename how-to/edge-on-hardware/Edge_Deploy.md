@@ -1,10 +1,16 @@
 # <a id="top"></a>Deploy Voicegain On-Edge
-Step by step guide how to deploy Voicegain Speech-to-Text Platform on your own Hardware
+Step by step guide how to deploy Voicegain Speech-to-Text Platform on your own Hardware or a VM.
+
+NOTE 1: this guide was originally written for a bare hardware deployment. However, it can also be used for a deployment on a VM (e.g. provided by VMware). Some of the instructions are then irrelevant , e.g., Step 2.
+
+NOTE 2: We also now support an install on a machine or a VM that has no GPU (thus CPU-only).
+
 ----
 Under the hood:
 This guide will have you do the following:
 * Configure your server BIOS
 * Install Ubuntu **LTS 20.04 Desktop** with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs
+  * If the machine or the VM has no GPU, you can alternatively use Ubuntu **LTS 20.04 Server**
 * Provision your server using the Voicegain EZ Init script.
 * Deploy the Voicegain Application to your environment. 
 
@@ -172,7 +178,9 @@ In the terminal execute: `sudo apt install openssh-server -y`
 ## <a name="step8"></a>Step 8: Run EZInit Script
 Paste the copied Command Script into a terminal session on the Edge System, hit enter and provide your password for sudo when prompted. 
 
-* **NOTE:** Ubuntu 20 handles sudo commands differently than other distros and previous versions. It is **required** to run sudo while preserving the home directory:
+* **NOTE 1:** If you are installing on a machine or VM **without GPU** you need to append the following option to the EZInit Script  `-g false` or `--gpu false` ; otherwise the EZInit script will attempt to install Nvidia Cuda drivers and will fail.
+
+* **NOTE 2:** Ubuntu 20 handles sudo commands differently than other distros and previous versions. It is **required** to run sudo while preserving the home directory:
 ``` sudo --preserve-env=HOME bash voicegain-init.sh ``` 
 
 ![EZInitScript](./8-1.png)

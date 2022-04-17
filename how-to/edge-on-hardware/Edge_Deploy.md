@@ -40,6 +40,8 @@ When you contact us we will ask you to describe your intended usage (e.g. offlin
 
 ## <a name="step1"></a>Step 1: Configure your Server BIOS 
 
+*Step 1 is relevant only for a bare hardware deployment (not a VM).*
+
 Boot your server and enter BIOS Configuration Menu: [Common Manufacturer BIOS Keys](https://www.tomshardware.com/reviews/bios-keys-to-access-your-firmware,5732.html#:~:text=BIOS%20Keys%20by%20Manufacturer%201%20ASRock%3A%20F2%20or,Lenovo%20%28ThinkPads%29%3A%20Enter%20then%20F1.%20More%20items...%20)
 
 ### UEFI settings
@@ -55,7 +57,9 @@ If not enabled the card will not be detected by Nvidia driver and you may see er
 
 ## <a name="step2"></a>Step 2: Boot to Installation Media
 
-If you have not already; you can download the Ubuntu 20 LTS Desktop Image [here](https://ubuntu.com/download/desktop).
+*Step 2 may have to be done differently if installing on a VM - the instructions below focus on bare hardware.*
+
+If you have not already; you can download the Ubuntu 20 LTS Desktop Image [here](https://ubuntu.com/download/desktop). (If machine or VM has no GPU then you can alternatively use Ubuntu Server.)
 
 You can burn the installation image on to DVD, however, we recommend creating a Bootable USB drive as it is faster and becoming the new standard.
 

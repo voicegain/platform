@@ -1,3 +1,8 @@
+## Release 1.54.1
+
+This maintenance release partially addresses the following issue:
+* #rcj-517: old/expired data cleanup inefficiency
+
 ## Release 1.54.0
 
 This minor release includes:

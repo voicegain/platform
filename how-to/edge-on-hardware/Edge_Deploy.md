@@ -1,7 +1,7 @@
 # <a id="top"></a>Deploy Voicegain On-Edge
 Step by step guide how to deploy Voicegain Speech-to-Text Platform on your own Hardware or a VM.
 
-NOTE 1: this guide was originally written for a bare hardware deployment. However, it can also be used for a deployment on a VM (e.g. provided by VMware). Some of the instructions are then irrelevant , e.g., Step 2.
+NOTE 1: this guide was originally written for a bare hardware deployment. However, it can also be used for a deployment on a VM (e.g. provided by VMware). Some of the instructions are then irrelevant , e.g., Step 1.
 
 NOTE 2: We also now support an install on a machine or a VM that has no GPU (thus CPU-only).
 

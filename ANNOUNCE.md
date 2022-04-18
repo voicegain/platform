@@ -1,3 +1,8 @@
+### Maintenance release 1.54.1 is scheduled for 4/18/2022 between 11:15am and 2:00pm CST
+
+This release partially addresses the following issue:
+* #rcj-517: old/expired data cleanup inefficiency
+
 ### Minor release 1.54.0 is scheduled for 4/11/2022 between 4:00pm and 10:00pm CST
 
 This release includes:

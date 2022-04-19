@@ -1,3 +1,16 @@
+### Minor release 1.55.0 is scheduled for 4/19/2022 between 7:00pm and 10:00pm CST
+
+This release includes:
+* Web Console now supports Meeting view - for viewing transcripts from /asr/meeting API
+* Alpha version of the Zoom Recorder utility is available upon requests - it captures individual audio of each Zoom Meeting participant and submits it for transcription to /asr/meeting API. It works both with Voicegain Cloud and Edge.
+* Improvement to internal ml-svc request routing - previously in certain scenarios the requests to ml-svc service might end up going to just a subset of available pods thus reducing performance. 
+
+Issues addressed:
+* #rcj-522: GET /asr/transcribe/{uuid}/transcript fails intermittently
+* #rcj-520: support replacing acoustic model(s) with languages
+  * this is in place to accommodate older pre-1.53.0 style requests which reference names of acoustic models that no longer exists (have been merged into model bundles)
+  * new style requests should use `languages` parameter which is sufficient in most cases
+
 ### Maintenance release 1.54.1 is scheduled for 4/18/2022 between 11:15am and 2:00pm CST
 
 This release partially addresses the following issue:
@@ -49,6 +62,12 @@ This release fixes the following issue:
 This release addresses the following issue:
 * #TranscribeApp-338: Fix countries images icon at Transcribe App - Acoustic model selection
 
+### Acoustic Models VoiceGain-rt-en-us  and VoiceGain-ol-es are no longer available
+
+With Release 1.53.0 the Acoustic model named `VoiceGain-rt-en-us` is no longer available. If you still use it in your API requests you will get "Resource available error". Please replace references to it with `VoiceGain-kappa`.
+
+Same for model `VoiceGain-ol-es`. In this case we suggest specifying Spanish language transcription by using the `languages : [es]` parameter
+
 ### Minor release 1.53.0 is scheduled for 3/15/2022 between 6:00pm and 10:00pm CST
 
 This release includes:
@@ -57,26 +76,17 @@ This release includes:
 * MRCP ASR now supports a dual language mode - it is possible to do recognition not knowing what language is spoken. Currently, only en/es combination is available.
 * Profanity masking has been added to the Transcribe API
 * In Web Console - the audio display now shows milliseconds in tooltip and when zoomed in.
-
-### Minor release 1.52.0 is scheduled for 3/4/2022 between 3:00pm and 6:00pm CST
-
-This release includes:
-* Browser Capture feature available in the transcribe app. This allows you to capture full audio of e.g. Zoom or MS Teams meetings.
-
-This release addresses the following issues:
-* #rcj-477: AIVR - attempt to play empty questionPrompt results in error (was re-opened)
-* #rcj-475: Unable to listen to recordings of Telephone Bot API sessions
-
-
-### Support for ACH Payments
-
-ACH payments are now available.
+    
 
 **Backwards incompatibility:**
+* Certain acoustic model names are no longer available. Unless using specific custom models, it is now sufficient to just provide `languages` parameter - no need to specify acoustic model by name.
 * requests to `/asr/transcribe/async` API with `portal` field value but no `portal.label` specified will fail - `portal.label` is now a required value 
 
----
-**You can view all release notes [here](https://github.com/voicegain/platform/releases)** 
+
+
+
+
+
 
 
 

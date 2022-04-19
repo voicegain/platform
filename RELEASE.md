@@ -1,3 +1,16 @@
+## Release 1.55.0
+
+This minor release includes:
+* Web Console now supports Meeting view - for viewing transcripts from /asr/meeting API
+* Alpha version of the Zoom Recorder utility is available upon requests - it captures individual audio of each Zoom Meeting participant and submits it for transcription to /asr/meeting API. It works both with Voicegain Cloud and Edge.
+* Improvement to internal ml-svc request routing - previously in certain scenarios the requests to ml-svc service might end up going to just a subset of available pods thus reducing performance. 
+
+Issues addressed:
+* #rcj-522: GET /asr/transcribe/{uuid}/transcript fails intermittently
+* #rcj-520: support replacing acoustic model(s) with languages
+  * this is in place to accommodate older pre-1.53.0 style requests which reference names of acoustic models that no longer exists (have been merged into model bundles)
+  * new style requests should use `languages` parameter which is sufficient in most cases
+
 ## Release 1.54.1
 
 This maintenance release partially addresses the following issue:

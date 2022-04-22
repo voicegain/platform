@@ -1,3 +1,8 @@
+### Maintenance release 1.55.1 is scheduled for 4/22/2022 between 11:00am and 3:00pm CST
+
+This release fixes the following issue:
+* #ocp-779: offline process returns NOINPUT for audio shorter than 1.25s
+
 ### Minor release 1.55.0 is scheduled for 4/19/2022 between 7:00pm and 10:00pm CST
 
 This release includes:

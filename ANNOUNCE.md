@@ -67,9 +67,11 @@ This release fixes the following issue:
 This release addresses the following issue:
 * #TranscribeApp-338: Fix countries images icon at Transcribe App - Acoustic model selection
 
-### Acoustic Model VoiceGain-rt-en-us no longer available
+### Acoustic Models VoiceGain-rt-en-us  and VoiceGain-ol-es are no longer available
 
 With Release 1.53.0 the Acoustic model named `VoiceGain-rt-en-us` is no longer available. If you still use it in your API requests you will get "Resource available error". Please replace references to it with `VoiceGain-kappa`.
+
+Same for model `VoiceGain-ol-es`. In this case we suggest specifying Spanish language transcription by using the `languages : [es]` parameter
 
 ### Minor release 1.53.0 is scheduled for 3/15/2022 between 6:00pm and 10:00pm CST
 

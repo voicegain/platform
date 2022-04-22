@@ -1,3 +1,8 @@
+## Release 1.55.1
+
+This maintenance release fixes the following issue:
+* #ocp-779: offline process returns NOINPUT for audio shorter than 1.25s
+
 ## Release 1.55.0
 
 This minor release includes:

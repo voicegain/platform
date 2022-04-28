@@ -2,6 +2,15 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### April 28, 2022
+
+This release includes:
+* More accurate offline/batch model. Accuracy is improved in particular in lecture/zoom meeting/podcast type of audio.
+
+Issues fixed:
+* #346: Word Cloud is now shown even though the data is there 
+* #347: Named entities (NER) are not highlighted correctly 
+
 ### April 11, 2022
 
 Release 1.54.0 introduces the following changes:
@@ -41,16 +50,7 @@ This release adds:
 * Improved transcript paragraph splits 
 * Improved accuracy of the Spanish transcription (upload only)
 
-### December 9, 2021
 
-Maintenance release 1.46.1 is scheduled for 12/9/2021 between 6:00pm and 10pm CST
-
-This release fixes the following issue relevant to Transcribe App:
-* #rcj-419: POST /sa sessions failing (stuck in PROCESSING)
-
-### October 25, 2021
-
-Much improved accuracy of real-time and offline transcription.
 
 
 

@@ -1,3 +1,15 @@
+### Minor release 1.56.0 is scheduled for 4/28/2022 between 4:00pm and 8:00pm CST
+
+This release includes:
+* More accurate offline/batch model. Accuracy is improved in particular in lecture/zoom meeting/podcast type of audio.
+* Hints in large-vocabulary continuous recognition via MRCP.
+* For MRCP customers using large-vocabulary continuous recognition - we now can deliver custom intent recognition using NLU.
+
+Issues fixed:
+* Transcribe App
+  * #346: Word Cloud is now shown even though the data is there 
+  * #347: Named entities (NER) are not highlighted correctly 
+
 ### Maintenance release 1.55.1 is scheduled for 4/22/2022 between 11:00am and 3:00pm CST
 
 This release fixes the following issue:

@@ -1,3 +1,15 @@
+## Release 1.56.0
+
+This minor release includes:
+* More accurate offline/batch model. Accuracy is improved in particular in lecture/zoom meeting/podcast type of audio.
+* Hints in large-vocabulary continuous recognition via MRCP.
+* For MRCP customers using large-vocabulary continuous recognition - we now can deliver custom intent recognition using NLU.
+
+Issues fixed:
+* Transcribe App
+  * #346: Word Cloud is now shown even though the data is there 
+  * #347: Named entities (NER) are not highlighted correctly 
+
 ## Release 1.55.1
 
 This maintenance release fixes the following issue:

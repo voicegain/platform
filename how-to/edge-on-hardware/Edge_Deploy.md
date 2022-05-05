@@ -201,6 +201,8 @@ vginstall
 
 ## <a name="step9"></a>Step 9: Reboot
 
+NOTE: In principle this step is not needed if the machine or VM has no GPU. But it will not hurt to reboot either.
+
 ### The details: 
 #### Why Reboot?
 We are rebooting in order to ensure the Nvidia drivers are loaded into the kernel. This can be done manually, however, this is not always reliable as changes are made in future updates, and if you are logged in to the graphical interface this is even more complicated.

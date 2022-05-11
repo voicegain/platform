@@ -65,7 +65,18 @@ with open(poll_response_path, 'w') as outfile:
     json.dump(poll_response, outfile)
 print("Save final result to {}".format(poll_response_path), flush=True)
 
-# get result as text file
+# extract trascript text from final result
+
+tr_text = poll_response["result"]["transcript"];
+
+print("transcript text: {}".format(tr_text), flush=True)
+tr_text_path = os.path.join(output_path, "{}--transcript.txt".format(session_id))
+with open(tr_text_path, 'w') as outfile:
+    outfile.write(tr_text)
+print("Save final transcript text to {}".format(tr_text_path), flush=True)
+
+
+# [OPTIONAL] get result as text file divided into paragraphs (optional timestamps)
 
 txt_url = "https://api.{}.ai/v1/asr/transcribe/{}/transcript?format=text".format(platform, session_id)
 print("Retrieving transcript using url: {}".format(txt_url), flush=True)
@@ -73,4 +84,4 @@ txt_response = requests.get(txt_url, headers=headers)
 transcript_text_path = os.path.join(output_path, "{}.txt".format(session_id))
 with open(transcript_text_path, 'w') as file_object:
     file_object.write(txt_response.text)
-print("Save final transcript text to {}".format(transcript_text_path), flush=True)
+print("Save final transcript to {}".format(transcript_text_path), flush=True)

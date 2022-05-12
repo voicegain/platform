@@ -2,6 +2,16 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### May 12, 2022
+
+This release includes:
+* More accurate transcription.
+* Improved language selection.
+
+Issues fixed:
+* #rcj-532: Microphone capture transcript in Transcribe App occasionally does not load (No Data)
+* #rcj-527: Text export does not have modified speaker names
+
 ### April 28, 2022
 
 This release includes:
@@ -41,14 +51,6 @@ This release includes Browser Capture feature available in the transcribe app. T
 
 Known Issue: Browser Capture preview will stop after more than 60 seconds silence (each channel separately). 
 
-
-### December 16, 2021
-
-Minor release 1.47.0 is scheduled for 12/16/2021 between 6:00pm and 10pm CST
-
-This release adds:
-* Improved transcript paragraph splits 
-* Improved accuracy of the Spanish transcription (upload only)
 
 
 

@@ -1,3 +1,14 @@
+## Release 1.57.0
+
+This minor release includes:
+* More accurate offline transcription.
+* Improved language selection in Transcribe App.
+* Private Contexts in Web Console
+
+Issues fixed:
+* #rcj-532: Microphone capture transcript in Transcribe App occasionally does not load (No Data)
+* #rcj-527: Text export from Transcribe App does not have modified speaker names
+
 ## Release 1.56.0
 
 This minor release includes:

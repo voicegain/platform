@@ -1,3 +1,14 @@
+### Minor release 1.57.0 is scheduled for 5/12/2022 between 5:00pm and 8:00pm CST
+
+This release includes:
+* More accurate offline transcription.
+* Improved language selection in Transcribe App.
+* Private Contexts in Web Console
+
+Issues fixed:
+* #rcj-532: Microphone capture transcript in Transcribe App occasionally does not load (No Data)
+* #rcj-527: Text export from Transcribe App does not have modified speaker names
+
 ### Minor release 1.56.0 is scheduled for 4/28/2022 between 4:00pm and 8:00pm CST
 
 This release includes:
@@ -85,15 +96,6 @@ With Release 1.53.0 the Acoustic model named `VoiceGain-rt-en-us` is no longer a
 
 Same for model `VoiceGain-ol-es`. In this case we suggest specifying Spanish language transcription by using the `languages : [es]` parameter
 
-### Minor release 1.53.0 is scheduled for 3/15/2022 between 6:00pm and 10:00pm CST
-
-This release includes:
-* Telephony Bot API uses a more efficient method to stream audio to the recognizer. The response latency has been reduced a bit.
-* Model selection mechanism has been changed. A single Acoustic Model can now support multiple languages; therefore, we added a extra language parameter that can be provided together with a model name.
-* MRCP ASR now supports a dual language mode - it is possible to do recognition not knowing what language is spoken. Currently, only en/es combination is available.
-* Profanity masking has been added to the Transcribe API
-* In Web Console - the audio display now shows milliseconds in tooltip and when zoomed in.
-    
 
 **Backwards incompatibility:**
 * Certain acoustic model names are no longer available. Unless using specific custom models, it is now sufficient to just provide `languages` parameter - no need to specify acoustic model by name.

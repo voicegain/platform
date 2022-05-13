@@ -8,6 +8,7 @@ This minor release includes:
 Issues fixed:
 * #rcj-532: Microphone capture transcript in Transcribe App occasionally does not load (No Data)
 * #rcj-527: Text export from Transcribe App does not have modified speaker names
+* #rcw-6: (Transcribe app) An exception shows up in the console when Settings is clicked
 
 ## Release 1.56.0
 

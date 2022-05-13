@@ -1,4 +1,4 @@
-### Minor release 1.57.0 is scheduled for 5/12/2022 between 5:00pm and 8:00pm CST
+### Minor release 1.57.0 is scheduled for 5/12/2022 between 7:00pm and 8:00pm CST
 
 This release includes:
 * More accurate offline transcription.
@@ -8,6 +8,7 @@ This release includes:
 Issues fixed:
 * #rcj-532: Microphone capture transcript in Transcribe App occasionally does not load (No Data)
 * #rcj-527: Text export from Transcribe App does not have modified speaker names
+* #rcw-6: (Transcribe app) An exception shows up in the console when Settings is clicked
 
 ### Minor release 1.56.0 is scheduled for 4/28/2022 between 4:00pm and 8:00pm CST
 

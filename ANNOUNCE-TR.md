@@ -11,6 +11,7 @@ This release includes:
 Issues fixed:
 * #rcj-532: Microphone capture transcript in Transcribe App occasionally does not load (No Data)
 * #rcj-527: Text export does not have modified speaker names
+* #rcw-6: An exception shows up in the console when Settings is clicked
 
 ### April 28, 2022
 

@@ -1,5 +1,7 @@
 # <a id="top"></a>Deploy Voicegain into AWS
 Step by step guide how to deploy Voicegain Speech-to-Text Platform into AWS
+
+**NOTE: this is an old guide - please see a [new one here](https://github.com/voicegain/platform/blob/master/how-to/edge-on-cloud/universal-deployment-guide.md)**
 ----
 Under the hood:
 This guide will have you do the following:

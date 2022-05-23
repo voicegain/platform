@@ -1,3 +1,15 @@
+### Minor release 1.58.0 is scheduled for 5/23/2022 between 5:00pm and 8:00pm CST
+
+This release includes:
+* Even more accurate offline transcription
+* New "rho" model which gives accurate, low latency real-time transcription (meant for API use, enabled using `"acousticModelRealTime" : "VoiceGain-rho"`).
+* Custom profanity list feature - please contact us if the default profanity list does not work for your use case.
+* Expired-item cleanup code - starting from June invoice you may see charges for storage - previously they were not included because cleanup code was not 100% tested.
+
+Issues fixed:
+* #rcj-536: Stop users from logging into a different application from account.type
+* #rcj-534: handling unknown speaker it transcript export
+
 ### Minor release 1.57.0 is scheduled for 5/12/2022 between 7:00pm and 8:00pm CST
 
 This release includes:

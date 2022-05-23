@@ -2,6 +2,15 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### May 23, 2022
+
+This release includes:
+* Even more accurate offline transcription.
+
+Issues fixed:
+* #rcj-536: Stop users from logging into a different application from account.type
+* #rcj-534: handling unknown speaker it transcript export
+
 ### May 12, 2022
 
 This release includes:

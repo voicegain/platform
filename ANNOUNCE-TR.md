@@ -2,6 +2,12 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### May 24, 2022
+
+This release includes:
+* Ability to set the transcript expiry to "Never expire"
+* Improved pop-up preview for transcript in browser-capture mode.
+
 ### May 23, 2022
 
 This release includes:

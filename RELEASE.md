@@ -1,3 +1,9 @@
+## Release 1.58.1
+
+This maintenance release adds in Transcribe App:
+* Ability to set the transcript expiry to "Never expire"
+* Improved pop-up preview for transcript in browser-capture mode.
+
 ## Release 1.58.0
 
 This minor release includes:

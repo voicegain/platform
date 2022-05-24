@@ -1,3 +1,9 @@
+### Minor release 1.58.1 is scheduled for 5/24/2022 between 5:00pm and 8:00pm CST
+
+In Transcribe App:
+* Ability to set the transcript expiry to "Never expire"
+* Improved pop-up preview for transcript in browser-capture mode.
+
 ### Minor release 1.58.0 is scheduled for 5/23/2022 between 5:00pm and 8:00pm CST
 
 This release includes:

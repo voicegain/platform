@@ -1,4 +1,12 @@
-### Minor release 1.58.1 is scheduled for 5/24/2022 between 5:00pm and 8:00pm CST
+### Minor release 1.59.0 is scheduled for 5/31/2022 between 7:00pm and 10:00pm CST
+
+Issues fixed:
+* #358: (Transcribe App) Login not working if email is not lower case
+* #ocp-780: Topic generation for SA not working
+
+This release also changes the logging library used by our back-end code.
+
+### Maintenance release 1.58.1 is scheduled for 5/24/2022 between 5:00pm and 8:00pm CST
 
 In Transcribe App:
 * Ability to set the transcript expiry to "Never expire"

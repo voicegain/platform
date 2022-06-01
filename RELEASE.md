@@ -1,3 +1,11 @@
+## Release 1.59.0
+
+Issues fixed in this minor release:
+* #358: (Transcribe App) Login not working if email is not lower case
+* #ocp-780: Topic generation for SA not working
+
+This release also changes the logging library used by our back-end code.
+
 ## Release 1.58.1
 
 This maintenance release adds in Transcribe App:

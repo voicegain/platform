@@ -2,6 +2,11 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### May 31, 2022
+
+Issues fixed:
+* #358: (Transcribe App) Login not working if email is not lower case
+
 ### May 24, 2022
 
 This release includes:

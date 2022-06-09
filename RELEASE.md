@@ -1,3 +1,11 @@
+## Release 1.59.1
+
+This maintenance release includes:
+* Ability to configure external document and object storage for Edge deployment
+* Maximum persist time for meeting transcripts on Cloud has been increased from 7 to 31 days (this is in /asr/meeting API)
+* Added password view toggle in the Web Console Login
+* Multiple upgrades to 3rd-party dependencies to remove known vulnerabilities
+
 ## Release 1.59.0
 
 Issues fixed in this minor release:

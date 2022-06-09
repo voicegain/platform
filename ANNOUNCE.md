@@ -1,3 +1,11 @@
+### Maintenance release 1.59.1 is scheduled for 6/9/2022 between 5:00pm and 8:00pm CST
+
+This release includes:
+* Ability to configure external document and object storage for Edge deployment
+* Maximum persist time for meeting transcripts on Cloud has been increased from 7 to 31 days (this is in /asr/meeting API)
+* Added password view toggle in the Web Console Login
+* Multiple upgrades to 3rd-party dependencies to remove known vulnerabilities
+
 ### Minor release 1.59.0 is scheduled for 5/31/2022 between 7:00pm and 10:00pm CST
 
 Issues fixed:
@@ -95,33 +103,6 @@ Fixed issues:
 * #ocp-777: When afterlife is 0, offline process does not submit ERROR status to asr-api (no error callback)
 * #rcj-484: better error handling for Fusebill
 * #rcj-496: audio redaction no longer works for mono audio
-
-### Maintenance release 1.53.3 is scheduled for 3/21/2022 between 6:00pm and 10:00pm CST
-
-This release adds:
-* improved food-kappa model 
-
-This release fixes the following issue:
-* #rcj-488: spanish offline transcription ignores languages defined in the associated context
-
-### Maintenance release 1.53.2 is scheduled for 3/17/2022 between 6:00pm and 10:00pm CST
-
-This release adds:
-* Choice of 4 high quality TTS voices in Indian English (en-IN)
-
-This release fixes the following issue:
-* #rcj-486: support using context.asrSettingsRecognition.acousticModelRealTime for Rex resource reservation for AIVR sessions if present
-
-### Maintenance release 1.53.1 is scheduled for 3/16/2022 between 5:00pm and 10:00pm CST
-
-This release addresses the following issue:
-* #TranscribeApp-338: Fix countries images icon at Transcribe App - Acoustic model selection
-
-### Acoustic Models VoiceGain-rt-en-us  and VoiceGain-ol-es are no longer available
-
-With Release 1.53.0 the Acoustic model named `VoiceGain-rt-en-us` is no longer available. If you still use it in your API requests you will get "Resource available error". Please replace references to it with `VoiceGain-kappa`.
-
-Same for model `VoiceGain-ol-es`. In this case we suggest specifying Spanish language transcription by using the `languages : [es]` parameter
 
 
 **Backwards incompatibility:**

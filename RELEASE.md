@@ -1,3 +1,12 @@
+## Release 1.59.2
+
+This maintenance release includes:
+* Improved NLU for IVR prompt intent detection (contact support@voicegain.ai if you are interested in this feature) 
+
+Issues fixed:
+* #rcj-538: NPE in AudioCodes API when websocket closed
+* #tsw-3: Default language selection in new Transcribe App project
+
 ## Release 1.59.1
 
 This maintenance release includes:

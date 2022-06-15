@@ -1,3 +1,12 @@
+### Maintenance release 1.59.2 is scheduled for 6/15/2022 between 6:30pm and 8:30pm CST
+
+This release includes:
+* Improved NLU for IVR prompt intent detection (contact support@voicegain.ai if you are interested in this feature) 
+
+Issues fixed:
+* #rcj-538: NPE in AudioCodes API when websocket closed
+* #tsw-3: Default language selection in new Transcribe App project
+
 ### Maintenance release 1.59.1 is scheduled for 6/9/2022 between 5:00pm and 8:00pm CST
 
 This release includes:

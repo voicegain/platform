@@ -1,3 +1,10 @@
+### Minor release 1.60.0 is scheduled for 6/17/2022 between 5:30pm and 8:30pm CST
+
+This release includes:
+* Support for `sttSpeechContexts` in **AudioCodes API** - can be used to pass hints to recognition. 
+  * Ability to pass additional parameters through `sttGenericData` parameter coming soon 
+* Password strength check compliant with latest NIST guidelines.
+
 ### Maintenance release 1.59.2 is scheduled for 6/15/2022 between 6:30pm and 8:30pm CST
 
 This release includes:

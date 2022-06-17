@@ -1,3 +1,10 @@
+## Release 1.60.0
+
+This minor release includes:
+* Support for `sttSpeechContexts` in **AudioCodes API** - can be used to pass hints to recognition. 
+  * Ability to pass additional parameters through `sttGenericData` parameter coming soon 
+* Password strength check compliant with latest NIST guidelines.
+
 ## Release 1.59.2
 
 This maintenance release includes:

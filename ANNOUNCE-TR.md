@@ -2,7 +2,7 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
-## June 15, 2022
+### June 15, 2022
 
 Issues fixed:
 * #tsw-3: Default language selection in new Transcribe App project

@@ -1,3 +1,14 @@
+### Maintenance release 1.60.1 is scheduled for 6/2/2022 between 4:00pm and 8:00pm CST
+
+This release includes:
+* In Transcribe App: 
+  * Small speed-up of the transcript loading
+  * Tool-tips for prev/next buttons
+* In Web Developer Console: 
+  * Significantly speeds up loading of long Transcripts and Meetings
+  * Private/Shared context functionality has been improved.
+  * Removal of the password change reminder from the Edge Web Console - this was to support Edge deployments which are not connected to Internet. 
+
 ### Minor release 1.60.0 is scheduled for 6/17/2022 between 5:30pm and 8:30pm CST
 
 This release includes:
@@ -91,28 +102,6 @@ Issues addressed:
 * #rcj-520: support replacing acoustic model(s) with languages
   * this is in place to accommodate older pre-1.53.0 style requests which reference names of acoustic models that no longer exists (have been merged into model bundles)
   * new style requests should use `languages` parameter which is sufficient in most cases
-
-### Maintenance release 1.54.1 is scheduled for 4/18/2022 between 11:15am and 2:00pm CST
-
-This release partially addresses the following issue:
-* #rcj-517: old/expired data cleanup inefficiency
-
-### Minor release 1.54.0 is scheduled for 4/11/2022 between 4:00pm and 10:00pm CST
-
-This release includes:
-* Edge deployment improvements:
-  * Support for external S3-compatible object storage
-  * Support for SSL Certificates
-  * Support for Kubernetes clusters with no GPU
-  * Configurable Grafana Dashboard for visualizing API use 
-* Other improvements:
-  * Beta version of new /asr/meeting API suitable for transcribing per-speaker audio from e.g. a Zoom Meeting 
-  * Beta version of encryption for the /data API
-  * Faster offline transcribe, including optimized pipeline for audio coming from S3 (or other external URL)
-  * Improved English acoustic model (offline mode) - about 1.5% better accuracy on meeting / lecture type of audio
-  * Beta version of a German offline acoustic model
-  * Language settings in the Web Console improved - only acoustic models compatible with a selected language are shown
-  * Added profanity masking option to the Transcribe Dialog
 
 Backwards incompatibility:
 * the `reuse` parameter in the /data API will now be ignored - each POST request will create a new Data Object

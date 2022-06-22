@@ -1,3 +1,14 @@
+## Release 1.60.1
+
+This maintenance release includes:
+* In Transcribe App: 
+  * Small speed-up of the transcript loading
+  * Tool-tips for prev/next buttons
+* In Web Developer Console: 
+  * Significantly speeds up loading of long Transcripts and Meetings
+  * Private/Shared context functionality has been improved.
+  * Removal of the password change reminder from the Edge Web Console - this was to support Edge deployments which are not connected to Internet.
+
 ## Release 1.60.0
 
 This minor release includes:

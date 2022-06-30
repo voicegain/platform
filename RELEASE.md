@@ -1,3 +1,11 @@
+## Release 1.60.2
+
+This maintenance release includes:
+*  Usage data now stores session Tags, so if you request from us, e.g., a monthly usage report then each session in the report will have those tags.
+
+Issues fixed:
+* #rcj-545: re-register listener whenever FirestoreException is received in FirestoreWebApiConfigCollectionEventListener -- The problem manifested itself in new JWT tokens not fully working for offline-sessions - the requests were accepted but final result was Error. The cause was Google Firestore client occasionally getting an error event from Firestore upon which no subsequent events would pass through. We implemented a workaround where the listener re-registers in case of error.
+
 ## Release 1.60.1
 
 This maintenance release includes:

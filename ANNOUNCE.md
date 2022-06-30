@@ -1,4 +1,12 @@
-### Maintenance release 1.60.1 is scheduled for 6/2/2022 between 4:00pm and 8:00pm CST
+### Maintenance release 1.60.2 is scheduled for 6/30/2022 between 2:00pm and 6:00pm CST
+
+This release includes:
+*  Usage data now stores session Tags, so if you request from us, e.g., a monthly usage report then each session in the report will have those tags.
+
+Issues fixed:
+* #rcj-545: re-register listener whenever FirestoreException is received in FirestoreWebApiConfigCollectionEventListener -- The problem manifested itself in new JWT tokens not fully working for offline-sessions - the requests were accepted but final result was Error. The cause was Google Firestore client occasionally getting an error event from Firestore upon which no subsequent events would pass through. We implemented a workaround where the listener re-registers in case of error.
+
+### Maintenance release 1.60.1 is scheduled for 6/22/2022 between 4:00pm and 8:00pm CST
 
 This release includes:
 * In Transcribe App: 
@@ -90,18 +98,6 @@ Issues fixed:
 This release fixes the following issue:
 * #ocp-779: offline process returns NOINPUT for audio shorter than 1.25s
 
-### Minor release 1.55.0 is scheduled for 4/19/2022 between 7:00pm and 10:00pm CST
-
-This release includes:
-* Web Console now supports Meeting view - for viewing transcripts from /asr/meeting API
-* Alpha version of the Zoom Recorder utility is available upon requests - it captures individual audio of each Zoom Meeting participant and submits it for transcription to /asr/meeting API. It works both with Voicegain Cloud and Edge.
-* Improvement to internal ml-svc request routing - previously in certain scenarios the requests to ml-svc service might end up going to just a subset of available pods thus reducing performance. 
-
-Issues addressed:
-* #rcj-522: GET /asr/transcribe/{uuid}/transcript fails intermittently
-* #rcj-520: support replacing acoustic model(s) with languages
-  * this is in place to accommodate older pre-1.53.0 style requests which reference names of acoustic models that no longer exists (have been merged into model bundles)
-  * new style requests should use `languages` parameter which is sufficient in most cases
 
 Backwards incompatibility:
 * the `reuse` parameter in the /data API will now be ignored - each POST request will create a new Data Object

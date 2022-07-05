@@ -11,7 +11,7 @@ This guide will have you do the following:
 * Configure your server BIOS
 * Install Ubuntu **LTS 20.04 Desktop** with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs
   * If the machine or the VM has no GPU, you can alternatively use Ubuntu **LTS 20.04 Server**
-  * NOTE: We have not tested our install with Ubuntu 22.04 LTS so we cannot guarantee that it will work smoothly with that Ubuntu version
+  * NOTE: We have tested our install with Ubuntu 22.04 LTS and found that it does not run stable (there are frequent service restarts due to failed liveness probe even in presence on no load). So please **do not use Ubuntu 22.04**. We will continue troubleshooting Ubuntu 22.04 and will note here when it is safe to use.
 * Provision your server using the Voicegain EZ Init script.
 * Deploy the Voicegain Application to your environment. 
 

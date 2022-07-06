@@ -1,3 +1,8 @@
+## Release 1.60.3
+
+This maintenance release fixes:
+* #rcj-546: DataObjects not being deleted by cleanup task. Fixes the de-referencing issue.
+
 ## Release 1.60.2
 
 This maintenance release includes:

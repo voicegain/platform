@@ -1,3 +1,8 @@
+### Maintenance release 1.60.3 is scheduled for 7/6/2022 between 4:40pm and 6:00pm CST
+
+This release fixes:
+* #rcj-546: DataObjects not being deleted by cleanup task. Fixes the de-referencing issue.
+
 ### Maintenance release 1.60.2 is scheduled for 6/30/2022 between 2:00pm and 6:00pm CST
 
 This release includes:

@@ -8,6 +8,9 @@ import requests, time, os, json, re, base64
 ## specify here the directory with input audio files to test
 input_path = "../input/spanish-numbers/"
 
+## this script will create two subdirectories
+## 1) temp for transcoded audio files
+## 2) output for the output (output is also written to stdout)
 
 ## voicegain
 host = "https://api.voicegain.ai/v1"

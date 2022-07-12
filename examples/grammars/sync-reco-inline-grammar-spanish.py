@@ -160,8 +160,12 @@ print("files to test")
 for name in list_of_files:
     print(name)
 
+numProcessed = 0
 for name in list_of_files:
     process_one_file(name)
+    numProcessed = numProcessed+1
+#    if(numProcessed > 5):
+#        break
 
 if not os.path.exists("output"):
     os.mkdir("output")
@@ -177,8 +181,8 @@ with open(transcript_text_path, 'w') as file_object:
 		if(alts is not None):
 			#print("\t"+str(alts))
 			for alt in alts:
-				print("\tutt: >{}<  conf: {}".format(alt.get("utterance"), alt.get("confidence")))
-				file_object.write("{}\tutt: >{}<  conf: {}\n".format(name, alt.get("utterance"), alt.get("confidence")))
+				print("\tutt: >{}< tag: {} conf: {}".format(alt.get("utterance"), alt.get("literalTag"), alt.get("confidence")))
+				file_object.write("{}\tutt: >{}<\ttag: {}\tconf: {}\n".format(name, alt.get("utterance"), alt.get("literalTag"), alt.get("confidence")))
 
 print("Output stored in: {}".format(transcript_text_path))
 print("THE END", flush=True)

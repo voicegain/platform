@@ -585,7 +585,7 @@ def evalFunc(body,stateInformation):
     return finalResponse(statusCode,response,newStateInformation)
     
 #Start here
-def main(event,context):
+def lambda_handler(event,context):
     print(str(event))
     t14 = time.time()
     getJSON()

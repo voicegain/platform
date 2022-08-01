@@ -6,7 +6,7 @@ const app = express();
 // require("dotenv").config(); 
 
 
-const PORT = 8088;
+const PORT = 8088; // you can change the port, but remember about the CORS setting in https://console.voicegain.ai
 let jwt_token;
 
 app.use(cors());
@@ -22,7 +22,7 @@ app.use(express.static("public"));
 
 app.get("/api/jwt", async (req, res) => {
   let voicegainApiUrl = new URL("https://api.voicegain.ai/v1/security/jwt");
-  const bearer = "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2FwaS52b2ljZWdhaW4uYWkvdjEiLCJzdWIiOiI1ZDQzZTdhNS02NmIzLTRlZWEtODEzYi1lMjE3YTBlZTVhY2YifQ.KPAuWZJDXUlrC8lVp0yo3uG16dzjYq4F97pbQ8XehBo";
+  const bearer = "Bearer " + "<your JWT token goes here (you can get if from https://console.voicegain.ai)>";
 
   const options = {
     headers: {
@@ -50,9 +50,3 @@ app.get("/api/jwt", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Demo App listening at: http://localhost:${PORT}`)
 });
-
-
-/*
-JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2FwaS52b2ljZWdhaW4uYWkvdjEiLCJzdWIiOiI1ZDQzZTdhNS02NmIzLTRlZWEtODEzYi1lMjE3YTBlZTVhY2YifQ.KPAuWZJDXUlrC8lVp0yo3uG16dzjYq4F97pbQ8XehBo
-Secret: iskc06/WZeERf4a4tizrJqxz1x6Fmzxfcg4iIZsjYiE=
-*/

@@ -1,3 +1,9 @@
+### Maintenance release 1.60.4 is scheduled for 8/10/2022 between 7:00pm and 9:00pm CST
+
+This release changes 2 things relevant for MRCP users:
+1. The content on NLSML returned in MRCP results - We now return `<nomatch/>` element within `<result><interpretation>` in case of `Completion-Cause: 001 no-match`. In the past `<nomatch/>` was not included, instead an NLSML corresponding to a normal recognition was returned even in case of `Completion-Cause: 001 no-match`
+1. GRXML grammars with `scope=private` attribute now parse without an error. Note, however, that the private scope is still not enforced. That will be fixed in future releases.
+
 ### Maintenance release 1.60.3 is scheduled for 7/6/2022 between 4:40pm and 6:00pm CST
 
 This release fixes:

@@ -23,11 +23,7 @@ they can also invoke these APIs with Speech Grammars.
 
 ## B. End-User/Business-User SaaS Apps
 
-## B1. Call Center Speech Analytics: 
-**Call Center Speech Analytics** is a web application for analyzing audio recordings of voice customer service interactions in contact centers for quality management and gathering customer experience and business insights. These recordings get accurately transcribed and analyzed using AI. We analyze both audio and 
-the text transcript using AI to extract keywords, sentiment, named entities and topics. The web user interface allows Operations Manager, Team Leads and Call Coaches to view key metrics and annotated transcript of the call along with audio playback.
-
-## B2. Voicegain Transcribe:
+## B1. Voicegain Transcribe:
 **Voicegain Transcribe** is a web application that allows business users to transcribe and analyze audio/speech - both offline and realtime. Transcribe offers an intuitive UI where users can upload files or transcribe audio captured realtime from the browser or using the microphone capture. Users can easily view and correct the transcript too. Our offline transcription can be used for call recordings, voicemails and podcasts and our real-time transcription can be used for taking meetings notes, or captioning live virtual events, talks, and presentations. Transcripts include timestamps, punctuation and support for custom language models. Text Analytics features allow annotation of the transcript with keywords, named entities and sentiment.
 
 

@@ -1,15 +1,15 @@
 ### Minor release 1.61.0 is scheduled for 8/17/2022 between 6:30pm and 10:30pm CST
 
 This release includes a major overhaul of the Transcribe App:
-* Transcribe App now supports Zoom Meeting Assitant App which can submit all your local Zoom Meeting recordings for transcription to the Transcribe App.
+* Transcribe App now supports Zoom Meeting Assistant App which can submit all your local Zoom Meeting recordings for transcription to the Transcribe App.
 * New Transcript Detail display that no longer requires paging and supports transcript from overlapping speech.
 * Transcribe App is now available on Edge - this way you can deploy it to all users in an Enterprise and keep all your confidential data local.
 
 Other minor changes include:
 * Decrease playout of the Telephony Bot prompts. Latency of actions following a prompt has been reduced by about 800ms.
-* Built-in number grammar has a fix for a mino issue.
+* Built-in number grammar has a fix for a minor issue.
 
-This release includes improved offline speech-reccognition model with about 1.5% improvement in accuracy.
+This release includes improved offline speech-recognition model with about 1.5% improvement in accuracy.
 
 ### Maintenance release 1.60.4 is scheduled for 8/10/2022 between 7:00pm and 9:00pm CST
 

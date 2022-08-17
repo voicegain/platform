@@ -106,15 +106,6 @@ Issues fixed:
 * #rcw-6: (Transcribe app) An exception shows up in the console when Settings is clicked
 
 
-Backwards incompatibility:
-* the `reuse` parameter in the /data API will now be ignored - each POST request will create a new Data Object
-
-Fixed issues:
-* #ocp-777: When afterlife is 0, offline process does not submit ERROR status to asr-api (no error callback)
-* #rcj-484: better error handling for Fusebill
-* #rcj-496: audio redaction no longer works for mono audio
-
-
 **Backwards incompatibility:**
 * Certain acoustic model names are no longer available. Unless using specific custom models, it is now sufficient to just provide `languages` parameter - no need to specify acoustic model by name.
 * requests to `/asr/transcribe/async` API with `portal` field value but no `portal.label` specified will fail - `portal.label` is now a required value 

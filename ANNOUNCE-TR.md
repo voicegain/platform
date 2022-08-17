@@ -2,6 +2,15 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### August 17, 2022
+
+This release includes a major overhaul of the Transcribe App:
+* Transcribe App now supports Zoom Meeting Assitant App which can submit all your local Zoom Meeting recordings for transcription to the Transcribe App.
+* New Transcript Detail display that no longer requires paging and supports transcript from overlapping speech.
+* Transcribe App is now available on Edge - this way you can deploy it to all users in an Enterprise and keep all your confidential data local.
+
+This release includes improved offline speech-reccognition model with about 1.5% improvement in accuracy.
+
 ### May 24, 2022
 
 This release speeds up the transcript loading and provides tool-tips for prev/next buttons.
@@ -50,23 +59,6 @@ This release includes:
 Issues fixed:
 * #346: Word Cloud is now shown even though the data is there 
 * #347: Named entities (NER) are not highlighted correctly 
-
-### April 11, 2022
-
-Release 1.54.0 introduces the following changes:
-* Improvements in the terminology used in the Web UI to make the meaning of various settings clearer.
-* Improved English acoustic model (offline mode) - about 1.5% better accuracy on meeting / lecture type of audio
-* Beta version of a German offline acoustic model
-
-### March 21, 2022
-
-Release 1.53.3 fixes the following issue:
-* #rcj-488: spanish offline transcription ignores languages defined in the associated context
-
-### March 16, 2022
-
-Release 1.53.1 addresses the following issue:
-* #TranscribeApp-338: Fix countries images icon at Transcribe App - Acoustic model selection
 
 
 

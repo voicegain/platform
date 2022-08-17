@@ -1,3 +1,16 @@
+### Minor release 1.61.0 is scheduled for 8/17/2022 between 6:30pm and 10:30pm CST
+
+This release includes a major overhaul of the Transcribe App:
+* Transcribe App now supports Zoom Meeting Assitant App which can submit all your local Zoom Meeting recordings for transcription to the Transcribe App.
+* New Transcript Detail display that no longer requires paging and supports transcript from overlapping speech.
+* Transcribe App is now available on Edge - this way you can deploy it to all users in an Enterprise and keep all your confidential data local.
+
+Other minor changes include:
+* Decrease playout of the Telephony Bot prompts. Latency of actions following a prompt has been reduced by about 800ms.
+* Built-in number grammar has a fix for a mino issue.
+
+This release includes improved offline speech-reccognition model with about 1.5% improvement in accuracy.
+
 ### Maintenance release 1.60.4 is scheduled for 8/10/2022 between 7:00pm and 9:00pm CST
 
 This release changes 2 things relevant for MRCP users:
@@ -91,23 +104,6 @@ Issues fixed:
 * #rcj-532: Microphone capture transcript in Transcribe App occasionally does not load (No Data)
 * #rcj-527: Text export from Transcribe App does not have modified speaker names
 * #rcw-6: (Transcribe app) An exception shows up in the console when Settings is clicked
-
-### Minor release 1.56.0 is scheduled for 4/28/2022 between 4:00pm and 8:00pm CST
-
-This release includes:
-* More accurate offline/batch model. Accuracy is improved in particular in lecture/zoom meeting/podcast type of audio.
-* Hints in large-vocabulary continuous recognition via MRCP.
-* For MRCP customers using large-vocabulary continuous recognition - we now can deliver custom intent recognition using NLU.
-
-Issues fixed:
-* Transcribe App
-  * #346: Word Cloud is now shown even though the data is there 
-  * #347: Named entities (NER) are not highlighted correctly 
-
-### Maintenance release 1.55.1 is scheduled for 4/22/2022 between 11:00am and 3:00pm CST
-
-This release fixes the following issue:
-* #ocp-779: offline process returns NOINPUT for audio shorter than 1.25s
 
 
 Backwards incompatibility:

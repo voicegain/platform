@@ -2,6 +2,12 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### NOTE
+
+You may have noticed, after the latest release, that all your old Transcripts have vanished.
+
+No worry, they will reappear within the next day or two. If you urgently need to access any of those old transcripts please let us know at support@voicegain.ai
+
 ### August 17, 2022
 
 This release includes a major overhaul of the Transcribe App:

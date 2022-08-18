@@ -5,11 +5,12 @@ If you encounter any problems, just give us a shout at support@voicegain.ai
 ### August 17, 2022
 
 This release includes a major overhaul of the Transcribe App:
-* Transcribe App now supports Zoom Meeting Assitant App which can submit all your local Zoom Meeting recordings for transcription to the Transcribe App.
+* Transcribe App now supports Zoom Meeting Assistant App which can submit all your local Zoom Meeting recordings for transcription to the Transcribe App.
 * New Transcript Detail display that no longer requires paging and supports transcript from overlapping speech.
+* All transcripts are now stored indefinitely. The new Storage Gauge on the home page shows you storage usage. If you start running out of space you can either upgrade to a higher plan or delete some transcripts.
 * Transcribe App is now available on Edge - this way you can deploy it to all users in an Enterprise and keep all your confidential data local.
 
-This release includes improved offline speech-reccognition model with about 1.5% improvement in accuracy.
+This release includes improved offline speech-recognition model with about 1.5% improvement in accuracy.
 
 ### May 24, 2022
 

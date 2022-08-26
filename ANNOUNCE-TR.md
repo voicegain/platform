@@ -18,7 +18,7 @@ This release brings a lot of small improvements and fixes, including:
 * More characters are now allowed for Transcript names
 * Allow max number of speakers for diarization to be 12 instead of 10
 
-Known issue in Trancribe App:
+Known issue in Transcribe App:
 * Uploading files larger than 128MB may fail in the Web Browser.
 
 ### August 17, 2022

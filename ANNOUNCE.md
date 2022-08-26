@@ -23,7 +23,7 @@ This release addresses the following Transcribe App issues:
 * #472: (Edge) The latest sessions are not on the home page
 * #474: no way to add another user to project
 
-Known issue in Trancribe App:
+Known issue in Transcribe App:
 * Uploading files larger than 128MB may fail in the Web Browser.
 
 This release addresses the following issues for the rest of the Voicegain platform:

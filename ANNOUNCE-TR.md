@@ -2,11 +2,24 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
-### NOTE
+### August 26, 2022
 
-You may have noticed, after the latest release, that all your old Transcripts have vanished.
+This release brings a lot of small improvements and fixes, including:
+* Add ability to delete a Keyword example
+* In multi-user plans, ability to assign users to Project directly from Project settings
+* Project deletion is insanteneous.
+* Fix for the issue where American English is highlighted instead of Spanish which is the actual setting on the Context
+* Changing Transcript name now works
+* Shows error message as a tooltip over Error
+* A column selected for sorting a table can now be unselected
+* Sorting by storage size works properly
+* Back button takes you back to where you came from rather than always returning Home
+* On projects settings - we moved NER to bottom of page
+* More characters are now allowed for Transcript names
+* Allow max number of speakers for diarization to be 12 instead of 10
 
-No worry, they will reappear within the next day or two. If you urgently need to access any of those old transcripts please let us know at support@voicegain.ai
+Known issue in Trancribe App:
+* Uploading files larger than 128MB may fail in the Web Browser.
 
 ### August 17, 2022
 
@@ -47,25 +60,7 @@ Issues fixed:
 * #rcj-536: Stop users from logging into a different application from account.type
 * #rcj-534: handling unknown speaker it transcript export
 
-### May 12, 2022
 
-This release includes:
-* More accurate transcription.
-* Improved language selection.
-
-Issues fixed:
-* #rcj-532: Microphone capture transcript in Transcribe App occasionally does not load (No Data)
-* #rcj-527: Text export does not have modified speaker names
-* #rcw-6: An exception shows up in the console when Settings is clicked
-
-### April 28, 2022
-
-This release includes:
-* More accurate offline/batch model. Accuracy is improved in particular in lecture/zoom meeting/podcast type of audio.
-
-Issues fixed:
-* #346: Word Cloud is now shown even though the data is there 
-* #347: Named entities (NER) are not highlighted correctly 
 
 
 

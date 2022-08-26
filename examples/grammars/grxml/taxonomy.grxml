@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+    <grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="en-US" version="1.0" mode="voice" root="ROOT">
+    <rule id="ROOT">
+        <ruleref uri="#prefix" />
+        <tag>out.result="";</tag>
+        <item repeat="10">
+            <one-of>
+                <item>
+                    <ruleref uri="#n" />
+                    <tag>out.result+=rules.n.n;</tag>
+                </item>
+                <item>
+                    <ruleref uri="#alphabet" />
+                    <tag>out.result+=rules.latest();</tag>
+                </item>
+            </one-of>
+        </item>
+    </rule>
+
+    <rule id="prefix">
+        <item repeat="0-1">
+            <item repeat="0-1"> my </item>
+            <item> taxonomy code </item>
+            <item repeat="0-1"> is </item>
+        </item>
+    </rule>
+
+    <rule id="alphabet">
+        <one-of>
+            <item>a</item>
+            <item>b</item>
+            <item>c</item>
+            <item>d</item>
+            <item>e</item>
+            <item>f</item>
+            <item>g</item>
+            <item>h</item>
+            <item>i</item>
+            <item>j</item>
+            <item>k</item>
+            <item>l</item>
+            <item>m</item>
+            <item>n</item>
+            <item>o</item>
+            <item>p</item>
+            <item>q</item>
+            <item>r</item>
+            <item>s</item>
+            <item>t</item>
+            <item>u</item>
+            <item>v</item>
+            <item>w</item>
+            <item>x</item>
+            <item>y</item>
+            <item>z</item>
+        </one-of>
+    </rule>
+
+	<rule id="n">
+		<one-of>
+			<item>zero	<tag><![CDATA[ out.n='0'; ]]></tag></item>
+			<item>oh	<tag><![CDATA[ out.n='0'; ]]></tag></item>
+			<item>
+				<ruleref uri="#non_zero_digit"></ruleref>
+				<tag><![CDATA[ out.n=rules.latest().n; ]]></tag>
+			</item>
+		</one-of>
+	</rule>
+
+	<rule id="non_zero_digit">
+		<one-of>
+			<item> one <tag><![CDATA[ out.n='1'; ]]></tag> </item>
+			<item> two <tag><![CDATA[ out.n='2'; ]]></tag> </item>
+			<item> three <tag><![CDATA[ out.n='3'; ]]></tag> </item>
+			<item> four <tag><![CDATA[ out.n='4'; ]]></tag> </item>
+			<item> five <tag><![CDATA[ out.n='5'; ]]></tag> </item>
+			<item> six <tag><![CDATA[ out.n='6'; ]]></tag> </item>
+			<item> seven <tag><![CDATA[ out.n='7'; ]]></tag> </item>
+			<item> eight <tag><![CDATA[ out.n='8'; ]]></tag> </item>
+			<item> nine <tag><![CDATA[ out.n='9'; ]]></tag> </item>
+		</one-of>
+	</rule>
+</grammar>

@@ -1,3 +1,8 @@
+## Release 1.62.1
+
+This maintenance release fixes the following issue:
+* #rcj-555: fail to copy asr transcription result files to a new context - affects SA App Demos
+
 ## Release 1.62.0
 
 This minor release addresses the following Transcribe App issues:

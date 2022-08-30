@@ -1,3 +1,8 @@
+### Maintenance release 1.62.1 is scheduled for 8/30/2022 between 5:00pm and 7:00pm CST
+
+This release fixes the following issue:
+* #rcj-555: fail to copy asr transcription result files to a new context - affects SA App Demos
+
 ### Minor release 1.62.0 is scheduled for 8/26/2022 between 1:00pm and 4:00pm CST
 
 This release addresses the following Transcribe App issues:

@@ -1,4 +1,4 @@
-### Maintenance release 1.62.1 is scheduled for 8/30/2022 between 5:00pm and 7:00pm CST
+### Maintenance release 1.62.1 is scheduled for 8/30/2022 between 4:30pm and 5:00pm CST
 
 This release fixes the following issue:
 * #rcj-555: fail to copy asr transcription result files to a new context - affects SA App Demos

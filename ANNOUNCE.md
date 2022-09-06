@@ -20,7 +20,7 @@ This release addresses the following Transcribe App issues:
 Note: This release requires Zoom Meeting Assistant version **0.2.3** or higher.
 
 This release addresses the following Developer Web Console issues:
-* #72: modify file upload to use JWT in the POST /data/file API - increases files size limit from 128MB to 256MB
+* #72: modify file upload to use JWT in the POST /data/file API
 * #72: change refill amounts
 
 This release addresses the following issues for the rest of the Voicegain platform:

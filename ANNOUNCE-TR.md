@@ -2,6 +2,26 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### September 6, 2022
+
+This release addresses the following Transcribe App issues:
+* #382: (re-opened) wrong (previous) audio being played
+* #403: reduce spacing in the Keyword dialog
+* #404: Tags are not displayed
+* #447: add a password view icon to Transcribe App login
+* #456: App download page does not show on Chrome on Mac
+* #462: in Project settings - if switching the project, the settings do not switch to reflect the selected project
+* #468: Increase max file size for upload to 256MB
+* #473: change of terminology when removing user from Project
+* #476: Lag in switching between audio being played
+* #477: Add Role setting to Edit User dialog
+* #480: change header: Latest Activity => Latest activity across all Projects
+* #483: Allow someone with role=User to share their own Projects with other users
+* #484: handle a case where words are empty
+* #485: change wording on the transcript delete form
+
+Note: This release requires Zoom Meeting Assistant version **0.2.3** or higher.
+
 ### August 26, 2022
 
 This release brings a lot of small improvements and fixes, including:

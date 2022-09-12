@@ -90,6 +90,7 @@ def lambda_handler(event, context):
                                 twilioAccountSid = twilioParams["AccountSid"][0];
                                 twilioCallSid = twilioParams["CallSid"][0];
                                 twilioRecordingSid = twilioParams["RecordingSid"][0];
+
                                 
                                 vgRequest = {
                                     "sessions" : [{
@@ -99,9 +100,8 @@ def lambda_handler(event, context):
                                         
                                         # this will send it to the portal which is fine for testing
                                         # for prod you would likely configure a callback
-                                        "portal" : {"label" : "Foo", "persist" : 3600000},
+                                        "portal" : {"label" : "twilio-call-"+twilioCallSid, "persist" : 3600000},
                                         
-                                        "diarization" : {"minSpeakers" : 1, "maxSpeakers" : 1},
                                         "metadata" : [
                                             {"name" : "twilioAccountSid",           "value" : twilioAccountSid},
                                             {"name" : "twilioCallSid",              "value" : twilioCallSid},
@@ -132,9 +132,15 @@ def lambda_handler(event, context):
                                         ]
                                     }
                                 }
+                                
+                                if(twilioRecordingChannels=="1"):
+                                    # set this as required for 1 channel recording
+                                    # NOTE: we do not do diarization if audioChannelSelector:two-channel
+                                    vgRequest["sessions"][0]["diarization"] = {"minSpeakers" : 1, "maxSpeakers" : 2}
                             
                                 http = urllib3.PoolManager()
         
+                                print(json.dumps(vgRequest))
                                 print("Making request to: "+voicegainUrl )
                                 
                                 asr_response_raw = http.urlopen("POST", voicegainUrl, headers=headers, body=json.dumps(vgRequest))

@@ -2,7 +2,7 @@
 # Voicegain Software SKU List - Can be delivered as a SaaS Service or Edge/On-Prem Subscription Product
 Effective: June 20th, 2019
 
-Last Updated: Sep 14th, 2021
+Last Updated: Sep 13th, 2022
 
 ## A. Developer PaaS Services
 Developer PaaS Services are accessed through Voicegain Developer Web Console. Voicegain offers the following PaaS Services

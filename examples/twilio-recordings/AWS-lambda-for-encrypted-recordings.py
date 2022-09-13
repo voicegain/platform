@@ -97,6 +97,7 @@ def lambda_handler(event, context):
                                         "asyncMode" : "OFF-LINE",
                                         "audioChannelSelector" : audioChannelSelector,
                                         "vadMode" :"normal",
+                                        "content" : {"full" : ["words"]},
                                         
                                         # this will send it to the portal which is fine for testing
                                         # for prod you would likely configure a callback

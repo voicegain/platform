@@ -1,3 +1,21 @@
+### Minor release 1.64.0 is scheduled for 9/14/2022 between 5:00pm and 7:00pm CST
+
+This release addresses the following Transcribe App issues:
+* #488: "My Transcripts" Project has no Creator value set
+* #487: Add owner information on Project Settings page
+* #489: On the Cloud, for Basic Account, do not show User setting for a Project
+* #490: Creator avatars vanish when I do search
+* #491 through #498: All these make it easier to identifu current Project and create a distinction between a Home page and a Project Transcript List page
+* #499: Show non-speaking participants on the Transcript Details page - Requires Zoom Meeting Assistan ver 0.2.11 or higher
+
+This release addresses the following Developer Web Console issues:
+* #76: New Auth Configuration type - support for Twilio encrypted recordings
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #58: New field in authConfig on Context - support for Twilio encrypted recordings
+* #59: Add support for authConf in POST and PUT /data/audio (twilio-rec-encrypted type)
+* #60: NPE in REAL-TIME transcribe session is no audio has been received at all over websocket
+
 ### Minor release 1.63.0 is scheduled for 9/6/2022 between 5:00pm and 7:00pm CST
 
 This release addresses the following Transcribe App issues:

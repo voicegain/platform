@@ -1,12 +1,16 @@
-### Minor release 1.64.0 is scheduled for 9/14/2022 between 5:00pm and 7:00pm CST
+### Minor release 1.64.0 is scheduled for 9/15/2022 between 1:00pm and 3:00pm CST
 
 This release addresses the following Transcribe App issues:
+* #469: Added options for profanity masking and digits formatting
 * #488: "My Transcripts" Project has no Creator value set
 * #487: Add owner information on Project Settings page
 * #489: On the Cloud, for Basic Account, do not show User setting for a Project
 * #490: Creator avatars vanish when I do search
-* #491 through #498: All these make it easier to identifu current Project and create a distinction between a Home page and a Project Transcript List page
-* #499: Show non-speaking participants on the Transcript Details page - Requires Zoom Meeting Assistan ver 0.2.11 or higher
+* #491 through #498: All these make it easier to identify current Project and create a distinction between a Home page and a Project Transcript List page
+* #499: Show non-speaking participants on the Transcript Details page - Requires Zoom Meeting Assistant ver 0.2.11 or higher
+* #501: First project for a new user should not be called "My Transcripts" but "{firstname}'s Transcripts"
+
+Zoom Meeting Assistant installer is now digitally signed.
 
 This release addresses the following Developer Web Console issues:
 * #76: New Auth Configuration type - support for Twilio encrypted recordings

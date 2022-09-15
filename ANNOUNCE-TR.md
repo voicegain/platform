@@ -2,23 +2,35 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### September 15, 2022
+
+This release brings a lot of small improvements and fixes, including:
+* Added options for profanity masking and digits formatting
+* "My Transcripts" Project now has correct Creator value set
+* Added owner information on Project Settings page
+* On the Cloud, for Basic Account, do not show User setting for a Project
+* Creator avatars no longer vanish when I do search
+* Several chanages to make it easier to identify current Project and create a distinction between a Home page and a Project Transcript List page
+* Show non-speaking participants on the Transcript Details page - Requires Zoom Meeting Assistant ver 0.2.11 or higher
+* First project for a new user is now not called "My Transcripts" but "{firstname}'s Transcripts"
+
 ### September 6, 2022
 
-This release addresses the following Transcribe App issues:
-* #382: (re-opened) wrong (previous) audio being played
-* #403: reduce spacing in the Keyword dialog
-* #404: Tags are not displayed
-* #447: add a password view icon to Transcribe App login
-* #456: App download page does not show on Chrome on Mac
-* #462: in Project settings - if switching the project, the settings do not switch to reflect the selected project
-* #468: Increase max file size for upload to 256MB
-* #473: change of terminology when removing user from Project
-* #476: Lag in switching between audio being played
-* #477: Add Role setting to Edit User dialog
-* #480: change header: Latest Activity => Latest activity across all Projects
-* #483: Allow someone with role=User to share their own Projects with other users
-* #484: handle a case where words are empty
-* #485: change wording on the transcript delete form
+This release brings a lot of small improvements and fixes, including:
+* Fix for  wrong (previous) audio being played
+* Reduced spacing in the Keyword dialog
+* Tags are now displayed
+* Added a password view icon to Transcribe App login
+* App download page now shows on Chrome on Mac
+* In Project settings - if switching the project, the settings now do switch to reflect the selected project
+* Increases max file size for upload to 256MB
+* Improved terminology when removing user from Project
+* Fixed lag in switching between audio being played
+* Added Role setting to Edit User dialog
+* Header change: Latest Activity => Latest activity across all Projects
+* Allow someone with role=User to share their own Projects with other users
+* Handle a case where words are empty
+* Changed wording on the transcript delete form
 
 Note: This release requires Zoom Meeting Assistant version **0.2.3** or higher.
 

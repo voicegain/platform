@@ -10,9 +10,11 @@ This release brings a lot of small improvements and fixes, including:
 * Added owner information on Project Settings page
 * On the Cloud, for Basic Account, do not show User setting for a Project
 * Creator avatars no longer vanish when I do search
-* Several chanages to make it easier to identify current Project and create a distinction between a Home page and a Project Transcript List page
+* Several changes to make it easier to identify current Project and create a distinction between a Home page and a Project Transcript List page
 * Show non-speaking participants on the Transcript Details page - Requires Zoom Meeting Assistant ver 0.2.11 or higher
 * First project for a new user is now not called "My Transcripts" but "{firstname}'s Transcripts"
+
+Zoom Meeting Assistant installer is now digitally signed.
 
 ### September 6, 2022
 

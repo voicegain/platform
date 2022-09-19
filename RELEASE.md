@@ -1,3 +1,12 @@
+## Release 1.64.1
+
+This maintenance release includes an improved model for diarization which will provide better diarization accuracy.
+
+The release also fixes these issues in the ML Services:
+* #1: Words that should be stop words appear in the Topic results
+* #2: Topic extraction should be case insensitive.
+
+
 ## Release 1.64.0
 
 This release addresses the following Transcribe App issues:

@@ -1,3 +1,11 @@
+### Minor release 1.64.1 is scheduled for 9/19/2022 between 5:00pm and 7:00pm CST
+
+This release includes an improved model for diarization which will provide better diarization accuracy.
+
+The release also fixes these issues in the ML Services:
+* #1: Words that should be stop words appear in the Topic results
+* #2: Topic extraction should be case insensitive.
+
 ### Minor release 1.64.0 is scheduled for 9/15/2022 between 1:00pm and 3:00pm CST
 
 This release addresses the following Transcribe App issues:
@@ -173,24 +181,6 @@ Issues fixed:
 * #ocp-780: Topic generation for SA not working
 
 This release also changes the logging library used by our back-end code.
-
-### Maintenance release 1.58.1 is scheduled for 5/24/2022 between 5:00pm and 8:00pm CST
-
-In Transcribe App:
-* Ability to set the transcript expiry to "Never expire"
-* Improved pop-up preview for transcript in browser-capture mode.
-
-### Minor release 1.58.0 is scheduled for 5/23/2022 between 5:00pm and 8:00pm CST
-
-This release includes:
-* Even more accurate offline transcription
-* New "rho" model which gives accurate, low latency real-time transcription (meant for API use, enabled using `"acousticModelRealTime" : "VoiceGain-rho"`).
-* Custom profanity list feature - please contact us if the default profanity list does not work for your use case.
-* Expired-item cleanup code - starting from June invoice you may see charges for storage - previously they were not included because cleanup code was not 100% tested.
-
-Issues fixed:
-* #rcj-536: Stop users from logging into a different application from account.type
-* #rcj-534: handling unknown speaker it transcript export
 
 
 **Backwards incompatibility:**

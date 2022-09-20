@@ -6,6 +6,8 @@ The release also fixes these issues in the ML Services:
 * #1: Words that should be stop words appear in the Topic results
 * #2: Topic extraction should be case insensitive.
 
+NOTE: Gender estimation feature is not working starting from version 1.64.1. This feature will be restored in future versions.
+
 ### Minor release 1.64.0 is scheduled for 9/15/2022 between 1:00pm and 3:00pm CST
 
 This release addresses the following Transcribe App issues:

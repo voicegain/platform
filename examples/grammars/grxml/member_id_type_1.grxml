@@ -3,7 +3,7 @@
     <rule id="ROOT">
         <ruleref uri="#prefix" />
         <ruleref uri="#alphabet" />
-        <tag>out.result=rules.latest();</tag>
+        <tag>out.result=rules.alphabet.a;</tag>
         <one-of>
             <item>
                 <item repeat="2">
@@ -50,32 +50,52 @@
 
     <rule id="alphabet">
         <one-of>
-            <item>a</item>
-            <item>b</item>
-            <item>c</item>
-            <item>d</item>
-            <item>e</item>
-            <item>f</item>
-            <item>g</item>
-            <item>h</item>
-            <item>i</item>
-            <item>j</item>
-            <item>k</item>
-            <item>l</item>
-            <item>m</item>
-            <item>n</item>
-            <item>o</item>
-            <item>p</item>
-            <item>q</item>
-            <item>r</item>
-            <item>s</item>
-            <item>t</item>
-            <item>u</item>
-            <item>v</item>
-            <item>w</item>
-            <item>x</item>
-            <item>y</item>
-            <item>z</item>
+            <item>a <tag><![CDATA[ out.a='A'; ]]></tag></item>
+            <item>b <tag><![CDATA[ out.a='B'; ]]></tag></item>
+            <item>bee <tag><![CDATA[ out.a='B'; ]]></tag></item>
+            <item>c <tag><![CDATA[ out.a='C'; ]]></tag></item>
+            <item>d <tag><![CDATA[ out.a='D'; ]]></tag></item>
+            <item>e <tag><![CDATA[ out.a='E'; ]]></tag></item>
+            <item>f <tag><![CDATA[ out.a='F'; ]]></tag></item>
+            <item>eff <tag><![CDATA[ out.a='F'; ]]></tag></item>
+            <item>yuf <tag><![CDATA[ out.a='F'; ]]></tag></item>
+            <item>yef <tag><![CDATA[ out.a='F'; ]]></tag></item>
+            <item>g <tag><![CDATA[ out.a='G'; ]]></tag></item>
+            <item>gee <tag><![CDATA[ out.a='G'; ]]></tag></item>
+            <item>h <tag><![CDATA[ out.a='H'; ]]></tag></item>
+            <item>i <tag><![CDATA[ out.a='I'; ]]></tag></item>
+            <item>j <tag><![CDATA[ out.a='J'; ]]></tag></item>
+            <item>k <tag><![CDATA[ out.a='K'; ]]></tag></item>
+            <item>keh <tag><![CDATA[ out.a='K'; ]]></tag></item>
+            <item>kay <tag><![CDATA[ out.a='K'; ]]></tag></item>
+            <item>l <tag><![CDATA[ out.a='L'; ]]></tag></item>
+            <item>m <tag><![CDATA[ out.a='M'; ]]></tag></item>
+            <item>yum <tag><![CDATA[ out.a='M'; ]]></tag></item>
+            <item>yem <tag><![CDATA[ out.a='M'; ]]></tag></item>
+            <item>n <tag><![CDATA[ out.a='N'; ]]></tag></item>
+            <item>an <tag><![CDATA[ out.a='N'; ]]></tag></item>
+            <item>yun <tag><![CDATA[ out.a='N'; ]]></tag></item>
+            <item>yen <tag><![CDATA[ out.a='N'; ]]></tag></item>
+            <item>o <tag><![CDATA[ out.a='O'; ]]></tag></item>
+            <item>p <tag><![CDATA[ out.a='P'; ]]></tag></item>
+            <item>pee <tag><![CDATA[ out.a='P'; ]]></tag></item>
+            <item>q <tag><![CDATA[ out.a='Q'; ]]></tag></item>
+            <item>r <tag><![CDATA[ out.a='R'; ]]></tag></item>
+            <item>ar <tag><![CDATA[ out.a='R'; ]]></tag></item>
+            <item>s <tag><![CDATA[ out.a='S'; ]]></tag></item>
+            <item>yus <tag><![CDATA[ out.a='S'; ]]></tag></item>
+            <item>yes <tag><![CDATA[ out.a='S'; ]]></tag></item>
+            <item>t <tag><![CDATA[ out.a='T'; ]]></tag></item>
+            <item>u <tag><![CDATA[ out.a='U'; ]]></tag></item>
+            <item>v <tag><![CDATA[ out.a='V'; ]]></tag></item>
+            <item>vee <tag><![CDATA[ out.a='V'; ]]></tag></item>
+            <item>w <tag><![CDATA[ out.a='W'; ]]></tag></item>
+            <item>x <tag><![CDATA[ out.a='X'; ]]></tag></item>
+            <item>y <tag><![CDATA[ out.a='Y'; ]]></tag></item>
+            <item>why <tag><![CDATA[ out.a='Y'; ]]></tag></item>
+            <item>z <tag><![CDATA[ out.a='Z'; ]]></tag></item>
+            <item>zee <tag><![CDATA[ out.a='Z'; ]]></tag></item>
+            <item>zed <tag><![CDATA[ out.a='Z'; ]]></tag></item>
         </one-of>
     </rule>
 
@@ -127,11 +147,13 @@
 		<one-of>
 			<item> one <tag><![CDATA[ out.n='1'; ]]></tag> </item>
 			<item> two <tag><![CDATA[ out.n='2'; ]]></tag> </item>
+			<item> to <tag><![CDATA[ out.n='2'; ]]></tag> </item>
 			<item> three <tag><![CDATA[ out.n='3'; ]]></tag> </item>
 			<item> four <tag><![CDATA[ out.n='4'; ]]></tag> </item>
 			<item> five <tag><![CDATA[ out.n='5'; ]]></tag> </item>
 			<item> six <tag><![CDATA[ out.n='6'; ]]></tag> </item>
 			<item> seven <tag><![CDATA[ out.n='7'; ]]></tag> </item>
+			<item> sseven <tag><![CDATA[ out.n='7'; ]]></tag> </item>
 			<item> eight <tag><![CDATA[ out.n='8'; ]]></tag> </item>
 			<item> nine <tag><![CDATA[ out.n='9'; ]]></tag> </item>
 		</one-of>

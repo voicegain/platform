@@ -9,16 +9,16 @@ import requests, time, os, json, re, base64
 ## specify here the directory with input audio files to test
 
 # type 1 member ID
-# input_path = "Recordings/Member ID"
-# grammar_path = "grxml/member_id_type_1.grxml"
+input_path = "Recordings/Member ID"
+grammar_path = "grxml/member_id_type_1.grxml"
 
 # type 2 member ID
-# input_path = "Recordings/Member ID Type 2"
-# grammar_path = "grxml/member_id_type_2.grxml"
+#input_path = "Recordings/Member ID Type 2"
+#grammar_path = "grxml/member_id_type_2.grxml"
 
 # Taxonomy
-input_path = "Recordings/Taxonomy"
-grammar_path = "grxml/taxonomy.grxml"
+#input_path = "Recordings/Taxonomy"
+#grammar_path = "grxml/taxonomy.grxml"
 
 ## this script will create two subdirectories
 ## 1) temp for transcoded audio files
@@ -27,8 +27,7 @@ grammar_path = "grxml/taxonomy.grxml"
 ## voicegain
 host = "https://api.voicegain.ai/v1"
 ## credential
-JWT = "<your JWT token here, you can get it from https://console.voicegain.ai>"
-
+JWT = "<your JWT token from https://console.voicegain.ai>"
 
 
 
@@ -150,7 +149,7 @@ def process_one_file(audio_fname):
     else:
         alternatives = asr_response.get("result").get("alternatives")
         print(str(alternatives), flush=True)
-        results[fname] = alternatives
+        results[audio_fname] = alternatives
 
 #######3######## M A I N ###################
 def main():
@@ -178,8 +177,9 @@ def main():
         for name in results:
 
             alts = results.get(name)
-            reference = "".join(os.path.splitext(name)[0].split())
-            print(name + "---" + reference)
+            path, fname = os.path.split(name)
+            reference = "".join(os.path.splitext(fname)[0].split())
+            print(path+ "---" + name + "---" + reference)
             if alts is not None:
                 # print("\t"+str(alts))
                 for alt in alts:

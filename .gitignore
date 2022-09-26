@@ -1,2 +1,4 @@
 
 examples/voicebot-lambda-android-vg-rasa/temp.js
+examples/grammars/output/*
+examples/grammars/grxml/taxonomy-simple.grxml

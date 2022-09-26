@@ -1,3 +1,17 @@
+### Minor release 1.65.0 is scheduled for 9/17/2022 between 1:00pm and 3:00pm CST
+
+This release addresses the following Transcribe App issues:
+* #364: Add option to move transcript to a different project
+* #466: run GET /data/{data-object-id} before submitting microphone recording for offline - this ensures that mic recording is available
+* #505-506: better tooltips regarding Project
+* #508: different behavior when user selects project while on Home page
+* #509: on all of the Project Settings pages show the Project name the same way we do it on e.g. Transcripts page
+* #510-512: (Edge only) add ability to reset a password using Password Recovery Key (PRK)
+* #513: Front-end should allow apostrophe in the Project name
+* #515: change the "data not found" text to "No transcripts"
+* #516: Changes on the Apps Download page
+
+
 ### Minor release 1.64.1 is scheduled for 9/19/2022 between 5:00pm and 7:00pm CST
 
 This release includes an improved model for diarization which will provide better diarization accuracy.

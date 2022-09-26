@@ -11,6 +11,16 @@ This release addresses the following Transcribe App issues:
 * #515: change the "data not found" text to "No transcripts"
 * #516: Changes on the Apps Download page
 
+This release addresses the following Developer Web Console issues:
+* #74: Add info about Rate Limits on the Account
+* #78: Password is encrypted even on HTTP connections (relevant to Edge only) 
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #63: new /speaker API
+* #64: small changes to /asr/meeting API to take account new Speaker objects
+* #66: add voiceSignatureSpeakers to POST /asr/meeting
+* #67: add voiceSignatureSpeakers to context APIs
+* #68: Allow DataObject to be associated with an Account
 
 ### Minor release 1.64.1 is scheduled for 9/19/2022 between 5:00pm and 7:00pm CST
 

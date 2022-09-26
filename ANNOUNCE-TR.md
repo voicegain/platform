@@ -2,6 +2,18 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### September 27, 2022
+
+This release brings the following improvements:
+* Added option to move transcript to a different project
+* Run additional tests when saving microphone recording to ensure audio is available for transcription
+* Better tooltips regarding Project
+* Improved behavior when user selects project while on Home page
+* An all of the Project Settings pages show the Project name the same way we do it on e.g. Transcripts page
+* Allow apostrophe in the Project name
+* Change the "data not found" text to "No transcripts"
+* Improved information on the Apps Download page
+
 ### September 15, 2022
 
 This release brings a lot of small improvements and fixes, including:
@@ -65,34 +77,7 @@ This release includes a major overhaul of the Transcribe App:
 
 This release includes improved offline speech-recognition model with about 1.5% improvement in accuracy.
 
-### May 24, 2022
 
-This release speeds up the transcript loading and provides tool-tips for prev/next buttons.
-
-### June 15, 2022
-
-Issues fixed:
-* #tsw-3: Default language selection in new Transcribe App project
-
-### May 31, 2022
-
-Issues fixed:
-* #358: (Transcribe App) Login not working if email is not lower case
-
-### May 24, 2022
-
-This release includes:
-* Ability to set the transcript expiry to "Never expire"
-* Improved pop-up preview for transcript in browser-capture mode.
-
-### May 23, 2022
-
-This release includes:
-* Even more accurate offline transcription.
-
-Issues fixed:
-* #rcj-536: Stop users from logging into a different application from account.type
-* #rcj-534: handling unknown speaker it transcript export
 
 
 

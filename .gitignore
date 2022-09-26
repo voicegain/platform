@@ -1,3 +1,5 @@
 
 examples/voicebot-lambda-android-vg-rasa/temp.js
 examples/microphone-websocket-node-js-v2/test
+examples/grammars/output/*
+examples/grammars/grxml/taxonomy-simple.grxml

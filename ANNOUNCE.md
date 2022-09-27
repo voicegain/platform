@@ -6,7 +6,7 @@ This release addresses the following Transcribe App issues:
 * #505-506: better tooltips regarding Project
 * #508: different behavior when user selects project while on Home page
 * #509: on all of the Project Settings pages show the Project name the same way we do it on e.g. Transcripts page
-* #510-512: (Edge only) add ability to reset a password using Password Recovery Key (PRK)
+* #510-511: (Edge only) add ability to reset a password using Password Recovery Key (PRK)
 * #513: Front-end should allow apostrophe in the Project name
 * #515: change the "data not found" text to "No transcripts"
 * #516: Changes on the Apps Download page

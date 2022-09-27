@@ -1,3 +1,27 @@
+## Release 1.65.0
+
+This minor release addresses the following Transcribe App issues:
+* #364: Add option to move transcript to a different project
+* #466: run GET /data/{data-object-id} before submitting microphone recording for offline - this ensures that mic recording is available
+* #505-506: better tooltips regarding Project
+* #508: different behavior when user selects project while on Home page
+* #509: on all of the Project Settings pages show the Project name the same way we do it on e.g. Transcripts page
+* #510-511: (Edge only) add ability to reset a password using Password Recovery Key (PRK)
+* #513: Front-end should allow apostrophe in the Project name
+* #515: change the "data not found" text to "No transcripts"
+* #516: Changes on the Apps Download page
+
+This release addresses the following Developer Web Console issues:
+* #74: Add info about Rate Limits on the Account
+* #78: Password is encrypted even on HTTP connections (relevant to Edge only) 
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #63: new /speaker API
+* #64: small changes to /asr/meeting API to take account new Speaker objects
+* #66: add voiceSignatureSpeakers to POST /asr/meeting
+* #67: add voiceSignatureSpeakers to context APIs
+* #68: Allow DataObject to be associated with an Account
+
 ## Release 1.64.1
 
 This maintenance release includes an improved model for diarization which will provide better diarization accuracy.

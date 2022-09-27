@@ -1,3 +1,27 @@
+### Minor release 1.65.0 is scheduled for 9/17/2022 between 1:00pm and 3:00pm CST
+
+This release addresses the following Transcribe App issues:
+* #364: Add option to move transcript to a different project
+* #466: run GET /data/{data-object-id} before submitting microphone recording for offline - this ensures that mic recording is available
+* #505-506: better tooltips regarding Project
+* #508: different behavior when user selects project while on Home page
+* #509: on all of the Project Settings pages show the Project name the same way we do it on e.g. Transcripts page
+* #510-511: (Edge only) add ability to reset a password using Password Recovery Key (PRK)
+* #513: Front-end should allow apostrophe in the Project name
+* #515: change the "data not found" text to "No transcripts"
+* #516: Changes on the Apps Download page
+
+This release addresses the following Developer Web Console issues:
+* #74: Add info about Rate Limits on the Account
+* #78: Password is encrypted even on HTTP connections (relevant to Edge only) 
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #63: new /speaker API
+* #64: small changes to /asr/meeting API to take account new Speaker objects
+* #66: add voiceSignatureSpeakers to POST /asr/meeting
+* #67: add voiceSignatureSpeakers to context APIs
+* #68: Allow DataObject to be associated with an Account
+
 ### Minor release 1.64.1 is scheduled for 9/19/2022 between 5:00pm and 7:00pm CST
 
 This release includes an improved model for diarization which will provide better diarization accuracy.
@@ -147,38 +171,6 @@ This release includes:
   * Significantly speeds up loading of long Transcripts and Meetings
   * Private/Shared context functionality has been improved.
   * Removal of the password change reminder from the Edge Web Console - this was to support Edge deployments which are not connected to Internet.
-
-### Minor release 1.60.0 is scheduled for 6/17/2022 between 5:30pm and 8:30pm CST
-
-This release includes:
-* Support for `sttSpeechContexts` in **AudioCodes API** - can be used to pass hints to recognition. 
-  * Ability to pass additional parameters through `sttGenericData` parameter coming soon 
-* Password strength check compliant with latest NIST guidelines.
-
-### Maintenance release 1.59.2 is scheduled for 6/15/2022 between 6:30pm and 8:30pm CST
-
-This release includes:
-* Improved NLU for IVR prompt intent detection (contact support@voicegain.ai if you are interested in this feature) 
-
-Issues fixed:
-* #rcj-538: NPE in AudioCodes API when websocket closed
-* #tsw-3: Default language selection in new Transcribe App project
-
-### Maintenance release 1.59.1 is scheduled for 6/9/2022 between 5:00pm and 8:00pm CST
-
-This release includes:
-* Ability to configure external document and object storage for Edge deployment
-* Maximum persist time for meeting transcripts on Cloud has been increased from 7 to 31 days (this is in /asr/meeting API)
-* Added password view toggle in the Web Console Login
-* Multiple upgrades to 3rd-party dependencies to remove known vulnerabilities
-
-### Minor release 1.59.0 is scheduled for 5/31/2022 between 7:00pm and 10:00pm CST
-
-Issues fixed:
-* #358: (Transcribe App) Login not working if email is not lower case
-* #ocp-780: Topic generation for SA not working
-
-This release also changes the logging library used by our back-end code.
 
 
 **Backwards incompatibility:**

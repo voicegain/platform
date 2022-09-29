@@ -9,7 +9,7 @@ NOTE 2: We also now support an install on a machine or a VM that has no GPU (thu
 Under the hood:
 This guide will have you do the following:
 * Configure your server BIOS
-* Install Ubuntu **LTS 20.04 Desktop** with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs
+* Install Ubuntu **LTS 20.04 Desktop** with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs (support for non-GPU/CPU-Only also available. See [Step 8](#step8) for --gpu flag)
   * If the machine or the VM has no GPU, you can alternatively use Ubuntu **LTS 20.04 Server**
   * NOTE: We have tested our install with Ubuntu 22.04 LTS and found that it does not run stable (there are frequent service restarts due to failed liveness probe even in presence of no load). So please **do not use Ubuntu 22.04**. We will continue troubleshooting Ubuntu 22.04 and will note here when it is safe to use.
 * Provision your server using the Voicegain EZ Init script.
@@ -41,7 +41,7 @@ When you contact us we will ask you to describe your intended usage (e.g. offlin
 
 ## <a name="step1"></a>Step 1: Configure your Server BIOS 
 
-*Step 1 is relevant only for a bare hardware deployment (not a VM).*
+*Step 1 is relevant only for a bare hardware deployment (not a VM). Proceed to [Step 2](#step2) if manually installing on VM. If the VM was autoprovisioned with Ubuntu 20.04 proceed to [Step 5](#step5) to ensure storage partitions are configured correctly.*
 
 Boot your server and enter BIOS Configuration Menu: [Common Manufacturer BIOS Keys](https://www.tomshardware.com/reviews/bios-keys-to-access-your-firmware,5732.html#:~:text=BIOS%20Keys%20by%20Manufacturer%201%20ASRock%3A%20F2%20or,Lenovo%20%28ThinkPads%29%3A%20Enter%20then%20F1.%20More%20items...%20)
 
@@ -77,12 +77,13 @@ Steps to creating a bootable Ubuntu USB Drive based on your current OS:
 
 Insert the USB drive and ensure that your system will either prioritize USB Drive in the boot order, or otherwise, manually enter the UEFI One Time Boot Menu and boot from the USB Drive. 
 
-When the Live Ubuntu system has booted select "Try Ubuntu" (NOT "Install Ubuntu")
+When the Live Ubuntu system has booted select "Try Ubuntu" (NOT "Install Ubuntu"). Explanation follows.
 
 ## <a name="step3"></a>Step 3: Configure Network
 
-The reason for choosing to "Try Ubuntu" is that you can manually configure your network settings before Installing. This saves a lot of time and heartbreak. 
+The reason for choosing to "Try Ubuntu" is that "Install Ubuntu" prevents manual network configuration. With "Try Ubuntu" you can configure your IP Address and related network settings before Installing. With Kubernetes the initial IP Address of the server matters greatly and must be static to prevent breaking the cluster configuration. Changing the IP or allowing DHCP to provide a dynamic IP will render the control plane unreachable. Setting your IP up first saves a lot of time and heartbreak. 
 
+### How to configure network prior to installing Ubuntu: 
 Selecting the network icon in the top right you can then choose to edit the wired settings, click the gear icon and select the IPV4 tab and provide the static IP address of your new server and relevant network information.
 
 ![Wired Settings](./Edge-network1.png)

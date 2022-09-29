@@ -24,6 +24,19 @@ def lambda_handler(event, context):
                     Params={'Bucket': bucket, 'Key': key},
                     ExpiresIn=3600)
 
+                headMetadata = s3.head_object(Bucket=bucket, Key=key)
+                lastModified = str(headMetadata.get('LastModified'))
+                objectMetadata = headMetadata.get('Metadata')
+
+                requestMetadata = []
+                requestMetadata.append({"name" : "bucket", "value" : bucket})
+                requestMetadata.append({"name" : "key", "value" : key})
+                requestMetadata.append({"name" : "lastModified", "value" : lastModified})
+
+                if objectMetadata:
+                    for key in objectMetadata.keys():
+                        requestMetadata.append({"name" : key, "value" : objectMetadata.get(key)})
+
                 vgRequest = {
                     "sessions" : [{
                         "asyncMode" : "OFF-LINE",
@@ -35,10 +48,7 @@ def lambda_handler(event, context):
                         # for prod you would likely configure a callback
                         "portal" : {"label" : bucket +"-"+ key, "persist" : 3600000},
 
-                        "metadata" : [
-                            {"name" : "bucket", "value" : bucket},
-                            {"name" : "key", "value" : key},
-                        ]
+                        "metadata": requestMetadata
                     }],
                     "audio" :{
                         "source" :{

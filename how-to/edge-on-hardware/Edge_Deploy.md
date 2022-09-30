@@ -192,7 +192,8 @@ The EZInitCommand provided above should look something like:
 
 > **What is `--preserve-env=HOME`?** As of Ubuntu 20; Ubuntu handles `sudo` commands differently than other distros and previous versions. It is **required** to run sudo while preserving the home directory in order for the install to pertain to the correct user.
 
-<a name="flags"></a>## FLAGS and ARGUMENTS
+<a name="flags"></a>  
+## FLAGS and ARGUMENTS
 * **CPU-Only (`--gpu|-g`):** If you are installing on a machine or VM **without GPU** you will need to append the following option to the EZInit Script  `-g false` or `--gpu false` ; otherwise the EZInit script will attempt to install Nvidia Cuda drivers and will fail.
 * **Multi-node (`--multi|-m`)** By default the EZInit script assumes a single node cluster is being deployed. In order to receive follow-up instructions and commands for multi-node clusters provide the `-m` or `--multi` flag
 * **Custom NFS (`--server|s` and `--nfsdir|-d`)** By default the local server `127.0.0.1` and the `/nfs` directory are set for dynamic storage provisioning. If you have another NFS server within your network you can provide the IP via the `-s 8.8.8.8` or `--server 8.8.4.4` arguments. If you have a different local partition you wish to serve from you can provide the `-d /mystorage` or `--nfsdir /storage` arguments. (8.8.8.8, 8.8.4.4, /mystroage, and /storage provided as examples)

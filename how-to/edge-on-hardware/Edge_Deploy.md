@@ -60,7 +60,7 @@ If not enabled the card will not be detected by Nvidia driver and you may see er
 
 *Step 2 may have to be done differently if installing on a VM - the instructions below focus on bare hardware.*
 
-If you have not already; you can download the Ubuntu 20 LTS Desktop Image [here](https://ubuntu.com/download/desktop). (If machine or VM has no GPU then you can alternatively use Ubuntu Server.)
+If you have not already; you can download the Ubuntu 20.04 LTS Desktop Image [here](https://releases.ubuntu.com/20.04.5/). (If machine or VM has no GPU then you can alternatively use Ubuntu Server.)
 
 You can burn the installation image on to DVD, however, we recommend creating a Bootable USB drive as it is faster and becoming the new standard.
 
@@ -89,9 +89,9 @@ Selecting the network icon in the top right you can then choose to edit the wire
 ![Wired Settings](./Edge-network1.png)
 ![IPv4 Settings](./Edge-network2.png)
 
-Now you can toggle the Wired Network off and then back on for the new settings to take effect. 
+Now **toggle the Wired Network off and then back on** for the new settings to take effect. 
 
-Next, DoubleClick the "Install Ubuntu 20.xx.x LTS" icon on the desktop. 
+Next, DoubleClick the "Install Ubuntu 20.04.x LTS" icon on the desktop. 
 
 ## <a name="step4"></a>Step 4: Configure Installation
 
@@ -107,10 +107,10 @@ Then proceed with [Step 5](#step5)
 
 In short, the spirit behind the partitions are as such: 
 - EFI partition: Required 
-- No Swap: Kubernetes requires swap to be off so no need to waste disk space here.
-- Partition for NFS-Server: dynamically provisioned storage consumed by the k8s cluster.
+- **No Swap**: Kubernetes requires swap to be off so no need to waste disk space here.
+- Partition for NFS: dynamically provisioned storage consumed by the k8s cluster.
  
-Kubernetes doesn't support Swap, and the Storage should not impact the host system if it's ever filled. Detailed walk-through follows:
+Kubernetes doesn't support Swap, and the NFS Storage should not impact the host system if it's ever filled. Detailed walk-through follows:
 
 ### Installation Type:
 * On the "Installation Type" screen: Choose "Something else" and then "Continue"
@@ -148,7 +148,7 @@ Click **Install Now** -> Continue -> Continue and finish the remainder of the in
 
 **A NOTE ABOUT USERS:**
 
-During the EZInit Script process a system user named `voicegain` will be created (if one does not already exist). The `voicegain` user will be used for interacting with and running the voicegain application. If this is going to be a single user system (you do not need multple user logins) then you can (if you wish) create the `voicegain` user yourself during the Ubuntu installation process. If this system will be accessed by multple people you may wish to simply create the first admin account during the Ubuntu installation and allow the EZInit script to generate the `voicegain` user. 
+During the EZInit Script process a system user named `voicegain` will be created (if one does not already exist). The `voicegain` user will be used for interacting with and running the voicegain application. If this is going to be a single user system (you do not need multple user logins) then you can (if you wish) create the `voicegain` user yourself during the Ubuntu installation process. If this system will be accessed by multple people you may wish to simply create the first admin account during the Ubuntu installation and allow the EZInit script to automatically generate the `voicegain` user. 
 
 ## <a name="step6"></a>Step 6: Finalize Provisioning
 
@@ -160,8 +160,10 @@ You will likely also be prompted by the "Software Updater" to, well, update. Clo
 
 In the terminal execute: `sudo apt install openssh-server -y`
 
+This will automatically start the server and update the local firewall to permit SSH connections over port 22.
+
 ## <a name="step7"></a>Step 7: Create Cluster on VoiceGain
-> **System Provisioning Considerations:** For the sake of simplicity; the remainder of this guide will assume we are solely using the Ubuntu system we have just installed to complete all the remaining steps. However, it is entirely possible to complete this remotely. To do this, you would open a terminal and run `sudo apt install openssh-server -y`. You can, then, create the Cluster on the Voicegain portal from the system of your choosing and paste the EZInitCommand to the Ubuntu system over ssh.
+> **System Provisioning Considerations:** For the sake of simplicity; the remainder of this guide will assume we are solely using the Ubuntu system we have just installed to access the Voicegain Console UI and complete all the remaining steps. However, it is entirely possible to complete this remotely via SSH (as mentioned in the previous step). You can, then, create the Cluster on the Voicegain portal from the system of your choosing and paste the EZInitCommand to the Ubuntu system over SSH.
 
 1. On your new Ubuntu system: open Firefox and go to: https://console.voicegain.ai
 2. If you do not have a developer account, you would need to sign up first. Detailed instructions are provided [here](https://www.voicegain.ai/post/how-to-signup-for-a-developer-account-and-start-using-voicegain-voice-ai).
@@ -182,12 +184,22 @@ In the terminal execute: `sudo apt install openssh-server -y`
 ![Generate Command Script](./7-4.png)
 
 ## <a name="step8"></a>Step 8: Run EZInit Script
-Paste the copied Command Script into a terminal session on the Edge System, hit enter and provide your password for sudo when prompted. 
 
-* **NOTE 1:** If you are installing on a machine or VM **without GPU** you need to append the following option to the EZInit Script  `-g false` or `--gpu false` ; otherwise the EZInit script will attempt to install Nvidia Cuda drivers and will fail.
+The EZInitCommand provided above should look something like: 
 
-* **NOTE 2:** Ubuntu 20 handles sudo commands differently than other distros and previous versions. It is **required** to run sudo while preserving the home directory:
-``` sudo --preserve-env=HOME bash voicegain-init.sh ``` 
+``` wget --content-disposition --backups=3 https://api.voicegain.ai/v1/cluster/singleUse/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/initScript/EZInitScript && sudo --preserve-env=HOME bash voicegain-init.sh ```
+
+> **What is `--preserve-env=HOME`?** As of Ubuntu 20; Ubuntu handles `sudo` commands differently than other distros and previous versions. It is **required** to run sudo while preserving the home directory in order for the install to pertain to the correct user.
+
+## FLAGS and ARGUMENTS
+* **CPU-Only (`--gpu|-g`):** If you are installing on a machine or VM **without GPU** you will need to append the following option to the EZInit Script  `-g false` or `--gpu false` ; otherwise the EZInit script will attempt to install Nvidia Cuda drivers and will fail.
+* **Multi-node (`--multi|-m`)** By default the EZInit script assumes a single node cluster is being deployed. In order to receive follow-up instructions and commands for multi-node clusters provide the `-m` or `--multi` flag
+* **Custom NFS (`--server|s` and `--nfsdir|-d`)** By default the local server `127.0.0.1` and the `/nfs` directory are set for dynamic storage provisioning. If you have another NFS server within your network you can provide the IP via the `-s 8.8.8.8` or `--server 8.8.4.4` arguments. If you have a different local partition you wish to serve from you can provide the `-d /mystorage` or `--nfsdir /storage` arguments. (8.8.8.8, 8.8.4.4, /mystroage, and /storage provided as examples)
+* 
+
+Paste the copied EZInit Command into a terminal/ssh session on the Edge System, **append any required flags outlined above for your use-case** and hit enter and provide your password for sudo when prompted. 
+
+
 
 ![EZInitScript](./8-1.png)
 
@@ -199,7 +211,7 @@ su voicegain
 vginstall
 ```
 
-**INFO:** if the EZInit script is used to create the `voicegain` user, it will be created as a system user with passwordless sudo and no password. This user cannot log into the system directory or remotely. The script will then be copied to the system user directory `/opt/voicegain/bin/` and aliased as `vginstall`
+**INFO:** if the EZInit script is used to create the `voicegain` user, it will be created as a system user with passwordless sudo and no password. **This user cannot log into the system directly or remotely**. The script will then be copied to the system user directory `/opt/voicegain/bin/` and aliased as `vginstall`
 
 ## <a name="step9"></a>Step 9: Reboot
 
@@ -210,10 +222,10 @@ NOTE: In principle this step is not needed if the machine or VM has no GPU. But 
 We are rebooting in order to ensure the Nvidia drivers are loaded into the kernel. This can be done manually, however, this is not always reliable as changes are made in future updates, and if you are logged in to the graphical interface this is even more complicated.
 
 #### Single-Node Cluster
-If this is a single node cluster, press any key when prompted to reboot (ignore MultiNodeEZWokerScript command).
+If this is a single node cluster, press any key when prompted to reboot. Congrats! Your cluster is configured!
 
 #### Multi-Node Cluster
-IF you are setting up a multi-node cluster DO NOT YET REBOOT...
+IF you are setting up a multi-node cluster (via the --multi flag) **DO NOT YET REBOOT...**
 
 The scope of this guide is focused on simple single node clusters, however, if you wish to have a mutli node cluster: 
 - Follow steps 1 through 6 of this guide on the next system. 

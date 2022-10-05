@@ -1,3 +1,8 @@
+## Ways how to configure environment:
+1. Use step by step instruction below
+2. Use CloudFormation script, which is AWS native language to generate infrastructure.
+
+## Step by step instruction:
 ### Step 1 - Create S3
 1. Navigate to the S3 service.
 2. Click **Create bucket** button.
@@ -6,18 +11,27 @@
 5. All other fields are optional and additional, so you can leave as it is.
 6. Click 'Create bucket' button.
 
-### Step 2 - Create lambda function which is triggered by S3.
+### Step 2 - Create SQS queue
+It's needed to handle 429 (rate limit hit) error from Voicegain API.
+1. Navigate to SQS service.
+2. Click **Create queue**.
+3. Keep **Standard**.
+4. Fill in the name of queue. For example _rate-limit-queue_
+5. Select **Content-based deduplication**
+6. Go to the bottom and click **Create queue**
+
+### Step 3 - Create lambda function which is triggered by S3.
 1. Navigate to the Lambda service.
 2. Click **Create function** button.
 3. Author from scratch.
 4. Fill in the name and select Python 3.9 as runtime.
 5. In the Permission tab expand Change default execution role.
-6. Select Create a new role from AWS policy templates,
+6. Select Create a new role from AWS policy templates.
 7. Fill in the name.
-8. In Policy templates select Amazon S3 object read-only permissions.
+8. In Policy templates select Amazon **S3 object read-only permissions** AND **Amazon SQS poller permissions**.
 9. Click **Create function** button.
 
-### Step 3 - Add S3 trigger.
+### Step 4 - Add S3 trigger.
 1. Now you are in the Lambda overview window.
 2. On the Function overview click on **Add Trigger**.
 3. Select source as S3.
@@ -26,7 +40,14 @@
 6. Click on checkbox **I acknowledge that using the same S3 bucket for both input…**
 7. Click Add.
 
-### Step 4 - Edit lambda code.
+### Step 5 - Add SQS trigger.
+1. Now you are in the Lambda overview window.
+2. On the Function overview click on **Add Trigger**.
+3. Select source as SQS.
+4. Select your queue _rate-limit-queue_.
+5. Click Add.
+
+### Step 6 - Edit lambda code.
 1. Now you are back to the Lambda overview window.
 2. Select **Code** tab and paste code from the GitHub repo.
 3. Fill in all variables on the top of the lambda function code.

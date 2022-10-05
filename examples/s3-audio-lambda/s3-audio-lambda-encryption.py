@@ -15,7 +15,7 @@ headers = {"Authorization" : voicegainJwt, "Content-Type" : "application/json"}
 
 # it's sqs queue url, you need to copy url from your sqs
 sqsUrl = "https://sqs.eu-central-1.amazonaws.com/321296667966/test-common-queue"
-preassignUrlExpirationTime = 3600
+preassignUrlExpirationTime = 120
 
 def lambda_handler(event, context):
     # print("Received event: " + json.dumps(event, indent=2))

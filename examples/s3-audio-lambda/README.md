@@ -2,7 +2,7 @@
 1. Use step by step instruction below
 2. Use CloudFormation script, which is AWS native language to generate infrastructure.
 
-## Step by step instruction:
+## I. Step by step instruction:
 ### Step 1 - Create S3
 1. Navigate to the S3 service.
 2. Click **Create bucket** button.
@@ -50,7 +50,38 @@ It's needed to handle 429 (rate limit hit) error from Voicegain API.
 ### Step 6 - Edit lambda code.
 1. Now you are back to the Lambda overview window.
 2. Select **Code** tab and paste code from the GitHub repo.
-3. Fill in all variables on the top of the lambda function code.
+3. !!Fill in all variables on the top of the lambda function code:
+    - sqsUrl (open SQS overview page -> select your queue -> copy link)
+    - voicegainJwt
+    - myAuthConf
+4. Click **Deploy**.
+
+### View logs
+1. In the Lambda overview page open **Monitor** tab.
+2. Under it open **Logs** tab.
+3. Click **View logs in CloudWatch**
+
+## II. CloudFormation script deployment:
+
+### Step 1 - Create infrastructure via CloudFormation.
+1. Navigate to CloudFormation overview window.
+2. Click **Create Stuck** button. Select **With new resources (standard)**.
+3. On **Template source** select **Upload template file**.
+4. Click **Choose file** and select **cloudFormation.yaml**.
+5. Click **Next** button.
+6. Fill in **Stuck name**. It could be any name. For example _s3-lambda-handler-stuck_ .
+7. Fill in **Bucket name**. It's bucket for files you want to upload in.
+8. Click **Next** button. **Next** button again.
+9. Click **Create stuck** button.
+10. Wait till stuck creation process.
+
+### Step 2 - Edit lambda code.
+1. Now you are back to the Lambda overview window.
+2. Select **Code** tab and paste code from the GitHub repo.
+3. !Fill in all variables on the top of the lambda function code:
+    - sqsUrl (open SQS overview page -> select your queue -> copy link)
+    - voicegainJwt
+    - myAuthConf
 4. Click **Deploy**.
 
 ### View logs

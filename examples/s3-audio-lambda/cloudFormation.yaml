@@ -1,0 +1,98 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  S3 triiger Lambda which handle 429 response from Voicegain and temporarry put request to SQS
+Parameters:
+  BucketName:
+    Type: String
+
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+    DependsOn:
+      - LambdaFunction
+    Properties:
+      BucketName: !Ref BucketName
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: s3:ObjectCreated:*
+            Function: !GetAtt LambdaFunction.Arn
+
+  LambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Code:
+        ZipFile: !Join
+          - |+
+
+          - - import json
+            - 'def lambda_handler(event,context):'
+            - '    return ''Welcome... This is a test Lambda Function'''
+      Handler: index.lambda_handler
+      Role: !GetAtt LambdaIAMRole.Arn
+      Runtime: python3.9
+      Timeout: 5
+      FunctionName: "voicegain-s3-handler"
+
+  LambdaInvokePermission:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      FunctionName: !Ref LambdaFunction
+      Action: 'lambda:InvokeFunction'
+      Principal: s3.amazonaws.com
+      SourceArn: !Sub 'arn:aws:s3:::${BucketName}'
+
+  LambdaIAMRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Path: /
+      Policies:
+        - PolicyName: VoicegainS3AndLogsAndSQSPolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - 's3:*'
+                Resource:
+                  - !Sub arn:aws:s3:::${BucketName}
+                  - !Sub arn:aws:s3:::${BucketName}/*
+              - Effect: Allow
+                Action:
+                  - 's3-object-lambda:*'
+                Resource:
+                  - !Sub arn:aws:s3:::${BucketName}
+                  - !Sub arn:aws:s3:::${BucketName}/*
+              - Effect: Allow
+                Action:
+                  - 'logs:CreateLogGroup'
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
+                Resource: 'arn:aws:logs:*:*:*'
+              - Effect: Allow
+                Action:
+                  - sqs:*
+                Resource: !GetAtt RateLimitHitQueue.Arn
+
+  LambdaFunctionEventSourceMapping:
+    Type: AWS::Lambda::EventSourceMapping
+    Properties:
+      BatchSize: 10
+      Enabled: true
+      EventSourceArn: !GetAtt RateLimitHitQueue.Arn
+      FunctionName: !GetAtt LambdaFunction.Arn
+
+  RateLimitHitQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: 'voicegain-rate-limit-queue'
+      DelaySeconds: 60
+      VisibilityTimeout: 60

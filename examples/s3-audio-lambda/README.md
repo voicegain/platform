@@ -65,15 +65,15 @@ It's needed to handle 429 (rate limit hit) error from Voicegain API.
 
 ### Step 1 - Create infrastructure via CloudFormation.
 1. Navigate to CloudFormation overview window.
-2. Click **Create Stuck** button. Select **With new resources (standard)**.
+2. Click **Create Stack** button. Select **With new resources (standard)**.
 3. On **Template source** select **Upload template file**.
 4. Click **Choose file** and select **cloudFormation.yaml**.
 5. Click **Next** button.
-6. Fill in **Stuck name**. It could be any name. For example _s3-lambda-handler-stuck_ .
+6. Fill in **Stack name**. It could be any name. For example _s3-lambda-handler-stack_ .
 7. Fill in **Bucket name**. It's bucket for files you want to upload in.
 8. Click **Next** button. **Next** button again.
-9. Click **Create stuck** button.
-10. Wait till stuck creation process.
+9. Click **Create stack** button.
+10. Wait till stack creation process.
 
 ### Step 2 - Edit lambda code.
 1. Now you are back to the Lambda overview window.

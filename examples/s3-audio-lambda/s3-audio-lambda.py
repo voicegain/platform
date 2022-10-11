@@ -13,7 +13,7 @@ asrTranscribeUrl = "https://api.ascalon.ai/v1/asr/transcribe/async"
 myAuthConf = "<name of the authConf with the private key>"
 headers = {"Authorization" : voicegainJwt, "Content-Type" : "application/json"}
 # it's sqs queue url, you need to copy url from your sqs
-sqsUrl = "https://sqs.eu-central-1.amazonaws.com/321296667966/rate-limit-queue"
+sqsUrl = "<SQS url>"
 preassignUrlExpirationTime = 3600
 
 def lambda_handler(event, context):

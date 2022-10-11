@@ -1,4 +1,4 @@
-## 2 Lambda Fuction versions
+## 2 Lambda Function versions
 
 ### Long-lived presigned S3 URL
 

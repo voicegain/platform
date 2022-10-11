@@ -1,3 +1,14 @@
+## 2 Lambda fuction versions
+
+### Long-lived presigned S3 URL
+
+![Long-lived presigned S3 URL](./S3_Lambda_handler_no_data_api.png)
+
+### Short-lived presigned S3 URL
+
+![Short-lived presigned S3 URL](./S3_Lambda_handler_with_data_api.png)
+
+
 ## Ways how to configure environment:
 1. Use step by step instruction below
 2. Use CloudFormation script, which is AWS native language to generate infrastructure.

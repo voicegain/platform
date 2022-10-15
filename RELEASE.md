@@ -1,3 +1,31 @@
+## Release 1.66.0
+
+This minor release provides an improved model for Offline English transcription - you will notice about 1% higher accuracy
+
+The release provides these overall improvements to the Transcribe App:
+* Voice Signature support. Users can now create voice signatures and be automatically recognized in transcripts. Next release will add support for creating Voice Signatures for other speakers based on audio.
+* Phrase detection in transcript is now suported.
+* Topic detection has been improved. Still a beta feature.
+
+The release addresses these specific Transcribe App issues:
+* #514: use /auth/login/pre to get the key to encrypt password for login
+* #519: tweak space around arrows pointing to other speakers text
+* #521: do not show the expiry info if the expiry time is "Never"
+* #540: browser capture - same text in both channels
+* #542: sometimes getting a blank page when opening transcript (Cannot read properties of undefined (reading 'name'))
+
+The current version of the Zoom Meeting Assistant going with this release is 0.2.17
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #69: Changes to pagination of API results (/calls API)
+* #70: add mine and sharedWithMe fields to context
+* #71: fail to persist AbstractGrammar.type in MongoDB
+* #76: Add new style pagination to GET /asr/meeting
+* #77: support PII Redaction in Meeting API
+* #78: new auth API: /auth/prk/filename
+* #79: add format parameter to GET /sa/calls (to support CSV export)
+* #80: MeetingSession.sizeInStorage includes the size of each original audio file by mistake
+
 ## Release 1.65.0
 
 This minor release addresses the following Transcribe App issues:

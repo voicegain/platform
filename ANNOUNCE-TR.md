@@ -2,6 +2,24 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### October 17, 2022
+
+This release provides an improved model for Offline English transcription - you will notice about 1% higher accuracy
+
+The release provides these overall improvements to the Transcribe App:
+* Voice Signature support. Users can now create voice signatures and be automatically recognized in transcripts. Next release will add support for creating Voice Signatures for other speakers based on audio.
+* Phrase detection in transcript is now suported.
+* Topic detection has been improved. Still a beta feature.
+
+The release addresses these specific Transcribe App issues:
+* (For Edge users) encrypt password passed in login request
+* Tweaked space around arrows pointing to other speakers text
+* Do not show the expiry info if the expiry time is "Never"
+* Fix for browser capture -  is used to show same preview text in both channels
+* Fix for issue where sometimes getting a blank page when opening transcript, which required a reload to get the page
+
+The current version of the Zoom Meeting Assistant going with this release is 0.2.17
+
 ### September 27, 2022
 
 This release brings the following improvements:
@@ -67,15 +85,7 @@ This release brings a lot of small improvements and fixes, including:
 Known issue in Transcribe App:
 * Uploading files larger than 128MB may fail in the Web Browser.
 
-### August 17, 2022
 
-This release includes a major overhaul of the Transcribe App:
-* Transcribe App now supports Zoom Meeting Assistant App which can submit all your local Zoom Meeting recordings for transcription to the Transcribe App.
-* New Transcript Detail display that no longer requires paging and supports transcript from overlapping speech.
-* All transcripts are now stored indefinitely. The new Storage Gauge on the home page shows you storage usage. If you start running out of space you can either upgrade to a higher plan or delete some transcripts.
-* Transcribe App is now available on Edge - this way you can deploy it to all users in an Enterprise and keep all your confidential data local.
-
-This release includes improved offline speech-recognition model with about 1.5% improvement in accuracy.
 
 
 

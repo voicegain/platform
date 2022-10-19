@@ -25,6 +25,7 @@ The Docker container for Mongodb will be mounting a local drive for storage. Thi
 **Minio Storage Requirements**
 In the case of Minio there are no special requirements. However, it is a best practice to have a dedicated partition to be mounted in the container. This can avoid issues with the underlying host system in the event that the disk fills. 
 
+![storagechart](minioandmongo-storage.png)
 
 ## <a name="step1"></a>Step 1: Install Packages and initial SSH config
 

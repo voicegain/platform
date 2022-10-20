@@ -20,12 +20,18 @@ On the remote backup storage system, you will create a directory for minio and a
 
 For this guide we will suppose that the user: `ubuntu` has mounted backup drives to `/home/ubuntu/backups/minio` and `/home/ubuntu/backups/mongodb`
 
+We will be using a combination of Rsync and SSHFS to transfer content and mount. As such we recommend you generate and ssh-key for authenticating on the remote storage system without a password. If your security policy allows, a passphraseless key can be used for automating the backup process. 
+
+Generate your ssh key: `ssh-keygen without password if permissible`
+Copy to the remote storage server: `ssh-copy-id ubuntu@remotestore.example.com`
+Then test for connectivity by attempting to ssh into the server: `ssh ubuntu@remotestore.example.com`
+
 Specific configuration and storage requirements for the docker systems will be addressed under their respective application below. However, you can review the following chart to determine the ideal size of the local storage volumes for each application based on your expected usage:
 
 ![storagechart](minioandmongo-storage.png)
 
 ## <a name="step1"></a>Step 1: Install Packages and initial SSH config
-If you are using a single system for both Minio and MongoDB then simply run all of the following commands within your terminal, otherwise, the prerequsites have been broken down in to General, Minio-Specific, and MongoDB-Specific.
+If you are using a single system for both Minio and MongoDB then simply run all of the following commands within your terminal, otherwise, the prerequsites have been broken down into General, Minio-Specific, and MongoDB-Specific.
 
 **General Prerequisites:**
 * **NOTE:** *After running the following block of commands (ending with `usermod -aG docker ${USER}`) you must log out and log back in in order for your user to be able to run docker commands without requiring sudo.*
@@ -53,38 +59,39 @@ sudo apt update ; sudo apt install lvm2 xfsprogs mongodb-clients
 ## <a name="step2"></a>Step 2: Minio setup and backup solution
 
 **Minio Storage Requirements**
-In the case of Minio there are no special requirements. However, it is a best practice to have a dedicated partition to be mounted in the container. This can avoid issues with the underlying host system in the event that the disk fills. 
+In the case of Minio there are no special requirements. However, it is a best practice to have a dedicated partition at /data/minio to be mounted in the container. This can avoid issues with the underlying host system in the event that the disk fills. 
 
+The following command will download the latest Minio image from docker hub and create the container, notice the following:
+* `/data/minio:/data` : We are mounting the local /data/minio partition as a persistent bucket storage
+* `MINIO_ACCESS_KEY=accesskey` The access key is essentially our username, change this to whatever you would prefer, but in this guide we are using 'accesskey'
+* `MINIO_SECRET_KEY=secretkey` The password, essentially, and we are using the literal string: 'secretkey' in this guide
 
-You will want to copy and paste the entire code block below into the terminal of your linux system that has kubectl configued and connected to your new cluster as outlined in our Cloud Specific Guides:. 
 <pre>
-kubectl -n kube-system create serviceaccount voicegain-manage
-kubectl create clusterrolebinding voicegain-manage --clusterrole=cluster-admin --serviceaccount=kube-system:voicegain-manage
-TOKENNAME=`kubectl -n kube-system get serviceaccount/voicegain-manage -o jsonpath='{.secrets[0].name}'`
-CA=$(kubectl get -n kube-system secret/$TOKENNAME -o jsonpath='{.data.ca\.crt}')
-TOKEN=$(kubectl get -n kube-system secret/$TOKENNAME -o jsonpath='{.data.token}' | base64 --decode)
-SERVER_URL=$(kubectl cluster-info | head -n1 |awk '/Kubernetes/ {print $NF}'| sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g')
-
-echo "
-apiVersion: v1
-kind: Config
-clusters:
-- name: vg-edge-cluster
-  cluster:
-    certificate-authority-data: ${CA}
-    server: ${SERVER_URL}
-contexts:
-- name: vg-edge-context
-  context:
-    cluster: vg-edge-cluster
-    user: vg-edge-user
-current-context: vg-edge-context
-users:
-- name: vg-edge-user
-  user:
-    token: ${TOKEN}
-" > vg_kubeconfig.yaml
+docker run -d --restart always -p 9000:9000 -p 9001:9001 -e "MINIO_ACCESS_KEY=accesskey" -e "MINIO_SECRET_KEY=secretkey" -v /data/minio:/data -v /data/config:/root/.minio minio/minio server /data --console-address ":9001"
 </pre>
+
+We need to set a configuration for the `mc` cli, so update the accesskey and secretkey as per your own setup:
+<pre>
+mc alias set minio http://localhost:9000 accesskey secretkey
+</pre>
+
+### Backing up Minio:
+
+* Mount remote storage disk via sshfs:
+  <pre>
+  mkdir -p ~/ext/backups/minio
+  sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 ubuntu@remotestore.example.com:/home/ubuntu/backups/minio  ~/ext/backups/minio
+  </pre>
+
+* Backup minio to the newly mounted partition using mc mirror
+ - One time backup:
+ <pre>
+ mc mirror minio/ ~/ext/backups/minio/
+ </pre>
+ - Realtime mirror:
+ <pre>
+ mc mirror --watch minio/ ~/ext/backups/minio/
+ </pre> 
 
 ## <a name="step3"></a>Step 3: MongoDB setup and backup solution
 

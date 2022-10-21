@@ -22,12 +22,12 @@ For this guide we will suppose that the user: `ubuntu` has mounted backup drives
 
 We will be using a combination of Rsync and SSHFS to transfer content and mount. As such we recommend you generate and ssh-key for authenticating on the remote storage system without a password. If your security policy allows, a passphraseless key can be used for automating the backup process. 
 
-Generate your ssh key: 
+- Generate your ssh key: 
 `ssh-keygen`
 
-Copy to the remote storage server: `ssh-copy-id ubuntu@remotestore.example.com`.
+- Copy to the remote storage server: `ssh-copy-id ubuntu@remotestore.example.com`.
 
-Then test for connectivity by attempting to ssh into the server: `ssh ubuntu@remotestore.example.com`
+- Then test for connectivity by attempting to ssh into the server: `ssh ubuntu@remotestore.example.com`
 
 Specific configuration and storage requirements for the docker systems will be addressed under their respective application below. However, you can review the following chart to determine the ideal size of the local storage volumes for each application based on your expected usage:
 

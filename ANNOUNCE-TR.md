@@ -2,6 +2,10 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### October 21, 2022
+
+This release includes improved punctuation for the English Offline transcription.
+
 ### October 17, 2022
 
 This release provides an improved model for Offline English transcription - you will notice about 1% higher accuracy

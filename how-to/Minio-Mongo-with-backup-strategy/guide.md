@@ -13,7 +13,7 @@ Step by step guide how to deploy Minio and Mongo Docker containers to systems (B
 
 ## <a name="before"></a>Step 0: Critical Storage Requirements
 
-**Dedicated Remote Backup Storage Recommendation:**  
+**Dedicated Remote Backup Storage:**  
 Each of the Minio and MongoDB container will have their own local dedicated storage on their respective system(s). The backup solutions in this guide aim to provide reliable application consistent backups that can resist corruption in the case of an enexpected system fault. This assumes that you have SSH access to a system that has reliable storage redundancy via some technology such as RAID or Ceph, etc...
 
 On the remote backup storage system, you will create a directory for minio and a directory for mongodb backups. This need to be writtable by your user. The directories should be on a redundant or regularly backedup partition/disk.

@@ -1,3 +1,7 @@
+## Release 1.66.1
+
+This maintenance release includes improved punctuation for the English Offline transcription.
+
 ## Release 1.66.0
 
 This minor release provides an improved model for Offline English transcription - you will notice about 1% higher accuracy

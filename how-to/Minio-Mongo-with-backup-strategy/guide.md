@@ -141,7 +141,7 @@ Configure LVM to autogrow if needed to avoid snapshot corruption:
 sudo sed -i.bak 's/snapshot_autoextend_threshold = 100/snapshot_autoextend_threshold = 90/g' /etc/lvm/lvm.conf
 </pre>
 
-** Create LVM Snapshot: **
+**Create LVM Snapshot:**
 <pre>
 sudo lvcreate -l 95%FREE -s -n mongosnap /dev/vg_mongolvm/mongodb_data
 sudo lvs

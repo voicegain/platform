@@ -23,7 +23,7 @@ For this guide we will suppose that the user: `ubuntu` has mounted backup drives
 We will be using a combination of Rsync and SSHFS to transfer content and mount. As such we recommend you generate and ssh-key for authenticating on the remote storage system without a password. If your security policy allows, a passphraseless key can be used for automating the backup process. 
 
 Generate your ssh key: 
-`ssh-keygen` without password if permissible.
+`ssh-keygen`
 
 Copy to the remote storage server: `ssh-copy-id ubuntu@remotestore.example.com`.
 

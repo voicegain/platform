@@ -1,3 +1,7 @@
+### Maintenance release 1.66.1 is scheduled for 10/21/2022 between 1pm and 2pm CDT
+
+This release includes improved punctuation for the English Offline transcription.
+
 ### Minor release 1.66.0 is scheduled for 10/17/2022 between 8:00am and 9:00am CDT
 
 This release provides an improved model for Offline English transcription - you will notice about 1% higher accuracy

@@ -81,6 +81,10 @@ Resources:
                 Action:
                   - sqs:*
                 Resource: !GetAtt RateLimitHitQueue.Arn
+              - Effect: Allow
+                Action:
+                  - dynamodb:*
+                Resource: !GetAtt VoicegainRateLimitTable.Arn
 
   LambdaFunctionEventSourceMapping:
     Type: AWS::Lambda::EventSourceMapping
@@ -96,3 +100,24 @@ Resources:
       QueueName: 'voicegain-rate-limit-queue'
       DelaySeconds: 60
       VisibilityTimeout: 60
+
+  VoicegainRateLimitTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: VoicegainRateLimit
+      AttributeDefinitions:
+        - AttributeName: 'id'
+          AttributeType: 'S'
+        - AttributeName: 'retryCounter'
+          AttributeType: 'N'
+      KeySchema:
+        - AttributeName: 'id'
+          KeyType: 'HASH'
+        - AttributeName: 'retryCounter'
+          KeyType: 'RANGE'
+      TimeToLiveSpecification:
+        AttributeName: created
+        Enabled: true
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5

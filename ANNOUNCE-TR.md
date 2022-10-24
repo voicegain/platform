@@ -2,6 +2,15 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### October 24, 2022
+
+The release addresses these specific Transcribe App issues:
+
+* Admin users now have access to a page for managing all Speakers
+* Added ability to assign transcript speaker to a known Speaker (with or without voice signature) - also create new Speaker if needed
+* Older projects were not generating topics
+* Saving a project used to switch it to a different one
+
 ### October 21, 2022
 
 This release includes improved punctuation for the English Offline transcription.

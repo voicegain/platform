@@ -1,29 +1,31 @@
 # <a id="top"></a> Setup Minio (S3 compatible) Object Store and MongoDB with reliable backup strategy
-Step by step guide how to deploy Minio and Mongo Docker containers to systems (Baremetal or VM) and a recommended backup approach
+Step by step guide how to deploy Minio and Mongo (via Docker containers) to systems (Baremetal or VM) and a recommended backup approach
 ----
 **Prerequisites:**
 * Dedicated backup storage system that can be accessed via SSH.
-* Either one or two systems running Ubuntu 20.04 (You can run both Minio and Mongo containers on a single system if needed. This may work with Ubuntu 22.04 but we are using 20.04 for this guide.)
+* Either one or two systems running Ubuntu 20.04
+  *  You can run both Minio and Mongo containers on a single system if needed. 
+  *  This will likely work fine with Ubuntu 22.04 but we are using 20.04 for this guide.
 
 ## <a id="toc"></a>Table of Contents
-- [Step 0: Critical Storage Requirements](#before)
-- [Step 1: Install Packages and initial SSH config](#step1)
+- [Step 0: Storage Requirements](#before)
+- [Step 1: Install Docker, Minio, Mongo and initial SSH config](#step1)
 - [Step 2: Minio setup and backup solution](#step2)
 - [Step 3: MongoDB setup and backup solution](#step3)
 
-## <a name="before"></a>Step 0: Critical Storage Requirements
+## <a name="before"></a>Step 0: Storage Requirements
 
 **Dedicated Remote Backup Storage:**  
-Each of the Minio and MongoDB container will have their own local dedicated storage on their respective system(s). The backup solutions in this guide aim to provide reliable application consistent backups that can resist corruption in the case of an enexpected system fault. This assumes that you have SSH access to a system that has reliable storage redundancy via some technology such as RAID or Ceph, etc...
+Each of the Minio and MongoDB container will have their own local dedicated storage on their respective system(s). 
+In adition to that, we need remote backup storage to keep backups of both Mongo and Minio. The backup storage use storage redundancy via a technology such as RAID or Ceph, etc. The backup storage will be accessed over SSH.
 
-On the remote backup storage system, you will create a directory for minio and a directory for mongodb backups. This need to be writable by your user. The directories should be on a redundant or regularly backedup partition/disk.
+On the remote backup storage system, you will create a directory for minio and a directory for mongodb backups. This needs to be writable by your user. Ideally, the directories should be on a redundant partition/disk.
 
 For this guide we will suppose that the user: `ubuntu` has mounted backup drives to `/home/ubuntu/backups/minio` and `/home/ubuntu/backups/mongodb`
 
 We will be using a combination of Rsync and SSHFS to transfer content and mount. As such we recommend you generate and ssh-key for authenticating on the remote storage system without a password. If your security policy allows, a passphraseless key can be used for automating the backup process. 
 
-- Generate your ssh key: 
-`ssh-keygen`
+- Generate your ssh key: `ssh-keygen`
 
 - Copy to the remote storage server: `ssh-copy-id ubuntu@remotestore.example.com`.
 
@@ -33,16 +35,17 @@ Specific configuration and storage requirements for the docker systems will be a
 
 ![storagechart](minioandmongo-storage.png)
 
-## <a name="step1"></a>Step 1: Install Packages and initial SSH config
+## <a name="step1"></a>Step 1: Install Docker, Minio, Mongo and initial SSH config
 If you are using a single system for both Minio and MongoDB then simply run all of the following commands within your terminal, otherwise, the prerequsites have been broken down into General, Minio-Specific, and MongoDB-Specific.
 
-**General Prerequisites:**
+**General Prerequisites - Installing docker:**
 * **NOTE:** *After running the following block of commands (ending with `usermod -aG docker ${USER}`) you must log out and log back in in order for your user to be able to run docker commands without requiring sudo.*
 <pre>
 sudo apt update ; sudo apt install apt-transport-https ca-certificates curl rsync software-properties-common -y && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" && sudo apt install docker-ce -y && sudo usermod -aG docker ${USER}
 </pre>
 
 **Minio System Prerequisites:**
+We are using Docker to run Minio.
 <pre>
 sudo apt update ; sudo apt install sshfs -y
 curl https://dl.min.io/client/mc/release/linux-amd64/mc \
@@ -55,6 +58,7 @@ echo "export PATH=$PATH:$HOME/minio-binaries/" >> ~/.bashrc
 </pre>
 
 **MongoDB System Prerequisites:**
+We are also using Docker to run MongoDB.
 <pre>
 sudo apt update ; sudo apt install lvm2 xfsprogs mongodb-clients
 </pre>

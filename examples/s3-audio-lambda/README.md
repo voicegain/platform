@@ -28,8 +28,20 @@ It's needed to handle 429 (rate limit hit) error from Voicegain API.
 2. Click **Create queue**.
 3. Keep **Standard**.
 4. Fill in the name of queue. For example _rate-limit-queue_
-5. Select **Content-based deduplication**
-6. Go to the bottom and click **Create queue**
+5. Select **Content-based deduplication**.
+6. Go to the bottom and click **Create queue**.
+
+### Step 2 - Create DynamoDb table
+It's needed to handle 429 (rate limit hit) error from Voicegain API.
+1. Navigate to DynamoDb service.
+2. Click **Create table**.
+3. Fill in the name of table. For example _VoicegainRateLimit_
+4. Fill in Partition key as **id**, Type - **String**.
+5. Fill in Range key as **retryCounter**, Type - **Number**.
+5.Go to the bottom and click **Create table**.
+6. On the left menu click on **Update settings** and select you table.
+7. Expand **Actions** and click on **Enable TTL**.
+8. Fill in Name as **created**.
 
 ### Step 3 - Create lambda function which is triggered by S3.
 1. Navigate to the Lambda service.
@@ -39,7 +51,7 @@ It's needed to handle 429 (rate limit hit) error from Voicegain API.
 5. In the Permission tab expand Change default execution role.
 6. Select Create a new role from AWS policy templates.
 7. Fill in the name.
-8. In Policy templates select Amazon **S3 object read-only permissions** AND **Amazon SQS poller permissions**.
+8. In Policy templates select Amazon **S3 object read-only permissions**, **Amazon SQS poller permissions** AND **Simple microservice permissions**
 9. Click **Create function** button.
 
 ### Step 4 - Add S3 trigger.

@@ -45,7 +45,7 @@ sudo apt update ; sudo apt install apt-transport-https ca-certificates curl rsyn
 </pre>
 
 **Minio System Prerequisites:**
-We are using Docker to run Minio.
+We are installing SSHFS and Minio Clients
 <pre>
 sudo apt update ; sudo apt install sshfs -y
 curl https://dl.min.io/client/mc/release/linux-amd64/mc \
@@ -58,7 +58,7 @@ echo "export PATH=$PATH:$HOME/minio-binaries/" >> ~/.bashrc
 </pre>
 
 **MongoDB System Prerequisites:**
-We are also using Docker to run MongoDB.
+We are first making sure we have LVM, XFS file system and the Mongo Clients.
 <pre>
 sudo apt update ; sudo apt install lvm2 xfsprogs mongodb-clients
 </pre>
@@ -66,10 +66,10 @@ sudo apt update ; sudo apt install lvm2 xfsprogs mongodb-clients
 ## <a name="step2"></a>Step 2: Minio setup and backup solution
 
 **Minio Storage Requirements**
-In the case of Minio there are no special requirements. However, it is a best practice to have a dedicated partition at /data/minio to be mounted in the container. This can avoid issues with the underlying host system in the event that the disk fills. 
+In the case of Minio there are no special requirements. However, it is a best practice to have a dedicated partition at /data/minio to be mounted in the Docker container. This can avoid issues with the underlying host system in the event that the Minio disk fills up. 
 
-The following command will download the latest Minio image from docker hub and create the container, notice the following:
-* `/data/minio:/data` : We are mounting the local /data/minio partition as a persistent bucket storage
+The following command will download the latest Minio image from Docker hub and create the container, notice the following:
+* `/data/minio:/data` : We are mounting the local /data/minio partition as a persistent Minio bucket storage
 * `MINIO_ACCESS_KEY=accesskey` The access key is essentially our username, change this to whatever you would prefer, but in this guide we are using 'accesskey'
 * `MINIO_SECRET_KEY=secretkey` The password, essentially, and we are using the literal string: 'secretkey' in this guide
 

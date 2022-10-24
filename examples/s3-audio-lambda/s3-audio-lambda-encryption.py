@@ -13,14 +13,14 @@ dynamodb = boto3.resource('dynamodb')
 dynamoDbTableName = "VoicegainRateLimit"
 table = dynamodb.Table(dynamoDbTableName)
 
-voicegainJwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2FwaS52b2ljZWdhaW4uYWkvdjEiLCJzdWIiOiIzOTBlYmRhNy1iZDAwLTQzMGQtOTI3My02NTE3Y2Q1NjA3ZjMifQ.QP7Q7CR9BlebO4OH9u9l8HqsG_hXFOCGKry5eWtAQ9g"
+voicegainJwt = "<your context JWT here>"
 asrTranscribeUrl = "https://api.voicegain.ai/v1/asr/transcribe/async"
 dataAudioUrl = "https://api.voicegain.ai/v1/data/audio"
 myAuthConf = "<name of the authConf with the private key>"
 headers = {"Authorization" : voicegainJwt, "Content-Type" : "application/json"}
 
 # it's sqs queue url, you need to copy url from your sqs
-sqsUrl = "https://sqs.us-east-2.amazonaws.com/921245439331/voicegain-rate-limit-queue"
+sqsUrl = "<SQS url>"
 preassignUrlExpirationTime = 120
 eventTypeS3 = "S3"
 eventTypeSQS = "SQS"

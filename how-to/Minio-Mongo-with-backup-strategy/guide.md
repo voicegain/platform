@@ -1,5 +1,12 @@
 # <a id="top"></a> Setup Minio (S3 compatible) Object Store and MongoDB with reliable backup strategy
 Step by step guide how to deploy Minio and Mongo (via Docker containers) to systems (Baremetal or VM) and a recommended backup approach
+
+We show how to:
+- setup Minio using docker
+- setup MongoDB using docker
+- backup Minio using `mc mirror` command and `sshfs`
+- backup MongoDB using LVM snapshot and `rsync`
+
 ----
 **Prerequisites:**
 * Dedicated backup storage system that can be accessed via SSH.
@@ -77,12 +84,12 @@ The following command will download the latest Minio image from Docker hub (`min
 docker run -d --restart always -p 9000:9000 -p 9001:9001 -e "MINIO_ACCESS_KEY=accesskey" -e "MINIO_SECRET_KEY=secretkey" -v /data/minio:/data -v /data/config:/root/.minio minio/minio server /data --console-address ":9001"
 </pre>
 
-We need to set a configuration for the `mc` cli, so update the accesskey and secretkey as per your own setup:
+We need to set a configuration for the `mc` cli, so update the accesskey and secretkey as per your own setup by running the [mc alias set](https://min.io/docs/minio/linux/reference/minio-mc/mc-alias-set.html) command:
 <pre>
 mc alias set minio http://localhost:9000 accesskey secretkey
 </pre>
 
-### Backing up Minio:
+### Backup setup for Minio:
 
 **Mount remote storage disk via sshfs:**
   <pre>
@@ -90,7 +97,7 @@ mc alias set minio http://localhost:9000 accesskey secretkey
   sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 ubuntu@remotestore.example.com:/home/ubuntu/backups/minio  ~/ext/backups/minio
   </pre>
 
-**Backup minio to the newly mounted partition using mc mirror**
+**Backup minio to the newly mounted partition using [mc mirror](https://min.io/docs/minio/linux/reference/minio-mc/mc-mirror.html)**
  - One time backup:
  <pre>
  mc mirror minio/ ~/ext/backups/minio/
@@ -106,15 +113,15 @@ mc alias set minio http://localhost:9000 accesskey secretkey
 ## <a name="step3"></a>Step 3: MongoDB setup and backup solution
 
 **MongoDB Storage Requirements**
-The Docker container for Mongodb will be mounting a local drive for storage. This partition MUST be an LVM. The underlying Volume Group must have free space. For the sake of this guide we are going take a full disk for a volumegroup and use 95% of it for our MongoDB Data. The remaining 5% will be for LVM Snapshotting which is how we achieve application consistent backups.
+The Docker container for Mongodb will be mounting a local drive for storage. This partition MUST be an LVM. The underlying Volume Group must have free space. For the sake of this guide we are going take a full (real or virtual) disk for a volumegroup and use 95% of it for our MongoDB Data. The remaining 5% will be for LVM Snapshotting which is how we achieve application consistent backups.
 
-Lets assume we have attached a 32GB disk for our MongoDB LVM and it has appeared as /dev/sdb:
+Lets assume we have attached a 32GB (virtual) disk for our MongoDB LVM and it has appeared as /dev/sdb:
 ![lsblk](https://user-images.githubusercontent.com/14049448/195718717-b86e8529-0758-45a5-b88a-e787633f30ad.png)
 
 We are going to use fdisk to format the drive for LVM. Next we will create the Physical Volume (PV), Volume Group (VG), and Logical Volume (LV), finally we will create an XFS filesystem and mount our new data disk:
 `sudo fdisk /dev/sdb`
 ![image](https://user-images.githubusercontent.com/14049448/197079090-61dce343-958d-43e9-86d7-6907dbe7676c.png)
-Take note that we assign the Type Value of `8e`
+Take note that we assign the Type Value of `8e` (Linux LVM)
 
 <pre>
 sudo pvcreate /dev/sdb1

@@ -1,3 +1,21 @@
+## Release 1.67.0
+
+This minor release addresses these specific Transcribe App issues:
+* #546: Older projects do not generate topics
+* #547: Saving a project switches it to a different one
+* #550: Assign transcript speaker to a known Speaker (with or without voice signature) - also create new Speaker if needed
+* #551: Add page for managing Speakers
+
+The release addresses these specific Speech Analaytics App issues:
+* #12: Turn off pagination in the Calls page in Speech Analytics App - ths is temporary mesure before switching to new pagination style
+* #14: Upload file should use short-lived JWT
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #81: Enhance logging for AIVR sessions
+* #86: When creating a new User let's create a corresponding Speaker entry (for Transcribe App accounts)
+* #88: Add support for vsConf and originalName (meeting API)
+* #91: Add mustHaveSignature parameter to GET /speakers API
+
 ## Release 1.66.1
 
 This maintenance release includes improved punctuation for the English Offline transcription.

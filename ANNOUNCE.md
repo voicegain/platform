@@ -7,7 +7,7 @@ The release addresses these specific Transcribe App issues:
 * #551: Add page for managing Speakers
 
 The release addresses these specific Speech Analaytics App issues:
-* #12: Turn off pagination in the Calls page in Speech Analytics App - ths is temporary mesure before switching to new pagination style
+* #12: Turn off pagination in the Calls page in Speech Analytics App - this is temporary measure before switching to new pagination style
 * #14: Upload file should use short-lived JWT
 
 This release addresses the following issues for the rest of the Voicegain platform:

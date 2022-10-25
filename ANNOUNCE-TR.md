@@ -2,7 +2,7 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
-### October 24, 2022
+### October 25, 2022
 
 The release addresses these specific Transcribe App issues:
 

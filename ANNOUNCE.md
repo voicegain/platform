@@ -1,4 +1,4 @@
-### Minor release 1.67.0 is scheduled for 10/47/2022 between 8pm and 11pm CDT
+### Minor release 1.67.0 is scheduled for 10/25/2022 between 10am and 1pm CDT
 
 The release addresses these specific Transcribe App issues:
 * #546: Older projects do not generate topics

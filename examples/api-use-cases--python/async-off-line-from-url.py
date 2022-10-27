@@ -14,8 +14,7 @@ body = {
         {
             "asyncMode": "OFF-LINE",
             "poll": {
-                "afterlife": 60000,
-                "persist": 86400000
+                "persist": 600000
             },
             "content": {
                 "incremental": ["progress"],

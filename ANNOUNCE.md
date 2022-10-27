@@ -6,7 +6,7 @@ The release addresses these specific Transcribe App issues:
 * #550: Assign transcript speaker to a known Speaker (with or without voice signature) - also create new Speaker if needed
 * #551: Add page for managing Speakers
 
-The release addresses these specific Speech Analaytics App issues:
+The release addresses these specific Speech Analytics App issues:
 * #12: Turn off pagination in the Calls page in Speech Analytics App - this is temporary measure before switching to new pagination style
 * #14: Upload file should use short-lived JWT
 

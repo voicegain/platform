@@ -1,3 +1,15 @@
+### Minor release 1.68.0 is scheduled for 10/28/2022 between 10am and 1pm CDT
+
+The key features in this release are:
+* Improved diarization in the text areas where one speaker switches to another. 
+* More accurate speaker Voice Signature matching.
+
+This release fixes numerous small Web UI issues, mainly usability, in the Transcribe App related to the Voice Signature functionality made first available in the 2 previous releases.
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #97: When deleting a Speaker we should remove references to it from Context voiceSignatureSpeakers
+* #98: Orphan cleanup delete the audio clip for speaker signature
+
 ### Minor release 1.67.0 is scheduled for 10/25/2022 between 10am and 1pm CDT
 
 The release addresses these specific Transcribe App issues:
@@ -181,20 +193,6 @@ This release addresses the following issues for the rest of the Voicegain platfo
 * #49: add nonSpeakingParticipants to /asr/meeting API
 * #50: change in allowed format for Labels
 * #51: new GET /spec API
-
-### Minor release 1.61.0 is scheduled for 8/17/2022 between 6:30pm and 10:30pm CST
-
-This release includes a major overhaul of the Transcribe App:
-* Transcribe App now supports Zoom Meeting Assistant App which can submit all your local Zoom Meeting recordings for transcription to the Transcribe App.
-* New Transcript Detail display that no longer requires paging and supports transcript from overlapping speech.
-* Transcribe App is now available on Edge - this way you can deploy it to all users in an Enterprise and keep all your confidential data local.
-
-Other minor changes include:
-* Decrease playout of the Telephony Bot prompts. Latency of actions following a prompt has been reduced by about 800ms.
-* Built-in number grammar has a fix for a minor issue.
-
-This release includes improved offline speech-recognition model with about 1.5% improvement in accuracy.
-
 
 
 **Backwards incompatibility:**

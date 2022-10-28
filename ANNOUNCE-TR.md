@@ -2,6 +2,14 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### October 28, 2022
+
+The key features in this release are:
+* Improved diarization in the text areas where one speaker switches to another. 
+* More accurate speaker Voice Signature matching.
+
+This release fixes numerous small Web UI issues, mainly usability, in the Transcribe App related to the Voice Signature functionality made first available in the 2 previous releases.
+
 ### October 25, 2022
 
 The release addresses these specific Transcribe App issues:
@@ -79,24 +87,7 @@ This release brings a lot of small improvements and fixes, including:
 
 Note: This release requires Zoom Meeting Assistant version **0.2.3** or higher.
 
-### August 26, 2022
 
-This release brings a lot of small improvements and fixes, including:
-* Add ability to delete a Keyword example
-* In multi-user plans, ability to assign users to Project directly from Project settings
-* Project deletion is insanteneous.
-* Fix for the issue where American English is highlighted instead of Spanish which is the actual setting on the Context
-* Changing Transcript name now works
-* Shows error message as a tooltip over Error
-* A column selected for sorting a table can now be unselected
-* Sorting by storage size works properly
-* Back button takes you back to where you came from rather than always returning Home
-* On projects settings - we moved NER to bottom of page
-* More characters are now allowed for Transcript names
-* Allow max number of speakers for diarization to be 12 instead of 10
-
-Known issue in Transcribe App:
-* Uploading files larger than 128MB may fail in the Web Browser.
 
 
 

@@ -1,4 +1,4 @@
-### Minor release 1.68.0 is scheduled for 10/28/2022 between 10am and 1pm CDT
+### Minor release 1.68.0 is scheduled for 10/28/2022 between 3pm and 5pm CDT
 
 The key features in this release are:
 * Improved diarization in the text areas where one speaker switches to another. 

@@ -10,6 +10,8 @@ The key features in this release are:
 
 This release fixes numerous small Web UI issues, mainly usability, in the Transcribe App related to the Voice Signature functionality made first available in the 2 previous releases.
 
+The installer for the Zoom Meeting Assistant is now signed with an Extended Validation Certificate so you will no longer see warnings when trying to install that software.
+
 ### October 25, 2022
 
 The release addresses these specific Transcribe App issues:

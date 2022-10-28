@@ -6,6 +6,8 @@ The key features in this release are:
 
 This release fixes numerous small Web UI issues, mainly usability, in the Transcribe App related to the Voice Signature functionality made first available in the 2 previous releases.
 
+The installer for the Zoom Meeting Assistant is now signed with an Extended Validation Certificate.
+
 This release addresses the following issues for the rest of the Voicegain platform:
 * #97: When deleting a Speaker we should remove references to it from Context voiceSignatureSpeakers
 * #98: Orphan cleanup delete the audio clip for speaker signature

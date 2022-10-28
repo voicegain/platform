@@ -1,3 +1,15 @@
+## Release 1.68.0
+
+The key features in this minor release are:
+* Improved diarization in the text areas where one speaker switches to another. 
+* More accurate speaker Voice Signature matching.
+
+This release fixes numerous small Web UI issues, mainly usability, in the Transcribe App related to the Voice Signature functionality made first available in the 2 previous releases.
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #97: When deleting a Speaker we should remove references to it from Context voiceSignatureSpeakers
+* #98: Orphan cleanup delete the audio clip for speaker signature
+
 ## Release 1.67.0
 
 This minor release addresses these specific Transcribe App issues:

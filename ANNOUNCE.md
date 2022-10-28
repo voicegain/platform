@@ -4,7 +4,9 @@ The key features in this release are:
 * Improved diarization in the text areas where one speaker switches to another. 
 * More accurate speaker Voice Signature matching.
 
-This release fixes numerous small Web UI issues, mainly usability, in the Transcribe App related to the Voice Signature functionality made first available in the 2 previous releases.
+This release fixes numerous small Web UI issues, mainly usability, in the Transcribe App related to the Voice Signature functionality made first available in the 2 previous releases. 
+
+The installer for the Zoom Meeting Assistant is now signed with Extended Validation Certificate.
 
 This release addresses the following issues for the rest of the Voicegain platform:
 * #97: When deleting a Speaker we should remove references to it from Context voiceSignatureSpeakers

@@ -1,3 +1,7 @@
+### Maintenance release 1.68.1 is scheduled for 11/10/2022 between 5:30pm and 8pm CDT
+
+This release supports multiple languages choice in the `/asr/transcribe/async` and `/asr/recognize/async`. It runs recognition using all specified languages and returns the transcript with the highest confidence.
+
 ### Minor release 1.68.0 is scheduled for 10/28/2022 between 3pm and 5pm CDT
 
 The key features in this release are:

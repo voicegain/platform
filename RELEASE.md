@@ -1,3 +1,7 @@
+## Release 1.68.1
+
+This maintenance release supports multiple languages choice in the `/asr/transcribe/async` and `/asr/recognize/async`. It runs recognition using all specified languages and returns the transcript with the highest confidence.
+
 ## Release 1.68.0
 
 The key features in this minor release are:

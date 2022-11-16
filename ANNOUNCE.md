@@ -1,4 +1,4 @@
-### Minor release 1.69.0 is scheduled for 11/16/2022 between 4pm and 5pm CST
+### Minor release 1.69.0 is scheduled for 11/16/2022 between 4pm and 7pm CST
 
 This release adds two major new features in the Transcribe App:
 * Meeting Minutes - an AI generated overview of the meeting including key sections with topics/keywords and key sentences in 4 categories: Actions, issues, Risks, Requirements. Meeting Minutes can be enabled from Project Settings.
@@ -179,46 +179,6 @@ This release addresses the following issues for the rest of the Voicegain platfo
 
 This release fixes the following issue:
 * #rcj-555: fail to copy asr transcription result files to a new context - affects SA App Demos
-
-### Minor release 1.62.0 is scheduled for 8/26/2022 between 1:00pm and 4:00pm CST
-
-This release addresses the following Transcribe App issues:
-* #380: only positive (>0) values of speakers should be allowed
-* #398: on Zoom download page add info about needed Zoom settings
-* #407: add ability to delete a Keyword example
-* #424: (Edge) Cannot see the projects I created
-* #436: A wrong value is assigned to user.memberOf
-* #440: I am an Admin user and in Projects settings I do not see the icon for Users
-* #449: Project->Settings->Users page show a "no users in project" page briefly before showing that there are users
-* #450: deleted project still visible in the project menu
-* #451: American English is highlighted instead of Spanish which is the actual setting on the Context
-* #452: (Edge) Not able to save changes to file name
-* #453: Show error message as a tooltip over Error
-* #454: Cannot select other languages on Cloud Transcribe App
-* #457: (Edge) New URL to the Knowledge Base for Transcribe App on Edge
-* #459: selection of a column for sorting a table cannot be undone
-* #460: sorting by storage size is as if storage size was a string not a number
-* #463: back button does not take you back
-* #464: on projects settings - move NER to bottom of page
-* #467: modify logic for checking validity of Labels
-* #469: Allow max number of speakers for diarization to be 12 instead of 10
-* #472: (Edge) The latest sessions are not on the home page
-* #474: no way to add another user to project
-
-Known issue in Transcribe App:
-* Uploading files larger than 128MB may fail in the Web Browser.
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #39: number formatting is not working on meeting transcripts
-* #40: Some sessions are on the second column when there is only one speaker
-* #41: fail to read formatters from MongoDB
-* #42: create a new project if user logs in from=TranscribeApp and there are no private contexts with type=Transcription for that user
-* #46: queue size rate-limit being exceeded
-* #47: Increase audio file size for upload to 256MB
-* #48: increase maxspeakers for diarization to 12
-* #49: add nonSpeakingParticipants to /asr/meeting API
-* #50: change in allowed format for Labels
-* #51: new GET /spec API
 
 
 **Backwards incompatibility:**

@@ -2,6 +2,23 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### November 16, 2022
+
+This release adds two major new features in the Transcribe App:
+* Meeting Minutes - an AI generated overview of the meeting including key sections with topics/keywords and key sentences in 4 categories: Actions, issues, Risks, Requirements. Meeting Minutes can be enabled from Project Settings.
+* Text search of transcripts - from the Home page find transcripts containing the specified words.
+
+Other Transcribe App issues addressed in this release:
+* Fixed confusing text in the confirmation dialog for user deletion
+* Fixed a scroll issue where the last line of transript was only partially visible.
+* Do not allow Phrase example sensitivity values outside the 0-1 range
+* Fixed a glitch in multi-column formatting
+* Made user email not editable - the User dialog incorrectly was allowing it to be modified
+* Added scroll shortcuts to the right pane in the Transcript Detail view
+* (Edge usrs only) Added `Sync from Cloud` button which can be used to sync all the user info from Cloud to the Edge.
+* (Edge users only) Added `Send Test Email` button. This is in preparation of the rollout of the SMTP email support on Edge.
+
+
 ### October 28, 2022
 
 The key features in this release are:

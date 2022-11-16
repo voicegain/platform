@@ -1,4 +1,24 @@
-### Maintenance release 1.68.1 is scheduled for 11/10/2022 between 5:30pm and 8pm CDT
+### Minor release 1.69.0 is scheduled for 11/16/2022 between 4pm and 5pm CST
+
+This release adds two major new features in the Transcribe App:
+* Meeting Minutes - an AI generated overview of the meeting including key sections with topics/keywords and key sentences in 4 categories: Actions, issues, Risks, Requirements. Meeting Minutes can be enabled from Project Settings.
+* Text search of transcripts - from the Home page find transcripts containing the specified words.
+
+Other Transcribe App issues addressed in this release:
+* #530: Fix confusing text in the confirmation dialog for user deletion
+* #560: Fixed a scroll issue where the last line of transript was only partially visible.
+* #578: Do not allow Phrase example sensitivity values outside the 0-1 range
+* #580: Fixed a glitch in multi-column formatting
+* #584: Made user email not editable - the User dialog incorrectly was allowing it to be modified
+* #585: Added scroll shortcuts to the right pane in the Transcript Detail view
+* #588: (Edge only) Added `Sync from Cloud` button which can be used to sync all the user info from Cloud to the Edge.
+* #589: (Edge only) Added `Send Test Email` button. This is in preparation of the rollout of the SMTP email support on Edge.
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #104: New setting for transcription and recognition APIs that controls logging of results
+* #117: Add localOnly parameter to GET /model/acoustic
+
+### Maintenance release 1.68.1 is scheduled for 11/10/2022 between 5:30pm and 8pm CST
 
 This release supports multiple languages choice in the `/asr/transcribe/async` and `/asr/recognize/async`. It runs recognition using all specified languages and returns the transcript with the highest confidence.
 

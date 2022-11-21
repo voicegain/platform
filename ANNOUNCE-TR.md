@@ -2,6 +2,15 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### Novemebr 21, 2022
+
+The release addresses these specific Transcribe App issues:
+* Highlight the topics/keywords in the key sentences in Meeting Minutes
+* Add audio playback and transcript text links to the sentences in Overview and Key Items
+* In Profile: Separate Account from User settings
+* In New Project Wizard set the toggle for Meeting Minutes to enabled by default
+* (Edge users only) disable Download if transcribeAppSettings has disableDownload:true
+
 ### November 16, 2022
 
 This release adds two major new features in the Transcribe App:

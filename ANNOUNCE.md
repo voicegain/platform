@@ -1,3 +1,23 @@
+### Minor release 1.70.0 is scheduled for 11/21/2022 between 4pm and 7pm CST
+
+This release addresses the follwoing Transcribe App issues:
+* #595: Highlight the topics/keywords in the key sentences in Meeting Minutes
+* #596: Add audio playback and transcript text links to the sentences in Overview and Key Items
+* #600: In Profile: Separate Account from User settings
+* #601: In New Project Wizard set the toggle for Meeting Minutes to enabled by default
+* #603: (Edge only) disable Download if transcribeAppSettings has disableDownload:true
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #103: CC number marking in logs
+* #111: `sttGenericData` in AudioCodes API now supports maxAlternatives 
+* #112: `sttGenericData` in AudioCodes API now supports interpretation 
+* #123: Added POST /data/audio/ws method to data API
+* #124: Use Content-Type: text/plain; charset=utf-8 for all text/plain responses
+* #125: Added transcribeAppSettings to OnPrem Cluster
+
+Moreover the following improvements were done in the ML back-end.
+* Punctuation generation now runs on GPU instead of CPU
+
 ### Minor release 1.69.0 is scheduled for 11/16/2022 between 4pm and 7pm CST
 
 This release adds two major new features in the Transcribe App:

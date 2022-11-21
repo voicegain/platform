@@ -1,6 +1,6 @@
 ## Release 1.70.0
 
-This minor release addresses the follwoing Transcribe App issues:
+This minor release addresses the following Transcribe App issues:
 * #595: Highlight the topics/keywords in the key sentences in Meeting Minutes
 * #596: Add audio playback and transcript text links to the sentences in Overview and Key Items
 * #600: In Profile: Separate Account from User settings

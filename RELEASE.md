@@ -1,7 +1,7 @@
 ## Release 1.70.1
 
 This maintenance release has only two changes:
-* Diarization processing has been moved to GPU which is of inerest to Edge users because it will reduce the CPU resource requirements.
+* Diarization processing has been moved to GPU which is of interest to Edge users because it will reduce the CPU resource requirements.
 * In Transcribe App, the default setting of Meeting Minutes on existing Projects has been changed to make it less confusing.
 
 ## Release 1.70.0

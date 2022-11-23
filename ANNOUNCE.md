@@ -1,3 +1,8 @@
+### Maintenance release 1.70.2 is scheduled for 11/23/2022 between 3:30pm and 6pm CST
+
+This release fixes one issue:
+* #126: Add project filtering to meeting search for normal Users
+
 ### Maintenance release 1.70.1 is scheduled for 11/22/2022 between 4pm and 6pm CST
 
 This release has only two changes:

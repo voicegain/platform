@@ -1,3 +1,8 @@
+## Release 1.70.2
+
+This maintenance release fixes one issue:
+* #126: Add project filtering to meeting search for normal Users
+
 ## Release 1.70.1
 
 This maintenance release has only two changes:

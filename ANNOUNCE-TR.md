@@ -2,7 +2,7 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
-### December 7, 2022
+### December 8, 2022
 
 This release adds configurability of the Key Items of the Meeting Minutes.
 

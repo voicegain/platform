@@ -1,6 +1,6 @@
 ### Minor release 1.71.0 is scheduled for 12/7/2022 between 8pm and 11pm CST
 
-This release add configurability of the Key Items of the Meeting Minutes in the Transcribe App.
+This release adds configurability of the Key Items of the Meeting Minutes in the Transcribe App.
 
 This release also addresses the following Transcribe App issues:
 * #556: Prepopulate the Name with the file name

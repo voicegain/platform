@@ -2,7 +2,18 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
-### Novemebr 21, 2022
+### December 7, 2022
+
+This release adds configurability of the Key Items of the Meeting Minutes.
+
+The release addresses these specific issues:
+* Prepopulate the Name with the file name
+* Show project name on transcript detail view
+* Show avatar if Speaker is a User
+* In Overview view, clicking on the times in the Summary should scroll to relevant Section
+* Remove the front-end bolding of keywords in key sentences (done in back-end now more accurately)
+
+### November 21, 2022
 
 The release addresses these specific Transcribe App issues:
 * Highlight the topics/keywords in the key sentences in Meeting Minutes

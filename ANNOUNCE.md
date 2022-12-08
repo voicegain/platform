@@ -1,3 +1,27 @@
+### Minor release 1.71.0 is scheduled for 12/7/2022 between 8pm and 11pm CST
+
+This release add configurability of the Key Items of the Meeting Minutes in the Transcribe App.
+
+This release also addresses the following Transcribe App issues:
+* #556: Prepopulate the Name with the file name
+* #599: Show project name on transcript detail view
+* #602: Show avatar if Speaker is a User
+* #605: In Overview view, clicking on the times in the Summary should scroll to relevant Section
+* #607: Remove the front-end bolding of keywords in key sentences (done in back-end now more accurately)
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #128: Add justification fields in meetingMinutes
+* #129: Support json-mc in GET /asr/transcribe/{sessionId}/transcript
+* #130: Speed up GET /asr/meeting
+* #131: Add metatada to PUT /asr/meeting
+* #132: Prepopulate SA Config with Meeting Minutes phrases
+* #133: Meeting Minutes defaults for existing projects
+* #136: Change the lock-out duration for user sign-in
+
+Other changes in this release are:
+* Updated EZ-Init script
+* CallHome License Server
+
 ### Maintenance release 1.70.2 is scheduled for 11/23/2022 between 3:30pm and 6pm CST
 
 This release fixes one issue:

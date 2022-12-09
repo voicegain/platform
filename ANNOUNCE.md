@@ -5,7 +5,7 @@ This release fixes 3 issues:
 * #617: (Edge) New created project not visible in the project list
 * #618: (Edge) New created project shows files from an older project
 
-With this relese we also support a minimal, self-contained, docker-compose deployment of MRCP ASR on GPUs.
+With this release we also support a minimal, self-contained, docker-compose deployment of MRCP ASR on GPUs.
 
 ### Minor release 1.71.0 is scheduled for 12/8/2022 between 1pm and 4pm CST
 

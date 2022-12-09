@@ -1,3 +1,12 @@
+### Maintenance release 1.71.1 is scheduled for 12/9/2022 between noon and 2pm CST
+
+This release fixes 3 issues:
+* #143: Weird clock values when on Edge and logged in as a user with role User
+* #617: (Edge) New created project not visible in the project list
+* #618: (Edge) New created project shows files from an older project
+
+With this release we also support a minimal, self-contained, docker-compose deployment of MRCP ASR on GPUs.
+
 ### Minor release 1.71.0 is scheduled for 12/8/2022 between 2pm and 6pm CST
 
 This release adds configurability of the Key Items of the Meeting Minutes in the Transcribe App.
@@ -194,43 +203,6 @@ This release addresses the following issues for the rest of the Voicegain platfo
 * #58: New field in authConfig on Context - support for Twilio encrypted recordings
 * #59: Add support for authConf in POST and PUT /data/audio (twilio-rec-encrypted type)
 * #60: NPE in REAL-TIME transcribe session is no audio has been received at all over websocket
-
-### Minor release 1.63.0 is scheduled for 9/6/2022 between 5:00pm and 7:00pm CST
-
-This release addresses the following Transcribe App issues:
-* #382: (re-opened) wrong (previous) audio being played
-* #403: reduce spacing in the Keyword dialog
-* #404: Tags are not displayed
-* #447: add a password view icon to Transcribe App login
-* #456: App download page does not show on Chrome on Mac
-* #462: in Project settings - if switching the project, the settings do not switch to reflect the selected project
-* #468: Increase max file size for upload to 256MB
-* #473: change of terminology when removing user from Project
-* #476: Lag in switching between audio being played
-* #477: Add Role setting to Edit User dialog
-* #478: Add to user Profile a toggle that makes the account discoverable
-* #480: change header: Latest Activity => Latest activity across all Projects
-* #483: Allow someone with role=User to share their own Projects with other users
-* #484: handle a case where words are empty
-* #485: change wording on the transcript delete form
-
-Note: This release requires Zoom Meeting Assistant version **0.2.3** or higher.
-
-This release addresses the following Developer Web Console issues:
-* #72: modify file upload to use JWT in the POST /data/file API
-* #72: change refill amounts
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #47: Increase audio file size for upload to 256MB
-* #52: New discoverable field on User
-* #53: APIs to support for Password Recovery Key
-* #54: data-api rejects a request when a context doesn't have any allowedOrigins
-* #56: add minRequiredZoomMAVersion to /spec API
-
-### Maintenance release 1.62.1 is scheduled for 8/30/2022 between 5:00pm and 7:00pm CST
-
-This release fixes the following issue:
-* #rcj-555: fail to copy asr transcription result files to a new context - affects SA App Demos
 
 
 

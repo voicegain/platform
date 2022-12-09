@@ -1,3 +1,12 @@
+## Release 1.71.1
+
+This maintenance release fixes 3 issues:
+* #143: Weird clock values when on Edge and logged in as a user with role User
+* #617: (Edge) New created project not visible in the project list
+* #618: (Edge) New created project shows files from an older project
+
+With this release we also support a minimal, self-contained, docker-compose deployment of MRCP ASR on GPUs.
+
 ## Release 1.71.0
 
 This minor release adds configurability of the Key Items of the Meeting Minutes in the Transcribe App.

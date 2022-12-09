@@ -77,7 +77,11 @@ print("Save final result to {}".format(poll_response_path), flush=True)
 
 # get result as text file - this is optional if you have selected callback
 
-txt_url = "https://api.{}.ai/v1/asr/transcribe/{}/transcript?format=text&interval=15".format(platform, session_id)
+# this will return result in a single text file
+#txt_url = "https://api.{}.ai/v1/asr/transcribe/{}/transcript?format=text&interval=15".format(platform, session_id)
+# this will return result in a JSON multi-column format
+txt_url = "https://api.{}.ai/v1/asr/transcribe/{}/transcript?format=json-mc".format(platform, session_id)
+
 print("Retrieving transcript using url: {}".format(txt_url), flush=True)
 txt_response = requests.get(txt_url, headers=headers)
 transcript_text_path = os.path.join(output_path, "{}.txt".format(session_id))

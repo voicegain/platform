@@ -2,6 +2,17 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### December 15, 2022
+
+This release offers improved Key Items feature within the Meeting Minutes in the Transcribe App.
+
+The release addresses these specific issues:
+* (Edge users only) make some Profile fields read-only on Edge
+* Add a button for applying defaults to Key Items
+* Add a check for validity of regex to the Key Items Example dialog
+* Switch from regex to advancedRegex for key items
+* Show projects alphabetically sorted
+
 ### December 8, 2022
 
 This release adds configurability of the Key Items of the Meeting Minutes.

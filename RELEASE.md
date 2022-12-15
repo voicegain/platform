@@ -1,3 +1,21 @@
+## Release 1.72.0
+
+This minor release offers improved Key Items feature within the Meeting Minutes in the Transcribe App.
+
+This release also addresses the following Transcribe App issues:
+* #593: Subscribe to notifications from back-end and log the incoming messages
+* #615: (Edge) make some Profile fields read-only on Edge
+* #619: Add a button for applying defaults to KeyItems
+* #620: Add a check for validity of regex to the Key Items Example dialog
+* #621: Switch from regex to advancedRegex for key items
+* #622: Show projects alphabetically sorted
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #145: Add releaseVersionDetail to response from GET /spec
+* #146: Add PUT /sa/config/{saConfigId}/defaults
+* #147: Return Phrases in SA Config in fixed order
+* #148: Validate regex loaded from the built-in Key-Items JSON
+
 ## Release 1.71.1
 
 This maintenance release fixes 3 issues:

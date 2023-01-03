@@ -244,6 +244,9 @@ The list of Subprocessors approved by the data importer as of the effective date
 |Google | Google Cloud utilized for (1) data storage in FireStore; (2) logging and monitoring |
 |Amazon AWS | Email support system, used to send emails to users|
 |New Relic | (Edge deployment only) logging and monitoring |
+|Rev.com | Manual Labeling of Audio files for Model Training (on customer request / with customer permission)|
+|Transcription Hub LLC | Manual Labeling of Audio files for Model Training (on customer request / with customer permission)|
+|Atexto | Manual Labeling of Audio files for Model Training (on customer request / with customer permission)|
 
 # Appendix 2 to the Standard Contractual Clauses
 This Appendix forms part of the Clauses.

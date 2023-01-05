@@ -2,6 +2,18 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### January 5, 2023
+
+This release enables Browser Capture in the Transcribe App on Edge.
+
+This release also addresses the following spacific issues:
+* Pause was behaving like mute
+* "No Microphone" option added in Browser Capture
+* Cancel out of the Mic Save dialog was not working
+* (Meeting Minutes) Made Modifications to the KeyItems settings in Project
+  * Support negative examples and regex
+  * Add Enabled toggle for each Key Item
+
 ### December 15, 2022
 
 This release offers improved Key Items feature within the Meeting Minutes in the Transcribe App.
@@ -117,23 +129,6 @@ This release brings a lot of small improvements and fixes, including:
 
 Zoom Meeting Assistant installer is now digitally signed.
 
-### September 6, 2022
-
-This release brings a lot of small improvements and fixes, including:
-* Fix for  wrong (previous) audio being played
-* Reduced spacing in the Keyword dialog
-* Tags are now displayed
-* Added a password view icon to Transcribe App login
-* App download page now shows on Chrome on Mac
-* In Project settings - if switching the project, the settings now do switch to reflect the selected project
-* Increases max file size for upload to 256MB
-* Improved terminology when removing user from Project
-* Fixed lag in switching between audio being played
-* Added Role setting to Edit User dialog
-* Header change: Latest Activity => Latest activity across all Projects
-* Allow someone with role=User to share their own Projects with other users
-* Handle a case where words are empty
-* Changed wording on the transcript delete form
 
 Note: This release requires Zoom Meeting Assistant version **0.2.3** or higher.
 

@@ -1,3 +1,27 @@
+### Minor release 1.73.0 is scheduled for 1/5/2023 between 6pm and 9pm CST
+
+This Release enables Browser Capture in the Transcribe App on Edge.
+
+This release also addresses the following Transcribe App issues:
+* #075: Pause is behaving like mute
+* #625: Add "No Microphone" option in browser Capture
+* #627: (Meeting Minutes) Modifications to the KeyItems settings in Project
+* #631: (Meeting Minutes) Support negative examples and regex
+* #633: Cancel out of the Mic Save dialog does not work
+* #634: (Meeting Minutes) Add Enabled toggle for each Key Item
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #107: Wrong content-type in response from https://console.voicegain.ai/ascalon-web-api/public/monitor/asr
+* #139: If account has allowSignupsFromDomain values then allow creation of new users only with valid emails
+* #144: Return simple account data from GET /account/{uuid} if no authentication provided
+* #173: Option to generate PCI-DSS restricted JWT token
+* #176: Add negativeExample and negativeRegex to saConfig
+* #177: Secure GET /account
+* #179: Add `disabled` field to saConfig Phrase
+* #186: Add rejection justification for meeting key items
+* #188: (Edge) negativeExample value not saved correctly
+* Diarization inference reliability has been improved.
+
 ### Minor release 1.72.0 is scheduled for 12/15/2022 between 11am and 1pm CST
 
 This release offers improved Key Items feature within the Meeting Minutes in the Transcribe App.
@@ -203,109 +227,11 @@ The release also fixes these issues in the ML Services:
 
 NOTE: Gender estimation feature is not working starting from version 1.64.1. This feature will be restored in future versions.
 
-### Minor release 1.64.0 is scheduled for 9/15/2022 between 1:00pm and 3:00pm CST
-
-This release addresses the following Transcribe App issues:
-* #469: Added options for profanity masking and digits formatting
-* #488: "My Transcripts" Project has no Creator value set
-* #487: Add owner information on Project Settings page
-* #489: On the Cloud, for Basic Account, do not show User setting for a Project
-* #490: Creator avatars vanish when I do search
-* #491 through #498: All these make it easier to identify current Project and create a distinction between a Home page and a Project Transcript List page
-* #499: Show non-speaking participants on the Transcript Details page - Requires Zoom Meeting Assistant ver 0.2.11 or higher
-* #501: First project for a new user should not be called "My Transcripts" but "{firstname}'s Transcripts"
-
-Zoom Meeting Assistant installer is now digitally signed.
-
-This release addresses the following Developer Web Console issues:
-* #76: New Auth Configuration type - support for Twilio encrypted recordings
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #58: New field in authConfig on Context - support for Twilio encrypted recordings
-* #59: Add support for authConf in POST and PUT /data/audio (twilio-rec-encrypted type)
-* #60: NPE in REAL-TIME transcribe session is no audio has been received at all over websocket
 
 
 **Backwards incompatibility:**
 * Certain acoustic model names are no longer available. Unless using specific custom models, it is now sufficient to just provide `languages` parameter - no need to specify acoustic model by name.
 * requests to `/asr/transcribe/async` API with `portal` field value but no `portal.label` specified will fail - `portal.label` is now a required value 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

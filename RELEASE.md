@@ -1,3 +1,27 @@
+## Release 1.73.0
+
+This minor release enables Browser Capture in the Transcribe App on Edge.
+
+This release also addresses the following Transcribe App issues:
+* #075: Pause is behaving like mute
+* #625: Add "No Microphone" option in browser Capture
+* #627: (Meeting Minutes) Modifications to the KeyItems settings in Project
+* #631: (Meeting Minutes) Support negative examples and regex
+* #633: Cancel out of the Mic Save dialog does not work
+* #634: (Meeting Minutes) Add Enabled toggle for each Key Item
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #107: Wrong content-type in response from https://console.voicegain.ai/ascalon-web-api/public/monitor/asr
+* #139: If account has allowSignupsFromDomain values then allow creation of new users only with valid emails
+* #144: Return simple account data from GET /account/{uuid} if no authentication provided
+* #173: Option to generate PCI-DSS restricted JWT token
+* #176: Add negativeExample and negativeRegex to saConfig
+* #177: Secure GET /account
+* #179: Add `disabled` field to saConfig Phrase
+* #186: Add rejection justification for meeting key items
+* #188: (Edge) negativeExample value not saved correctly
+* Diarization inference reliability has been improved.
+
 ## Release 1.72.0
 
 This minor release offers improved Key Items feature within the Meeting Minutes in the Transcribe App.

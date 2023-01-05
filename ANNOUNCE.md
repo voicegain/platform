@@ -14,7 +14,15 @@ This release addresses the following issues for the rest of the Voicegain platfo
 * #107: Wrong content-type in response from https://console.voicegain.ai/ascalon-web-api/public/monitor/asr
 * #139: If account has allowSignupsFromDomain values then allow creation of new users only with valid emails
 * #144: Return simple account data from GET /account/{uuid} if no authentication provided
+* #156: Make freeswitch-esl-client one of our internal libraries
+* #162: Add Cache-Control: no-store to all API GET responses that may change
+* #163: Implement POST /asr/meeting/search 
+* #166: data-api to avoid including sosRef in the response of GET /data/uuid if its audio file is missing
+* #169: Add mpdId to /asr/meeting API
+* #170: Additions to formatters in the API
+* #172: New `pciDss` field on account
 * #173: Option to generate PCI-DSS restricted JWT token
+* #174: Spelling error in JWT aud field
 * #176: Add negativeExample and negativeRegex to saConfig
 * #177: Secure GET /account
 * #179: Add `disabled` field to saConfig Phrase

@@ -1,3 +1,22 @@
+### Minor release 1.74.0 is scheduled for 1/13/2023 between 11am and 1pm CST
+
+This Release enables User self-signup via email on Transcribe App on Edge.
+
+More options available in the OFFLINE /asr/transcribe API  `settings.fomatters`:
+* enhanced - provides formatting for entities like: URL, EMAIL, PHONE, SSN , CC 
+* redact - provides redaction for entities like: EMAIL, PHONE, SSN , CC, PERSON, ZIP
+* regex - text redaction/modification using regular expression matching
+
+EZUpdate script has been added for updating the Ubuntu packages on the Edge servers.
+
+This release addresses the following issues in the Voicegain platform:
+* #182: for sapi.voicegain.ai - limit what is accepted as values of audio.source
+* #183: for sapi.voicegain.ai - do not accept the session.portal parameter
+* #184: for sapi.voicegain.ai - reduced range for session.poll.persist
+* #185: for sapi.voicegain.ai - reduced set of parameters for session.websocket
+* #190: GET /public/monitor/asr returns HTTP 406
+* #191: GET /account/uuid fails to return submissions and saDemoContext
+
 ### Maintenance release 1.73.1 is scheduled for 1/12/2023 between noon and 6pm CST
 
 This is a dummy Release, meant to test the automated release/deployment pipeline changes.
@@ -204,39 +223,6 @@ This release addresses the following issues for the rest of the Voicegain platfo
 * #78: new auth API: /auth/prk/filename
 * #79: add format parameter to GET /sa/calls (to support CSV export)
 * #80: MeetingSession.sizeInStorage includes the size of each original audio file by mistake
-
-### Minor release 1.65.0 is scheduled for 9/27/2022 between 1:00pm and 3:00pm CDT
-
-This release addresses the following Transcribe App issues:
-* #364: Add option to move transcript to a different project
-* #466: run GET /data/{data-object-id} before submitting microphone recording for offline - this ensures that mic recording is available
-* #505-506: better tooltips regarding Project
-* #508: different behavior when user selects project while on Home page
-* #509: on all of the Project Settings pages show the Project name the same way we do it on e.g. Transcripts page
-* #510-511: (Edge only) add ability to reset a password using Password Recovery Key (PRK)
-* #513: Front-end should allow apostrophe in the Project name
-* #515: change the "data not found" text to "No transcripts"
-* #516: Changes on the Apps Download page
-
-This release addresses the following Developer Web Console issues:
-* #74: Add info about Rate Limits on the Account
-* #78: Password is encrypted even on HTTP connections (relevant to Edge only) 
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #63: new /speaker API
-* #64: small changes to /asr/meeting API to take account new Speaker objects
-* #66: add voiceSignatureSpeakers to POST /asr/meeting
-* #67: add voiceSignatureSpeakers to context APIs
-* #68: Allow DataObject to be associated with an Account
-
-### Minor release 1.64.1 is scheduled for 9/19/2022 between 5:00pm and 7:00pm CDT
-
-This release includes an improved model for diarization which will provide better diarization accuracy.
-
-The release also fixes these issues in the ML Services:
-* #1: Words that should be stop words appear in the Topic results
-* #2: Topic extraction should be case insensitive.
-
 
 
 **Backwards incompatibility:**

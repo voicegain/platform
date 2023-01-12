@@ -1,3 +1,22 @@
+## Release 1.74.0
+
+This Minor Release enables User self-signup via email on Transcribe App on Edge.
+
+More options available in the OFFLINE /asr/transcribe API  `settings.fomatters`:
+* enhanced - provides formatting for entities like: URL, EMAIL, PHONE, SSN , CC 
+* redact - provides redaction for entities like: EMAIL, PHONE, SSN , CC, PERSON, ZIP
+* regex - text redaction/modification using regular expression matching
+
+EZUpdate script has been added for updating the Ubuntu packages on the Edge servers.
+
+This release addresses the following issues in the Voicegain platform:
+* #182: for sapi.voicegain.ai - limit what is accepted as values of audio.source
+* #183: for sapi.voicegain.ai - do not accept the session.portal parameter
+* #184: for sapi.voicegain.ai - reduced range for session.poll.persist
+* #185: for sapi.voicegain.ai - reduced set of parameters for session.websocket
+* #190: GET /public/monitor/asr returns HTTP 406
+* #191: GET /account/uuid fails to return submissions and saDemoContext
+
 ## Release 1.73.1
 
 This is a dummy maintenance Release, meant to test the automated release/deployment pipeline changes.

@@ -1,3 +1,7 @@
+### Maintenance release 1.73.1 is scheduled for 1/12/2023 between noon and 6pm CST
+
+This is a dummy Release, meant to test the automated release/deployment pipeline changes.
+
 ### Minor release 1.73.0 is scheduled for 1/5/2023 between 6pm and 9pm CST
 
 This Release enables Browser Capture in the Transcribe App on Edge.

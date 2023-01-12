@@ -1,3 +1,7 @@
+## Release 1.73.1
+
+This is a dummy maintenance Release, meant to test the automated release/deployment pipeline changes.
+
 ## Release 1.73.0
 
 This minor release enables Browser Capture in the Transcribe App on Edge.

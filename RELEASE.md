@@ -1,3 +1,9 @@
+## Release 1.74.1
+
+This maintenance release fixes the following issues:
+* offline task fails on re-try due to format value type mismatch
+* some sessions in ERROR state not removed from session cache as soon as ERROR determined
+
 ## Release 1.74.0
 
 This Minor Release enables User self-signup via email on Transcribe App on Edge.

@@ -6,7 +6,7 @@ If you encounter any problems, just give us a shout at support@voicegain.ai
 
 This release enables Browser Capture in the Transcribe App on Edge.
 
-This release also addresses the following spacific issues:
+This release also addresses the following specific issues:
 * Pause was behaving like mute
 * "No Microphone" option added in Browser Capture
 * Cancel out of the Mic Save dialog was not working

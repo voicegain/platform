@@ -1,3 +1,9 @@
+### Maintenance release 1.74.1 is scheduled for 1/17/2023 between 5:30pm and 7:30pm CST
+
+This release fixes the following issues:
+* offline task fails on re-try due to format value type mismatch
+* some sessions in ERROR state not removed from session cache as soon as ERROR determined
+
 ### Minor release 1.74.0 is scheduled for 1/13/2023 between 11am and 1pm CST
 
 This Release enables User self-signup via email on Transcribe App on Edge.

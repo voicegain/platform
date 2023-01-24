@@ -1,3 +1,32 @@
+### Minor release 1.75.0 is scheduled for 1243/2023 between 5pm and 8pm CST
+
+This release has the improved Spanish Offline model.
+
+This release adds ability to Recompute meetings in the Transcribe App and in the /asr/meeting API. 
+This means that all the NLU processing of the transcript can be redone after, e.g., change in the Project analytics settings.
+
+Other changes to the Transcribe App:
+* Info about available Zoom Meeting Assistant is shown on the home page.
+* List of search results shows also topics for each transcript.
+* Removed Update button on the Key Items settings. Key Items will always be updated to the latest configuration.
+* Hid Key Items configuration from non-Admin users.
+
+Transcribe App issues fixed:
+* #647: If a user has no signatures and I hover over the playback icon for a signature it shows "Error" tool tip
+* #656: When creating a new Project select a color by default - absence of a default selection was a bit confusing.
+* #664: Logout is not working - this was only in case if the app ran out of nonces.
+
+Other changes include:
+* Improved Admin Tool - better able to handle the thousands of accounts that we have. 
+* Fully tested dash-mpeg support. Will be coming soon to the Transcribe App.
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #198: Suboptimal http code returned in case of bad password reset
+* #199: asr-api returns 401 for POST /asr/meeting/async, which is unsupported
+* #200: Upgrade Redisson version due to a bug
+* #201: When GET /sa/config is called we should update the key items to most recent version
+* #203: New API method to recompute a meeting: /asr/meeting/{meetingId}/recompute
+
 ### Maintenance release 1.74.1 is scheduled for 1/17/2023 between 5:30pm and 7:30pm CST
 
 This release fixes the following issues:
@@ -196,38 +225,6 @@ This release addresses the following issues for the rest of the Voicegain platfo
 * #86: When creating a new User let's create a corresponding Speaker entry (for Transcribe App accounts)
 * #88: Add support for vsConf and originalName (meeting API)
 * #91: Add mustHaveSignature parameter to GET /speakers API
-
-### Maintenance release 1.66.1 is scheduled for 10/21/2022 between 1pm and 2pm CDT
-
-This release includes improved punctuation for the English Offline transcription.
-
-### Minor release 1.66.0 is scheduled for 10/17/2022 between 8:00am and 9:00am CDT
-
-This release provides an improved model for Offline English transcription - you will notice about 1% higher accuracy
-
-The release provides these overall improvements to the Transcribe App:
-* Voice Signature support. Users can now create voice signatures and be automatically recognized in transcripts. Next release will add support for creating Voice Signatures for other speakers based on audio.
-* Phrase detection in transcript is now suported.
-* Topic detection has been improved. Still a beta feature.
-
-The release addresses these specific Transcribe App issues:
-* #514: use /auth/login/pre to get the key to encrypt password for login
-* #519: tweak space around arrows pointing to other speakers text
-* #521: do not show the expiry info if the expiry time is "Never"
-* #540: browser capture - same text in both channels
-* #542: sometimes getting a blank page when opening transcript (Cannot read properties of undefined (reading 'name'))
-
-The current version of the Zoom Meeting Assistant going with this release is 0.2.17
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #69: Changes to pagination of API results (/calls API)
-* #70: add mine and sharedWithMe fields to context
-* #71: fail to persist AbstractGrammar.type in MongoDB
-* #76: Add new style pagination to GET /asr/meeting
-* #77: support PII Redaction in Meeting API
-* #78: new auth API: /auth/prk/filename
-* #79: add format parameter to GET /sa/calls (to support CSV export)
-* #80: MeetingSession.sizeInStorage includes the size of each original audio file by mistake
 
 
 

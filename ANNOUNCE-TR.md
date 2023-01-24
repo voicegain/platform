@@ -2,6 +2,19 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### January 24, 2023
+
+This release has an improved Spanish Offline model.
+
+This release adds ability to Recompute meetings in the Transcribe App and in the /asr/meeting API. 
+This means that all the NLU processing of the transcript can be redone after, e.g., change in the Project analytics settings.
+
+Other changes to the Transcribe App:
+* Info about available Zoom Meeting Assistant is shown on the home page.
+* List of search results shows also topics for each transcript.
+* Removed Update button on the Key Items settings. Key Items will always be updated to the latest configuration.
+* Hid Key Items configuration from non-Admin users.
+
 ### January 5, 2023
 
 This release enables Browser Capture in the Transcribe App on Edge.
@@ -87,7 +100,7 @@ This release includes improved punctuation for the English Offline transcription
 
 ### October 17, 2022
 
-This release provides an improved model for Offline English transcription - you will notice about 1% higher accuracy
+This release provides the improved model for Offline English transcription - you will notice about 1% higher accuracy
 
 The release provides these overall improvements to the Transcribe App:
 * Voice Signature support. Users can now create voice signatures and be automatically recognized in transcripts. Next release will add support for creating Voice Signatures for other speakers based on audio.
@@ -115,22 +128,7 @@ This release brings the following improvements:
 * Change the "data not found" text to "No transcripts"
 * Improved information on the Apps Download page
 
-### September 15, 2022
 
-This release brings a lot of small improvements and fixes, including:
-* Added options for profanity masking and digits formatting
-* "My Transcripts" Project now has correct Creator value set
-* Added owner information on Project Settings page
-* On the Cloud, for Basic Account, do not show User setting for a Project
-* Creator avatars no longer vanish when I do search
-* Several changes to make it easier to identify current Project and create a distinction between a Home page and a Project Transcript List page
-* Show non-speaking participants on the Transcript Details page - Requires Zoom Meeting Assistant ver 0.2.11 or higher
-* First project for a new user is now not called "My Transcripts" but "{firstname}'s Transcripts"
-
-Zoom Meeting Assistant installer is now digitally signed.
-
-
-Note: This release requires Zoom Meeting Assistant version **0.2.3** or higher.
 
 
 

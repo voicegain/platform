@@ -1,3 +1,32 @@
+## Release 1.75.0
+
+This minor release has the improved Spanish Offline model.
+
+This release adds ability to Recompute meetings in the Transcribe App and in the /asr/meeting API. 
+This means that all the NLU processing of the transcript can be redone after, e.g., change in the Project analytics settings.
+
+Other changes to the Transcribe App:
+* Info about available Zoom Meeting Assistant is shown on the home page.
+* List of search results shows also topics for each transcript.
+* Removed Update button on the Key Items settings. Key Items will always be updated to the latest configuration.
+* Hid Key Items configuration from non-Admin users.
+
+Transcribe App issues fixed:
+* #647: If a user has no signatures and I hover over the playback icon for a signature it shows "Error" tool tip
+* #656: When creating a new Project select a color by default - absence of a default selection was a bit confusing.
+* #664: Logout is not working - this was only in case if the app ran out of nonces.
+
+Other changes include:
+* Improved Admin Tool - better able to handle the thousands of accounts that we have. 
+* Fully tested dash-mpeg support. Will be coming soon to the Transcribe App.
+
+This release addresses the following issues for the rest of the Voicegain platform:
+* #198: Suboptimal http code returned in case of bad password reset
+* #199: asr-api returns 401 for POST /asr/meeting/async, which is unsupported
+* #200: Upgrade Redisson version due to a bug
+* #201: When GET /sa/config is called we should update the key items to most recent version
+* #203: New API method to recompute a meeting: /asr/meeting/{meetingId}/recompute
+
 ## Release 1.74.1
 
 This maintenance release fixes the following issues:

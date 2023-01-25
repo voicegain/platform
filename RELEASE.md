@@ -1,3 +1,8 @@
+## Release 1.75.1
+
+This maintenance release fixes the following Transcribe App issue:
+* #204: Occasional Error in Recomputing status
+
 ## Release 1.75.0
 
 This minor release has the improved Spanish Offline model.

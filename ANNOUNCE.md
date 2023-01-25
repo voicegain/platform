@@ -1,3 +1,9 @@
+### Maintenance release 1.75.1 is scheduled for 1/25/2023 between 2pm and 4pm CST
+
+This release fixes the following Transcribe App issue:
+* #204: Occasional Error in Recomputing status
+
+
 ### Minor release 1.75.0 is scheduled for 1243/2023 between 5pm and 8pm CST
 
 This release has the improved Spanish Offline model.

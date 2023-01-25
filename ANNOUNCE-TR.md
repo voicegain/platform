@@ -6,7 +6,7 @@ If you encounter any problems, just give us a shout at support@voicegain.ai
 
 This release has an improved Spanish Offline model.
 
-This release adds ability to Recompute meetings in the Transcribe App and in the /asr/meeting API. 
+This release adds ability to Recompute meetings in the Transcribe App. 
 This means that all the NLU processing of the transcript can be redone after, e.g., change in the Project analytics settings.
 
 Other changes to the Transcribe App:

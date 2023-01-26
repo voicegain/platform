@@ -1,3 +1,9 @@
+## Release 1.75.2
+
+This maintenance release includes:
+* Fix for Issue #208 which was affecting Signup via the Developer Console
+* Improved demo.voicegain.ai app with improved security
+
 ## Release 1.75.1
 
 This maintenance release fixes the following Transcribe App issue:

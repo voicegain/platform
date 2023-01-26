@@ -1,3 +1,9 @@
+### Maintenance release 1.75.2 is scheduled for 1/26/2023 between 5:45pm and 7pm CST
+
+This release includes:
+* Fix for Issue #208 which was affecting Signup via the Developer Console
+* Improved demo.voicegain.ai app with improved security
+
 ### Maintenance release 1.75.1 is scheduled for 1/25/2023 between 2pm and 4pm CST
 
 This release fixes the following Transcribe App issue:

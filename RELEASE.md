@@ -1,3 +1,15 @@
+## Release 1.76.0
+
+This minor release has the improved Spanish Real-Time model.
+
+Transcribe App issues addressed:
+* #406: Add ability to delete a keyword in Speech Analytics settings
+* #461: The downloaded audio file is mp3, but the extension is wav
+* #532: In languages Project settings show if microphone transcription is not available for given language
+* #610: Change the lock-out message to show the local time instead of the UTC.
+* #665: Fix weird behavior in Settings if old Project has no Meeting Minutes enabled
+* #666: Add a hide button for the Zoom Meeting Assistant banner
+
 ## Release 1.75.2
 
 This maintenance release includes:

@@ -1,3 +1,15 @@
+### Minor release 1.76.0 is scheduled for 1/24/2023 between 5pm and 8pm CST
+
+This release has the improved Spanish Real-Time model.
+
+Transcribe App issues addressed:
+* #406: Add ability to delete a keyword in Speech Analytics settings
+* #461: The downloaded audio file is mp3, but the extension is wav
+* #532: In languages Project settings show if microphone transcription is not available for given language
+* #610: Change the lock-out message to show the local time instead of the UTC.
+* #665: Fix weird behavior in Settings if old Project has no Meeting Minutes enabled
+* #666: Add a hide button for the Zoom Meeting Assistant banner
+
 ### Maintenance release 1.75.2 is scheduled for 1/26/2023 between 5:45pm and 7pm CST
 
 This release includes:
@@ -10,7 +22,7 @@ This release fixes the following Transcribe App issue:
 * #204: Occasional Error in Recomputing status
 
 
-### Minor release 1.75.0 is scheduled for 1243/2023 between 5pm and 8pm CST
+### Minor release 1.75.0 is scheduled for 1/24/2023 between 5pm and 8pm CST
 
 This release has the improved Spanish Offline model.
 
@@ -219,24 +231,6 @@ The installer for the Zoom Meeting Assistant is now signed with an Extended Vali
 This release addresses the following issues for the rest of the Voicegain platform:
 * #97: When deleting a Speaker we should remove references to it from Context voiceSignatureSpeakers
 * #98: Orphan cleanup delete the audio clip for speaker signature
-
-### Minor release 1.67.0 is scheduled for 10/25/2022 between 10am and 1pm CDT
-
-The release addresses these specific Transcribe App issues:
-* #546: Older projects do not generate topics
-* #547: Saving a project switches it to a different one
-* #550: Assign transcript speaker to a known Speaker (with or without voice signature) - also create new Speaker if needed
-* #551: Add page for managing Speakers
-
-The release addresses these specific Speech Analytics App issues:
-* #12: Turn off pagination in the Calls page in Speech Analytics App - this is temporary measure before switching to new pagination style
-* #14: Upload file should use short-lived JWT
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #81: Enhance logging for AIVR sessions
-* #86: When creating a new User let's create a corresponding Speaker entry (for Transcribe App accounts)
-* #88: Add support for vsConf and originalName (meeting API)
-* #91: Add mustHaveSignature parameter to GET /speakers API
 
 
 

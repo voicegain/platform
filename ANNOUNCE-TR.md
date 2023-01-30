@@ -2,6 +2,20 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### January 30, 2023
+
+This release has the improved Spanish Real-Time model.
+
+This release also addresses the following specific issues:
+* Add ability to delete a keyword in Speech Analytics settings
+* The downloaded audio file now has correct mp3 extension instead of wav
+* In languages Project settings show if microphone transcription is not available for given language
+* Change the lock-out message to show the local time instead of the UTC.
+* Fix weird behavior in Settings if old Project has no Meeting Minutes enabled
+* Add a hide button for the Zoom Meeting Assistant banner
+
+The current version of the Zoom Meeting Assistant going with this release is 0.2.18
+
 ### January 24, 2023
 
 This release has an improved Spanish Offline model.
@@ -115,18 +129,6 @@ The release addresses these specific Transcribe App issues:
 * Fix for issue where sometimes getting a blank page when opening transcript, which required a reload to get the page
 
 The current version of the Zoom Meeting Assistant going with this release is 0.2.17
-
-### September 27, 2022
-
-This release brings the following improvements:
-* Added option to move transcript to a different project
-* Run additional tests when saving microphone recording to ensure audio is available for transcription
-* Better tooltips regarding Project
-* Improved behavior when user selects project while on Home page
-* An all of the Project Settings pages show the Project name the same way we do it on e.g. Transcripts page
-* Allow apostrophe in the Project name
-* Change the "data not found" text to "No transcripts"
-* Improved information on the Apps Download page
 
 
 

@@ -8,7 +8,7 @@ Transcribe App issues addressed:
 * #667: Do not hide microphone and browser capture icons for old projects that have no language setting value
 
 Admin tool has been improved in this release:
-* Last Login Time and Billing Type columns have bee added.
+* Last Login Time and Billing Type columns have been added.
 
 This release addresses the following issue for the rest of the Voicegain platform:
 * #211: nats-websocket fail to send messages to topic subscribers.

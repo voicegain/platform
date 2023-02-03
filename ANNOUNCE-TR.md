@@ -2,6 +2,15 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### February 3, 2023
+
+This release adds Zoom Meeting Assistant status display to the Transcribe App.
+Due to this change this release will require Zoom Meeting Assistant version 0.3.0 at minimum.
+
+This release also addresses the following specific issues:
+* Automatically insert underscores into multi-word hints
+* Do not hide microphone and browser capture icons for old projects that have no language setting value
+
 ### January 30, 2023
 
 This release has the improved Spanish Real-Time model.

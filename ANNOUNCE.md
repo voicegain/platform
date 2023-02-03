@@ -1,3 +1,18 @@
+### Minor release 1.77.0 is scheduled for 2/3/2023 between noon and 2pm CST
+
+This release adds Zoom Meeting Assistant status display to the Transcribe App.
+Due to this change this release will require Zoom Meeting Assistant version 0.3.0 at minimum.
+
+Transcribe App issues addressed:
+* #555: Automatically insert underscores into multi-word hints
+* #667: Do not hide microphone and browser capture icons for old projects that have no language setting value
+
+Admin tool has been improved in this release:
+* Last Login Time and Billing Type columns have bee added.
+
+This release addresses the following issue for the rest of the Voicegain platform:
+* #211: nats-websocket fail to send messages to topic subscribers.
+
 ### Minor release 1.76.0 is scheduled for 1/24/2023 between 5pm and 8pm CST
 
 This release has the improved Spanish Real-Time model.

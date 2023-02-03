@@ -1,3 +1,18 @@
+## Release 1.77.0
+
+This release adds Zoom Meeting Assistant status display to the Transcribe App.
+Due to this change this release will require Zoom Meeting Assistant version 0.3.0 at minimum.
+
+Transcribe App issues addressed:
+* #555: Automatically insert underscores into multi-word hints
+* #667: Do not hide microphone and browser capture icons for old projects that have no language setting value
+
+Admin tool has been improved in this release:
+* Last Login Time and Billing Type columns have bee added.
+
+This release addresses the following issue for the rest of the Voicegain platform:
+* #211: nats-websocket fail to send messages to topic subscribers.
+
 ## Release 1.76.0
 
 This minor release has the improved Spanish Real-Time model.

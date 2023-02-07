@@ -39,7 +39,7 @@ When you contact us we will ask you to describe your intended usage (e.g. offlin
 These guides will take you through the basics and provide resources and links do provider documentation on how to create a kubernetes cluster appropriate for our application. When you have completed creating your GPU enabled k8s cluster please proceed with [Step 2](#step2)
 
 * [AWS Specific Steps](aws-specific-steps.md)  
-* GCP: Coming Soon  
+* [GCP Specific Steps](gcp-specific-steps.md)
 * Oracle: Coming Soon 
 
 ## <a name="step2"></a>Step 2: Create Voicegain service account on your Cluster

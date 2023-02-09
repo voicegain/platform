@@ -1,3 +1,9 @@
+### Maintenance release 1.77.1 is scheduled for 2/8/2023 between 9pm and 10pm CST
+
+This release includes:
+* Back-end update of Redis to 6.2.10 which has a fix to for the issue https://github.com/redis/redis/pull/11590
+* More accurate real-time model
+
 ### Minor release 1.77.0 is scheduled for 2/3/2023 between noon and 2pm CST
 
 This release adds Zoom Meeting Assistant status display to the Transcribe App.

@@ -1,3 +1,9 @@
+## Release 1.77.1
+
+This maintenance release includes:
+* Back-end update of Redis to 6.2.10 which has a fix to for the issue https://github.com/redis/redis/pull/11590
+* More accurate real-time model
+
 ## Release 1.77.0
 
 This release adds Zoom Meeting Assistant status display to the Transcribe App.

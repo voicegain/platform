@@ -1,4 +1,4 @@
-### Maintenance release 1.78.1 is scheduled for 2/15/2023 between noon and 3pm CST
+### Maintenance release 1.78.1 is scheduled for 2/15/2023 between 6pmn and 9pm CST
 
 This release includes the following for the Transcribe App:
 * Keyword and phrase highlighting in the transcript text

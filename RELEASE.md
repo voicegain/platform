@@ -1,3 +1,9 @@
+## Release 1.78.1
+
+This maintenance release includes the following for the Transcribe App:
+* Keyword and phrase highlighting in the transcript text
+* Bug #671 fixed: home/login page loop in all the nonces somehow are removed from the indexedDB
+
 ## Release 1.78.0
 
 In this minor release the throughput of the offline transcription in two-channel mode has been significantly improved.

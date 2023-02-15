@@ -1,3 +1,24 @@
+### Maintenance release 1.78.1 is scheduled for 2/15/2023 between noon and 3pm CST
+
+This release includes the following for the Transcribe App:
+* Keyword and phrase highlighting in the transcript text
+* Bug #671 fixed: home/login page loop in all the nonces somehow are removed from the indexedDB
+
+### Minor release 1.78.0 is scheduled for 2/14/2023 between 6pm and 9pm CST
+
+In this release the throughput of the offline transcription in two-channel mode has been significantly improved.
+
+This release addresses the following issue for the rest of the Voicegain platform:
+* #82: (ACP) Add matomo to Web Console (dev and prod)
+* #86: (CMP) the Detail option takes me to the Login page instead of the Account Detail page
+* #212: ascalon-asr-api cannot start on CHD environment
+* #214: Get error when running offline transcribe on CHD
+* #216: Add code that logs the measurements for usage of rate-limits per account
+* #217: Log usage of the offlineQueueSizeLimit
+* #220: Edge deployments to GCP VPC now support Google Storage via S3 adapter
+* #223: Add language to the result of Transcription
+* #225: Random text output from real-time transcription in some cases after long silence
+
 ### Maintenance release 1.77.1 is scheduled for 2/8/2023 between 9pm and 10pm CST
 
 This release includes:
@@ -234,25 +255,6 @@ Other Transcribe App issues addressed in this release:
 This release addresses the following issues for the rest of the Voicegain platform:
 * #104: New setting for transcription and recognition APIs that controls logging of results
 * #117: Add localOnly parameter to GET /model/acoustic
-
-### Maintenance release 1.68.1 is scheduled for 11/10/2022 between 5:30pm and 8pm CDT
-
-This release supports multiple languages choice in the `/asr/transcribe/async` and `/asr/recognize/async`. It runs recognition using all specified languages and returns the transcript with the highest confidence.
-
-### Minor release 1.68.0 is scheduled for 10/28/2022 between 3pm and 5pm CDT
-
-The key features in this release are:
-* Improved diarization in the text areas where one speaker switches to another. 
-* More accurate speaker Voice Signature matching.
-
-This release fixes numerous small Web UI issues, mainly usability, in the Transcribe App related to the Voice Signature functionality made first available in the 2 previous releases. 
-
-The installer for the Zoom Meeting Assistant is now signed with Extended Validation Certificate.
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #97: When deleting a Speaker we should remove references to it from Context voiceSignatureSpeakers
-* #98: Orphan cleanup delete the audio clip for speaker signature
-
 
 
 **Backwards incompatibility:**

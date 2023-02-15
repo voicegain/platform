@@ -1,3 +1,18 @@
+## Release 1.78.0
+
+In this minor release the throughput of the offline transcription in two-channel mode has been significantly improved.
+
+This release addresses the following issue for the rest of the Voicegain platform:
+* #82: (ACP) Add matomo to Web Console (dev and prod)
+* #86: (CMP) the Detail option takes me to the Login page instead of the Account Detail page
+* #212: ascalon-asr-api cannot start on CHD environment
+* #214: Get error when running offline transcribe on CHD
+* #216: Add code that logs the measurements for usage of rate-limits per account
+* #217: Log usage of the offlineQueueSizeLimit
+* #220: Edge deployments to GCP VPC now support Google Storage via S3 adapter
+* #223: Add language to the result of Transcription
+* #225: Random text output from real-time transcription in some cases after long silence
+
 ## Release 1.77.1
 
 This maintenance release includes:

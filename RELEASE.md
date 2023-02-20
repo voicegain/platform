@@ -1,3 +1,17 @@
+## Release 1.79.0
+
+This minor release has several back-end improvements to the core Voicegain Platform:
+* The rate limits use is now logged to the influxDB and can be queried from Grafana. 
+You can configure alerts in Grafana so that you can know if you are getting close to the rate limits.
+* The throughput in the offline mode has been further improved. 
+Edge deployments have been tested to 1200 hours transcribed per hour for extended periods of time.
+* Cause for the spike in redis use under extreme loads has been identified and removed.
+This will result in better stability due to much lower use of the redis resource.
+* Edge deployments to GCP VPC now require smaller set of permissions to use Google Storage.
+* In Edge deployment, MongoDB indexes are created on startup. The set of indexes used has been optimized.
+* Removed `permessage-deflate` support on websocket connections used by real-time transcription. 
+This in order to reduce the latency.
+
 ## Release 1.78.1
 
 This maintenance release includes the following for the Transcribe App:

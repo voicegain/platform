@@ -1,3 +1,17 @@
+### Minor release 1.79.0 is scheduled for 2/19/2023 between 6pm and 9pm CST
+
+This release has several back-end improvements to the core Voicegain Platform:
+* The rate limits use is now logged to the influxDB and can be queried from Grafana. 
+You can configure alerts in Grafana so that you can know if you are getting close to the rate limits.
+* The throughput in the offline mode has been further improved. 
+Edge deployments have been tested to 1200 hours transcribed per hour for extended periods of time.
+* Cause for the spike in redis use under extreme loads has been identified and removed.
+This will result in better stability due to much lower use of the redis resource.
+* Edge deployments to GCP VPC now require smaller set of permissions to use Google Storage.
+* In Edge deployment, MongoDB indexes are created on startup. The set of indexes used has been optimized.
+* Removed `permessage-deflate` support on websocket connections used by real-time transcription. 
+This in order to reduce the latency.
+
 ### Maintenance release 1.78.1 is scheduled for 2/15/2023 between 6pmn and 9pm CST
 
 This release includes the following for the Transcribe App:
@@ -235,26 +249,6 @@ This release addresses the following issues for the rest of the Voicegain platfo
 
 Moreover the following improvements were done in the ML back-end.
 * Punctuation generation now runs on GPU insted of CPU
-
-### Minor release 1.69.0 is scheduled for 11/16/2022 between 4pm and 7pm CST
-
-This release adds two major new features in the Transcribe App:
-* Meeting Minutes - an AI generated overview of the meeting including key sections with topics/keywords and key sentences in 4 categories: Actions, issues, Risks, Requirements. Meeting Minutes can be enabled from Project Settings.
-* Text search of transcripts - from the Home page find transcripts containing the specified words.
-
-Other Transcribe App issues addressed in this release:
-* #530: Fix confusing text in the confirmation dialog for user deletion
-* #560: Fixed a scroll issue where the last line of transript was only partially visible.
-* #578: Do not allow Phrase example sensitivity values outside the 0-1 range
-* #580: Fixed a glitch in multi-column formatting
-* #584: Made user email not editable - the User dialog incorrectly was allowing it to be modified
-* #585: Added scroll shortcuts to the right pane in the Transcript Detail view
-* #588: (Edge only) Added `Sync from Cloud` button which can be used to sync all the user info from Cloud to the Edge.
-* #589: (Edge only) Added `Send Test Email` button. This is in preparation of the rollout of the SMTP email support on Edge.
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #104: New setting for transcription and recognition APIs that controls logging of results
-* #117: Add localOnly parameter to GET /model/acoustic
 
 
 

@@ -12,7 +12,7 @@ The steps to prepare Google Storage for use by Voicegain Edge Deployment are:
 1. [Create a Service Account](#step1)
 2. [Create a bucket](#step2)
 3. [Assign Service Account permissions to that bucket](#step3)
-4. [Configure Voicegain Edge to use the bucket](#step4)
+4. [Get request endpoint and create HMAC key](#step4)
 5. [(optional) VPC Service Controls](#step5)
 
 ## <a name="step1"></a>Create a Service Account
@@ -22,11 +22,7 @@ This is done from GCP **IAM & Admin** under the Project in which you want to hav
   * set the name
   * do not set any project access grants
   * do not grant user access
-* Generate Keys
-  * click on the new service account
-  * choose Keys tab
-  * Add Key -> create new key -> key type JSON
-    * You will use the JSON in [step 4](#step4)
+* There is no need to generate the key here, however, see [step4](#step4)
 
 ## <a name="step2"></a>Create a bucket
 
@@ -50,9 +46,20 @@ After creating the bucket we can assign permission to access it to the Service A
 * Select Storage Admin role - even though it says "Full control of GCS resources" because it is assigned to a Bucket and not to a Project it will allow only opertations on the specified Bucket.
 * Click Save
 
-## <a name="step4"></a>Configure Voicegain Edge to use the bucket
+## <a name="step4"></a>Get request endpoint and create HMAC key
 
-You will need to share the JSON from [step1](#step1) with Voicegain and we will incorporate it into the Edge Deployment configuration.
+This is done from the Settings page of the **Google Storage**.
+
+Under Setting you can see the Request Endpoint URL that you will need to provide to Voicegain.
+
+Creating HMAC key
+* under *Service account HMAC* you will need to click (+) Create a Key for Another Service Account.
+* then select the Service Account created in [step1](#step1)
+* click Create Key
+* from the next page you will need to copy Access key and the Secret - you will share those with Voicegain.
+
+Voicegain will incorporate the url and the key in your custom Edge Configuration, which you will be able to deploy from the Voicegain Web Console.
+
 
 ## <a name="step5"></a>VPC Service Controls
 

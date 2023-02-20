@@ -1,4 +1,4 @@
-### Minor release 1.79.0 is scheduled for 2/19/2023 between 6pm and 9pm CST
+### Minor release 1.79.0 is scheduled for 2/19/2023 between 3pm and 6pm CST
 
 This release has several back-end improvements to the core Voicegain Platform:
 * The rate limits use is now logged to the influxDB and can be queried from Grafana. 

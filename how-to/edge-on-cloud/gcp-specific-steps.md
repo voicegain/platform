@@ -2,18 +2,24 @@
 Required Steps, GCP Provided documentation, and recommended best practices
 
 ## <a id="toc"></a>Table of Contents
-- [Step 1: Request GPUs from GCP](#step1)
+- [Step 0: Request GPUs from GCP](#step0)
+- [Step 1: (Optional) Setup Google Storage Bucket](#step1)
 - [Step 2: Create Cluster and Node Pools](#step2)
 - [Step 3: Set up Cloud NAT](#step3)
 - [Step 4: Reserve an Internal IP for Voicegain API](#step4)
 - [Step 5: Continue on Voicegain Web Console](#step5)
 
-## <a id="step1"></a>Step 1: Request GPUs from GCP
+
+## <a id="step0"></a>Step 0: Request GPUs from GCP
 In order to use GPUs you must request a Quota increase for them from GCP.
 
 Be certain you are requesting them for the Region you wish to run your cluster in.  
 
 GCP Link: [Working with quotas](https://cloud.google.com/docs/quota#managing_your_quota_console)
+
+## <a id="step1"></a>Step 1: (Optional) Setup Google Storage Bucket
+
+This is only needed if you want to use Google Storage for storing the submitted audio, otherwise the audio will be stored within the Kubernetes cluster to be created in [step 2](#step2). For more details see [How to configure a Google Storage bucket](./gcp-storage-bucket.md) .
 
 ## <a id="step2"></a>Step 2: Create Cluster and Node Pools
 

@@ -32,7 +32,22 @@ Finally, give your DB cluster a name.
 
 ![Choose name](./atlas-name.png)
 
-It will take a few minutes to create the cluster
+If it is a first DB in a Project you will be presented with a Security Quickstart
+
+First you will need to create a user:
+
+![Create a User](./atlas-quickstart-user.png)
+
+Then you need to specify and configure how you will connect to MongoDB.
+We suggest using VPC Peering.
+
+![Configure Connection](./atlas-connect-from.png)
+
+To setup Peering you will need to make changes both on Atlas and in your Cloud (e.g. GCP) network configuration. The final result will be an established (Available) connection.
+
+![Network peering](./atlas-peering.png)
+
+Going back to cluster creation -- It will take a few minutes to create the cluster
 
 ![DB Cluster being created](./atlas-being-created.png)
 
@@ -40,14 +55,18 @@ Eventually it will be ready
 
 ![DB Cluster ready](./atlas-ready.png)
 
-## Conencting to the new MongoDB cluster
+## Connecting to the new MongoDB cluster
 
-For connection you will need:
-- **Connection type**, either
-  - Private IP for Peering, or
-  - Standard Connection (public Internet IP)
-- **IP access list** - particularly important if you choose Standard Connection
-- **Database User**
+If you configured VPC Peering you will get an option to choose it, otherwise you will just choose the IPs from which the connection is to be allowed.
 
+You can use a previously created User or create a new one.
+
+On the next page please choose "Connect your application"
+
+![Connect Application](./atlas-connect-application.png)
+
+On the next page please choose Java and version "4.3 or later" and the copy the URL shown. It will be used to connect Voicegain Edge Deployment to Mongo. Of course, we will need the password too.
+
+![Connect URL](./atlas-connect-url.png)
 
 

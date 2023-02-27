@@ -34,6 +34,9 @@ In order to deploy Voicegain on Edge your account needs to have the Edge feature
 
 When you contact us we will ask you to describe your intended usage (e.g. offline transcription or MRCP ASR) so that we can enable an appropriate Edge configuration for your use case. We will also share recommended compute instances based on the volumes you plan to handle. If you are only exploring we can enable several generic configurations to allow you to test a variety of uses. For production use we will prepare a custom configuration that makes the best use of resources on your server(s). We shall also configure licensing based on your agreement with Voicegain. 
 
+**Mongo DB**
+If you would like to use an external MongoDB with your deployment, here is a [Guide how to Configure Atlas MongoDB](../setup-atlas-mongodb-for-edge.md) 
+
 ## <a name="step1"></a>Step 1: Cloud Provider Specific Guides
 
 These guides will take you through the basics and provide resources and links do provider documentation on how to create a kubernetes cluster appropriate for our application. When you have completed creating your GPU enabled k8s cluster please proceed with [Step 2](#step2)

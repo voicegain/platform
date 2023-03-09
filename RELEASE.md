@@ -1,3 +1,25 @@
+## Release 1.80.0
+
+This minor release has back-end improvements that will eventually give better monitoring more precise billing/usage data. It also includes a model that is more accurate on call-center audio.
+We also made changes to support new Billing Plans in the Transcribe App.
+
+* BE-1	Fixed number formatting in multi-speaker transcripts
+* BE-2	Fixed error connecting to Redisson caused by 3rd-party lib
+* BE-3	Fix issues where in some cases mixed meeting audio was missing some channels
+* BE-6	Fix measurements not written to influxDB due to field format mismatch
+* BE-7	Fix measurements not written to influxDB due to field format mismatch
+* BE-9	Fix issue where measurements with identical timestamp would overwrite
+* BE-15	Resolve issue with field type being inconsistent with old data
+* BE-30	Fix service startup problem due to invalid character in authorization value
+* BE-39	Configure production-ready log levels on classes that write to influxDB
+* BE-17	Configure Cloud influxDB connection parameters for all environments
+* BE-18	Configure influxDB writing classes correctly for deployment on Edge
+* BE-19	MeasurementWriter to be able to distinguish if it is running in Cloud or on Edge
+* BE-20	Add diarization and channel_selector tags to api_session_asr measurements
+* BE-33	AccountUsage generator should use longer query interval if run for the very first time
+* BE-36	Deploy latest offline model VoiceGain-omega-x - trained on additional call-center audio
+* BE-38	Changed pricing and time limits on Transcribe App plans
+
 ## Release 1.79.0
 
 This minor release has several back-end improvements to the core Voicegain Platform:

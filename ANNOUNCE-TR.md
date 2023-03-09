@@ -2,6 +2,10 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### March 9, 2023
+
+Changed pricing and time limits on Transcribe App plans.
+
 ### February 15, 2023
 
 This release includes the following:

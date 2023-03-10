@@ -1,3 +1,10 @@
+## Release 1.80.1
+
+This maintenance release has the following fixes
+* BE-51	Fix for WS/WSS protocol for Audio Streaming is not working
+* BE-54	Fix session_duration set to 0 for each offline ASR session measurement in influxDB
+* BE-58	Add missing insecure websocket url to Ingress
+
 ## Release 1.80.0
 
 This minor release has back-end improvements that will eventually give better monitoring more precise billing/usage data. It also includes a model that is more accurate on call-center audio.

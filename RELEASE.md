@@ -1,3 +1,8 @@
+## Release 1.80.2
+
+This maintenance release has the following fixes:
+* BE-106 SMU is using a lot of Redis memory
+
 ## Release 1.80.1
 
 This maintenance release has the following fixes

@@ -1,3 +1,9 @@
+### Maintenance release 1.80.2 is scheduled for 3/13/2023 between 1pm and 2pm CST
+
+This release has the following fixes:
+* BE-106 SMU is using a lot of Redis memory
+
+
 ### Maintenance release 1.80.1 is scheduled for 3/10/2023 between 3:45pm and 6:45pm CST
 
 This release has the following fixes

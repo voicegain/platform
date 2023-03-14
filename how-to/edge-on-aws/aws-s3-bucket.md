@@ -76,11 +76,11 @@ On the next page we click Create user
 
 ## Generare a key for the user
 
-Then we go back to the User list and select our new created user
+Then we go back to the User list and select our new created user (click on the user name)
 
 ![Select new user](./aws-select-new-user.png)
 
-We click on "Create access key"
+On the page that opens, we click on "Create access key"
 
 ![Click Create access key](./s3-new-user.png)
 

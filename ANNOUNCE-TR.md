@@ -2,6 +2,28 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### March 20, 2023
+
+This release has the following fixes and improvements in the Transcribe App:
+
+* BE-21	Fix expanded left-hand menu obscuring page content if frozen
+* BE-24	In user Profile add a setting to hide language flags on Project icons
+* BE-26	New Project design for the Transcribe App (mainly left-hand menu)
+* BE-27	Add Search within transcript in the detail view in Transcribe App
+* BE-52	Flags on Projects are inconsistent
+* BE-59	Back button doesn't work
+* BE-63	Transcribe from URL not working in Transcribe App
+* BE-64	Upgrade on home page of the Transcribe App takes you to Password Reset
+* BE-65	Plan Upgrade page working off stale billing data
+* BE-66	Walk-Through Wizard cannot be launched
+* BE-68	Hide expanded LH menu upon a click
+* BE-112	None or not all Projects are visible on Edge
+* BE-126	Clicking on the Downgrade button has no effect
+* BE-127	Show a Tool Tip for Project Settings
+* BE-128	Sending password confirmation in clear-text
+* BE-140	Modify behavior of the expandable LH menu - do not expand when I merely move the mouse across it
+* BE-141	Show tooltip when hovering over project icon in the transcript list on home page
+
 ### March 9, 2023
 
 Changed pricing and time limits on Transcribe App plans.

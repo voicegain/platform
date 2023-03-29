@@ -7,7 +7,10 @@ Required Steps, GCP Provided documentation, and recommended best practices
 - [Step 2: Create Cluster and Node Pools](#step2)
 - [Step 3: Set up Cloud NAT](#step3)
 - [Step 4: Reserve an Internal IP for Voicegain API](#step4)
-- [Step 5: Continue on Voicegain Web Console](#step5)
+- [Step 5: (Optional) Configure ip-masq-agent](#step5)
+- [Step 6: Continue on Voicegain Web Console](#step6)
+
+
 
 
 ## <a id="step0"></a>Step 0: Request GPUs from GCP
@@ -175,7 +178,53 @@ gcloud compute addresses describe [VOICEGAIN_API_IP_NAME]
 
 All done here!
 
-## <a id="step5"></a>Step 5: Continue on Voicegain Web Console 
+## <a id="step5"></a>Step 5: (Optional) Configure ip-masq-agent
+
+This step is only needed if the new cluster has to interact with sources/destinations located on [RFC 1918](https://tools.ietf.org/html/rfc1918)  IP ranges, e.g. 10.0.0.0/8. If that is the case, then the GKE Default SNAT will not work as desired and we need to configure **ip-masq-agent**.
+
+Steps to configure ip-masq-agent are:
+
+a) Obtain the current ip-masq-agent configmap (note that there may be none).
+
+<pre>
+kubectl get configmap ip-masq-agent -n kube-system -o yaml > ip-masq-agent-config.yaml
+</pre>
+
+b) Now edit it (or create a new one), e.g., here we removed (not included) 10.0.0.0/8:
+
+<pre>
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ip-masq-agent
+  namespace: kube-system
+data:
+  config: |
+    nonMasqueradeCIDRs:
+      - 172.16.0.0/12
+      - 192.168.0.0/16      
+      - 100.64.0.0/10
+    masqLinkLocal: false
+    resyncInterval: 60s
+</pre>
+
+c) Then apply it back to the cluster:
+<pre>
+kubectl apply -f ip-masq-agent-config.yaml
+</pre>
+
+d) After applying the updated ConfigMap, you can check the status of the ip-masq-agent pods in the kube-system namespace to ensure they are running correctly:
+<pre>
+kubectl get pods -n kube-system -l k8s-app=ip-masq-agent
+</pre>
+
+e) If you notice any issues with the ip-masq-agent pods, you can check the logs for more information:
+<pre>
+kubectl logs -n kube-system -l k8s-app=ip-masq-agent
+</pre>
+
+
+## <a id="step6"></a>Step 6: Continue on Voicegain Web Console 
 
 [Continue with universal deployment guide Step 2](./universal-deployment-guide.md#Step2)
 

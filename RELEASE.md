@@ -1,3 +1,11 @@
+## Release 1.82.1
+
+This maintenance release has the following changes:
+* BE-243 Fix for not getting any transcriptions from the Telephony Bot sessions
+* BE-244 Fix for erratic recognition in the Telephony Bot
+
+This release also fixes several 3rd-party vulnerabilities.
+
 ## Release 1.82.0
 
 This minor release chas the following changes:

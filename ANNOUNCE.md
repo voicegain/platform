@@ -1,3 +1,12 @@
+### Maintenance release 1.82.1 is scheduled for 4/25/2023 between 5pm and 7pm CST
+
+This release has the following changes:
+* BE-243 Fix for not getting any transcriptions from the Telephony Bot sessions
+* BE-244 Fix for erratic recognition in the Telephony Bot
+
+This release also fixes several 3rd-party vulnerabilities.
+
+
 ### Minor release 1.82.0 is scheduled for 4/20/2023 between 2pm and 5pm CST
 
 This release chas the following changes:
@@ -335,37 +344,6 @@ This release addresses the following issues for the rest of the Voicegain platfo
 Other changes in this release are:
 * Updated EZ-Init script
 * CallHome License Server
-
-### Maintenance release 1.70.2 is scheduled for 11/23/2022 between 3:30pm and 6pm CST
-
-This release fixes one issue:
-* #126: Add project filtering to meeting search for normal Users
-
-### Maintenance release 1.70.1 is scheduled for 11/22/2022 between 4pm and 6pm CST
-
-This release has only two changes:
-* Diarization processing has been moved to GPU which is of interest to Edge users because it will reduce the CPU resource requirements.
-* In Transcribe App, the default setting of Meeting Minutes on existing Projects has been changed to make it less confusing.
-
-### Minor release 1.70.0 is scheduled for 11/21/2022 between 4pm and 7pm CST
-
-This release addresses the following Transcribe App issues:
-* #595: Highlight the topics/keywords in the key sentences in Meeting Minutes
-* #596: Add audio playback and transcript text links to the sentences in Overview and Key Items
-* #600: In Profile: Separate Account from User settings
-* #601: In New Project Wizard set the toggle for Meeting Minutes to enabled by default
-* #603: (Edge only) disable Download if transcribeAppSettings has disableDownload:true
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #103: CC number marking in logs
-* #111: `sttGenericData` in AudioCodes API now supports maxAlternatives 
-* #112: `sttGenericData` in AudioCodes API now supports interpretation 
-* #123: Added POST /data/audio/ws method to data API
-* #124: Use Content-Type: text/plain; charset=utf-8 for all text/plain responses
-* #125: Added transcribeAppSettings to OnPrem Cluster
-
-Moreover the following improvements were done in the ML back-end.
-* Punctuation generation now runs on GPU instead of CPU
 
 
 

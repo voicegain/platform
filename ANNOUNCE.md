@@ -1,6 +1,6 @@
 ### Maintenance release 1.82.1 is scheduled for 4/25/2023 between 5pm and 7pm CST
 
-This release chas the following changes:
+This release has the following changes:
 * BE-243 Fix for not getting any transcriptions from the Telephony Bot sessions
 * BE-244 Fix for erratic recognition in the Telephony Bot
 

@@ -1,3 +1,9 @@
+## Release 1.82.2
+
+This maintenance release has the following changes:
+* BE-256    Modified App Selector to properly render on mobile browsers
+* BE-257    Added notice to Login Screen on Transcribe App on mobile browsers
+
 ## Release 1.82.1
 
 This maintenance release has the following changes:

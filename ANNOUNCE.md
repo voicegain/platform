@@ -1,3 +1,9 @@
+### Maintenance release 1.82.2 is scheduled for 4/27/2023 between 5:30pm and 7pm CST
+
+This release has the following changes:
+* BE-256    Modified App Selector to properly render on mobile browsers
+* BE-257    Added notice to Login Screen on Transcribe App on mobile browsers
+
 ### Maintenance release 1.82.1 is scheduled for 4/25/2023 between 5pm and 7pm CST
 
 This release has the following changes:
@@ -311,39 +317,6 @@ This release addresses the following issues for the rest of the Voicegain platfo
 * #146: Add PUT /sa/config/{saConfigId}/defaults
 * #147: Return Phrases in SA Config in fixed order
 * #148: Validate regex loaded from the built-in Key-Items JSON
-
-### Maintenance release 1.71.1 is scheduled for 12/9/2022 between noon and 2pm CST
-
-This release fixes 3 issues:
-* #143: Weird clock values when on Edge and logged in as a user with role User
-* #617: (Edge) New created project not visible in the project list
-* #618: (Edge) New created project shows files from an older project
-
-With this release we also support a minimal, self-contained, docker-compose deployment of MRCP ASR on GPUs.
-
-### Minor release 1.71.0 is scheduled for 12/8/2022 between 2pm and 6pm CST
-
-This release adds configurability of the Key Items of the Meeting Minutes in the Transcribe App.
-
-This release also addresses the following Transcribe App issues:
-* #556: Prepopulate the Name with the file name
-* #599: Show project name on transcript detail view
-* #602: Show avatar if Speaker is a User
-* #605: In Overview view, clicking on the times in the Summary should scroll to relevant Section
-* #607: Remove the front-end bolding of keywords in key sentences (done in back-end now more accurately)
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #128: Add justification fields in meetingMinutes
-* #129: Support json-mc in GET /asr/transcribe/{sessionId}/transcript
-* #130: Speed up GET /asr/meeting
-* #131: Add metatada to PUT /asr/meeting
-* #132: Prepopulate SA Config with Meeting Minutes phrases
-* #133: Meeting Minutes defaults for existing projects
-* #136: Change the lock-out duration for user sign-in
-
-Other changes in this release are:
-* Updated EZ-Init script
-* CallHome License Server
 
 
 

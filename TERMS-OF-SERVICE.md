@@ -193,4 +193,4 @@ Notices to you will be sent to the address that you identify on your account as 
 
 **l. Contracting authority.** If you are an individual accepting these terms on behalf of an entity, you represent that you have the legal authority to enter into this agreement on that entity's behalf. If you specify an entity, or you use an email address provided by an entity you are affiliated with (such as an employer) in connection with a SaaS Service subscription purchase or renewal, that entity will be treated as the owner of the subscription for purposes of this agreement.
 
-For any questions regarding this terms of service or the Privacy Policy please send an email to support@voicegain.ai
+For any questions regarding this terms of service or the Privacy Policy please send an email to [support@voicegain.ai](mailto:support@voicegain.ai)

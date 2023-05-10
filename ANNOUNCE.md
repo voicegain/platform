@@ -1,3 +1,7 @@
+### Maintenance release 1.82.3 is scheduled for 5/10/2023 between 8:30am and 10am CST
+
+This release upgrades Kubernetes to 1.25
+
 ### Maintenance release 1.82.2 is scheduled for 4/27/2023 between 5:30pm and 7pm CST
 
 This release has the following changes:

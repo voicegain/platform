@@ -1,3 +1,7 @@
+## Release 1.82.3
+
+This release upgrades Kubernetes to 1.25
+
 ## Release 1.82.2
 
 This maintenance release has the following changes:

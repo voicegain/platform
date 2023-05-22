@@ -1,3 +1,7 @@
+## Release 1.82.4
+
+This release allows for use of the /confgroup API with JWT token.
+
 ## Release 1.82.3
 
 This release upgrades Kubernetes to 1.25

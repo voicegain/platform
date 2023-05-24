@@ -206,6 +206,7 @@ For example, residents of the European Economic Area and certain other jurisdict
 
 You may contact us with any concern or complaint regarding our privacy practices, and you also may lodge a complaint with the relevant governmental authority.
 
+See [Data Processing Addendum](https://github.com/voicegain/platform/blob/master/DATA-PROCESSING-ADDENDUM.md) for details how we may process your data.
 
 
 # CONTACT US

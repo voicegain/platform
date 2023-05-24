@@ -1,7 +1,7 @@
 #
 # VOICEGAIN PRIVACY POLICY
 
-Last updated October 14th, 2021
+Last updated May 24th, 2023
 
 **INTRODUCTION**
 
@@ -214,9 +214,9 @@ If you have questions or comments about this Privacy Policy, please contact us a
 
 Voicegain (Resolvity, Inc.)
 
-1505 LBJ Fwy, Suite 255
+1333 Corporate Dr, Suite 211
 
-Dallas, TX 75234
+Irving, TX 75038
 
 972-518-0863
 

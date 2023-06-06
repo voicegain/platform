@@ -2,6 +2,30 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### June 6, 2023
+
+This release adds a more accurate Spanish model and a Task Advisor
+
+Here is a list of fixes and changes:
+* BE-242	Finalized the new style of the Browser Capture pop-up in Transcribe App
+* BE-281	Added a page with Terms of Use that is reachable via the Help menu
+* BE-288	Fixed: Asks to setup a payment method while payment method already setup on the account
+* BE-336	Improved English NER
+* BE-370	Fixed in meeting minutes: Summaries truncated mid sentence
+* BE-371	Fixed: Save button not enabled on EDGE in user profile
+* BE-372	In Transcribe App left-hand menu - prevent overlapping scroll bars
+* BE-373	Fixed: Error when deleting last Device
+* BE-374	Fixed : asr-api doesn't allow users to move a meeting session to a different context in some case
+* BE-382	Fixed: incorrect speaker names found in exported meeting transcription
+* BE-391	Trim spaces from entered URL
+* BE-392	Disable Password Recovery Key page if user is logged in using SSO
+* BE-396	Do not offer local password change to users logged in via SSO
+* BE-408	Fixed: Wrong confirmation dialog show when deleting user from Account
+* BE-412	When syncing users, avoid copying a user to edge if the user's email is found on edge
+* BE-429	Fixed formatting anomaly: ok, let's try number 1
+* BE-431	Fixed: Bad URL in Advisor
+
+
 ### May 22, 2023
 
 Key things that are new in this release:

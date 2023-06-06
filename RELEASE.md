@@ -1,3 +1,53 @@
+## Release 1.84.0
+
+This minor release includes a significantly more accurate Spanish real-time model.
+
+Here is a list of fixes and changes:
+* BE-224	Track on each account the most recent access
+* BE-242	Finalized the new style of the Browser Capture pop-up in Transcribe App
+* BE-260	In Web Console: In File Transcribe Dialog add ability to enter hint misspellings and boost
+* BE-279	Allow only Audio files for upload to Clip Manager
+* BE-281	In Transcribe App: Added a page with Terms of Use that is reachable via the Help menu
+* BE-288	Fixed in Transcribe App: Asks to setup a payment method while payment method already setup on the account
+* BE-327	Show context id in the card with JWT token
+* BE-336	Improved English NER
+* BE-365	Voicegain SSO App updated to latest 3rd-party package versions, also switched from npm to yarn
+* BE-367	Make the User Management table sortable in the Web Console
+* BE-369	Generate JWT with userId and use it where needed
+* BE-370	Fixed in meeting minutes: Summaries truncated mid sentence
+* BE-371	Fixed: Save button not enabled on EDGE in user profile
+* BE-372	In Transcribe App left-hand menu - prevent overlapping scroll bars
+* BE-373	fixed in Transcribe App: Error when deleting last Device
+* BE-374	Fix in Transcribe App: asr-api doesn't allow users to move a meeting session to a different context in some case
+* BE-377	Library Vulnerability check for the SSO app
+* BE-378	Modify EZInit and EZUpdate script to correctly set directory permissions
+* BE-379	Modify /asr/transcribe/async API to support audio calbacks
+* BE-380	Add report of the audioCallback in the full /asr/transcribe/async results
+* BE-381	Add DMY to list of NERs that we support for redaction in asr/transcribe formatter
+* BE-382	Fixed in Transcribe App: incorrect speaker names found in exported meeting transcription
+* BE-384	Supports audioCallback with PI Redacted audio
+* BE-388	Fix in Web Console: Transcription from URL request is missing audio.capture parameter
+* BE-389	Improved Context selection dialog in the Web Console
+* BE-391	In Transcribe App: trim spaces from entered URL
+* BE-392	Disable Password Recovery Key page if user is logged in using SSO
+* BE-394	New API to return AuthConfig by name from Context
+* BE-396	Do not offer local password change to users logged in via SSO
+* BE-401	In Web Console: add 'S3 Compatible' type of auth config
+* BE-404	Support context.description in Context API
+* BE-407	Changes to authConfig to support S3 Compatible URI
+* BE-408	Fixed in Transcribe App: Wrong confirmation dialog show when deleting user from Account
+* BE-412	When syncing users, avoid copying a user to edge if the user's email is found on edge
+* BE-414	API for multipart/form-data for Audio Callback
+* BE-415	Add GET /asr/transcribe/status/queue API
+* BE-419	Add customValues to the OnPrem Cluster API
+* BE-421	Fixed bug: In regex-based redaction only the first regex is being used
+* BE-429	Fixed formatting anomaly: ok, let's try number 1
+* BE-431	Fixed in Transcribe App: Bad URL in Advisor
+* BE-435	In Web Console: When we are done creating new context - switch to the new context
+* BE-436	Fixed in Web Console:  broken validation for area-code numbers
+* BE-439	In Web Console: fix formatting of the Transcribe Detail page
+
+
 ## Release 1.83.0
 
 Key things that are new in the Transcribe App this minor release:

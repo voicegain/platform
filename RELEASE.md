@@ -1,6 +1,6 @@
 ## Release 1.2.0_beta
 
-This release adds fine-grained control of features available to various types of accounts.
+This relese adds fine-grained control of features available to various types of accounts.
 
 ### Major Features and Improvements
 * More convenient Billing status info and control from within the Portal.

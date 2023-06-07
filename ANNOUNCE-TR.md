@@ -2,7 +2,7 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
-### June 6, 2023
+### June 7, 2023
 
 This release adds a more accurate Spanish model and a Task Advisor
 
@@ -24,7 +24,8 @@ Here is a list of fixes and changes:
 * BE-412	When syncing users, avoid copying a user to edge if the user's email is found on edge
 * BE-429	Fixed formatting anomaly: ok, let's try number 1
 * BE-431	Fixed: Bad URL in Advisor
-
+* BE-442  Fixed in Transcribe App: Voice Signature sample playback always plays from the beginning of audio
+* BE-443  Fixed in Transcribe App: Transcription fails because unable to find the speaker
 
 ### May 22, 2023
 

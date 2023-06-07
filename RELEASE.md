@@ -1,3 +1,11 @@
+## Release 1.84.1
+
+Changes related to Integrity of Processing (fixes)
+* BE-442    Fixed in Transcribe App: Voice Signature sample playback always plays from the beginning of audio
+* BE-443    Fixed in Transcribe App: Transcription fails because unable to find the speaker
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.84.0
 
 This minor release includes a significantly more accurate Spanish real-time model.

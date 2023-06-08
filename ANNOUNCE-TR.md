@@ -2,6 +2,11 @@
 
 If you encounter any problems, just give us a shout at support@voicegain.ai
 
+### June 8, 2023
+
+One issue has been fixed:
+* BE-448    Project transcript view shows also Home Page transcripts directly after switch from Home to Project view
+
 ### June 7, 2023
 
 This release adds a more accurate Spanish model and a Task Advisor

@@ -1,3 +1,10 @@
+### Maintenance release 1.84.2 is scheduled for 6/8/2023 between 2pm and 3pm CST
+
+Changes related to Integrity of Processing (fixes)
+* BE-448    Project transcript view shows also Home Page transcripts directly after switch from Home to Project view
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Maintenance release 1.84.1 is scheduled for 6/7/2023 between 2:30am and 3:30pm CST
 
 Changes related to Integrity of Processing (fixes)

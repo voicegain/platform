@@ -1,3 +1,10 @@
+## Release 1.84.2
+
+Changes related to Integrity of Processing (fixes)
+* BE-448    Project transcript view shows also Home Page transcripts directly after switch from Home to Project view
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.84.1
 
 Changes related to Integrity of Processing (fixes)

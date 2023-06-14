@@ -17,7 +17,7 @@ We may collect information about you in a variety of ways. The information we ma
 
 ## Personal Data
 
-Personally identifiable information, such as your name, postal address, email address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that you voluntarily give to us when you register with the Site or our application, or when you choose to participate in various activities related to the Site and our application, such as online chat and message boards. You are under no obligation to provide us with personal information of any kind, however your refusal to do so may prevent you from using certain features of the Site and our application.
+Personally identifiable information, such as your name, postal address, email address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that you voluntarily give to us when you register with the Site or our application, or when you choose to participate in various activities related to the Site and our application, such as online chat and message boards. You are under no obligation to provide us with personal information of any kind; however, your refusal to do so may prevent you from using certain features of the Site and our application.
 
 ## Derivative Data
 
@@ -42,10 +42,8 @@ Personal data of your customers that you ask us to process on your behalf, which
 
 # USE OF YOUR INFORMATION
 
-Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. This section does not applicable to Audio Derived Customer Information. Specifically, we may use information collected about you via the Site or our application to:
+Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. This section is not applicable to Audio Derived Customer Information. Specifically, we may use information collected about you via the Site or our application to:
 
-- Administer sweepstakes, promotions, and contests.
-- Assist law enforcement and respond to subpoena.
 - Compile anonymous statistical data and analysis for use internally or with third parties.
 - Create and manage your account.
 - Deliver targeted advertising, coupons, newsletters, and other information regarding promotions and the Site and our application to you.
@@ -64,19 +62,21 @@ Having accurate information about you permits us to provide you with a smooth, e
 - Respond to product and customer service requests.
 - Send you a newsletter.
 - Solicit support for the Site and our application.
+- Administer sweepstakes, promotions, and contests.
+- Assist law enforcement and respond to subpoena.
 
 
 # USE OF YOUR CUSTOMERS INFORMATION
 
-This section describes how Voicegain may strictly and narrowly use your Customers Information (i.e Audio Derived Customer Data) 
+This section describes how Voicegain may strictly and narrowly use your Customers Information (i.e. Audio Derived Customer Data) 
 
-- Assist law enforcement and respond to subpoena.
-- Enforce legal terms that govern our services.
-- Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.
-- Comply with law.
 - Provide, maintain and improve our services.
 - Resolve disputes and troubleshoot problems.
 - Respond to product and customer service requests.
+- Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.
+- Enforce legal terms that govern our services.
+- Comply with law.
+- Assist law enforcement and respond to subpoena.
 
 # DISCLOSURE OF YOUR INFORMATION 
 
@@ -108,7 +108,7 @@ We may share your information with advertisers and investors for the purpose of 
 
 ## Sale or Bankruptcy
 
-If we reorganize or sell all or a portion of our assets, undergo a merger, or are acquired by another entity, we may transfer your information to the successor entity. If we go out of business or enter bankruptcy, your information would be an asset transferred or acquired by a third party. You acknowledge that such transfers may occur and that the transferee may decline honor commitments we made in this Privacy Policy.
+If we reorganize or sell all or a portion of our assets, undergo a merger, or are acquired by another entity, we may transfer your information to the successor entity. If we go out of business or enter bankruptcy, your information would be an asset transferred or acquired by a third party. You acknowledge that such transfers may occur and that the transferee may decline to honor commitments we made in this Privacy Policy.
 
 We are not responsible for the actions of third parties with whom you share personal or sensitive data, and we have no authority to manage or control third-party solicitations. If you no longer wish to receive correspondence, emails or other communications from third parties, you are responsible for contacting the third party directly.
 
@@ -222,3 +222,5 @@ Irving, TX 75038
 972-518-0863
 
 support@voicegain.ai
+
+Last reviewed June 13th, 2023

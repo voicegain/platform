@@ -223,4 +223,7 @@ Irving, TX 75038
 
 support@voicegain.ai
 
+At the email above you can also contact Voicegain regaring inquiries, complaints, and disputes. 
+If you already have an account with Voicegain, you can contyact us via the Voicegain Apps, e.g. Developer Web Console at https://console.voicegain.ai
+
 Last reviewed June 13th, 2023

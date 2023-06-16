@@ -1,6 +1,6 @@
 ### How to contact Voicegain
 
-If you encounter any problems, just give us a shout at support@voicegain.ai
+If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
 ### June 8, 2023
 

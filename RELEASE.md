@@ -1,3 +1,13 @@
+## Release 1.84.3
+
+Changes related to Integrity of Processing (fixes):
+* Fix several UI glitches that were introduced when updating AntD version.
+
+Changes related to Security:
+* BE-220    demo.voicegain.ai requires Content Security Policy and related Headers
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.84.2
 
 Changes related to Integrity of Processing (fixes)

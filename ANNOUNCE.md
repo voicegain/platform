@@ -1,3 +1,13 @@
+### Maintenance release 1.84.3 is scheduled for 6/19/2023 between noon and 3pm CST
+
+Changes related to Integrity of Processing (fixes):
+* Fix several UI glitches that were introduced when updating AntD version.
+
+Changes related to Security:
+* BE-220    demo.voicegain.ai requires Content Security Policy and related Headers
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Maintenance release 1.84.2 is scheduled for 6/8/2023 between 2pm and 3pm CST
 
 Changes related to Integrity of Processing (fixes)
@@ -355,87 +365,6 @@ This release addresses the following issues for the rest of the Voicegain platfo
 * #200: Upgrade Redisson version due to a bug
 * #201: When GET /sa/config is called we should update the key items to most recent version
 * #203: New API method to recompute a meeting: /asr/meeting/{meetingId}/recompute
-
-### Maintenance release 1.74.1 is scheduled for 1/17/2023 between 5:30pm and 7:30pm CST
-
-This release fixes the following issues:
-* offline task fails on re-try due to format value type mismatch
-* some sessions in ERROR state not removed from session cache as soon as ERROR determined
-
-### Minor release 1.74.0 is scheduled for 1/13/2023 between 11am and 1pm CST
-
-This Release enables User self-signup via email on Transcribe App on Edge.
-
-More options available in the OFFLINE /asr/transcribe API  `settings.fomatters`:
-* enhanced - provides formatting for entities like: URL, EMAIL, PHONE, SSN , CC 
-* redact - provides redaction for entities like: EMAIL, PHONE, SSN , CC, PERSON, ZIP
-* regex - text redaction/modification using regular expression matching
-
-EZUpdate script has been added for updating the Ubuntu packages on the Edge servers.
-
-This release addresses the following issues in the Voicegain platform:
-* #182: for sapi.voicegain.ai - limit what is accepted as values of audio.source
-* #183: for sapi.voicegain.ai - do not accept the session.portal parameter
-* #184: for sapi.voicegain.ai - reduced range for session.poll.persist
-* #185: for sapi.voicegain.ai - reduced set of parameters for session.websocket
-* #190: GET /public/monitor/asr returns HTTP 406
-* #191: GET /account/uuid fails to return submissions and saDemoContext
-
-### Maintenance release 1.73.1 is scheduled for 1/12/2023 between noon and 6pm CST
-
-This is a dummy Release, meant to test the automated release/deployment pipeline changes.
-
-
-### Minor release 1.73.0 is scheduled for 1/5/2023 between 6pm and 9pm CST
-
-This Release enables Browser Capture in the Transcribe App on Edge.
-
-This release also addresses the following Transcribe App issues:
-* #075: Pause is behaving like mute
-* #625: Add "No Microphone" option in browser Capture
-* #627: (Meeting Minutes) Modifications to the KeyItems settings in Project
-* #631: (Meeting Minutes) Support negative examples and regex
-* #633: Cancel out of the Mic Save dialog does not work
-* #634: (Meeting Minutes) Add Enabled toggle for each Key Item
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #107: Wrong content-type in response from https://console.voicegain.ai/ascalon-web-api/public/monitor/asr
-* #139: If account has allowSignupsFromDomain values then allow creation of new users only with valid emails
-* #144: Return simple account data from GET /account/{uuid} if no authentication provided
-* #156: Make freeswitch-esl-client one of our internal libraries
-* #162: Add Cache-Control: no-store to all API GET responses that may change
-* #163: Implement POST /asr/meeting/search 
-* #166: data-api to avoid including sosRef in the response of GET /data/uuid if its audio file is missing
-* #169: Add mpdId to /asr/meeting API
-* #170: Additions to formatters in the API
-* #172: New `pciDss` field on account
-* #173: Option to generate PCI-DSS restricted JWT token
-* #174: Spelling error in JWT aud field
-* #176: Add negativeExample and negativeRegex to saConfig
-* #177: Secure GET /account
-* #179: Add `disabled` field to saConfig Phrase
-* #186: Add rejection justification for meeting key items
-* #188: (Edge) negativeExample value not saved correctly
-* Diarization inference reliability has been improved.
-
-### Minor release 1.72.0 is scheduled for 12/15/2022 between 11am and 1pm CST
-
-This release offers improved Key Items feature within the Meeting Minutes in the Transcribe App.
-
-This release also addresses the following Transcribe App issues:
-* #593: Subscribe to notifications from back-end and log the incoming messages
-* #615: (Edge) make some Profile fields read-only on Edge
-* #619: Add a button for applying defaults to KeyItems
-* #620: Add a check for validity of regex to the Key Items Example dialog
-* #621: Switch from regex to advancedRegex for key items
-* #622: Show projects alphabetically sorted
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #145: Add releaseVersionDetail to response from GET /spec
-* #146: Add PUT /sa/config/{saConfigId}/defaults
-* #147: Return Phrases in SA Config in fixed order
-* #148: Validate regex loaded from the built-in Key-Items JSON
-
 
 
 **Backwards incompatibility:**

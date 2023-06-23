@@ -6,15 +6,16 @@ import datetime
 
 
 platform = "voicegain"
-JWT = "<Your JWT Here>"
+JWT = "<your JWT>"
 headers = {"Authorization":JWT}
 
 # Audio file and Upload settings
 #  
 #audio_fname = 'pcm_stereo_10sec.wav'
 #audio_fname = "cbA2_stereo.wav" ## apply prepaid card to account -- 6 minutes 6 seconds
-audio_fname = "wtB19-stereo.wav" ## cancel radio -- 1 minute 36 seconds
+#audio_fname = "wtB19-stereo.wav" ## cancel radio -- 1 minute 36 seconds
 #audio_fname = "wtB41-stereo.wav" ## broken radio -- 3 minutes 17 seconds
+audio_fname = "spotlight-order-mono.mp3"
 
 audio_type = "audio/wav"
 
@@ -65,10 +66,10 @@ sa_body = {
 
     "keywords": [
         {
-            "tag": "CANCEL",
+            "tag": "SPOTLIGHT",
             "examples": [
                 {
-                    "phrase": "cancel",
+                    "phrase": "spotlight",
                     # "usage": null
                 }
             ],
@@ -76,9 +77,9 @@ sa_body = {
             "hide": False
         },
         {
-            "tag": "EXPENSIVE",
+            "tag": "VISA",
             "examples": [
-                {"phrase": "expensive"}, {"phrase": "pricey"}, {"phrase": "costs a lot"}
+                {"phrase": "visa"}, {"phrase": "visa card"}, {"phrase": "visa credit card"}
             ],
             "expand": False,
             "hide": False
@@ -91,16 +92,27 @@ sa_body = {
             "builtIn": False,
             "examples": [
                 {
-                    "sentence": "hello, good morning my name is Jane",
-                    "sensitivity": 0.4
+                    "sentence": "Thank you for calling.",
+                    "sensitivity": 0.75
+                }
+            ],
+            "location" : {
+            #    "channel" : "caller",
+                "time" : 20000
+             },
+            "hideIfGroup": False
+        },         
+        {
+            "tag": "AGENT_INTRO",
+            "builtIn": False,
+            "examples": [
+                {
+                    "sentence": "This is Eve speaking.",
+                    "sensitivity": 0.5
                 },
                 {
-                    "sentence": "well, good morning my name is John",
-                    "sensitivity": 0.4
-                },
-                {
-                    "sentence": "good morning my name is Anne, I'll be happy",
-                    "sensitivity": 0.4
+                    "sentence": "My name is Eve",
+                    "sensitivity": 0.5
                 }
             ],
             "slots" : {
@@ -110,10 +122,25 @@ sa_body = {
                   "required" : True
                 }
               ]
+              },
+              "location" : {
+            #    "channel" : "caller",
+                "time" : 20000
             },
-             "location" : {
-               "channel" : "caller",
-               "time" : 20000
+            "hideIfGroup": False
+        },         
+        {
+            "tag": "OFFER_ASSISTANCE",
+            "builtIn": False,
+            "examples": [
+                {
+                    "sentence": "How can I help you today?",
+                    "sensitivity": 0.75
+                }
+            ],
+            "location" : {
+            #    "channel" : "caller",
+                "time" : 20000
             },
             "hideIfGroup": False
         },         
@@ -133,35 +160,12 @@ sa_body = {
             "builtIn": False,
             "examples": [
                 {
-                    "sentence": "is there anything else I can help you with",
+                    "sentence": "is there anything else I can help you with?",
                     "sensitivity": 0.75
                 }
             ],
             "hideIfGroup": False
-        },
-        {
-            "tag": "NOT_FUNCTIONING",
-            "builtIn": False,
-            "examples": [
-                {
-                    "sentence": "my radio quit working",
-                    "sensitivity": 0.4
-                },
-                {
-                    "sentence": "receiver doesn't work anymore",
-                    "sensitivity": 0.6
-                },     
-                {
-                    "sentence": "it is completely dead",
-                    "sensitivity": 0.4
-                },  
-                {
-                    "sentence": "it does not power on at all",
-                    "sensitivity": 0.4
-                }                  
-            ],
-            "hideIfGroup": False
-        },
+        }
     ]
 }
 sa_config_id = None
@@ -172,7 +176,7 @@ object_id = None
 body = {
   "asyncMode": "OFF-LINE",
   "metadata" : [
-    {"name" : "launchedFrom", "value" : "offline-sa.py"}
+    {"name" : "launchedFrom", "value" : "offline-sa-mono.py"}
   ],
   "audio":{
       "source": {
@@ -181,15 +185,16 @@ body = {
           }
       }
   },
-  "speakerChannels" : [
-    { "audioChannelSelector" : "left", "isAgent" : 'true', "vadMode" : "total_music_reject"},
-    { "audioChannelSelector" : "right", "isAgent" :'false', "vadMode" : "normal"}
-  ],
+  "virtualDualChannelEnabled" : True,
+   "speakerChannels" : [
+     { "audioChannelSelector" : "mix"}
+     ],
   "asr": {
+    "acousticModelNonRealTime" : "VoiceGain-omega-x",
     "noInputTimeout": 60000,
     "completeTimeout": 5000,
-    "sensitivity" : 0.3,
-    "speedVsAccuracy" : 0.75
+    "sensitivity" : 0.5,
+    "speedVsAccuracy" : 0.5
   },
   "saConfig":sa_config_id
 }
@@ -276,14 +281,12 @@ def web_api_request_sa(headers, body):
   # retrieve values from response
   # sessionId and capturedAudio are printed for debugging purposes
   sa_session_id = init_response["saSessionId"]
-  session_id_left = init_response["speakerChannels"][0]["transcribeSessionId"]
-  session_id_right = init_response["speakerChannels"][1]["transcribeSessionId"]
-  poll_url = init_response["poll"]["url"]
+  session_id_transcribe = init_response["speakerChannels"][0]["transcribeSessionId"]
+  poll_url = init_response["poll"]["url"].replace("/data", "/status")
 
-  print("       SA SessionId: {}".format(sa_session_id))
-  print("        SessionId L: {}".format(session_id_left))
-  print("        SessionId R: {}".format(session_id_right))
-  print("           Poll URL: {}".format(poll_url))
+  print("        SA SessionId: {}".format(sa_session_id))
+  print("SessionId Transcribe: {}".format(session_id_transcribe))
+  print("            Poll URL: {}".format(poll_url))
 
   web_res = {}
   web_res["sa_session_id"] = sa_session_id
@@ -309,33 +312,51 @@ def get_sa(headers, sa_session_id):
   if(status not in ("processing", "ready")):
     print("for session "+str(sa_session_id)+" error: "+str(init_response_raw.text), flush=True)
 
-  #print("JSON for ses {}".format(sa_session_id), flush=True)  
-  #print(str(init_response), flush=True)
+  # print("JSON for ses {}".format(sa_session_id), flush=True)  
+  # print(str(init_response), flush=True)
 
   print(" saSessionId: {}".format(init_response.get("saSessionId")), flush=True)
   print("    metadata: {}".format(init_response.get("metadata")), flush=True)
   print("     summary: {}".format(init_response.get("summary")), flush=True)
   print("CH1  speaker: {}".format(init_response["channels"][0].get("spk")), flush=True)
   print("CH2  speaker: {}".format(init_response["channels"][1].get("spk")), flush=True)
-  print("CH1    agent: {}".format(init_response["channels"][0].get("isAgent")), flush=True)
-  print("CH2    agent: {}".format(init_response["channels"][1].get("isAgent")), flush=True)
+  print("CH1    agent: {} (guessing which diarized channel is Agent is not implemented yet)".format(init_response["channels"][0].get("isAgent")), flush=True)
+  print("CH2    agent: {} (guessing which diarized channel is Agent is not implemented yet)".format(init_response["channels"][1].get("isAgent")), flush=True)
   print("CH1   gender: {}".format(init_response["channels"][0].get("gender")), flush=True)
   print("CH2   gender: {}".format(init_response["channels"][1].get("gender")), flush=True)
-  print("CH1 keywords: {}".format(init_response["channels"][0].get("keywords")), flush=True)
-  print("CH2 keywords: {}".format(init_response["channels"][1].get("keywords")), flush=True)
-  print("CH1 entities: {}".format(init_response["channels"][0].get("namedEntities")), flush=True)
-  print("CH2 entities: {}".format(init_response["channels"][1].get("namedEntities")), flush=True)
-  print("CH1  phrases: {}".format(init_response["channels"][0].get("phrases")), flush=True)
-  print("CH2  phrases: {}".format(init_response["channels"][1].get("phrases")), flush=True)  
-  print("CH1  emotion: {}".format(init_response["channels"][0].get("emotion")), flush=True)
-  print("CH2  emotion: {}".format(init_response["channels"][1].get("emotion")), flush=True)
-  print("phraseGroups: {}".format(init_response.get("phraseGroups")), flush=True)
+  print("CH1 keywords: {}".format(json.dumps( init_response["channels"][0].get("keywords"), indent=3)), flush=True)
+  print("CH2 keywords: {}".format(json.dumps( init_response["channels"][1].get("keywords"), indent=3)), flush=True)
+  print("CH1 entities: {}".format(json.dumps( init_response["channels"][0].get("namedEntities"), indent=3)), flush=True)
+  print("CH2 entities: {}".format(json.dumps( init_response["channels"][1].get("namedEntities"), indent=3)), flush=True)
+  print("CH1  phrases: {}".format(json.dumps( init_response["channels"][0].get("phrases"), indent=3)), flush=True)
+  print("CH2  phrases: {}".format(json.dumps( init_response["channels"][1].get("phrases"), indent=3)), flush=True)  
+  print("CH1  emotion: {}".format(json.dumps( init_response["channels"][0].get("emotion"), indent=3)), flush=True)
+  print("CH2  emotion: {}".format(json.dumps( init_response["channels"][1].get("emotion"), indent=3)), flush=True)
+  print("CH1     talk: {}".format(json.dumps( init_response["channels"][0].get("talk"), indent=3)), flush=True)
+  print("CH2     talk: {}".format(json.dumps( init_response["channels"][1].get("talk"), indent=3)), flush=True)
+  print("phraseGroups: {}".format(json.dumps( init_response.get("phraseGroups"), indent=3)), flush=True)
+
+  sections_array = init_response.get("multiChannelWords")
+
+  utterances = []
+
+  # Go through each JSON object in the array
+  for json_object in sections_array:
+      # For each 'words' array in the JSON object
+      for word in json_object['words']:
+          # Extract the 'utterance' field and append to the list
+          utterances.append(word['utterance'])
+
+  utterances_string = ' '.join(utterances)
+
+  print("words (speakers combined): {}".format(utterances_string), flush=True)
 
   return status
 
 ############
 ### MAIN ###
 ############
+
 
 web_api_request_sa_config(headers, sa_body)
 

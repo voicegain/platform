@@ -50,13 +50,26 @@ Many cloud providers take a unique approach to authenticating and interacting wi
 
 You will want to copy and paste the entire code block below into the terminal of your linux system that has kubectl configued and connected to your new cluster as outlined in our Cloud Specific Guides:. 
 <pre>
-kubectl -n kube-system create serviceaccount voicegain-manage
-kubectl create clusterrolebinding voicegain-manage --clusterrole=cluster-admin --serviceaccount=kube-system:voicegain-manage
-TOKENNAME=`kubectl -n kube-system get serviceaccount/voicegain-manage -o jsonpath='{.secrets[0].name}'`
+SERVICEACCT=voicegain-manage
+kubectl -n kube-system create serviceaccount ${SERVICEACCT}
+kubectl create clusterrolebinding ${SERVICEACCT} --clusterrole=cluster-admin --serviceaccount=kube-system:${SERVICEACCT}
+SAUID=$(kubectl -n kube-system get serviceaccount ${SERVICEACCT} -o jsonpath='{.metadata.uid}')
+TOKENNAME=${SERVICEACCT}-token
+echo "
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ${TOKENNAME}
+  namespace: kube-system
+  annotations:
+    kubernetes.io/service-account.name: ${SERVICEACCT}
+    kubernetes.io/service-account.uid: ${SAUID}
+type: kubernetes.io/service-account-token
+" > voicegain-manage-secret.yaml
+kubectl apply -f voicegain-manage-secret.yaml
 CA=$(kubectl get -n kube-system secret/$TOKENNAME -o jsonpath='{.data.ca\.crt}')
 TOKEN=$(kubectl get -n kube-system secret/$TOKENNAME -o jsonpath='{.data.token}' | base64 --decode)
 SERVER_URL=$(kubectl cluster-info | head -n1 |awk '/Kubernetes/ {print $NF}'| sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g')
-
 echo "
 apiVersion: v1
 kind: Config
@@ -76,6 +89,7 @@ users:
   user:
     token: ${TOKEN}
 " > vg_kubeconfig.yaml
+
 </pre>
 
 

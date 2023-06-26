@@ -1,7 +1,7 @@
 #
 # VOICEGAIN PRIVACY POLICY
 
-Last updated June 14th, 2023
+Last updated June 25th, 2023
 
 **INTRODUCTION**
 
@@ -237,4 +237,4 @@ At the email above you can also contact Voicegain regaring any inquiries, compla
 
 If you already have an account with Voicegain, you can contact us via the Voicegain Apps, e.g., Developer Web Console at https://console.voicegain.ai
 
-Last reviewed June 14th, 2023
+Last reviewed June 25th, 2023

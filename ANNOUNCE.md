@@ -1,3 +1,102 @@
+### Minor release 1.85.0 is scheduled for 6/28/2023 between 7pm and 10pm CST
+
+New functionality in the Transcribe App:
+* BE-45	Add Sharing of transcripts from Transcribe App
+* BE-422	In Transcribe App add Custom behavior for Help->Submit a Support Ticket option
+* BE-423	In Transcribe App: Support sharing from the Transcript Detail Page
+* BE-424	In Transcribe App: Add Page where the user can see all the meetings that they have shared
+* BE-426	In Transcribe App added Page that shows a single shared transcript to a not logged-in user
+* BE-427	In Transcribe App added Page that shows a single shared transcript to a logged-in user
+* BE-449	In Transcribe App: add ability to recompute Meeting Minutes for all Meeting withing Project
+
+New functionality in other platform components:
+* BE-225	Modify the Admin Tool to show "Last Used" time
+* BE-233	In Admin tool: add PCI-DSS column to the main account table display
+* BE-326	In Web Console: Show SHA sum of the Edge Cluster configuration
+* BE-387	In Web Console: If account is PCI compliant then show CHD Rate Limits
+* BE-417	Implemented Share APIs
+* BE-418	Implemented GET api for meeting data that uses shareId
+* BE-425	Add sharedBy and sharedWith parameters to GET /asr/meeting query
+* BE-447	Add PUT /asr/meeting/context/{contextId}/recompute method to recompute all the meetings on a context
+* BE-474	In Admin Tool: Show the number of Phones
+* BE-475	In Admin Tool: Add sorting by balance
+* BE-476	In Admin Tool: On the Usage chart make it possible to deselect one or more lines
+* BE-484	In Admin Tool: Add a "view password" feature to the login dialog
+* BE-485	In Admin Tool: Add "Suspend Selected" account functionality
+* BE-487	In Web Console Signup: Add confirmation of the values being submitted
+* BE-489	When creating new buckets enable versioning and set lifecycle rules
+* BE-514	Add Matomo to App Selector
+* BE-515	In App Selector: Add support for selectable Spanish/English language in the UI
+* BE-528	In Admin Tool: Add filtering on null value for Last Login and Last Used fields
+* BE-539	Support a new property: minio.server.region
+* BE-541	Add Region to Object Store settings for Edge Cluster
+
+Changes related to Integrity of Processing (fixes):
+* QA-183    In Transcribe App fix the link from "Manage Users"
+* BE-197	Add Kubeadm API update to EZUpdate.py
+* BE-411	In Web Console: Add splash loading screen
+* BE-446	In Transcribe App improve prompt in the URL entry box
+* BE-453	In Transcribe App fixed the "missing voice signature speaker" error
+* BE-454	Configured brotli for Cloud ACP and Transcribe App
+* BE-456	Fixed new-billing-utility fail to store an instance of Account in Redis due to oidcSettings
+* BE-462	Fixed new-billing-utility fail to send alerts due to a missing environment variable
+* BE-463	Fixed new-billing-utility fail to process storage and phone number usage periodically
+* BE-466	Fixed multiple records of storage usage of an account are written to postgres
+* BE-467	new-billing-utility submits the usage of a phone number to Billing System
+* BE-477	In Web Console in Add User dialog fixed the User option showing twice
+* BE-478	new-billing-utility fails to group the same type of ASR usage into one single record for a given interval
+* BE-479	new-billing-utility derives billing_to_process from only asr usages and ignores other types of usages
+* BE-480	Fixed: Account query API does not return correct values for pciDss field
+* BE-483	In Admin Tool: Better names for tabs
+* BE-492	new-billing-utility to ensure each quantity has up to 6 decimal places before it's sent to Fusebill
+* BE-493	In Web Console: fixed issue with New User Wizard (Joyride) 
+* BE-505	In Admin Tool: Make login safer by using pre-login feature
+* BE-512	GET /config-cluster fails to include clusterConfigShaSum in the response
+* BE-517	Fixed: EZINit issues with home directory and autossh for auto generated voicegain user.
+* BE-518	rex fails to invoke SessionMeasurementUtility.commit() for some realtime ASR sessions
+* BE-521	Fixed in Web Console: Transcribe+ table does not span full available width
+* BE-525	Fixed Polling URL returned from POST /sa
+* BE-527	Fix in Transcribe App: Download no longer downloads TXT and Audio
+* BE-529	In Admin Tool: Change filtering values on Contexts, Edge, Websockets, Phone #, and Users columns
+* BE-537	In Web Console: Fix user gets duplicated when adding roles
+* BE-538	Fixed in Transcribe App: the request for meetings on the home page should retrieve only 20 meetings
+* BE-540	Fixed in EDGE Web Console: Fallback Login is shown incorrectly
+* BE-542	Fix RedisTimeoutException: Unable to acquire connection!
+* BE-544	Fixed: Cloud function cannot add task to redis
+
+Third-Party vulnerability (security) related fixes:
+* BE-464	Admin Tool: Update to yarn and update packages to newer versions
+* VM-79	Unimrcp docker vulnerability
+* VM-81	freeswitch docker image vulnerability
+* VM-133	Python package protobuf==3.20.1
+* VM-135	offline-main docker image vulnerability (ffmpeg)
+* VM-136	ml-svc-grpc docker image vulnerability
+* VM-149	(SSO) nth-check Regular Expression Denial of Service (ReDoS)
+* VM-150	(SSO) async-validator Regular Expression Denial of Service (ReDoS)
+* VM-151	(SSO) word-wrap Regular Expression Denial of Service (ReDoS)
+* VM-152	(SSO) css-what Regular Expression Denial of Service (ReDoS)
+* VM-153	filebeat docker image vulnerability
+* VM-154	elasticsearch-master docker image vulnerability
+* VM-155	Triton docker image vulnerability
+* VM-156	Java services Docker image vulnerability
+* VM-157	httpd docker image httpd:2.4.57-alpine3.17 vulnerability
+* VM-158	redocly/redoc:v2.0.0-rc.50 docker image vulnerability 
+* VM-159	transmogrifier ssh and web docker container vulnerability
+* VM-160	ingress-nginx==4.6.0 helm chart vulnerability
+* VM-161	freeswitch 2.3.10 docker image vulnerability
+* VM-162	python:3.9.16-slim@sha256:78740d6c888f2e6cb466760b3373eb35bb3f1059cf1f1b5ab0fbec9a0331a03d docker image vulnerability
+* VM-163	nats:2.9.16-debian-11-r1 docker vulnerability
+* VM-164	telegraf:1.26.1 docker image vulnerability 
+* VM-165	mysql:5.7.30 docker image vulnerability
+* VM-166	Pod container allows privilege escalation on exec
+* VM-167	 Pod container is allowed to run as root
+* VM-168	grafana 6.6.0 docker image vulnerability
+* VM-169	single-tensorflow-serving:2.11.1 Docker image vulnerability
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Maintenance release 1.84.3 is scheduled for 6/19/2023 between noon and 3pm CST
 
 Changes related to Integrity of Processing (fixes):
@@ -326,45 +425,6 @@ Transcribe App issues addressed:
 * #665: Fix weird behavior in Settings if old Project has no Meeting Minutes enabled
 * #666: Add a hide button for the Zoom Meeting Assistant banner
 
-### Maintenance release 1.75.2 is scheduled for 1/26/2023 between 5:45pm and 7pm CST
-
-This release includes:
-* Fix for Issue #208 which was affecting Signup via the Developer Console
-* Improved demo.voicegain.ai app with improved security
-
-### Maintenance release 1.75.1 is scheduled for 1/25/2023 between 2pm and 4pm CST
-
-This release fixes the following Transcribe App issue:
-* #204: Occasional Error in Recomputing status
-
-### Minor release 1.75.0 is scheduled for 1243/2023 between 5pm and 8pm CST
-
-This release has the improved Spanish Offline model.
-
-This release adds ability to Recompute meetings in the Transcribe App and in the /asr/meeting API. 
-This means that all the NLU processing of the transcript can be redone after, e.g., change in the Project analytics settings.
-
-Other changes to the Transcribe App:
-* Info about available Zoom Meeting Assistant is shown on the home page.
-* List of search results shows also topics for each transcript.
-* Removed Update button on the Key Items settings. Key Items will always be updated to the latest configuration.
-* Hid Key Items configuration from non-Admin users.
-
-Transcribe App issues fixed:
-* #647: If a user has no signatures and I hover over the playback icon for a signature it shows "Error" tool tip
-* #656: When creating a new Project select a color by default - absence of a default selection was a bit confusing.
-* #664: Logout is not working - this was only in case if the app ran out of nonces.
-
-Other changes include:
-* Improved Admin Tool - better able to handle the thousands of accounts that we have. 
-* Fully tested dash-mpeg support. Will be coming soon to the Transcribe App.
-
-This release addresses the following issues for the rest of the Voicegain platform:
-* #198: Suboptimal http code returned in case of bad password reset
-* #199: asr-api returns 401 for POST /asr/meeting/async, which is unsupported
-* #200: Upgrade Redisson version due to a bug
-* #201: When GET /sa/config is called we should update the key items to most recent version
-* #203: New API method to recompute a meeting: /asr/meeting/{meetingId}/recompute
 
 
 **Backwards incompatibility:**

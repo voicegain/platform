@@ -6,7 +6,8 @@ import datetime
 
 
 platform = "voicegain"
-JWT = "<your JWT>"
+#platform = "ascalon"
+JWT = "<your JWT token>"
 headers = {"Authorization":JWT}
 
 # Audio file and Upload settings
@@ -35,7 +36,7 @@ multipart_form_data = {
 
 # Speech Analytics Configuration
 #
-sa_config_name = "SA-Offline-Demo-script-test-0008"
+sa_config_name = "SA-Offline-Demo-script-test-0008-dev"
 
 sa_body = {
     "name": sa_config_name,
@@ -282,7 +283,7 @@ def web_api_request_sa(headers, body):
   # sessionId and capturedAudio are printed for debugging purposes
   sa_session_id = init_response["saSessionId"]
   session_id_transcribe = init_response["speakerChannels"][0]["transcribeSessionId"]
-  poll_url = init_response["poll"]["url"].replace("/data", "/status")
+  poll_url = init_response["poll"]["url"] 
 
   print("        SA SessionId: {}".format(sa_session_id))
   print("SessionId Transcribe: {}".format(session_id_transcribe))

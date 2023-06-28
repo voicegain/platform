@@ -1,7 +1,7 @@
 #
 # VOICEGAIN PRIVACY POLICY
 
-Last updated June 14th, 2023
+Last updated June 25th, 2023
 
 **INTRODUCTION**
 
@@ -39,6 +39,16 @@ We may collect information about your customers as described below.
 
 Personal data of your customers that you ask us to process on your behalf, which will include any personal data of your customers that you provide to us to transcribe, caption, recognize, or otherwise process for them. When Voicegain processes personal data on behalf of you, Voicegain is just the processor of the data under applicable law, and you are the controller. You will solely control the extent of storage of such data in our systems.
 
+# DATA QUALITY
+Quality and Accuracy of Data: We strive to keep your Personal Data accurately recorded. The quality of the data we collect and process is a priority to us, and we make every reasonable effort to ensure it. However, maintaining the accuracy and completeness of your data is a shared responsibility. We rely on you, the data subject, to inform us if your personal data changes during your relationship with us.
+
+* **Your Responsibility:**
+As a data subject, you have a responsibility to ensure that the data you provide to us is accurate, complete, and up-to-date. Incorrect information can impact the quality of the services we provide, and inaccurate or false information can have serious repercussions. In cases where the data you provide is used for legal, financial, or safety-related purposes, the impact of inaccurate information can be significantly greater.
+
+* **Updating Your Data:**
+You are encouraged to review your data periodically and update it as necessary. Most platforms we operate provide options for you to access and update your personal data. In cases where such a provision does not exist, or if you encounter any issues, please contact us at [support@voicegain.ai](mailto:support@voicegain.ai)
+
+* **Rectifying Inaccurate Data:** If you believe any of your data in our possession is inaccurate or incomplete, please notify us immediately. We are committed to promptly correcting any inaccuracies in your Personal Data.
 
 # USE OF YOUR INFORMATION
 
@@ -227,4 +237,4 @@ At the email above you can also contact Voicegain regaring any inquiries, compla
 
 If you already have an account with Voicegain, you can contact us via the Voicegain Apps, e.g., Developer Web Console at https://console.voicegain.ai
 
-Last reviewed June 14th, 2023
+Last reviewed June 25th, 2023

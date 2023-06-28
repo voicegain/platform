@@ -2,6 +2,25 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### June 28, 2023
+
+New functionality in the Transcribe App:
+* BE-45	Add Sharing of transcripts from Transcribe App
+* BE-422	In Transcribe App add Custom behavior for Help->Submit a Support Ticket option
+* BE-423	In Transcribe App: Support sharing from the Transcript Detail Page
+* BE-424	In Transcribe App: Add Page where the user can see all the meetings that they have shared
+* BE-426	In Transcribe App added Page that shows a single shared transcript to a not logged-in user
+* BE-427	In Transcribe App added Page that shows a single shared transcript to a logged-in user
+* BE-449	In Transcribe App: add ability to recompute Meeting Minutes for all Meeting withing Project
+
+Fixes:
+* QA-183    In Transcribe App fix the link from "Manage Users"
+* BE-446	In Transcribe App improve prompt in the URL entry box
+* BE-453	In Transcribe App fixed the "missing voice signature speaker" error
+* BE-454	Configured brotli for Cloud ACP and Transcribe App
+* BE-527	Fix in Transcribe App: Download no longer downloads TXT and Audio
+* BE-538	Fixed in Transcribe App: the request for meetings on the home page should retrieve only 20 meetings
+
 ### June 8, 2023
 
 One issue has been fixed:

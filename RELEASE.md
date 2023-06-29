@@ -1,3 +1,10 @@
+## Release 1.85.1
+
+Changes related to Integrity of Processing (fixes)
+* BE-548    Do not send multipart/form-data parameters as files in audio.callback. Only audio data should be sent as file.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.85.0
 
 New functionality in this release in the Transcribe App:

@@ -1,3 +1,11 @@
+### Maintenance release 1.85.1 is scheduled for 6/29/2023 between 3pm and 6pm CST
+
+Changes related to Integrity of Processing (fixes)
+* BE-548    Do not send multipart/form-data parameters as files in audio.callback. Only audio data should be sent as file.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Minor release 1.85.0 is scheduled for 6/28/2023 between 7pm and 10pm CST
 
 New functionality in the Transcribe App:

@@ -1,3 +1,11 @@
+## Release 1.85.2
+
+Changes related to Integrity of Processing (fixes)
+* BE-549    Public Transcribe App share from EDGE cycles non-stop if used without login
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.85.1
 
 Changes related to Integrity of Processing (fixes)

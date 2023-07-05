@@ -6,7 +6,7 @@ import datetime
 
 
 platform = "voicegain"
-JWT = "your JWT here"
+JWT = "<Your JWT here>"
 headers = {"Authorization":JWT}
 
 # Audio file and Upload settings
@@ -34,7 +34,7 @@ multipart_form_data = {
 
 # Speech Analytics Configuration
 #
-sa_config_name = "SA-Offline-Demo-script-test-0008"
+sa_config_name = "SA-Offline-Demo-script-0009"
 
 sa_body = {
     "name": sa_config_name,
@@ -301,6 +301,15 @@ def poll_sa(headers, poll_url, start):
     print("for poll url "+str(poll_url)+" error: "+str(init_response_raw.text), flush=True)
   return status
 
+def process_transcript(json_data):
+    transcript = ""
+    for turn in json_data:
+        speaker = turn['spk']
+        words = [word['utterance'] for word in turn['words']]
+        sentence = " ".join(words)
+        transcript += f"Speaker {speaker}: {sentence}\n"
+    return transcript
+
 # api request to get final results
 def get_sa(headers, sa_session_id):
   init_response_raw = requests.get("https://api.{}.ai/v1/sa/{}/data?summary=true&emotion=true&keywords=true&entities=true&phrases=true".format(platform, sa_session_id), headers=headers)
@@ -310,8 +319,8 @@ def get_sa(headers, sa_session_id):
   if(status not in ("processing", "ready")):
     print("for session "+str(sa_session_id)+" error: "+str(init_response_raw.text), flush=True)
 
-  #print("JSON for ses {}".format(sa_session_id), flush=True)  
-  #print(str(init_response), flush=True)
+  # print("JSON for ses {}".format(sa_session_id), flush=True)  
+  # print(str(init_response), flush=True)
 
   print(" saSessionId: {}".format(init_response.get("saSessionId")), flush=True)
   print("    metadata: {}".format(init_response.get("metadata")), flush=True)
@@ -331,6 +340,17 @@ def get_sa(headers, sa_session_id):
   print("CH1  emotion: {}".format(json.dumps( init_response["channels"][0].get("emotion"), indent=3)), flush=True)
   print("CH2  emotion: {}".format(json.dumps( init_response["channels"][1].get("emotion"), indent=3)), flush=True)
   print("phraseGroups: {}".format(json.dumps( init_response.get("phraseGroups"), indent=3)), flush=True)
+
+  multiChannelWords = init_response.get("multiChannelWords")
+
+  #print("multi channel words {}".format(sa_session_id), flush=True)  
+  #print(str(multiChannelWords), flush=True)
+
+  transcript = process_transcript(multiChannelWords)
+  print("")
+  print("Transcript:")
+  print(transcript)
+
 
   return status
 

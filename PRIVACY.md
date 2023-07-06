@@ -231,10 +231,10 @@ Irving, TX 75038
 
 972-518-0863
 
-support@voicegain.ai
+[support@voicegain.ai](mailto:support@voicegain.ai)
 
 At the email above you can also contact Voicegain regaring any inquiries, complaints, and disputes. 
 
-If you already have an account with Voicegain, you can contact us via the Voicegain Apps, e.g., Developer Web Console at https://console.voicegain.ai
+If you already have an account with Voicegain, you can contact us via the Voicegain Apps, e.g., Developer Web Console at [https://console.voicegain.ai](https://console.voicegain.ai)
 
 Last reviewed June 25th, 2023

@@ -2,6 +2,27 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### July 13, 2023
+
+New functionality:
+* BE-550	Transcribe App: Usability improvement in share creation.
+* BE-458	Transcribe App: Add a checkmark to indicate among the matching Speakers the one that is assigned to the Speaker from transcript
+* BE-494	Transcribe App: Added validation for values entered in the text redaction fields
+* BE-555	Added support for multiple languages to the UI of the Transcribe App.
+* BE-568	Transcribe App: Delete all devices belonging to a User when a User is being deleted
+* BE-570	Transcribe App: Improvements to the projects view in the Left-Hand menu
+* BE-571	Transcribe App: Add new Zoom Icon (with status) in left-hand Menu
+* BE-576	Transcribe App: Add name of the user to be deleted to the User Deletion confirmation dialog
+* BE-582	Transcribe App: Modified text on the Signup page for EDGE if OIDC SSO is enabled on the account
+* BE-596	Transcribe: Add support for Hindi language for transcription.
+* BE-605	Transcribe App: Improved instructions on ZoomMA download page
+* BE-598	Transcribe App: Added PDF export option (beta)
+* BE-569	Transcribe App: Change the Home Page Plan info to a new format
+* BE-575	Transcribe App: Replace Browser Capture Icon with Google Meet Icon
+* BE-580	Transcribe App: Move Latest News to a separate page that in accessible from the Help Menu
+
+
+
 ### June 28, 2023
 
 New functionality in the Transcribe App:
@@ -14,7 +35,7 @@ New functionality in the Transcribe App:
 * BE-449	In Transcribe App: add ability to recompute Meeting Minutes for all Meeting withing Project
 
 Fixes:
-* QA-183    In Transcribe App fix the link from "Manage Users"
+* QA-183  In Transcribe App fix the link from "Manage Users"
 * BE-446	In Transcribe App improve prompt in the URL entry box
 * BE-453	In Transcribe App fixed the "missing voice signature speaker" error
 * BE-454	Configured brotli for Cloud ACP and Transcribe App

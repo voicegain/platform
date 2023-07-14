@@ -1,3 +1,46 @@
+## Release 1.86.0
+
+New functionality in the Transcribe App:
+* BE-550	Transcribe App: Usability improvement in share creation.
+* BE-458	Transcribe App: Add a checkmark to indicate among the matching Speakers the one that is assigned to the Speaker from transcript
+* BE-494	Transcribe App: Added validation for values entered in the text redaction fields
+* BE-555	Added support for multiple languages to the UI of the Transcribe App.
+* BE-568	Transcribe App: Delete all devices belonging to a User when a User is being deleted
+* BE-570	Transcribe App: Improvements to the projects view in the Left-Hand menu
+* BE-571	Transcribe App: Add new Zoom Icon (with status) in left-hand Menu
+* BE-576	Transcribe App: Add name of the user to be deleted to the User Deletion confirmation dialog
+* BE-582	Transcribe App: Modified text on the Signup page for EDGE if OIDC SSO is enabled on the account
+* BE-596	Transcribe: Add support for Hindi language for transcription.
+* BE-605	Transcribe App: Improved instructions on ZoomMA download page
+* BE-598	Transcribe App: Added PDF export option (beta)
+* BE-569	Transcribe App: Change the Home Page Plan info to a new format
+* BE-575	Transcribe App: Replace Browser Capture Icon with Google Meet Icon
+* BE-580	Transcribe App: Move Latest News to a separate page that in accessible from the Help Menu
+
+New functionality in other platform components:
+* BE-561	Admin tool: Added ability to change the account Billing Style
+* BE-563	Added API to add credit to an account
+* BE-558	Implemented a static method that generates PDF from a meeting JSON
+* BE-564	Make it possible to modify billing style on the Account using Admin tool
+* BE-565	Added pdf format to GET /asr/meeting/{meetingId}/transcript API
+* BE-546	Support stopping billing-utility from processing anything
+* BE-547	new-billing-utility to store usage of each TranscribApp account in Firestore
+* BE-554	new-billing-utility supports auto-refill
+
+Changes related to Integrity of Processing (fixes):
+* BE-440	Web Console: fix missing waveform in the microphone capture preview
+* BE-591	Make sure no account information is revealed by password reset API.
+* BE-514	Added Matomo to App Selector with correct IDs for dev and prod
+* BE-567	GET /user/{userId} returns 404 if the specified user does not exist
+* BE-581	prevent new-billing-utility from processing multiple hourly storage requests
+* BE-560	EZ Script fixes for K8s 1.27 and deprecated config
+* BE-572	App Selector: Update text on Signup page
+* BE-587	Reject with 400 (Bad Request) all requests to sapi endpoint which have audio.capture=true
+* BE-590	Accept WSS streaming protocol on PCI/CHD environment
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.85.2
 
 Changes related to Integrity of Processing (fixes)

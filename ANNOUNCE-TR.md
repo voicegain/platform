@@ -2,6 +2,15 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### July 14, 2023
+
+Fixes:
+* QA-301    Removed recompute option from transcripts in Error state.
+* QA-308    Fixed getting blank screen on My Shares
+* QA-323    Fixed project flag indicators not working as expected on Homepage (also BE-611)
+* QA-324    Fixed unable to move transcript between projects (also BE-616)
+* BE-612    Incorrect area outlines on the Home Page
+
 ### July 13, 2023
 
 New functionality:

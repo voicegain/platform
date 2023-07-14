@@ -1,6 +1,6 @@
 ### Maintenance release 1.86.1 is scheduled for 7/14/2023 between 5pm and 6pm CST
 
-This release has several improvements in the PDF export in the Taanscribe App (Meeting API)
+This release has several improvements in the PDF export in the Transcribe App (Meeting API)
 
 Changes related to Integrity of Processing (fixes)
 * QA-301    Transcribe App: Removed recompute option from transcripts in Error state.

@@ -1,3 +1,20 @@
+## Release 1.86.1
+
+This release has several improvements in the PDF export in the Taanscribe App (Meeting API)
+
+Changes related to Integrity of Processing (fixes)
+* QA-301    Transcribe App: Removed recompute option from transcripts in Error state.
+* QA-308    Transcribe App: Fixed getting blank screen on My Shares
+* QA-323    Transcribe App: Fixed project flag indicators not working as expected on Homepage (also BE-611)
+* QA-324    Transcribe App: Fixed unable to move transcript between projects (also BE-616)
+* BE-612    Transcribe App: Incorrect area outlines on the Home Page
+
+Fixes in other components:
+* BE-614    Web Console: In Edge Config prevent selection of configuration not matching the version
+* BE-615    Enable TWILIO protocol in CHD environment (sapi.voicegain.ai)
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.86.0
 
 New functionality in the Transcribe App:

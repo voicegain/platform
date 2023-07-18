@@ -1,3 +1,12 @@
+## Release 1.86.2
+
+This release includes an improved real-time English model delivering higher accuracy of speech recognition.
+
+Changes related to Integrity of Processing (fixes)
+* BE-622    (SSO) Fix issue with Spinner that does not stop if login failed (no error message was shown)
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.86.1
 
 This release has several improvements in the PDF export in the Taanscribe App (Meeting API)

@@ -2,6 +2,10 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### July 18, 2023
+
+This release includes an improved real-time English model delivering higher accuracy of speech recognition in microphone transcription preview.
+
 ### July 14, 2023
 
 Fixes:

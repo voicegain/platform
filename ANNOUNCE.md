@@ -1,3 +1,12 @@
+### Maintenance release 1.86.2 is scheduled for 7/18/2023 between 1pm and 4pm CST
+
+This release includes an improved real-time English model delivering higher accuracy.
+
+Changes related to Integrity of Processing (fixes)
+* BE-622    (SSO) Fix issue with Spinner that does not stop if login failed (no error message was shown)
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Maintenance release 1.86.1 is scheduled for 7/14/2023 between 5pm and 6pm CST
 
 This release has several improvements in the PDF export in the Transcribe App (Meeting API)
@@ -471,38 +480,7 @@ This release addresses the following issue for the rest of the Voicegain platfor
 * #223: Add language to the result of Transcription
 * #225: Random text output from real-time transcription in some cases after long silence
 
-### Maintenance release 1.77.1 is scheduled for 2/8/2023 between 9pm and 10pm CST
 
-This release includes:
-* Back-end update of Redis to 6.2.10 which has a fix to for the issue https://github.com/redis/redis/pull/11590
-* More accurate real-time model
-
-### Minor release 1.77.0 is scheduled for 2/3/2023 between noon and 2pm CST
-
-This release adds Zoom Meeting Assistant status display to the Transcribe App.
-Due to this change this release will require Zoom Meeting Assistant version 0.3.0 at minimum.
-
-Transcribe App issues addressed:
-* #555: Automatically insert underscores into multi-word hints
-* #667: Do not hide microphone and browser capture icons for old projects that have no language setting value
-
-Admin tool has been improved in this release:
-* Last Login Time and Billing Type columns have been added.
-
-This release addresses the following issue for the rest of the Voicegain platform:
-* #211: nats-websocket fail to send messages to topic subscribers.
-
-### Minor release 1.76.0 is scheduled for 1/24/2023 between 5pm and 8pm CST
-
-This release has the improved Spanish Real-Time model.
-
-Transcribe App issues addressed:
-* #406: Add ability to delete a keyword in Speech Analytics settings
-* #461: The downloaded audio file is mp3, but the extension is wav
-* #532: In languages Project settings show if microphone transcription is not available for given language
-* #610: Change the lock-out message to show the local time instead of the UTC.
-* #665: Fix weird behavior in Settings if old Project has no Meeting Minutes enabled
-* #666: Add a hide button for the Zoom Meeting Assistant banner
 
 
 **Backwards incompatibility:**

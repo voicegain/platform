@@ -1,3 +1,10 @@
+## Release 1.86.3
+
+Changes related to Integrity of Processing (fixes)
+* BE-631    Remove punctuation between two digits in En BERT punctuation model
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.86.2
 
 This release includes an improved real-time English model delivering higher accuracy of speech recognition.

@@ -1,3 +1,10 @@
+### Maintenance release 1.86.3 is scheduled for 7/21/2023 between 5pm and 6pm CST
+
+Changes related to Integrity of Processing (fixes)
+* BE-631    Remove punctuation between two digits in En BERT punctuation model
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Maintenance release 1.86.2 is scheduled for 7/18/2023 between 1pm and 4pm CST
 
 This release includes an improved real-time English model delivering higher accuracy of speech recognition.

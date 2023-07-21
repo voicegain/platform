@@ -2,7 +2,9 @@
 
 Effective: July 25th, 2019
 
-Last Updated: Jan 4th, 2021
+Last Updated: January 4th, 2021
+
+Last Reviewed: July 20th, 2023
 
 # 1. Acceptance of Terms
 By signing up for, accessing and using SaaS Services that are owned and operated by Resolvity Inc. ("Resolvity Inc.", “Company”, "Our", "Us", "We"), the entity you represent or if you do not designate an entity you individually (“You”, “Your”) are agreeing to be bound by this Voicegain SaaS Subscription Agreement ("Agreement") that consists of the terms and conditions below.  

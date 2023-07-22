@@ -6,7 +6,7 @@ import datetime
 
 
 platform = "voicegain"
-JWT = "<Your JWT here>"
+JWT = "<your JWT>"
 headers = {"Authorization":JWT}
 
 # Audio file and Upload settings
@@ -301,14 +301,53 @@ def poll_sa(headers, poll_url, start):
     print("for poll url "+str(poll_url)+" error: "+str(init_response_raw.text), flush=True)
   return status
 
-def process_transcript(json_data):
+# get average sentiment for a time range
+def get_average_sentiment(json_data, start_time, end_time):
+    total_sentiment = 0
+    total_time = 0
+
+    for item in json_data["list"]:
+        # Check if the time range of the item overlaps with the input time range
+        if item["endTime"] > start_time and item["startTime"] < end_time:
+            # Calculate the start and end time of the overlap
+            overlap_start = max(item["startTime"], start_time)
+            overlap_end = min(item["endTime"], end_time)
+
+            # Calculate the overlap duration
+            overlap_duration = overlap_end - overlap_start
+
+            # Add the weighted sentiment value to the total sentiment
+            total_sentiment += item["sentiment"] * overlap_duration
+
+            # Add the overlap duration to the total time
+            total_time += overlap_duration
+
+    # If the total time is zero, return zero (to avoid division by zero)
+    if total_time == 0:
+        return 0
+
+    # Calculate and return the average sentiment
+    average_sentiment = total_sentiment / total_time
+    return average_sentiment
+
+# get formatted transcript including spekears and sentiment
+def process_transcript(json_tr_data, chn1_spk, chn2_spk, json_sentiment_ch1, json_sentiment_ch2):
     transcript = ""
-    for turn in json_data:
+    for turn in json_tr_data:
         speaker = turn['spk']
+        start_time = turn['start']
+        end_time = start_time + turn['duration']
         words = [word['utterance'] for word in turn['words']]
         sentence = " ".join(words)
-        transcript += f"Speaker {speaker}: {sentence}\n"
+        if(speaker == chn1_spk):
+          sentiment = get_average_sentiment(json_sentiment_ch1, start_time, end_time)
+        else:
+          sentiment = get_average_sentiment(json_sentiment_ch2, start_time, end_time)
+
+        transcript += f"Speaker {speaker} [sentiment: {format(sentiment, '+.3f')}]: {sentence}\n"
     return transcript
+
+
 
 # api request to get final results
 def get_sa(headers, sa_session_id):
@@ -343,12 +382,15 @@ def get_sa(headers, sa_session_id):
 
   multiChannelWords = init_response.get("multiChannelWords")
 
-  #print("multi channel words {}".format(sa_session_id), flush=True)  
-  #print(str(multiChannelWords), flush=True)
+  # print("multi channel words {}".format(sa_session_id), flush=True)  
+  # print(str(multiChannelWords), flush=True)
 
-  transcript = process_transcript(multiChannelWords)
   print("")
+  print("CH1  speaker: {}".format(init_response["channels"][0].get("spk")), flush=True)
+  print("CH2  speaker: {}".format(init_response["channels"][1].get("spk")), flush=True)
+
   print("Transcript:")
+  transcript = process_transcript(multiChannelWords, init_response["channels"][0].get("spk"), init_response["channels"][1].get("spk"), init_response["channels"][0].get("emotion"), init_response["channels"][1].get("emotion"))
   print(transcript)
 
 

@@ -1,3 +1,12 @@
+## Release 1.86.4
+
+Changes related to Integrity of Processing (fixes)
+* BE-662    Temporary fix for "ASR-API kills REX session if there is no activity for 5 minutes" - timeout extended to 15 minutes
+* BE-663    Fix for: asr-api on CHD environment rejects derived session because callback url is redis
+  * this was introduced by: BE-615 Enable TWILIO protocol in CHD environment (sapi.voicegain.ai) 
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.86.3
 
 Changes related to Integrity of Processing (fixes)

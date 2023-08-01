@@ -50,7 +50,7 @@ Once the script completes you will need to Rebuild the Edge cluster from the Clo
 
 First we need to either:
 * Create a new Edge Cluster - see [Deploy Voicegain on hardware or a VM](../edge-on-hardware/Edge_Deploy.md)
-  * We assume that you will have the needed Mongo and Minio backuos stored somewhere safe  
+  * We assume that you will have the needed Mongo and Minio backups stored somewhere safe  
 * Reset an existing Edge Cluster - here are the steps:
   *   Do a kubeadm reset `sudo kubeadm reset`
   *   Delete old /nfs/default-* directories if you do not care about any of the old data

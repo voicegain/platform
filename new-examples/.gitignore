@@ -1,0 +1,14 @@
+.env
+.env-cloud-dev
+.env-cloud-prod
+.env-edge-dev
+.env-edge-prod
+.env-edge-dev-http
+
+config.ini
+
+data/
+
+*/__pycache__
+
+real-time/*.ulaw

@@ -15,22 +15,32 @@ Minio has a single backup folder with subfolders for the buckets, while Mongo ha
 
 Before restoring backups make sure there is no user/api traffic to the Edge system.
 
-Here is a script that will restore the backups (make sure you set the correct value of this source folder `/backup/mongo/{epoch time}`):
+The following command should be copied and pasted into a terminal and output checked to ensure intended results (make sure you set the correct value of this source folder `/backup/mongo/{epoch time}`):
 
 ```
+# 1. Make sure the terminal session can find the `mc` command:
 export PATH=$PATH:$HOME/minio-binaries/
 which mc
 
+# 2. Assing the currently running minio service to the $minio variable:
 minio=$(kubectl get ep | awk '/9000/ {print $2}')
 echo $minio
+
+# 3. Configure `mc`:
 mc alias set -q --insecure minio https://${minio} accesskey secretkey                                               
 mc ls --insecure minio
 
-# Restore minio. Run without --dry-run after checking:
+# 4. Restore minio. !!!Run without `--dry-run` argument after checking output!!! :
 mc mirror --insecure /backup/minio/ minio/ --dry-run
 
+# 5. Assing Mongo Backup Dir !!! MANUALLY ASSIGN: 
+MONGO_BACKUP=/backup/mongo/<EPOCH TIME>
+
+# 6. Assigning most recent mongo names directory in /nfs volumes as target of Mongo restore:
 mongo=$(\ls -lart /nfs | awk '/default-ascalon-base-mongodb/ {print $NF}'| tail -n1)
-# Restore mongo. Run without --dry-run after checking:
+echo $mongo
+
+# 7. Restore mongo. Run without --dry-run after checking:
 sudo rsync -avP /backup/mongo/{epoch time} /nfs/${mongo}/ --dry-run
 ```
 

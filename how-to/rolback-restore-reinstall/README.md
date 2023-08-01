@@ -44,7 +44,13 @@ First we need to either:
 * Reset an existing Edge Cluster - here are the steps:
   *   Do a kubeadm reser `sudo kubeadm reset`
   *   Delete old /nfs/default-* directories if you do not care about any of the old data
-  *   From the bottom of the Edge Cluster status page get the EZInit script by clicking the Regenerate EZInit button. Note that you will need only the highlighted part of the command line script.
-  *   
+  *   From the bottom of the Edge Cluster status page get the EZInit script by clicking the Regenerate EZInit button. Note that you will need only the highlighted part of the command line script. ![Regenerate EZInit](./Regenerate-EZInit.png)
+  *   After you download the script we need to make a change to it `sed -i.bak ':a;N;$!ba;s/clusterExist/#clusterExist/2' voicegain-init.sh`
+  *   Then stop the heart beat that pings the Cloud `sudo rm -rfv /opt/voicegain/bin/tunnel_heartbeat`
+  *   And finally run the EZInit script `sudo --preserve-env=HOME bash voicegain-init.sh`
+  *   Once the scipt is complete we will deploy the correct version release and configuration via the Cloud Web Console
+ 
+After these steps, we have a vanilla Edge Cluster with the correct configuration but no old user data.
+We can restore that data following the steps from **Restore from Backup** section. Remember to run the Rebuild at the end.
 
 

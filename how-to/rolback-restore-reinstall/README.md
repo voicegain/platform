@@ -40,8 +40,11 @@ Once the script completes you will need to Rebuild the Edge cluster from the Clo
 
 First we need to either:
 * Create a new Edge Cluster - see [Deploy Voicegain on hardware or a VM](../edge-on-hardware/Edge_Deploy.md)
- * We assume that you will have the needed Mongo and Minio backuos stored somewhere safe  
+  * We assume that you will have the needed Mongo and Minio backuos stored somewhere safe  
 * Reset an existing Edge Cluster - here are the steps:
- *   
+  *   Do a kubeadm reser `sudo kubeadm reset`
+  *   Delete old /nfs/default-* directories if you do not care about any of the old data
+  *   From the bottom of the Edge Cluster status page get the EZInit script by clicking the Regenerate EZInit button. Note that you will need only the highlighted part of the command line script.
+  *   
 
 

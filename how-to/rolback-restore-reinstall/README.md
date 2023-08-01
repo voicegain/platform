@@ -15,7 +15,7 @@ Minio has a single backup folder with subfolders for the buckets, while Mongo ha
 
 Before restoring backups make sure there is no user/api traffic to the Edge system.
 
-The following command should be copied and pasted into a terminal and output checked to ensure intended results (make sure you set the correct value of this source folder `/backup/mongo/{epoch time}`):
+The following commands should be copied and pasted into a terminal and output checked to ensure intended results (make sure you set the correct value of this source folder `/backup/mongo/{epoch time}`):
 
 ```
 # 1. Make sure the terminal session can find the `mc` command:

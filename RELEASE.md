@@ -1,3 +1,9 @@
+## Release 1.86.5
+
+This release enables higher number of replicas for autoscaling.
+
+It is just a configuration change.
+
 ## Release 1.86.4
 
 Changes related to Integrity of Processing (fixes)

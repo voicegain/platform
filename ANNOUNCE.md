@@ -1,3 +1,9 @@
+### Maintenance release 1.86.5 is scheduled for 8/2/2023 between 3:30pm and 4:30pm CST
+
+This release enables higher number of replicas for autoscaling.
+
+It is just a configuration change.
+
 ### Maintenance release 1.86.4 is scheduled for 7/28/2023 between noon and 2pm CST
 
 Changes related to Integrity of Processing (fixes)

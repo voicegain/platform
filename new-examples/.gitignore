@@ -12,3 +12,6 @@ data/
 */__pycache__
 
 real-time/*.ulaw
+
+rss.python
+*.zip

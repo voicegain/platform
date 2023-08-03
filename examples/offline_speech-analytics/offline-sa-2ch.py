@@ -34,7 +34,7 @@ multipart_form_data = {
 
 # Speech Analytics Configuration
 #
-sa_config_name = "SA-Offline-Demo-script-0009"
+sa_config_name = "SA-Offline-Demo-script-00010"
 
 sa_body = {
     "name": sa_config_name,
@@ -351,15 +351,15 @@ def process_transcript(json_tr_data, chn1_spk, chn2_spk, json_sentiment_ch1, jso
 
 # api request to get final results
 def get_sa(headers, sa_session_id):
-  init_response_raw = requests.get("https://api.{}.ai/v1/sa/{}/data?summary=true&emotion=true&keywords=true&entities=true&phrases=true".format(platform, sa_session_id), headers=headers)
+  init_response_raw = requests.get("https://api.{}.ai/v1/sa/{}/data?summary=true&emotion=true&keywords=true&entities=true&phrases=true&incidents=true".format(platform, sa_session_id), headers=headers)
   init_response = init_response_raw.json()
   status = init_response.get("status")
   print("status: {}  ".format(status), flush=True)
   if(status not in ("processing", "ready")):
     print("for session "+str(sa_session_id)+" error: "+str(init_response_raw.text), flush=True)
 
-  # print("JSON for ses {}".format(sa_session_id), flush=True)  
-  # print(str(init_response), flush=True)
+  print("JSON for ses {}".format(sa_session_id), flush=True)  
+  print(str(init_response), flush=True)
 
   print(" saSessionId: {}".format(init_response.get("saSessionId")), flush=True)
   print("    metadata: {}".format(init_response.get("metadata")), flush=True)
@@ -370,6 +370,15 @@ def get_sa(headers, sa_session_id):
   print("CH2    agent: {}".format(init_response["channels"][1].get("isAgent")), flush=True)
   print("CH1   gender: {}".format(init_response["channels"][0].get("gender")), flush=True)
   print("CH2   gender: {}".format(init_response["channels"][1].get("gender")), flush=True)
+  print("")
+  print("duration [s]: {}".format(init_response.get("durationSec")), flush=True)
+  print("CH1     talk: {}".format(json.dumps( init_response["channels"][0].get("talk"), indent=3)), flush=True)
+  print("CH2     talk: {}".format(json.dumps( init_response["channels"][1].get("talk"), indent=3)), flush=True)
+  print("CH1 overtalk: {}".format(json.dumps( init_response["channels"][0].get("overtalk"), indent=3)), flush=True)
+  print("CH2 overtalk: {}".format(json.dumps( init_response["channels"][1].get("overtalk"), indent=3)), flush=True)
+  print("     silence: {}".format(json.dumps( init_response.get("silence"), indent=3)), flush=True)
+  print("   incidents: {}".format(json.dumps( init_response.get("incidents"), indent=3)), flush=True)
+  print("")
   print("CH1 keywords: {}".format(json.dumps( init_response["channels"][0].get("keywords"), indent=3)), flush=True)
   print("CH2 keywords: {}".format(json.dumps( init_response["channels"][1].get("keywords"), indent=3)), flush=True)
   print("CH1 entities: {}".format(json.dumps( init_response["channels"][0].get("namedEntities"), indent=3)), flush=True)

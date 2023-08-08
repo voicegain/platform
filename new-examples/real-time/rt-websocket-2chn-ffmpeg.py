@@ -35,7 +35,9 @@ receivingWSProtocol = "wss"
 #acousticModelRealTime = "VoiceGain-rho"
 acousticModelRealTime = "VoiceGain-kappa"
 
-
+session_id_left = ""
+session_id_right = ""
+  
 headers = {"Authorization":JWT}
 
 # new transcription session request
@@ -73,7 +75,11 @@ body = {
         }
     ],
     "audio": {
-        "source": {"stream": {"protocol": sendingWSProtocol}},
+        "source": {"stream": 
+                    {"protocol": sendingWSProtocol,
+                     "noAudioTimeout": 1800000
+                     },                             
+                  },
         "format": "L16",
         "channels": "stereo",
         "rate": sampleRate,
@@ -94,6 +100,10 @@ body = {
             ]
         },
         "formatters": [
+            {
+                "type": "basic",
+                "parameters": {"enabled": "true"}
+            },          
             {
                 "type": "digits"
             },
@@ -134,12 +144,24 @@ def web_api_request(headers, body):
 
   # retrieve values from response
   # sessionId and capturedAudio are printed for debugging purposes
+  global session_id_left, session_id_right
   session_id_left = init_response["sessions"][0]["sessionId"]
   session_id_right = init_response["sessions"][1]["sessionId"]
   ws_url_left = init_response["sessions"][0]["websocket"]["url"]
   ws_url_right = init_response["sessions"][1]["websocket"]["url"]
   audio_ws_url = init_response["audio"]["stream"]["websocketUrl"]
   capturedAudio = init_response["audio"].get("capturedAudio")
+
+  # body = {"pause": {"action" : "start"}}
+
+  # url = "{}://{}/{}/asr/transcribe/{}".format(protocol, hostPort, urlPrefix, session_id_left)
+  # print(f"making PUT request to {url}", flush=True)
+  # requests.put(url, json=body, headers=headers)
+  # url = "{}://{}/{}/asr/transcribe/{}".format(protocol, hostPort, urlPrefix, session_id_right)
+  # print(f"making PUT request to {url}", flush=True)
+  # requests.put(url, json=body, headers=headers)
+
+
 
   print("        SessionId L: {}".format(session_id_left))
   print("        SessionId R: {}".format(session_id_right))
@@ -233,6 +255,7 @@ async def stream_audio(file_name, audio_ws_url):
         epoch_start_audio_stream = start
         elapsed_time_fl = 0
         count = 0
+        slept = False
         while byte_buf:
           n = len(byte_buf)
           print(".", end =" ", flush=True)
@@ -243,11 +266,32 @@ async def stream_audio(file_name, audio_ws_url):
               break
           count += n
           elapsed_time_fl = (time.time() - start)
+
           expected_time_fl = count / (sampleRate * channels * bytesPerSample)
           time_to_wait = expected_time_fl - elapsed_time_fl
           if time_to_wait >= 0: 
             time.sleep(time_to_wait) # to simulate real time streaming
           byte_buf = f.read(n_buf)
+          # if(not slept and elapsed_time_fl > 5):
+          #   print("sleeping 35 seconds to trigger timeout", flush=True)
+          #   left = 35
+          #   while left > 0:
+          #     print(str(left)+" ", end =" ", flush=True)
+          #     time.sleep(1)
+          #     left -= 1
+          #   start += 35
+          #   slept = True
+          #   global session_id_left, session_id_right
+  
+          #   body = {"pause": {"action" : "stop"}}
+
+          #   url = "{}://{}/{}/asr/transcribe/{}".format(protocol, hostPort, urlPrefix, session_id_left)
+          #   print(f"making PUT request to {url}", flush=True)
+          #   requests.put(url, json=body, headers=headers)
+          #   url = "{}://{}/{}/asr/transcribe/{}".format(protocol, hostPort, urlPrefix, session_id_right)
+          #   print(f"making PUT request to {url}", flush=True)
+          #   requests.put(url, json=body, headers=headers)
+
         elapsed_time_fl = (time.time() - start)
         print(str(datetime.datetime.now())+" done streaming audio in "+str(elapsed_time_fl), flush=True)
         print("Waiting 10 seconds for processing to finish...", flush=True)  
@@ -301,6 +345,25 @@ def process_audio(file_name):
   web_res = web_api_request(headers, body)
 
   # create and start the websocket thread
+
+  print("sleeping 35 seconds to trigger timeout", flush=True)
+  timeLeft = 16 * 60
+  while timeLeft > 0:
+    print(str(timeLeft)+" ", end =" ", flush=True)
+    time.sleep(1)
+    timeLeft -= 1
+  
+  # global session_id_left, session_id_right
+
+  # pausebody = {"pause": {"action" : "stop"}}
+
+  # url = "{}://{}/{}/asr/transcribe/{}".format(protocol, hostPort, urlPrefix, session_id_left)
+  # print(f"making PUT request to {url}", flush=True)
+  # requests.put(url, json=body, headers=headers)
+  # url = "{}://{}/{}/asr/transcribe/{}".format(protocol, hostPort, urlPrefix, session_id_right)
+  # print(f"making PUT request to {url}", flush=True)
+  # requests.put(url, json=pausebody, headers=headers)
+
   threadWsLeft = wsThread(web_res["ws_url_left"], "L >>\t")
   threadWsRight = wsThread(web_res["ws_url_right"], "R <<")  
   threadWsLeft.start()

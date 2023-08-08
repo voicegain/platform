@@ -94,6 +94,10 @@ body = {
         },
         "formatters": [
             {
+                "type": "basic",
+                "parameters": {"enabled": "true"}
+            },          
+            {
                 "type": "digits"
             },
             {

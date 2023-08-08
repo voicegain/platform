@@ -2,6 +2,32 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### August 7, 2023
+
+New functionality:
+* BE-603	Automatically refresh status of the transcripts
+* BE-621	Hide invalid transcript move project destinations
+* BE-623	Improved Error message in case of transcript move error
+* BE-626	Limit Basic Plan user to only 5 shares
+* BE-628	Enhanced Project selection
+* BE-638	PII Redaction placeholder validators allow non-ASCII characters
+* BE-651	Add Table of Contents in the exported PDF
+* BE-657	Add Metadata in the exported PDF
+* BE-668	Zoom Meeting Assistant Download name now has version included
+* BE-671	Add ability to completely disable Download on Edge
+* BE-675	Update content of Home Page if there are no transcripts
+* BE-680	Add ability to completely disable transcript copy to clipboard on Edge
+* BE-693	Update content of Home Page if there are no transcripts
+* BE-694	Add Login and SignUp buttons to the Share Expired/Invalid page
+* BE-695	Do not show the Move option for transcripts in a project that does not belong to a user and has not been shared with the user
+
+Fixes:
+* BE-620	Sorting shares by Expiry time
+* BE-637	Prevent invalid PII Redaction placeholders in Project settings during creation 
+* BE-672	Prev/Next buttons not working correctly
+* QA-261  Make transcript not clickable if status is Queued
+* QA-362  Sorting by transcript Status
+
 ### July 18, 2023
 
 This release includes an improved real-time English model delivering higher accuracy of speech recognition in microphone transcription preview.
@@ -18,21 +44,21 @@ Fixes:
 ### July 13, 2023
 
 New functionality:
-* BE-550	Transcribe App: Usability improvement in share creation.
-* BE-458	Transcribe App: Add a checkmark to indicate among the matching Speakers the one that is assigned to the Speaker from transcript
-* BE-494	Transcribe App: Added validation for values entered in the text redaction fields
+* BE-550	Usability improvement in share creation.
+* BE-458	Add a checkmark to indicate among the matching Speakers the one that is assigned to the Speaker from transcript
+* BE-494	Added validation for values entered in the text redaction fields
 * BE-555	Added support for multiple languages to the UI of the Transcribe App.
-* BE-568	Transcribe App: Delete all devices belonging to a User when a User is being deleted
-* BE-570	Transcribe App: Improvements to the projects view in the Left-Hand menu
-* BE-571	Transcribe App: Add new Zoom Icon (with status) in left-hand Menu
-* BE-576	Transcribe App: Add name of the user to be deleted to the User Deletion confirmation dialog
-* BE-582	Transcribe App: Modified text on the Signup page for EDGE if OIDC SSO is enabled on the account
-* BE-596	Transcribe: Add support for Hindi language for transcription.
-* BE-605	Transcribe App: Improved instructions on ZoomMA download page
-* BE-598	Transcribe App: Added PDF export option (beta)
-* BE-569	Transcribe App: Change the Home Page Plan info to a new format
-* BE-575	Transcribe App: Replace Browser Capture Icon with Google Meet Icon
-* BE-580	Transcribe App: Move Latest News to a separate page that in accessible from the Help Menu
+* BE-568	Delete all devices belonging to a User when a User is being deleted
+* BE-570	Improvements to the projects view in the Left-Hand menu
+* BE-571	Add new Zoom Icon (with status) in left-hand Menu
+* BE-576	Add name of the user to be deleted to the User Deletion confirmation dialog
+* BE-582	Modified text on the Signup page for EDGE if OIDC SSO is enabled on the account
+* BE-596	Add support for Hindi language for transcription.
+* BE-605	Improved instructions on ZoomMA download page
+* BE-598	Added PDF export option (beta)
+* BE-569	Change the Home Page Plan info to a new format
+* BE-575	Replace Browser Capture Icon with Google Meet Icon
+* BE-580	Move Latest News to a separate page that in accessible from the Help Menu
 
 
 
@@ -40,20 +66,20 @@ New functionality:
 
 New functionality in the Transcribe App:
 * BE-45	Add Sharing of transcripts from Transcribe App
-* BE-422	In Transcribe App add Custom behavior for Help->Submit a Support Ticket option
-* BE-423	In Transcribe App: Support sharing from the Transcript Detail Page
-* BE-424	In Transcribe App: Add Page where the user can see all the meetings that they have shared
-* BE-426	In Transcribe App added Page that shows a single shared transcript to a not logged-in user
-* BE-427	In Transcribe App added Page that shows a single shared transcript to a logged-in user
-* BE-449	In Transcribe App: add ability to recompute Meeting Minutes for all Meeting withing Project
+* BE-422	Add Custom behavior for Help->Submit a Support Ticket option
+* BE-423	In Support sharing from the Transcript Detail Page
+* BE-424	In Add Page where the user can see all the meetings that they have shared
+* BE-426	Added Page that shows a single shared transcript to a not logged-in user
+* BE-427	Added Page that shows a single shared transcript to a logged-in user
+* BE-449	In add ability to recompute Meeting Minutes for all Meeting withing Project
 
 Fixes:
-* QA-183  In Transcribe App fix the link from "Manage Users"
-* BE-446	In Transcribe App improve prompt in the URL entry box
-* BE-453	In Transcribe App fixed the "missing voice signature speaker" error
+* QA-183  Fix the link from "Manage Users"
+* BE-446	Improve prompt in the URL entry box
+* BE-453	Fixed the "missing voice signature speaker" error
 * BE-454	Configured brotli for Cloud ACP and Transcribe App
-* BE-527	Fix in Transcribe App: Download no longer downloads TXT and Audio
-* BE-538	Fixed in Transcribe App: the request for meetings on the home page should retrieve only 20 meetings
+* BE-527	Fix in Download no longer downloads TXT and Audio
+* BE-538	Fixed in the request for meetings on the home page should retrieve only 20 meetings
 
 ### June 8, 2023
 

@@ -1,3 +1,43 @@
+## Release 1.87.0
+
+New functionality in the Transcribe App:
+* BE-603	Transcribe App: Automatically refresh status of the transcripts
+* BE-621	Transcribe App: Hide invalid transcript move project destinations
+* BE-623	Transcribe App: Improved Error message in case of transcript move error
+* BE-626	Transcribe App: Limit Basic Plan user to only 5 shares
+* BE-628	Transcribe App: Enhanced Project selection
+* BE-638	Transcribe App: PII Redaction placeholder validators allow non-ASCII characters
+* BE-651	Transcribe App: Add Table of Contents in the exported PDF
+* BE-657	Transcribe App: Add Metadata in the exported PDF
+* BE-668	Transcribe App: Zoom Meeting Assistant Download name now has version included
+* BE-671	Transcribe App: Add ability to completely disable Download on Edge
+* BE-675	Transcribe App: Update content of Home Page if there are no transcripts
+* BE-680	Transcribe App: Add ability to completely disable transcript copy to clipboard on Edge
+* BE-693	Transcribe App: Update content of Home Page if there are no transcripts
+* BE-694	Transcribe App: Add Login and SignUp buttons to the Share Expired/Invalid page
+* BE-695	Transcribe App: Do not show the Move option for transcripts in a project that does not belong to a user and has not been shared with the user
+
+New functionality in other platform components:
+* BE-574	Web Developer Console upgrade to latest AntD
+* BE-641	Disabled deprecated support for the Language Models in the Developer Console
+* BE-667	Admin Tool: Allow modification of Rate-Limits
+* BE-678	Easy scaling for real-time transcription supported
+* BE-687	Add noAudioTimeout option to asr API
+
+Changes related to Integrity of Processing (fixes):
+* BE-620	Transcribe App fix: Sorting shares by Expiry time
+* BE-635	Fixed issues in Walk-Through Wizard in the Developer Console
+* BE-637	Transcribe App fix: Prevent invalid PII Redaction placeholders in Project settings during creation 
+* BE-639	Fix access to a transcript from a Developer Console Context Dash
+* BE-672	Transcribe App fix: Prev/Next buttons not working correctly
+* BE-674	Fix missing audio charts in Transcribe+ in Web Console
+* BE-691	GET /user/sync API checks user existence based on user.email
+* QA-261  Transcribe App fix: Make transcript not clickable if status is Queued
+* QA-357  Fix weird behavior of Web Console if the current context is deleted
+* QA-362  Transcribe App fix: Sorting by transcript Status
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.86.5
 
 This release enables higher number of replicas for autoscaling.

@@ -244,9 +244,24 @@ async def stream_audio(file_name, audio_ws_url):
       # we need to lower the buffer size - otherwise the sender will buffer for too long
       write_limit=512, 
       # compression needs to be disabled otherwise will buffer for too long
-      compression=None) as websocket:
+      compression=None,
+      ping_timeout=None
+      ) as websocket:
       try:
         print(str(datetime.datetime.now())+" connected", flush=True)
+
+        # print("sleeping 35 seconds to trigger timeout", flush=True)
+        # timeLeft = 75
+        # while timeLeft > 0:
+        #   print(str(timeLeft)+" ", end =" ", flush=True)
+        #   time.sleep(1)
+        #   # try:
+        #   #   await websocket.ping()
+        #   # except Exception as e:
+        #   #     print(str(datetime.datetime.now())+" Exception 0 when sending ping via websocket: "+str(e)) 
+        #   #     break
+        #   timeLeft -= 1
+
         global startTime
         startTime = time.time()
         n_buf = 1 * 1024
@@ -346,12 +361,12 @@ def process_audio(file_name):
 
   # create and start the websocket thread
 
-  print("sleeping 35 seconds to trigger timeout", flush=True)
-  timeLeft = 16 * 60
-  while timeLeft > 0:
-    print(str(timeLeft)+" ", end =" ", flush=True)
-    time.sleep(1)
-    timeLeft -= 1
+  # print("sleeping 35 seconds to trigger timeout", flush=True)
+  # timeLeft = 15 * 60
+  # while timeLeft > 0:
+  #   print(str(timeLeft)+" ", end =" ", flush=True)
+  #   time.sleep(1)
+  #   timeLeft -= 1
   
   # global session_id_left, session_id_right
 

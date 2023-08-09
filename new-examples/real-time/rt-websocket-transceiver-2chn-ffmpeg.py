@@ -72,7 +72,7 @@ body = {
         }
     ],
     "audio": {
-        "source": {"stream": {"protocol": sendingWSProtocol}},
+        "source": {"stream": {"protocol": sendingWSProtocol, "noAudioTimeout" : 1800000}},
         "format": "L16",
         "channel": "stereo",
         "rate": sampleRate,
@@ -274,6 +274,15 @@ async def main():
       write_limit=128, 
       # compression needs to be disabled otherwise will buffer for too long
       compression=None) as websocket:
+        
+        # print("sleeping 35 seconds to trigger timeout", flush=True)
+        # timeLeft = 75
+        # while timeLeft > 0:
+        #   print(str(timeLeft)+" ", end =" ", flush=True)
+        #   time.sleep(1)
+        #   timeLeft -= 1
+
+
         send_task = asyncio.create_task(stream_audio(inputFilePath, websocket))
         receive_task = asyncio.create_task(receive_messages(websocket))
         

@@ -1,5 +1,11 @@
 ### Minor release 1.87.0 is scheduled for 8/7/2023 between 8pm and 11pm CST
 
+The Whisper model is available as preview release.
+
+You can access it using the same /asr/transcribe API that you would use for OFFLINE transcription by setting the `settings.asr.acousticModelNonRealTime` to one of: "whisper:medium", "whisper:small", "whisper:base", "whisper" (is the same as "whisper:medium").
+
+You can also specify a set of possible languages e.g. `settings.asr.languages : [“en”, “es”]`
+
 New functionality in the Transcribe App:
 * BE-603	Transcribe App: Automatically refresh status of the transcripts
 * BE-621	Transcribe App: Hide invalid transcript move project destinations

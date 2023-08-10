@@ -1,3 +1,10 @@
+### Maintenance release 1.87.1 is scheduled for 8/10/2023 between 2:30pm and 6pm CST
+
+Changes related to Integrity of Processing (fixes)
+* BE-722    Recognizer does not send RECOGNIZE-COMPLETE if no audio has been sent to Recognizer
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.87.0 is scheduled for 8/7/2023 between 8pm and 11pm CST
 
 The Whisper model is available as preview release.

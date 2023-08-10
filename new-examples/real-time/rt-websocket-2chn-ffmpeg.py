@@ -79,7 +79,7 @@ body = {
     "audio": {
         "source": {"stream": 
                     {"protocol": sendingWSProtocol,
-                     "noAudioTimeout": 1800000
+                     "noAudioTimeout": 65000
                      },                             
                   },
         "format": "L16",
@@ -264,16 +264,21 @@ async def stream_audio(file_name, audio_ws_url):
         print(str(datetime.datetime.now())+" connected", flush=True)
 
         # print("sleeping 35 seconds to trigger timeout", flush=True)
-        # timeLeft = 75
+        # timeLeft = 61
         # while timeLeft > 0:
         #   print(str(timeLeft)+" ", end =" ", flush=True)
         #   time.sleep(1)
-        #   # try:
-        #   #   await websocket.ping()
-        #   # except Exception as e:
-        #   #     print(str(datetime.datetime.now())+" Exception 0 when sending ping via websocket: "+str(e)) 
-        #   #     break
+        #   try:
+        #     await websocket.ping()
+        #   except Exception as e:
+        #       print(str(datetime.datetime.now())+" Exception 0 when sending ping via websocket: "+str(e)) 
+        #       break
         #   timeLeft -= 1
+
+        # # test websocket close before sending audio  
+        # await websocket.close()
+        # print(str(datetime.datetime.now())+" closed", flush=True)
+        # return
 
         global startTime
         startTime = time.time()
@@ -300,7 +305,8 @@ async def stream_audio(file_name, audio_ws_url):
           if time_to_wait >= 0: 
             time.sleep(time_to_wait) # to simulate real time streaming
           byte_buf = f.read(n_buf)
-          # if(not slept and elapsed_time_fl > 5):
+          
+          # if(not slept and elapsed_time_fl > 10):
           #   print("sleeping 35 seconds to trigger timeout", flush=True)
           #   left = 35
           #   while left > 0:
@@ -309,10 +315,9 @@ async def stream_audio(file_name, audio_ws_url):
           #     left -= 1
           #   start += 35
           #   slept = True
-          #   global session_id_left, session_id_right
-  
-          #   body = {"pause": {"action" : "stop"}}
 
+          #   global session_id_left, session_id_right
+          #   body = {"pause": {"action" : "stop"}}
           #   url = "{}://{}/{}/asr/transcribe/{}".format(protocol, hostPort, urlPrefix, session_id_left)
           #   print(f"making PUT request to {url}", flush=True)
           #   requests.put(url, json=body, headers=headers)
@@ -325,8 +330,6 @@ async def stream_audio(file_name, audio_ws_url):
         print("Waiting 10 seconds for processing to finish...", flush=True)  
         time.sleep(10.0)
         print("done waiting", flush=True)  
-        global keep_running
-        keep_running = False
         await websocket.close()
         print(str(datetime.datetime.now())+" websocket closed", flush=True)
       except Exception as e:
@@ -401,6 +404,7 @@ def process_audio(file_name):
   asyncio.get_event_loop().run_until_complete( stream_audio(file_name, web_res["audio_ws_url"]) )
 
   # wait for websocket thread to join 
+  print("waiting for websocket threads to join", flush=True)
   threadWsLeft.join()
   threadWsRight.join()
   print(f"END processing: {file_name}")

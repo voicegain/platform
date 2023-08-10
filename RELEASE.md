@@ -1,3 +1,11 @@
+## Release 1.87.1
+
+Changes related to Integrity of Processing (fixes)
+* BE-722    Recognizer does not send RECOGNIZE-COMPLETE if no audio has been sent to Recognizer
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.87.0
 
 New functionality in the Transcribe App:

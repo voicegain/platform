@@ -24,8 +24,8 @@ sampleRate = 8000
 channels = 2
 bytesPerSample = 2
 
-#sendingWSProtocol = "WSS"
-sendingWSProtocol = "WEBSOCKET"
+sendingWSProtocol = "WSS"
+#sendingWSProtocol = "WEBSOCKET"
 #sendingWSProtocol = "WS"
 
 receivingWSProtocol = "wss"
@@ -37,6 +37,8 @@ acousticModelRealTime = "VoiceGain-kappa"
 
 session_id_left = ""
 session_id_right = ""
+
+channelOfLastWordReceived = ""
   
 headers = {"Authorization":JWT}
 
@@ -97,6 +99,7 @@ body = {
                 "contacting:8",
                 "Mars_Consumer_Care:10",
                 "mints:8"
+                "ezCater:10",
             ]
         },
         "formatters": [
@@ -185,7 +188,7 @@ startTime = 0
 
 # function to process JSON with incremental transcription results sent as messages over websocket
 def process_ws_msg(wsMsg, stack, prefix):
-  global msgCnt, startTime
+  global msgCnt, startTime, channelOfLastWordReceived
   msgCnt += 1
   # uncomment this to see raw messages 
   # print(prefix+" "+wsMsg, flush=True)
@@ -198,18 +201,28 @@ def process_ws_msg(wsMsg, stack, prefix):
       if( toDel is None):
         # unknown edit
         print("EDIT->"+wsMsg, flush=True)
+        return
       else:
         # delete and edits
+        if(channelOfLastWordReceived != prefix):
+          # new channel
+          stack.clear()        
         for i in range(toDel):
-          stack.pop()
+          if(len(stack) > 0):
+            stack.pop()
         edits = data.get('edit')
         if(not (edits is None)):
           for edit in edits:
             utter = edit.get('utt')
             stack.append(utter)
+          channelOfLastWordReceived = prefix
     else:
       # simple utterance
+      if(channelOfLastWordReceived != prefix):
+        # new channel
+        stack.clear()        
       stack.append(utter)
+      channelOfLastWordReceived = prefix
       if( len(stack) > 50 ):
         while(len(stack) > 30):
           stack.pop(0)

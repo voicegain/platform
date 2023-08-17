@@ -8,6 +8,7 @@ Scripts with `ffmpeg` in their name can transcode from any audio format to forma
 * rt-websocket-2chn-ffmpeg.py - streaming a stereo file using websocket, results are returned 2 other websockets in word-by-word mode
 * rt-websocket-2chn-sentence-ffmpeg.py - streaming a stereo file using websocket, results are returned 2 other websockets in sentence-by-sentence mode 
 * rt-websocket-polling-ffmpeg-bulk.py - streaming a mono file using websocket, results are returned via polling (this method can process multiple files) 
+  Note: if file is stereo, in this configuration the transcript will be of the merged audio. We will add a two-channel model example soon.
 * rt-websocket-transceiver-2chn-ffmpeg.py - streaming a stereo file using websocket, results are returned over the same websocket in word-by-word mode
 * rt-websocket-transceiver-2chn-sentence-ffmpeg.py - streaming a stereo file using websocket, results are returned over the same websocket in sentence-by-sentence mode
 

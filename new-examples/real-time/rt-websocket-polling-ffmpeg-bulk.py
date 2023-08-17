@@ -22,7 +22,7 @@ outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 inputFilePath = f"{inputFolder}/{inputFile}"
 
 sampleRate = 8000
-channels = 1
+channels = 2
 
 #format = "PCMU"
 #ffmpegFormat = "mulaw"
@@ -75,7 +75,7 @@ body = {
   "audio": {
     "source": { "stream": { "protocol": sendingWSProtocol } },
     "format": format,
-    "channel" : "mono",
+    "channel" : "mono" if(channels == 1) else "stereo",
     "rate": sampleRate, 
     "capture": 'true'
   },
@@ -86,44 +86,42 @@ body = {
             "completeTimeout": -1,
             "sensitivity" : 0.5,
             "speedVsAccuracy" : 0.5 
-            , "hints" : [
-                "rupees[roopiece|ruppes]"
-                , "rupee[rooppee|ruppe]"
-                , "lakh_rupees[lack_roopiece|lac_ropiece|lak_ropiece|lacropiece]:10"
-                , "lakhs[lakx|leks|laks]:10"
-                , "lakh[lak]"
-                , "for_Hyderabad[for_Hydrobad|for_Hydrobag|for_Hydroba]:10"
-                , "Hyderabad[Hydrobad|Hydrobag|Hydroba]"
-                , "twelve_noon"
-                , "movie_ticket"
-                , "GB_RAM"
-                , "MB_RAM[mbee_ram]"
-                , "your_reward:10"
-                , "one_hour:10"
-                , "CVV_number"
-                , "hyphen[hi_fen]:10"
-                , "PM_GMT"
-                , "IP_address[i_p_address]"
-                , "NASA_center[nassa_center]"
-                , "ASCII_character[asskey_characters|askkey_characters]:10"
-                , "ASAP[ay_sap]"
-                , "HIPAA_policies[h_i_p_a_a_policies|hippa_policies|hi_pa_policies]:10"
-                , "UNICEF[uni_sef]"
-                , "CAPTCHA[cap_cha|cap_tsha]:10"
-                , "Valuelabs_LLP[value_labs_l_l_p]:10"
-                , "MetLife_Inc[metlife_ing]:10"
-                , "in_general"
-                , "need_details"
-                , "called_id"
-                , "eleven[leven|leben]"
-                , "AT&T[a_t_an_t]"
-                , "zero_to_hundred"
-                , "miles_per_hour[miles_per_r]:10"
-                , "Kore_dot_ai[core_dot_a_i|core_dot_ai]"
-                , "temperature[tebrature]"
-            ]
-            #, "langModel": "ac35500c-08e1-45f5-9fde-666e75c6fc86"
-            #, "langModel" : "340aabc5-7ccd-427f-9f0f-051872254385"
+            # , "hints" : [
+            #     "rupees[roopiece|ruppes]"
+            #     , "rupee[rooppee|ruppe]"
+            #     , "lakh_rupees[lack_roopiece|lac_ropiece|lak_ropiece|lacropiece]:10"
+            #     , "lakhs[lakx|leks|laks]:10"
+            #     , "lakh[lak]"
+            #     , "for_Hyderabad[for_Hydrobad|for_Hydrobag|for_Hydroba]:10"
+            #     , "Hyderabad[Hydrobad|Hydrobag|Hydroba]"
+            #     , "twelve_noon"
+            #     , "movie_ticket"
+            #     , "GB_RAM"
+            #     , "MB_RAM[mbee_ram]"
+            #     , "your_reward:10"
+            #     , "one_hour:10"
+            #     , "CVV_number"
+            #     , "hyphen[hi_fen]:10"
+            #     , "PM_GMT"
+            #     , "IP_address[i_p_address]"
+            #     , "NASA_center[nassa_center]"
+            #     , "ASCII_character[asskey_characters|askkey_characters]:10"
+            #     , "ASAP[ay_sap]"
+            #     , "HIPAA_policies[h_i_p_a_a_policies|hippa_policies|hi_pa_policies]:10"
+            #     , "UNICEF[uni_sef]"
+            #     , "CAPTCHA[cap_cha|cap_tsha]:10"
+            #     , "Valuelabs_LLP[value_labs_l_l_p]:10"
+            #     , "MetLife_Inc[metlife_ing]:10"
+            #     , "in_general"
+            #     , "need_details"
+            #     , "called_id"
+            #     , "eleven[leven|leben]"
+            #     , "AT&T[a_t_an_t]"
+            #     , "zero_to_hundred"
+            #     , "miles_per_hour[miles_per_r]:10"
+            #     , "Kore_dot_ai[core_dot_a_i|core_dot_ai]"
+            #     , "temperature[tebrature]"
+            # ]
         }
       #,"formatters" : [{"type" : "digits"}]
     }
@@ -189,7 +187,7 @@ async def stream_audio(file_name, audio_ws_url):
   conv_fname = (file_name+'.ulaw').replace(inputFolder, "./")
   ff = FFmpeg(
       inputs={file_name: []},
-      outputs={conv_fname : ['-ar', ''+str(sampleRate), '-f', ffmpegFormat, '-y', '-map_channel', '0.0.0']}
+      outputs= {conv_fname : ['-ar', ''+str(sampleRate), '-f', ffmpegFormat, '-y', '-map_channel', '0.0.0']} if(channels ==1) else {conv_fname : ['-ar', ''+str(sampleRate), '-f', ffmpegFormat, '-y']}
   )
   ff.cmd
   ff.run()

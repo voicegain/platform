@@ -52,7 +52,7 @@ body = {
                 "minimumDelay": 0
             },
             "content": {
-                "incremental": ['sentences'],
+                "incremental": ['segments'],
                 "full": []
             }
         },
@@ -66,7 +66,7 @@ body = {
                 "minimumDelay": 0
             },
             "content": {
-                "incremental": ['sentences'],
+                "incremental": ['segments'],
                 "full": []
             }
         }
@@ -85,11 +85,13 @@ body = {
             "incompleteTimeout": 3599999,
             "sensitivity": 0.4,
             "hints": [
+                "Justin[justen|just_then]:10",
                 "Starburst:10",
                 "Mars_Wrigley:10",
                 "contacting:8",
                 "Mars_Consumer_Care:10",
-                "mints:8"
+                "mints:8",
+                "Life_Savers:10"            
             ]
         },
         "formatters": [

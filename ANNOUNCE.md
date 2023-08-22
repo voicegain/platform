@@ -1,3 +1,77 @@
+
+### Minor release 1.88.0 is scheduled for 8/22/2023 between 5pm and 7pm CST
+
+**Backwards incompatibility** : 
+This release removes `sentences` parameter from session.content in /asr/transcribe API.
+It gets replaces with `segments`.
+
+New functionality in the Transcribe App:
+* BE-416	(TA) Login from Transcribe App to Freshdesk
+* BE-640	(TA) Support renaming existing Speaker
+* BE-685	(TA) Admin (Account level) controlled PII redaction
+* BE-699	(TA) more options for PII Redaction (add full and partial masking)
+* BE-703	(TA) Implement https://transcribe.voicegain.ai/freshdesk/login
+* BE-704	(TA) Change the URL for Help->Submit a Support Ticket
+* BE-721	(TA) Add PII Redaction page inside Account settings
+* BE-732	(TA) Add x to cancel a search for transcript within project
+* BE-751	(TA) Support upload of multiple files for transcription
+* BE-752	(TA) Add two filter toggles on the Speakers list
+* BE-755	(TA) On home page show selected Project together with Home
+* BE-756	(TA) Allow change of name of an External Speaker
+* BE-757	(TA) Show email for User Speaker
+* BE-759	(TA) Modify the list of entities to redact (ZIP, DMY)
+* BE-764	(TA) Show only current project on the LH menu
+* BE-793	(TA) 3 distinct URLs for "Submit Support Ticket" link depending on environment
+* QA-369	(TA) Improved Error message if user tries to sign-up second time with same email
+* QA-373	(TA) Improved title of page with Account Users
+* QA-400	(TA) Disable Save button if no new users have been selected
+
+New functionality in other platform components:
+
+* BE-666	Return information about what parts of the transcript were redacted and by what rule
+* BE-688	Better end-of-segment detection for real-time sentence-by-sentence (segment-by-segment) mode
+* BE-707	Enable keepalive ping also on the websocket used for the audio
+* BE-710	Add formatters field to the Account API
+* BE-728	Presigned URLs for Data Object files
+* BE-729	In the API remove "sentences" as content and replace with new "segments"
+* BE-738	Partial redaction of PERSON NER -> generate Initials
+* BE-749	Add defaultContext to User data in User API
+* BE-769	Make  GET `/data/{uuid/file/{fnameWIthExt)` return special output if contentType is application/dash+xml
+
+Changes related to Integrity of Processing (fixes):
+* BE-708	(TA) Fix: Cannot delete a device that is shown in the device list
+* BE-715	(TA) Fix: At larger zoom levels Left-Hand menu unusable
+* BE-761	(TA) Fix: Project Transcript list shows meeting from home page after auto refresh due to STOP message
+* BE-791	(TA) Fix: We are not generating Meeting Minutes in German if the Project is German
+* BE-795	(TA) Fix: Weird long topics for Spanish Meetings
+* QA-365	(TA) Fix: Next Audio button not responding on Single Click (or with delay)
+* QA-368	(TA) Fix: Search and Project Name is overlapping over each other
+* QA-370	(TA) Fix: Trying to recompute any file, resulting all files showing across all projects.
+* QA-372	(TA) Fix: Transcripts table-Table sorting by "Name" and "Created on" is not working.
+* QA-374	(TA) Fix: My shares table-Table sorting not working for name, transcription date, and scope.
+* QA-377	(TA) Fix: Search text should reset on Project switch
+* QA-401	(TA) Fix: Other users table- Sorting by last active is not working.
+* QA-403	(TA) Fix: other accounts users table- Sorting by name is not working.
+* QA-410	(TA) Fix: Left menu is breaking down when selecting it rapidly.
+* QA-417	(TA) Fix: Account Text redaction/project setting- When placeholder is selected fields should be required fields.
+* BE-720	Fix issue with UUID on Oracle MongoDB
+* BE-723	Fix: ex-autoscaler cronjob is not working when there are more than 9 rex instances
+* BE-742	Fix: asr-api sends hypothesis msg of the next sentence to websocket before the recognition msg of the current sentence
+* BE-746	Fix: Some words are included in two recognition results
+* BE-750	Fix: In some case, asr-api does not send recognition websocket msg when getting EOS
+* BE-753	Logic fix in EZInit kubelet configuration
+* BE-754	Fix: audio redaction is not working in meeting API
+* BE-762	Fix: Redaction.originalValue is returned with default debug level
+* BE-763	Fix: Prevent storing duplicate formatters
+* BE-797	Fix: Incorrect decimal formatting if currency
+* QA-363	(Web Console) Fix: New User Wizard step4
+* QA-379	(Web Console) Fix: In Experiments sections, input fields overlapping with close icon
+* QA-380	(Web Console) Fix: IVR Proxy status is not showing properly
+* QA-392	(Web Console) Fix: Properly notify about attempt to create duplicate name Context
+* QA-398	(Web Console) Fix: textboxes are not cleaned up when I try to create a second context
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Maintenance release 1.87.1 is scheduled for 8/10/2023 between 2:30pm and 6pm CST
 
 Changes related to Integrity of Processing (fixes)
@@ -509,19 +583,6 @@ We also made changes to support new Billing Plans in the Transcribe App.
 * BE-36	Deploy latest offline model VoiceGain-omega-x - trained on additional call-center audio
 * BE-38	Changed pricing and time limits on Transcribe App plans
 
-### Minor release 1.79.0 is scheduled for 2/19/2023 between 3pm and 6pm CST
-
-This release has several back-end improvements to the core Voicegain Platform:
-* The rate limits use is now logged to the influxDB and can be queried from Grafana. 
-You can configure alerts in Grafana so that you can know if you are getting close to the rate limits.
-* The throughput in the offline mode has been further improved. 
-Edge deployments have been tested to 1200 hours transcribed per hour for extended periods of time.
-* Cause for the spike in redis use under extreme loads has been identified and removed.
-This will result in better stability due to much lower use of the redis resource.
-* Edge deployments to GCP VPC now require smaller set of permissions to use Google Storage.
-* In Edge deployment, MongoDB indexes are created on startup. The set of indexes used has been optimized.
-* Removed `permessage-deflate` support on websocket connections used by real-time transcription. 
-This in order to reduce the latency.
 
 
 **Backwards incompatibility:**

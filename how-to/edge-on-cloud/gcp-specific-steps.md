@@ -35,28 +35,42 @@ and create a default Node Pool of `n1-standard-8` instances.
 
 You can run the following command to create a few components:
 * a subnet in the default VPC
+* a secondary ip range in subnet for Kubernetes pods
+* a secondary ip range in subnet for Kubernetes services
 * a regional private Kubernetes Cluster in the subnet
 * a node pool of `n1-standard-8` instances
 * one compute instance in each zone in the specified region
 
 <pre>
 gcloud container clusters create [CLUSTER_NAME] \
---create-subnetwork name=[SUBNET_NAME] --enable-ip-alias --enable-private-nodes \
---no-enable-master-authorized-networks --master-ipv4-cidr 172.19.0.0/28 --region [REGION] \
+--create-subnetwork name=[SUBNET_NAME],range=[SUBNET_CIDR] --enable-ip-alias --enable-private-nodes \
+--cluster-ipv4-cidr=[PODS_CIDR] --services-ipv4-cidr=[SERVICES_CIDR] \
+--enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP] --master-ipv4-cidr 172.19.0.0/28 --region [REGION] \
 --num-nodes 1 --machine-type=n1-standard-8 --scopes=gke-default,datastore,storage-full \
---cluster-version "1.22.15-gke.1000"
+--cluster-version "1.27.3-gke.100"
 </pre>
 
 <pre>
+Needed Parameters:-
 [CLUSTER_NAME]: Name of the NEW cluster
 [SUBNET_NAME]: Name of the NEW subnet
 [REGION]: GCP region to create cluster in
+[VOICEGAIN_NAT_IP]: IP allowed to connect GKE Master
+
+Optional Parameters:-
+[SUBNET_CIDR]: IP Range of subnet
+[PODS_CIDR]: IP Range for pods in kubernetes cluster
+[SERVICES_CIDR]: IP Range for services in kubernetes cluster
 </pre>
+
+**>> Contact Voicegain (support@voicegain.ai) to get value for VOICEGAIN_NAT_IP <<**
 
 #### Option B: Use pre-created network and subnetwork on the VPC
 
 If you would like to create the cluster in the pre-created subnet, 
 you can use this option. The following command will create a few components:
+* a secondary ip range in subnet for Kubernetes pods
+* a secondary ip range in subnet for Kubernetes services
 * a regional private Kubernetes Cluster in the subnet you specified
 * a node pool of `n1-standard-8` instances
 * one compute instance in each zone in the specified region
@@ -64,17 +78,30 @@ you can use this option. The following command will create a few components:
 <pre>
 gcloud container clusters create [CLUSTER_NAME] \
 --network [NETWORK_NAME] --subnetwork [SUBNET_NAME] --enable-ip-alias --enable-private-nodes \
---no-enable-master-authorized-networks --master-ipv4-cidr 172.19.0.0/28 --region [REGION] \
+--cluster-ipv4-cidr=[PODS_CIDR] --services-ipv4-cidr=[SERVICES_CIDR] \
+--enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP] --master-ipv4-cidr 172.19.0.0/28 --region [REGION] \
 --num-nodes 1 --machine-type=n1-standard-8 --scopes=gke-default,datastore,storage-full \
---cluster-version "1.22.15-gke.1000"
+--cluster-version "1.27.3-gke.100"
 </pre>
 
 <pre>
+Needed Parameters:-
 [CLUSTER_NAME]: Name of the NEW cluster
 [NETWORK_NAME]: Name of the PRE-CREATED network
 [SUBNET_NAME]: Name of the PRE-CREATED subnet
 [REGION]: GCP region to create cluster in
+[VOICEGAIN_NAT_IP]: IP allowed to connect GKE Master
+
+Optional Parameters:-
+[PODS_CIDR]: IP Range for pods in kubernetes cluster
+[SERVICES_CIDR]: IP Range for services in kubernetes cluster
 </pre>
+
+**>> Contact Voicegain (support@voicegain.ai) to get value for VOICEGAIN_NAT_IP <<**
+
+**>> While choosing region check if all zones in region have support for T4 GPU nodes as they will be created in next steps <<**
+
+GCP Link: [GPU regions and zones availability](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones)
 
 GCP Link: [gcloud container clusters create](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create)
 
@@ -173,7 +200,7 @@ gcloud compute addresses create [VOICEGAIN_API_IP_NAME] --subnet [SUBNET_NAME] -
 
 You can message the output of the following command to Voicegain.
 <pre>
-gcloud compute addresses describe [VOICEGAIN_API_IP_NAME]
+gcloud compute addresses describe [VOICEGAIN_API_IP_NAME] --region [REGION]
 </pre>
 
 All done here!

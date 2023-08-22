@@ -2,6 +2,45 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### August 22, 2023
+
+New functionality:
+* BE-416	 Login from Transcribe App to Freshdesk
+* BE-640	 Support renaming existing Speaker
+* BE-685	 Admin (Account level) controlled PII redaction
+* BE-699	 More options for PII Redaction (add full and partial masking)
+* BE-704	 Change the URL for Help->Submit a Support Ticket
+* BE-721	 Add PII Redaction page inside Account settings
+* BE-732	 Add x to cancel a search for transcript within project
+* BE-751	 Support upload of multiple files for transcription
+* BE-752	 Add two filter toggles on the Speakers list
+* BE-755	 On home page show selected Project together with Home
+* BE-756	 Allow change of name of an External Speaker
+* BE-757	 Show email for User Speaker
+* BE-759	 Modify the list of entities to redact (ZIP, DMY)
+* BE-764	 Show only current project on the LH menu
+* QA-369	 Improved Error message if user tries to sign-up second time with same email
+* QA-373	 Improved title of page with Account Users
+* QA-400	 Disable Save button if no new users have been selected
+
+Fixes:
+* BE-708	 Fix: Cannot delete a device that is shown in the device list
+* BE-715	 Fix: At larger zoom levels Left-Hand menu unusable
+* BE-761	 Fix: Project Transcript list shows meeting from home page after auto refresh due to STOP message
+* BE-791	 Fix: We are not generating Meeting Minutes in German if the Project is German
+* BE-795	 Fix: Weird long topics for Spanish Meetings
+* QA-365	 Fix: Next Audio button not responding on Single Click (or with delay)
+* QA-368	 Fix: Search and Project Name is overlapping over each other
+* QA-370	 Fix: Trying to recompute any file, resulting all files showing across all projects.
+* QA-372	 Fix: Transcripts table-Table sorting by "Name" and "Created on" is not working.
+* QA-374	 Fix: My shares table-Table sorting not working for name, transcription date, and scope.
+* QA-377	 Fix: Search text should reset on Project switch
+* QA-401	 Fix: Other users table- Sorting by last active is not working.
+* QA-403	 Fix: other accounts users table- Sorting by name is not working.
+* QA-410	 Fix: Left menu is breaking down when selecting it rapidly.
+* QA-417	 Fix: Account Text redaction/project setting- When placeholder is selected fields should be required fields.
+
+
 ### August 7, 2023
 
 New functionality:
@@ -246,31 +285,6 @@ Other Transcribe App issues addressed in this release:
 * (Edge users only) Added `Send Test Email` button. This is in preparation of the rollout of the SMTP email support on Edge.
 
 
-### October 28, 2022
-
-The key features in this release are:
-* Improved diarization in the text areas where one speaker switches to another. 
-* More accurate speaker Voice Signature matching.
-
-This release fixes numerous small Web UI issues, mainly usability, in the Transcribe App related to the Voice Signature functionality made first available in the 2 previous releases.
-
-The installer for the Zoom Meeting Assistant is now signed with an Extended Validation Certificate so you will no longer see warnings when trying to install that software.
-
-### October 25, 2022
-
-The release addresses these specific Transcribe App issues:
-
-* Admin users now have access to a page for managing all Speakers
-* Added ability to assign transcript speaker to a known Speaker (with or without voice signature) - also create new Speaker if needed
-* Older projects were not generating topics
-* Saving a project used to switch it to a different one
-
-### October 21, 2022
-
-This release includes improved punctuation for the English Offline transcription.
-
-
-The current version of the Zoom Meeting Assistant going with this release is 0.2.17
 
 
 

@@ -1,7 +1,7 @@
 ### Minor release 1.88.0 is scheduled for 8/22/2023 between 5pm and 7pm CST
 
 **Backwards incompatibility** : 
-This relelese removes `sentences` parameter from session.content in /asr/transcribe API.
+This release removes `sentences` parameter from session.content in /asr/transcribe API.
 It gets replaces with `segments`.
 
 New functionality in the Transcribe App:

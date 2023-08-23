@@ -2,7 +2,7 @@
 
 **Backwards incompatibility** : 
 This release removes `sentences` parameter from session.content in /asr/transcribe API.
-It gets replaces with `segments`.
+It gets replaced with `segments`.
 
 New functionality in the Transcribe App:
 * BE-416	(TA) Login from Transcribe App to Freshdesk

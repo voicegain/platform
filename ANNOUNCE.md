@@ -1,3 +1,13 @@
+### Maintenance release 1.88.1 is scheduled for 8/23/2023 between 6pm and 9pm CST
+
+Changes related to Integrity of Processing (fixes)
+* BE-774	Fix: Incorrect MPEG-DASH mpd format file generated
+* BE-802	(TA) Fix: Account redacting formatters are saved to Projects
+* BE-803	Fix: Formatters defined on account are not being used in POST /asr/meeting
+* BE-806	(TA) Fix: When generating a pdf, NullPointerException is thrown if meetingMinutes is not enabled
+* QA-405	Fix: Demo app has incorrect recaptcha key
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.88.0 is scheduled for 8/22/2023 between 5pm and 7pm CST
 

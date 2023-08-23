@@ -1,3 +1,14 @@
+## Release 1.88.1
+
+Changes related to Integrity of Processing (fixes)
+* BE-774	Fix: Incorrect MPEG-DASH mpd format file generated
+* BE-802	(TA) Fix: Account redacting formatters are saved to Projects
+* BE-803	Fix: Formatters defined on account are not being used in POST /asr/meeting
+* BE-806	(TA) Fix: When generating a pdf, NullPointerException is thrown if meetingMinutes is not enabled
+* QA-405	Fix: Demo app has incorrect recaptcha key
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.88.0
 
 **Backwards incompatibility** : 

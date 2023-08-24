@@ -31,7 +31,8 @@ This is only needed if you want to use Google Storage for storing the submitted 
 In this step, you will create a Regional Private Kubernetes Cluster on GCP, 
 and create a default Node Pool of `n1-standard-8` instances.
 
-#### Option A: Use the `default` network on the VPC
+#### Option A: Use the `default` network on the VPC and GCP suggested IP ranges 
+(Preferred for Quick setup with default values)
 
 You can run the following command to create a few components:
 * a subnet in the default VPC
@@ -43,29 +44,23 @@ You can run the following command to create a few components:
 
 <pre>
 gcloud container clusters create [CLUSTER_NAME] \
---create-subnetwork name=[SUBNET_NAME],range=[SUBNET_CIDR] --enable-ip-alias --enable-private-nodes \
---cluster-ipv4-cidr=[PODS_CIDR] --services-ipv4-cidr=[SERVICES_CIDR] \
---enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP] --master-ipv4-cidr 172.19.0.0/28 --region [REGION] \
+--create-subnetwork name=[SUBNET_NAME] --enable-ip-alias --enable-private-nodes \
+--enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP]/32,[LINUX_TERMINAL_IP]/32 --master-ipv4-cidr 172.19.0.0/28 --region [REGION] \
 --num-nodes 1 --machine-type=n1-standard-8 --scopes=gke-default,datastore,storage-full \
---cluster-version "1.27.3-gke.100"
+--cluster-version "latest"
 </pre>
 
 <pre>
-Needed Parameters:-
 [CLUSTER_NAME]: Name of the NEW cluster
 [SUBNET_NAME]: Name of the NEW subnet
 [REGION]: GCP region to create cluster in
-[VOICEGAIN_NAT_IP]: IP allowed to connect GKE Master
-
-Optional Parameters:-
-[SUBNET_CIDR]: IP Range of subnet
-[PODS_CIDR]: IP Range for pods in kubernetes cluster
-[SERVICES_CIDR]: IP Range for services in kubernetes cluster
+[VOICEGAIN_NAT_IP]: Voicegain IP allowed to connect GKE Master
+[LINUX_TERMINAL_IP]: IP of linux terminal being used to run kubectl
 </pre>
 
-**>> Contact Voicegain (support@voicegain.ai) to get value for VOICEGAIN_NAT_IP <<**
 
-#### Option B: Use pre-created network and subnetwork on the VPC
+#### Option B: Use pre-created network and subnetwork on the VPC and custom IP ranges 
+(Preferred for detail setup with custom values)
 
 If you would like to create the cluster in the pre-created subnet, 
 you can use this option. The following command will create a few components:
@@ -79,7 +74,7 @@ you can use this option. The following command will create a few components:
 gcloud container clusters create [CLUSTER_NAME] \
 --network [NETWORK_NAME] --subnetwork [SUBNET_NAME] --enable-ip-alias --enable-private-nodes \
 --cluster-ipv4-cidr=[PODS_CIDR] --services-ipv4-cidr=[SERVICES_CIDR] \
---enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP] --master-ipv4-cidr 172.19.0.0/28 --region [REGION] \
+--enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP]/32,[LINUX_TERMINAL_IP]/32 --master-ipv4-cidr 172.19.0.0/28 --region [REGION] \
 --num-nodes 1 --machine-type=n1-standard-8 --scopes=gke-default,datastore,storage-full \
 --cluster-version "1.27.3-gke.100"
 </pre>
@@ -90,7 +85,8 @@ Needed Parameters:-
 [NETWORK_NAME]: Name of the PRE-CREATED network
 [SUBNET_NAME]: Name of the PRE-CREATED subnet
 [REGION]: GCP region to create cluster in
-[VOICEGAIN_NAT_IP]: IP allowed to connect GKE Master
+[VOICEGAIN_NAT_IP]: Voicegain IP allowed to connect GKE Master
+[LINUX_TERMINAL_IP]: IP of linux terminal being used to run kubectl
 
 Optional Parameters:-
 [PODS_CIDR]: IP Range for pods in kubernetes cluster
@@ -98,6 +94,8 @@ Optional Parameters:-
 </pre>
 
 **>> Contact Voicegain (support@voicegain.ai) to get value for VOICEGAIN_NAT_IP <<**
+
+**>> For LINUX_TERMINAL_IP value run "curl ifconfig.me" in Linux terminal <<**
 
 **>> While choosing region check if all zones in region have support for T4 GPU nodes as they will be created in next steps <<**
 
@@ -240,12 +238,66 @@ c) Then apply it back to the cluster:
 kubectl apply -f ip-masq-agent-config.yaml
 </pre>
 
-d) After applying the updated ConfigMap, you can check the status of the ip-masq-agent pods in the kube-system namespace to ensure they are running correctly:
+d) After you create or edit your ip-masq-agent ConfigMap, deploy the ip-masq-agent DaemonSet.
+
+You will want to copy and paste the entire code block below into the terminal of your linux system that has kubectl configured and connected to your new cluster:
+
+<pre>
+echo "
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ip-masq-agent
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      k8s-app: ip-masq-agent
+  template:
+    metadata:
+      labels:
+        k8s-app: ip-masq-agent
+    spec:
+      hostNetwork: true
+      containers:
+      - name: ip-masq-agent
+        image: gke.gcr.io/ip-masq-agent:v2.9.3-v0.2.4-gke.5
+        args:
+            # The masq-chain must be IP-MASQ
+            - --masq-chain=IP-MASQ
+        securityContext:
+          privileged: true
+        volumeMounts:
+          - name: config-volume
+            mountPath: /etc/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: ip-masq-agent
+            optional: true
+            items:
+              - key: config
+                path: ip-masq-agent
+      tolerations:
+      - effect: NoSchedule
+        operator: Exists
+      - effect: NoExecute
+        operator: Exists
+      - key: "CriticalAddonsOnly"
+        operator: "Exists"
+" > vg_masqdaemonset.yaml
+</pre>
+
+<pre>
+kubectl apply -f vg_masqdaemonset.yaml
+</pre>
+
+e) After applying the updated ConfigMap, you can check the status of the ip-masq-agent pods in the kube-system namespace to ensure they are running correctly:
 <pre>
 kubectl get pods -n kube-system -l k8s-app=ip-masq-agent
 </pre>
 
-e) If you notice any issues with the ip-masq-agent pods, you can check the logs for more information:
+f) If you notice any issues with the ip-masq-agent pods, you can check the logs for more information:
 <pre>
 kubectl logs -n kube-system -l k8s-app=ip-masq-agent
 </pre>

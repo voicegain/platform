@@ -2,6 +2,9 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+Known Issues:
+* If you enable Full Text Redaction for some category then Meeting Minutes may not be generated. A work-around is to disable Word Cloud on the Project.
+
 ### August 22, 2023
 
 New functionality:

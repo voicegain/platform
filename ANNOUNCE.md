@@ -1,5 +1,8 @@
 ### Maintenance release 1.88.1 is scheduled for 8/23/2023 between 6pm and 9pm CST
 
+Known Issues:
+* BE-809 Enabling full masking (*****) caused Meeting Minutes to not be generated - If you enable Full Text Redaction for some category then Meeting Minutes may not be generated. A work-around is to disable Word Cloud on the Project.
+
 Changes related to Integrity of Processing (fixes)
 * BE-774	Fix: Incorrect MPEG-DASH mpd format file generated
 * BE-802	(TA) Fix: Account redacting formatters are saved to Projects

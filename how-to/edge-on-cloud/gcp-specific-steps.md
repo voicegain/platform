@@ -103,6 +103,24 @@ GCP Link: [GPU regions and zones availability](https://cloud.google.com/compute/
 
 GCP Link: [gcloud container clusters create](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create)
 
+### (Optional) Add new IP to existing authorised list for GKE Master Control Plane
+
+<pre>
+NEW_CIDR=[NEW_IP]/32
+CLUSTER=[CLUSTER_NAME]
+REGION=[REGION]
+
+OLD_CIDR=$(gcloud container clusters describe $CLUSTER --region $REGION --format json | jq -r '.masterAuthorizedNetworksConfig.cidrBlocks[] | .cidrBlock' | tr '\n' ',')
+echo "Existing master authorized networks $OLD_CIDR"
+gcloud container clusters update $CLUSTER --master-authorized-networks "$OLD_CIDR$NEW_CIDR" --enable-master-authorized-networks --region $REGION
+</pre>
+
+<pre>
+[CLUSTER_NAME]: Name of the cluster
+[NEW_IP]: New IP to be allowed to connect GKE Master
+[REGION]: GCP region of cluster
+</pre>
+
 ### Create Other Node Pools
 
 You will create two more node pools. 

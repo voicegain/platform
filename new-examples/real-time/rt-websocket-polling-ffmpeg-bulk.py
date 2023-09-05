@@ -39,8 +39,8 @@ sendingWSProtocol = "WS"
 receivingWSProtocol = "ws"
 
 #acousticModelRealTime = "VoiceGain-rho-en-us"
-acousticModelRealTime = "VoiceGain-rho"
-#acousticModelRealTime = "VoiceGain-kappa"
+#acousticModelRealTime = "VoiceGain-rho"
+acousticModelRealTime = "VoiceGain-kappa"
 
 ## set to True if you want to save all the json responses received 
 save_all_json_results = False

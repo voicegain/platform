@@ -69,7 +69,7 @@ body = {
             "acousticModelRealTime" : acousticModelRealTime,
             "noInputTimeout": 59999,
             "incompleteTimeout": 3599999,
-            "sensitivity": 0.4,
+            "sensitivity": 0.5,
             "hints": [
                 "Starburst:10",
                 "Mars_Wrigley:10",

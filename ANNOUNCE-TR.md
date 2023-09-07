@@ -5,7 +5,7 @@ If you encounter any problems, just give us a shout at [support@voicegain.ai](ma
 Known Issues:
 * If you enable Full Text Redaction for some category then Meeting Minutes may not be generated. A work-around is to disable Word Cloud on the Project.
 
-### September 5, 2023
+### September 7, 2023
 
 New functionality:
 * BE-168	Transcribe App: Add ability to upload a directory with Zoom meeting recordings

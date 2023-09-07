@@ -1,3 +1,14 @@
+## Release 1.89.1
+
+Changes related to Integrity of Processing (fixes)
+* QA-477 Transcribe App: Sharing (public) a transcript and when try to play this transcript page refreshing all the time.
+* QA-483 Transcribe App: Not able to play the old transcripts
+
+Additions:
+* BE-865  Add presigned url to response from GET /asr/meeting/shared/{shareId}/data
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.89.0
 
 New functionality in the Transcribe App:

@@ -1,3 +1,11 @@
+### Maintenance release 1.89.2 is scheduled for 9/10/2023 between 8pm and 10pm CST
+
+Changes related to Integrity of Processing (fixes)
+* BE-882  TWIML sessions not closed if no TWIML Stop message sent on websocket
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Maintenance release 1.89.1 is scheduled for 9/7/2023 between noon and 3pm CST
 
 Changes related to Integrity of Processing (fixes)

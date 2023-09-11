@@ -261,28 +261,28 @@ async def stream_audio(file_name, audio_ws_url):
       ping_timeout=None
       ) as websocket:
       try:
-        print(str(datetime.datetime.now())+" connected", flush=True)
+        print(str(datetime.datetime.now())+" audio websocket connected", flush=True)
 
-        # print("sleeping 35 seconds to trigger timeout", flush=True)
-        # timeLeft = 61
-        # while timeLeft > 0:
-        #   print(str(timeLeft)+" ", end =" ", flush=True)
-        #   time.sleep(1)
-        #   try:
-        #     await websocket.ping()
-        #   except Exception as e:
-        #       print(str(datetime.datetime.now())+" Exception 0 when sending ping via websocket: "+str(e)) 
-        #       break
-        #   timeLeft -= 1
+        print("sleeping 3 seconds to trigger timeout", flush=True)
+        timeLeft = 3
+        while timeLeft > 0:
+          print(str(timeLeft)+" ", end =" ", flush=True)
+          time.sleep(1)
+          try:
+            await websocket.ping()
+          except Exception as e:
+              print(str(datetime.datetime.now())+" Exception 0 when sending ping via websocket: "+str(e)) 
+              break
+          timeLeft -= 1
 
-        # # test websocket close before sending audio  
-        # await websocket.close()
-        # print(str(datetime.datetime.now())+" closed", flush=True)
-        # return
+        # test websocket close before sending audio  
+        await websocket.close()
+        print(str(datetime.datetime.now())+" audio websocket closed", flush=True)
+        return
 
         global startTime
         startTime = time.time()
-        n_buf = 1 * 1024
+        n_buf = 128 #1 * 1024
         byte_buf = f.read(n_buf)
         start = time.time()
         epoch_start_audio_stream = start
@@ -306,15 +306,20 @@ async def stream_audio(file_name, audio_ws_url):
             time.sleep(time_to_wait) # to simulate real time streaming
           byte_buf = f.read(n_buf)
           
-          # if(not slept and elapsed_time_fl > 10):
-          #   print("sleeping 35 seconds to trigger timeout", flush=True)
-          #   left = 35
+          # if(not slept and elapsed_time_fl > 0.0001):
+          #   print("elapsed time: "+str(elapsed_time_fl))
+          #   print("sleeping 3 seconds to trigger timeout", flush=True)
+          #   left = 3
           #   while left > 0:
           #     print(str(left)+" ", end =" ", flush=True)
           #     time.sleep(1)
           #     left -= 1
           #   start += 35
           #   slept = True
+          #   # test websocket close before sending audio  
+          #   await websocket.close()
+          #   print(str(datetime.datetime.now())+" audio websocket closed", flush=True)
+          #   return            
 
           #   global session_id_left, session_id_right
           #   body = {"pause": {"action" : "stop"}}
@@ -404,7 +409,7 @@ def process_audio(file_name):
   asyncio.get_event_loop().run_until_complete( stream_audio(file_name, web_res["audio_ws_url"]) )
 
   # wait for websocket thread to join 
-  print("waiting for websocket threads to join", flush=True)
+  print("waiting for receiving websocket threads to join", flush=True)
   threadWsLeft.join()
   threadWsRight.join()
   print(f"END processing: {file_name}")
@@ -415,3 +420,6 @@ def process_audio(file_name):
 
 process_audio(inputFilePath)
 
+print("sleeping 60 seconds", flush=True )
+time.sleep(60)
+print("done sleeping", flush=True )

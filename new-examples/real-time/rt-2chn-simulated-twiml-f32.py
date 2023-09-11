@@ -22,6 +22,9 @@ inputFile2 = cfg.get("DEFAULT", "INPUTFILE2")
 inbound_audio = f"{inputFolder}/{inputFile}"
 outbound_audio = f"{inputFolder}/{inputFile2}"
 
+print("inbound_audio: {}".format(inbound_audio))
+print("outbound_audio: {}".format(outbound_audio))
+
 headers = {"Authorization":JWT}
 # new transcription session request
 # it specifies audio input via an RTP stream
@@ -60,7 +63,7 @@ body = {
     # this is needed for a browser
     # for phone we would have PCMU
     "format": "F32",
-    "channel" : "stereo",
+    "channels" : "stereo",
     # this is needed for a browser
     # for phone we would have 8000
     "rate": 16000, 
@@ -152,6 +155,25 @@ async def stream_audio():
           compression=None) as websocket:
           try:
             print(str(datetime.datetime.now())+" sender connected", flush=True)
+
+
+            # print("sleeping 3 seconds before shutting down websocket", flush=True)
+            # timeLeft = 3
+            # while timeLeft > 0:
+            #   print(str(timeLeft)+" ", end =" ", flush=True)
+            #   time.sleep(1)
+            #   # try:
+            #   #   await websocket.ping()
+            #   # except Exception as e:
+            #   #     print(str(datetime.datetime.now())+" Exception 0 when sending ping via websocket: "+str(e)) 
+            #   #     break
+            #   timeLeft -= 1
+
+            # # test websocket close before sending audio  
+            # await websocket.close()
+            # print(str(datetime.datetime.now())+" audio websocket closed", flush=True)
+            # return            
+
 
             conn_msg = {
               "event": "connected",
@@ -266,8 +288,14 @@ async def stream_audio():
               time.sleep(0.008)
               print(".", end =" ", flush=True)
 
-              if(outb_ts > 8000):
+              if(outb_ts > 60000):
                 break
+
+              # if(inb_ts > 15000):
+              #   # test websocket close before sending audio  
+              #   await websocket.close()
+              #   print(str(datetime.datetime.now())+" audio websocket closed", flush=True)
+              #   return            
 
 
             stop_msg = {

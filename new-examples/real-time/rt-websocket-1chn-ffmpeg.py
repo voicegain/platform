@@ -69,14 +69,14 @@ body = {
             "acousticModelRealTime" : acousticModelRealTime,
             "noInputTimeout": 59999,
             "incompleteTimeout": 3599999,
-            "sensitivity": 0.5,
-            "hints": [
-                "Starburst:10",
-                "Mars_Wrigley:10",
-                "contacting:8",
-                "Mars_Consumer_Care:10",
-                "mints:8"
-            ]
+            "sensitivity": 0.5
+            # ,"hints": [
+            #     "Starburst:10",
+            #     "Mars_Wrigley:10",
+            #     "contacting:8",
+            #     "Mars_Consumer_Care:10",
+            #     "mints:8"
+            # ]
         }
         # ,"formatters": [
         #     {
@@ -168,7 +168,7 @@ def process_ws_msg(wsMsg, stack, prefix):
     else:
       # simple utterance
       stack.append(utter)
-      if( len(stack) > 50 ):
+      if( len(stack) > 500 ):
         while(len(stack) > 30):
           stack.pop(0)
 

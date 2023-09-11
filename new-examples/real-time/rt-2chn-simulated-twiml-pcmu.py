@@ -56,7 +56,7 @@ body = {
     }
   ],
   "audio": {
-    "source": { "stream": { "protocol": "TWIML" } },
+    "source": { "stream": { "protocol": "TWIML", "noAudioTimeout" : 150000 } },
     "format": "PCMU",
     "channel" : "stereo",
     "rate": 8000, 
@@ -150,6 +150,24 @@ async def stream_audio():
           compression=None) as websocket:
           try:
             print(str(datetime.datetime.now())+" sender connected", flush=True)
+
+
+            # print("sleeping 3 seconds before shutting down websocket", flush=True)
+            # timeLeft = 3
+            # while timeLeft > 0:
+            #   print(str(timeLeft)+" ", end =" ", flush=True)
+            #   time.sleep(1)
+            #   # try:
+            #   #   await websocket.ping()
+            #   # except Exception as e:
+            #   #     print(str(datetime.datetime.now())+" Exception 0 when sending ping via websocket: "+str(e)) 
+            #   #     break
+            #   timeLeft -= 1
+
+            # # test websocket close before sending audio  
+            # await websocket.close()
+            # print(str(datetime.datetime.now())+" audio websocket closed", flush=True)
+            # return            
 
             conn_msg = {
               "event": "connected",
@@ -260,9 +278,11 @@ async def stream_audio():
               time.sleep(0.064)
               print(".", end =" ", flush=True)
 
-              # if(outb_ts > 8000):
-              #   break
-
+              # if(outb_ts > 15000):
+              #   # test websocket close before sending audio  
+              #   await websocket.close()
+              #   print(str(datetime.datetime.now())+" audio websocket closed", flush=True)
+              #   return            
 
             stop_msg = {
               "event": "stop",
@@ -326,10 +346,15 @@ threadWsRight.start()
 asyncio.get_event_loop().run_until_complete( stream_audio() )
 
 # wait for websocket thread to join 
+print("")
 print("Waiting to join Left  "+str(datetime.datetime.now()), flush=True)
 threadWsLeft.join()   
 print("Joined Left           "+str(datetime.datetime.now()), flush=True)
+print("")
 print("Waiting to join Right "+str(datetime.datetime.now()), flush=True)
 threadWsRight.join()   
 print("Joined Right          "+str(datetime.datetime.now()), flush=True)
 
+print("sleeping 10 seconds to ", flush=True  )
+time.sleep(10.0)
+print("done", flush=True)

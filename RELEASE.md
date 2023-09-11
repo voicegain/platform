@@ -1,3 +1,11 @@
+## Release 1.89.2
+
+Changes related to Integrity of Processing (fixes)
+* BE-882  TWIML sessions not closed if no TWIML Stop message sent on websocket
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.89.1
 
 Changes related to Integrity of Processing (fixes)

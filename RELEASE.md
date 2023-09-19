@@ -56,6 +56,7 @@ BE-950	Fix bug in Spanish formatter : int() argument must be a string, a bytes-l
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
+
 ## Release 1.89.2
 
 Changes related to Integrity of Processing (fixes)

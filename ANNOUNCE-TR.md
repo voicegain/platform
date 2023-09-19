@@ -7,27 +7,27 @@ Known Issues:
 
 ### September 20, 2023
 New functionality:
-BE-669	Transcribe App: Added audit log
-BE-681	Transcribe App: Implement Person obfuscation in Meetings after a set time threshold
-BE-824	Transcribe App: Add ability to select multiple transcripts from the table an perform selected Action on them
-BE-843	Transcribe App: Add ability to specify Regex Redaction on the Project/Account Settings Text Redaction
-BE-873	Transcribe App: Added multi-selector delete on the Shares list
-BE-888	Transcribe App: Improve message on Zoom Meeting Assistant status
-BE-894	Transcribe App: Change name of the exe file in installer bundle to install.exe
-BE-909	Transcribe App: Make the digit formatting a default enabled option on creating new Project
-BE-910	Transcribe App: Store collapsed status of home page elements in ClientSide Properties on a User
-BE-915	Transcribe App: Add settings for Archival Text Redaction
-BE-919	Transcribe App: Tweak behavior of the 4 selectors on Transcripts on Home Page
-BE-929	Transcribe App: On Devices page - add a button to pair a Phone App
+* BE-669	Transcribe App: Added audit log
+* BE-681	Transcribe App: Implement Person obfuscation in Meetings after a set time threshold
+* BE-824	Transcribe App: Add ability to select multiple transcripts from the table an perform selected Action on them
+* BE-843	Transcribe App: Add ability to specify Regex Redaction on the Project/Account Settings Text Redaction
+* BE-873	Transcribe App: Added multi-selector delete on the Shares list
+* BE-888	Transcribe App: Improve message on Zoom Meeting Assistant status
+* BE-894	Transcribe App: Change name of the exe file in installer bundle to install.exe
+* BE-909	Transcribe App: Make the digit formatting a default enabled option on creating new Project
+* BE-910	Transcribe App: Store collapsed status of home page elements in ClientSide Properties on a User
+* BE-915	Transcribe App: Add settings for Archival Text Redaction
+* BE-919	Transcribe App: Tweak behavior of the 4 selectors on Transcripts on Home Page
+* BE-929	Transcribe App: On Devices page - add a button to pair a Phone App
 
 Fixes
-QA-469	Transcribe App: Fix multiple translation issues
-QA-482	Transcribe App: Fix - Inactivity timout set on zero hrs and zero is showing out of the box, when toggle is disabled no value should show.
-QA-497  Transcribe App: Fix for accepting anything in tag, also taking space as tag.
-BE-870	Transcribe App: Fix - jumping to time in MP3 audio playback does not work
-BE-890	Transcribe App: Fix for being logged out when accessing Speakers page with many voice signatures
-BE-899	Transcribe App: Fix - Meeting audio redaction only works on the first 3 speakers in a meeting session
-BE-935	Transcribe App: Fixed - incorrectly imposing share limit on Edge
+* QA-469	Transcribe App: Fix multiple translation issues
+* QA-482	Transcribe App: Fix - Inactivity timout set on zero hrs and zero is showing out of the box, when toggle is disabled no value should show.
+* QA-497  Transcribe App: Fix for accepting anything in tag, also taking space as tag.
+* BE-870	Transcribe App: Fix - jumping to time in MP3 audio playback does not work
+* BE-890	Transcribe App: Fix for being logged out when accessing Speakers page with many voice signatures
+* BE-899	Transcribe App: Fix - Meeting audio redaction only works on the first 3 speakers in a meeting session
+* BE-935	Transcribe App: Fixed - incorrectly imposing share limit on Edge
 
 ### September 7, 2023
 

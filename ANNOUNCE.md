@@ -1,3 +1,61 @@
+### Minor release 1.90.0 is scheduled for 9/20/2023 between 1pm and 6pm CST
+
+New functionality in the Transcribe App:
+BE-669	Transcribe App: Added audit log
+BE-681	Transcribe App: Implement Person obfuscation in Meetings after a set time threshold
+BE-824	Transcribe App: Add ability to select multiple transcripts from the table an perform selected Action on them
+BE-843	Transcribe App: Add ability to specify Regex Redaction on the Project/Account Settings Text Redaction
+BE-873	Transcribe App: Added multi-selector delete on the Shares list
+BE-888	Transcribe App: Improve message on Zoom Meeting Assistant status
+BE-894	Transcribe App: Change name of the exe file in installer bundle to install.exe
+BE-909	Transcribe App: Make the digit formatting a default enabled option on creating new Project
+BE-910	Transcribe App: Store collapsed status of home page elements in ClientSide Properties on a User
+BE-915	Transcribe App: Add settings for Archival Text Redaction
+BE-919	Transcribe App: Tweak behavior of the 4 selectors on Transcripts on Home Page
+BE-929	Transcribe App: On Devices page - add a button to pair a Phone App
+
+New functionality in other platform components:
+BE-124	(EDGE) Make InfluxDB available for querying by customers
+BE-778	In /ASR/meeting API add ability to upload meeting video and chat
+BE-812	(SSO) Modify password reset page to match the style that is used in Web Console
+BE-860	Support audio redaction also on DASH-MPEG audio
+BE-872	Generate video dash-mpeg file in offline meeting task
+BE-874	Support Accept-Ranges in the data presigned URL that returns mp3 audio
+BE-877	Make sure the redacted audio for meeting sessions is mp3
+BE-887	Modify POST /auth-svc/device to return QR code and also support new device type
+BE-891	Add long-term redaction settings to the Account API
+BE-892	Modify Meeting PERSON NER redaction to include speaker names
+BE-893	Add internal meeting recompute API that runs recompute on the entire account
+BE-904	Change how Context Regex and Account Regex are processed if both present
+BE-905	Automatically enable digit formatting if any redaction is turned on
+BE-912	Add fluentbit external helm chart to env-tracking
+BE-916	Create a cronjob to call internal meeting recompute API on the entire account
+BE-922	Update ingress and support basic-auth in influxdb helm chart
+BE-933	OfflineMeetingWordsGrouper in ml-svc to use timestamp to group words if punc is missing
+BE-937	Return raw transcription results if there is any error in formatter code
+BE-942	Validate model and language in offline requests before submitting to offline queue
+QA-458	Web Console: Add a button to delete a transcript under transcript beta.
+
+Changes related to Integrity of Processing (fixes):
+QA-469	Transcribe App: Fix multiple translation issues
+QA-482	Transcribe App: Fix - Inactivity timout set on zero hrs and zero is showing out of the box, when toggle is disabled no value should show.
+QA-497  Transcribe App: Fix for accepting anything in tag, also taking space as tag.
+BE-870	Transcribe App: Fix - jumping to time in MP3 audio playback does not work
+BE-890	Transcribe App: Fix for being logged out when accessing Speakers page with many voice signatures
+BE-899	Transcribe App: Fix - Meeting audio redaction only works on the first 3 speakers in a meeting session
+BE-935	Transcribe App: Fixed - incorrectly imposing share limit on Edge
+BE-655	Fix for onprem-cluster-deployment task stuck when pods are in unexpected status
+BE-735	Fixed: Recompute does not reapply PII Redaction
+BE-895	Web Console: Fix - Regex redact options are saved but not displayed
+BE-907	Admin Tool: Fix - When I suspend some account it is my account that gets suspended
+BE-921	Fix: Dates with 'the'/'of' in the phrase don't get classified as DMY NER
+BE-928	Fix: Installer fails to apply settings to registry
+BE-936	Fixed - List index out of range error when formatting certain Spanish results
+BE-943	Fix weird output in case of multiple recompute with redaction and placeholder fill
+BE-950	Fix bug in Spanish formatter : int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Maintenance release 1.89.2 is scheduled for 9/10/2023 between 8pm and 10pm CST
 
 Changes related to Integrity of Processing (fixes)
@@ -595,40 +653,6 @@ This release chas the following changes:
 * BE-219	In Web Console: Move password reset link to the first step
 * BE-227	Added a link to submit a support ticket in Transcribe App
 * BE-229	Added new field "complianceType" to Account
-
-
-### Minor release 1.81.0 is scheduled for 3/20/2023 between 9pm and 10pm CST
-
-This release has the following fixes and improvements in the Transcribe App:
-
-* BE-21	Fix expanded left-hand menu obscuring page content if frozen
-* BE-24	In user Profile add a setting to hide language flags on Project icons
-* BE-26	New Project design for the Transcribe App (mainly left-hand menu)
-* BE-27	Add Search within transcript in the detail view in Transcribe App
-* BE-52	Flags on Projects are inconsistent
-* BE-59	Back button doesn't work
-* BE-63	Transcribe from URL not working in Transcribe App
-* BE-64	Upgrade on home page of the Transcribe App takes you to Password Reset
-* BE-65	Plan Upgrade page working off stale billing data
-* BE-66	Walk-Through Wizard cannot be launched
-* BE-68	Hide expanded LH menu upon a click
-* BE-112	None or not all Projects are visible on Edge
-* BE-126	Clicking on the Downgrade button has no effect
-* BE-127	Show a Tool Tip for Project Settings
-* BE-128	Sending password confirmation in clear-text
-* BE-140	Modify behavior of the expandable LH menu - do not expand when I merely move the mouse across it
-* BE-141	Show tooltip when hovering over project icon in the transcript list on home page
-
-This release has the following fixes and improvements in the rest of the Voicegain Platform:
-
-* BE-48	Issue with AccountUsage collector query
-* BE-53	Issue with AccountUsage collector query (2)
-* BE-56	Duplicate/Triplicate Projects visible in Transcribe App
-* BE-62	Text formatter occasionally throws an Exception
-* BE-117	Increase the limit for the number of concurrent websockets
-* BE-118	Remove duplicate Transcribe App projects on Edge
-* BE-129	Reduce real-time delay in case of many concurrent sessions
-* BE-146	Fix concurrency issue in mrcp_rex plugin history
 
 
 

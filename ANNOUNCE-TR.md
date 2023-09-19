@@ -5,6 +5,30 @@ If you encounter any problems, just give us a shout at [support@voicegain.ai](ma
 Known Issues:
 * If you enable Full Text Redaction for some category then Meeting Minutes may not be generated. A work-around is to disable Word Cloud on the Project.
 
+### September 20, 2023
+New functionality:
+BE-669	Transcribe App: Added audit log
+BE-681	Transcribe App: Implement Person obfuscation in Meetings after a set time threshold
+BE-824	Transcribe App: Add ability to select multiple transcripts from the table an perform selected Action on them
+BE-843	Transcribe App: Add ability to specify Regex Redaction on the Project/Account Settings Text Redaction
+BE-873	Transcribe App: Added multi-selector delete on the Shares list
+BE-888	Transcribe App: Improve message on Zoom Meeting Assistant status
+BE-894	Transcribe App: Change name of the exe file in installer bundle to install.exe
+BE-909	Transcribe App: Make the digit formatting a default enabled option on creating new Project
+BE-910	Transcribe App: Store collapsed status of home page elements in ClientSide Properties on a User
+BE-915	Transcribe App: Add settings for Archival Text Redaction
+BE-919	Transcribe App: Tweak behavior of the 4 selectors on Transcripts on Home Page
+BE-929	Transcribe App: On Devices page - add a button to pair a Phone App
+
+Fixes
+QA-469	Transcribe App: Fix multiple translation issues
+QA-482	Transcribe App: Fix - Inactivity timout set on zero hrs and zero is showing out of the box, when toggle is disabled no value should show.
+QA-497  Transcribe App: Fix for accepting anything in tag, also taking space as tag.
+BE-870	Transcribe App: Fix - jumping to time in MP3 audio playback does not work
+BE-890	Transcribe App: Fix for being logged out when accessing Speakers page with many voice signatures
+BE-899	Transcribe App: Fix - Meeting audio redaction only works on the first 3 speakers in a meeting session
+BE-935	Transcribe App: Fixed - incorrectly imposing share limit on Edge
+
 ### September 7, 2023
 
 New functionality:
@@ -258,36 +282,7 @@ This release also addresses the following specific issues:
   * Support negative examples and regex
   * Add Enabled toggle for each Key Item
 
-### December 15, 2022
 
-This release offers improved Key Items feature within the Meeting Minutes in the Transcribe App.
-
-The release addresses these specific issues:
-* (Edge users only) make some Profile fields read-only on Edge
-* Add a button for applying defaults to Key Items
-* Add a check for validity of regex to the Key Items Example dialog
-* Switch from regex to advancedRegex for key items
-* Show projects alphabetically sorted
-
-### December 8, 2022
-
-This release adds configurability of the Key Items of the Meeting Minutes.
-
-The release addresses these specific issues:
-* Prepopulate the Name with the file name
-* Show project name on transcript detail view
-* Show avatar if Speaker is a User
-* In Overview view, clicking on the times in the Summary should scroll to relevant Section
-* Remove the front-end bolding of keywords in key sentences (done in back-end now more accurately)
-
-### November 21, 2022
-
-The release addresses these specific Transcribe App issues:
-* Highlight the topics/keywords in the key sentences in Meeting Minutes
-* Add audio playback and transcript text links to the sentences in Overview and Key Items
-* In Profile: Separate Account from User settings
-* In New Project Wizard set the toggle for Meeting Minutes to enabled by default
-* (Edge users only) disable Download if transcribeAppSettings has disableDownload:true
 
 
 

@@ -1,4 +1,4 @@
-### Minor release 1.90.0 is scheduled for 9/20/2023 between 1pm and 6pm CST
+### Minor release 1.90.0 is scheduled for 9/20/2023 between 5pm and 9pm CST
 
 New functionality in the Transcribe App:
 * BE-669	Transcribe App: Added audit log

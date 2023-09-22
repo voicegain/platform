@@ -1,3 +1,17 @@
+### Maintenance release 1.90.1 is scheduled for 9/22/2023 between 6pm and 11pm CST
+
+Changes related to Integrity of Processing (fixes)
+All these apply to the Transcribe App:
+* QA-497  Fix: Accepting anything in tag, also taking space as tag.
+* BE-790  Fix: At the end of project wizard sometimes have to click Done twice to get the new project saved
+* BE-957  Fix: Not accepting MP4 file for transcription
+* BE-964  Fix: Calling Invoice API on Edge
+
+Other changes in Transcribe App:
+* BE-955  Disable API Security Page
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.90.0 is scheduled for 9/20/2023 between 1pm and 6pm CST
 
 New functionality in the Transcribe App:

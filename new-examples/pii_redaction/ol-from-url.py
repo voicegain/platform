@@ -246,7 +246,8 @@ def process_one_file():
     start_time = time.time()
     if(asr_response_raw.status_code != 200):
         print("unexpected response code {} for asr request".format(asr_response_raw.status_code), flush=True)
-        print(asr_response_raw.text, flush=True)
+        print(asr_response_raw, flush=True)
+        print("EXIT", flush=True)
         exit()
 
     asr_response = asr_response_raw.json()

@@ -13,14 +13,19 @@ urlPrefix = cfg.get(configSection, "URLPREFIX")
 inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
-#model = "VoiceGain-omega"
-model = "whisper:medium"
+model = "VoiceGain-omega"
+#model = "whisper:small"
+
+print("model: {}".format(model))
+
 maxFilesToProcess = 1
 
 if not os.path.exists(outputFolder):
     os.makedirs(outputFolder)
 
 host = f"{protocol}://{hostPort}/{urlPrefix}"
+
+print("host: {}".format(host))  
 
 asr_body = {
     "sessions": [
@@ -46,7 +51,8 @@ asr_body = {
     },
     "settings": {
         "asr": {
-            "languages" : ["en", "es", "nl"],
+            #"languages" : ["en", "nl"],
+            "languages" : ["ru"],
             "acousticModelNonRealTime" : model,
             "noInputTimeout": -1,
             "completeTimeout": -1,
@@ -347,8 +353,9 @@ def process_one_file(audio_fname):
         phase = poll_response["progress"]["phase"]
         is_final = poll_response["result"]["final"]
         print("Phase: {} Final: {}".format(phase, is_final), flush=True)
-        # write poll_response to JSON
-        # poll_response_path = os.path.join(output_path, "{}-{}-{}.json".format(audio_fname, session_id, index))
+
+        # # write poll_response to JSON
+        # poll_response_path = os.path.join(output_path, "{}-{}-{}.json".format("audio_fname", session_id, index))
         # with open(poll_response_path, 'w') as outfile:
         #     json.dump(poll_response, outfile)
         # print("Phase: {} Final: {} -> Save result to {}".format(phase, is_final, poll_response_path), flush=True)

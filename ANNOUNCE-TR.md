@@ -2,8 +2,27 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
-Known Issues:
-* If you enable Full Text Redaction for some category then Meeting Minutes may not be generated. A work-around is to disable Word Cloud on the Project.
+### September 30, 2023
+
+New functionality:
+* BE-71	Show Meeting VIdeo
+* BE-709	New meeting submitted by ZoomMA shows up on the home page automatically
+* BE-886	Support new guides for Zoom Meeting Assistant Use
+* BE-961	Remove Recompute button from Project settings - we can now select multiple Transcripts and recompute them
+* BE-975	Save latest project opened by a user in clientSideProperties
+* BE-977	Show Project info on the list of Shares
+* BE-986	Re-enable API Security settings
+* BE-990	Show Privacy Policy same way we show Terms of Service
+
+Fixes
+* QA-310	Features and Usage are not being translated in selected language instead of English language
+* QA-467	Taking any URL as audio URL.
+* QA-505	Mouse hovering on the upload/ upload type always showing microphone recording.
+* QA-510	Editing any shared link changing its scope to public.
+* QA-511	After audio finish play icon should be paused.
+* QA-514	Hindi translation is on Recomputing the multiple transcription
+
+Upload of video to the Transcribe App requires Voicegain Zoom Meeting Assistant version 1.2.1 or higher.
 
 ### September 20, 2023
 New functionality:

@@ -1,3 +1,45 @@
+### Minor release 1.91.0 is scheduled for 9/30/2023 between 5pm and 9pm CST
+
+New functionality in the Transcribe App:
+* BE-71	Transcribe App: Show Meeting VIdeo
+* BE-709	Transcribe App: New meeting submitted by ZoomMA shows up on the home page automatically
+* BE-886	Transcribe App: Support new guides for Zoom Meeting Assistant Use
+* BE-961	Transcribe App: Remove Recompute button from Project settings - we can now select multiple Transcripts and recompute them
+* BE-975	Transcribe App: Save latest project opened by a user in clientSideProperties
+* BE-977	Transcribe App: Show Project info on the list of Shares
+* BE-986	Transcribe App: Re-enable API Security settings
+* BE-990	Transcribe App: Show Privacy Policy same way we show Terms of Service
+
+New functionality in other platform components:
+* BE-739	Web Console: Log audit events
+* BE-778	In /ASR/meeting API add ability to upload meeting video and chat
+* BE-819	New Kappa Real-TIme model trained on IVR data
+* BE-901	Support more than one JWT per context
+* BE-925	Prepare fluentbit configuration for writing audit log to Grafana Loki
+* BE-945	Web Console: Show description for Edge Configurations
+* BE-946	Web Console: Show Model and Language information in the Context Dash
+* BE-956	Web Console: In Context Settings support multiple JWT
+* BE-987	Web Console: Change the text about available languages (now that we support Whisper)
+* BE-989	Web Console: Show privacy policy similar to how we show terms of service
+* BE-992	Handle MPD files in SegmentTemplate format
+* QA-490	Web Console (Edge): Launch Cloud Console in new tab
+* QA-516	App Selector: Update features list now that we have Video support
+
+Changes related to Integrity of Processing (fixes):
+* BE-855	Web Console: Fixed transcript download in Transcribe+
+* BE-969	Web Console: Fix weird layout in Telephony App settings
+* BE-983	Fixed: REX tries to reserve Whisper model when diarization enabled
+* QA-310	Transcribe App: Fixed - Features and Usage are not being translated in selected language instead of English language
+* QA-467	Transcribe App: Fixed - Taking any URL as audio URL.
+* QA-505	Transcribe App: Fixed - Mouse hovering on the upload/ upload type always showing microphone recording.
+* QA-510	Transcribe App: Fixed - Editing any shared link changing its scope to public.
+* QA-511	Transcribe App: Fixed - After audio finish play icon should be paused.
+* QA-514	Transcribe App: Fixed - Hindi translation is on Recomputing the multiple transcription
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+Upload of video to the Transcribe App requires Voicegain Zoom Meeting Assistant version 1.2.1 or higher.
+
 ### Maintenance release 1.90.1 is scheduled for 9/22/2023 between 6pm and 11pm CST
 
 Changes related to Integrity of Processing (fixes)

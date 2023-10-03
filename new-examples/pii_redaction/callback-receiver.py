@@ -7,7 +7,7 @@ app = Flask(__name__)
 def upload_file():
     # Save all non-file fields in the form to the console
     for key, value in request.form.items():
-        print(f"{key}: {value}")
+        print(f"received: {key}->{value}")
     
     # Save any files included in the form
     for key in request.files:
@@ -19,6 +19,7 @@ def upload_file():
 
         save_path = os.path.join("../data/callback", file.filename)
         file.save(save_path)
+        print(f"Saved {key} to {save_path}")
 
     return 'Data received and files (if any) have been uploaded!', 200
 

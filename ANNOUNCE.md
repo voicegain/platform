@@ -1,3 +1,10 @@
+### Maintenance release 1.91.1 is scheduled for 10/3/2023 between 3pm and 6pm CST
+
+Changes:
+* BE-1013  Log invalid patterns found in RegexFormatters instead of throwing exceptions
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.91.0 is scheduled for 9/30/2023 between 5pm and 9pm CST
 
 New functionality in the Transcribe App:

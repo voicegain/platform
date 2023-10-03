@@ -1,3 +1,11 @@
+## Release 1.91.1
+
+Changes:
+* BE-1013  Log invalid patterns found in RegexFormatters instead of throwing exceptions
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.91.0
 
 New functionality in the Transcribe App:

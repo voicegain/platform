@@ -44,11 +44,11 @@ asr_body = {
             }
         },
         "callback": {
-            "uri": "https://d1ef-2600-1700-570-efb0-507d-3418-944b-4841.ngrok-free.app/upload",
+            "uri": " https://01ae-2600-1702-5563-6e00-d088-6b77-e0d5-891d.ngrok-free.app/upload",
             "method": "POST",
             "multipartFormData": [{
                 "name": "return_object",
-                "value" : "my-secret-HASH",
+                "value" : "my-secret-HASHsh",
                 "contentType": "text/plain"
             }]
         }
@@ -110,6 +110,22 @@ asr_body = {
             "type": "regex",
             "parameters": {
                 "pattern": r"\b(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}\b",
+                "mask": "[CC_MIS]",
+                "options": "IA"
+            }
+        },  
+        {
+            "type": "regex",
+            "parameters": {
+                "pattern": r"\b(7+)(?!)\b",
+                "mask": "[CC_MIS]",
+                "options": "IA"
+            }
+        },
+        {
+            "type": "regex",
+            "parameters": {
+                "pattern": r"\b(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}\b",
                 "mask": "[CC_MIS]",
                 "options": "IA"
             }
@@ -241,12 +257,15 @@ def process_one_file():
 
     printTranscribeQueueStatus()
 
-    print("making asr request ...", flush=True)
-    asr_response_raw = requests.post("{}/asr/transcribe/async".format(host), json=asr_body, headers=headers)
+    url = "{}/asr/transcribe/async".format(host)
+
+    print(f"making asr request {url}...", flush=True)
+    asr_response_raw = requests.post(url, json=asr_body, headers=headers)
     start_time = time.time()
     if(asr_response_raw.status_code != 200):
         print("unexpected response code {} for asr request".format(asr_response_raw.status_code), flush=True)
         print(asr_response_raw, flush=True)
+        print(asr_response_raw.text, flush=True)
         print("EXIT", flush=True)
         exit()
 

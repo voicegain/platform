@@ -110,8 +110,9 @@ In short, the spirit behind the partitions are as such:
 - EFI partition: Required 
 - **No Swap**: Kubernetes requires swap to be off so no need to waste disk space here.
 - Partition for NFS: dynamically provisioned storage consumed by the k8s cluster.
+- Partition for /var/log: prevent overactive logs from filling root filesystem and rendering the system inaccessible. 
  
-Kubernetes doesn't support Swap, and the NFS Storage should not impact the host system if it's ever filled. Detailed walk-through follows:
+Kubernetes doesn't support Swap, and the NFS and log Storage should not impact the host system if they're ever filled. Detailed walk-through follows:
 
 ### Installation Type:
 * On the "Installation Type" screen: Choose "Something else" and then "Continue"
@@ -129,12 +130,16 @@ Kubernetes doesn't support Swap, and the NFS Storage should not impact the host 
 * **For Each Partition we create do the following:** Click on "**free space**" which should be the entire disk, and click on the "**+**" below to create your new partitions. 
 The partitions will use the ext4 filesystem, and default settings such as "Primary" and their Location.
 
-* Create a 535 MB Partition on your boot drive and chose "EFI System Partition" from the "Use as:" dropdown box.
+* Create a 535 MB Partition on your boot drive and choose "EFI System Partition" from the "Use as:" dropdown box.
 ![EFI System Partition](./5-2.png)
 
 * Create a partition of 250,000MB keep the default radio button options and choose `/` (root) as the *Mount point*.
 
 ![Root Partition](./5-3.png)
+
+* Create a partition of 32,000MB and type in '/var/log' as the *Mount point*.
+
+![image](https://github.com/voicegain/platform/assets/14049448/3008cd05-9216-4fcf-adf9-d83750193267)
 
 * For the remaining ~750GB (or however much you have left over), create a new partition and manually type the *Mount point* as: `/nfs`  
 **NOTE:** *Obviously this could also be done with multiple drives. Dedicating a device to `/` and another solely to `/nfs`. Another option would be to combine multiple partitions/disks into a single LVM for `/nfs`*

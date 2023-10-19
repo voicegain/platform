@@ -2,6 +2,37 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### October 19, 2023
+
+New functionality:
+* BE-779	TA: Show chat messages in Right-Hand pane
+* BE-856	TA: Fix - Login - not showing the locked until information
+* BE-883	TA: Zoom OAuth Handshake page added
+* BE-999	TA: Include video in the manual Zoom folder upload
+* BE-1003	TA: Implemented large video view
+* BE-1004	TA: New design for the Audio Source selector
+* BE-1010	TA: Add export in Docx format
+* BE-1014	TA: Better error massage in case of Recaptcha related Error
+* BE-1015	TA: Fixed the +tag message and added hover text
+* BE-1022	TA: Added a tag editor
+* BE-1053	TA: Edge: If SSO is enabled make login automatic if user hits /login url
+* BE-1055	TA: Show both installed version and available version of Zoom Meeting Assistant if newer version available
+* BE-1061	TA: Ability to Control Download permissions
+* BE-1063	TA: Ability to set a download permission on a User
+* BE-1082	TA: Meeting Chat now being shown
+* BE-1086	TA: Add Copy-to-Clipboard feature on the Overview page
+* BE-1087	TA: Add new download option for docx files
+* BE-1101	TA: Prevent entering regex that can match too much text
+* QA-488	TA: Make Meta Description Tags SEO friendly
+* QA-538	TA: Show message after user delete successfully 
+
+Fixes:
+* BE-966	TA: Fix - Weird pause and play behavior on the Voice Signatures page
+* BE-967	TA: Fix - Missing Users step in new Project Wizard on Edge
+* BE-1078	TA: Fix - Password reset by admin does not work
+* BE-1080	TA: Fix - Unable to play audio/video in certain Edge deployments
+* QA-537	TA: Fix - Current Project is not picking correctly while move
+
 ### September 30, 2023
 
 New functionality:
@@ -14,7 +45,7 @@ New functionality:
 * BE-986	Re-enable API Security settings
 * BE-990	Show Privacy Policy same way we show Terms of Service
 
-Fixes
+Fixes:
 * QA-310	Features and Usage are not being translated in selected language instead of English language
 * QA-467	Taking any URL as audio URL.
 * QA-505	Mouse hovering on the upload/ upload type always showing microphone recording.

@@ -1,3 +1,73 @@
+### Minor release 1.92.0 is scheduled for 10/19/2023 between 4pm and 6pm CST
+
+New functionality in the Transcribe App:
+* BE-779	TA: Show chat messages in Right-Hand pane
+* BE-856	TA: Fix - Login - not showing the locked until information
+* BE-883	TA: Zoom OAuth Handshake page added
+* BE-999	TA: Include video in the manual Zoom folder upload
+* BE-1003	TA: Implemented large video view
+* BE-1004	TA: New design for the Audio Source selector
+* BE-1010	TA: Add export in Docx format
+* BE-1014	TA: Better error massage in case of Recaptcha related Error
+* BE-1015	TA: Fixed the +tag message and added hover text
+* BE-1022	TA: Added a tag editor
+* BE-1053	TA: Edge: If SSO is enabled make login automatic if user hits /login url
+* BE-1055	TA: Show both installed version and available version of Zoom Meeting Assistant if newer version available
+* BE-1061	TA: Ability to Control Download permissions
+* BE-1063	TA: Ability to set a download permission on a User
+* BE-1082	TA: Meeting Chat now being shown
+* BE-1086	TA: Add Copy-to-Clipboard feature on the Overview page
+* BE-1087	TA: Add new download option for docx files
+* BE-1101	TA: Prevent entering regex that can match too much text
+* QA-488	TA: Make Meta Description Tags SEO friendly
+* QA-538	TA: Show message after user delete successfully 
+
+New functionality in other platform components:
+* BE-832	Implemented GET /asr/meeting/search/fields
+* BE-852	Digits formatter for real-time sessions
+* BE-862	Add new field AUDIO_SRC to meeting search API
+* BE-932	Use Google secret manager to manage credentials on GCP cloud
+* BE-974	In offline task, create gRPC channel to ml-svc on demand
+* BE-980	Ensure that Advanced Search queries only Projects/Contexts the User has access to
+* BE-988	App Selector: Add links to Privacy Policy and Terms of Use
+* BE-993	The video that is stored under videoId on a meeting now has audio removed
+* BE-1008	Console: Align Left and Right audio charts for the Telephony Bot Sessions
+* BE-1009	Console: Improve the look of the ASR settings forms
+* BE-1030	AIVR API: Add authToken to first Callback and use it in PUT /aivr/{ivrSid}/vars
+* BE-1031	AIVR API: Add ani parameter to GET /aivr/, add sorting, add endTime field
+* BE-1037	Configure MongoDB memory limit and cacheSizeGB
+* BE-1045	Add tags field to PUT /asr/meeting/{meetingId}
+* BE-1046	Modifications to GET and HEAD /data/{uuid}/file/{fnameWithExt} APIs
+* BE-1065	Enforce "download" permission in GET /asr/meeting/{meetingId}/transcript
+* BE-1069	Console: Show error if API to create new Edge Cluster fails
+* BE-1071	Support chat.msg in the response of GET /asr/meeting/uuid/data
+* BE-1079	Smarter match of chat speakers to the speakers in the Zoom Meeting (if there is no speaker timeline)
+* BE-1083	Add docx format option to GET /asr/meeting/{meetingId}/transcript
+* BE-1102	Prevent text redaction regex from matching too long patterns
+* BE-1103	Support smarter partial redacting PERSON if a name has no space
+
+Changes related to Integrity of Processing (fixes):
+* BE-966	TA: Fix - Weird pause and play behavior on the Voice Signatures page
+* BE-967	TA: Fix - Missing Users step in new Project Wizard on Edge
+* BE-1078	TA: Fix - Password reset by admin does not work
+* BE-1080	TA: Fix - Unable to play audio/video in certain Edge deployments
+* QA-537	TA: Fix - Current Project is not picking correctly while move
+
+* BE-920	Fix - Meeting Search API exposes database structure in the error messages
+* BE-991	Fix - Meeting Search - Gt, Le Terms always returning empty results
+* BE-1012	Console: Fix Listen button from the Telephony Both Session view
+* BE-1034	Console: On Edge environments without HTTPS provide a workaround for copy to clipboard
+* BE-1038	Fix mongodb rolling deployment
+* BE-1056	Fix - Session gets stuck on certain corrupted audio files
+* BE-1076	Fixed: ascalon-cleanup fails to remove any orphan data object if persist=true is found in every data object in the first page
+* BE-1085	Fix - Search API shows meetings from projects that User has no access to 
+* BE-1098	Fix - Modified meeting tags are not passed to the data in postgresql
+* QA-531	Console: Fix - On deleting the JWT success message is showing incorrect
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Maintenance release 1.91.1 is scheduled for 10/3/2023 between 3pm and 6pm CST
 
 Changes:
@@ -646,77 +716,6 @@ Here is a list of fixes and changes
 * BE-357	Unable to delete values of "allow signup from domains"
 * BE-359	Support DMY NER in Transcribe App project configuration
 * BE-360	In Transcribe App: New user invited from SSO will set name auto populated
-
-### Maintenance release 1.82.3 is scheduled for 5/10/2023 between 8:30am and 10am CST
-
-This release upgrades Kubernetes to 1.25
-
-
-### Maintenance release 1.82.2 is scheduled for 4/27/2023 between 5:30pm and 7pm CST
-
-This release has the following changes:
-* BE-256    Modified App Selector to properly render on mobile browsers
-* BE-257    Added notice to Login Screen on Transcribe App on mobile browsers
-
-
-### Maintenance release 1.82.1 is scheduled for 4/25/2023 between 5pm and 7pm CST
-
-This release has the following changes:
-* BE-243 Fix for not getting any transcriptions from the Telephony Bot sessions
-* BE-244 Fix for erratic recognition in the Telephony Bot
-
-This release also fixes several 3rd-party vulnerabilities.
-
-
-### Minor release 1.82.0 is scheduled for 4/20/2023 between 2pm and 5pm CST
-
-This release chas the following changes:
-* BE-73	Add info about language to Mic Recording and File Upload dialogs
-* BE-74	Improved Project Move dialog
-* BE-76	Improved Zoom Meeting Assistant download page
-* BE-80	Improved/Simplified Browser Capture Preview in Transcribe App
-* BE-81	New Project Wizard in Transcribe App upon first login
-* BE-109	Fixed: Issue with saving meeting with certain commas in the name
-* BE-110	Option to send transcription results back over the audio websocket
-* BE-113	EZInit Script disable Leader Election on NFS Provisioner
-* BE-114	EZInit updated for Containerd
-* BE-115	Upgrade minio to highest backwards-compatible version
-* BE-119	Improved the throughput for Kappa model when using web-socket to stream audio
-* BE-130	Clarified that only Screen and Browser Tab audio capture works
-* BE-133	AccountUsage generation complete in new-billing-utility
-* BE-135	New Billing Utility writes to postgresql the same data that would be written to Fusebill
-* BE-138	Fixed old portal URL still referenced from within Grafana
-* BE-143	Fixed incorrect ERROR tooltip visible for new uploaded Voice Signatures
-* BE-146	Fix concurrency issue in mrcp_rex plugin history
-* BE-148	The Zoom App download page is now correctly reporting the App version
-* BE-150	Disabled Automatic creation of a New Transcribe App project upon first login
-* BE-151	every GET data API request decreases rate limit by 1 (instead of 10)
-* BE-153	Google Storage bucket creation now works in the QA environment
-* BE-154	Remove confusing Logs option from LH menu in Edge mode
-* BE-155	In Web Console on EDGE: Remove all Log options from the LH menu
-* BE-162	Fix Terms of Service it highlight on the LH menu
-* BE-163	Offer First Project Wizard when user logs in and has no Projects
-* BE-165	Updated Content-Security-Policies for QA Environment
-* BE-170	Usability improvements to App Selector (reduce mouse clicks)
-* BE-172	Add ability to turn off the current language reminders in Mic and Upload dialogs
-* BE-174	Ensure that returned items from the Extended Summary (topics) are unique
-* BE-175	Improve reliability of Browser Capture
-* BE-178	Show tooltip with Creator name when hovering over avatar
-* BE-182	In Transcribe App: Remove diarization from the Browser Capture preview
-* BE-184	Better location for the close-search-box icon
-* BE-188	In Web Console: Make email on the Phone Management Page clickable link
-* BE-193	Fixed: Unable to go from Apps page direct to Project Transcripts page
-* BE-194	Support Statefulset uniMRCP deployment (for Cloud)
-* BE-200	Fixed upload of corpus files for Language Model
-* BE-202	Fixed uploading an audio file on demo.voicegain.ai 
-* BE-207	In Demo App: Allow more audio file types for Upload
-* BE-209	Add back button to Pricing Plans page in Transcribe App
-* BE-212	In Transcribe App: show creator name tooltip when hovering over creator avatar
-* BE-213	Made email in balance details clickable (mailto:)
-* BE-214	In Demo App: Remove FFW and REV buttons
-* BE-219	In Web Console: Move password reset link to the first step
-* BE-227	Added a link to submit a support ticket in Transcribe App
-* BE-229	Added new field "complianceType" to Account
 
 
 

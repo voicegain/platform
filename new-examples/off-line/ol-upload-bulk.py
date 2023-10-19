@@ -248,6 +248,7 @@ def process_one_file(audio_fname):
 
         if(code != 200 and code != 429):
             print("unexpected response code")
+            print(data_response_raw.text)
             exit()
 
         resp_headers = data_response_raw.headers

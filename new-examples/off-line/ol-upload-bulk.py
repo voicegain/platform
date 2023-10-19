@@ -38,7 +38,7 @@ asr_body = {
             },
             "content": {
                 "incremental": ["progress"],
-                "full" : ["words"]
+                "full" : ["progress", "words"]
             }
         }
     ],
@@ -51,8 +51,8 @@ asr_body = {
     },
     "settings": {
         "asr": {
-            #"languages" : ["en", "nl"],
-            "languages" : ["ru"],
+            "languages" : ["nl"],
+            #"languages" : ["ru"],
             "acousticModelNonRealTime" : model,
             "noInputTimeout": -1,
             "completeTimeout": -1,
@@ -355,23 +355,28 @@ def process_one_file(audio_fname):
         print("Phase: {} Final: {}".format(phase, is_final), flush=True)
 
         # # write poll_response to JSON
-        # poll_response_path = os.path.join(output_path, "{}-{}-{}.json".format("audio_fname", session_id, index))
-        # with open(poll_response_path, 'w') as outfile:
-        #     json.dump(poll_response, outfile)
-        # print("Phase: {} Final: {} -> Save result to {}".format(phase, is_final, poll_response_path), flush=True)
+        if(False):
+            poll_response_path = os.path.join(output_path, "{}-{}-{}.json".format("audio_fname", session_id, index))
+            with open(poll_response_path, 'w') as outfile:
+                json.dump(poll_response, outfile)
+            print("Phase: {} Final: {} -> Save result to {}".format(phase, is_final, poll_response_path), flush=True)
 
         index += 1
         if is_final:
             break
 
-    # poll_response_raw = requests.get(polling_url+"?full=true", headers=headers)
-    # print(poll_response_raw.headers['Content-Type'])
-    # poll_response = poll_response_raw.json()
-    # # write poll_response to JSON
-    # poll_response_path = os.path.join(output_path, "{}--{}.json".format(session_id, index))
-    # with open(poll_response_path, 'w',  encoding='utf-8') as outfile:
-    #     json.dump(poll_response, outfile, ensure_ascii=False)
-    # print("Save final result to {}".format(poll_response_path), flush=True)
+    # write full response
+    if(True):
+        poll_response_raw = requests.get(polling_url+"?full=true", headers=headers)
+        print(poll_response_raw.headers['Content-Type'])
+        poll_response = poll_response_raw.json()
+        # write poll_response to JSON
+        phase = poll_response["progress"]["phase"]
+        print("Phase: {} Final: {}".format(phase, is_final), flush=True)
+        poll_response_path = os.path.join(output_path, "{}--{}.json".format(session_id, index))
+        with open(poll_response_path, 'w',  encoding='utf-8') as outfile:
+            json.dump(poll_response, outfile, ensure_ascii=False)
+        print("Save final result to {}".format(poll_response_path), flush=True)
 
     #get result as text file
 

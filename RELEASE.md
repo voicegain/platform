@@ -1,3 +1,72 @@
+## Release 1.92.0
+
+New functionality in the Transcribe App:
+* BE-779	TA: Show chat messages in Right-Hand pane
+* BE-856	TA: Fix - Login - not showing the locked until information
+* BE-883	TA: Zoom OAuth Handshake page added
+* BE-999	TA: Include video in the manual Zoom folder upload
+* BE-1003	TA: Implemented large video view
+* BE-1004	TA: New design for the Audio Source selector
+* BE-1010	TA: Add export in Docx format
+* BE-1014	TA: Better error massage in case of Recaptcha related Error
+* BE-1015	TA: Fixed the +tag message and added hover text
+* BE-1022	TA: Added a tag editor
+* BE-1053	TA: Edge: If SSO is enabled make login automatic if user hits /login url
+* BE-1055	TA: Show both installed version and available version of Zoom Meeting Assistant if newer version available
+* BE-1061	TA: Ability to Control Download permissions
+* BE-1063	TA: Ability to set a download permission on a User
+* BE-1082	TA: Meeting Chat now being shown
+* BE-1086	TA: Add Copy-to-Clipboard feature on the Overview page
+* BE-1087	TA: Add new download option for docx files
+* BE-1101	TA: Prevent entering regex that can match too much text
+* QA-488	TA: Make Meta Description Tags SEO friendly
+* QA-538	TA: Show message after user delete successfully 
+
+New functionality in other platform components:
+* BE-832	Implemented GET /asr/meeting/search/fields
+* BE-852	Digits formatter for real-time sessions
+* BE-862	Add new field AUDIO_SRC to meeting search API
+* BE-932	Use Google secret manager to manage credentials on GCP cloud
+* BE-974	In offline task, create gRPC channel to ml-svc on demand
+* BE-980	Ensure that Advanced Search queries only Projects/Contexts the User has access to
+* BE-988	App Selector: Add links to Privacy Policy and Terms of Use
+* BE-993	The video that is stored under videoId on a meeting now has audio removed
+* BE-1008	Console: Align Left and Right audio charts for the Telephony Bot Sessions
+* BE-1009	Console: Improve the look of the ASR settings forms
+* BE-1030	AIVR API: Add authToken to first Callback and use it in PUT /aivr/{ivrSid}/vars
+* BE-1031	AIVR API: Add ani parameter to GET /aivr/, add sorting, add endTime field
+* BE-1037	Configure MongoDB memory limit and cacheSizeGB
+* BE-1045	Add tags field to PUT /asr/meeting/{meetingId}
+* BE-1046	Modifications to GET and HEAD /data/{uuid}/file/{fnameWithExt} APIs
+* BE-1065	Enforce "download" permission in GET /asr/meeting/{meetingId}/transcript
+* BE-1069	Console: Show error if API to create new Edge Cluster fails
+* BE-1071	Support chat.msg in the response of GET /asr/meeting/uuid/data
+* BE-1079	Smarter match of chat speakers to the speakers in the Zoom Meeting (if there is no speaker timeline)
+* BE-1083	Add docx format option to GET /asr/meeting/{meetingId}/transcript
+* BE-1102	Prevent text redaction regex from matching too long patterns
+* BE-1103	Support smarter partial redacting PERSON if a name has no space
+
+Changes related to Integrity of Processing (fixes):
+* BE-966	TA: Fix - Weird pause and play behavior on the Voice Signatures page
+* BE-967	TA: Fix - Missing Users step in new Project Wizard on Edge
+* BE-1078	TA: Fix - Password reset by admin does not work
+* BE-1080	TA: Fix - Unable to play audio/video in certain Edge deployments
+* QA-537	TA: Fix - Current Project is not picking correctly while move
+
+* BE-920	Fix - Meeting Search API exposes database structure in the error messages
+* BE-991	Fix - Meeting Search - Gt, Le Terms always returning empty results
+* BE-1012	Console: Fix Listen button from the Telephony Both Session view
+* BE-1034	Console: On Edge environments without HTTPS provide a workaround for copy to clipboard
+* BE-1038	Fix mongodb rolling deployment
+* BE-1056	Fix - Session gets stuck on certain corrupted audio files
+* BE-1076	Fixed: ascalon-cleanup fails to remove any orphan data object if persist=true is found in every data object in the first page
+* BE-1085	Fix - Search API shows meetings from projects that User has no access to 
+* BE-1098	Fix - Modified meeting tags are not passed to the data in postgresql
+* QA-531	Console: Fix - On deleting the JWT success message is showing incorrect
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.91.1
 
 Changes:

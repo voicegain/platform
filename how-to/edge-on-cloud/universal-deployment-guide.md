@@ -43,6 +43,7 @@ These guides will take you through the basics and provide resources and links do
 
 * [AWS Specific Steps](aws-specific-steps.md)  
 * [GCP Specific Steps](gcp-specific-steps.md)
+* [AZURE Specific Steps](azure-specific-steps.md)
 * Oracle: Coming Soon 
 
 ## <a name="step2"></a>Step 2: Create Voicegain service account on your Cluster

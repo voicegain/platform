@@ -2,7 +2,7 @@
 Required Steps, Azure Provided documentation, and recommended best practices
 
 ## <a id="toc"></a>Table of Contents
-- [Step 0: Request GPUs from Azure](#step0)
+- [Step 0: Azure GPU Quotas](#step0)
 - [Step 1: Create Azure Resource Group](#step1)
 - [Step 2: (Optional) Setup Azure Storage Account](#step2) #ToDo
 - [Step 3: Create Cluster and Node Pools](#step3)
@@ -15,6 +15,8 @@ Required Steps, Azure Provided documentation, and recommended best practices
 In order to use GPUs you must request a Quota increase for them from Azure.
 
 Be certain you are requesting them for the Region you wish to run your cluster in.  
+
+AZURE Link: [GPU Quota Usage](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-gpu#deployment-considerations)
 
 ## <a id="step1"></a>Step 1: Create Azure Resource group
 

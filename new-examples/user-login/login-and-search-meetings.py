@@ -5,6 +5,7 @@ import hmac
 
 userName = "<your user email for the Voicegain account>"
 
+
 password = input("Enter password for user " + userName + ": ")
 
 login_url = "https://transcribe.ascalon.ai/auth-svc/auth/login"
@@ -114,7 +115,8 @@ search_body = {
   ]
 }
 
-mac = computeMAC(json.dumps(search_body), api, auth_token, nonce)
+# computer the authrization header without which the request will fail
+mac = computeMAC(json.dumps(search_body), api, auth_token, nonces.pop())
 print("mac: " + mac)
 
 search_headers = {
@@ -138,4 +140,26 @@ for result in search_results:
     print("         creator:", result["creator"])
 
 
+# logout
+print("Logging out")
 
+logout_url = "https://transcribe.ascalon.ai/auth-svc/auth/logout"
+
+logout_body = {
+}
+
+# computer the authrization header without which the request will fail
+mac = computeMAC(json.dumps(logout_body), api, auth_token, nonces.pop())
+print("mac: " + mac)
+
+logout_headers = {
+    "Content-Type": "application/json",
+    "Authorization": "MAC " + mac,
+}
+
+response = requests.post(logout_url, json=logout_body, headers=logout_headers)
+
+print(response.status_code)
+# print(response.json())
+
+data = response.json()

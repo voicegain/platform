@@ -263,22 +263,22 @@ async def stream_audio(file_name, audio_ws_url):
       try:
         print(str(datetime.datetime.now())+" audio websocket connected", flush=True)
 
-        print("sleeping 3 seconds to trigger timeout", flush=True)
-        timeLeft = 3
-        while timeLeft > 0:
-          print(str(timeLeft)+" ", end =" ", flush=True)
-          time.sleep(1)
-          try:
-            await websocket.ping()
-          except Exception as e:
-              print(str(datetime.datetime.now())+" Exception 0 when sending ping via websocket: "+str(e)) 
-              break
-          timeLeft -= 1
+        # print("sleeping 3 seconds to trigger timeout", flush=True)
+        # timeLeft = 3
+        # while timeLeft > 0:
+        #   print(str(timeLeft)+" ", end =" ", flush=True)
+        #   time.sleep(1)
+        #   try:
+        #     await websocket.ping()
+        #   except Exception as e:
+        #       print(str(datetime.datetime.now())+" Exception 0 when sending ping via websocket: "+str(e)) 
+        #       break
+        #   timeLeft -= 1
 
         # test websocket close before sending audio  
-        await websocket.close()
-        print(str(datetime.datetime.now())+" audio websocket closed", flush=True)
-        return
+        # await websocket.close()
+        # print(str(datetime.datetime.now())+" audio websocket closed", flush=True)
+        # return
 
         global startTime
         startTime = time.time()

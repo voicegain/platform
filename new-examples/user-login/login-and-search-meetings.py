@@ -3,7 +3,7 @@ import json
 import hashlib
 import hmac
 
-userName = "jacek.j@gmail.com"
+userName = "<your user email for the Voicegain account>"
 
 password = input("Enter password for user " + userName + ": ")
 

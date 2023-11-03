@@ -2,6 +2,29 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### November 3, 2023
+
+### Minor release 1.93.0 is scheduled for 11/2/2023 between 9:00pm and 11:59pm CST
+
+New functionality:
+*BE-1100	TA: In large Video view put the Transcript (CC) in a frame that can be moved around the screen.
+*BE-1135	TA: Better copy-to-clipboard of the Meeting Minutes components
+*BE-1147	TA: Show "This Meeting has no video" in the large-video view if meeting has video
+*BE-1152	TA: In tag editor enable Save button only if something has changed
+
+Fixes:
+*BE-1099	TA: Fix - Specified date format is not being used
+*BE-1110	TA: Modify NSIS Installer use proper setting of REINSTALLMODE
+*BE-1126	TA: Fix - Large-video chat popup captures focus and icons become not clickable
+*BE-1142	TA: Fix - When Zoom upload contains a video file we should set the "video" tag on this meeting
+*BE-1145	TA: Add beta label over the DOCX selector
+*BE-1146	TA: Fix - Remove UUID tool tips in the large-video view
+*BE-1162	Fix - Failure in sa-recompute on Edge
+*QA-545	TA: Now not be allowed to play multiple voice signature at the same time.
+*QA-567	TA: Fix - Files under processing status shouldn't get option for (Re-Compute, Move or Delete)
+*QA-630	TA: Fix - Transcripts on Homepage are not updating after changing Projects.
+*QA-631	TA: Fix - Unable to edit Download permission after changing role from admin to user in one go.
+
 ### October 19, 2023
 
 New functionality:

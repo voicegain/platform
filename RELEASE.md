@@ -1,33 +1,33 @@
 ## Release 1.93.0
 
 New functionality in the Transcribe App:
-*BE-1100	TA: In large Video view put the Transcript (CC) in a frame that can be moved around the screen.
-*BE-1135	TA: Better copy-to-clipboard of the Meeting Minutes components
-*BE-1147	TA: Show "This Meeting has no video" in the large-video view if meeting has video
-*BE-1152	TA: In tag editor enable Save button only if something has changed
+* BE-1100	TA: In large Video view put the Transcript (CC) in a frame that can be moved around the screen.
+* BE-1135	TA: Better copy-to-clipboard of the Meeting Minutes components
+* BE-1147	TA: Show "This Meeting has no video" in the large-video view if meeting has video
+* BE-1152	TA: In tag editor enable Save button only if something has changed
 
 New functionality in other platform components:
-*BE-1032	Add GET /zoom/oauth and DELETE /zoom/oauth APIs
-*BE-1039	AIVR: Support DTMF in output actions
-*BE-1040	AIVR: Re-design for prompt playback - now using events instead on single audio stream
-*BE-1044	POST /auth-svc/device to return api URL in the QR code
-*BE-1068	Support misspellings in hints in REAL-TIME mode
-*BE-1159	Increase the number of allowed audio files in POST /asr/meeting to 25
+* BE-1032	Add GET /zoom/oauth and DELETE /zoom/oauth APIs
+* BE-1039	AIVR: Support DTMF in output actions
+* BE-1040	AIVR: Re-design for prompt playback - now using events instead on single audio stream
+* BE-1044	POST /auth-svc/device to return api URL in the QR code
+* BE-1068	Support misspellings in hints in REAL-TIME mode
+* BE-1159	Increase the number of allowed audio files in POST /asr/meeting to 25
 
 Changes related to Integrity of Processing (fixes):
-*BE-1099	TA: Fix - Specified date format is not being used
-*BE-1110	TA: Modify NSIS Installer use proper setting of REINSTALLMODE
-*BE-1126	TA: Fix - Large-video chat popup captures focus and icons become not clickable
-*BE-1142	TA: Fix - When Zoom upload contains a video file we should set the "video" tag on this meeting
-*BE-1145	TA: Add beta label over the DOCX selector
-*BE-1146	TA: Fix - Remove UUID tool tips in the large-video view
-*BE-1162	Fix - Failure in sa-recompute on Edge
-*QA-545	TA: Now not be allowed to play multiple voice signature at the same time.
-*QA-567	TA: Fix - Files under processing status shouldn't get option for (Re-Compute, Move or Delete)
-*QA-630	TA: Fix - Transcripts on Homepage are not updating after changing Projects.
-*QA-631	TA: Fix - Unable to edit Download permission after changing role from admin to user in one go.
-*BE-1166	In offline task, if we can't download video, we generate audio-only dash-mpeg
-*QA-629	Console: Fix - Unable to download in JSON format in Download options in Transcribe under Transcribe+(beta)
+* BE-1099	TA: Fix - Specified date format is not being used
+* BE-1110	TA: Modify NSIS Installer use proper setting of REINSTALLMODE
+* BE-1126	TA: Fix - Large-video chat popup captures focus and icons become not clickable
+* BE-1142	TA: Fix - When Zoom upload contains a video file we should set the "video" tag on this meeting
+* BE-1145	TA: Add beta label over the DOCX selector
+* BE-1146	TA: Fix - Remove UUID tool tips in the large-video view
+* BE-1162	Fix - Failure in sa-recompute on Edge
+* QA-545	TA: Now not be allowed to play multiple voice signature at the same time.
+* QA-567	TA: Fix - Files under processing status shouldn't get option for (Re-Compute, Move or Delete)
+* QA-630	TA: Fix - Transcripts on Homepage are not updating after changing Projects.
+* QA-631	TA: Fix - Unable to edit Download permission after changing role from admin to user in one go.
+* BE-1166	In offline task, if we can't download video, we generate audio-only dash-mpeg
+* QA-629	Console: Fix - Unable to download in JSON format in Download options in Transcribe under Transcribe+(beta)
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 

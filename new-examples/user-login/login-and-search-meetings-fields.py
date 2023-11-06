@@ -4,7 +4,7 @@ import hashlib
 import hmac
 
 userName = "<your user email for the Voicegain account>"
-userName = "jacek.j@gmail.com"
+
 
 
 password = input("Enter password for user " + userName + ": ")

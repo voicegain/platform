@@ -1,3 +1,11 @@
+### Maintenance release 1.93.1 is scheduled for 11/8/2023 between 9am and noon CST
+
+Changes:
+* BE-1207  Reject ASR requests if the default model doesn't support languages specified in requests. 
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Minor release 1.93.0 is scheduled for 11/2/2023 between 9:00pm and 11:59pm CST
 
 New functionality in the Transcribe App:

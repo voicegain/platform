@@ -14,7 +14,7 @@ inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
 model = "VoiceGain-omega"
-#model = ""
+#model = None
 #model = "whisper:small"
 
 print("model: {}".format(model))
@@ -52,8 +52,8 @@ asr_body = {
     },
     "settings": {
         "asr": {
-            "languages" : ["es"],
-            #"languages" : ["ru"],
+            #"languages" : ["es", "en"],
+            "languages" : ["ru"],
             "acousticModelNonRealTime" : model,
             "noInputTimeout": -1,
             "completeTimeout": -1,

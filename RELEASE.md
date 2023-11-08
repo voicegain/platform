@@ -1,3 +1,10 @@
+## Release 1.93.1
+
+Changes:
+* BE-1207  Reject ASR requests if the default model doesn't support languages specified in requests. 
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.93.0
 
 New functionality in the Transcribe App:

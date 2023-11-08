@@ -14,6 +14,7 @@ inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
 model = "VoiceGain-omega"
+#model = ""
 #model = "whisper:small"
 
 print("model: {}".format(model))
@@ -51,7 +52,7 @@ asr_body = {
     },
     "settings": {
         "asr": {
-            "languages" : ["nl"],
+            "languages" : ["es"],
             #"languages" : ["ru"],
             "acousticModelNonRealTime" : model,
             "noInputTimeout": -1,
@@ -307,6 +308,7 @@ def process_one_file(audio_fname):
     start_time = time.time()
     if(asr_response_raw.status_code != 200):
         print("unexpected response code {} for asr request".format(asr_response_raw.status_code), flush=True)
+        print(asr_response_raw.text , flush=True)
         exit()
 
     asr_response = asr_response_raw.json()

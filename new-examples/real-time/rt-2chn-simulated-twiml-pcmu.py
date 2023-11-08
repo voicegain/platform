@@ -245,6 +245,7 @@ async def stream_audio():
               inb_chk = inb_chk+1
               inb_ts = inb_ts+64
 
+
               outbound_bytes = file2.read(512)  
               if not outbound_bytes:
                 break
@@ -264,6 +265,10 @@ async def stream_audio():
                 "streamSid": "MZ18ad3ab5a668481ce02b83e7395059f0"
               }
 
+              # to trigger issue
+              if(outb_chk != 5 ):
+                time.sleep(0.222)
+
               try:
                 #print("send media outbound {}".format(outb_ts), flush=True)
                 if(outb_chk <= 20):
@@ -271,7 +276,8 @@ async def stream_audio():
                 await websocket.send(json.dumps(media_msg))
               except Exception as e:
                 print(str(datetime.datetime.now())+" connected message "+str(e))
-                break              
+                break            
+
               seq_num = seq_num+1
               outb_chk = outb_chk+1
               outb_ts = outb_ts+64 # 512 bytes is 64 ms of audio at 8kHz PCMU mono

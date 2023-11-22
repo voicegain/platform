@@ -33,10 +33,11 @@ asr_body = {
         "asr": {
             "grammars" : [
                 {
-                    "type": "GRXML",
-                    "name" : "zip-codes",
-                    "fromUrl":{
-                        "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/zip_code_no_refs.grxml"
+                    "type": "BUILT-IN",
+                    "name" : "number",
+                    "parameters":{
+                        "minallowed" : 0,
+                        "maxallowed" : 20
                     }
                 }
             ],

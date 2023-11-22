@@ -1,3 +1,8 @@
+### Minor release 1.94.0 is scheduled for 11/22/2023 between 9:00am and 10:00am CST
+
+Details of changes will be provided later
+
+
 ### Maintenance release 1.93.1 is scheduled for 11/8/2023 between 9am and noon CST
 
 Changes:
@@ -6,7 +11,7 @@ Changes:
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 
-### Minor release 1.93.0 is scheduled for 11/2/2023 between 9:00pm and 11:59pm CST
+### Minor release 1.93.0 is scheduled for 11/2/2023 between 9:00pm and 11:59pm CDT
 
 New functionality in the Transcribe App:
 * BE-1100	TA: In large Video view put the Transcript (CC) in a frame that can be moved around the screen.
@@ -39,7 +44,7 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-### Minor release 1.92.0 is scheduled for 10/19/2023 between 4pm and 6pm CST
+### Minor release 1.92.0 is scheduled for 10/19/2023 between 4pm and 6pm CDT
 
 New functionality in the Transcribe App:
 * BE-779	TA: Show chat messages in Right-Hand pane

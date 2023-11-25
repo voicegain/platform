@@ -1,4 +1,4 @@
-### Minor release 1.94.0 is scheduled for 11/22/2023 between 9:00am and 10:00am CST
+### Minor release 1.94.0 is scheduled for 11/27/2023 between 6:00pm and 11:00pm CST
 
 Details of changes will be provided later
 

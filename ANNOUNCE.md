@@ -1,6 +1,74 @@
 ### Minor release 1.94.0 is scheduled for 11/27/2023 between 6:00pm and 11:00pm CST
 
-Details of changes will be provided later
+New functionality in the Transcribe App:
+* BE-1054	TA: Avatar image can now be edited (cropped)
+* BE-1104	TA: Better reporting of file size errors on upload (413 error)
+* BE-1167	TA: Show Project settings only to Project owners and Admins
+* BE-1168	TA: Add user Profile Setting: "Show advanced Project settings"
+* BE-1170	TA: Any text redaction Settings (Account, Project) visible only to Account Owner and Admins
+* BE-1171	TA: Menu actions in the Advanced Search results list work now the same as on the Home Page
+* BE-1174	TA: Added "Re-upload" that opens Zoom Upload form
+* BE-1190	TA: Show countdown on the modal that shows the QR code.
+* BE-1196	TA: Prompt user to reload if there is a new version (also invalidate any open session)
+* BE-1234	TA: Do not show Analytics settings on a Project unless user has enabled advanced settings
+* BE-1236	TA: Upgrade to Node version 18
+* BE-1254	TA: For Admins the "Show advanced Project settings" is now enabled by default
+* BE-1264	TA: Added more logs around the login process
+* QA-602	TA: Cleaned up the Inactivity Timeout setting
+* QA-619	TA: Remove settings in Shaka Player
+* QA-642	TA: Similar Date formats are now together in Settings under Account in Profile menu.
+
+New functionality in other platform components:
+* BE-984	Update helm to the latest version
+* BE-1114	Move feature extraction to Triton to reduce CPU load in ASR 
+* BE-1115	New Date Format enum for Account and Context
+* BE-1127	Move from tfs to triton for VAD models
+* BE-1144	Extract audio features using Triton
+* BE-1191	Meeting search API: Add new field: LANG - to store the main language of the transcript
+* BE-1203	End-to-end flow for meeting recorder using Puppeteer (Webex)
+* BE-1213	Hardened core ASR when the model is not available
+* BE-1219	Use UTF-8 encoding in telephony bot callback requests
+* BE-1223	Web Console: Add column sorting on the phone management page plus variable page size
+* BE-1224	Add debug meetingPlatform value to POST /asr/meeting/join
+* BE-1240	Support prompt response in llm-svc (in addition to question, transfer, disconnect)
+* BE-1246	Support custom mrcp configuration using helm chart
+* QA-654	Demo: Show message confirming copy to clipboard
+
+
+Changes related to Integrity of Processing (fixes):
+* BE-875	TA: Fix -Warning about a too large file is not being shown
+* BE-1105	TA: Fix - Submit button gets enabled too early while uploading zoom recording folders
+* BE-1128	TA: Fix - "walkThroughWizardSeen" gets set to True even if user has not done the Wizard
+* BE-1156	TA: Fix - In Advanced Search Filters should be remembered
+* BE-1157	TA: Fix - In Advanced Search show Project icon as the first column
+* BE-1169	TA: Fix - Show error message when hovering over the Error in Transcript list (was broken)
+* BE-1180	TA: Fix - When SSO user gets logged out from TA they see normal login page for a few seconds
+* BE-1182	TA: Fix - Weird behavior after clicking back button on detail page opened from Advanced search
+* BE-1217	TA: Fix - Advanced Search API should return al the values if body is not passed.
+* BE-1220	TA: Fix - Missing translations
+* BE-1265	TA: Fix - First Project wizard not running is new user was invited to some projects
+* BE-1269	TA: Fix - On a new account the My Shares page hangs forever with a spinner
+* BE-1270	TA: Fix - GET /asr/meeting sharedBy returns meetings for a brand new user that has not shared anything
+* BE-1272	TA: Fix - Getting incorrect error "cannot transcribe audio from video file" while uploading zoom folder
+* BE-1273	TA: Fix - Checking for file size in Zoom Upload is broken (looks at files that will not be uploaded)
+* QA-537	TA: Fix - Current Project is not picking correctly while move
+* QA-613	TA: Fix - On uploading zoom folder- chat not uploaded correctly
+* QA-643	TA: Fix - Search is not working on Homepage
+* QA-644	TA: Fix - Do not show tag edit option in Shared transcripts
+* QA-655	TA: Fix - Submit button shouldn't get enable until all selected files are uploaded.
+* QA-670	TA: Fix - Right outline of the box is missing the speaker popup
+* QA-674	TA: Fix - After deleting the project still showing name on homepage and setting icon, and clicking on setting no result showing.
+* QA-686	TA: Fix - Project Invited user is able to access the project setting by URL
+* QA-688	TA: Fix - Search user is not working on the Add User(s) to Project setting popup and its redirecting to the General Project Settings
+* QA-695	TA: Fix - Advanced search button stays there on the page even after search collapsed.
+* BE-1026	Fix - azure default voice amber doesn't work
+* BE-1212	Fix - Telephony bot API does not support some symbols in Spanish
+* BE-1227	Fix - In telephony bot API, we should send START-INPUT-TIMER request only after the prompt is played fully.
+* BE-1229	Fix - In telephony bot, DTMF detection has very long delay
+* BE-1239	Fix - Audio server does not support prompt with email address
+* BE-1245	Fix - Bot logic does not get authToken in POST callback
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 
 ### Maintenance release 1.93.1 is scheduled for 11/8/2023 between 9am and noon CST
@@ -638,79 +706,6 @@ Third-Party vulnerability (security) related fixes:
 
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Maintenance release 1.84.3 is scheduled for 6/19/2023 between noon and 3pm CST
-
-Changes related to Integrity of Processing (fixes):
-* Fix several UI glitches that were introduced when updating AntD version.
-
-Changes related to Security:
-* BE-220    demo.voicegain.ai requires Content Security Policy and related Headers
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-### Maintenance release 1.84.2 is scheduled for 6/8/2023 between 2pm and 3pm CST
-
-Changes related to Integrity of Processing (fixes)
-* BE-448    Project transcript view shows also Home Page transcripts directly after switch from Home to Project view
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Maintenance release 1.84.1 is scheduled for 6/7/2023 between 2:30pm and 3:30pm CST
-
-Changes related to Integrity of Processing (fixes)
-* BE-442    Fixed in Transcribe App: Voice Signature sample playback always plays from the beginning of audio
-* BE-443    Fixed in Transcribe App: Transcription fails because unable to find the speaker
-
-### Minor release 1.84.0 is scheduled for 6/6/2023 between 10am and noon CST
-
-This releaase includes a significantly more accurate Spanish real-time model.
-
-Here is a list of fixes and changes:
-* BE-224	Track on each account the most recent access
-* BE-242	Finalized the new style of the Browser Capture pop-up in Transcribe App
-* BE-260	In Web Console: In File Transcribe Dialog add ability to enter hint misspellings and boost
-* BE-279	Allow only Audio files for upload to Clip Manager
-* BE-281	In Transcribe App: Added a page with Terms of Use that is reachable via the Help menu
-* BE-288	Fixed in Transcribe App: Asks to setup a payment method while payment method already setup on the account
-* BE-327	Show context id in the card with JWT token
-* BE-336	Improved English NER
-* BE-365	Voicegain SSO App updated to latest 3rd-party package versions, also switched from npm to yarn
-* BE-367	Make the User Management table sortable in the Web Console
-* BE-369	Generate JWT with userId and use it where needed
-* BE-370	Fixed in meeting minutes: Summaries truncated mid sentence
-* BE-371	Fixed: Save button not enabled on EDGE in user profile
-* BE-372	In Transcribe App left-hand menu - prevent overlapping scroll bars
-* BE-373	fixed in Transcribe App: Error when deleting last Device
-* BE-374	Fix in Transcribe App: asr-api doesn't allow users to move a meeting session to a different context in some case
-* BE-377	Library Vulnerability check for the SSO app
-* BE-378	Modify EZInit and EZUpdate script to correctly set directory permissions
-* BE-379	Modify /asr/transcribe/async API to support audio calbacks
-* BE-380	Add report of the audioCallback in the full /asr/transcribe/async results
-* BE-381	Add DMY to list of NERs that we support for redaction in asr/transcribe formatter
-* BE-382	Fixed in Transcribe App: incorrect speaker names found in exported meeting transcription
-* BE-384	Supports audioCallback with PI Redacted audio
-* BE-388	Fix in Web Console: Transcription from URL request is missing audio.capture parameter
-* BE-389	Improved Context selection dialog in the Web Console
-* BE-391	In Transcribe App: trim spaces from entered URL
-* BE-392	Disable Password Recovery Key page if user is logged in using SSO
-* BE-394	New API to return AuthConfig by name from Context
-* BE-396	Do not offer local password change to users logged in via SSO
-* BE-401	In Web Console: add 'S3 Compatible' type of auth config
-* BE-404	Support context.description in Context API
-* BE-407	Changes to authConfig to support S3 Compatible URI
-* BE-408	Fixed in Transcribe App: Wrong confirmation dialog show when deleting user from Account
-* BE-412	When syncing users, avoid copying a user to edge if the user's email is found on edge
-* BE-414	API for multipart/form-data for Audio Callback
-* BE-415	Add GET /asr/transcribe/status/queue API
-* BE-419	Add customValues to the OnPrem Cluster API
-* BE-421	Fixed bug: In regex-based redaction only the first regex is being used
-* BE-429	Fixed formatting anomaly: ok, let's try number 1
-* BE-431	Fixed in Transcribe App: Bad URL in Advisor
-* BE-435	In Web Console: When we are done creating new context - switch to the new context
-* BE-436	Fixed in Web Console:  broken validation for area-code numbers
-* BE-439	In Web Console: fix formatting of the Transcribe Detail page
 
 
 

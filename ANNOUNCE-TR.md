@@ -2,9 +2,55 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
-### November 3, 2023
+### November 26, 2023
 
-### Minor release 1.93.0 is scheduled for 11/2/2023 between 9:00pm and 11:59pm CST
+New functionality:
+* BE-1054	TA: Avatar image can now be edited (cropped)
+* BE-1104	TA: Better reporting of file size errors on upload (413 error)
+* BE-1167	TA: Show Project settings only to Project owners and Admins
+* BE-1168	TA: Add user Profile Setting: "Show advanced Project settings"
+* BE-1170	TA: Any text redaction Settings (Account, Project) visible only to Account Owner and Admins
+* BE-1171	TA: Menu actions in the Advanced Search results list work now the same as on the Home Page
+* BE-1174	TA: Added "Re-upload" that opens Zoom Upload form
+* BE-1190	TA: Show countdown on the modal that shows the QR code.
+* BE-1196	TA: Prompt user to reload if there is a new version (also invalidate any open session)
+* BE-1234	TA: Do not show Analytics settings on a Project unless user has enabled advanced settings
+* BE-1236	TA: Upgrade to Node version 18
+* BE-1254	TA: For Admins the "Show advanced Project settings" is now enabled by default
+* BE-1264	TA: Added more logs around the login process
+* QA-602	TA: Cleaned up the Inactivity Timeout setting
+* QA-619	TA: Remove settings in Shaka Player
+* QA-642	TA: Similar Date formats are now together in Settings under Account in Profile menu.
+
+Fixes:
+* BE-875	TA: Fix -Warning about a too large file is not being shown
+* BE-1105	TA: Fix - Submit button gets enabled too early while uploading zoom recording folders
+* BE-1128	TA: Fix - "walkThroughWizardSeen" gets set to True even if user has not done the Wizard
+* BE-1156	TA: Fix - In Advanced Search Filters should be remembered
+* BE-1157	TA: Fix - In Advanced Search show Project icon as the first column
+* BE-1169	TA: Fix - Show error message when hovering over the Error in Transcript list (was broken)
+* BE-1180	TA: Fix - When SSO user gets logged out from TA they see normal login page for a few seconds
+* BE-1182	TA: Fix - Weird behavior after clicking back button on detail page opened from Advanced search
+* BE-1217	TA: Fix - Advanced Search API should return al the values if body is not passed.
+* BE-1220	TA: Fix - Missing translations
+* BE-1265	TA: Fix - First Project wizard not running is new user was invited to some projects
+* BE-1269	TA: Fix - On a new account the My Shares page hangs forever with a spinner
+* BE-1270	TA: Fix - GET /asr/meeting sharedBy returns meetings for a brand new user that has not shared anything
+* BE-1272	TA: Fix - Getting incorrect error "cannot transcribe audio from video file" while uploading zoom folder
+* BE-1273	TA: Fix - Checking for file size in Zoom Upload is broken (looks at files that will not be uploaded)
+* QA-537	TA: Fix - Current Project is not picking correctly while move
+* QA-613	TA: Fix - On uploading zoom folder- chat not uploaded correctly
+* QA-643	TA: Fix - Search is not working on Homepage
+* QA-644	TA: Fix - Do not show tag edit option in Shared transcripts
+* QA-655	TA: Fix - Submit button shouldn't get enable until all selected files are uploaded.
+* QA-670	TA: Fix - Right outline of the box is missing the speaker popup
+* QA-674	TA: Fix - After deleting the project still showing name on homepage and setting icon, and clicking on setting no result showing.
+* QA-686	TA: Fix - Project Invited user is able to access the project setting by URL
+* QA-688	TA: Fix - Search user is not working on the Add User(s) to Project setting popup and its redirecting to the General Project Settings
+* QA-695	TA: Fix - Advanced search button stays there on the page even after search collapsed.
+
+
+### November 3, 2023
 
 New functionality:
 * BE-1100	TA: In large Video view put the Transcript (CC) in a frame that can be moved around the screen.

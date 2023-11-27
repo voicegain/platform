@@ -1,4 +1,4 @@
-### Minor release 1.94.0 is scheduled for 11/27/2023 between 6:00pm and 11:00pm CST
+### Minor release 1.94.0 is scheduled for 11/26/2023 between 6:00pm and 11:00pm CST
 
 New functionality in the Transcribe App:
 * BE-1054	TA: Avatar image can now be edited (cropped)

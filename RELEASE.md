@@ -1,3 +1,10 @@
+## Release 1.94.1
+
+Changes:
+* BE-1282  Fix - offline task can't process 7.1 channel audio
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.94.0
 
 New functionality in the Transcribe App:

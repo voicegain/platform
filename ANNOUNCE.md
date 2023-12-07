@@ -1,3 +1,7 @@
+### Minor release 1.95.0 is scheduled for 12/07/2023 between 3:00pm and 6:00pm CST
+
+Details to be announced ..
+
 ### Maintenance release 1.94.1 is scheduled for 11/28/2023 between noon and 2pm CST
 
 Changes:

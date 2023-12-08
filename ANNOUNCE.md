@@ -1,6 +1,78 @@
 ### Minor release 1.95.0 is scheduled for 12/07/2023 between 3:00pm and 6:00pm CST
 
-Details to be announced ..
+New functionality in the Transcribe App:
+* BE-1255	TA: After new content is loaded by clicking "Load More" the page should scroll to the same place as before
+* BE-1256	TA: Do not truncate meeting names if not needed
+* BE-1274	TA: Check sizes of all Zoom folder files before starting upload and not during
+* BE-1276	TA: Add our own controls over the small video window of Shaka Player
+* QA-719	TA: Now, after search the page scrolls past "Get Started" and "Actions" to results
+* QA-720	TA: Share link now does proper redirect back to the share link if login is required
+
+New functionality in other platform components:
+* BE-996	App Selector: Tweaks on the Signup page
+* BE-1143	Upgrade from GCP container registry to artifact registry
+* BE-1176	A method to stream words to ml-svc and get SA results
+* BE-1197	Web Console: Show an error if phone number purchase fails
+* BE-1209	Web Console: Show any error that occurs when creating a context
+* BE-1233	Web Console: In edge deployments view make the number of rows per page configurable
+* BE-1262	add /opt/voicegain/bin and /home/voicegain mounts to a k8s containe
+* BE-1288	Support semicolons as query string separators in dynamic-grammar
+* BE-1289	Support returning SWI_literal in dynamic-grammar
+* BE-1290	Updated Grafana in edge deployment task
+* BE-1291	Configure Sentry on Edge
+* BE-1292	Create security policy for sentry.io on Transcribe App
+* BE-1318	Web Console: Add more voices to AIVR App selection
+* BE-1321	Deploy llm-svc to qa and prod
+* BE-1323	Report llm-svc gpt cost for each session
+* BE-1326	Support both builtin grammar:digits and grammar:digit
+
+Changes related to Integrity of Processing (fixes):
+* BE-1221	TA: Fix - Uncaught TypeError: Cannot read properties of null
+* BE-1257	TA: Fix - For Duration the sorting toggle is placed weird
+* BE-1259	TA: Fix - Keywords and tags displayed are missing spaces between them
+* BE-1261	TA: Fix -Show correct color for each project in Project filter
+* BE-1277	TA: Fix - Sometimes the Zoom Meeting Assistant page show stale value of the installed version
+* BE-1299	TA: Fix - When searching for text in meetings on home page, the API request should not contain any sort parameters
+* BE-1304	TA: Fix - POST /auth-svc/auth/login/openid fails if the User account exists but is only in the CREATED state
+* BE-1313	TA: Fix - weird behavior of Project search
+* BE-1314	TA: Fix - Weird logic for showing Move button on multiple selects
+* BE-1317	TA: Fix - On Edge the option to add users to project is not visible to the Project Owner
+* QA-651	TA: Fix - Date formats should not get translated in other languages.
+* QA-657	TA: Fix - File submit fails if we change project after upload and before submit.
+* QA-677	TA: Fix - Show current month in the right pane of the calendar
+* QA-698	TA: Fix - Project search by name is not working properly.
+* QA-699	TA: Fix - At the time save Transcript if we change the project then getting error
+* QA-700	TA: Fix - User is able to update the email in update payment but updated mail is not showing after saved
+* QA-701	TA: Fix - Add user- There should be words limit for entering the name
+* QA-705	TA: Fix - Tag for the voice signature showing like a single word not showing any gap between them.
+* QA-706	TA: Fix - Overlapping text in Download option when Spanish or German language is selected
+* QA-716	TA: Fix - If the chat is long then White blank screen showing after the Video
+* QA-717	TA: Fix - On large Chat video view -closed captioning, Video minimize buttons is not working
+* QA-721	TA: Fix -  My Shares page stuck on loading after we Edit a share.
+* QA-725	TA: Fix - User should only able to delete the voice signature by clicking on the delete icon.
+* QA-727	TA: Fix - mouse hover on the Regenerate button showing in English when Hindi language is selected.
+* QA-732	TA: Fix - There should be a limit for max allowed char for the project name.
+* QA-733	TA: Fix - My shares table - tags should be separated.
+* QA-735	TA: Fix - Restart when adding a new voice signature is not working properly.
+* QA-736	TA: Fix - On the archival text reduction page, unable to save the updated time as the save button not enabled when changing days.
+* QA-741	TA: Fix - On Advance search Project check box is not showing similar for all project
+* QA-743	TA: Fix - On Changing the setting of "Start of the calendar week" from Sunday to Monday and vice versa getting the error of enter valid data
+* QA-744	TA: Fix - Invited user is able to move the transcript of Admin project But the Admin is not able to move the transcribe to User project and also the error message is not showing on the Frontend
+* QA-749	TA: Fix - Project creation page-users page is missing
+* QA-753	TA: Fix - Re-Upload option is showing for Recording and Browser.
+* QA-757	TA: Fix - On navigating back from the browser arrow from the large video mode then left menu disappear from the screen
+* BE-1200	Admin Tool: Fix - Duplicated Search button label
+* BE-1280	Fix - RexServerLauncher bean should start before all controllers
+* BE-1296	Fix - Rate-limit cleanup cronjob is not created on CHD environment
+* BE-1305	Fix - meta.<rule_name>.text should also include text in its reference rules
+* BE-1316	Fix - audio-server fails to start on Edge
+* BE-1319	Fix - audio-server fails to compute duration of down-sampled audio generated by maryTTS
+* BE-1327	Fix - dtmf currency grammar doesn't work
+* BE-1329	Fix - Missing Content-Length header in the response of GET /private/synthesis
+* BE-716	Fix - Grafana image rendering in version 8
+* QA-708	Web Console: Fix - Incorrect pop-up msg when updating company address in account settings.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Maintenance release 1.94.1 is scheduled for 11/28/2023 between noon and 2pm CST
 
@@ -601,121 +673,6 @@ Changes related to Integrity of Processing (fixes):
 * BE-572	App Selector: Update text on Signup page
 * BE-587	Reject with 400 (Bad Request) all requests to sapi endpoint which have audio.capture=true
 * BE-590	Accept WSS streaming protocol on PCI/CHD environment
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-### Maintenance release 1.85.2 is scheduled for 6/29/2023 between 9pm and 11pm CST
-
-Changes related to Integrity of Processing (fixes)
-* BE-549    Public Transcribe App share from EDGE cycles non-stop if used without login
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-### Maintenance release 1.85.1 is scheduled for 6/29/2023 between 3pm and 6pm CST
-
-Changes related to Integrity of Processing (fixes)
-* BE-548    Do not send multipart/form-data parameters as files in audio.callback. Only audio data should be sent as file.
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-### Minor release 1.85.0 is scheduled for 6/28/2023 between 7pm and 10pm CST
-
-New functionality in the Transcribe App:
-* BE-45	Add Sharing of transcripts from Transcribe App
-* BE-422	In Transcribe App add Custom behavior for Help->Submit a Support Ticket option
-* BE-423	In Transcribe App: Support sharing from the Transcript Detail Page
-* BE-424	In Transcribe App: Add Page where the user can see all the meetings that they have shared
-* BE-426	In Transcribe App added Page that shows a single shared transcript to a not logged-in user
-* BE-427	In Transcribe App added Page that shows a single shared transcript to a logged-in user
-* BE-449	In Transcribe App: add ability to recompute Meeting Minutes for all Meeting withing Project
-
-New functionality in other platform components:
-* BE-225	Modify the Admin Tool to show "Last Used" time
-* BE-233	In Admin tool: add PCI-DSS column to the main account table display
-* BE-326	In Web Console: Show SHA sum of the Edge Cluster configuration
-* BE-387	In Web Console: If account is PCI compliant then show CHD Rate Limits
-* BE-417	Implemented Share APIs
-* BE-418	Implemented GET api for meeting data that uses shareId
-* BE-425	Add sharedBy and sharedWith parameters to GET /asr/meeting query
-* BE-447	Add PUT /asr/meeting/context/{contextId}/recompute method to recompute all the meetings on a context
-* BE-474	In Admin Tool: Show the number of Phones
-* BE-475	In Admin Tool: Add sorting by balance
-* BE-476	In Admin Tool: On the Usage chart make it possible to deselect one or more lines
-* BE-484	In Admin Tool: Add a "view password" feature to the login dialog
-* BE-485	In Admin Tool: Add "Suspend Selected" account functionality
-* BE-487	In Web Console Signup: Add confirmation of the values being submitted
-* BE-489	When creating new buckets enable versioning and set lifecycle rules
-* BE-514	Add Matomo to App Selector
-* BE-515	In App Selector: Add support for selectable Spanish/English language in the UI
-* BE-528	In Admin Tool: Add filtering on null value for Last Login and Last Used fields
-* BE-539	Support a new property: minio.server.region
-* BE-541	Add Region to Object Store settings for Edge Cluster
-
-Changes related to Integrity of Processing (fixes):
-* QA-183    In Transcribe App fix the link from "Manage Users"
-* BE-197	Add Kubeadm API update to EZUpdate.py
-* BE-411	In Web Console: Add splash loading screen
-* BE-446	In Transcribe App improve prompt in the URL entry box
-* BE-453	In Transcribe App fixed the "missing voice signature speaker" error
-* BE-454	Configured brotli for Cloud ACP and Transcribe App
-* BE-456	Fixed new-billing-utility fail to store an instance of Account in Redis due to oidcSettings
-* BE-462	Fixed new-billing-utility fail to send alerts due to a missing environment variable
-* BE-463	Fixed new-billing-utility fail to process storage and phone number usage periodically
-* BE-466	Fixed multiple records of storage usage of an account are written to postgres
-* BE-467	new-billing-utility submits the usage of a phone number to Billing System
-* BE-477	In Web Console in Add User dialog fixed the User option showing twice
-* BE-478	new-billing-utility fails to group the same type of ASR usage into one single record for a given interval
-* BE-479	new-billing-utility derives billing_to_process from only asr usages and ignores other types of usages
-* BE-480	Fixed: Account query API does not return correct values for pciDss field
-* BE-483	In Admin Tool: Better names for tabs
-* BE-492	new-billing-utility to ensure each quantity has up to 6 decimal places before it's sent to Fusebill
-* BE-493	In Web Console: fixed issue with New User Wizard (Joyride) 
-* BE-505	In Admin Tool: Make login safer by using pre-login feature
-* BE-512	GET /config-cluster fails to include clusterConfigShaSum in the response
-* BE-517	Fixed: EZINit issues with home directory and autossh for auto generated voicegain user.
-* BE-518	rex fails to invoke SessionMeasurementUtility.commit() for some realtime ASR sessions
-* BE-521	Fixed in Web Console: Transcribe+ table does not span full available width
-* BE-525	Fixed Polling URL returned from POST /sa
-* BE-527	Fix in Transcribe App: Download no longer downloads TXT and Audio
-* BE-529	In Admin Tool: Change filtering values on Contexts, Edge, Websockets, Phone #, and Users columns
-* BE-537	In Web Console: Fix user gets duplicated when adding roles
-* BE-538	Fixed in Transcribe App: the request for meetings on the home page should retrieve only 20 meetings
-* BE-540	Fixed in EDGE Web Console: Fallback Login is shown incorrectly
-* BE-542	Fix RedisTimeoutException: Unable to acquire connection!
-* BE-544	Fixed: Cloud function cannot add task to redis
-
-Third-Party vulnerability (security) related fixes:
-* BE-464	Admin Tool: Update to yarn and update packages to newer versions
-* VM-79	Unimrcp docker vulnerability
-* VM-81	freeswitch docker image vulnerability
-* VM-133	Python package protobuf==3.20.1
-* VM-135	offline-main docker image vulnerability (ffmpeg)
-* VM-136	ml-svc-grpc docker image vulnerability
-* VM-149	(SSO) nth-check Regular Expression Denial of Service (ReDoS)
-* VM-150	(SSO) async-validator Regular Expression Denial of Service (ReDoS)
-* VM-151	(SSO) word-wrap Regular Expression Denial of Service (ReDoS)
-* VM-152	(SSO) css-what Regular Expression Denial of Service (ReDoS)
-* VM-153	filebeat docker image vulnerability
-* VM-154	elasticsearch-master docker image vulnerability
-* VM-155	Triton docker image vulnerability
-* VM-156	Java services Docker image vulnerability
-* VM-157	httpd docker image httpd:2.4.57-alpine3.17 vulnerability
-* VM-158	redocly/redoc:v2.0.0-rc.50 docker image vulnerability 
-* VM-159	transmogrifier ssh and web docker container vulnerability
-* VM-160	ingress-nginx==4.6.0 helm chart vulnerability
-* VM-161	freeswitch 2.3.10 docker image vulnerability
-* VM-162	python:3.9.16-slim@sha256:78740d6c888f2e6cb466760b3373eb35bb3f1059cf1f1b5ab0fbec9a0331a03d docker image vulnerability
-* VM-163	nats:2.9.16-debian-11-r1 docker vulnerability
-* VM-164	telegraf:1.26.1 docker image vulnerability 
-* VM-165	mysql:5.7.30 docker image vulnerability
-* VM-166	Pod container allows privilege escalation on exec
-* VM-167	 Pod container is allowed to run as root
-* VM-168	grafana 6.6.0 docker image vulnerability
-* VM-169	single-tensorflow-serving:2.11.1 Docker image vulnerability
-
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 

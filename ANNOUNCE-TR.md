@@ -2,6 +2,53 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### December 7, 2023
+
+New functionality:
+* BE-1255	TA: After new content is loaded by clicking "Load More" the page should scroll to the same place as before
+* BE-1256	TA: Do not truncate meeting names if not needed
+* BE-1274	TA: Check sizes of all Zoom folder files before starting upload and not during
+* BE-1276	TA: Add our own controls over the small video window of Shaka Player
+* QA-719	TA: Now, after search the page scrolls past "Get Started" and "Actions" to results
+* QA-720	TA: Share link now does proper redirect back to the share link if login is required
+
+Fixes:
+* BE-1221	TA: Fix - Uncaught TypeError: Cannot read properties of null
+* BE-1257	TA: Fix - For Duration the sorting toggle is placed weird
+* BE-1259	TA: Fix - Keywords and tags displayed are missing spaces between them
+* BE-1261	TA: Fix -Show correct color for each project in Project filter
+* BE-1277	TA: Fix - Sometimes the Zoom Meeting Assistant page show stale value of the installed version
+* BE-1299	TA: Fix - When searching for text in meetings on home page, the API request should not contain any sort parameters
+* BE-1304	TA: Fix - POST /auth-svc/auth/login/openid fails if the User account exists but is only in the CREATED state
+* BE-1313	TA: Fix - weird behavior of Project search
+* BE-1314	TA: Fix - Weird logic for showing Move button on multiple selects
+* BE-1317	TA: Fix - On Edge the option to add users to project is not visible to the Project Owner
+* QA-651	TA: Fix - Date formats should not get translated in other languages.
+* QA-657	TA: Fix - File submit fails if we change project after upload and before submit.
+* QA-677	TA: Fix - Show current month in the right pane of the calendar
+* QA-698	TA: Fix - Project search by name is not working properly.
+* QA-699	TA: Fix - At the time save Transcript if we change the project then getting error
+* QA-700	TA: Fix - User is able to update the email in update payment but updated mail is not showing after saved
+* QA-701	TA: Fix - Add user- There should be words limit for entering the name
+* QA-705	TA: Fix - Tag for the voice signature showing like a single word not showing any gap between them.
+* QA-706	TA: Fix - Overlapping text in Download option when Spanish or German language is selected
+* QA-716	TA: Fix - If the chat is long then White blank screen showing after the Video
+* QA-717	TA: Fix - On large Chat video view -closed captioning, Video minimize buttons is not working
+* QA-721	TA: Fix -  My Shares page stuck on loading after we Edit a share.
+* QA-725	TA: Fix - User should only able to delete the voice signature by clicking on the delete icon.
+* QA-727	TA: Fix - mouse hover on the Regenerate button showing in English when Hindi language is selected.
+* QA-732	TA: Fix - There should be a limit for max allowed char for the project name.
+* QA-733	TA: Fix - My shares table - tags should be separated.
+* QA-735	TA: Fix - Restart when adding a new voice signature is not working properly.
+* QA-736	TA: Fix - On the archival text reduction page, unable to save the updated time as the save button not enabled when changing days.
+* QA-741	TA: Fix - On Advance search Project check box is not showing similar for all project
+* QA-743	TA: Fix - On Changing the setting of "Start of the calendar week" from Sunday to Monday and vice versa getting the error of enter valid data
+* QA-744	TA: Fix - Invited user is able to move the transcript of Admin project But the Admin is not able to move the transcribe to User project and also the error message is not showing on the Frontend
+* QA-749	TA: Fix - Project creation page-users page is missing
+* QA-753	TA: Fix - Re-Upload option is showing for Recording and Browser.
+* QA-757	TA: Fix - On navigating back from the browser arrow from the large video mode then left menu disappear from the screen
+
+
 ### November 26, 2023
 
 New functionality:
@@ -362,44 +409,7 @@ This release also addresses the following specific issues:
 * Automatically insert underscores into multi-word hints
 * Do not hide microphone and browser capture icons for old projects that have no language setting value
 
-### January 30, 2023
 
-This release has the improved Spanish Real-Time model.
-
-This release also addresses the following specific issues:
-* Add ability to delete a keyword in Speech Analytics settings
-* The downloaded audio file now has correct mp3 extension instead of wav
-* In languages Project settings show if microphone transcription is not available for given language
-* Change the lock-out message to show the local time instead of the UTC.
-* Fix weird behavior in Settings if old Project has no Meeting Minutes enabled
-* Add a hide button for the Zoom Meeting Assistant banner
-
-The current version of the Zoom Meeting Assistant going with this release is 0.2.18
-
-### January 24, 2023
-
-This release has an improved Spanish Offline model.
-
-This release adds ability to Recompute meetings in the Transcribe App. 
-This means that all the NLU processing of the transcript can be redone after, e.g., change in the Project analytics settings.
-
-Other changes to the Transcribe App:
-* Info about available Zoom Meeting Assistant is shown on the home page.
-* List of search results shows also topics for each transcript.
-* Removed Update button on the Key Items settings. Key Items will always be updated to the latest configuration.
-* Hid Key Items configuration from non-Admin users.
-
-### January 5, 2023
-
-This release enables Browser Capture in the Transcribe App on Edge.
-
-This release also addresses the following specific issues:
-* Pause was behaving like mute
-* "No Microphone" option added in Browser Capture
-* Cancel out of the Mic Save dialog was not working
-* (Meeting Minutes) Made Modifications to the KeyItems settings in Project
-  * Support negative examples and regex
-  * Add Enabled toggle for each Key Item
 
 
 

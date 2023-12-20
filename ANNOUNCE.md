@@ -1,3 +1,11 @@
+### Maintenance release 1.95.1 is scheduled for 12/20/2023 between 1pm and 3pm CST
+
+Changes:
+* BE-1343  Add property builtin.grammar.output.flavor to dynamic grammar
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Minor release 1.95.0 is scheduled for 12/07/2023 between 3:00pm and 6:00pm CST
 
 New functionality in the Transcribe App:

@@ -1,3 +1,10 @@
+## Release 1.95.1
+
+Changes:
+* BE-1343  Add property builtin.grammar.output.flavor to dynamic grammar
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.95.0
 
 New functionality in the Transcribe App:

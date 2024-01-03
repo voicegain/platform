@@ -2,6 +2,39 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### January 2, 2024
+
+New functionality:
+* BE-1158	TA: In Advanced Search show Headlines in the list of search results
+* BE-1172	TA: Identify currently paired Zoom Meeting Assistant
+* BE-1193	TA: In Advanced Search - Add filter on transcript language
+* BE-1258	TA: Add a filter on creator in Advanced Search
+* QA-350	TA: Upload button is now disabled when max allowed minutes are exceeded for the basic plan. 
+* QA-671	TA: Revised search location of the Home page
+* QA-726	TA: Voice signature status is shown in specific colors like green for "Ready" and blue for processing.
+* QA-729	TA: Added special page for 500 errors
+* QA-773	TA: Tags have their own specific alert message on Editing (Adding and Deleting).
+* QA-778	TA: Improved login behavior if accessing a meeting shared within Account
+
+Fixes:
+* BE-1333	TA: Fix - Mute/Unmute gets confused if we press the mute/unmute button too fast in a seqeunce several times
+* BE-1336	TA: Fix - Refresh icon gets squished when we open search box
+* QA-669	TA: Fix - Various issues on Advanced search feature
+* QA-672	TA: Fix - Unable to choose the folder directory in Zoom upload
+* QA-710	TA: Fix - Page behavior is unusual after URL upload.
+* QA-718	TA: Fix -Search for transcript on the home page is not working if searching by transcript name
+* QA-752	TA: Fix - Owner account should not show while creating a project and adding users to the project.
+* QA-768	TA: Fix - Advanced search page is going blank.
+* QA-770	TA: Fix - Filters are getting reset, when user open any transcript through advanced search.
+* QA-772	TA: Fix - Load more button the Advance search not working properly it respond after 3 to 4 clicks
+* QA-774	TA: Fix - Save button shouldn't get enable if inactivity timeout field is empty.
+* QA-780	TA: Fix - Tags, Speakers, Participants filters associated with zoom upload are not searchable in Advanced search.
+* QA-781	TA: Fix - Sometimes Word Cloud gets broken for some random transcripts.
+* QA-782	TA: Fix - All 5 languages should be mentioned under language filter.
+* QA-792	TA: Fix - "May Download" checkbox getting automatically enable after adding the project in user setting
+* QA-794	TA: Fix - No error or alert msg on login page, when login with incorrect password.
+
+
 ### December 7, 2023
 
 New functionality:

@@ -1,3 +1,58 @@
+### Minor release 1.96.0 is scheduled for 1/02/2024 between 8:30pm and 10:00pm CST
+
+New functionality in the Transcribe App:
+* BE-1158	TA: In Advanced Search show Headlines in the list of search results
+* BE-1172	TA: Identify currently paired Zoom Meeting Assistant
+* BE-1193	TA: In Advanced Search - Add filter on transcript language
+* BE-1258	TA: Add a filter on creator in Advanced Search
+* QA-350	TA: Upload button is now disabled when max allowed minutes are exceeded for the basic plan. 
+* QA-671	TA: Revised search location of the Home page
+* QA-726	TA: Voice signature status is shown in specific colors like green for "Ready" and blue for processing.
+* QA-729	TA: Added special page for 500 errors
+* QA-773	TA: Tags have their own specific alert message on Editing (Adding and Deleting).
+* QA-778	TA: Improved login behavior if accessing a meeting shared within Account
+
+New functionality in other platform components:
+* BE-1084	AVIR: Added Telephony Bot Websocket API
+* BE-1175	Upload large files via a pre-signed URL to S3 (including Google Storage in S3 mode)
+* BE-1192	Support the new lang column in the GET fields method for search
+* BE-1222	Add `intermediateValues` field to the GET /asr/meeting/search/fields API
+* BE-1285	Add headline to response from the Advanced Meeting Search API
+* BE-1325	Rewritten built-in grammars to avoid repeat when it's not in an <item> scope
+* BE-1350	Update Node version for customer-portal: 14.21.3 -> 18
+* BE-1351	Web Console: Comment out Language Model which is no longer needed for Audio Sending Daemon
+* BE-1361	Support tempCode in the AIVR API
+* BE-1362	Configure ingress for wss://host:port/n/ws/aivr/uuid/session/uuid
+* BE-1381	In MRCP ASR - in Large Vocab Transcription return combination of 2 language recognition
+* BE-1384	Web Console: Add filtering AIVR call sessions by App Name
+* QA-779	Web Console: Better error messages if phone number not found
+* QA-813	Web Console: Added TTML download option
+
+Changes related to Integrity of Processing (fixes):
+* BE-1333	TA: Fix - Mute/Unmute gets confused if we press the mute/unmute button too fast in a seqeunce several times
+* BE-1336	TA: Fix - Refresh icon gets squished when we open search box
+* QA-669	TA: Fix - Various issues on Advanced search feature
+* QA-672	TA: Fix - Unable to choose the folder directory in Zoom upload
+* QA-710	TA: Fix - Page behavior is unusual after URL upload.
+* QA-718	TA: Fix -Search for transcript on the home page is not working if searching by transcript name
+* QA-752	TA: Fix - Owner account should not show while creating a project and adding users to the project.
+* QA-768	TA: Fix - Advanced search page is going blank.
+* QA-770	TA: Fix - Filters are getting reset, when user open any transcript through advanced search.
+* QA-772	TA: Fix - Load more button the Advance search not working properly it respond after 3 to 4 clicks
+* QA-774	TA: Fix - Save button shouldn't get enable if inactivity timeout field is empty.
+* QA-780	TA: Fix - Tags, Speakers, Participants filters associated with zoom upload are not searchable in Advanced search.
+* QA-781	TA: Fix - Sometimes Word Cloud gets broken for some random transcripts.
+* QA-782	TA: Fix - All 5 languages should be mentioned under language filter.
+* QA-792	TA: Fix - "May Download" checkbox getting automatically enable after adding the project in user setting
+* QA-794	TA: Fix - No error or alert msg on login page, when login with incorrect password.
+* BE-1340	Multiple 3rd-party Vulnerabilities fixed
+* BE-1342	Web Console: Fix - Error messages mixed up after purchasing a phone number
+* BE-1349	Fix: asr-api doesn't have to check if a websocket exists for known topics
+* BE-1370	Web Console: Fix - Right channel of the Telephony Bot recording is not getting shown
+* QA-767	Web Console: Fix - Shortcut keys are not working properly.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Maintenance release 1.95.1 is scheduled for 12/20/2023 between 1pm and 3pm CST
 
 Changes:

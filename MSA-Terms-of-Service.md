@@ -148,7 +148,7 @@ Email support: 9:00 a.m. to 5:00 p.m. Central time, Monday to Friday, except for
 
 Self-Service Knowledgebase: Customers shall have 24/7 access to Voicegain’s self-service knowledgebase throught Voicegain’s web console or application.
 
-**3.9	Service Levels.** For SaaS Service during the Live Period, Voicegain agrees to meet service levels as described her	e. 
+**3.9	Service Levels.** For SaaS Service during the Live Period, Voicegain agrees to meet service levels as described [here](https://github.com/voicegain/platform/blob/master/SLAs.md). 
 
 **3.10	Service Level Credits.** In any given calendar month, if Voicegain fails to meet a Service Level for a SaaS Service, then Voicegain will grant a credit of 2.5% off the following month’s Fees for that service. Service Level Credits may only be applied to subsequent Voicegain invoices. Service Level Credits have no monetary value.
 

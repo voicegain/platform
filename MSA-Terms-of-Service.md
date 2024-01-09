@@ -52,7 +52,7 @@
 
 “Policies” means Voicegain’s current written policies on technical and administrative matters, including the Voicegain Privacy Policy and Voicegain Information Security Policy.
 
-“Privacy Policy” means either Voicegain’s or Customer’s statement of data privacy practices. The current version of Voicegain’s Privacy Policy is maintained here.
+“Privacy Policy” means either Voicegain’s or Customer’s statement of data privacy practices. The current version of Voicegain’s Privacy Policy is maintained [here](https://github.com/voicegain/platform/blob/master/PRIVACY.md).
 
 “Professional Service” means professional services provided by Voicegain for Customer and specifically identified in an Order as Professional Service. Examples of Professional Service include (i) creation of Customer Solution using a work-for-hire model (ii) Storage (iii) Training (iv) Setup (v) Support (vi) maintenance of Customer Solution.
 
@@ -74,7 +74,7 @@
 
 “Customer Software” means any Software that is owned, licensed or used by Customer other than Voicegain Software.
 
-“Voicegain Software” means any Software owned by Voicegain and provided to Customer pursuant to an Order under this Agreeement. Voicegain Software include Speech-to-Text/STT APIs, Speech Analytics APIs, Telephony Bot APIs and MRCP ASR. An up-to-date list of Voicegain Software is maintained here. Customer may purchase a subscription to Voicegain Software as Cloud Software (i.e a SaaS Service) or as Edge Software (i.e a Edge Subscription Product).
+“Voicegain Software” means any Software owned by Voicegain and provided to Customer pursuant to an Order under this Agreeement. Voicegain Software include Speech-to-Text/STT APIs, Speech Analytics APIs, Telephony Bot APIs and MRCP ASR. An up-to-date list of Voicegain Software is maintained [here](https://github.com/voicegain/platform/blob/master/SaaS%20Services%20List.md). Customer may purchase a subscription to Voicegain Software as Cloud Software (i.e a SaaS Service) or as Edge Software (i.e a Edge Subscription Product).
 
 “Cloud Software” means the Voicegain Software in executable or object form hosted by Voicegain on servers or compute instances controlled by Voicegain (whether such servers are owned by Voicegain or rented as compute instances from a cloud provider) to process Customer’s Data. Cloud Software is set of containerized services installed on a Voicegain managed Kubernetes cluster.
 

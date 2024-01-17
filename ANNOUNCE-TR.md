@@ -2,6 +2,31 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### January 17, 2024
+
+New functionality:
+* BE-1186	TA: Meeting search fields API returns intermediate values
+* BE-1377	TA: In Advanced Search filters use the intermediate values returned from the fields API
+* QA-421	TA: Improved inactivity timeout functionality
+* QA-660	TA: Transcript caption popup window now is resizable in full-screen video player
+
+Fixes:
+* BE-1252	TA: Fix - After Submit on Zoom Upload still staying on the same page
+* BE-1383	TA: Fix - The User avatar is currently saved to the currently selected context - we need to save it to another bucket
+* BE-1385	TA: Fix - Password reset link incorrect on some Edge deployments
+* QA-509	TA: Fix - Incorrect behavior if User tries to use Share "within account" while not being logged in
+* QA-594	TA: Fix - On uploading the zoom folder getting the status as error
+* QA-703	TA: Fix - Shares is not showing under My Shares (on accounts with many transcripts)
+* QA-709	TA: Fix - Filter by Phase/Status not working in advanced search.
+* QA-756	TA: Fix - Zoom App Page is not loading for some new users
+* QA-799	TA: Fix - For new users "Something went wrong" error page shown instead of a First Project Wizard
+* QA-802	TA: Fix - Save button is not getting enabled after updating the settings.
+* QA-809	TA: Fix - Advanced Search Filter is not working on Status Filter
+* QA-811	TA: Fix - Advanced search: Searching for the error transcripts filter not working.
+* QA-820	TA: In Advanced Search now able to enter duration manually (in addition to slider)
+* QA-829	TA: Fix - For new User Search Page is coming blank
+* QA-833	TA: Fix - After changing the profile picture "Hide Project Language Reminder" checkbox automatically gets unchecked.
+
 ### January 2, 2024
 
 New functionality:

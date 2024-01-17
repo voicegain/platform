@@ -1,3 +1,8 @@
+### Minor release 1.97.0 is scheduled for 1/17/2024 between 1:00pm and 3:00pm CST
+
+Details coming ...
+
+
 ### Minor release 1.96.0 is scheduled for 1/02/2024 between 8:30pm and 10:00pm CST
 
 New functionality in the Transcribe App:

@@ -1,3 +1,70 @@
+### Minor release 1.97.0 is scheduled for 1/17/2024 between 1:00pm and 3:00pm CST
+
+IMPORTANT Note for Edge users: If you update from any prior release to 1.97.0 and you need to roll-back please contact 
+Voicegain for support with the rollback process. This is because the compatibility setting on the Mongo DB has been changed in 1.97.0.
+
+New functionality in the Transcribe App:
+* BE-1186	TA: Meeting search fields API returns intermediate values
+* BE-1377	TA: In Advanced Search filters use the intermediate values returned from the fields API
+* QA-421	TA: Improved inactivity timeout functionality
+* QA-660	TA: Transcript caption popup window now is resizable in full-screen video player
+
+New functionality in other platform components:
+* BE-1249	Added logicConnectMethod field to AIVR App API
+* BE-1353	Update Node version app-selector: 16.10.0 → 18
+* BE-1355	Web Console: Show the SHA and description of the currently deployed Edge configuration
+* BE-1356	Web Console: Show the history of deployed Edge configurations (incl SHA sums)
+* BE-1359	Web Console: Make password expire time configurable
+* BE-1360	Web Console: Make number of old remembered passwords configurable
+* BE-1367	Migration from InfluxDB v1.8.10 to v2.7.x
+* BE-1376	Add joinedMeetingEvent(s) field to the /asr/meeting API for meetings that were joined using meeting bot
+* BE-1379	Web Console: Add ability to set logicConnectMethod for AIVR App
+* BE-1397	In account API make number of old remembered passwords configurable
+* BE-1398	In account API - new min, max, and default values of inactivityLogoutThreshold
+* BE-1399	Add passwordExpirationDays to the Account API
+* BE-1400	In MRCP, support defining large vocabulary grammar using buildin grammar in DEFINE-GRAMMAR request
+* BE-1403	Web Console: Added option to control which Edge configurations will be shown
+* BE-1405	Add deploymentHistory field to /cluster API
+* BE-1422	A utility that creates user/org/bucket in InfluxDBv2 for each existing account in the db
+* BE-1434	Support storing orgId and userId under account.influxDB
+* BE-1435	Support hostAliases in offline task
+* BE-1441	Support acoustic model with only model config file and a reference to another model
+* BE-1442	Create a telephony bot specific acoustic model configuration in REX with new sensitivity setting
+* BE-1444	Log any occurrence of "Something Went Wrong" page to Sentry
+* BE-473	2FA for Web Console
+* BE-503	Web Console: In the user profile add ability to configure 2FA
+* BE-504	In Authentication Client modify login to handle cases if MFA is enabled for a user
+
+Changes related to Integrity of Processing (fixes):
+* BE-1252	TA: Fix - After Submit on Zoom Upload still staying on the same page
+* BE-1383	TA: Fix - The User avatar is currently saved to the currently selected context - we need to save it to another bucket
+* BE-1385	TA: Fix - Password reset link incorrect on some Edge deployments
+* QA-509	TA: Fix - Incorrect behavior if User tries to use Share "within account" while not being logged in
+* QA-594	TA: Fix - On uploading the zoom folder getting the status as error
+* QA-703	TA: Fix - Shares is not showing under My Shares (on accounts with many transcripts)
+* QA-709	TA: Fix - Filter by Phase/Status not working in advanced search.
+* QA-756	TA: Fix - Zoom App Page is not loading for some new users
+* QA-799	TA: Fix - For new users "Something went wrong" error page shown instead of a First Project Wizard
+* QA-802	TA: Fix - Save button is not getting enabled after updating the settings.
+* QA-809	TA: Fix - Advanced Search Filter is not working on Status Filter
+* QA-811	TA: Fix - Advanced search: Searching for the error transcripts filter not working.
+* QA-820	TA: In Advanced Search now able to enter duration manually (in addition to slider)
+* QA-829	TA: Fix - For new User Search Page is coming blank
+* QA-833	TA: Fix - After changing the profile picture "Hide Project Language Reminder" checkbox automatically gets unchecked.
+* BE-1363	Fix - Hints with misspellings sometimes do not work correctly in real-time mode
+* BE-1387	Fix - VAD classifies Beep as Speech
+* BE-1389	Fix - Limit of 3 pending pairing devices should be per User and not per Account
+* BE-1391	Fix - Edge data backup cronjob has wrong minio password
+* BE-1401	Fix - Some vars are ignored in AIVR callback
+* BE-1436	Fix - Recognition doesn't work in AIVR sessions if influxDB is down
+* BE-1447	Fix - MaxAskExceedException in llm-svc is not captured
+* QA-796	Web Console: Fix - Signup error message in XML format
+* QA-823	Web Console: Fix - Ascending DNIS and ANI sorting not working for call sessions table.
+* QA-824	Web Console: Fix - Delete functionality is not working Properly for 90% page zoom.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Minor release 1.96.0 is scheduled for 1/02/2024 between 8:30pm and 10:00pm CST
 
 New functionality in the Transcribe App:
@@ -638,101 +705,4 @@ Changes related to Integrity of Processing (fixes):
 * QA-362  Transcribe App fix: Sorting by transcript Status
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Maintenance release 1.86.5 is scheduled for 8/2/2023 between 3:30pm and 4:30pm CST
-
-This release enables higher number of replicas for autoscaling.
-
-It is just a configuration change.
-
-### Maintenance release 1.86.4 is scheduled for 7/28/2023 between noon and 2pm CST
-
-Changes related to Integrity of Processing (fixes)
-* BE-662    Temporary fix for "ASR-API kills REX session if there is no activity for 5 minutes" - timeout extended to 15 minutes
-* BE-663    Fix for: asr-api on CHD environment rejects derived session because callback url is redis
-  * this was introduced by: BE-615 Enable TWILIO protocol in CHD environment (sapi.voicegain.ai) 
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Maintenance release 1.86.3 is scheduled for 7/21/2023 between 5pm and 6pm CST
-
-Changes related to Integrity of Processing (fixes)
-* BE-631    Remove punctuation between two digits in En BERT punctuation model
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Maintenance release 1.86.2 is scheduled for 7/18/2023 between 1pm and 4pm CST
-
-This release includes an improved real-time English model delivering higher accuracy of speech recognition.
-
-Changes related to Integrity of Processing (fixes)
-* BE-622    (SSO) Fix issue with Spinner that does not stop if login failed (no error message was shown)
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Maintenance release 1.86.1 is scheduled for 7/14/2023 between 5pm and 6pm CST
-
-This release has several improvements in the PDF export in the Transcribe App (Meeting API)
-
-Changes related to Integrity of Processing (fixes)
-* QA-301    Transcribe App: Removed recompute option from transcripts in Error state.
-* QA-308    Transcribe App: Fixed getting blank screen on My Shares
-* QA-323    Transcribe App: Fixed project flag indicators not working as expected on Homepage (also BE-611)
-* QA-324    Transcribe App: Fixed unable to move transcript between projects (also BE-616)
-* BE-612    Transcribe App: Incorrect area outlines on the Home Page
-
-Fixes in other components:
-* BE-614    Web Console: In Edge Config prevent selection of configuration not matching the version
-* BE-615    Enable TWILIO protocol in CHD environment (sapi.voicegain.ai)
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Minor release 1.86.0 is scheduled for 7/13/2023 between 9pm and 11pm CST
-
-New functionality in the Transcribe App:
-* BE-550	Transcribe App: Usability improvement in share creation.
-* BE-458	Transcribe App: Add a checkmark to indicate among the matching Speakers the one that is assigned to the Speaker from transcript
-* BE-494	Transcribe App: Added validation for values entered in the text redaction fields
-* BE-555	Added support for multiple languages to the UI of the Transcribe App.
-* BE-568	Transcribe App: Delete all devices belonging to a User when a User is being deleted
-* BE-570	Transcribe App: Improvements to the projects view in the Left-Hand menu
-* BE-571	Transcribe App: Add new Zoom Icon (with status) in left-hand Menu
-* BE-576	Transcribe App: Add name of the user to be deleted to the User Deletion confirmation dialog
-* BE-582	Transcribe App: Modified text on the Signup page for EDGE if OIDC SSO is enabled on the account
-* BE-596	Transcribe: Add support for Hindi language for transcription.
-* BE-605	Transcribe App: Improved instructions on ZoomMA download page
-* BE-598	Transcribe App: Added PDF export option (beta)
-* BE-569	Transcribe App: Change the Home Page Plan info to a new format
-* BE-575	Transcribe App: Replace Browser Capture Icon with Google Meet Icon
-* BE-580	Transcribe App: Move Latest News to a separate page that in accessible from the Help Menu
-
-New functionality in other platform components:
-* BE-561	Admin tool: Added ability to change the account Billing Style
-* BE-563	Added API to add credit to an account
-* BE-558	Implemented a static method that generates PDF from a meeting JSON
-* BE-564	Make it possible to modify billing style on the Account using Admin tool
-* BE-565	Added pdf format to GET /asr/meeting/{meetingId}/transcript API
-* BE-546	Support stopping billing-utility from processing anything
-* BE-547	new-billing-utility to store usage of each TranscribApp account in Firestore
-* BE-554	new-billing-utility supports auto-refill
-
-Changes related to Integrity of Processing (fixes):
-* BE-440	Web Console: fix missing waveform in the microphone capture preview
-* BE-591	Make sure no account information is revealed by password reset API.
-* BE-514	Added Matomo to App Selector with correct IDs for dev and prod
-* BE-567	GET /user/{userId} returns 404 if the specified user does not exist
-* BE-581	prevent new-billing-utility from processing multiple hourly storage requests
-* BE-560	EZ Script fixes for K8s 1.27 and deprecated config
-* BE-572	App Selector: Update text on Signup page
-* BE-587	Reject with 400 (Bad Request) all requests to sapi endpoint which have audio.capture=true
-* BE-590	Accept WSS streaming protocol on PCI/CHD environment
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-**Backwards incompatibility:**
-* Certain acoustic model names are no longer available. Unless using specific custom models, it is now sufficient to just provide `languages` parameter - no need to specify acoustic model by name.
-* requests to `/asr/transcribe/async` API with `portal` field value but no `portal.label` specified will fail - `portal.label` is now a required value 
-
-
 

@@ -1,3 +1,69 @@
+## Release 1.97.0
+
+IMPORTANT Note for Edge users: If you update from any prior release to 1.97.0 and you need to roll-back please contact 
+Voicegain for support with the rollback process. This is because the compatibility setting on the Mongo DB has been changed in 1.97.0.
+
+New functionality in the Transcribe App:
+* BE-1186	TA: Meeting search fields API returns intermediate values
+* BE-1377	TA: In Advanced Search filters use the intermediate values returned from the fields API
+* QA-421	TA: Improved inactivity timeout functionality
+* QA-660	TA: Transcript caption popup window now is resizable in full-screen video player
+
+New functionality in other platform components:
+* BE-1249	Added logicConnectMethod field to AIVR App API
+* BE-1353	Update Node version app-selector: 16.10.0 → 18
+* BE-1355	Web Console: Show the SHA and description of the currently deployed Edge configuration
+* BE-1356	Web Console: Show the history of deployed Edge configurations (incl SHA sums)
+* BE-1359	Web Console: Make password expire time configurable
+* BE-1360	Web Console: Make number of old remembered passwords configurable
+* BE-1367	Migration from InfluxDB v1.8.10 to v2.7.x
+* BE-1376	Add joinedMeetingEvent(s) field to the /asr/meeting API for meetings that were joined using meeting bot
+* BE-1379	Web Console: Add ability to set logicConnectMethod for AIVR App
+* BE-1397	In account API make number of old remembered passwords configurable
+* BE-1398	In account API - new min, max, and default values of inactivityLogoutThreshold
+* BE-1399	Add passwordExpirationDays to the Account API
+* BE-1400	In MRCP, support defining large vocabulary grammar using buildin grammar in DEFINE-GRAMMAR request
+* BE-1403	Web Console: Added option to control which Edge configurations will be shown
+* BE-1405	Add deploymentHistory field to /cluster API
+* BE-1422	A utility that creates user/org/bucket in InfluxDBv2 for each existing account in the db
+* BE-1434	Support storing orgId and userId under account.influxDB
+* BE-1435	Support hostAliases in offline task
+* BE-1441	Support acoustic model with only model config file and a reference to another model
+* BE-1442	Create a telephony bot specific acoustic model configuration in REX with new sensitivity setting
+* BE-1444	Log any occurrence of "Something Went Wrong" page to Sentry
+* BE-473	2FA for Web Console
+* BE-503	Web Console: In the user profile add ability to configure 2FA
+* BE-504	In Authentication Client modify login to handle cases if MFA is enabled for a user
+
+Changes related to Integrity of Processing (fixes):
+* BE-1252	TA: Fix - After Submit on Zoom Upload still staying on the same page
+* BE-1383	TA: Fix - The User avatar is currently saved to the currently selected context - we need to save it to another bucket
+* BE-1385	TA: Fix - Password reset link incorrect on some Edge deployments
+* QA-509	TA: Fix - Incorrect behavior if User tries to use Share "within account" while not being logged in
+* QA-594	TA: Fix - On uploading the zoom folder getting the status as error
+* QA-703	TA: Fix - Shares is not showing under My Shares (on accounts with many transcripts)
+* QA-709	TA: Fix - Filter by Phase/Status not working in advanced search.
+* QA-756	TA: Fix - Zoom App Page is not loading for some new users
+* QA-799	TA: Fix - For new users "Something went wrong" error page shown instead of a First Project Wizard
+* QA-802	TA: Fix - Save button is not getting enabled after updating the settings.
+* QA-809	TA: Fix - Advanced Search Filter is not working on Status Filter
+* QA-811	TA: Fix - Advanced search: Searching for the error transcripts filter not working.
+* QA-820	TA: In Advanced Search now able to enter duration manually (in addition to slider)
+* QA-829	TA: Fix - For new User Search Page is coming blank
+* QA-833	TA: Fix - After changing the profile picture "Hide Project Language Reminder" checkbox automatically gets unchecked.
+* BE-1363	Fix - Hints with misspellings sometimes do not work correctly in real-time mode
+* BE-1387	Fix - VAD classifies Beep as Speech
+* BE-1389	Fix - Limit of 3 pending pairing devices should be per User and not per Account
+* BE-1391	Fix - Edge data backup cronjob has wrong minio password
+* BE-1401	Fix - Some vars are ignored in AIVR callback
+* BE-1436	Fix - Recognition doesn't work in AIVR sessions if influxDB is down
+* BE-1447	Fix - MaxAskExceedException in llm-svc is not captured
+* QA-796	Web Console: Fix - Signup error message in XML format
+* QA-823	Web Console: Fix - Ascending DNIS and ANI sorting not working for call sessions table.
+* QA-824	Web Console: Fix - Delete functionality is not working Properly for 90% page zoom.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.96.0
 
 New functionality in the Transcribe App:

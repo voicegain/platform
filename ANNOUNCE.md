@@ -5,6 +5,7 @@ Changes related to Integrity of Processing (fixes):
 * BE-1476 TA: Fix - Something Went Wrong page not loading correctly on Edge
 * BE-1477 Fix - Invalid value: null error when retrieving transcript in Web Console
 * QA-858  Web Console: Fix -Showing no transcript when click on the view for any transcription. 
+* QA-859  Demo: Fix - Getting white screen in demo when trying to upload a file or trying to do doing mic capture
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 

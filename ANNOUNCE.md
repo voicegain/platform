@@ -1,3 +1,10 @@
+### Maintenance release 1.97.1 is scheduled for 1/17/2023 between 7pm and 8pm CST
+
+Changes related to Integrity of Processing (fixes):
+* BE-1373  Fix - NPE in Meeting Search if any account context does not have type set
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.97.0 is scheduled for 1/17/2024 between 1:00pm and 3:00pm CST
 
 IMPORTANT Note for Edge users: If you update from any prior release to 1.97.0 and you need to roll-back please contact 

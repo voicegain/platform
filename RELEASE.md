@@ -1,6 +1,7 @@
 ## Release 1.97.2
 
 Changes related to Integrity of Processing (fixes):
+* BE-1412   Fix - uhhuh recognition with low confidence messing up the flow (early barge-in) 
 * BE-1443   Fix endpointing of low confidence recognitions in Telephony Bot API
 * BE-1476   TA: Fix - Something Went Wrong page not loading correctly on Edge
 * BE-1477   Fix - Invalid value: null error when retrieving transcript in Web Console

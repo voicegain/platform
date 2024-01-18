@@ -1,3 +1,10 @@
+## Release 1.97.1
+
+Changes related to Integrity of Processing (fixes):
+* BE-1373  Fix - NPE in Meeting Search if any account context does not have type set
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.97.0
 
 IMPORTANT Note for Edge users: If you update from any prior release to 1.97.0 and you need to roll-back please contact 

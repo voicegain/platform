@@ -56,7 +56,8 @@ asr_body = {
     "settings": {
         "asr": {
             "languages" : ["en"],
-            "acousticModelNonRealTime" : "VoiceGain-omega",
+            #"acousticModelNonRealTime" : "VoiceGain-omega",
+            "acousticModelNonRealTime" : "whisper:small",
             "noInputTimeout": -1,
             "completeTimeout": -1,
             "sensitivity" : 0.5,

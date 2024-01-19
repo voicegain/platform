@@ -3,9 +3,10 @@
 Changes related to Integrity of Processing (fixes):
 * BE-1412   Fix - uhhuh recognition with low confidence messing up the flow (early barge-in) 
 * BE-1443   Fix endpointing of low confidence recognitions in Telephony Bot API
-* BE-1473  Fix - NPE in Meeting Search if any account context does not have type set
+* BE-1473   Fix - NPE in Meeting Search if any account context does not have type set
 * BE-1476   TA: Fix - Something Went Wrong page not loading correctly on Edge
 * BE-1477   Fix - Invalid value: null error when retrieving transcript in Web Console
+* BE-1479   TA: Fix - missingKey translation "Uploaded File" logged in a loop
 * QA-858    Web Console: Fix -Showing no transcript when click on the view for any transcription. 
 * QA-859    Demo: Fix - Getting white screen in demo when trying to upload a file or trying to do doing mic capture
 

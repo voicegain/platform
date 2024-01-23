@@ -24,7 +24,7 @@
                       },
                       "poll" : {
                               "afterlife" :  15000,
-                              "persist" : 2592000000
+                              "persist" : -1
                       }
               }],
               "audio": {

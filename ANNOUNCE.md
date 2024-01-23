@@ -1,3 +1,10 @@
+### Maintenance release 1.97.2 is scheduled for 1/22/2023 between 10pm and 11pm CST
+
+Changes related to Integrity of Processing (fixes):
+* BE-1510   Fix - SnippetAnnotations is not working
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Maintenance release 1.97.1 is scheduled for 1/18/2023 between 3pm and 9pm CST
 
 Changes related to Integrity of Processing (fixes):

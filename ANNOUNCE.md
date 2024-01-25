@@ -1,3 +1,10 @@
+### Maintenance release 1.97.3 is scheduled for 1/24/2023 between 3pm and 4pm CST
+
+Updates:
+* BE-1455   Upgrade cloud function runtime from python 3.7 to 3.9
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Maintenance release 1.97.2 is scheduled for 1/22/2023 between 10pm and 11pm CST
 
 Changes related to Integrity of Processing (fixes):

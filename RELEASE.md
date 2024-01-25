@@ -1,3 +1,10 @@
+## Release 1.97.3
+
+Updates:
+* BE-1455   Upgrade cloud function runtime from python 3.7 to 3.9
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.97.2
 
 Changes related to Integrity of Processing (fixes):

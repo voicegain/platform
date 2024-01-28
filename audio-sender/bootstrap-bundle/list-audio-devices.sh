@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# script to list available audio devices
+
 echo "Voicegain Audio Daemon: List Audio Devices"
 JSON=audio-daemon-config.json
 echo "Starting Daemon with -i option"

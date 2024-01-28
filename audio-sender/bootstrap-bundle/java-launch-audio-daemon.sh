@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# helper script to run the vg-audio-sender-daemon jar file
+
 VERSION=1.30.1
 DATE=$(date +%F_%H-%M-%S)
 GCLOG=gc-audio-daemon.$DATE.log

@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Use this script to download and setup Voicegain Audio Sender Daemon
+
 CODE_NAME=voicegain
 DEPLOYMENT=master
 VG_VER=1.30.1
@@ -23,7 +26,7 @@ elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
     echo "Found java executable in JAVA_HOME"
     _java="$JAVA_HOME/bin/java"
 else
-    echo "No Java. Please install Java 9"
+    echo "No Java. Please install Java 9 or higher"
     exit
 fi
 
@@ -34,7 +37,7 @@ if [[ "$_java" ]]; then
     if [ $version1 -ge 001009 ]; then
         echo "OK - Java version is 1.9 or higher"
     else         
-        echo "Java version is lower than 1.9 - Please install Java 9"
+        echo "Java version is lower than 1.9 - Please install Java 9 or higher"
         exit
     fi
 fi

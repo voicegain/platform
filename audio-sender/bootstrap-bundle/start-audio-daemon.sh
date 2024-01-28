@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Use this script to start Voicegain Audio Sender Daemon
+# once running you can kill it using kill command (the process id is printed after the daemon is started)
+
 echo "Starting Voicegain Audio Daemon"
 
 DATE=$(date +%F_%H-%M-%S)

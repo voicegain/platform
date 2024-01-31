@@ -2,7 +2,7 @@
 
 Effective: July 25th, 2019
 
-Last Updated: January 4th, 2021
+Last Updated: January 31st, 2024
 
 Last Reviewed: July 20th, 2023
 
@@ -170,8 +170,8 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 **b. Notices.** Notices must be in writing and will be treated as delivered on the date received at the address, date shown on the return receipt, email transmission date, or date on the courier or fax confirmation of delivery. all notices shall be sent to Resolvity to the address stated below to the attention of the CEO.
 		Resolvity, Inc
-		1505 LBJ Fwy, Ste 255,
-		Farmers Branch, TX 75234
+		1333 Corporate Dr, Ste 211,
+		Irving, TX 75038
 
 Notices to you will be sent to the address that you identify on your account as your contact for notices. Resolvity may send notices and other information to you by email or other electronic form.
 

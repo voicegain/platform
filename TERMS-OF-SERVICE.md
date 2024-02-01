@@ -2,7 +2,7 @@
 
 Effective: July 25th, 2019
 
-Last Updated: January 31st, 2024
+Last Updated: February 1st, 2024
 
 Last Reviewed: July 20th, 2023
 
@@ -45,7 +45,7 @@ This Voicegain SaaS Subscription Agreement is a contract between You and the Com
 
 “Open Source Software” means computer programs that are subject to the Open Source Definition at opensource.org/osd, including any computer programs that are (1) not public domain, (2) subject to some form of intellectual property ownership such as copyright or patent protection, (3) are made freely available at no charge to the general public by their owner, and (4) are licensed pursuant to a written document that may list one or more limitations on how licensees may use, modify and share the programs and derivative works (new versions) of the programs.
 
-"Portal" means the respective web sites for SaaS Services; websites may be at at https://console.voicegain.ai, https://analytics.voicegain.ai or at an alternate website we identify.
+"Portal" means the respective web sites for SaaS Services; websites may be at at [https://console.voicegain.ai](https://console.voicegain.ai), [https://analytics.voicegain.ai](https://analytics.voicegain.ai) or at an alternate website we identify.
 
 “Policies” means Resolvity’s current written policies on technical and administrative matters, including the Resolvity Privacy Policy.
 

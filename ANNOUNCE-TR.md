@@ -2,6 +2,26 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### February 1, 2024
+
+New functionality:
+* BE-1395	TA: Improvements on the Share dialog											
+* BE-1494	TA: Add Splash page on login											
+* BE-1507	TA: Support French, Dutch, Portuguese, Italian languages using the whisper:medium model (Cloud only)											
+* BE-1508	TA: Hide the Key-Items configuration in settings of Projects with language other than English											
+
+Fixes:
+* BE-1440	TA: Fix - Different Users not able to create Projects with the same name.											
+* BE-1549	TA: Fix - For Zoom dir upload the size check should be performed only on files that actually are going to be uploaded											
+* QA-723	TA: Fix - First time Login- All the links should be hyperlinked.											
+* QA-760	TA: Fix - The re-upload menu again shows for the normal uploaded file, it should only show for the zoom uploaded file. 											
+* QA-828	TA: Fix - New User First Login - Zoom App page is coming blank											
+* QA-834	TA: Fix - Hint message is missing below Tag input field											
+* QA-864	TA: Fix - Error after new login if the Project user used last has been deleted											
+* QA-865	TA: Fixes in the speaker number range selection UI											
+* QA-887	TA: Fix - Walk through wizard should get automatically initiated when new user logs in for the first time.											
+
+
 ### January 17, 2024
 
 New functionality:

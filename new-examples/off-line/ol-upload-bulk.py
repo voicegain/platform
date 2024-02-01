@@ -13,9 +13,9 @@ urlPrefix = cfg.get(configSection, "URLPREFIX")
 inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
-model = "VoiceGain-omega"
+#model = "VoiceGain-omega"
 #model = None
-#model = "whisper:small"
+model = "whisper:small"
 
 print("model: {}".format(model))
 

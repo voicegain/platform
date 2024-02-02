@@ -55,7 +55,8 @@ Changes related to Integrity of Processing (fixes):
 * BE-1278	Fix - If no sort order in specified then the advanced text search results should be ordered by rank											
 * BE-1334	Fix - results from the GET /asr/meeting/search API are not sorted by rank if no sorting is specified											
 * BE-1436	Fix - Recognition doesn't work in AIVR sessions if influxDB is down											
-* BE-1490	Fix - AIVR should start recognition only after the non-bargineable text prompt											
+* BE-1490	Fix - AIVR should start recognition only after the non-bargineable text prompt					
+* BE-1563	Fix - Missing `<instance>` value in the result of `builtin:speech/transcribe` (and all lvoc "grammars")	
 * QA-847	Web Console: Fix - After uploading a file, the label field should be automatically filled.											
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.

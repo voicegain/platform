@@ -1,3 +1,65 @@
+### Minor release 1.98.0 is scheduled for 2/1/2024 between 4:00pm and 6:00pm CST
+
+IMPORTANT Note for Edge users: 
+If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 
+This is because the compatibility setting on the Mongo DB has been changed in 1.97.0 and influxDB version has changed in 1.98.0
+
+New functionality in the Transcribe App:
+* BE-1395	TA: Improvements on the Share dialog											
+* BE-1494	TA: Add Splash page on login											
+* BE-1507	TA: Support French, Dutch, Portuguese, Italian languages using the whisper:medium model (Cloud only)											
+* BE-1508	TA: Hide the Key-Items configuration in settings of Projects with language other than English											
+
+New functionality in other platform components:
+* BE-1006	Collect lastConnectedEpoch time for device											
+* BE-1226	Send logs and errors from Voicegain Flutter app to Sentry											
+* BE-1358	Web Console: Inactive Users are disabled after 90 days of inactivity - add ability to set disableInactiveUsersDays value											
+* BE-1365	Remove default sort by meeting_id from the GET and POST /asr/meeting/search											
+* BE-1371	Extend default persistence of Telephony Bot calls to 42 days											
+* BE-1380	In the SSO UI add ability to mark the browser safe (i.e. no longer requiring TOTP)											
+* BE-1404	Add new field to account API - disableInactiveUsersDays											
+* BE-1431	Support Influxdb V2 on Edge											
+* BE-1438	Edge: Write sizes of minio and mongo backups as influxDb measurements											
+* BE-1457	Web Console: Show time in the deployment history in the time zone of the browser and in a nicer format											
+* BE-1460	Add a 'generic' joined meeting event and annotate the zoom meeting with such events for various steps performed											
+* BE-1461	Add joinedMeetingEvents to the Meeting API poll method response											
+* BE-1462	Modify login API to return information if emailing OTP is possible											
+* BE-1470	Add image to the url/QR that is used in TOTP setup											
+* BE-1474	Modify the existing login API to take secureBrowserToken											
+* BE-1475	Implement internal API to write sizes of backups to influxDB											
+* BE-1481	Web Console: Turn the nagging 2FA dialog to a message that auto disappears											
+* BE-1482	Web Console: Improvements to the 2FA setup dialog											
+* BE-1483	Modify the share APIs to track usage of shares											
+* BE-1493	Show number of currently open MRCP and RTSP sessions in the unimrcp log											
+* BE-1506	Web Console: Allow for selection of multiple languages plus base, small, and medium whisper model											
+* BE-1513	Deploy prometheus to edge cluster using onprem-cluster-deployment task											
+* BE-1516	Autoscaling Offline transcription on Edge deployed on GCP											
+* BE-1522	API to email link to the results of Voicebot Demo session											
+* BE-1523	Disable returning meeting topic generation for languages other than English and Spanish											
+* BE-1525	Change max value of poll.persist to an equivalent of 365 days											
+* BE-1551	Increase Project limit to 1000 and change the corresponding error from 500 to 429											
+* BE-502	Modify User PUT API and add ability to add secureBrowserToken											
+* BE-776	Upgrade unimrcp to 1.8.0											
+* QA-563	Admin Tool: Remove Register page											
+
+Changes related to Integrity of Processing (fixes):
+* BE-1440	TA: Fix - Different Users not able to create Projects with the same name.											
+* BE-1549	TA: Fix - For Zoom dir upload the size check should be performed only on files that actually are going to be uploaded											
+* QA-723	TA: Fix - First time Login- All the links should be hyperlinked.											
+* QA-760	TA: Fix - The re-upload menu again shows for the normal uploaded file, it should only show for the zoom uploaded file. 											
+* QA-828	TA: Fix - New User First Login - Zoom App page is coming blank											
+* QA-834	TA: Fix - Hint message is missing below Tag input field											
+* QA-864	TA: Fix - Error after new login if the Project user used last has been deleted											
+* QA-865	TA: Fixes in the speaker number range selection UI											
+* QA-887	TA: Fix - Walk through wizard should get automatically initiated when new user logs in for the first time.											
+* BE-1278	Fix - If no sort order in specified then the advanced text search results should be ordered by rank											
+* BE-1334	Fix - results from the GET /asr/meeting/search API are not sorted by rank if no sorting is specified											
+* BE-1436	Fix - Recognition doesn't work in AIVR sessions if influxDB is down											
+* BE-1490	Fix - AIVR should start recognition only after the non-bargineable text prompt											
+* QA-847	Web Console: Fix - After uploading a file, the label field should be automatically filled.	
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Maintenance release 1.97.3 is scheduled for 1/24/2023 between 3pm and 4pm CST
 
 Updates:
@@ -688,50 +750,4 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-### Maintenance release 1.87.1 is scheduled for 8/10/2023 between 2:30pm and 6pm CST
-
-Changes related to Integrity of Processing (fixes)
-* BE-722    Recognizer does not send RECOGNIZE-COMPLETE if no audio has been sent to Recognizer
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Minor release 1.87.0 is scheduled for 8/7/2023 between 8pm and 11pm CST
-
-New functionality in the Transcribe App:
-* BE-603	Transcribe App: Automatically refresh status of the transcripts
-* BE-621	Transcribe App: Hide invalid transcript move project destinations
-* BE-623	Transcribe App: Improved Error message in case of transcript move error
-* BE-626	Transcribe App: Limit Basic Plan user to only 5 shares
-* BE-628	Transcribe App: Enhanced Project selection
-* BE-638	Transcribe App: PII Redaction placeholder validators allow non-ASCII characters
-* BE-651	Transcribe App: Add Table of Contents in the exported PDF
-* BE-657	Transcribe App: Add Metadata in the exported PDF
-* BE-668	Transcribe App: Zoom Meeting Assistant Download name now has version included
-* BE-671	Transcribe App: Add ability to completely disable Download on Edge
-* BE-675	Transcribe App: Update content of Home Page if there are no transcripts
-* BE-680	Transcribe App: Add ability to completely disable transcript copy to clipboard on Edge
-* BE-693	Transcribe App: Update content of Home Page if there are no transcripts
-* BE-694	Transcribe App: Add Login and SignUp buttons to the Share Expired/Invalid page
-* BE-695	Transcribe App: Do not show the Move option for transcripts in a project that does not belong to a user and has not been shared with the user
-
-New functionality in other platform components:
-* BE-574	Web Developer Console upgrade to latest AntD
-* BE-641	Disabled deprecated support for the Language Models in the Developer Console
-* BE-667	Admin Tool: Allow modification of Rate-Limits
-* BE-678	Easy scaling for real-time transcription supported
-* BE-687	Add noAudioTimeout option to asr API
-
-Changes related to Integrity of Processing (fixes):
-* BE-620	Transcribe App fix: Sorting shares by Expiry time
-* BE-635	Fixed issues in Walk-Through Wizard in the Developer Console
-* BE-637	Transcribe App fix: Prevent invalid PII Redaction placeholders in Project settings during creation 
-* BE-639	Fix access to a transcript from a Developer Console Context Dash
-* BE-672	Transcribe App fix: Prev/Next buttons not working correctly
-* BE-674	Fix missing audio charts in Transcribe+ in Web Console
-* BE-691	GET /user/sync API checks user existence based on user.email
-* QA-261  Transcribe App fix: Make transcript not clickable if status is Queued
-* QA-357  Fix weird behavior of Web Console if the current context is deleted
-* QA-362  Transcribe App fix: Sorting by transcript Status
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
+#

@@ -18,4 +18,4 @@ Run the ngrok server by the command: ngrok http 80
 
 NOTE:
 
-The above steps are easy way to test the bot scripts. Ideally you have to create a server and host it, that way the POST which invokes the bot session will be available on web.
+The above steps is an easy way to test the bot script. Ideally you have to create a server and host it, that way the POST which invokes the bot session will be available on web.

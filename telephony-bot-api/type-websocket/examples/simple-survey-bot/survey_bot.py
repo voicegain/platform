@@ -25,8 +25,7 @@ class MessageTypes(Enum):
     SEGMENT_HYPOTHESIS_OR_RECOGNITION = "segment_hypothesis_or_recognition"
     NOT_FOUND = "not_found"
 
-
-
+    
 
 def get_received_msg_type(received_msg):
 
@@ -60,14 +59,19 @@ def get_received_msg_type(received_msg):
 # Responses:
 new_aivr_session_response = {
       "question": {
-      "text": "This is an echo bot. Say Something..."
+      "text": "Are you enjoying the premium subscription of our services"
       }
    }
 
+aivr_response_yes = {
+      "question": {
+      "text": "Good to hear that you're enjoying our services."
+      }
+   }
 
-aivr_response = {
+aivr_response_no = {
       "prompt": {
-      "text": ""
+      "text": "Sorry to hear that you're not satisfied with our services, our services executive will reach out to you shortly to understand your problem in details."
       }
    }
 
@@ -77,7 +81,7 @@ aivr_disconnect_response = {
       "disconnect": {
       "reason": "Successfully received feedback",
       "prompt": {
-         "text": "Good Bye!!"
+         "text": "Thank you for calling us!!"
          }
       }
    }
@@ -90,10 +94,18 @@ async def respond_to_new_aivr_session(websocket):
 
 
 async def respond_to_aivr_event(websocket, received_msg):
-   #Echo the same message back
+
    message = received_msg["event"]["vuiAlternatives"][0]["utterance"]
-   aivr_response["prompt"]["text"] = message
-   await websocket.send(json.dumps(aivr_response))
+
+   if("yes" in message):
+      await websocket.send(json.dumps(aivr_response_yes))
+      return True
+
+   elif("no" in message):
+      await websocket.send(json.dumps(aivr_response_no))
+      return True
+
+   return False
 
 
 
@@ -102,35 +114,41 @@ async def respond_to_aivr_disconnect_event(websocket):
 
 
 
-async def run_echo_bot(uri):
-    async with websockets.connect(uri, write_limit=128, compression=None) as websocket:
+async def main(uri):
+    async with websockets.connect(uri, write_limit=128,
+     compression=None) as websocket:
        while(True):
-         print("Receiving message...")
+         print("Starting...")
+
          received_msg_str = await websocket.recv()
          received_msg = json.loads(received_msg_str)
-         print("Received message: ", received_msg)
+         
+         print("received msg ", received_msg)
          
          msg_type = get_received_msg_type(received_msg)
          
+         # print("received msg is of type : ", msg_type)
+
          if(msg_type == MessageTypes.PING):
             continue
 
          if(msg_type == MessageTypes.NEW_AIVR_SESSION):
             await respond_to_new_aivr_session(websocket)
 
+
          if(msg_type == MessageTypes.AIVR_EVENT):
-            print("Sending the same message back...")
-            await respond_to_aivr_event(websocket, received_msg)
-            print("Disconnecting... Goodbye!!")
-            await respond_to_aivr_disconnect_event(websocket)
+            success = await respond_to_aivr_event(websocket, received_msg)
+            if(success):
+               await respond_to_aivr_disconnect_event(websocket)
+
 
 
 # Function websocket_flow_main, recv and sends the results over websocket
 def websocket_flow_main(uri):
    try:
-      asyncio.run(run_echo_bot(uri))
+      asyncio.run(main(uri))
    except Exception as e:
-      print("Exception caught within websocket_flow_main", e)
+      print("ex in websocket_flow_main", e)
 
 
 
@@ -178,12 +196,3 @@ def run():
 
 if __name__ == "__main__":
    app.run(port=80)
-
-
-
-"""
-For ascalon bot:
-
-33f3421e-b476-4783-b6db-cb0d116c3b7f@fs.ascalon.ai:5080;transport=tcp
-
-"""

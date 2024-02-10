@@ -1,0 +1,1 @@
+This folder contains sample scripts for using the /asr/meeting/join API to join Zoom meeting

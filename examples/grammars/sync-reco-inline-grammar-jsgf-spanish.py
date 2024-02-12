@@ -6,7 +6,7 @@ import requests, time, os, json, re, base64
 
 
 ## specify here the directory with input audio files to test
-input_path = "../input/spanish-numbers/"
+input_path = "./Recordings/Spanish/numbers/"
 
 ## this script will create two subdirectories
 ## 1) temp for transcoded audio files
@@ -16,6 +16,7 @@ input_path = "../input/spanish-numbers/"
 host = "https://api.voicegain.ai/v1"
 ## credential
 JWT = "<JWT token from your account>"
+
 
 ## simple digit + yes/no grammar included inline
 asr_body = {

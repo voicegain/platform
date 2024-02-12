@@ -3,6 +3,19 @@ import time
 import os
 import json
 
+
+"""
+
+When a Zoom meeting is started, running the below script would do the following:
+1) The Zoom meeting bot will join the meeting and start recording
+2) The script continuously checks the progress of the meeting and as the meeting ends, 
+it sends the data for transcription to Voicegain servers.
+3) The transcription results then get saved in the local output folder and 
+can also be fetched via the platform console.
+
+"""
+
+
 platform = "ascalon"
 JWT = "<PUT-YOUR-JWT-TOKEN_HERE>"
 headers = {"Authorization":JWT}
@@ -30,7 +43,7 @@ Replace the below values with your own data.
 """
 body_asr_meeting_join = {
   "meetingPlatform": "zoom",
-  "participantName": "Shivam Parashar",
+  "participantName": "VoiceGain",
   "meetingUrl": "<ZOOM-MEETING-LINK>",
   "persistSeconds": 36000,
   "settings": {"asr":{"acousticModel":"VoiceGain-omega","languages":["en-us"],"sensitivity":0.5,"speedVsAccuracy":0.5},"formatters":[{"type":"digits"},{"type":"basic","parameters":{"enabled":"true"}},{"type":"enhanced","parameters":{"CC":True,"EMAIL":"true"}},{"type":"profanity","parameters":{"mask":"partial"}},{"type":"spelling","parameters":{"lang":"en-US"}},{"type":"redact","parameters":{"CC":"partial","ZIP":"full","PERSON":"[PERSON]"}},{"type":"regex","parameters":{"pattern":"[1-9][0-9]{3}[ ]?[a-zA-Z]{2}","mask":"full","options":"IA"}}],"compliance":{"doNotLog":False}},

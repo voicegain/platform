@@ -15,7 +15,7 @@ outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
 #model = "VoiceGain-omega"
 #model = None
-model = "whisper:small"
+model = "whisper:medium"
 
 print("model: {}".format(model))
 
@@ -32,6 +32,7 @@ asr_body = {
     "sessions": [
         {
             "asyncMode": "OFF-LINE",
+            "audioChannelSelector" : "two-channel",
             "poll": {
                 # will delete the session after 1 minute
                 #"afterlife": 60000
@@ -53,13 +54,13 @@ asr_body = {
     "settings": {
         "asr": {
             #"languages" : ["es", "en"],
-            "languages" : ["ru"],
+            "languages" : ["en"],
             "acousticModelNonRealTime" : model,
             "noInputTimeout": -1,
             "completeTimeout": -1,
-            "sensitivity" : 0.5,
+            "sensitivity" : 0.5
             # , "hints" : [
-                # "rupees[roopiece|ruppes]"
+            #     "date_of_birth[dana_birth|data_birth]:10"
             # ]
             #, "diarization" : {
             #  "minSpeakers" : 2,

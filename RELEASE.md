@@ -1,3 +1,82 @@
+## Release 1.99.0
+
+IMPORTANT Note for Edge users: 
+If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 
+This is because the compatibility setting on the Mongo DB has been changed in 1.97.0 and influxDB version has changed in 1.98.0
+
+New functionality in the Transcribe App:
+* BE-1258	TA: Add a filter on creator in Advanced Search
+* BE-1472	TA: Better order of columns in the transcript table on home page
+* BE-1532	TA: Record in clientSideProperties when a user downloads Zoom Meeting Assistant
+* BE-1582	TA: Add "Mine | Shared | All" selector to the home page
+
+New functionality in other platform components:
+* BE-1300	Meeting Search API: new ctxSelect parameter with values "mine", "mineAndShared", "all"
+* BE-1301	Meeting Search Fields API: new ctxSelect parameter with values "mine", "mineAndShared", "all"
+* BE-1361	Support tempCode in the AIVR API
+* BE-1408	Modify the Password Reset API to return login URLs for all the Apps for which the password works
+* BE-1446	Return 400 Bad Request rather then 500 Internal Server Error if the query parameters in Meeting Search API are missing or invalid
+* BE-1458	Web Console Edge: Add check for email relay and do not offer emailed OTP if that email relay is not configured
+* BE-1488	Configure Edge to have GlitchTip
+* BE-1499	Add API that Revokes a user and transfers all projects to the Admin or some other designated User
+* BE-1517	Convert /sa/call API to use Postgres instead of Firestore to store data
+* BE-1522	API to email link to the results of Voicebot Demo session
+* BE-1524	Deploy GlitchTip using onprem-cluster-deployment
+* BE-1526	Reduce silence padding of Azure TTS prompts to minimum
+* BE-1533	Add persist setting to AIVR app API
+* BE-1534	Web Console: Add persist setting for Telephony Bot App
+* BE-1538	Hookup Demo App to Sentry
+* BE-1541	Cache account data daily using the /recache api
+* BE-1544	Web Console: Do not allow smaller than 30 days values of "Disable inactive users after days"
+* BE-1545	Web Console: Add a close (x) to the notice about 2FA setup
+* BE-1546	Web Console: Add a spinner when saving account settings
+* BE-1565	For accounts that are INVOICE and do not have billingAccountId we should not submit anything to fusebill
+* BE-1572	AIVR Callback API method to interrupt prompt being played
+* BE-1575	Utility that copies all calls - reads using Firestore Calls DAO and writes using Postgres Calls DAO
+* BE-1580	Add jingleUrl field to the AIVR App
+* BE-1581	Web Console: Add ability to configure Jingle and percolator URLs in AIVR APP
+* BE-1588	Add percolatorUrl field to the AIVR App API
+* BE-1589	Use the AIVR App Jingle in Freeswitch script
+* BE-1592	Web Console: Make it possible to disable the "Disable inactive users after days" feature
+* BE-1594	Web Console: Make the Account Settings card pretty
+* BE-1599	Demo: Support copy paste of the Code
+* BE-1604	Demo: Change tooltips
+* BE-1615	When creating Users using POST /user, if we exceed max users on account we should not return 500 code but 429
+
+Changes related to Integrity of Processing (fixes):
+* BE-1621	TA: Fix - User Profile Setting Save button stays permanently disabled after saving once
+* BE-1629	TA: Fix - It is impossible to share a project with an Owner of the account
+* QA-641	TA: Fix - Project Owner should be irremovable for any the project under Account Users.
+* QA-760	TA: Fix - The re-upload menu again shows for the normal uploaded file, it should only show for the zoom uploaded file. 
+* QA-822	TA Edge: Fix - User (Role) is able to access and edit Account settings.
+* QA-843	TA: Fix - When the user tries to share the transcript as a public share and delete the transcript from the owner account, something went wrong error is showing when login in from the sign-in link on the share.
+* QA-860	TA: Fix - Mouse hovering on error, message information should show
+* QA-863	TA: Fix - "May Download" checkbox getting automatically disable after adding/removing a project for user (role).
+* QA-875	TA: Fix - After processing URL upload blank space showing on home page.
+* QA-881	TA: Fix - Clicking on the filter button on advanced search page, showing blank page.
+* QA-885	TA: Fix - Voicegain splash screen showing even when deleting a transcript.
+* QA-890	TA: Fix - Due to new languages added, profanity maskimg menu not showing properly on 100% zoom screen.
+* QA-891	TA: Fix - In Profile deleted Shares are not getting removed, unless we refresh the page.
+* QA-899	TA: Fix - Expired shared transcripts showing expiry date in negative.
+* QA-906	TA: Fix - Various problems with saving edited user data from Account Settings
+* QA-917	TA: Fix - Text-redaction and Archival Text-redaction crashes the app
+* QA-922	TA: Fix - Blank page showing when user clicks in Profile on the "Archival text reduction".
+* QA-923	TA: Fix - If no Download permission selected on user invite, getting wrong permission error
+* QA-925	TA: Fix - Getting blank screen on Users page under account section.
+* QA-932	TA: Fix - Voicegain splash screen showing when user save the mic capture recording.
+* BE-1484	Web Console: Fix - On Live Transcribe: Websocket Delay resets to 0 upon page refresh
+* BE-1485	Web Console: Fix - Misaligned UI on the Live Transcribe Websockets
+* BE-1576	Web Console: Fix Content Security Policy to the cc app iFrame
+* BE-1577	Web Console: Fix - /restricted/page API returns 500 Internal Server Error
+* BE-1586	Web Console: Fix  - Wrong request to retrieve AIVR sessions
+* BE-1603	Fix - Microphone demo needs to provide also completeTimeout
+* BE-1624	Fix - User REVOKE can be undone by a user by doing a simple Password Reset
+* QA-847	Web Console: Fix - After uploading a file, the label field should be automatically filled.
+* QA-889	Web Console: Fix - Walk through wizard should get automatically initiated when new user logs in for the first time.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.98.0
 
 IMPORTANT Note for Edge users: 

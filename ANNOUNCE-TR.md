@@ -2,6 +2,37 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### February 13, 2024
+
+New functionality:
+* BE-1258	TA: Add a filter on creator in Advanced Search
+* BE-1472	TA: Better order of columns in the transcript table on home page
+* BE-1532	TA: Record in clientSideProperties when a user downloads Zoom Meeting Assistant
+* BE-1582	TA: Add "Mine | Shared | All" selector to the home page
+
+Fixes:
+* BE-1621	TA: Fix - User Profile Setting Save button stays permanently disabled after saving once
+* BE-1629	TA: Fix - It is impossible to share a project with an Owner of the account
+* QA-641	TA: Fix - Project Owner should be irremovable for any the project under Account Users.
+* QA-760	TA: Fix - The re-upload menu again shows for the normal uploaded file, it should only show for the zoom uploaded file. 
+* QA-822	TA Edge: Fix - User (Role) is able to access and edit Account settings.
+* QA-843	TA: Fix - When the user tries to share the transcript as a public share and delete the transcript from the owner account, something went wrong error is showing when login in from the sign-in link on the share.
+* QA-860	TA: Fix - Mouse hovering on error, message information should show
+* QA-863	TA: Fix - "May Download" checkbox getting automatically disable after adding/removing a project for user (role).
+* QA-875	TA: Fix - After processing URL upload blank space showing on home page.
+* QA-881	TA: Fix - Clicking on the filter button on advanced search page, showing blank page.
+* QA-885	TA: Fix - Voicegain splash screen showing even when deleting a transcript.
+* QA-890	TA: Fix - Due to new languages added, profanity maskimg menu not showing properly on 100% zoom screen.
+* QA-891	TA: Fix - In Profile deleted Shares are not getting removed, unless we refresh the page.
+* QA-899	TA: Fix - Expired shared transcripts showing expiry date in negative.
+* QA-906	TA: Fix - Various problems with saving edited user data from Account Settings
+* QA-917	TA: Fix - Text-redaction and Archival Text-redaction crashes the app
+* QA-922	TA: Fix - Blank page showing when user clicks in Profile on the "Archival text reduction".
+* QA-923	TA: Fix - If no Download permission selected on user invite, getting wrong permission error
+* QA-925	TA: Fix - Getting blank screen on Users page under account section.
+* QA-932	TA: Fix - Voicegain splash screen showing when user save the mic capture recording.
+
+
 ### February 1, 2024
 
 New functionality:

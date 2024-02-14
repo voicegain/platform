@@ -1,3 +1,12 @@
+### Minor release 1.99.0 is scheduled for 2/13/2024 between 7:00pm and 10:00pm CST
+
+IMPORTANT Note for Edge users: 
+If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 
+This is because the compatibility setting on the Mongo DB has been changed in 1.97.0 and influxDB version has changed in 1.98.0
+
+Details TBD
+
+
 ### Minor release 1.98.0 is scheduled for 2/1/2024 between 4:00pm and 6:00pm CST
 
 IMPORTANT Note for Edge users: 

@@ -16,6 +16,8 @@ input_path = "./Recordings/Member ID/User0/"
 host = "https://api.voicegain.ai/v1"
 ## credential
 JWT = "<JWT token from your account>"
+JWT="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4ZTZiNTljYy1kNjkwLTQ5YTMtYWEwNC1jMzY0ZTI1MmYzMjYiLCJhdWQiOiJodHRwczovL2FwaS52b2ljZWdhaW4uYWkvdjEiLCJzdWIiOiJlN2RlN2NlMy0yYmVhLTRkYmMtYjAzNi01Nzk0YjBkZWY5ZWUifQ.A3rOBWWfcS1VFe2GztlX5zNlriIo0tWDPrT0inEwRzw"
+
 
 ## simple digit + yes/no grammar included inline
 asr_body = {
@@ -34,11 +36,12 @@ asr_body = {
             "grammars" : [
                 {
                     "type": "BUILT-IN",
-                    "name" : "number",
-                    "parameters":{
-                        "minallowed" : 0,
-                        "maxallowed" : 20
-                    }
+                    "name" : "number"
+                    # ,
+                    # "parameters":{
+                    #     "minallowed" : 0,
+                    #     "maxallowed" : 20
+                    # }
                 }
             ],
             "speechContext" : "normal",

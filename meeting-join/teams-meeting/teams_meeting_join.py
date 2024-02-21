@@ -42,14 +42,10 @@ Make a post req to join meeting.
 Replace the below values with your own data.
 """
 body_asr_meeting_join = {
-  "meetingPlatform": "teams",
+  "meetingPlatform": "ms-teams",
   "participantName": "VoiceGain",
-  "meetingUrl": "https://teams.microsoft.com/l/meetup-join/19:meeting_ZTI5ODJkZDAtNWIzNS00YThmLWIzMDgtNzg5OTdmY2ZhYjll@thread.v2/0?context=%7B%22Tid%22:%22b9a30004-c2c6-4ab8-ab9f-16c7c23835fb%22,%22Oid%22:%22ad51bcf6-6806-4a2f-8cce-987e2cd274c1%22%7D",
+  "meetingUrl": "https://teams.microsoft.com/l/meetup-join/19:meeting_OTRiY2MxMDYtNDhjNC00ZGViLTg3OTgtMTdkYmQzM2Q3ZjYx@thread.v2/0?context=%7B%22Tid%22:%22b9a30004-c2c6-4ab8-ab9f-16c7c23835fb%22,%22Oid%22:%22ad51bcf6-6806-4a2f-8cce-987e2cd274c1%22%7D",
   "persistSeconds": 36000,
-#  "audio": {
-#	  "input": "Microphone (2 - Shure MV5)",
-#	  "output": "Headphones (2 - Shure MV5)",
-#  },
   "settings": {"asr":{"acousticModel":"VoiceGain-kappa:2","languages":["en-us"],"sensitivity":0.5,"speedVsAccuracy":0.5},"formatters":[{"type":"digits"},{"type":"basic","parameters":{"enabled":"true"}},{"type":"enhanced","parameters":{"CC":True,"EMAIL":"true"}},{"type":"profanity","parameters":{"mask":"partial"}},{"type":"spelling","parameters":{"lang":"en-US"}},{"type":"redact","parameters":{"CC":"partial","ZIP":"full","PERSON":"[PERSON]"}},{"type":"regex","parameters":{"pattern":"[1-9][0-9]{3}[ ]?[a-zA-Z]{2}","mask":"full","options":"IA"}}],"compliance":{"doNotLog":False}},
   "tags": [
     "meeting"
@@ -68,7 +64,6 @@ def asr_meeting_join_api():
 	else:
 		print('POST asr/meeting/join request failed. Status code:', response.status_code)
 
-	print(response.headers)
 	return response.json()
 
 

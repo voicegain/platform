@@ -13,9 +13,9 @@ urlPrefix = cfg.get(configSection, "URLPREFIX")
 inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
-#model = "VoiceGain-omega"
+model = "VoiceGain-omega"
 #model = None
-model = "whisper:medium"
+#model = "whisper:basic"
 
 print("model: {}".format(model))
 
@@ -59,9 +59,9 @@ asr_body = {
             "noInputTimeout": -1,
             "completeTimeout": -1,
             "sensitivity" : 0.5
-            # , "hints" : [
-            #     "date_of_birth[dana_birth|data_birth]:10"
-            # ]
+            , "hints" : [
+                "date_of_birth[dana_birth|data_birth]:10"
+            ]
             #, "diarization" : {
             #  "minSpeakers" : 2,
             #  "maxSpeakers" : 2
@@ -394,6 +394,18 @@ def process_one_file(audio_fname):
     print("Save final transcript text to {}".format(transcript_text_path))
     print("", flush=True)
 
+    #get result as json file
+
+    txt_url = "{}/asr/transcribe/{}/transcript?format=json".format(host, session_id)
+    print("Retrieving transcript using url: {}".format(txt_url), flush=True)
+    txt_response = requests.get(txt_url, headers=headers)
+    txt_response.encoding = txt_response.apparent_encoding ## << needed to get the encoding correct
+    transcript_text_path = os.path.join(output_path, "{}.json".format(fname))
+    with open(transcript_text_path, 'w',  encoding='utf-8') as file_object:
+        file_object.write(txt_response.text)
+    print("Save final transcript json to {}".format(transcript_text_path))
+    print("", flush=True)
+
     printTranscribeQueueStatus()
 
     return -1
@@ -424,6 +436,8 @@ print("files to test")
 for name in list_of_files:
     print(name)
 
+start_time = time.time()
+
 for name in list_of_files:
     retry_after = process_one_file(name)
     while(retry_after >=0 ):
@@ -431,6 +445,10 @@ for name in list_of_files:
         time.sleep(retry_after)
         print("will retry now", flush=True)
         retry_after = process_one_file(name)
+
+end_time = time.time()
+duration = end_time - start_time
+print(f"The code ran for {duration} seconds.")
 
 
 print("THE END", flush=True)

@@ -17,7 +17,7 @@ can also be fetched via the platform console.
 
 
 platform = "ascalon"
-JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5Y2QxN2I0NS03MzI2LTRiODEtYTQzNi1jYThlOTgxOWYyNWMiLCJhdWQiOiIqLmFzY2Fsb24uYWkiLCJzdWIiOiIwMjA3YmUzYS1hNzA1LTQxZWMtYTM3Mi05MGQxNDQ2NDQ5ZjEifQ.4XCOTiHo7OE5p4w-EaC6MApxuV7CO_vVXsGbfh0IHuM"
+JWT = "<PUT-YOUR-JWT-TOKEN_HERE>"
 headers = {"Authorization":JWT}
 output_path = "output"
 if not os.path.exists(output_path):
@@ -44,9 +44,9 @@ Replace the below values with your own data.
 body_asr_meeting_join = {
   "meetingPlatform": "ms-teams",
   "participantName": "VoiceGain",
-  "meetingUrl": "https://teams.microsoft.com/l/meetup-join/19:meeting_OTRiY2MxMDYtNDhjNC00ZGViLTg3OTgtMTdkYmQzM2Q3ZjYx@thread.v2/0?context=%7B%22Tid%22:%22b9a30004-c2c6-4ab8-ab9f-16c7c23835fb%22,%22Oid%22:%22ad51bcf6-6806-4a2f-8cce-987e2cd274c1%22%7D",
+  "meetingUrl": "<MS-TEAMS-MEETING-LINK>",
   "persistSeconds": 36000,
-  "settings": {"asr":{"acousticModel":"VoiceGain-kappa:2","languages":["en-us"],"sensitivity":0.5,"speedVsAccuracy":0.5},"formatters":[{"type":"digits"},{"type":"basic","parameters":{"enabled":"true"}},{"type":"enhanced","parameters":{"CC":True,"EMAIL":"true"}},{"type":"profanity","parameters":{"mask":"partial"}},{"type":"spelling","parameters":{"lang":"en-US"}},{"type":"redact","parameters":{"CC":"partial","ZIP":"full","PERSON":"[PERSON]"}},{"type":"regex","parameters":{"pattern":"[1-9][0-9]{3}[ ]?[a-zA-Z]{2}","mask":"full","options":"IA"}}],"compliance":{"doNotLog":False}},
+  "settings": {"asr":{"acousticModel":"VoiceGain-omega","languages":["en-us"],"sensitivity":0.5,"speedVsAccuracy":0.5},"formatters":[{"type":"digits"},{"type":"basic","parameters":{"enabled":"true"}},{"type":"enhanced","parameters":{"CC":True,"EMAIL":"true"}},{"type":"profanity","parameters":{"mask":"partial"}},{"type":"spelling","parameters":{"lang":"en-US"}},{"type":"redact","parameters":{"CC":"partial","ZIP":"full","PERSON":"[PERSON]"}},{"type":"regex","parameters":{"pattern":"[1-9][0-9]{3}[ ]?[a-zA-Z]{2}","mask":"full","options":"IA"}}],"compliance":{"doNotLog":False}},
   "tags": [
     "meeting"
   ]

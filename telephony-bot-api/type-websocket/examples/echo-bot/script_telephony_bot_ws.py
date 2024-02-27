@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 
-from flask import Flask, jsonify
-from flask import request
+from flask import Flask, jsonify, request
 import websockets
-import datetime
 import asyncio
 import json
-import requests
 import threading
 import time
 from enum import Enum
@@ -15,8 +12,9 @@ from enum import Enum
 app = Flask(__name__)
 
 
+# Define Enum for message types
 class MessageTypes(Enum):
-    PING = "ping",
+    PING = "ping"
     NEW_AIVR_SESSION = "new_aivr_session"
     AIVR_EVENT = "aivr_event"
     AIVR_VARS_CHANGED = "aivr_vars_changed"
@@ -27,33 +25,25 @@ class MessageTypes(Enum):
 
 
 
-
+# Function to determine the type of received message
 def get_received_msg_type(received_msg):
 
-   if(received_msg.get("ping") is not None):
-      return MessageTypes.PING
-
-   elif(received_msg.get("sid") is not None):
-      return MessageTypes.NEW_AIVR_SESSION
-
-   elif(received_msg.get("event") is not None):
-      if(received_msg.get("event").get("type") == "input"):
+   if received_msg.get("ping") is not None:
+     return MessageTypes.PING
+   elif received_msg.get("sid") is not None:
+     return MessageTypes.NEW_AIVR_SESSION
+   elif received_msg.get("event") is not None:
+     if received_msg.get("event").get("type") == "input":
          return MessageTypes.AIVR_EVENT
-   
-   elif(received_msg.get("vars") is not None):
-      return MessageTypes.AIVR_VARS_CHANGED
-
-   elif(received_msg.get("utt") is not None):
-      return MessageTypes.WS_WORD
-   
-   elif(received_msg.get("del") is not None):
-      return MessageTypes.WORD_CORRECTION
-
-   elif(received_msg.get("type") is not None):
-      return MessageTypes.SEGMENT_HYPOTHESIS_OR_RECOGNITION
-
+   elif received_msg.get("vars") is not None:
+     return MessageTypes.AIVR_VARS_CHANGED
+   elif received_msg.get("utt") is not None:
+     return MessageTypes.WS_WORD
+   elif received_msg.get("del") is not None:
+     return MessageTypes.WORD_CORRECTION
+   elif received_msg.get("type") is not None:
+     return MessageTypes.SEGMENT_HYPOTHESIS_OR_RECOGNITION
    return MessageTypes.NOT_FOUND
-
 
 
 
@@ -134,6 +124,7 @@ def websocket_flow_main(uri):
 
 
 
+# Flask app route to handle POST requests
 @app.route("/", methods=["POST"])
 def post():
    global ws_url_final
@@ -154,7 +145,7 @@ def post():
    return jsonify(data)
 
 
-
+# Flask app route to handle DELETE requests
 @app.route("/", methods=["DELETE"])
 def delete():
    print("Del req recieved.")
@@ -166,15 +157,15 @@ def delete():
    return jsonify(data)
 
 
-
+# Flask app route to handle GET requests
 @app.route("/", methods=["GET"])
 def get():
    return "GET req recieved."
 
-
-@app.route("/run")
+# Flask app route for testing
+@app.route("/test")
 def run():
-   return "Run, Shivam VG.AI!"
+   return "Running test voicegain.ai..."
 
 if __name__ == "__main__":
    app.run(port=80)

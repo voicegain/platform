@@ -26,6 +26,7 @@ asr_body = {
     "sessions": [
         {
             "asyncMode": "OFF-LINE",
+            "audioChannelSelector": "two-channel",
             "poll": {
                 # will delete the session after 1 minute
                 "afterlife": 60000
@@ -56,8 +57,8 @@ asr_body = {
     "settings": {
         "asr": {
             "languages" : ["en"],
-            #"acousticModelNonRealTime" : "VoiceGain-omega",
-            "acousticModelNonRealTime" : "whisper:small",
+            "acousticModelNonRealTime" : "VoiceGain-omega",
+            #"acousticModelNonRealTime" : "whisper:small",
             "noInputTimeout": -1,
             "completeTimeout": -1,
             "sensitivity" : 0.5,
@@ -98,7 +99,7 @@ asr_body = {
         ,{
             "type": "redact",
             "parameters": {
-                "CC": "[CC]",
+                #"CC": "[CC]",
                 "ZIP": "[ZIP]",
                 "PERSON": "[PERSON]",
                 "EMAIL" : "[EMAIL]",
@@ -106,111 +107,112 @@ asr_body = {
                 "SSN" : "[SSN]",
                 "DMY" : "[DMY]"
             }
-        },
-        {
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}\b",
-                "mask": "[CC_MIS]",
-                "options": "IA"
-            }
-        },  
-        {
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b(7+)(?!)\b",
-                "mask": "[CC_MIS]",
-                "options": "IA"
-            }
-        },
-        {
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}\b",
-                "mask": "[CC_MIS]",
-                "options": "IA"
-            }
-        }  
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+([1-9]|0[1-9]|[12][0-9]|3[01]),\s+\d{4}\b",
-                "mask": "[DATE3]",
-                "options": "IA"
-            }
-        }  
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+([1-9]|0[1-9]|[12][0-9]|3[01])(st|nd|rd|th),\s+\d{4}\b",
-                "mask": "[DATE2]",
-                "options": "IA"
-            }
-        }  
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b([1-9]|0[1-9]|[12][0-9]|3[01])(st|nd|rd|th)\s+of\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4}\b",
-                "mask": "[DATE1]",
-                "options": "IA"
-            }
-        }            
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{2}\b",
-                "mask": "[EXPD3]",
-                "options": "IA"
-            }
-        }            
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)(\s+of)?\s+\d{4}\b",
-                "mask": "[EXPD2]",
-                "options": "IA"
-            }
-        }            
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b(0[1-9]|1[0-2])\s([0-9]{2})\b",
-                "mask": "[EXPD1]",
-                "options": "IA"
-            }
-        }            
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b(0?[1-9]|1[0-2])\s(0?[1-9]|[12][0-9]|3[01])\s(19|20)\d{2}\b",
-                "mask": "[DATE4]",
-                "options": "IA"
-            }
-        }  
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b3[47][0-9]{13}\b",
-                "mask": "[AMEX]",
-                "options": "IA"
-            }
-        }   
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b(5[1-5][0-9]{14}|2[2-7][0-9]{14})\b",
-                "mask": "[MC16]",
-                "options": "IA"
-            }
-        }   
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b4\d{15}\b",
-                "mask": "[VISA16]",
-                "options": "IA"
-            }
-        }   
+        }
+        # ,
+        # {
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}\b",
+        #         "mask": "[CC_MIS]",
+        #         "options": "IA"
+        #     }
+        # },  
+        # {
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(7+)(?!)\b",
+        #         "mask": "[CC_MIS]",
+        #         "options": "IA"
+        #     }
+        # },
+        # {
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}(([0-9][\s]{0,1})|([\s\.,;]+((won|on|sun|too|to|tow|the|tree|free|for|fore|door|hive|dive|sex|sticks|pix|heaven|leaven|ate|hate|gate|mine|dine|line|hero|cero|zorro|oh))[\s\.,;]+)){14,17}\b",
+        #         "mask": "[CC_MIS]",
+        #         "options": "IA"
+        #     }
+        # }  
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+([1-9]|0[1-9]|[12][0-9]|3[01]),\s+\d{4}\b",
+        #         "mask": "[DATE3]",
+        #         "options": "IA"
+        #     }
+        # }  
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+([1-9]|0[1-9]|[12][0-9]|3[01])(st|nd|rd|th),\s+\d{4}\b",
+        #         "mask": "[DATE2]",
+        #         "options": "IA"
+        #     }
+        # }  
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b([1-9]|0[1-9]|[12][0-9]|3[01])(st|nd|rd|th)\s+of\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4}\b",
+        #         "mask": "[DATE1]",
+        #         "options": "IA"
+        #     }
+        # }            
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{2}\b",
+        #         "mask": "[EXPD3]",
+        #         "options": "IA"
+        #     }
+        # }            
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)(\s+of)?\s+\d{4}\b",
+        #         "mask": "[EXPD2]",
+        #         "options": "IA"
+        #     }
+        # }            
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(0[1-9]|1[0-2])\s([0-9]{2})\b",
+        #         "mask": "[EXPD1]",
+        #         "options": "IA"
+        #     }
+        # }            
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(0?[1-9]|1[0-2])\s(0?[1-9]|[12][0-9]|3[01])\s(19|20)\d{2}\b",
+        #         "mask": "[DATE4]",
+        #         "options": "IA"
+        #     }
+        # }  
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b3[47][0-9]{13}\b",
+        #         "mask": "[AMEX]",
+        #         "options": "IA"
+        #     }
+        # }   
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(5[1-5][0-9]{14}|2[2-7][0-9]{14})\b",
+        #         "mask": "[MC16]",
+        #         "options": "IA"
+        #     }
+        # }   
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b4\d{15}\b",
+        #         "mask": "[VISA16]",
+        #         "options": "IA"
+        #     }
+        # }   
         ,{
             "type": "regex",
             "parameters": {

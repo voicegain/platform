@@ -1,19 +1,18 @@
+"""
+When a Zoom meeting is started, executing the script below will perform the following tasks:
+
+1) The Zoom meeting bot will join the meeting and initiate recording.
+2) The script will continuously monitor the meeting progress. Upon meeting conclusion, 
+   it will transmit the meeting data for transcription to the Voicegain servers.
+3) The transcription results will be saved in the local output folder and 
+   can also be accessed via the platform console.
+"""
+
+
 import requests
 import time
 import os
 import json
-
-
-"""
-
-When a Zoom meeting is started, running the below script would do the following:
-1) The Zoom meeting bot will join the meeting and start recording
-2) The script continuously checks the progress of the meeting and as the meeting ends, 
-it sends the data for transcription to Voicegain servers.
-3) The transcription results then get saved in the local output folder and 
-can also be fetched via the platform console.
-
-"""
 
 
 platform = "ascalon"
@@ -38,8 +37,8 @@ progress_phase_dict = {
 
 
 """
-Make a post req to join meeting.
-Replace the below values with your own data.
+Send a POST request to join the meeting.
+Replace the placeholder values below with your own data.
 """
 body_asr_meeting_join = {
   "meetingPlatform": "zoom",
@@ -52,8 +51,20 @@ body_asr_meeting_join = {
   ]
 }
 
+
 def asr_meeting_join_api():
-	# Make the POST request with the json parameter
+  """
+  This function joins a Zoom meeting for Automatic Speech Recognition (ASR).
+
+  Returns:
+      dict: Response containing the details of the ASR meeting join request.
+
+  Note:
+      - The function sends a POST request to join the Zoom meeting using the ASR meeting join API.
+      - It prints the response and status of the request.
+      - The body_asr_meeting_join variable should contain the necessary data for the join request.
+
+  """
 	url = "https://api."+platform+".ai/v1/asr/meeting/join"
 	response = requests.post(url, json=body_asr_meeting_join, headers=headers)
 	print('Response of POST asr/meeting/join: ', response.json())
@@ -63,13 +74,25 @@ def asr_meeting_join_api():
 		print('POST asr/meeting/join request successful!')
 	else:
 		print('POST asr/meeting/join request failed. Status code:', response.status_code)
-
 	return response.json()
 
 
 
 def get_asr_meeting_api(asr_meeting_join_response):
+	"""
+	This function retrieves the status of an Automatic Speech Recognition (ASR) meeting API call.
 
+	Args:
+		asr_meeting_join_response (dict): Response received from the ASR meeting join API call.
+
+	Returns:
+		dict: Response containing the status and details of the meeting.
+
+	Note:
+		- The function continuously polls the meeting status until it is either 'DONE' or 'ERROR'.
+		- The polling interval is set to 10 seconds.
+
+	"""
 	if(asr_meeting_join_response.get("meetingSessionId")==None):
 		print('Response does not have meeeting id')
 	else:
@@ -90,10 +113,15 @@ def get_asr_meeting_api(asr_meeting_join_response):
 
 			if(progress_phase=="DONE" or progress_phase=="ERROR"):
 				return response.json()
-
 			time.sleep(10)
 
+
+
 def get_transcript(response):
+	"""
+  Extracts the transcript from the response of an ASR meeting.
+
+	"""
 	transcript = ""
 	words_list = response["words"]
 
@@ -105,17 +133,24 @@ def get_transcript(response):
 	return transcript;
 
 
-def write_transcript_into_file(transcript, meetingSessionId):
 
+def write_transcript_into_file(transcript, meetingSessionId):
+	"""
+  Writes the transcript into a JSON file.
+
+  """
 	response_path = os.path.join(output_path, "{}.json".format(meetingSessionId))
 	with open(response_path, 'w') as outfile:
 		json.dump(transcript, outfile)
-
 	print("Save final transcription result to {}".format(response_path), flush=True)
 
 
-def get_asr_meeting_data_api(asr_meeting_join_response):
 
+def get_asr_meeting_data_api(asr_meeting_join_response):
+	"""
+  Retrieves ASR meeting data including transcripts using the ASR meeting data API.
+
+  """
 	if(asr_meeting_join_response.get("meetingSessionId")==None):
 		print('Response does not have meeeting id')
 	else:
@@ -129,14 +164,23 @@ def get_asr_meeting_data_api(asr_meeting_join_response):
 			print('GET asr/meeting/{meeting-id}/data/ request successful!')
 			transcript = get_transcript(response.json())
 			write_transcript_into_file(transcript, meetingSessionId)
-
 		else:
 			print('GET asr/meeting/{meeting-id}/data/ request failed. Status code:', response.status_code)
 
 
+
 def start_meeting_flow():
+  """
+  Initiates the flow for joining a Zoom meeting, retrieving its status, and collecting ASR meeting data.
+
+  """
+  # Call the ASR meeting join API to start the meeting
 	post_asr_meeting_join_response = asr_meeting_join_api()
+
+	# Retrieve the status of the ASR meeting
 	get_asr_meeting_response = get_asr_meeting_api(post_asr_meeting_join_response)
+
+	# Collect ASR meeting data including transcripts
 	get_asr_meeting_response = get_asr_meeting_data_api(post_asr_meeting_join_response)
 
 

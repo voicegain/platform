@@ -2,7 +2,10 @@
 
 HOW TO RUN A BOT:
 
-1) Install the python packages like :flask, asyncio, time, websockets, threading etc.
+1) Install the python packages, make sure that you have downloaded the requirements.txt file. Run the below command to install the relevant packages.
+pip install -r requirements.txt
+
+ like :flask, asyncio, time, websockets, threading etc.
 
 2) Run the python script that starts a flask server on port 80. 
 Run: python <script-name>.py

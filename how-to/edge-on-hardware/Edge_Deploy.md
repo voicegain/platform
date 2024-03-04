@@ -40,6 +40,8 @@ In order to deploy Voicegain on Edge your account needs to have the Edge feature
 
 When you contact us we will ask you to describe your intended usage (e.g. offline transcription or MRCP ASR) so that we can enable an appropriate Edge configuration for your use case. If you are only exploring we can enable several generic configurations to allow you to test a variety of uses. For production use we will prepare a custom configuration that makes the best use of resources on your server(s). We will also configure port based licensing if desired (default is usage-based billing). 
 
+Ensure that this node will have access to an NTP Clock endpoint. By default, this requires port 123 UDP. Ubuntu will use systemd-timesyncd connected to ntp.ubuntu.com. If you will be using your own NTP server update your configuration accordingly.
+
 ## <a name="step1"></a>Step 1: Configure your Server BIOS 
 
 *Step 1 is relevant only for a bare hardware deployment (not a VM). Proceed to [Step 2](#step2) if manually installing on VM. If the VM was autoprovisioned with Ubuntu 20.04 proceed to [Step 5](#step5) to ensure storage partitions are configured correctly.*
@@ -312,6 +314,8 @@ echo export KUBECONFIG=${Newconfig} | sudo tee -a ${Newhome}/.bashrc
 Frequently, versions of Nvidia-driver vs nvidia-container-runtime vs containerd vs etc... may cause the nvidia driver to no longer function with other components. As such, automatic system update has been disabled and **system-wide updates are highly discouraged**. Instead, individual packages should be updated as vulnerabilities are reported. System-wide updates may result in the cluster requiring reprovisioning from scratch.
 
 Again: **system-wide updates are highly discouraged. Instead, individual packages should be updated as vulnerabilities are reported**
+
+And worth repeating: **Ensure that this node will have access to an NTP Clock endpoint. By default, this requires port 123 UDP. Ubuntu will use systemd-timesyncd connected to ntp.ubuntu.com. If you will be using your own NTP server update your configuration accordingly.** Timeskew can cause many seemingly unrelated issues. 
 
 ### All done!
 

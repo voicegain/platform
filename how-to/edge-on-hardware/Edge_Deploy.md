@@ -294,9 +294,11 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
 
 ## <a name="step12"></a>Step 12: Reboots, Notes and Caveats
 
-The EZInit script has enabled all required services for the cluster to start automatically upon reboot. After rebooting the system you may need to wait up to 10 minutes for all of the individual components to start and settle. 
+NTP: **Ensure that this node will have access to an NTP Clock endpoint. By default, this requires port 123 UDP. Ubuntu will use systemd-timesyncd connected to ntp.ubuntu.com. If you will be using your own NTP server update your configuration accordingly.** Timeskew can cause many seemingly unrelated issues. 
 
-The cluster configuration is ran as the non-root user who ran the EZInit script. If you require other users on the system to have access to the kubectl command line tool you will want to copy the kubernetes configuration file to their home directory. 
+First Reboot: The EZInit script has enabled all required services for the cluster to start automatically upon reboot. After rebooting the system you may need to wait up to 10 minutes for all of the individual components to start and settle. 
+
+voicegain user: The cluster configuration is ran as the non-root user who ran the EZInit script. If you require other users on the system to have access to the kubectl command line tool you will want to copy the kubernetes configuration file to their home directory. 
 
 For example, you create a new user named 'bobert' who needs to be able to run kubectl commands and administer the cluster. After adding the user to Ubuntu (adduser or useradd). Run the following commands, making certain to assign the newly created user to the Newuser variable:
 ```
@@ -314,8 +316,6 @@ echo export KUBECONFIG=${Newconfig} | sudo tee -a ${Newhome}/.bashrc
 Frequently, versions of Nvidia-driver vs nvidia-container-runtime vs containerd vs etc... may cause the nvidia driver to no longer function with other components. As such, automatic system update has been disabled and **system-wide updates are highly discouraged**. Instead, individual packages should be updated as vulnerabilities are reported. System-wide updates may result in the cluster requiring reprovisioning from scratch.
 
 Again: **system-wide updates are highly discouraged. Instead, individual packages should be updated as vulnerabilities are reported**
-
-And worth repeating: **Ensure that this node will have access to an NTP Clock endpoint. By default, this requires port 123 UDP. Ubuntu will use systemd-timesyncd connected to ntp.ubuntu.com. If you will be using your own NTP server update your configuration accordingly.** Timeskew can cause many seemingly unrelated issues. 
 
 ### All done!
 

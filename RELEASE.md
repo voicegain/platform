@@ -1,3 +1,80 @@
+## Release 1.100.0
+
+IMPORTANT Note for Edge users: 
+If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 
+This is because the compatibility setting on the Mongo DB has been changed in 1.97.0 and influxDB version has changed in 1.98.0
+
+New functionality in the Transcribe App:
+* BE-1559	TA: Automatically update the currently installed Zoom App version
+* BE-1582	TA: Add "Mine | Shared | All" selector to the home page
+* BE-1625	TA: Add a logout confirmation dialog.
+* BE-1642	TA: Show avatars on Account Users table
+* BE-1659	TA: Support action items using GPT for cloud Transcribe App
+* BE-1665	TA: Support action items using custom LLM for Edge 
+* BE-1669	TA: Advance Search  - Type filters populated dynamically from audio_src in fields api.
+* BE-1671	TA: Hide the project settings for the Key Items
+
+New functionality in other platform components:
+* BE-1315	Move rexConfig from xml to properties file in Rex
+* BE-1348	After password reset in AuthenticationClient provide link(s) to the correct App(s) for a given user
+* BE-1527	Switch to yaml rex configuration file on K8s
+* BE-1567	Web Console Edge: Add splash page after login and before home page shows up
+* BE-1578	Changes to get app.voicegain.ai score A on https://securityheaders.com
+* BE-1593	Web Console: Remove Clouds from ACP Header on Cloud
+* BE-1628	Meeting Join API - add parameter to control which js script is run (zoom, teams, etc)
+* BE-1638	Changes to the Voicebot Demo Instructions page
+* BE-1648	Web Console: Disable old MRCP Experiment Analyze - the new will become the only one
+
+Changes related to Integrity of Processing (fixes):
+* BE-1596	TA: Fix - Zoom Device Approvals pop up on wrong accounts
+* BE-1629	TA: Fix - It is impossible to share a project with an Owner of the account
+* BE-1649	TA: Fix - When the delete button is clicked in advanced search, it triggers an incorrect API, leading to inaccurate transcript result, Furthermore, post-deletion, filtered and searched data fail to display accurately.
+* BE-1652	TA: Fix - Reload button does not work on Firefox
+* BE-1664	TA: Fix - deleting a project should also remove its meetings from databases
+* BE-1702	TA: Fix - Advanced Search page goes blank with TypeError: Cannot read properties of undefined (reading 'split')
+* QA-822	TA Edge: Fix - User (Role) is able to access Account settings.
+* QA-853	TA: Fix - No options to select under "creator" filter in advanced search.
+* QA-856	TA: Fix - Alert msg of "maximum allowed minutes exceeded" is not translating in other languages.
+* QA-888	TA: Fix - In Advanced search deleted transcript are not getting removed from list, unless we refresh the page.
+* QA-892	TA: Fix - partial Translation is there while uploading a file
+* QA-903	TA: Fix - There should be proper translation on the share pop-up page.
+* QA-913	TA: Fix - Walk through wizard gets hidden after few steps, when left menu is locked.
+* QA-920	TA: Fix - For a single project, the move should be disabled 
+* QA-931	TA: Fix - User is able to de-select all filters on home page for shared.
+* QA-938	TA: Fix - Different loading screens when deleting a single share in compared to deleting multiple shares.
+* QA-940	TA: Fix - User is unable to "generate " the JWT token.
+* QA-944	TA: Fix - Owner should not be allowed to delete all of its project if any user have shared any project with him.
+* QA-946	TA: Fix - Unable to Invite user after we edit a user in account section.
+* QA-947	TA: Fix - Voicegain splash screen showing when project user adds other users to a project.
+* QA-949	TA: Fix - Unable to close the dialog pop-up for added phrase.
+* QA-950	TA: Fix - Project setting- save button overlaps with text when Spanish language is selected.
+* QA-953	TA: Fix - Account with only user access can invite other account.
+* QA-961	TA: Fix - While creating the first project(new project wizards) Word cloud toggle not showing properly.
+* QA-962	TA: Fix - User with Admin role is not able to update address in profile section
+* QA-963	TA: Fix - Language reminder- Close icon not showing properly cutting with boundary of the pop-up.
+* QA-964	TA: Fix - During Signup user given company name and title, after login title missing under profile section
+* QA-970	TA: Fix - Date filter is not working on advanced search page.
+* QA-972	TA: Fix - Invited User is able to change "May Download" setting in account.
+* QA-973	TA: Fix - Language filter under advanced search should show full language name
+* QA-985	TA: Fix - Save button not working properly under profile setting.
+* BE-1512	Fix - Occasionally k8s lost gpu and we need to restart nvidia-device-plugin-daemonset
+* BE-1591	Web Console: Fix - Audio display in Meeting Detail page messed up
+* BE-1641	Web Console: Fix - GREG is not showing recognition results
+* BE-1644	Fix - Something wrong with keyword advanced search 
+* BE-1650	Fix - accounts are getting revoked on QA even though the setting is 0 which means do not revoke
+* BE-1654	Fix - Misleading error response of POST API asr/meeting/join
+* BE-1668	Fix - Zoom Meeting join api cannot handle a case where the waiting room is disabled
+* BE-1674	Fix -  NullPointerException from JoinedMeetingEvent
+* BE-1675	Fix - NullPointerException is thrown from ascalon-cleanup
+* QA-748	Demo: Fix - Double confirmation is required to browse audio file in the upload demo file
+* QA-797	Web Console: Fix - On Websocket Details on live broadcasting getting the blank page
+* QA-894	Web Console: Fix - Page is not responsive enough for the 90% zoom, all the pop-up are vibrating.
+* QA-943	Web Console: Fix - Unable to set "Disable inactive users" as Not Enabled.
+* QA-983	Web Console: Fix - After reset password- Web console button is not clickable
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.99.0
 
 IMPORTANT Note for Edge users: 

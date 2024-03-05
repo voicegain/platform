@@ -2,6 +2,52 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### March 4, 2024
+
+New functionality:
+* BE-1559	TA: Automatically update the currently installed Zoom App version
+* BE-1582	TA: Add "Mine | Shared | All" selector to the home page
+* BE-1625	TA: Add a logout confirmation dialog.
+* BE-1642	TA: Show avatars on Account Users table
+* BE-1659	TA: Support action items using GPT for cloud Transcribe App
+* BE-1665	TA: Support action items using custom LLM for Edge 
+* BE-1669	TA: Advance Search  - Type filters populated dynamically from audio_src in fields api.
+* BE-1671	TA: Hide the project settings for the Key Items
+
+Fixes:
+* BE-1596	TA: Fix - Zoom Device Approvals pop up on wrong accounts
+* BE-1629	TA: Fix - It is impossible to share a project with an Owner of the account
+* BE-1649	TA: Fix - When the delete button is clicked in advanced search, it triggers an incorrect API, leading to inaccurate transcript result, Furthermore, post-deletion, filtered and searched data fail to display accurately.
+* BE-1652	TA: Fix - Reload button does not work on Firefox
+* BE-1664	TA: Fix - deleting a project should also remove its meetings from databases
+* BE-1702	TA: Fix - Advanced Search page goes blank with TypeError: Cannot read properties of undefined (reading 'split')
+* QA-822	TA Edge: Fix - User (Role) is able to access Account settings.
+* QA-853	TA: Fix - No options to select under "creator" filter in advanced search.
+* QA-856	TA: Fix - Alert msg of "maximum allowed minutes exceeded" is not translating in other languages.
+* QA-888	TA: Fix - In Advanced search deleted transcript are not getting removed from list, unless we refresh the page.
+* QA-892	TA: Fix - partial Translation is there while uploading a file
+* QA-903	TA: Fix - There should be proper translation on the share pop-up page.
+* QA-913	TA: Fix - Walk through wizard gets hidden after few steps, when left menu is locked.
+* QA-920	TA: Fix - For a single project, the move should be disabled 
+* QA-931	TA: Fix - User is able to de-select all filters on home page for shared.
+* QA-938	TA: Fix - Different loading screens when deleting a single share in compared to deleting multiple shares.
+* QA-940	TA: Fix - User is unable to "generate " the JWT token.
+* QA-944	TA: Fix - Owner should not be allowed to delete all of its project if any user have shared any project with him.
+* QA-946	TA: Fix - Unable to Invite user after we edit a user in account section.
+* QA-947	TA: Fix - Voicegain splash screen showing when project user adds other users to a project.
+* QA-949	TA: Fix - Unable to close the dialog pop-up for added phrase.
+* QA-950	TA: Fix - Project setting- save button overlaps with text when Spanish language is selected.
+* QA-953	TA: Fix - Account with only user access can invite other account.
+* QA-961	TA: Fix - While creating the first project(new project wizards) Word cloud toggle not showing properly.
+* QA-962	TA: Fix - User with Admin role is not able to update address in profile section
+* QA-963	TA: Fix - Language reminder- Close icon not showing properly cutting with boundary of the pop-up.
+* QA-964	TA: Fix - During Signup user given company name and title, after login title missing under profile section
+* QA-970	TA: Fix - Date filter is not working on advanced search page.
+* QA-972	TA: Fix - Invited User is able to change "May Download" setting in account.
+* QA-973	TA: Fix - Language filter under advanced search should show full language name
+* QA-985	TA: Fix - Save button not working properly under profile setting.
+
+
 ### February 13, 2024
 
 New functionality:

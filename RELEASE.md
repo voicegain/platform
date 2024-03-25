@@ -1,3 +1,98 @@
+## Release 1.101.0
+
+IMPORTANT Note for Edge users: 
+If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 
+This is because the compatibility setting on the Mongo DB has been changed in 1.97.0 and influxDB version has changed in 1.98.0
+
+**Key changes releated to the core APIs**
+* Revised User deletion logic - will retain deleted User info so that any remaining references can be resolved.
+* Added ability to enforce 2FA account-wide via a Web Console setting
+* Connected Web Console to Sentry service for error tracking
+* Improved session logs
+* Websocket version of the Telephony Bot API
+* Improved NLU model for understanding IVR prompts
+
+**Key changes releated to Transcribe APP**
+* Improved User deletion logic functionality.
+* Added LLM Settings to Account profile
+* Action Items tables now correctly rendered in PDF and DOCX
+* Upload audio data directly to storage without sending data through data API service
+* Improved tables with lists of Shared transcripts (User and Admin view)
+
+
+New or changed functionality in the Transcribe App:
+* BE-1189	TA: Add option for Admins to see what others have shared
+* BE-1271	TA: Support a workflow for the Admin to delete a user account and take over the user's project
+* BE-1536	TA: Improved Splash page after login which shows the different stages
+* BE-1646	TA: If there are no devices we show 2 options: download and phone app setup
+* BE-1708	TA: On All Shares table, added sorting and filter on the Creator column, and filters on the Scope and Expires columns
+* BE-1709	TA: In account users show Own Projects and Shared Projects columns in place of the current single Projects column
+* BE-1713	TA: Modify the PDF output to render markdown tables
+* BE-1714	TA: Modify the DOCX output to render markdown tables
+* BE-1721	TA: Improved error message on the Zoom directory upload
+* BE-1733	TA: Generate avatar based on user name if they have not uploaded a picture for avatar
+* BE-1741	TA: Add extra parameter to /asr/transcribe/async request used in Microphone transcription
+* BE-1744	TA: Upload files using the POST /data/s3 API
+* BE-1807	TA: Add LLM Settings to Account profile
+* BE-1810	TA: More functional user delete
+* BE-1818	TA: Show info of users that have been deleted
+* BE-1823	TA: Add Polish language transcription
+* BE-1834	TA: Remove "Sync From Cloud" button
+* QA-1009	TA: Increase max number of transcripts shown on home page from 100 to 250
+* QA-1010	TA: Show the Upgrade button only to the Owner role
+* QA-1017	TA: Better error message in case of an error resetting password
+* QA-1021	TA: When user is deleted all user sessions will be invalidated.
+
+New or changed functionality in other platform components:
+* BE-1194	Advanced Search: Add new column `bucket` to the meeting_session table
+* BE-1579	Collect session_duration for realtime ASR sessions
+* BE-1663	Web Console: When deleting Users in the Cloud and if there are Edge deployments warn that also users on the Edge will be deleted
+* BE-1687	Websocket version of AIVR API: support question.audioResponse.streaming
+* BE-1693	Support Zoom Breakout Rooms in Meeting Join
+* BE-1695	New /sa/call/search API
+* BE-1697	New /sa/call/search/fields API
+* BE-1691	Web Console: Add internal refresh to the page with Edge Deployment details
+* BE-1705	Web Console: Add ability to enforce 2FA account-wide
+* BE-1706	Add to Account API a field that controls 2FA enforcement
+* BE-1707	Web Console: Better error message in case of creating a GREG experiment with duplicate name
+* BE-1715	Support model_name measurement for offline sessions (offline transcribe, offline meeting, offline SA)
+* BE-1716	Add session ID to all log messages in offline-task
+* BE-1722	Web Console: Improved inactivity timeout processing
+* BE-1728	Update code to use the latest Azure OpenAI Service preview API
+* BE-1732	Web Console: Connect to Sentry
+* BE-1739	Connect authentication-client to Sentry
+* BE-1743	Add llmSettings to /cluster/ API
+* BE-1809	Add deleteUserContexts parameter to DELETE /user
+* BE-1817	New inclDeleted parameter on GET /user API method
+* BE-1822	Support inclDeleted for GET /account/uuid/users
+* BE-814	Improved NLU model for IVR prompts
+* BE-978	Removed contextId and fromAllContexts parameters from the Advanced Meeting Search API method
+* QA-1046	Demo: Improved error message in case of internal issues.
+
+Changes related to Integrity of Processing (fixes):
+* BE-1629	TA: Fix - It is impossible to share a project with an Owner of the account
+* BE-1734	TA: Fix - Sorting of devices by date broken if any device is deleted
+* BE-1802	TA: Fix - Search for creator by name in Advanced Search filter
+* QA-1012	TA: Fix -  Project setting- Save button enabled when there is no change
+* QA-1022	TA: Fix - In some rare cases Voice Signature page is showing white page.
+* QA-887	TA: Fix - Walk through wizard should get automatically initiated when new user logs in for the first time.
+* QA-929	TA: Fix -  Project (number) information is confusing
+* QA-967	TA: Fix - User is able to add invalid keywords under project setting.
+* BE-1672	Web Console: Fix - Sliders too small at console.ascalon.ai/specific/meetings
+* QA-992	Web Console: Fix - User is able to play the audio when no voice is selected while creating a phone app.
+* QA-993	Web Console: Fix - After clicking on view button of call session, it's showing blank page.
+* QA-997	Web Console: Fix - Transcript is not getting skip by specified seconds as expected and onClick function is also not a function as in console tab.
+* QA-999	Web Console: Fix - When User click on Cancel button of add context it should be close.
+* BE-1735	Mobile App: Fix - order of projects in the list
+* BE-1736	Mobile App: Fix - My project returns transcripts from other projects
+* BE-1812	AIVR: Fix - getting MATCH but no recognized utterance
+* BE-1831	ASR API: Fix - ValueError: Invalid value for `type` (), must be one of ['ner', 'regex']
+* QA-1005	SA App: Fix - use the correct time format enum values
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
+
 ## Release 1.100.0
 
 IMPORTANT Note for Edge users: 

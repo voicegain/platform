@@ -2,7 +2,7 @@
 # Voicegain Software SKU List - Can be delivered as a SaaS Service or Edge/On-Prem Subscription Product
 Effective: June 20th, 2019
 
-Last Updated: Sep 13th, 2022
+Last Updated: March 20th, 2024
 
 ## A. Developer PaaS Services
 Developer PaaS Services are accessed through Voicegain Developer Web Console. Voicegain offers the following PaaS Services
@@ -13,7 +13,7 @@ or Service. Developers may invoke these APIs over http, gRPC and WebSockets. Dev
 they can also invoke these APIs with Speech Grammars. 
 
 ## A2. Voicegain Telephony Bot APIs: 
-**Voicegain Telephony Bot APIs** are JSON based Callback APIs that can be invoked after the Voicegain platform joins a SIP Session as a SIP endpoint. Telephony Bot APIs are a good fit for developers building long lasting speech interactions ober telephony - voice bots, speech IVRs, live agent assist, etc. Clients may bring their own supported SIP trunk provider (BYOC) or may integrate with Voicegain's SIP Trunk provider and carrier infrastructure. Developers may specify the Bot/IVR  logic in a programming language they prefer - Python, Node.JS, PHP.
+**Voicegain Telephony Bot APIs** are JSON based Callback APIs that can be invoked after the Voicegain platform joins a SIP Session as a SIP endpoint. Telephony Bot APIs are conversational AI/bot developers that are looking to building a Conversational IVR/Voice bot/Intelligent Voice Assistant apps with long lasting speech interactions over telephony. Clients may bring their own supported SIP trunk provider (BYOC) or may integrate with Voicegain's SIP Trunk provider and carrier infrastructure. Developers may code the Bot/IVR  logic in a programming language they prefer - Python, Node.JS, PHP and write their integration layer to interact with Voicegain Telephony Bot APIs.
 
 ## A3. Voicegain Speech Analytics APIs (Offline & Real-time):
 **Voicegain Speech Analytics APIs** are Voicegain's APIs that convert speech-to-text (transcription)and then analyze the text for sentiment, keywords, phrases, entities and intents. Voicegain offers both realtime and offline Speech Analytics APIs.
@@ -28,6 +28,12 @@ they can also invoke these APIs with Speech Grammars.
 
 ## B2. Voicegain Speech Analytics:
 **Voicegain Speech Analytics** is a web application that uses Voicegain Speech Analytics APIs to analyze audio recordings of voice customer service interactions in contact centers with an objective of automated quality management, compliance verification and gathering customer experience and business insights. These recordings get accurately transcribed and analyzed using AI. We analyze both audio and the text transcript using AI to extract keywords, sentiment, named entities and topics. 
+
+## B3. Voicegain AI Voice Assistant:
+**Voicegain AI Voice Assistant** is a customized conversational AI IVR application built using Voicegain Telephony Bot APIs. The AI Voice Assistant can engage customers in a natural language voice conversation to validate, triage and automate customer interactions over the phone. The AI Voice Assistant can transfer calls to the right destination based on the intent extracted and it can be configured to remain online and provide a transcript to the AI Co-Pilot (further described below) once the call is transferred to the Agent.
+
+## B4. Voicegain AI Co-Pilot:
+**Voicegain AI Co-Pilot** is a customized web or desktop application for call center agents. It can integrate with Contact Center platforms - both Cloud and Premise-based. It displays all the information collected by Voicegain AI Voice Assistant and provides agents with real-time guidance. Once the call is complete, it can generate a summary of the call which in turm can be copied into the CRM.
 
 
 

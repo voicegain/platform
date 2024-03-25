@@ -2,6 +2,48 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### March 25, 2024
+
+**Key changes**
+* Improved User deletion logic functionality.
+* Added LLM Settings to Account profile
+* Action Items tables now correctly rendered in PDF and DOCX
+* Upload audio data directly to storage without sending data through data API service
+* Improved tables with lists of Shared transcripts (User and Admin view)
+
+New f* BE-1189	TA: Add option for Admins to see what others have shared
+* BE-1271	TA: Support a workflow for the Admin to delete a user account and take over the user's project
+* BE-1536	TA: Improved Splash page after login which shows the different stages
+* BE-1646	TA: If there are no devices we show 2 options: download and phone app setup
+* BE-1708	TA: On All Shares table, added sorting and filter on the Creator column, and filters on the Scope and Expires columns
+* BE-1709	TA: In account users show Own Projects and Shared Projects columns in place of the current single Projects column
+* BE-1713	TA: Modify the PDF output to render markdown tables
+* BE-1714	TA: Modify the DOCX output to render markdown tables
+* BE-1721	TA: Improved error message on the Zoom directory upload
+* BE-1733	TA: Generate avatar based on user name if they have not uploaded a picture for avatar
+* BE-1741	TA: Add extra parameter to /asr/transcribe/async request used in Microphone transcription
+* BE-1744	TA: Upload files using the POST /data/s3 API
+* BE-1807	TA: Add LLM Settings to Account profile
+* BE-1810	TA: More functional user delete
+* BE-1818	TA: Show info of users that have been deleted
+* BE-1823	TA: Add Polish language transcription
+* BE-1834	TA: Remove "Sync From Cloud" button
+* QA-1009	TA: Increase max number of transcripts shown on home page from 100 to 250
+* QA-1010	TA: Show the Upgrade button only to the Owner role
+* QA-1017	TA: Better error message in case of an error resetting password
+* QA-1021	TA: When user is deleted all user sessions will be invalidated.
+
+Fixes:
+* BE-1629	TA: Fix - It is impossible to share a project with an Owner of the account
+* BE-1734	TA: Fix - Sorting of devices by date broken if any device is deleted
+* BE-1802	TA: Fix - Search for creator by name in Advanced Search filter
+* QA-1012	TA: Fix -  Project setting- Save button enabled when there is no change
+* QA-1022	TA: Fix - In some rare cases Voice Signature page is showing white page.
+* QA-887	TA: Fix - Walk through wizard should get automatically initiated when new user logs in for the first time.
+* QA-929	TA: Fix -  Project (number) information is confusing
+* QA-967	TA: Fix - User is able to add invalid keywords under project setting.
+
+
 ### March 4, 2024
 
 New functionality:

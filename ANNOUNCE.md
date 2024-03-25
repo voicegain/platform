@@ -1,3 +1,97 @@
+### Minor release 1.101.0 is scheduled for 3/25/2024 between 6:00pm and 10:00pm CST
+
+IMPORTANT Note for Edge users: 
+If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 
+This is because the compatibility setting on the Mongo DB has been changed in 1.97.0 and influxDB version has changed in 1.98.0
+
+**Key changes releated to the core APIs**
+* Revised User deletion logic - will retain deleted User info so that any remaining references can be resolved.
+* Added ability to enforce 2FA account-wide via a Web Console setting
+* Connected Web Console to Sentry service for error tracking
+* Improved session logs
+* Websocket version of the Telephony Bot API
+* Improved NLU model for understanding IVR prompts
+
+**Key changes releated to Transcribe APP**
+* Improved User deletion logic functionality.
+* Added LLM Settings to Account profile
+* Action Items tables now correctly rendered in PDF and DOCX
+* Upload audio data directly to storage without sending data through data API service
+* Improved tables with lists of Shared transcripts (User and Admin view)
+
+
+New or changed functionality in the Transcribe App:
+* BE-1189	TA: Add option for Admins to see what others have shared
+* BE-1271	TA: Support a workflow for the Admin to delete a user account and take over the user's project
+* BE-1536	TA: Improved Splash page after login which shows the different stages
+* BE-1646	TA: If there are no devices we show 2 options: download and phone app setup
+* BE-1708	TA: On All Shares table, added sorting and filter on the Creator column, and filters on the Scope and Expires columns
+* BE-1709	TA: In account users show Own Projects and Shared Projects columns in place of the current single Projects column
+* BE-1713	TA: Modify the PDF output to render markdown tables
+* BE-1714	TA: Modify the DOCX output to render markdown tables
+* BE-1721	TA: Improved error message on the Zoom directory upload
+* BE-1733	TA: Generate avatar based on user name if they have not uploaded a picture for avatar
+* BE-1741	TA: Add extra parameter to /asr/transcribe/async request used in Microphone transcription
+* BE-1744	TA: Upload files using the POST /data/s3 API
+* BE-1807	TA: Add LLM Settings to Account profile
+* BE-1810	TA: More functional user delete
+* BE-1818	TA: Show info of users that have been deleted
+* BE-1823	TA: Add Polish language transcription
+* BE-1834	TA: Remove "Sync From Cloud" button
+* QA-1009	TA: Increase max number of transcripts shown on home page from 100 to 250
+* QA-1010	TA: Show the Upgrade button only to the Owner role
+* QA-1017	TA: Better error message in case of an error resetting password
+* QA-1021	TA: When user is deleted all user sessions will be invalidated.
+
+New or changed functionality in other platform components:
+* BE-1194	Advanced Search: Add new column `bucket` to the meeting_session table
+* BE-1579	Collect session_duration for realtime ASR sessions
+* BE-1663	Web Console: When deleting Users in the Cloud and if there are Edge deployments warn that also users on the Edge will be deleted
+* BE-1687	Websocket version of AIVR API: support question.audioResponse.streaming
+* BE-1693	Support Zoom Breakout Rooms in Meeting Join
+* BE-1695	New /sa/call/search API
+* BE-1697	New /sa/call/search/fields API
+* BE-1691	Web Console: Add internal refresh to the page with Edge Deployment details
+* BE-1705	Web Console: Add ability to enforce 2FA account-wide
+* BE-1706	Add to Account API a field that controls 2FA enforcement
+* BE-1707	Web Console: Better error message in case of creating a GREG experiment with duplicate name
+* BE-1715	Support model_name measurement for offline sessions (offline transcribe, offline meeting, offline SA)
+* BE-1716	Add session ID to all log messages in offline-task
+* BE-1722	Web Console: Improved inactivity timeout processing
+* BE-1728	Update code to use the latest Azure OpenAI Service preview API
+* BE-1732	Web Console: Connect to Sentry
+* BE-1739	Connect authentication-client to Sentry
+* BE-1743	Add llmSettings to /cluster/ API
+* BE-1809	Add deleteUserContexts parameter to DELETE /user
+* BE-1817	New inclDeleted parameter on GET /user API method
+* BE-1822	Support inclDeleted for GET /account/uuid/users
+* BE-814	Improved NLU model for IVR prompts
+* BE-978	Removed contextId and fromAllContexts parameters from the Advanced Meeting Search API method
+* QA-1046	Demo: Improved error message in case of internal issues.
+
+Changes related to Integrity of Processing (fixes):
+* BE-1629	TA: Fix - It is impossible to share a project with an Owner of the account
+* BE-1734	TA: Fix - Sorting of devices by date broken if any device is deleted
+* BE-1802	TA: Fix - Search for creator by name in Advanced Search filter
+* QA-1012	TA: Fix -  Project setting- Save button enabled when there is no change
+* QA-1022	TA: Fix - In some rare cases Voice Signature page is showing white page.
+* QA-887	TA: Fix - Walk through wizard should get automatically initiated when new user logs in for the first time.
+* QA-929	TA: Fix -  Project (number) information is confusing
+* QA-967	TA: Fix - User is able to add invalid keywords under project setting.
+* BE-1672	Web Console: Fix - Sliders too small at console.ascalon.ai/specific/meetings
+* QA-992	Web Console: Fix - User is able to play the audio when no voice is selected while creating a phone app.
+* QA-993	Web Console: Fix - After clicking on view button of call session, it's showing blank page.
+* QA-997	Web Console: Fix - Transcript is not getting skip by specified seconds as expected and onClick function is also not a function as in console tab.
+* QA-999	Web Console: Fix - When User click on Cancel button of add context it should be close.
+* BE-1735	Mobile App: Fix - order of projects in the list
+* BE-1736	Mobile App: Fix - My project returns transcripts from other projects
+* BE-1812	AIVR: Fix - getting MATCH but no recognized utterance
+* BE-1831	ASR API: Fix - ValueError: Invalid value for `type` (), must be one of ['ner', 'regex']
+* QA-1005	SA App: Fix - use the correct time format enum values
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Minor release 1.100.0 is scheduled for 3/4/2024 between 7:00pm and 10:00pm CST
 
 IMPORTANT Note for Edge users: 
@@ -690,84 +784,4 @@ Changes related to Integrity of Processing (fixes):
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 Upload of video to the Transcribe App requires Voicegain Zoom Meeting Assistant version 1.2.1 or higher.
-
-### Maintenance release 1.90.1 is scheduled for 9/22/2023 between 6pm and 11pm CST
-
-Changes related to Integrity of Processing (fixes)
-All these apply to the Transcribe App:
-* QA-497  Fix: Accepting anything in tag, also taking space as tag.
-* BE-790  Fix: At the end of project wizard sometimes have to click Done twice to get the new project saved
-* BE-957  Fix: Not accepting MP4 file for transcription
-* BE-964  Fix: Calling Invoice API on Edge
-
-Other changes in Transcribe App:
-* BE-955  Disable API Security Page
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-### Minor release 1.90.0 is scheduled for 9/20/2023 between 5pm and 9pm CST
-
-New functionality in the Transcribe App:
-* BE-669	Transcribe App: Added audit log
-* BE-681	Transcribe App: Implement Person obfuscation in Meetings after a set time threshold
-* BE-824	Transcribe App: Add ability to select multiple transcripts from the table an perform selected Action on them
-* BE-843	Transcribe App: Add ability to specify Regex Redaction on the Project/Account Settings Text Redaction
-* BE-873	Transcribe App: Added multi-selector delete on the Shares list
-* BE-888	Transcribe App: Improve message on Zoom Meeting Assistant status
-* BE-894	Transcribe App: Change name of the exe file in installer bundle to install.exe
-* BE-909	Transcribe App: Make the digit formatting a default enabled option on creating new Project
-* BE-910	Transcribe App: Store collapsed status of home page elements in ClientSide Properties on a User
-* BE-915	Transcribe App: Add settings for Archival Text Redaction
-* BE-919	Transcribe App: Tweak behavior of the 4 selectors on Transcripts on Home Page
-* BE-929	Transcribe App: On Devices page - add a button to pair a Phone App
-
-New functionality in other platform components:
-* BE-124	(EDGE) Make InfluxDB available for querying by customers
-* BE-778	In /ASR/meeting API add ability to upload meeting video and chat
-* BE-812	(SSO) Modify password reset page to match the style that is used in Web Console
-* BE-860	Support audio redaction also on DASH-MPEG audio
-* BE-872	Generate video dash-mpeg file in offline meeting task
-* BE-874	Support Accept-Ranges in the data presigned URL that returns mp3 audio
-* BE-877	Make sure the redacted audio for meeting sessions is mp3
-* BE-887	Modify POST /auth-svc/device to return QR code and also support new device type
-* BE-891	Add long-term redaction settings to the Account API
-* BE-892	Modify Meeting PERSON NER redaction to include speaker names
-* BE-893	Add internal meeting recompute API that runs recompute on the entire account
-* BE-904	Change how Context Regex and Account Regex are processed if both present
-* BE-905	Automatically enable digit formatting if any redaction is turned on
-* BE-912	Add fluentbit external helm chart to env-tracking
-* BE-916	Create a cronjob to call internal meeting recompute API on the entire account
-* BE-922	Update ingress and support basic-auth in influxdb helm chart
-* BE-933	OfflineMeetingWordsGrouper in ml-svc to use timestamp to group words if punc is missing
-* BE-937	Return raw transcription results if there is any error in formatter code
-* BE-942	Validate model and language in offline requests before submitting to offline queue
-* QA-458	Web Console: Add a button to delete a transcript under transcript beta.
-
-Changes related to Integrity of Processing (fixes):
-* QA-469	Transcribe App: Fix multiple translation issues
-* QA-482	Transcribe App: Fix - Inactivity timout set on zero hrs and zero is showing out of the box, when toggle is disabled no value should show.
-* QA-497  Transcribe App: Fix for accepting anything in tag, also taking space as tag.
-* BE-870	Transcribe App: Fix - jumping to time in MP3 audio playback does not work
-* BE-890	Transcribe App: Fix for being logged out when accessing Speakers page with many voice signatures
-* BE-899	Transcribe App: Fix - Meeting audio redaction only works on the first 3 speakers in a meeting session
-* BE-935	Transcribe App: Fixed - incorrectly imposing share limit on Edge
-* BE-655	Fix for onprem-cluster-deployment task stuck when pods are in unexpected status
-* BE-735	Fixed: Recompute does not reapply PII Redaction
-* BE-895	Web Console: Fix - Regex redact options are saved but not displayed
-* BE-907	Admin Tool: Fix - When I suspend some account it is my account that gets suspended
-* BE-921	Fix: Dates with 'the'/'of' in the phrase don't get classified as DMY NER
-* BE-928	Fix: Installer fails to apply settings to registry
-* BE-936	Fixed - List index out of range error when formatting certain Spanish results
-* BE-943	Fix weird output in case of multiple recompute with redaction and placeholder fill
-* BE-950	Fix bug in Spanish formatter : int() argument must be a string, a bytes-like object or a number, not 'NoneType'
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-
-
-
-
-
 

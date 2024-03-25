@@ -4,7 +4,7 @@ IMPORTANT Note for Edge users:
 If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 
 This is because the compatibility setting on the Mongo DB has been changed in 1.97.0 and influxDB version has changed in 1.98.0
 
-**Key changes releated to the core APIs**
+**Key changes related to the core APIs**
 * Revised User deletion logic - will retain deleted User info so that any remaining references can be resolved.
 * Added ability to enforce 2FA account-wide via a Web Console setting
 * Connected Web Console to Sentry service for error tracking
@@ -12,7 +12,7 @@ This is because the compatibility setting on the Mongo DB has been changed in 1.
 * Websocket version of the Telephony Bot API
 * Improved NLU model for understanding IVR prompts
 
-**Key changes releated to Transcribe APP**
+**Key changes related to Transcribe APP**
 * Improved User deletion logic functionality.
 * Added LLM Settings to Account profile
 * Action Items tables now correctly rendered in PDF and DOCX

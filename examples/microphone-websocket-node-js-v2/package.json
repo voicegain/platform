@@ -5,7 +5,7 @@
   "main": "audio-services.js",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.19.2",
     "got": "^11.8.2"
   },
   "scripts": {

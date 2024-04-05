@@ -11,6 +11,7 @@ hostPort = cfg.get(configSection, "HOSTPORT")
 JWT = cfg.get(configSection, "JWT")
 urlPrefix = cfg.get(configSection, "URLPREFIX")
 inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
+inputFname = cfg.get("DEFAULT", "INPUTFILE")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
 #model = "VoiceGain-omega"
@@ -18,8 +19,6 @@ outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 model = "whisper:medium"
 
 print("model: {}".format(model))
-
-maxFilesToProcess = 4
 
 if not os.path.exists(outputFolder):
     os.makedirs(outputFolder)
@@ -29,179 +28,22 @@ host = f"{protocol}://{hostPort}/{urlPrefix}"
 print("host: {}".format(host))  
 
 asr_body = {
-    "sessions": [
-        {
-            "asyncMode": "OFF-LINE",
-            "poll": {
-                # will delete the session after 1 minute
-                #"afterlife": 60000
-                "persist" : 600000
-            },
-            "content": {
-                "incremental": ["progress"],
-                "full" : ["progress", "words"]
-            }
-        }
-    ],
-    "audio":{
-        "source": {
-            "dataStore": {
-                "uuid": "to be filled later"
-            }
-        }
-    },
+    "label": "test",
+    "persistSeconds": 1296000, # 15 days
     "settings": {
         "asr": {
-            #"languages" : ["es", "en"],
-            "languages" : ["en"],
-            "acousticModelNonRealTime" : model,
-            "noInputTimeout": -1,
-            "completeTimeout": -1,
-            "sensitivity" : 0.5,
-            # , "hints" : [
-                # "rupees[roopiece|ruppes]"
-            # ]
-            #, "diarization" : {
-            #  "minSpeakers" : 2,
-            #  "maxSpeakers" : 2
-            #}
+            "languages" : ["en-us"]
         }
-        ,"formatters" : [
-        {
-            "type": "digits"
+    },
+    "audio": [{
+        "source": {
+            "dataObjectUuid": "to be  set later"
+        },
+        "diarization": {
+            "minSpeakers": 2,
+            "maxSpeakers": 2
         }
-        # ,{
-        #     "type": "basic",
-        #     "parameters": {"enabled": "true"}
-        # },
-        , {
-            "type": "enhanced",
-            "parameters": {
-                "CC": True,
-                "SSN": True,
-                "URL": True,
-                "PHONE": True,
-                "EMAIL": True
-            }
-        }
-        # , {
-        #     "type": "profanity",
-        #     "parameters": {"mask": "partial"}
-        # }
-        # ,{
-        #     "type": "spelling",
-        #     "parameters": {"lang": "en-US"}
-        # }
-        # ,{
-        #     "type": "redact",
-        #     "parameters": {
-        #         "CC": "[CC]",
-        #         "ZIP": "[ZIP]",
-        #         "PERSON": "[PERSON]",
-        #         "EMAIL" : "[EMAIL]",
-        #         "PHONE" : "[PHONE]",
-        #         "SSN" : "[SSN]",
-        #         "DMY" : "[DMY]"
-        #     }
-        # }
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+([1-9]|0[1-9]|[12][0-9]|3[01]),\s+\d{4}\b",
-        #         "mask": "[DATE3]",
-        #         "options": "IA"
-        #     }
-        # }  
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+([1-9]|0[1-9]|[12][0-9]|3[01])(st|nd|rd|th),\s+\d{4}\b",
-        #         "mask": "[DATE2]",
-        #         "options": "IA"
-        #     }
-        # }  
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b([1-9]|0[1-9]|[12][0-9]|3[01])(st|nd|rd|th)\s+of\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4}\b",
-        #         "mask": "[DATE1]",
-        #         "options": "IA"
-        #     }
-        # }            
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{2}\b",
-        #         "mask": "[EXPD3]",
-        #         "options": "IA"
-        #     }
-        # }            
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b(January|February|March|April|May|June|July|August|September|October|November|December)(\s+of)?\s+\d{4}\b",
-        #         "mask": "[EXPD2]",
-        #         "options": "IA"
-        #     }
-        # }            
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b(0[1-9]|1[0-2])\s([0-9]{2})\b",
-        #         "mask": "[EXPD1]",
-        #         "options": "IA"
-        #     }
-        # }            
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b(0?[1-9]|1[0-2])\s(0?[1-9]|[12][0-9]|3[01])\s(19|20)\d{2}\b",
-        #         "mask": "[DATE4]",
-        #         "options": "IA"
-        #     }
-        # }  
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b3[47][0-9]{13}\b",
-        #         "mask": "[AMEX]",
-        #         "options": "IA"
-        #     }
-        # }   
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b(5[1-5][0-9]{14}|2[2-7][0-9]{14})\b",
-        #         "mask": "[MC16]",
-        #         "options": "IA"
-        #     }
-        # }   
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b4\d{15}\b",
-        #         "mask": "[VISA16]",
-        #         "options": "IA"
-        #     }
-        # }   
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b\d{4}\b",
-        #         "mask": "[CVV4]",
-        #         "options": "IA"
-        #     }
-        # }   
-        # ,{
-        #     "type": "regex",
-        #     "parameters": {
-        #         "pattern": r"\b\d{3}\b",
-        #         "mask": "[CVV3]",
-        #         "options": "IA"
-        #     }
-        # }   
-        ]
-    }
+    }]
 }
 
 #### all settings above this line ####
@@ -299,12 +141,12 @@ def process_one_file(audio_fname):
     if not os.path.exists(output_path):
         os.mkdir(output_path)
 
-    asr_body["audio"]["source"]["dataStore"]["uuid"] = object_id
+    asr_body["audio"][0]["source"]["dataObjectUuid"] = object_id
 
     printTranscribeQueueStatus()
 
-    print("making asr request ...", flush=True)
-    asr_response_raw = requests.post("{}/asr/transcribe/async".format(host), json=asr_body, headers=headers)
+    print("making asr meeting request ...", flush=True)
+    asr_response_raw = requests.post("{}/asr/meeting".format(host), json=asr_body, headers=headers)
     start_time = time.time()
     if(asr_response_raw.status_code != 200):
         print("unexpected response code {} for asr request".format(asr_response_raw.status_code), flush=True)
@@ -312,17 +154,14 @@ def process_one_file(audio_fname):
         exit()
 
     asr_response = asr_response_raw.json()
-    session_id = asr_response["sessions"][0]["sessionId"]
-    polling_url = asr_response["sessions"][0]["poll"]["url"]
+    session_id = asr_response["meetingSessionId"]
+    print("asr response: {}".format(asr_response), flush=True)
+    polling_url = "TBD"
 
-#    print("sessionId: {}".format(session_id)) #, flush=True)
-#    print(" poll.url: {}".format(polling_url)) #, flush=True)
-
-    # printTranscribeQueueStatus()
 
     index = 0
     ## poll untill we have final result
-    while True:
+    while False:
         if(index == 0):
             #first
             print("no wait for first poll request")
@@ -411,25 +250,15 @@ def printTranscribeQueueStatus():
 
 print("START", flush=True)
 
-list_of_files = []
+name = os.path.join(inputFolder, inputFname)
+print("name: {}".format(name), flush=True)
 
-for root, dirs, files in os.walk(inputFolder):
-    for file in files:
-        maxFilesToProcess -= 1
-        if(maxFilesToProcess >= 0): 
-            list_of_files.append(os.path.join(root,file))
-
-print("files to test")
-for name in list_of_files:
-    print(name)
-
-for name in list_of_files:
+retry_after = process_one_file(name)
+while(retry_after >=0 ):
+    print("rate-limit hit - need to wait {} seconds".format(retry_after), flush=True)
+    time.sleep(retry_after)
+    print("will retry now", flush=True)
     retry_after = process_one_file(name)
-    while(retry_after >=0 ):
-        print("rate-limit hit - need to wait {} seconds".format(retry_after), flush=True)
-        time.sleep(retry_after)
-        print("will retry now", flush=True)
-        retry_after = process_one_file(name)
 
 
 print("THE END", flush=True)

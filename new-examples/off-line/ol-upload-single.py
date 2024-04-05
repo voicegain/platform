@@ -31,7 +31,10 @@ asr_body = {
     "sessions": [
         {
             "asyncMode": "OFF-LINE",
-            "audioChannelSelector" : "mix",
+            #"initialPrompt": "I am talking to a customer support agent.",
+            "audioChannelSelector" : "left",
+            #"initialPrompt": "I am a support Agent talking to a customer.",
+            #"audioChannelSelector" : "right",
             "poll": {
                 # will delete the session after 1 minute
                 #"afterlife": 60000
@@ -66,32 +69,32 @@ asr_body = {
             #  "maxSpeakers" : 2
             #}
         }
-        ,"formatters" : [
-        {
-            "type": "digits"
-        }
+        # ,"formatters" : [
+        # {
+        #     "type": "digits"
+        # }
         # ,{
         #     "type": "basic",
         #     "parameters": {"enabled": "true"}
         # },
-        , {
-            "type": "enhanced",
-            "parameters": {
-                "CC": True,
-                "SSN": True,
-                "URL": True,
-                "PHONE": True,
-                "EMAIL": True
-            }
-        }
-        , {
-            "type": "profanity",
-            "parameters": {"mask": "partial"}
-        }
-        ,{
-            "type": "spelling",
-            "parameters": {"lang": "en-US"}
-        }
+        # , {
+        #     "type": "enhanced",
+        #     "parameters": {
+        #         "CC": True,
+        #         "SSN": True,
+        #         "URL": True,
+        #         "PHONE": True,
+        #         "EMAIL": True
+        #     }
+        # }
+        # , {
+        #     "type": "profanity",
+        #     "parameters": {"mask": "partial"}
+        # }
+        # ,{
+        #     "type": "spelling",
+        #     "parameters": {"lang": "en-US"}
+        # }
         # ,{
         #     "type": "redact",
         #     "parameters": {
@@ -200,7 +203,7 @@ asr_body = {
         #         "options": "IA"
         #     }
         # }   
-        ]
+        #]
     }
 }
 

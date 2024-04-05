@@ -1,3 +1,13 @@
+## Release 1.101.1
+
+New or changed functionality:
+* BE-1877: Enable VAD on Whisper
+* BE-1886: Make node affinity configurable in offline-whisper
+* BE-1889: Deploy whisper model to the edge cluster without internet connection
+* BE-1938: Initial whisper prompt to ensure punctuation is generated  
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.101.0
 
 IMPORTANT Note for Edge users: 

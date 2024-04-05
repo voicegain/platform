@@ -1,4 +1,14 @@
-### Minor release 1.101.0 is scheduled for 3/25/2024 between 6:00pm and 10:00pm CST
+### Minor release 1.101.1 is scheduled for 4/4/2024 between 5:00pm and 7:00pm CDT
+
+New or changed functionality:
+* BE-1877: Enable VAD on Whisper
+* BE-1886: Make node affinity configurable in offline-whisper
+* BE-1889: Deploy whisper model to the edge cluster without internet connection
+* BE-1938: Initial whisper prompt to ensure punctuation is generated  
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+### Minor release 1.101.0 is scheduled for 3/25/2024 between 6:00pm and 10:00pm CDT
 
 IMPORTANT Note for Edge users: 
 If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 

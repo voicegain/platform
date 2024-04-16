@@ -34,6 +34,8 @@ New or changed functionality in other platform components:
 * BE-1896	Web Console: Switch Telephony Bot Call Audio+Transcript view from old /sa to new /sa/offline style
 * BE-1928	Web Console: Add configuration for multiple URLs to AIVR App Settings
 * BE-1929	Web Console: Add support for logic event in AIVR session
+* BE-857	Add `key-match` option to Query Terms in Advanced Search
+* BE-858	Add `key` field to Query Term in Advanced Search
 * BE-1150	Implement Offline SA Task in offline task project (Python)
 * BE-1406	Improvements to prvention of SQL injection in the Advanced Meeting Search API
 * BE-1514	Add to each of our API methods optional X-Request-ID header
@@ -70,8 +72,7 @@ New or changed functionality in other platform components:
 * BE-1959	Report license expiration time in edge-debugger
 * BE-1983	Improve the efficiency of relation extraction algorithm for IVR Prompt NLU to support long input
 * BE-506	Support removing objects with multiple versions in Google Storage
-* BE-857	Add `key-match` option to Query Terms in Advanced Search
-* BE-858	Add `key` field to Query Term in Advanced Search
+* BE-2019   Modify sip settings of unimrcp server
 
 Changes related to Integrity of Processing (fixes):
 * BE-1585	TA: Inspect all cases of using "dangerouslySetInnerHTML"

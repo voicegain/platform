@@ -21,7 +21,7 @@ inputFile = cfg.get("DEFAULT", "INPUTFILE")
 
 inputFilePath = f"{inputFolder}/{inputFile}"
 
-sampleRate = 8000
+sampleRate = 48000
 channels = 2
 bytesPerSample = 2
 
@@ -83,14 +83,15 @@ body = {
             "acousticModelRealTime" : acousticModelRealTime,
             "noInputTimeout": 59999,
             "incompleteTimeout": 3599999,
-            "sensitivity": 0.4,
-            "hints": [
-                "Starburst:10",
-                "Mars_Wrigley:10",
-                "contacting:8",
-                "Mars_Consumer_Care:10",
-                "mints:8"
-            ]
+            "sensitivity": 0.4
+            # ,
+            # "hints": [
+            #     "Starburst:10",
+            #     "Mars_Wrigley:10",
+            #     "contacting:8",
+            #     "Mars_Consumer_Care:10",
+            #     "mints:8"
+            # ]
         },
         "formatters": [
             {
@@ -227,7 +228,7 @@ async def stream_audio(file_name, websocket):
       print(str(datetime.datetime.now())+" connected", flush=True)
       global startTime
       startTime = time.time()
-      n_buf = 1 * 1024
+      n_buf = 2 * 1024
       byte_buf = f.read(n_buf)
       start = time.time()
       epoch_start_audio_stream = start
@@ -271,7 +272,8 @@ async def main():
     
     async with websockets.connect(uri, 
       # we need to lower the buffer size - otherwise the sender will buffer for too long
-      write_limit=128, 
+#      write_limit=128, 
+      write_limit=2048, 
       # compression needs to be disabled otherwise will buffer for too long
       compression=None) as websocket:
         

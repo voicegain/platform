@@ -2,6 +2,54 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### April 16, 2024
+
+**Key changes**
+* Cloud version uses whisper:small for English (it already used whisper:medium for foreign languages)
+* Generating just one Action Items table per entire transcript instead of one per Section.
+* Fixed errors in PDF and DOCX generation for some meetings
+
+New:
+* BE-1595	TA: Improve the User Edit Dialog - project selection
+* BE-1699	TA: Better message if there are no other users on the Project
+* BE-1870	TA: Improve the User Delete dialog
+* BE-1871	TA: Make the Avatar icons larger
+* BE-1881	TA: Display Release Version in the app.
+* BE-1893	TA: Upload Zoom files using POST/data/s3 API
+* BE-1913	TA: Add option to copy session id to Clipboard
+* BE-1936	TA: Add browser client info to login request
+* BE-1975	TA Cloud: Enable whisper:small on English language
+* QA-1036	TA: Show allowed characters when entering a tag
+* QA-1041	TA: Added 365 days time limit for expiry of shared transcript.
+* QA-1089	TA: Added sorting by email to Users table
+
+Fixes:
+* BE-1585	TA: Inspect all cases of using "dangerouslySetInnerHTML"
+* BE-1724	TA: Fix - SyntaxError: The string did not match the expected pattern, during fetchVersion in AppReloadModal
+* BE-1725	TA: Fix - TypeError: Failed to fetch version.json
+* BE-1727	TA: Fix - TypeError: c is not a function at handleDelete in components/ProjectsList/DeleteMultiSelectDialog
+* BE-1835	TA: Fix - Try Again button has no effect after a failed upload
+* BE-1841	TA: Fix - Unable to select audio files for upload on iPad
+* BE-1857	TA: Fix - Generated Avatar not working ok for single user account where use has no avatar picture uploaded
+* BE-1932	TA: Fix - Bad content security policy for GlitchTip
+* BE-1937	TA: Fix - After logging in, the home page initially loads but then suddenly goes blank
+* BE-1941	TA: Fix - TypeError: Cannot read properties of undefined (reading 'includes')
+* BE-1945	TA: Fix - TypeError: Cannot read properties of undefined (reading 'value') on Settings page
+* QA-1027	TA: Fix - Close Icon is missing on "Pair Voicegain Phone App" pop up
+* QA-1031	TA: Fix - User is able to set value above 365 days on Archival Text Redaction.
+* QA-1039	TA: Fix - User is able to set blank or invalid names as external speakers names.
+* QA-1044	TA: Fix - bad link in the guide
+* QA-1069   TA: Fix - Errors in PDF and DOCX generation for some meetings
+* QA-1083	TA: Fix - Inconsistent Upload success message on upload page
+* QA-1088	TA: Fix - Sorting indicators are broken for the Owned Projects and Shared Projects
+* QA-1092	TA: Fix - Projects with same names getting automatically selected in Advanced Search project filter.
+* QA-1093	TA: Fix - Player disappear when user clicks on anywhere near to the play button.
+* QA-1100	TA: Fix - Assigning a role for invited user should be a must required filed.
+* QA-1113	TA: Fix - Do not allow a tag with only underscores 
+* QA-1114	TA: Fix back button from transcript opened from Advanced Search results
+* QA-641	TA: Fix - Account Owner should be irremovable for any the project under Account Users.
+* QA-800	TA: Improve behavior of resize on browser-share pop-up window
+
 ### March 25, 2024
 
 **Key changes**
@@ -11,7 +59,8 @@ If you encounter any problems, just give us a shout at [support@voicegain.ai](ma
 * Upload audio data directly to storage without sending data through data API service
 * Improved tables with lists of Shared transcripts (User and Admin view)
 
-New f* BE-1189	TA: Add option for Admins to see what others have shared
+New: 
+* BE-1189	TA: Add option for Admins to see what others have shared
 * BE-1271	TA: Support a workflow for the Admin to delete a user account and take over the user's project
 * BE-1536	TA: Improved Splash page after login which shows the different stages
 * BE-1646	TA: If there are no devices we show 2 options: download and phone app setup

@@ -1,4 +1,126 @@
-### Minor release 1.101.1 is scheduled for 4/4/2024 between 5:00pm and 7:00pm CDT
+### Minor release 1.102.0 is scheduled for 4/16/2024 between 6:00pm and 10:00pm CDT
+
+**Key changes related to the core APIs**
+* MRCP ASR no supports GARBAGE grammars (Nuance syntax)
+* Removal of Prompt Manager in Web Console - not used due to popularity of TTS
+* /sa/offline API is now available in beta - this is for Offline Transcription and Speech Analytics
+* Telephony Bot API supports A/B testing using multiple logic URLs
+* Improvements to accuracy of the whisper model
+
+**Key changes related to Transcribe APP**
+* Cloud version uses whisper:small for English (it already used whisper:medium for foreign languages)
+* Generating just one Action Items table per entire transcript instead of one per Section.
+* Fixed errors in PDF and DOCX generation for some meetings
+
+New or changed functionality in the Transcribe App:
+* BE-1595	TA: Improve the User Edit Dialog - project selection
+* BE-1699	TA: Better message if there are no other users on the Project
+* BE-1870	TA: Improve the User Delete dialog
+* BE-1871	TA: Make the Avatar icons larger
+* BE-1881	TA: Display Release Version in the app.
+* BE-1893	TA: Upload Zoom files using POST/data/s3 API
+* BE-1913	TA: Add option to copy session id to Clipboard
+* BE-1936	TA: Add browser client info to login request
+* BE-1975	TA Cloud: Enable whisper:small on English language
+* QA-1036	TA: Show allowed characters when entering a tag
+* QA-1041	TA: Added 365 days time limit for expiry of shared transcript.
+* QA-1089	TA: Added sorting by email to Users table
+
+New or changed functionality in other platform components:
+* BE-1842	Web Console: Changes to API Security setting
+* BE-1843	Web Console: Better text in Settings -> Speech Recognition
+* BE-1844	Web Console: Hide Tools-> Prompt Manager menu option
+* BE-1882	Web Console: Display Release Version in the app.
+* BE-1896	Web Console: Switch Telephony Bot Call Audio+Transcript view from old /sa to new /sa/offline style
+* BE-1928	Web Console: Add configuration for multiple URLs to AIVR App Settings
+* BE-1929	Web Console: Add support for logic event in AIVR session
+* BE-1150	Implement Offline SA Task in offline task project (Python)
+* BE-1406	Improvements to prvention of SQL injection in the Advanced Meeting Search API
+* BE-1514	Add to each of our API methods optional X-Request-ID header
+* BE-1550	Freeswitch: discontinue using modified mod_shout file
+* BE-1560	Update Freeswitch to use latest Debian 12
+* BE-1579	Collect session_duration for realtime ASR sessions
+* BE-1718	Implement POST /sa/offline/call/{callId}
+* BE-1719	Implement POST /sa/call
+* BE-1742	Mobile: Add extra parameter to /asr/transcribe/async request used in Microphone transcription
+* BE-1788	Switch AIVR recording processing from /sa to /sa/offline
+* BE-1789	AIVR to create /sa/call records if requested
+* BE-1816	As of Redis version 6.2.0, ZRANGEBYSCORE is regarded as deprecated
+* BE-1828	Add roles parameter to GET /user API method
+* BE-1848	(Demo-Voicebot) Convert voicebot demo details view to use /sa/offline
+* BE-1861	MRCP ASR: Add support for GARBAGE rule
+* BE-1862	Add initialPrompt to POST /asr/transcribe/async
+* BE-1867	For some internal APIs - ignore unknown fields, and not return 400 error, instead return X-Warning header
+* BE-1883	SSO: Display Release Version in authentication-client app.
+* BE-1884	Demo: Display Release Version in the app.
+* BE-1888	Add X-Request-ID to all API requests from all Web Apps
+* BE-1891	Support llm-svc rolling deployment -- websocket sessions
+* BE-1903	Add version field to the AIVR session
+* BE-1904	Store the GCP service account key in edge cluster document in firestore
+* BE-1908	Add read-only offlineQueuePriority field to Account
+* BE-1910	Support POST /auth-svc/zendesk/jwt
+* BE-1912	Increase the size of concurrent websocket connections in asr-api
+* BE-1914	Add Client Params to the login API
+* BE-1919	Add numAudioChannels and numSpkChannels to POST /sa/call and GET
+* BE-1927	Add support for multiple call-back URL in AIVR App
+* BE-1940	Use default init prompt on Whisper if initPrompt is not set
+* BE-1942	In Meeting API, generate action items from entire meeting transcript
+* BE-1944	Add keySentencesByType to PUT /internal/asr/meeting/{meetingId}
+* BE-1956	Admin Tool: Add support for login using 2FA
+* BE-1959	Report license expiration time in edge-debugger
+* BE-1983	Improve the efficiency of relation extraction algorithm for IVR Prompt NLU to support long input
+* BE-506	Support removing objects with multiple versions in Google Storage
+* BE-857	Add `key-match` option to Query Terms in Advanced Search
+* BE-858	Add `key` field to Query Term in Advanced Search
+
+Changes related to Integrity of Processing (fixes):
+* BE-1585	TA: Inspect all cases of using "dangerouslySetInnerHTML"
+* BE-1724	TA: Fix - SyntaxError: The string did not match the expected pattern, during fetchVersion in AppReloadModal
+* BE-1725	TA: Fix - TypeError: Failed to fetch version.json
+* BE-1727	TA: Fix - TypeError: c is not a function at handleDelete in components/ProjectsList/DeleteMultiSelectDialog
+* BE-1835	TA: Fix - Try Again button has no effect after a failed upload
+* BE-1841	TA: Fix - Unable to select audio files for upload on iPad
+* BE-1857	TA: Fix - Generated Avatar not working ok for single user account where use has no avatar picture uploaded
+* BE-1932	TA: Fix - Bad content security policy for GlitchTip
+* BE-1937	TA: Fix - After logging in, the home page initially loads but then suddenly goes blank
+* BE-1941	TA: Fix - TypeError: Cannot read properties of undefined (reading 'includes')
+* BE-1945	TA: Fix - TypeError: Cannot read properties of undefined (reading 'value') on Settings page
+* QA-1027	TA: Fix - Close Icon is missing on "Pair Voicegain Phone App" pop up
+* QA-1031	TA: Fix - User is able to set value above 365 days on Archival Text Redaction.
+* QA-1039	TA: Fix - User is able to set blank or invalid names as external speakers names.
+* QA-1044	TA: Fix - bad link in the guide
+* QA-1069   TA: Fix - Errors in PDF and DOCX generation for some meetings
+* QA-1083	TA: Fix - Inconsistent Upload success message on upload page
+* QA-1088	TA: Fix - Sorting indicators are broken for the Owned Projects and Shared Projects
+* QA-1092	TA: Fix - Projects with same names getting automatically selected in Advanced Search project filter.
+* QA-1093	TA: Fix - Player disappear when user clicks on anywhere near to the play button.
+* QA-1100	TA: Fix - Assigning a role for invited user should be a must required filed.
+* QA-1113	TA: Fix - Do not allow a tag with only underscores 
+* QA-1114	TA: Fix back button from transcript opened from Advanced Search results
+* QA-641	TA: Fix - Account Owner should be irremovable for any the project under Account Users.
+* QA-800	TA: Improve behavior of resize on browser-share pop-up window
+* BE-1703	Web Console: Fix - Wrong error message in GREG
+* BE-1869	Web Console Edge: Fix - failed to decode request body: organization name \"api_test\" not found"
+* BE-1872	Web Console: Fix - TypeError: Cannot read properties of undefined (reading 'ac')
+* BE-1920	Web Console: Fix - Loss of filtering info in AIVR view
+* BE-1943	Web Console: Fix - context switcher does not correctly support duplicate-named project
+* BE-1962	Web Console: Fix -  Error on Edge management page (properties of undefined)
+* QA-997	Web Console: Fix - Transcript is not getting skip by specified seconds as expected and onClick function is also not a function as in console tab.
+* QA-1086	Web Console: Only CMP users may modify CMP permissions
+* QA-1063	App Selector: Fix - Language selector should not be transparent.
+* QA-1066	SA: Fix - User is unable to change profile photo
+* BE-1478	Fix - Failed to execute 'decodeAudioData' on 'BaseAudioContext': Unable to decode audio data
+* BE-1840	Fix - PUT /sa/call/review/answers/{crAnswersId} Spec and Implementation are different
+* BE-1854	Fix - AIVR - prompt playback of audio from http url not working
+* BE-1902	Fix - llm-svc does not handle SIGTERM properly
+* BE-1907	Fix - uuid_vg_tap_ws at CLI not showing UUIDs to be started
+* BE-1925	Fix - AIVR playback of audio from an HTTPs URL stops after 30 seconds
+* BE-1999	Fix - Exception in case of many failed logins
+* BE-926	Fix - EqTerm is not properly handled in meeting search for some fields
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+### Maintenance release 1.101.1 is scheduled for 4/4/2024 between 5:00pm and 7:00pm CDT
 
 New or changed functionality:
 * BE-1877: Enable VAD on Whisper
@@ -745,53 +867,4 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-
-### Maintenance release 1.91.1 is scheduled for 10/3/2023 between 3pm and 6pm CST
-
-Changes:
-* BE-1013  Log invalid patterns found in RegexFormatters instead of throwing exceptions
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Minor release 1.91.0 is scheduled for 9/30/2023 between 5pm and 9pm CST
-
-New functionality in the Transcribe App:
-* BE-71	Transcribe App: Show Meeting VIdeo
-* BE-709	Transcribe App: New meeting submitted by ZoomMA shows up on the home page automatically
-* BE-886	Transcribe App: Support new guides for Zoom Meeting Assistant Use
-* BE-961	Transcribe App: Remove Recompute button from Project settings - we can now select multiple Transcripts and recompute them
-* BE-975	Transcribe App: Save latest project opened by a user in clientSideProperties
-* BE-977	Transcribe App: Show Project info on the list of Shares
-* BE-986	Transcribe App: Re-enable API Security settings
-* BE-990	Transcribe App: Show Privacy Policy same way we show Terms of Service
-
-New functionality in other platform components:
-* BE-739	Web Console: Log audit events
-* BE-778	In /ASR/meeting API add ability to upload meeting video and chat
-* BE-819	New Kappa Real-TIme model trained on IVR data
-* BE-901	Support more than one JWT per context
-* BE-925	Prepare fluentbit configuration for writing audit log to Grafana Loki
-* BE-945	Web Console: Show description for Edge Configurations
-* BE-946	Web Console: Show Model and Language information in the Context Dash
-* BE-956	Web Console: In Context Settings support multiple JWT
-* BE-987	Web Console: Change the text about available languages (now that we support Whisper)
-* BE-989	Web Console: Show privacy policy similar to how we show terms of service
-* BE-992	Handle MPD files in SegmentTemplate format
-* QA-490	Web Console (Edge): Launch Cloud Console in new tab
-* QA-516	App Selector: Update features list now that we have Video support
-
-Changes related to Integrity of Processing (fixes):
-* BE-855	Web Console: Fixed transcript download in Transcribe+
-* BE-969	Web Console: Fix weird layout in Telephony App settings
-* BE-983	Fixed: REX tries to reserve Whisper model when diarization enabled
-* QA-310	Transcribe App: Fixed - Features and Usage are not being translated in selected language instead of English language
-* QA-467	Transcribe App: Fixed - Taking any URL as audio URL.
-* QA-505	Transcribe App: Fixed - Mouse hovering on the upload/ upload type always showing microphone recording.
-* QA-510	Transcribe App: Fixed - Editing any shared link changing its scope to public.
-* QA-511	Transcribe App: Fixed - After audio finish play icon should be paused.
-* QA-514	Transcribe App: Fixed - Hindi translation is on Recomputing the multiple transcription
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-Upload of video to the Transcribe App requires Voicegain Zoom Meeting Assistant version 1.2.1 or higher.
 

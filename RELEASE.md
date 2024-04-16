@@ -1,7 +1,7 @@
 ## Release 1.102.0
 
 **Key changes related to the core APIs**
-* MRCP ASR no supports GARBAGE grammars (Nuance syntax)
+* MRCP ASR now supports GARBAGE grammars (Nuance syntax)
 * Removal of Prompt Manager in Web Console - not used due to popularity of TTS
 * /sa/offline API is now available in beta - this is for Offline Transcription and Speech Analytics
 * Telephony Bot API supports A/B testing using multiple logic URLs

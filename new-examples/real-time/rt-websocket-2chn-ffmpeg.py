@@ -16,13 +16,17 @@ hostPort = cfg.get(configSection, "HOSTPORT")
 JWT = cfg.get(configSection, "JWT")
 urlPrefix = cfg.get(configSection, "URLPREFIX")
 inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
+outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 inputFile = cfg.get("DEFAULT", "INPUTFILE")
 
 inputFilePath = f"{inputFolder}/{inputFile}"
 
+vgFormat = "PCMU"
+ffmpegFormat = "mulaw"
+#ffmpegFormat = "s16le"
 sampleRate = 8000
 channels = 2
-bytesPerSample = 2
+bytesPerSample = 1
 
 sendingWSProtocol = "WSS"
 #sendingWSProtocol = "WEBSOCKET"
@@ -37,6 +41,7 @@ acousticModelRealTime = "VoiceGain-kappa"
 
 session_id_left = ""
 session_id_right = ""
+capturedAudio = ""
 
 channelOfLastWordReceived = ""
   
@@ -82,8 +87,8 @@ body = {
                      "noAudioTimeout": 65000
                      },                             
                   },
-        "format": "L16",
-        "channels": "stereo",
+        "format": vgFormat,
+        "channels": "stereo" if channels == 2 else "mono",
         "rate": sampleRate,
         "capture": 'true'
     },
@@ -92,15 +97,16 @@ body = {
             "acousticModelRealTime" : acousticModelRealTime,
             "noInputTimeout": 59999,
             "incompleteTimeout": 3599999,
-            "sensitivity": 0.4,
-            "hints": [
-                "Starburst:10",
-                "Mars_Wrigley:10",
-                "contacting:8",
-                "Mars_Consumer_Care:10",
-                "mints:8"
-                "ezCater:10",
-            ]
+            "sensitivity": 0.4
+            # ,
+            # "hints": [
+            #     "Starburst:10",
+            #     "Mars_Wrigley:10",
+            #     "contacting:8",
+            #     "Mars_Consumer_Care:10",
+            #     "mints:8"
+            #     "ezCater:10",
+            # ]
         },
         "formatters": [
             {
@@ -147,7 +153,7 @@ def web_api_request(headers, body):
 
   # retrieve values from response
   # sessionId and capturedAudio are printed for debugging purposes
-  global session_id_left, session_id_right
+  global session_id_left, session_id_right, capturedAudio
   session_id_left = init_response["sessions"][0]["sessionId"]
   session_id_right = init_response["sessions"][1]["sessionId"]
   ws_url_left = init_response["sessions"][0]["websocket"]["url"]
@@ -247,7 +253,7 @@ async def stream_audio(file_name, audio_ws_url):
   ff = FFmpeg(
       inputs={file_name: []},
       #outputs={conv_fname : ['-ar', '8000', '-f', 'mulaw', '-y']}
-      outputs={conv_fname : ['-ar', str(sampleRate), '-f', 's16le', '-y']}
+      outputs={conv_fname : ['-ar', str(sampleRate), '-f', ffmpegFormat, '-y']}
   )
   ff.cmd
   ff.run()
@@ -282,7 +288,7 @@ async def stream_audio(file_name, audio_ws_url):
 
         global startTime
         startTime = time.time()
-        n_buf = 128 #1 * 1024
+        n_buf = 512 #1 * 1024
         byte_buf = f.read(n_buf)
         start = time.time()
         epoch_start_audio_stream = start
@@ -412,6 +418,20 @@ def process_audio(file_name):
   print("waiting for receiving websocket threads to join", flush=True)
   threadWsLeft.join()
   threadWsRight.join()
+
+  print("downloading captured audio", flush=True)
+
+  time.sleep(2)
+  print("done sleeping", flush=True)
+
+  if( not(capturedAudio is None or capturedAudio == "")):
+    url = "{}://{}/{}/data/{}/file".format(protocol, hostPort, urlPrefix, capturedAudio)
+    print(f"making GET request to {url}", flush=True)
+    audio_response = requests.get(url, headers=headers)
+    with open(f"{file_name}-captured.wav", "wb") as f:
+      f.write(audio_response.content)
+    print(f"downloaded captured audio to {file_name}-captured.wav", flush=True)
+
   print(f"END processing: {file_name}")
 
 ## end of function and variable definitions

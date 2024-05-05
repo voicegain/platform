@@ -1,6 +1,7 @@
 """
 pip install ffmpy
 """
+## using ffmpeg to convert audio files to 16-bit 8kHz or 16kHz mono PCM needed for synchronous ASR recognition
 from ffmpy import FFmpeg
 import requests, time, os, json, re, base64
 
@@ -21,8 +22,15 @@ temp_path = output_path+"/temp"
 
 sampleRate = 8000
 
-#acousticModelRealTime = "VoiceGain-rho-en-us"
+## BTW, for synchronous recognition the model latency is not important
+
+## rho is the fastest (lowest latency) but least accurate
 #acousticModelRealTime = "VoiceGain-rho"
+
+## intermediate model
+#acousticModelRealTime = "VoiceGain-rho-en-us"
+
+## kappa is most accurate byt also has the longest latency
 acousticModelRealTime = "VoiceGain-kappa"
 
 headers = {"Authorization":JWT}
@@ -33,7 +41,7 @@ headers = {"Authorization":JWT}
 ## 2) output for the output (output is also written to stdout)
 
 
-## simple digit + yes/no grammar included inline
+## GRXML grammar downloaded from a URL
 asr_body = {
     "audio":{
         "source": {
@@ -58,7 +66,6 @@ asr_body = {
                     }
                 }
             ],
-            "speechContext" : "normal",
             "noInputTimeout": 6000,
             "completeTimeout": 2000,
             "incompleteTimeout" : 5000,
@@ -72,10 +79,11 @@ asr_body = {
     }
 }
 
-## use to store transcoded input files
+
 if not os.path.exists(output_path):
     os.mkdir(output_path)
 
+## use to store transcoded input files
 if not os.path.exists(temp_path):
     os.mkdir(temp_path)
 
@@ -87,7 +95,7 @@ output_path = output_path+"/output-{}".format(time.strftime("%Y-%m-%d_%H-%M-%S")
 if not os.path.exists(output_path):
     os.mkdir(output_path)
 
-headers = {"Authorization":JWT}
+
 
 def getListOfFiles(dirName):
     # create a list of file and sub directories 
@@ -114,6 +122,7 @@ def process_one_file(audio_fname):
 
     global results
 
+    ## convert audio file to 16-bit 8 or 16kHz PCM
     conv_fname = temp_path+"/{}.wav".format(fname)
     ff = FFmpeg(
         inputs={audio_fname: []},

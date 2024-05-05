@@ -26,3 +26,5 @@ https://github.com/voicegain/platform/tree/master/examples/grammars
 ### sync-reco-grxml-url-en.py
 
 Uses synchronous /asr/recognize API which returns recognition result in the response.
+
+**Note**, the first run will be slower, in particular when using a large grammar, because the grammar needs to be compiled. Subsequent runs will use a compiled grammar from a grammar cache.

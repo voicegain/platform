@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" version="1.0" xml:lang="en-US" tag-format="semantics/1.0" root="ROOT">
+   <rule id="ROOT">
+      <one-of>
+         <item>
+            <ruleref uri="#zip" />
+            <tag>out.zip=rules.zip.zip;</tag>
+         </item>
+         <item>
+            <ruleref uri="#repeat" />
+            <tag>out.universal="repeat";</tag>
+         </item>
+         <item>
+            <ruleref uri="#agent" />
+            <tag>out.universal="agent";</tag>
+         </item>
+         <item>
+            <ruleref uri="#wait" />
+            <tag>out.universal="wait";</tag>
+         </item>
+         <item>
+            <ruleref uri="#garbage" />
+            <tag>out.__garbage__=true</tag>
+         </item>
+      </one-of>
+   </rule>
+   <rule id="zip">
+      <item repeat="0-1">
+         <ruleref uri="#prefix" />
+      </item>
+      <one-of>
+         <item>
+            <!-- 1 2 3 4 5 -->
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d1=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d2=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d3=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d4=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d5=rules.singleDigit.d;</tag>
+            </item>
+         </item>
+         <item>
+            <!-- 1 2 3 45 -->
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d1=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d2=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d3=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#doubleDigit" />
+               <tag>out.d4=rules.doubleDigit.dd1; out.d5=rules.doubleDigit.dd2;</tag>
+            </item>
+         </item>
+         <item>
+            <!-- 1 2 34 5 -->
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d1=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d2=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#doubleDigit" />
+               <tag>out.d3=rules.doubleDigit.dd1; out.d4=rules.doubleDigit.dd2;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d5=rules.singleDigit.d;</tag>
+            </item>
+         </item>
+         <item>
+            <!-- 1 23 4 5 -->
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d1=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#doubleDigit" />
+               <tag>out.d2=rules.doubleDigit.dd1; out.d3=rules.doubleDigit.dd2;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d4=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d5=rules.singleDigit.d;</tag>
+            </item>
+         </item>
+         <item>
+            <!-- 12 3 4 5 -->
+            <item>
+               <ruleref uri="#doubleDigit" />
+               <tag>out.d1=rules.doubleDigit.dd1; out.d2=rules.doubleDigit.dd2;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d3=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d4=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d5=rules.singleDigit.d;</tag>
+            </item>
+         </item>
+         <item>
+            <!-- 1 23 45 -->
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d1=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#doubleDigit" />
+               <tag>out.d2=rules.doubleDigit.dd1; out.d3=rules.doubleDigit.dd2;</tag>
+            </item>
+            <item>
+               <ruleref uri="#doubleDigit" />
+               <tag>out.d4=rules.doubleDigit.dd1; out.d5=rules.doubleDigit.dd2;</tag>
+            </item>
+         </item>
+         <item>
+            <!-- 12 3 45 -->
+            <item>
+               <ruleref uri="#doubleDigit" />
+               <tag>out.d1=rules.doubleDigit.dd1; out.d2=rules.doubleDigit.dd2;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d3=rules.singleDigit.d;</tag>
+            </item>
+            <item>
+               <ruleref uri="#doubleDigit" />
+               <tag>out.d4=rules.doubleDigit.dd1; out.d5=rules.doubleDigit.dd2;</tag>
+            </item>
+         </item>
+         <item>
+            <!-- 12 34 5 -->
+            <item>
+               <ruleref uri="#doubleDigit" />
+               <tag>out.d1=rules.doubleDigit.dd1; out.d2=rules.doubleDigit.dd2;</tag>
+            </item>
+            <item>
+               <ruleref uri="#doubleDigit" />
+               <tag>out.d3=rules.doubleDigit.dd1; out.d4=rules.doubleDigit.dd2;</tag>
+            </item>
+            <item>
+               <ruleref uri="#singleDigit" />
+               <tag>out.d5=rules.singleDigit.d;</tag>
+            </item>
+         </item>
+      </one-of>
+      <tag>out.zip=out.d1+out.d2+out.d3+out.d4+out.d5;</tag>
+   </rule>
+   <rule id="prefix">
+      <item repeat="0-1">the</item>
+      <one-of>
+         <item>zip</item>
+         <item>zip code</item>
+      </one-of>
+      <item>is</item>
+   </rule>
+   <rule id="singleDigit">
+      <one-of>
+         <item>
+            <one-of>
+               <item>zero</item>
+               <item>oh</item>
+            </one-of>
+            <tag>out.d="0";</tag>
+         </item>
+         <item>
+            <item>one</item>
+            <tag>out.d="1";</tag>
+         </item>
+         <item>
+            <item>two</item>
+            <tag>out.d="2";</tag>
+         </item>
+         <item>
+            <item>three</item>
+            <tag>out.d="3";</tag>
+         </item>
+         <item>
+            <item>four</item>
+            <tag>out.d="4";</tag>
+         </item>
+         <item>
+            <item>five</item>
+            <tag>out.d="5";</tag>
+         </item>
+         <item>
+            <item>six</item>
+            <tag>out.d="6";</tag>
+         </item>
+         <item>
+            <item>seven</item>
+            <tag>out.d="7";</tag>
+         </item>
+         <item>
+            <item>eight</item>
+            <tag>out.d="8";</tag>
+         </item>
+         <item>
+            <item>nine</item>
+            <tag>out.d="9";</tag>
+         </item>
+      </one-of>
+   </rule>
+   <rule id="doubleDigit">
+      <one-of>
+         <item>
+            <!-- E.g. "ten", "eleven", "twelve", "thirteen", ..., "nineteen" -->
+            <ruleref uri="#teens" />
+            <tag>out.dd1=rules.teens.dd1; out.dd2=rules.teens.dd2;</tag>
+         </item>
+         <item>
+            <!-- E.g. "twenty one", "forty two", "ninety nine" -->
+            <ruleref uri="#tensPlace" />
+            <ruleref uri="#singleDigit" />
+            <tag>out.dd1=rules.tensPlace.tensPlace; out.dd2=rules.singleDigit.d</tag>
+         </item>
+      </one-of>
+   </rule>
+   <rule id="teens">
+      <one-of>
+         <item>
+            <item>eleven</item>
+            <tag>out.dd1="1"; out.dd2="1";</tag>
+         </item>
+         <item>
+            <item>twelve</item>
+            <tag>out.dd1="1"; out.dd2="2";</tag>
+         </item>
+         <item>
+            <item>thirteen</item>
+            <tag>out.dd1="1"; out.dd2="3";</tag>
+         </item>
+         <item>
+            <item>fourteen</item>
+            <tag>out.dd1="1"; out.dd2="4";</tag>
+         </item>
+         <item>
+            <item>fifteen</item>
+            <tag>out.dd1="1"; out.dd2="5";</tag>
+         </item>
+         <item>
+            <item>sixteen</item>
+            <tag>out.dd1="1"; out.dd2="6";</tag>
+         </item>
+         <item>
+            <item>seventeen</item>
+            <tag>out.dd1="1"; out.dd2="7";</tag>
+         </item>
+         <item>
+            <item>eighteen</item>
+            <tag>out.dd1="1"; out.dd2="8";</tag>
+         </item>
+         <item>
+            <item>nineteen</item>
+            <tag>out.dd1="1"; out.dd2="9";</tag>
+         </item>
+      </one-of>
+   </rule>
+   <rule id="tensPlace">
+      <one-of>
+         <item>
+            <item>twenty</item>
+            <tag>out.tensPlace="2";</tag>
+         </item>
+         <item>
+            <item>thirty</item>
+            <tag>out.tensPlace="3";</tag>
+         </item>
+         <item>
+            <item>forty</item>
+            <tag>out.tensPlace="4";</tag>
+         </item>
+         <item>
+            <item>fifty</item>
+            <tag>out.tensPlace="5";</tag>
+         </item>
+         <item>
+            <item>sixty</item>
+            <tag>out.tensPlace="6";</tag>
+         </item>
+         <item>
+            <item>seventy</item>
+            <tag>out.tensPlace="7";</tag>
+         </item>
+         <item>
+            <item>eighty</item>
+            <tag>out.tensPlace="8";</tag>
+         </item>
+         <item>
+            <item>ninety</item>
+            <tag>out.tensPlace="9";</tag>
+         </item>
+      </one-of>
+   </rule>
+   <rule id="repeat">
+      <item>
+         <one-of>
+            <item>
+               <item>repeat</item>
+            </item>
+            <item>
+               <item>please</item>
+               <item>repeat</item>
+            </item>
+            <item>
+               <item>repeat</item>
+               <item>please</item>
+            </item>
+            <item>
+               <item repeat="0-1">please</item>
+               <item>
+                  <one-of>
+                     <item>
+                        <item>repeat</item>
+                     </item>
+                     <item>
+                        <item>ripeet</item>
+                     </item>
+                     <item>
+                        <item>reepit</item>
+                     </item>
+                     <item>
+                        <item>reepeet</item>
+                     </item>
+                  </one-of>
+               </item>
+               <item repeat="0-1">again</item>
+            </item>
+            <item>
+               <item>
+                  <one-of>
+                     <item>
+                        <item>repeat</item>
+                     </item>
+                     <item>
+                        <item>ripeet</item>
+                     </item>
+                     <item>
+                        <item>reepit</item>
+                     </item>
+                     <item>
+                        <item>reepeet</item>
+                     </item>
+                  </one-of>
+               </item>
+               <item repeat="0-1">again</item>
+               <item>please</item>
+            </item>
+            <item>
+               <item>
+                  <one-of>
+                     <item>
+                        <item>could</item>
+                     </item>
+                     <item>
+                        <item>can</item>
+                     </item>
+                  </one-of>
+               </item>
+               <item>you</item>
+               <item repeat="0-1">please</item>
+               <item>
+                  <one-of>
+                     <item>
+                        <item>repeat</item>
+                     </item>
+                     <item>
+                        <item>ripeet</item>
+                     </item>
+                     <item>
+                        <item>reepit</item>
+                     </item>
+                     <item>
+                        <item>reepeet</item>
+                     </item>
+                  </one-of>
+               </item>
+               <item repeat="0-1">that</item>
+               <item repeat="0-1">again</item>
+               <item repeat="0-1">please</item>
+            </item>
+         </one-of>
+      </item>
+   </rule>
+   <rule id="agent">
+      <item>
+         <one-of>
+            <item>
+               <item>
+                  <one-of>
+                     <item>
+                        <item>agent</item>
+                     </item>
+                     <item>
+                        <item>operator</item>
+                     </item>
+                     <item>
+                        <item>representative</item>
+                     </item>
+                     <item>
+                        <item>no</item>
+                        <item>representative</item>
+                     </item>
+                     <item>
+                        <item>represehnative</item>
+                     </item>
+                     <item>
+                        <item>no</item>
+                        <item>represehnative</item>
+                     </item>
+                     <item>
+                        <item>human</item>
+                        <item repeat="0-1">person</item>
+                     </item>
+                     <item>
+                        <item repeat="0-1">customer</item>
+                        <item>service</item>
+                        <item>representative</item>
+                     </item>
+                     <item>
+                        <item repeat="0-1">no</item>
+                        <item>customer</item>
+                        <item>service</item>
+                     </item>
+                  </one-of>
+               </item>
+            </item>
+            <item>
+               <item repeat="0-1">
+                  <item repeat="0-1">no</item>
+                  <item>
+                     <one-of>
+                        <item>
+                           <item>i'd</item>
+                           <item>like</item>
+                           <item>to</item>
+                        </item>
+                        <item>
+                           <item>i</item>
+                           <item>would</item>
+                           <item>like</item>
+                           <item>to</item>
+                        </item>
+                        <item>
+                           <item>i</item>
+                           <item>need</item>
+                           <item>to</item>
+                        </item>
+                        <item>
+                           <item>i</item>
+                           <item>want</item>
+                           <item>to</item>
+                        </item>
+                        <item>
+                           <item>may</item>
+                           <item>i</item>
+                        </item>
+                        <item>
+                           <item>can</item>
+                           <item>i</item>
+                        </item>
+                        <item>
+                           <item>let</item>
+                           <item>me</item>
+                        </item>
+                     </one-of>
+                  </item>
+               </item>
+               <item>
+                  <one-of>
+                     <item>
+                        <item>speak</item>
+                        <item>to</item>
+                     </item>
+                     <item>
+                        <item>speak</item>
+                        <item>with</item>
+                     </item>
+                     <item>
+                        <item>talk</item>
+                        <item>to</item>
+                     </item>
+                  </one-of>
+               </item>
+               <item>
+                  <one-of>
+                     <item>
+                        <item repeat="0-1">a</item>
+                        <item repeat="0-1">customer</item>
+                        <item repeat="0-1">service</item>
+                        <item>representative</item>
+                     </item>
+                     <item>
+                        <item repeat="0-1">a</item>
+                        <item>customer</item>
+                        <item>service</item>
+                     </item>
+                     <item>
+                        <item repeat="0-1">an</item>
+                        <item>agent</item>
+                     </item>
+                     <item>
+                        <item repeat="0-1">an</item>
+                        <item>operator</item>
+                     </item>
+                     <item>
+                        <item>someone</item>
+                     </item>
+                     <item>
+                        <item>somebody</item>
+                     </item>
+                     <item>
+                        <item repeat="0-1">a</item>
+                        <item>person</item>
+                     </item>
+                  </one-of>
+               </item>
+               <item repeat="0-1">please</item>
+            </item>
+         </one-of>
+      </item>
+   </rule>
+   <rule id="wait">
+      <item repeat="0-1">please</item>
+      <one-of>
+         <item>wait</item>
+         <item>hold on</item>
+      </one-of>
+      <item repeat="0-1">please</item>
+   </rule>
+   <rule id="goback">
+      <item repeat="0-1">please</item>
+      <item>go back</item>
+      <item repeat="0-1">please</item>
+   </rule>
+   <rule id="startover">
+      <item repeat="0-1">please</item>
+      <item repeat="0-1">just</item>
+      <item>start over</item>
+      <item repeat="0-1">please</item>
+   </rule>
+   <rule id="garbage">
+      <one-of>
+         <item>new customer</item>
+         <item>
+            <item repeat="0-1">I</item>
+            <one-of>
+               <item>have</item>
+               <item>don't have</item>
+               <item>don't know</item>
+            </one-of>
+            <one-of>
+               <item>it</item>
+               <item>one</item>
+               <item>
+                  <item repeat="0-1">
+                     <one-of>
+                        <item>an</item>
+                        <item>the</item>
+                     </one-of>
+                  </item>
+                  <item>account</item>
+                  <item repeat="0-1">number</item>
+               </item>
+            </one-of>
+         </item>
+      </one-of>
+   </rule>
+</grammar>

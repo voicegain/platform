@@ -61,8 +61,9 @@ asr_body = {
                     "type": "GRXML",
                     "name" : "zip-codes",
                     "fromUrl":{
-                        "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/zip_code_no_refs.grxml"
+                        # "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/zip_code_no_refs.grxml"
                         # "url" : "https://grammar.host/zip_code_no_refs.grxml"
+                        "url" : "https://raw.githubusercontent.com/voicegain/platform/master/examples/grammars/grxml/member_id_type_1.grxml"
                     }
                 }
             ],

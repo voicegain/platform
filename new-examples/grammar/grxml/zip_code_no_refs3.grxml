@@ -30,7 +30,7 @@
       </item>
       <one-of>
          <item>
-            <!-- 1 2 3 4 5 -->
+            <!--  1 2 3 4 5  -->
             <item>
                <ruleref uri="#singleDigit" />
                <tag>out.d1=rules.singleDigit.d;</tag>

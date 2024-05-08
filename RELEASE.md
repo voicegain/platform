@@ -1,3 +1,100 @@
+## Release 1.103.0
+
+**Key changes related to the core APIs**
+* Support for url rewrite and HTTP proxy for grammar fetching for /asr/recognize API and for MRCP ASR.
+* Switch Speech Analytics App from old /sa api to new /sa/offline API
+* New APIs to manage user login sessions
+* New API to define business specific settings for a Voicebot
+
+**Key changes related to Transcribe APP**
+* LLM Playground for Edge Deployments - ask a LLM any questions about the transcript.
+* Fix for negative duration of words which was impacting recomputing data from transcripts.
+
+New or changed functionality in the Transcribe App:
+* BE-2068	TA: Add LLM Playground page to Transcribe App (on Edge only)
+* QA-1054	TA: Add validator for keyword group names
+* BE-2060	TA: Option to set share within account to not expire
+
+New or changed functionality in other platform components:
+* BE-2101	/sa/offline API - generate talk and overtalk data for each speaker
+* BE-2076	Add AIVR API method to reserve rex for already started outbound aivr session
+* BE-1953	Add AIVR Business Config API with opening-hours information and other info
+* BE-2036	Add aivrAppId to the initial callback for the AIVR session (also the websocket version)
+* QA-1071	Add API to logout user from some/all login sessions
+* QA-1070	Add API to show User's all login sessions
+* BE-2061	Add audioOffset option to audio in /sa/offline
+* BE-1878	Add localization in llm-svc
+* BE-2044	Add parent AIVR session to POST /aivr/dial/{destination}
+* BE-1917	Add to Account a read-only field to store customization settings for SA App
+* BE-1974	Add to Account API saAppHiddenFeatures
+* BE-2020	Add version field to /sa/call
+* BE-2033	Associate Business Config with AIVR App
+* BE-1850	Casey Demo Voicebot in Spanish
+* BE-2058	Configure demoPhoneNumber for demo app on dev qa and prod environments
+* BE-2011	Convert auth-svc from tomcat+war to SpringBoot
+* BE-1985	Enhancements to grammar fetcher (http proxy, url rewrite)
+* BE-1972	Hide/Show features of the Speech Analytics App based on the settings on the account
+* BE-1909	Hook up Speech Analytics App to Sentry
+* BE-1954	Implement API to query existing login sessions
+* BE-2035	Implement GET /aivr-app/{aivrAppId}/business
+* BE-1992	Implement GET and DELETE /auth/login/{sessionId}
+* BE-1497	Implement getContextStats method on SearchableMeetingDao that returns statistics for contexts
+* BE-2074	Implement POST /llm/chat API
+* BE-1598	Implement proper queue priority for transcription
+* BE-2003	Implement safe shutdown for freeswitch/fssk pod
+* BE-2031	Improve nonce handling in Customer Management Portal (Admin Tool)
+* BE-2030	Improve nonce handling in Customer Portal
+* BE-2032	Improve nonce handling in Speech Analytics App
+* BE-2116	In Share APIs -- make expires value of 0 mean that the share never expires
+* BE-2052	Modify REX to stop storing usages in Redis
+* BE-2051	Move sentryEnvironment to global setting in onprem-cluster-deployment task
+* BE-1073	New API: POST /asr/meeting/{meetingId}/rerun
+* BE-1520	Stop storing usages in Redis after billing-utility is no longer needed on production
+* BE-1981	Support cluster specific service account key in onprem-cluster-deployment task
+* BE-1794	Switch Analytics App from /sa API to /sa/offline APIs
+* BE-1966	Update k8sNodes in firestore automatically when changing cluster setup
+* BE-2069	Web Console: add "outbound" option to pull-down for logic
+* BE-1994	Web Console: Add audio download button to AIVR call audio page
+* BE-2038	Web Console: Add page to configure Business settings for use in AIVR
+* BE-2006	Web Console: include ;transport=tcp in the sip URI shown in Telephony Bot App
+* BE-2002	Web Console: Place cursor and focus on the highlighted textbox right after the context dialog is shown
+* BE-1492	Web Console: Show Edge configuration in the table that shows all Edge deployments
+* BE-1951	Web Console: Telephony Bot mode in Call Session table - make it remember previous state when returning from the detailed session view
+
+Changes related to Integrity of Processing (fixes):
+* QA-1111	TA: Fix - "ID to Clipboard" option is missing in Advanced Search.
+* QA-1125	TA: Fix - After deleting any transcript, success message not showing.
+* BE-2022	TA: Fix - bad http request URLs in Edge deployments 
+* QA-1140	TA: Fix - Project numbers going blank after filtering role in Users under Account.
+* QA-1081	TA: Fix - Proper translation should be there for mouse hovering on error.
+* BE-2021	TA: Fix - running out of nonces in some scenarios
+* BE-2027	TA: Fix - Sentry errors when sending to Glitchtip
+* QA-1184	TA: Fix - Shared transcript page getting refresh continuously(Public share)
+* QA-1141	TA: Fix - Sorting in Users under Account section is not working properly.
+* QA-1143	TA: Fix - The duration filter is not working as intended, having issues setting it up manually, and also not showing the transcripts.
+* QA-1167	TA: Fix - The owner is unable to log in to below mentioned IP addresses and the "Failed to fetch" error is being received.
+* QA-786	TA: Fix - Transcripts with no duration are not available in advanced search.
+* QA-1117	TA: Fix - Unable to edit "Users" when creating a new project.
+* QA-685	TA: Fix - Updated User name is not showing on the admin Speaker screen
+* QA-1116	TA: Fix - Walkthrough wizard not working properly, back button not working when user tries to go back from the transcripts.
+* BE-2013	TA: Fix - When inviting the user to the account, if we provide an invalid email it throws a 500 error and goes to the "Something went wrong" page
+* QA-1114	TA: Fix back button from transcript opened from Advanced Search results
+* BE-2084	Web Console: Fix - Audio is fresh-uploaded GREG experiment not playing
+* BE-2119	Web Console: Fix - certain Edge Configurations showing blank page instead
+* QA-1142	Web Console: Fix - Context dash filter by status is not working properly.
+* BE-1955	Web Console: Fix - In user Profile show permissions and not the Role
+* BE-2007	Web Console: Fix - Narrow window does not render transcript text in telephony call detail view
+* BE-2077	Web Console: Fix - Requests for GREG audio stuck in "pending" and then failing
+* BE-2087	Web Console: Fix - Showing Training mode even though account does not have Training enabled
+* BE-2053	Fix - Glitchtip cannot handle larger headers (cookies)
+* BE-1982	Fix - NPE found in new-billing-utility logs on voicegain
+* BE-2103	Fix - Queue info is not getting saved and/or returned from /sa/call API
+* BE-2083	Fix for negative duration of words
+* BE-655	Fix for onprem-cluster-deployment task stuck when pods are in unexpected status
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.102.0
 
 **Key changes related to the core APIs**

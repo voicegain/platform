@@ -1,3 +1,14 @@
+### Minor release 1.103.0 is scheduled for 5/7/2024 between 9:30pm and 11:30pm CDT
+
+**Key changes related to the core APIs**
+* Support for url rewrite and HTTP proxy for grammar fetching for /asr/recognize API and for MRCP ASR.
+
+**Key changes related to Transcribe APP**
+* LLM Playground for Edge Deployments - ask aLLM any questions about the transcript.
+
+TBD...
+
+
 ### Minor release 1.102.0 is scheduled for 4/16/2024 between 6:00pm and 10:00pm CDT
 
 **Key changes related to the core APIs**

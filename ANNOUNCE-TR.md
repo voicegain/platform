@@ -2,6 +2,36 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### May 7, 2024
+
+**Key changes related to Transcribe APP**
+* LLM Playground for Edge Deployments - ask a LLM any questions about the transcript.
+* Fix for negative duration of words which was impacting recomputing data from transcripts.
+
+New:
+* BE-2068	TA: Add LLM Playground page to Transcribe App (on Edge only)
+* QA-1054	TA: Add validator for keyword group names
+* BE-2060	TA: Option to set share within account to not expire
+
+Fixes:
+* QA-1111	TA: Fix - "ID to Clipboard" option is missing in Advanced Search.
+* QA-1125	TA: Fix - After deleting any transcript, success message not showing.
+* BE-2022	TA: Fix - bad http request URLs in Edge deployments 
+* QA-1140	TA: Fix - Project numbers going blank after filtering role in Users under Account.
+* QA-1081	TA: Fix - Proper translation should be there for mouse hovering on error.
+* BE-2021	TA: Fix - running out of nonces in some scenarios
+* BE-2027	TA: Fix - Sentry errors when sending to Glitchtip
+* QA-1184	TA: Fix - Shared transcript page getting refresh continuously(Public share)
+* QA-1141	TA: Fix - Sorting in Users under Account section is not working properly.
+* QA-1143	TA: Fix - The duration filter is not working as intended, having issues setting it up manually, and also not showing the transcripts.
+* QA-1167	TA: Fix - The owner is unable to log in to below mentioned IP addresses and the "Failed to fetch" error is being received.
+* QA-786	TA: Fix - Transcripts with no duration are not available in advanced search.
+* QA-1117	TA: Fix - Unable to edit "Users" when creating a new project.
+* QA-685	TA: Fix - Updated User name is not showing on the admin Speaker screen
+* QA-1116	TA: Fix - Walkthrough wizard not working properly, back button not working when user tries to go back from the transcripts.
+* BE-2013	TA: Fix - When inviting the user to the account, if we provide an invalid email it throws a 500 error and goes to the "Something went wrong" page
+* QA-1114	TA: Fix back button from transcript opened from Advanced Search results
+
 ### April 16, 2024
 
 **Key changes**

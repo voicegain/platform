@@ -65,7 +65,8 @@ asr_body = {
                         # "url" : "https://grammar.host/zip_code_no_refs.grxml"
                         # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/examples/grammars/grxml/member_id_type_1.grxml"
                         # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/examples/grammars/grxml/taxonomy.grxml"
-                        "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/zip_code_no_refs3.grxml"
+                        # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/zip_code_no_refs3.grxml"
+                        "url" : "https://support.voicegain.ai/hc/en-us/article_attachments/360062920832"
                     }
                 }
             ],

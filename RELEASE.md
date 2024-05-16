@@ -1,3 +1,13 @@
+## Release 1.103.1
+
+New or changed functionality in the Transcribe App:
+* BE-2143: (TA) Show Recompute option also if status Error under certain conditions
+
+Changes related to Integrity of Processing (fixes):
+* BE-2163: Fix - Incorrect nginx routing for auth-svc from admin app
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.103.0
 
 **Key changes related to the core APIs**

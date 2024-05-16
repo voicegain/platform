@@ -1,3 +1,13 @@
+### Maintenance release 1.103.1 is scheduled for 5/16/2024 between 4pm and 5pm CDT
+
+New or changed functionality in the Transcribe App:
+* BE-2143: (TA) Show Recompute option also if status Error under certain conditions
+
+Changes related to Integrity of Processing (fixes):
+* BE-2163: Fix - Incorrect nginx routing for auth-svc from admin app
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.103.0 is scheduled for 5/7/2024 between 9:30pm and 11:30pm CDT
 
 **Key changes related to the core APIs**

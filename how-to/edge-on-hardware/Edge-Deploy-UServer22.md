@@ -9,7 +9,7 @@ NOTE 2: We also now support an install on a machine or a VM that has no GPU (thu
 Under the hood:
 This guide will have you do the following:
 * Configure your server BIOS
-* Install Ubuntu **LTS 22.04 Server** with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs (support for non-GPU/CPU-Only also available. See [Step 8](#step8) for --gpu flag)
+* Install Ubuntu **Server 22.04 LTS** (Ubuntu Server 24.04 not yet officiall supported) with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs (support for non-GPU/CPU-Only also available. See [Step 8](#step8) for --gpu flag)
 * Provision your server using the Voicegain EZ Init script.
 * Deploy the Voicegain Application to your environment. 
 
@@ -162,7 +162,7 @@ Your first boot into Ubuntu will prompt you to set up some features: Connecting 
 
 You will likely also be prompted by the "Software Updater" to, well, update. Close out of this **without** updating. The packages will be updated during the cluster provisioning phase via our EZInitScript.
 
-***OPTIONAL:*** At this time you may wish to install SSH server and complete the process over an SSH session. To do so open a terminal (either by right-clicking on the desktop and choosing to "Open in terminal" or you can search for Terminal from the Activites menu in the top left corner.
+***OPTIONAL:*** If you did not choose to install OpenSSH Server during the provisioning phase, time you may wish to install it now and complete the process over an SSH session. 
 
 In the terminal execute: `sudo apt install openssh-server -y`
 

@@ -42,7 +42,7 @@ Ensure that this node will have access to an NTP Clock endpoint. By default, thi
 
 ## <a name="step1"></a>Step 1: Configure your Server BIOS 
 
-*Step 1 is relevant only for a bare hardware deployment (not a VM). Proceed to [Step 2](#step2) if manually installing on VM. If the VM was autoprovisioned with Ubuntu 20.04 proceed to [Step 5](#step5) to ensure storage partitions are configured correctly.*
+*Step 1 is relevant only for a bare hardware deployment (not a VM). Proceed to [Step 2](#step2) if manually installing on VM. If the VM was autoprovisioned with Ubuntu Server 22.04 proceed to [Step 5](#step5) to ensure storage partitions are configured correctly.*
 
 Boot your server and enter BIOS Configuration Menu: [Common Manufacturer BIOS Keys](https://www.tomshardware.com/reviews/bios-keys-to-access-your-firmware,5732.html#:~:text=BIOS%20Keys%20by%20Manufacturer%201%20ASRock%3A%20F2%20or,Lenovo%20%28ThinkPads%29%3A%20Enter%20then%20F1.%20More%20items...%20)
 
@@ -61,7 +61,7 @@ If not enabled the card will not be detected by Nvidia driver and you may see er
 
 *Step 2 may have to be done differently if installing on a VM - the instructions below focus on bare hardware.*
 
-If you have not already; you can download the Ubuntu 20.04 LTS Desktop Image [here](https://releases.ubuntu.com/20.04.5/). (If machine or VM has no GPU then you can alternatively use Ubuntu Server.)
+If you have not already; you can download the Ubuntu 22.04 LTS Server Image [here](https://releases.ubuntu.com/22.04.4/ubuntu-22.04.4-live-server-amd64.iso).
 
 You can burn the installation image on to DVD, however, we recommend creating a Bootable USB drive as it is faster and becoming the new standard.
 
@@ -131,6 +131,9 @@ Kubernetes doesn't support Swap, and the NFS and log Storage should not impact t
 * **For Each Partition we create do the following:** scroll down and highlight "**free space**" which should be the entire disk, hit enter and select "Add GPT Partition".
 
 Leave it as ext4 format and the first drive will automatically be chosen to mount '/' a.k.a. the root partition.
+
+Then we want to create a dedicated partition for logs so that logs will not fill the server and prevent it from functioning. 64GB should be sufficient for this.
+Select Mount as "Other" and enter `var/log` (the / will already be prepended so it should read as `/var/log`)
 
 Next choose your dedicated storage drive's free space (this can be the same device or another one. And select Mount as "Other" and enter 'nfs' (the / will already be prepended)
 

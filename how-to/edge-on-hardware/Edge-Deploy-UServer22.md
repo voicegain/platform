@@ -142,11 +142,7 @@ Next choose your dedicated storage drive's free space (this can be the same devi
 
 ![image](https://github.com/voicegain/platform/assets/14049448/95e3d9aa-f471-4378-81fc-ba0c9d53e31e)
 
-* **NOTE:** If this disk has previous partitions as discussed above be certain that the check boxes to *"format"* the partitions is checked for `/` and `nfs`.
-
-![Ready to Install](./5-5.png)
-
-Click **Install Now** -> Continue -> Continue and finish the remainder of the install (create user and password. Assign hostname, etc...). Choose to require password to log in, and restart the system when prompted (remove installation media or otherwise ensure that the boot drive is higher in the boot order).
+ **Install Now** -> Continue -> Continue and finish the remainder of the install (create user and password. Assign hostname, etc...). Choose to require password to log in, and restart the system when prompted (remove installation media or otherwise ensure that the boot drive is higher in the boot order).
 
 **A NOTE ABOUT USERS:**
 

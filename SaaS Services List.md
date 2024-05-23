@@ -29,12 +29,3 @@ they can also invoke these APIs with Speech Grammars.
 ## B2. Voicegain Speech Analytics:
 **Voicegain Speech Analytics** is a web application that uses Voicegain Speech Analytics APIs to analyze audio recordings of voice customer service interactions in contact centers with an objective of automated quality management, compliance verification and gathering customer experience and business insights. These recordings get accurately transcribed and analyzed using AI. We analyze both audio and the text transcript using AI to extract keywords, sentiment, named entities and topics. 
 
-## B3. Voicegain AI Voice Assistant:
-**Voicegain AI Voice Assistant** is a customized conversational AI IVR application built using Voicegain Telephony Bot APIs. The AI Voice Assistant can engage customers in a natural language voice conversation to validate, triage and automate customer interactions over the phone. The AI Voice Assistant can transfer calls to the right destination based on the intent extracted and it can be configured to remain online and provide a transcript to the AI Co-Pilot (further described below) once the call is transferred to the Agent.
-
-## B4. Voicegain AI Co-Pilot:
-**Voicegain AI Co-Pilot** is a customized web or desktop application for call center agents. It can integrate with Contact Center platforms - both Cloud and Premise-based. It displays all the information collected by Voicegain AI Voice Assistant and provides agents with real-time guidance. Once the call is complete, it can generate a summary of the call which in turm can be copied into the CRM.
-
-
-
-

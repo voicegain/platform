@@ -1,3 +1,7 @@
+### Minor release 1.104.0 is scheduled for 5/29/2024 between 7:30am and 9:00am CDT
+
+Details to be provided ...
+
 ### Maintenance release 1.103.1 is scheduled for 5/16/2024 between 4pm and 5pm CDT
 
 New or changed functionality in the Transcribe App:

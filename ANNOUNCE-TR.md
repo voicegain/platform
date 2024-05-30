@@ -2,6 +2,51 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### May 29, 2024
+
+**Key changes related to Transcribe APP**
+* Add pages with list of login sessions (for user and for all account)
+* Added "Automatic" setting for number of speakers in diarization
+* In Advanced Search added Relative Time filter
+* On Edge only:
+  * Add Korean Language option
+  * Enhanced LLM Playground to support temperature setting and markdown rendering
+
+New:
+* BE-2133	TA: Add "Go to Home" button on "Something Went Wrong" page
+* BE-2202	TA: Add a 3 second timeout on the request to ipfy
+* BE-2134	TA: Add Korean Language option for Edge
+* BE-2078	TA: Add page with list of all logged-in sessions on the account
+* BE-2182	TA: Add support for m4a files in file upload
+* BE-2155	TA: Add temperature to LLM Settings
+* QA-680	TA: Better reporting of Recompute in progress on Advanced Search page
+* BE-2125	TA: LLM playground able to render markdown format in LLM responses
+* BE-2190	TA: Modify message template used LLM Playground to work with Mixtral
+* BE-2141	TA: Modify the number of speakers selector for diarization on Upload
+* BE-2184	TA: Remove diarization from Live Microphone recording preview
+* BE-2118	TA: Remove previous error message from the login screen as soon as the user clicks the login button
+* QA-848	TA: Show all login sessions of the current user
+* BE-2136	TA: Show PC Name when hovering over Installed-Connected
+* BE-2164	TA: Support Relative Time search filter on Start Time in Advanced Search
+* BE-1885	TA: Use Mixtral for Summarization on Edge
+
+Fixes:
+* QA-1200	TA Edge: Fix - Invitation email is not coming to the provided email address.
+* QA-1236	TA: Fix - After editing any expired shared transcript to Never Expire, the save button is not working.
+* QA-1223	TA: Fix - Back button is not working on Walkthrough Wizard
+* QA-1153	TA: Fix - Blank page is showing for the login for one account.
+* QA-1211	TA: Fix - Hover msg over Never share Expiry status is wrong.
+* BE-1989	TA: Fix - Inconsistent Project membership as shown in the UI
+* QA-1076	TA: Fix - Personal projects are not showing in the destination projects while moving any transcript.
+* QA-1122	TA: Fix - Resend invites to bad email address throwing the something went wrong issue.
+* BE-2146	TA: Fix - Right-click not working on Edge
+* QA-1227	TA: Fix - Showing the American flag for all project language projects.
+* QA-1197	TA: Fix - Specific No. of Speakers field is accepting blank inputs.
+* BE-1987	TA: Fix - Stuck on Import/Upload page after Submit
+* QA-1231	TA: Fix - There is no limit given for the Time range in advanced search.
+* QA-1209	TA: Fix - Walkthrough wizards not working properly on 90% page zoom.
+* QA-586	TA: Fix - When a user clicks on “edit” of a Share it automatically increases its “Expires in” time by a day.
+
 ### May 7, 2024
 
 **Key changes related to Transcribe APP**

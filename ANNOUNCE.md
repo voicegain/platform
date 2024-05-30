@@ -1,6 +1,111 @@
 ### Minor release 1.104.0 is scheduled for 5/29/2024 between 7:30am and 9:00am CDT
 
-Details to be provided ...
+**Key changes related to the core APIs**
+* Add diarization to Whisper model in offline task
+* Autoscale real-time REX on GCP
+* Automatically detect agent channel in offline SA API
+* Improved Kappa (real-time) model trained on additional call-center data (health insurance domain)
+* Switch Analytics App from /sa API to /sa/offline APIs
+* Extend the use of allowSignupsFromDomain to allowed user invites
+
+**Key changes related to Transcribe APP**
+* Add Korean Language option for Edge
+* Enhanced LLM Playground to support temperature setting and markdown rendering
+* Added "Automatic" setting for number of speakers in diarization
+* In Advanced Search added Relative Time filter
+* Add pages with list of login sessions (for user and for all account)
+
+New or changed functionality in the Transcribe App:
+* BE-2133	TA: Add "Go to Home" button on "Something Went Wrong" page
+* BE-2202	TA: Add a 3 second timeout on the request to ipfy
+* BE-2134	TA: Add Korean Language option for Edge
+* BE-2078	TA: Add page with list of all logged-in sessions on the account
+* BE-2182	TA: Add support for m4a files in file upload
+* BE-2155	TA: Add temperature to LLM Settings
+* QA-680	TA: Better reporting of Recompute in progress on Advanced Search page
+* BE-2125	TA: LLM playground able to render markdown format in LLM responses
+* BE-2190	TA: Modify message template used LLM Playground to work with Mixtral
+* BE-2141	TA: Modify the number of speakers selector for diarization on Upload
+* BE-2184	TA: Remove diarization from Live Microphone recording preview
+* BE-2118	TA: Remove previous error message from the login screen as soon as the user clicks the login button
+* QA-848	TA: Show all login sessions of the current user
+* BE-2136	TA: Show PC Name when hovering over Installed-Connected
+* BE-2164	TA: Support Relative Time search filter on Start Time in Advanced Search
+* BE-1885	TA: Use Mixtral for Summarization on Edge
+
+New or changed functionality in other platform components:
+* BE-2142	Add ability to save Meeting Search queries
+* BE-1698	Add diarization to Whisper model in offline task
+* BE-2062	Add percolatorThreshold to the output response in AIVR callback
+* BE-2139	Add regex syntax and group references to the url prefix matching in grammar fetcher
+* BE-2137	Add RelTimeTerm query term to Advanced Meeting Search API
+* BE-2138	Add RelTimeTerm query term to Call Search API
+* BE-2144	Add temperature parameter to llmSettings in the /cluster API
+* BE-2092	Admin Tool: Show login error messages to user
+* BE-1601	API to email link to the results of Voicebot Demo session - make the link url configurable
+* BE-2127	Autoscale real-time REX on GCP
+* BE-2120	Demo Voicebot: Show the page with trancript/audio/sidepanel immediately after the end of the call
+* BE-2158	Demo Voicebot: Support Spanish version of Casey demo
+* BE-2187	Demo: Use the new urlLink parameter in the API used to send the link
+* BE-2089	Detect agent channel in offline SA API
+* BE-2175	Extend the use of allowSignupsFromDomain to user invites
+* BE-2135	Improve /llm/chat API to handle transcript longer than the token limit
+* BE-1792	Improved Kappa (real-time) model trained on additional call-center data (health insurance domain)
+* BE-2041	Limit maximum number of nonces that can be active for a login session at any time
+* BE-1678	Migrate Java Applications from Java 11 to Java 17
+* BE-2172	Modify the GET method for the Business Config API which takes Auth Token
+* BE-2108	Monitor and restart asr container if it loses GPU
+* BE-2126	Retire old billing-utility
+* BE-2117	Return a specific http error response if we get ResourceLimitExceededException when creating new Voice Connector.
+* BE-2149	SA: Add filter on User Role
+* BE-2129	SA: Add JWT token generation to SA
+* BE-2157	SA: Add option to Delete a user
+* BE-2156	SA: Add option to Edit the User
+* BE-2057	SA: Invoke correct new APIs when uploading single file on SA App
+* BE-1712	SA: New Advanced Search Page
+* BE-1794	Switch Analytics App from /sa API to /sa/offline APIs
+* BE-1997	Tie collecting storage information to activity on account
+* BE-2109	Upgrade openai package to version 1.*
+* QA-1165	Web Console: Add a filter for the 2FA enabled on the user management page.
+* QA-1188	Web Console: Add Calendar to date selection in Business Config
+* BE-2080	Web Console: Add sorting on columns showing available Edge configurations
+* BE-2121	Web Console: Edge deployment filter - bring the search box in focus as soon as I open the filter
+* BE-2075	Web Console: Show telcoData.fsUUID on the AIVR session details page
+* BE-2176	Web Console: Show value of allowSignupsFromDomain in account profile
+
+Changes related to Integrity of Processing (fixes):
+* BE-98	Fix - Bug in telco service with Apps that are sip-only and we try add a phone number
+* BE-2170	Fix - Float overflow issue in rex RNNT search
+* BE-2166	Fix - Incorrect column count: expected 1, actual 38 in getCallCount in /sa/call API
+* BE-1971	Fix - NoSuchFieldError: LUCENE_7_7_3
+* BE-2167	Fix - Speakers merged into streaks of other speaker utterances in /sa/offline API
+* QA-1133	SA: Fix - Weird behavior on the configurations page.
+* QA-1200	TA Edge: Fix - Invitation email is not coming to the provided email address.
+* QA-1236	TA: Fix - After editing any expired shared transcript to Never Expire, the save button is not working.
+* QA-1223	TA: Fix - Back button is not working on Walkthrough Wizard
+* QA-1153	TA: Fix - Blank page is showing for the login for one account.
+* QA-1211	TA: Fix - Hover msg over Never share Expiry status is wrong.
+* BE-1989	TA: Fix - Inconsistent Project membership as shown in the UI
+* QA-1076	TA: Fix - Personal projects are not showing in the destination projects while moving any transcript.
+* QA-1122	TA: Fix - Resend invites to bad email address throwing the something went wrong issue.
+* BE-2146	TA: Fix - Right-click not working on Edge
+* QA-1227	TA: Fix - Showing the American flag for all project language projects.
+* QA-1197	TA: Fix - Specific No. of Speakers field is accepting blank inputs.
+* BE-1987	TA: Fix - Stuck on Import/Upload page after Submit
+* QA-1231	TA: Fix - There is no limit given for the Time range in advanced search.
+* QA-1209	TA: Fix - Walkthrough wizards not working properly on 90% page zoom.
+* QA-586	TA: Fix - When a user clicks on “edit” of a Share it automatically increases its “Expires in” time by a day.
+* QA-1174	Web Console: Fix - On Experiment Browser section- ‘Apply filter' button is not working, user getting ‘e.preventDefault’ is not a function.
+* QA-1191	Web Console: Fix - Only one success message should be displayed when adding a 'Business Configuration'.
+* QA-1186	Web Console: Fix - Past date entry should not allowed in adding Business Config records.
+* BE-2148	Web Console: Fix - Unable to save the URL of the outbound AIVR logic
+* QA-1176	Web Console: Fix - User getting blank page, either clicked on True text or ascending- descending filter or when searching something.
+* QA-1177	Web Console: Fix - When a user click on copy icon under A of Utterance, he does not get any copied data but getting Type Error
+* QA-1179	Web Console: Fix - When users try to delete ID’s under Interpretation column by clicking on delete icon, it’ s not getting deleted.
+* QA-1175	Web Console: Fix - When users try to edit any ID under True column, since at the time of editing Reset and Save button is disable but still it is clickable.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 
 
 ### Maintenance release 1.103.1 is scheduled for 5/16/2024 between 4pm and 5pm CDT

@@ -73,7 +73,7 @@ echo "Check containerd status and will need to delete the rex-0 pod so it will b
 sleep 15
 
 # Delete terminating pods forcefully
-kubectl get po | awk '/Terminating/ {print $1}' | while read po; do
+#kubectl get po | awk '/Terminating/ {print $1}' | while read po; do
   echo "If pods not terminating run: kubectl delete po ${po} --grace-period=0 --force"
 done
 

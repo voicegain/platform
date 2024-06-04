@@ -89,6 +89,15 @@ Plays the specified prompt and disconnects the call. Disconnect will result eith
 
 The `reason` will be stored in the session.
 
+### TRANSFER
+```
+  type: TRANSFER
+  voice: catherine
+  prompt: Let me transfer you.
+  phone: "+18174112106"
+```
+
+
 ## The declarative YAML for specifying IVR: special elements
 
 The YAML has several special elements:

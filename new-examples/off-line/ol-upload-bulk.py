@@ -13,9 +13,9 @@ urlPrefix = cfg.get(configSection, "URLPREFIX")
 inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
-#model = "VoiceGain-omega"
+model = "VoiceGain-omega"
 #model = None
-model = "whisper:medium"
+#model = "whisper:medium"
 
 print("model: {}".format(model))
 
@@ -52,8 +52,11 @@ asr_body = {
     },
     "settings": {
         "asr": {
-            #"languages" : ["es", "en"],
-            "languages" : ["en"],
+            "languages" : ["es", "en"],
+            #"languages" : ["en"],
+            "languageDetection" : {
+                "aggregation" : "start_weighted",
+            },
             "acousticModelNonRealTime" : model,
             "noInputTimeout": -1,
             "completeTimeout": -1,

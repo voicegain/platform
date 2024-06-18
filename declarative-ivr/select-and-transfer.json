@@ -1,0 +1,107 @@
+{
+  "DEFAULTS": {
+    "repromtOnDisconfirm": "Sorry, I did not hear it.",
+    "prefixes": {
+      "noInput": [
+        "Sorry, I did not hear it.",
+        "Sorry, I still did not hear it."
+      ],
+      "noMatch": [
+        "Sorry, I did not get it.",
+        "Sorry, I still did not get it."
+      ]
+    }
+  },
+  "GRAMMARS": {
+    "NameCheck": {
+      "type": "JJSGF",
+      "parameters": {
+        "tag-format": "semantics/1.0-literals"
+      },
+      "grammar": "namecheck",
+      "public": {
+        "root": "<Bob> {Bob} | <Frank> {Frank} "
+      },
+      "rules": {
+        "Bob": "(Bob)",
+        "Frank": "(Frank)"
+      }
+    }
+  },
+  "ENTRY": {
+    "type": "VOID",
+    "voice": "catherine",
+    "next": "Welcome"
+  },
+  "ERROR": {
+    "type": "DISCONNECT",
+    "prompt": "Sorry, there was an error. Please call back later",
+    "reason": "ERROR"
+  },
+  "Welcome": {
+    "type": "OUTPUT",
+    "voice": "catherine",
+    "prompt": "Welcome to Transfer Genie",
+    "next": "HandleUserSelection"
+  },
+  "HandleUserSelection": {
+    "type": "INPUT",
+    "name": "userSelect",
+    "voice": "catherine",
+    "prompt": "Please say the name of the person you want to talk to",
+    "bargeIn": true,
+    "grammar": [
+      "NameCheck"
+    ],
+    "noInputMax": 2,
+    "noMatchMax": 2,
+    "confirmation": {
+      "threshold": 0.5,
+      "prompt": "You selected ${userSelect}. Is that correct?"
+    },
+    "fail": "CallHealth",
+    "next": "ProcessUserSelection"
+  },
+  "ProcessUserSelection": {
+    "type": "EVAL",
+    "eval": "'${userSelect}'",
+    "case": [
+      {
+        "expr": "'${1}'=='Bob'",
+        "next": "TransferforBob"
+      },
+      {
+        "expr": "'${1}'=='Frank'",
+        "next": "TransferforFrank"
+      }
+    ]
+  },
+  "TransferforBob": {
+    "type": "TRANSFER",
+    "voice": "catherine",
+    "prompt": "Dialing Bob's extension 20955088",
+    "phone": {
+      "phoneNumber": "+13212918281,www20955088"
+    },
+    "fail": "TransferFailed"
+  },
+  "TransferforFrank": {
+    "type": "TRANSFER",
+    "voice": "catherine",
+    "prompt": "Dialing Frank's extension 703",
+    "phone": {
+      "phoneNumber": "+19725180863,www7w0w3"
+    },
+    "fail": "TransferFailed"
+  },
+  "TransferFailed": {
+    "type": "DISCONNECT",
+    "prompt": "Sorry, the transfer failed. Good bye.",
+    "reason": "Transfer Failed"
+  },
+  "CallHealth": {
+    "type": "DISCONNECT",
+    "prompt": "I have trouble understanding you. Please call back later",
+    "reason": "CALL-HEALTH"
+  }
+}

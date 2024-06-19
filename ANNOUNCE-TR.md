@@ -2,6 +2,49 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### June 18, 2024
+
+**Key changes related to Transcribe APP**
+* Added basic LLM Query over data stored in vector database
+* User-level time settings (previously time settings were only account-wide)
+* Korean transcription should now be less likely to shift to translation
+* Summary LLM prompts are customizable on Edge
+
+New:
+* QA-1230	TA: Active login sessions now displayed and highlighted at the top by default.
+* BE-2276	TA: Add 3 more LLM prompts to LLM settings
+* BE-2224	TA: Add 'copy to clipboard' for action items
+* BE-2278	TA: Add time settings also on User Profile
+* QA-1237	TA: Added an option for Logout from all devices on My Login sessions.
+* BE-2217	TA: Added basic Vector LLM Query
+* BE-2284	TA: Apply MD formatting to the section summaries
+* BE-2314	TA: If a user clicks the LLM Query button on the home page - take them to the LLM settings if needed
+* BE-2240	TA: Implement page for Vector based querying - Edge Only
+* BE-2196	TA: Make sure that whenever we discard the login session in the browser we do call logout API
+* BE-2218	TA: Provide immediate feedback of the Start mic capture button being clicked
+* BE-2282	TA: Use the customer overrides (if specified) for the summary prompts
+
+Fixes:
+* QA-1185	TA Edge: Fix - Unable to recognize transcript's project on homepage. 
+* QA-1252	TA Edge: Fix - Port Number is missing in invitation link
+* BE-2269	TA: Fix - Action Items are no longer included in the PDF and Docx
+* QA-1198	TA: Fix - Advanced Search View does not update after clicking ReRun.
+* QA-1263	TA: Fix - After deleting any share, it still shows in the table until the user performs a hard refresh of the page
+* QA-1240	TA: Fix - Downloaded pdf for Korean transcript does not open in Acrobat Reader
+* QA-1248	TA: Fix - Duplicate transcripts are showing in advance search.
+* BE-2275	TA: Fix - Korean sometimes being translated in addition to transcribed
+* BE-2274	TA: Fix - LLM Playground needs to be able to get transcript even if user is User role and has no Download permission
+* QA-1279	TA: Fix - Microphone recording and browser share menu should not be shown under actions for languages that do not have permissions for browser capture and microphone recording.
+* QA-1126	TA: Fix - Null projects displayed for some meetings.
+* QA-1199	TA: Fix - Some transcripts are missing a options under the 3-dot menu.
+* QA-1232	Ta: Fix - Sorting is not working on MY Login sessions page.
+* QA-1219	TA: Fix - The 'Incorrect Password' message should appear when a user tries to download the password recovery key with the wrong password.
+* BE-838	TA: Fix - Tracking of time used does not seem to work anymore
+* QA-1242	TA: Fix - User gets stuck on Upload page after submitting a file.
+* QA-912	TA: Fix - User is able to upload the audio file even when the allotted storage is fully used.
+* BE-2313	TA: Fix - User unable to move recording from one project to another
+* QA-1205	TA: Fix - Warning not showing for upload of large file.
+
 ### May 29, 2024
 
 **Key changes related to Transcribe APP**

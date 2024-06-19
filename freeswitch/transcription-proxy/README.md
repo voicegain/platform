@@ -26,9 +26,9 @@ ssl_cert = "/etc/letsencrypt/live/mydomain.com/fullchain.pem"
 ssl_key ="/etc/letsencrypt/live/mydomain.com/privkey.pem"
 ```
 # 3) How to obtain secret key mentioned in python code
-```sh
-Go to and login https://console.voicegain.ai under API Security create Auth Configuration with Auth Configuration and select type as Bearer and mention long string nothing but SECRET_KEY mentioned in python both should be same. So when call is bridged Voice gain gateway make connection to your websocket server and it will pass this secrect key as Bearer in header request then upon receving this key you should validate in your websocket server and proceed further. This has already been done in python example. 
-```
+
+Go to and login into https://console.voicegain.ai Under API Security create Auth Configuration and select type as Bearer and enter a random string string as credential - note that it should be the same as the SECRET_KEY mentioned in python script. When call is bridged Voicegain gateway will make connection to your websocket server and it will pass this secrect key as Bearer in header request then on the websocket server side upon receving this key you should validate and proceed further. This has already been done in the python example code. 
+
 # 4) Run it
 ```sh
 python ws_server.py

@@ -11,7 +11,10 @@ source myenv/bin/activate
 ```
 # 2) Create new domain and get certficates :
 
-You need to create new domain for example mydomain.com and obtain certificates using lets encrypt or other openssl and mention the paths in web service python example.Make sure to replace mydomain.com with your domain name in sample python code.
+(Important if you want to access your websocket service using encrypted wss:// instead of ws://)
+
+You need to create new domain for example mydomain.com and obtain certificates using lets encrypt or other openssl and mention the paths in web service python example.
+Make sure to replace mydomain.com with your domain name in sample python code.
 
 ```sh
 apt install certbot

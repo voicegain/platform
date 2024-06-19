@@ -21,9 +21,10 @@ apt install certbot
 certbot certonly -d mydomain.com
 ```
 replace these lines with your path to certs in python code
+```
 ssl_cert = "/etc/letsencrypt/live/mydomain.com/fullchain.pem"
 ssl_key ="/etc/letsencrypt/live/mydomain.com/privkey.pem"
-
+```
 # 3) How to obtain secret key mentioned in python code
 ```sh
 Go to and login https://console.voicegain.ai under API Security create Auth Configuration with Auth Configuration and select type as Bearer and mention long string nothing but SECRET_KEY mentioned in python both should be same. So when call is bridged Voice gain gateway make connection to your websocket server and it will pass this secrect key as Bearer in header request then upon receving this key you should validate in your websocket server and proceed further. This has already been done in python example. 

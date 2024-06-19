@@ -29,11 +29,12 @@ ssl_key ="/etc/letsencrypt/live/mydomain.com/privkey.pem"
 
 Go to and login into https://console.voicegain.ai Under API Security create Auth Configuration and select type as Bearer and enter a random string string as credential - note that it should be the same as the SECRET_KEY mentioned in python script. When call is bridged Voicegain gateway will make connection to your websocket server and it will pass this secrect key as Bearer in header request then on the websocket server side upon receving this key you should validate and proceed further. This has already been done in the python example code. 
 
-# 4) Run it
+# 4) Launch Webscoket Server
 ```sh
 python ws_server.py
 ```
-# 5) Modify config.ini that is attached in this repo to your needs
+# 5) Modify config.ini for Freeswitch docker 
+A sample config.ini can be found in this repository.
 ```ini
 # This is the final or remote server domain that is supposed to be bridging the call
 DESTINATION_DOMAIN=fs.ascalon.ai:5080

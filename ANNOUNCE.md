@@ -1,3 +1,118 @@
+### Minor release 1.105.0 is scheduled for 6/18/2024 between 7:30pm and 9:00pm CDT
+
+**Key changes related to the core APIs**
+* Offline model (omega) trained on additional data from call center calls (health insurance, retail customer support)
+* Telephony Bot API now supports outbound calling and setting ANI caller id on transfer
+* Added a parameter that controls language detection in offline transcribe API
+* Added ability to send real-time transcription results to a websocket server (previously only supported websocket client)
+* Web Console now shows all login sessions and supports forced logout.
+
+**Key changes related to Transcribe APP**
+* Added basic LLM Query over data stored in vector database
+* User-level time settings (previously time settings were only account-wide)
+* Korean transcription should now be less likely to shift to translation
+* Summary LLM prompts are customizable on Edge
+
+New or changed functionality in the Transcribe App:
+* QA-1230	TA: Active login sessions now displayed and highlighted at the top by default.
+* BE-2276	TA: Add 3 more LLM prompts to LLM settings
+* BE-2224	TA: Add 'copy to clipboard' for action items
+* BE-2278	TA: Add time settings also on User Profile
+* QA-1237	TA: Added an option for Logout from all devices on My Login sessions.
+* BE-2217	TA: Added basic Vector LLM Query
+* BE-2284	TA: Apply MD formatting to the section summaries
+* BE-2314	TA: If a user clicks the LLM Query button on the home page - take them to the LLM settings if needed
+* BE-2240	TA: Implement page for Vector based querying - Edge Only
+* BE-2196	TA: Make sure that whenever we discard the login session in the browser we do call logout API
+* BE-2218	TA: Provide immediate feedback of the Start mic capture button being clicked
+* BE-2282	TA: Use the customer overrides (if specified) for the summary prompts
+
+New or changed functionality in other platform components:
+* BE-2198	Web Console: Add login sessions view in Account Profile page
+* BE-2197	Web Console: Make sure that whenever we discard the login session in the browser we do call logout API
+* BE-2001	Web Console: Notify about inability to to microphone capture on HTTP urls
+* QA-1274	Web Console: Removed Prompt and TTS Settings
+* BE-2233	Web Console: Show the list of languages sorted
+* BE-2229	Web Console: Use the new change password API
+* BE-2199	SA: Added created date and UUID to the page with Project details
+* BE-2200	SA: Added name of the project to the Delete dialog
+* BE-2256	SA: Contact Support now opens in a new browser tab
+* BE-2290	SA: Implement AIVR Integration (configuration)
+* BE-2206	SA: Improve PII Redaction Config page
+* BE-2255	SA: Use the Account Time settings as the time defaults when creating a new Project
+* BE-2254	SA: Use the new change password API in SA App
+* BE-2252	SA: Hide (comment out) the setting for Age detection
+* BE-2299	Demo: Add a note about the models used in the Voicebot Demo
+* BE-2300	Demo: Copy to clipboard icons need tool-tip and there needs to be confirmation after copy
+* BE-2211	Admin Tool: Add tab/page to control SA activation
+* BE-2301	Add languageDetection parameter to asr settings in the transcribe API
+* BE-1749	Add Outbound Calling to AIVR API
+* BE-2277	Add to cluster API new LLM Settings for the Embeddings
+* BE-2177	Added support for 11labs voices in TTS
+* BE-2225	Added transfer to extension option in the AIVR transfer action
+* BE-2291	AIVR Transfer should give option to use DNIs or Original ANI for the caller id for the transferred call
+* BE-2312	Better handling of HTTP 502 from Fusebill
+* BE-2279	Changes on agent field in request to POST /sa/call
+* BE-2085	Do not return "user not found" from the forgot password API
+* BE-1972	Hide/Show features of the Speech Analytics App based on the settings on the account
+* BE-2239	Implement POST /asr/meeting/llm/query
+* BE-2286	Improve (speedup) lookup of AIVR App by DNIS
+* BE-2216	Improve diarization sentence boundary
+* BE-2209	Language detection for offline sessions using Omega model
+* BE-2273	LLM meeting section summary now returned raw
+* BE-2193	Modified GET /greg/experiment to return only the experiments that are from the specified Context
+* BE-673	Modify password change API to encrypt password parameters
+* BE-2081	Move caching of TTS prompts from memory to redis
+* BE-2185	Move mod_xml_curl service to fssk
+* BE-1791	Omega model trained on Health Insurance Call Center data
+* BE-2230	Speedup the response time of POST /asr/transcribe/async
+* BE-2191	Support 'external' websocket mode for /asr/transcribe/async and /asr/recognize/async
+* BE-2192	Support new returned Content type - metadata
+* BE-2261	Tie AIVR App and Context to form AIVR Integration (Context side)
+* BE-1680	Update jdk version to 17 in docker images
+
+Changes related to Integrity of Processing (fixes):
+* QA-1185	TA Edge: Fix - Unable to recognize transcript's project on homepage. 
+* QA-1252	TA Edge: Fix - Port Number is missing in invitation link
+* BE-2269	TA: Fix - Action Items are no longer included in the PDF and Docx
+* QA-1198	TA: Fix - Advanced Search View does not update after clicking ReRun.
+* QA-1263	TA: Fix - After deleting any share, it still shows in the table until the user performs a hard refresh of the page
+* QA-1240	TA: Fix - Downloaded pdf for Korean transcript does not open in Acrobat Reader
+* QA-1248	TA: Fix - Duplicate transcripts are showing in advance search.
+* BE-2275	TA: Fix - Korean sometimes being translated in addition to transcribed
+* BE-2274	TA: Fix - LLM Playground needs to be able to get transcript even if user is User role and has no Download permission
+* QA-1279	TA: Fix - Microphone recording and browser share menu should not be shown under actions for languages that do not have permissions for browser capture and microphone recording.
+* QA-1126	TA: Fix - Null projects displayed for some meetings.
+* QA-1199	TA: Fix - Some transcripts are missing a options under the 3-dot menu.
+* QA-1232	Ta: Fix - Sorting is not working on MY Login sessions page.
+* QA-1219	TA: Fix - The 'Incorrect Password' message should appear when a user tries to download the password recovery key with the wrong password.
+* BE-838	TA: Fix - Tracking of time used does not seem to work anymore
+* QA-1242	TA: Fix - User gets stuck on Upload page after submitting a file.
+* QA-912	TA: Fix - User is able to upload the audio file even when the allotted storage is fully used.
+* BE-2313	TA: Fix - User unable to move recording from one project to another
+* QA-1205	TA: Fix - Warning not showing for upload of large file.
+* BE-2169	Web Console: Fix - Clicking on the date range in Logs page triggers an error in the console
+* QA-1220	Web Console: Fix - New user Account getting error on log search
+* BE-2271	Web Console: Fix - Output AIVR prompts are not expanding
+* BE-2219	Web Console: Fix - recorded audio chart should start from 0:00
+* QA-1243	Web Console: Fix - Unable to edit 'App Name'
+* QA-1273	Web Console: Fix - When user click on the No. of node of 'No edge deployments loaded' table getting blank page
+* QA-1258	SA: Fix - Audio forward/backward buttons are not working as expected.
+* BE-2316	SA: Fix - Avatar not getting saved
+* BE-2250	SA: Fix - Back Button should take us back to Settings overview and not to main page
+* QA-1226	SA: Fix - Fails to show the new project wizard if there are not Projects on account
+* BE-2260	SA: Fix - Missing parameters for uploaded Call
+* QA-1159	SA: Fix - User is unable to select the time and time dropdown text is overlap.
+* QA-1068	SA: Fix - User unable to update location , Company Position, and Name, as save button disabled.
+* QA-1133	SA: Fix - Weird behavior on the configurations page.
+* BE-2288	Fix - AIVR stopped listening in the middle of a my answer
+* BE-2208	Fix - asr-api fails to submit DEL callback request after disconnect is processed
+* BE-2181	Fix - ml-svc performance degradation since release 103 after we upgrade to python 3.11
+* BE-2214	Demo: Fix - Getting 401 error when trying to send a link from the demo app
+* QA-1213	Admin Tool: Fix - Showing a blank page when the admin user tries to check the API usage.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.104.0 is scheduled for 5/29/2024 between 7:30am and 9:00am CDT
 
 **Key changes related to the core APIs**
@@ -896,196 +1011,6 @@ Changes related to Integrity of Processing (fixes):
 * BE-1329	Fix - Missing Content-Length header in the response of GET /private/synthesis
 * BE-716	Fix - Grafana image rendering in version 8
 * QA-708	Web Console: Fix - Incorrect pop-up msg when updating company address in account settings.
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-### Maintenance release 1.94.1 is scheduled for 11/28/2023 between noon and 2pm CST
-
-Changes:
-* BE-1282  Fix - offline task can't process 7.1 channel audio
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Minor release 1.94.0 is scheduled for 11/26/2023 between 6:00pm and 11:00pm CST
-
-New functionality in the Transcribe App:
-* BE-1054	TA: Avatar image can now be edited (cropped)
-* BE-1104	TA: Better reporting of file size errors on upload (413 error)
-* BE-1167	TA: Show Project settings only to Project owners and Admins
-* BE-1168	TA: Add user Profile Setting: "Show advanced Project settings"
-* BE-1170	TA: Any text redaction Settings (Account, Project) visible only to Account Owner and Admins
-* BE-1171	TA: Menu actions in the Advanced Search results list work now the same as on the Home Page
-* BE-1174	TA: Added "Re-upload" that opens Zoom Upload form
-* BE-1190	TA: Show countdown on the modal that shows the QR code.
-* BE-1196	TA: Prompt user to reload if there is a new version (also invalidate any open session)
-* BE-1234	TA: Do not show Analytics settings on a Project unless user has enabled advanced settings
-* BE-1236	TA: Upgrade to Node version 18
-* BE-1254	TA: For Admins the "Show advanced Project settings" is now enabled by default
-* BE-1264	TA: Added more logs around the login process
-* QA-602	TA: Cleaned up the Inactivity Timeout setting
-* QA-619	TA: Remove settings in Shaka Player
-* QA-642	TA: Similar Date formats are now together in Settings under Account in Profile menu.
-
-New functionality in other platform components:
-* BE-984	Update helm to the latest version
-* BE-1114	Move feature extraction to Triton to reduce CPU load in ASR 
-* BE-1115	New Date Format enum for Account and Context
-* BE-1127	Move from tfs to triton for VAD models
-* BE-1144	Extract audio features using Triton
-* BE-1191	Meeting search API: Add new field: LANG - to store the main language of the transcript
-* BE-1203	End-to-end flow for meeting recorder using Puppeteer (Webex)
-* BE-1213	Hardened core ASR when the model is not available
-* BE-1219	Use UTF-8 encoding in telephony bot callback requests
-* BE-1223	Web Console: Add column sorting on the phone management page plus variable page size
-* BE-1224	Add debug meetingPlatform value to POST /asr/meeting/join
-* BE-1240	Support prompt response in llm-svc (in addition to question, transfer, disconnect)
-* BE-1246	Support custom mrcp configuration using helm chart
-* QA-654	Demo: Show message confirming copy to clipboard
-
-
-Changes related to Integrity of Processing (fixes):
-* BE-875	TA: Fix -Warning about a too large file is not being shown
-* BE-1105	TA: Fix - Submit button gets enabled too early while uploading zoom recording folders
-* BE-1128	TA: Fix - "walkThroughWizardSeen" gets set to True even if user has not done the Wizard
-* BE-1156	TA: Fix - In Advanced Search Filters should be remembered
-* BE-1157	TA: Fix - In Advanced Search show Project icon as the first column
-* BE-1169	TA: Fix - Show error message when hovering over the Error in Transcript list (was broken)
-* BE-1180	TA: Fix - When SSO user gets logged out from TA they see normal login page for a few seconds
-* BE-1182	TA: Fix - Weird behavior after clicking back button on detail page opened from Advanced search
-* BE-1217	TA: Fix - Advanced Search API should return al the values if body is not passed.
-* BE-1220	TA: Fix - Missing translations
-* BE-1265	TA: Fix - First Project wizard not running is new user was invited to some projects
-* BE-1269	TA: Fix - On a new account the My Shares page hangs forever with a spinner
-* BE-1270	TA: Fix - GET /asr/meeting sharedBy returns meetings for a brand new user that has not shared anything
-* BE-1272	TA: Fix - Getting incorrect error "cannot transcribe audio from video file" while uploading zoom folder
-* BE-1273	TA: Fix - Checking for file size in Zoom Upload is broken (looks at files that will not be uploaded)
-* QA-537	TA: Fix - Current Project is not picking correctly while move
-* QA-613	TA: Fix - On uploading zoom folder- chat not uploaded correctly
-* QA-643	TA: Fix - Search is not working on Homepage
-* QA-644	TA: Fix - Do not show tag edit option in Shared transcripts
-* QA-655	TA: Fix - Submit button shouldn't get enable until all selected files are uploaded.
-* QA-670	TA: Fix - Right outline of the box is missing the speaker popup
-* QA-674	TA: Fix - After deleting the project still showing name on homepage and setting icon, and clicking on setting no result showing.
-* QA-686	TA: Fix - Project Invited user is able to access the project setting by URL
-* QA-688	TA: Fix - Search user is not working on the Add User(s) to Project setting popup and its redirecting to the General Project Settings
-* QA-695	TA: Fix - Advanced search button stays there on the page even after search collapsed.
-* BE-1026	Fix - azure default voice amber doesn't work
-* BE-1212	Fix - Telephony bot API does not support some symbols in Spanish
-* BE-1227	Fix - In telephony bot API, we should send START-INPUT-TIMER request only after the prompt is played fully.
-* BE-1229	Fix - In telephony bot, DTMF detection has very long delay
-* BE-1239	Fix - Audio server does not support prompt with email address
-* BE-1245	Fix - Bot logic does not get authToken in POST callback
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Maintenance release 1.93.1 is scheduled for 11/8/2023 between 9am and noon CST
-
-Changes:
-* BE-1207  Reject ASR requests if the default model doesn't support languages specified in requests. 
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-### Minor release 1.93.0 is scheduled for 11/2/2023 between 9:00pm and 11:59pm CST
-
-New functionality in the Transcribe App:
-* BE-1100	TA: In large Video view put the Transcript (CC) in a frame that can be moved around the screen.
-* BE-1135	TA: Better copy-to-clipboard of the Meeting Minutes components
-* BE-1147	TA: Show "This Meeting has no video" in the large-video view if meeting has video
-* BE-1152	TA: In tag editor enable Save button only if something has changed
-
-New functionality in other platform components:
-* BE-1032	Add GET /zoom/oauth and DELETE /zoom/oauth APIs
-* BE-1039	AIVR: Support DTMF in output actions
-* BE-1040	AIVR: Re-design for prompt playback - now using events instead on single audio stream
-* BE-1044	POST /auth-svc/device to return api URL in the QR code
-* BE-1068	Support misspellings in hints in REAL-TIME mode
-* BE-1159	Increase the number of allowed audio files in POST /asr/meeting to 25
-
-Changes related to Integrity of Processing (fixes):
-* BE-1099	TA: Fix - Specified date format is not being used
-* BE-1110	TA: Modify NSIS Installer use proper setting of REINSTALLMODE
-* BE-1126	TA: Fix - Large-video chat popup captures focus and icons become not clickable
-* BE-1142	TA: Fix - When Zoom upload contains a video file we should set the "video" tag on this meeting
-* BE-1145	TA: Add beta label over the DOCX selector
-* BE-1146	TA: Fix - Remove UUID tool tips in the large-video view
-* BE-1162	Fix - Failure in sa-recompute on Edge
-* QA-545	TA: Now not be allowed to play multiple voice signature at the same time.
-* QA-567	TA: Fix - Files under processing status shouldn't get option for (Re-Compute, Move or Delete)
-* QA-630	TA: Fix - Transcripts on Homepage are not updating after changing Projects.
-* QA-631	TA: Fix - Unable to edit Download permission after changing role from admin to user in one go.
-* BE-1166	In offline task, if we can't download video, we generate audio-only dash-mpeg
-* QA-629	Console: Fix - Unable to download in JSON format in Download options in Transcribe under Transcribe+(beta)
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Minor release 1.92.0 is scheduled for 10/19/2023 between 4pm and 6pm CST
-
-New functionality in the Transcribe App:
-* BE-779	TA: Show chat messages in Right-Hand pane
-* BE-856	TA: Fix - Login - not showing the locked until information
-* BE-883	TA: Zoom OAuth Handshake page added
-* BE-999	TA: Include video in the manual Zoom folder upload
-* BE-1003	TA: Implemented large video view
-* BE-1004	TA: New design for the Audio Source selector
-* BE-1010	TA: Add export in Docx format
-* BE-1014	TA: Better error massage in case of Recaptcha related Error
-* BE-1015	TA: Fixed the +tag message and added hover text
-* BE-1022	TA: Added a tag editor
-* BE-1053	TA: Edge: If SSO is enabled make login automatic if user hits /login url
-* BE-1055	TA: Show both installed version and available version of Zoom Meeting Assistant if newer version available
-* BE-1061	TA: Ability to Control Download permissions
-* BE-1063	TA: Ability to set a download permission on a User
-* BE-1082	TA: Meeting Chat now being shown
-* BE-1086	TA: Add Copy-to-Clipboard feature on the Overview page
-* BE-1087	TA: Add new download option for docx files
-* BE-1101	TA: Prevent entering regex that can match too much text
-* QA-488	TA: Make Meta Description Tags SEO friendly
-* QA-538	TA: Show message after user delete successfully 
-
-New functionality in other platform components:
-* BE-832	Implemented GET /asr/meeting/search/fields
-* BE-852	Digits formatter for real-time sessions
-* BE-862	Add new field AUDIO_SRC to meeting search API
-* BE-932	Use Google secret manager to manage credentials on GCP cloud
-* BE-974	In offline task, create gRPC channel to ml-svc on demand
-* BE-980	Ensure that Advanced Search queries only Projects/Contexts the User has access to
-* BE-988	App Selector: Add links to Privacy Policy and Terms of Use
-* BE-993	The video that is stored under videoId on a meeting now has audio removed
-* BE-1008	Console: Align Left and Right audio charts for the Telephony Bot Sessions
-* BE-1009	Console: Improve the look of the ASR settings forms
-* BE-1030	AIVR API: Add authToken to first Callback and use it in PUT /aivr/{ivrSid}/vars
-* BE-1031	AIVR API: Add ani parameter to GET /aivr/, add sorting, add endTime field
-* BE-1037	Configure MongoDB memory limit and cacheSizeGB
-* BE-1045	Add tags field to PUT /asr/meeting/{meetingId}
-* BE-1046	Modifications to GET and HEAD /data/{uuid}/file/{fnameWithExt} APIs
-* BE-1065	Enforce "download" permission in GET /asr/meeting/{meetingId}/transcript
-* BE-1069	Console: Show error if API to create new Edge Cluster fails
-* BE-1071	Support chat.msg in the response of GET /asr/meeting/uuid/data
-* BE-1079	Smarter match of chat speakers to the speakers in the Zoom Meeting (if there is no speaker timeline)
-* BE-1083	Add docx format option to GET /asr/meeting/{meetingId}/transcript
-* BE-1102	Prevent text redaction regex from matching too long patterns
-* BE-1103	Support smarter partial redacting PERSON if a name has no space
-
-Changes related to Integrity of Processing (fixes):
-* BE-966	TA: Fix - Weird pause and play behavior on the Voice Signatures page
-* BE-967	TA: Fix - Missing Users step in new Project Wizard on Edge
-* BE-1078	TA: Fix - Password reset by admin does not work
-* BE-1080	TA: Fix - Unable to play audio/video in certain Edge deployments
-* QA-537	TA: Fix - Current Project is not picking correctly while move
-
-* BE-920	Fix - Meeting Search API exposes database structure in the error messages
-* BE-991	Fix - Meeting Search - Gt, Le Terms always returning empty results
-* BE-1012	Console: Fix Listen button from the Telephony Both Session view
-* BE-1034	Console: On Edge environments without HTTPS provide a workaround for copy to clipboard
-* BE-1038	Fix mongodb rolling deployment
-* BE-1056	Fix - Session gets stuck on certain corrupted audio files
-* BE-1076	Fixed: ascalon-cleanup fails to remove any orphan data object if persist=true is found in every data object in the first page
-* BE-1085	Fix - Search API shows meetings from projects that User has no access to 
-* BE-1098	Fix - Modified meeting tags are not passed to the data in postgresql
-* QA-531	Console: Fix - On deleting the JWT success message is showing incorrect
-
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 

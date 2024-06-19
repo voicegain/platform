@@ -1,3 +1,118 @@
+## Release 1.105.0
+
+**Key changes related to the core APIs**
+* Offline model (omega) trained on additional data from call center calls (health insurance, retail customer support)
+* Telephony Bot API now supports outbound calling and setting ANI caller id on transfer
+* Added a parameter that controls language detection in offline transcribe API
+* Added ability to send real-time transcription results to a websocket server (previously only supported websocket client)
+* Web Console now shows all login sessions and supports forced logout.
+
+**Key changes related to Transcribe APP**
+* Added basic LLM Query over data stored in vector database
+* User-level time settings (previously time settings were only account-wide)
+* Korean transcription should now be less likely to shift to translation
+* Summary LLM prompts are customizable on Edge
+
+New or changed functionality in the Transcribe App:
+* QA-1230	TA: Active login sessions now displayed and highlighted at the top by default.
+* BE-2276	TA: Add 3 more LLM prompts to LLM settings
+* BE-2224	TA: Add 'copy to clipboard' for action items
+* BE-2278	TA: Add time settings also on User Profile
+* QA-1237	TA: Added an option for Logout from all devices on My Login sessions.
+* BE-2217	TA: Added basic Vector LLM Query
+* BE-2284	TA: Apply MD formatting to the section summaries
+* BE-2314	TA: If a user clicks the LLM Query button on the home page - take them to the LLM settings if needed
+* BE-2240	TA: Implement page for Vector based querying - Edge Only
+* BE-2196	TA: Make sure that whenever we discard the login session in the browser we do call logout API
+* BE-2218	TA: Provide immediate feedback of the Start mic capture button being clicked
+* BE-2282	TA: Use the customer overrides (if specified) for the summary prompts
+
+New or changed functionality in other platform components:
+* BE-2198	Web Console: Add login sessions view in Account Profile page
+* BE-2197	Web Console: Make sure that whenever we discard the login session in the browser we do call logout API
+* BE-2001	Web Console: Notify about inability to to microphone capture on HTTP urls
+* QA-1274	Web Console: Removed Prompt and TTS Settings
+* BE-2233	Web Console: Show the list of languages sorted
+* BE-2229	Web Console: Use the new change password API
+* BE-2199	SA: Added created date and UUID to the page with Project details
+* BE-2200	SA: Added name of the project to the Delete dialog
+* BE-2256	SA: Contact Support now opens in a new browser tab
+* BE-2290	SA: Implement AIVR Integration (configuration)
+* BE-2206	SA: Improve PII Redaction Config page
+* BE-2255	SA: Use the Account Time settings as the time defaults when creating a new Project
+* BE-2254	SA: Use the new change password API in SA App
+* BE-2252	SA: Hide (comment out) the setting for Age detection
+* BE-2299	Demo: Add a note about the models used in the Voicebot Demo
+* BE-2300	Demo: Copy to clipboard icons need tool-tip and there needs to be confirmation after copy
+* BE-2211	Admin Tool: Add tab/page to control SA activation
+* BE-2301	Add languageDetection parameter to asr settings in the transcribe API
+* BE-1749	Add Outbound Calling to AIVR API
+* BE-2277	Add to cluster API new LLM Settings for the Embeddings
+* BE-2177	Added support for 11labs voices in TTS
+* BE-2225	Added transfer to extension option in the AIVR transfer action
+* BE-2291	AIVR Transfer should give option to use DNIs or Original ANI for the caller id for the transferred call
+* BE-2312	Better handling of HTTP 502 from Fusebill
+* BE-2279	Changes on agent field in request to POST /sa/call
+* BE-2085	Do not return "user not found" from the forgot password API
+* BE-1972	Hide/Show features of the Speech Analytics App based on the settings on the account
+* BE-2239	Implement POST /asr/meeting/llm/query
+* BE-2286	Improve (speedup) lookup of AIVR App by DNIS
+* BE-2216	Improve diarization sentence boundary
+* BE-2209	Language detection for offline sessions using Omega model
+* BE-2273	LLM meeting section summary now returned raw
+* BE-2193	Modified GET /greg/experiment to return only the experiments that are from the specified Context
+* BE-673	Modify password change API to encrypt password parameters
+* BE-2081	Move caching of TTS prompts from memory to redis
+* BE-2185	Move mod_xml_curl service to fssk
+* BE-1791	Omega model trained on Health Insurance Call Center data
+* BE-2230	Speedup the response time of POST /asr/transcribe/async
+* BE-2191	Support 'external' websocket mode for /asr/transcribe/async and /asr/recognize/async
+* BE-2192	Support new returned Content type - metadata
+* BE-2261	Tie AIVR App and Context to form AIVR Integration (Context side)
+* BE-1680	Update jdk version to 17 in docker images
+
+Changes related to Integrity of Processing (fixes):
+* QA-1185	TA Edge: Fix - Unable to recognize transcript's project on homepage. 
+* QA-1252	TA Edge: Fix - Port Number is missing in invitation link
+* BE-2269	TA: Fix - Action Items are no longer included in the PDF and Docx
+* QA-1198	TA: Fix - Advanced Search View does not update after clicking ReRun.
+* QA-1263	TA: Fix - After deleting any share, it still shows in the table until the user performs a hard refresh of the page
+* QA-1240	TA: Fix - Downloaded pdf for Korean transcript does not open in Acrobat Reader
+* QA-1248	TA: Fix - Duplicate transcripts are showing in advance search.
+* BE-2275	TA: Fix - Korean sometimes being translated in addition to transcribed
+* BE-2274	TA: Fix - LLM Playground needs to be able to get transcript even if user is User role and has no Download permission
+* QA-1279	TA: Fix - Microphone recording and browser share menu should not be shown under actions for languages that do not have permissions for browser capture and microphone recording.
+* QA-1126	TA: Fix - Null projects displayed for some meetings.
+* QA-1199	TA: Fix - Some transcripts are missing a options under the 3-dot menu.
+* QA-1232	Ta: Fix - Sorting is not working on MY Login sessions page.
+* QA-1219	TA: Fix - The 'Incorrect Password' message should appear when a user tries to download the password recovery key with the wrong password.
+* BE-838	TA: Fix - Tracking of time used does not seem to work anymore
+* QA-1242	TA: Fix - User gets stuck on Upload page after submitting a file.
+* QA-912	TA: Fix - User is able to upload the audio file even when the allotted storage is fully used.
+* BE-2313	TA: Fix - User unable to move recording from one project to another
+* QA-1205	TA: Fix - Warning not showing for upload of large file.
+* BE-2169	Web Console: Fix - Clicking on the date range in Logs page triggers an error in the console
+* QA-1220	Web Console: Fix - New user Account getting error on log search
+* BE-2271	Web Console: Fix - Output AIVR prompts are not expanding
+* BE-2219	Web Console: Fix - recorded audio chart should start from 0:00
+* QA-1243	Web Console: Fix - Unable to edit 'App Name'
+* QA-1273	Web Console: Fix - When user click on the No. of node of 'No edge deployments loaded' table getting blank page
+* QA-1258	SA: Fix - Audio forward/backward buttons are not working as expected.
+* BE-2316	SA: Fix - Avatar not getting saved
+* BE-2250	SA: Fix - Back Button should take us back to Settings overview and not to main page
+* QA-1226	SA: Fix - Fails to show the new project wizard if there are not Projects on account
+* BE-2260	SA: Fix - Missing parameters for uploaded Call
+* QA-1159	SA: Fix - User is unable to select the time and time dropdown text is overlap.
+* QA-1068	SA: Fix - User unable to update location , Company Position, and Name, as save button disabled.
+* QA-1133	SA: Fix - Weird behavior on the configurations page.
+* BE-2288	Fix - AIVR stopped listening in the middle of a my answer
+* BE-2208	Fix - asr-api fails to submit DEL callback request after disconnect is processed
+* BE-2181	Fix - ml-svc performance degradation since release 103 after we upgrade to python 3.11
+* BE-2214	Demo: Fix - Getting 401 error when trying to send a link from the demo app
+* QA-1213	Admin Tool: Fix - Showing a blank page when the admin user tries to check the API usage.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.104.0
 
 **Key changes related to the core APIs**

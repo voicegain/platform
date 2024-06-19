@@ -36,17 +36,18 @@ python ws_server.py
 # 5) Modify config.ini for Freeswitch docker 
 A sample config.ini can be found in this repository.
 ```ini
-# This is the final or remote server domain that is supposed to be bridging the call
+# This is the SIP destination domain where will be proxying to.
 DESTINATION_DOMAIN=fs.ascalon.ai:5080
 #this is the URI that where SIP call should be redirected in case voicegain services are down to bypass Voicegain, in this case no transcriptions results will be posted to your webserver
 REDIRECT_URI=df3d29f1-856d-470d-887d-445f01541dcb@fs.ascalon.ai:5080;transport=tcp
-#this main voice gain gateway URL please contact voice gain team for this URL
-VG_GATEWAY_URL=https://api.ascalon.ai/v1/asr/transcribe/async
-JWT_TOKEN=XXXXXXXXXXCcccccccyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5Y2QxN2I0NS03MzI2LTRiODEtYTQzNi1jYThlOTgxOWYyNWMiLCJhdWQiOiIqLmFzY2Fsb24uYWkiLCJzdWIiOiIyZjI5Mj
-#this is authentication name that you have created in previous steps above, so the Voice gain gateway will use this name and pickup credential and auth type mentioned in the portal and make a connection to your websocket server so that you can validate it. 
+# this main voicegain API gateway URL 
+VG_GATEWAY_URL=https://api.voicegain.ai/v1/asr/transcribe/async
+JWT_TOKEN=XXXXXXXXXXCcccccccyJhbGciOiJIUzx1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5Y2QxN2I0NS03MzI2LTRiODEtYTQzNi1jYThlOTgxOWYyNWMiLCJhdWQiOiIqLmFzY2Fsb24uYWkiLCJzdWIixiIyZjI5Mj
+# this is the Auth Configuration name that you have created in previous steps above, so the Voicegain gateway will use this name and pickup credential and auth type mentioned in the portal and make a connection to your websocket server so that you can validate it. 
 AUTH_NAME=fsproxy
-#This is your websocker service URL where transcription results are posted in real time
+# This is your websocker service URL where transcription results are posted in real-time
 WEBSOCKET_SERVER=wss://mydomain.com:8765
+# names for the left and right channel sessions
 LEFT_CHANNEL_NAME=CALLER1
 RIGHT_CHANNEL_NAME=CALLER2
 ```

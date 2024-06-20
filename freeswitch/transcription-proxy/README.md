@@ -66,10 +66,13 @@ docker run -d --name fsproxy --network=host -v /Path_to/config.ini:/etc/config.i
 
 You can use, for example, [Linphone](./LINPHONE.md)
 
+You will be making the call to the FreeSWITCH running in the docker. The SIP URI will be, for example, df3d29f1-856d-470d-887d-445f01541dcb@fs1lab.ascalon.ai;transport=tcp
+where the domain will be same where the docker is running and the part before @ will be your destination on the DESTINATION_DOMAIN (from config.ini)
+
 # 9) Testing
 After setting up the application, make a call from any SIP Softphone or Linphone to URL. Once the B party answers the call, you will see live audio text messages on the ws_server.py console.
 
-```sh
+```log
 (myenv) root@fs1lab:~# python ws_server.py 
 Header: authorization: Bearer 12345
 Authentication success

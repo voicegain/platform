@@ -38,9 +38,9 @@ python ws_server.py
 # 5) Modify config.ini for Freeswitch docker 
 A sample config.ini can be found in this repository.
 ```ini
-#This is server where you will be sending all SIP traffic to
+# This is the SIP proxy host where you will be sending SIP traffic to
 FREESWITCH_HOST_DOMAIN=fs1lab.ascalon.ai
-# This is the SIP destination domain where will be proxying to.
+# This is the final SIP destination domain where will be proxying to.
 DESTINATION_DOMAIN=fs.ascalon.ai:5080
 #this is the URI that where SIP call should be redirected in case voicegain services are down to bypass Voicegain, in this case no transcriptions results will be posted to your webserver
 REDIRECT_URI=df3d29f1-856d-470d-887d-445f01541dcb@fs.ascalon.ai:5080;transport=tcp

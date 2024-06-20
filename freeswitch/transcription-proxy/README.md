@@ -52,9 +52,11 @@ LEFT_CHANNEL_NAME=CALLER1
 RIGHT_CHANNEL_NAME=CALLER2
 ```
 # 6) Obtain FreeSWITCH proxy docker
-```sh
-TOOO wait for more steps
-```
+
+You will need to request forom Voicegain a key vg-customer-private-ro-key.json that will give you access to Voicegain artefact repository.
+
+Run “cat vg-customer-private-ro-key.json | sudo docker login -u _json_key --password-stdin https://us-docker.pkg.dev ” to log into voicegain private docker repository.
+
 # 7) Run FreeSWITCH docker
 ```sh
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.

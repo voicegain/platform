@@ -62,7 +62,7 @@ Run “cat vg-customer-private-ro-key.json | sudo docker login -u _json_key --pa
 # 7) Run FreeSWITCH docker
 ```sh
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
-docker run -d --name fsproxy --network=host -v /Path_to/config.ini:/etc/config.ini fspx1:latest
+docker run -d --name fsproxy --network=host -v /Path_to/config.ini:/etc/config.ini gcr.io/ascalon-dev/freeswitch-transcription-proxy:latest
 ```
 # 8) Prepare sip phone to make call to SIP URI
 

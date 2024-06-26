@@ -243,7 +243,7 @@ The list of Subprocessors approved by the data importer as of the effective date
 |---|---|
 |Google | Google Cloud utilized for (1) Account and Session data storage in FireStore; (2) storage of call and meeting data in hosted Postgress (3) logging and monitoring |
 |Amazon AWS | AWS SES: Email support system, used to send emails to users; AWS Chime: SIP Trunk; AWS S3: storing of audio and video chunks for Transceibe App and Speech Analytics|
-[Azure | Open AI for LLM (Transcribe App summaries and action items; Voicebot logic) |
+|Azure | Open AI for LLM (Transcribe App summaries and action items; Voicebot logic) |
 |New Relic | (Edge deployment only) logging and monitoring |
 |DataDog | (Cloud only) logging and monitoring |
 |Rev.com | Manual Labeling of Audio files for Model Training (on customer request / with customer permission)|

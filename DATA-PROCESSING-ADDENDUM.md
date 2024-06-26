@@ -2,6 +2,8 @@
 
 Effective October 25th, 2021
 
+Last Modified June 26, 2024
+
 This Data Processing Addendum (“DPA”) forms part of the Software as a Service Agreement (“Agreement”) between Resolvity, Inc. d/b/a Voicegain.ai (“Supplier”) and the Customer named in the Agreement (“Customer”) and reflects the parties’ agreement with regard to the processing of Customer Personal Data (as applicable). All capitalized terms not defined herein shall have the meaning set forth in the Agreement. In providing the Services to Customer pursuant to the Agreement, Supplier may process Customer Personal Data on behalf of Customer, and the parties agree to comply with the following provisions with respect to the same.
 
 ## Definitions

@@ -31,7 +31,7 @@ ssl_key ="/etc/letsencrypt/live/mydomain.com/privkey.pem"
 
 Go to and login into https://console.voicegain.ai Under API Security create Auth Configuration and select type as Bearer and enter a random string string as credential - note that it should be the same as the SECRET_KEY mentioned in python script. When call is bridged Voicegain gateway will make connection to your websocket server and it will pass this secrect key as Bearer in header request then on the websocket server side upon receving this key you should validate and proceed further. This has already been done in the python example code. 
 
-# 4) Launch Webscoket Server
+# 4) Launch Websocket Server
 ```sh
 python ws_server.py
 ```
@@ -49,7 +49,7 @@ VG_GATEWAY_URL=https://api.voicegain.ai/v1/asr/transcribe/async
 JWT_TOKEN=XXXXXXXXXXCcccccccyJhbGciOiJIUzx1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5Y2QxN2I0NS03MzI2LTRiODEtYTQzNi1jYThlOTgxOWYyNWMiLCJhdWQiOiIqLmFzY2Fsb24uYWkiLCJzdWIixiIyZjI5Mj
 # this is the Auth Configuration name that you have created in previous steps above, so the Voicegain gateway will use this name and pickup credential and auth type mentioned in the portal and make a connection to your websocket server so that you can validate it. 
 AUTH_NAME=fsproxy
-# This is your websocker service URL where transcription results are posted in real-time
+# This is your websocket server URL where transcription results are posted in real-time
 WEBSOCKET_SERVER=wss://mydomain.com:8765
 # names for the left and right channel sessions
 LEFT_CHANNEL_NAME=CALLER1
@@ -57,13 +57,15 @@ RIGHT_CHANNEL_NAME=CALLER2
 ```
 # 6) Obtain FreeSWITCH proxy docker
 
-You will need to request forom Voicegain a key vg-customer-private-ro-key.json that will give you access to Voicegain artefact repository.
-
-Run “cat vg-customer-private-ro-key.json | sudo docker login -u _json_key --password-stdin https://us-docker.pkg.dev ” to log into voicegain private docker repository.
+You will need to request from Voicegain a key vg-customer-private-ro-key.json that will give you access to Voicegain artifact repository. Run below command at linux terminal.
+```sh
+cat vg-customer-private-ro-key.json | sudo docker login -u _json_key --password-stdin https://us-docker.pkg.dev
+```
 
 # 7) Run FreeSWITCH docker
-```sh
+
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
+```sh
 docker run -d --name fsproxy --network=host -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.2.0
 ```
 # 8) Prepare sip phone to make call to SIP URI

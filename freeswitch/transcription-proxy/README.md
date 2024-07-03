@@ -80,6 +80,8 @@ You can use, for example, [Linphone](./LINPHONE.md)
 You will be making the call to the FreeSWITCH running in the docker. The SIP URI will be, for example, df3d29f1-856d-470d-887d-445f01541dcb@fs1lab.ascalon.ai;transport=tcp
 where the domain will be same where the docker is running and the part before @ will be your destination on the DESTINATION_DOMAIN (from config.ini)
 
+NOTE: if you are testing on localhost and your SIP Phone is also on localhost, make sure that the phone is not listening on port 5060 which is needed by FreeSWITCH
+
 # 9) Testing
 After setting up the application, make a call from any SIP Softphone or Linphone to URL. Once the B party answers the call, you will see live audio text messages on the ws_server.py console.
 

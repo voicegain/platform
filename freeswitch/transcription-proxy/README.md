@@ -62,10 +62,17 @@ You will need to request forom Voicegain a key vg-customer-private-ro-key.json t
 Run “cat vg-customer-private-ro-key.json | sudo docker login -u _json_key --password-stdin https://us-docker.pkg.dev ” to log into voicegain private docker repository.
 
 # 7) Run FreeSWITCH docker
+With host nenworking
 ```sh
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
 docker run -d --name fsproxy --network=host -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.2.0
 ```
+With bridge nenworking
+```sh
+-v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
+docker run -d --name fsproxy -p TBD -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.2.0
+```
+
 # 8) Prepare sip phone to make call to SIP URI
 
 You can use, for example, [Linphone](./LINPHONE.md)

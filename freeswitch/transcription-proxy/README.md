@@ -73,6 +73,10 @@ With bridge networking:
 docker run -d --name fsproxy -p -p 5060:5060/tcp -p 5060:5060/udp -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.2.0
 ```
 
+Note 1: Be cartefull with the path to the config.ini on Windows systems
+
+Note 2: If you get an error mentioning `parseConfigFile` and `Is a directory` the most likely the path to config.ini was incorrectly provided
+
 # 8) Prepare sip phone to make call to SIP URI
 
 You can use, for example, [Linphone](./LINPHONE.md)

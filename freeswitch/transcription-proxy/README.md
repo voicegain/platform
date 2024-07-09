@@ -63,17 +63,27 @@ cat vg-customer-private-ro-key.json | sudo docker login -u _json_key --password-
 ```
 
 # 7) Run FreeSWITCH docker
-
+=======
+With host networking:
+```sh
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
 ```sh
 docker run -d --name fsproxy --network=host -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.2.0
 ```
+With bridge networking:
+```sh
+-v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
+docker run -d --name fsproxy -p -p 5060:5060/tcp -p 5060:5060/udp -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.2.0
+```
+
 # 8) Prepare sip phone to make call to SIP URI
 
 You can use, for example, [Linphone](./LINPHONE.md)
 
 You will be making the call to the FreeSWITCH running in the docker. The SIP URI will be, for example, df3d29f1-856d-470d-887d-445f01541dcb@fs1lab.ascalon.ai;transport=tcp
 where the domain will be same where the docker is running and the part before @ will be your destination on the DESTINATION_DOMAIN (from config.ini)
+
+NOTE: if you are testing on localhost and your SIP Phone is also on localhost, make sure that the phone is not listening on port 5060 which is needed by FreeSWITCH
 
 # 9) Testing
 After setting up the application, make a call from any SIP Softphone or Linphone to URL. Once the B party answers the call, you will see live audio text messages on the ws_server.py console.

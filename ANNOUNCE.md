@@ -1,3 +1,7 @@
+### Minor release 1.106.0 is scheduled for 7/12/2024 between 10pm and 12am CDT
+
+Content TBD...
+
 ### Minor release 1.105.0 is scheduled for 6/18/2024 between 7:30pm and 9:00pm CDT
 
 **Key changes related to the core APIs**

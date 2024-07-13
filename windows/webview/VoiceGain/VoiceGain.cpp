@@ -1,14 +1,9 @@
 #include <windows.h>
 #include <wrl.h>
 #include <WebView2.h>
+#include "config.h" // Include the config header file
 
 using namespace Microsoft::WRL;
-
-// Constants for window size and title
-const int WINDOW_WIDTH = 1000;
-const int WINDOW_HEIGHT = 600;
-const wchar_t WINDOW_TITLE[] = L"VoiceGain Demo";
-
 
 ComPtr<ICoreWebView2Controller> webViewController;
 ComPtr<ICoreWebView2> webViewWindow;
@@ -39,7 +34,11 @@ void InitializeWebView(HWND hwnd)
                                     GetClientRect(hwnd, &bounds);
                                     webViewController->put_Bounds(bounds);
 
-                                    webViewWindow->Navigate(L"https://demo.voicegain.ai/voicebot");
+                                    // Set the zoom level
+                                    webViewController->put_ZoomFactor(ZOOM_LEVEL);
+
+                                    // Navigate to the URL
+                                    webViewWindow->Navigate(NAVIGATE_URL);
                                 }
 
                                 return S_OK;
@@ -53,6 +52,11 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     switch (uMsg)
     {
+    case WM_CLOSE:
+        if (MessageBox(hwnd, L"Are you sure you want to exit?", L"Confirmation", MB_OKCANCEL | MB_ICONQUESTION) == IDOK) {
+            DestroyWindow(hwnd);
+        }
+        return 0; // Prevent the default WM_CLOSE behavior
     case WM_SIZE:
         if (webViewController != nullptr) {
             RECT bounds;
@@ -84,7 +88,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
         0,
         CLASS_NAME,
         WINDOW_TITLE,
-        WS_OVERLAPPEDWINDOW,
+        WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU,
         CW_USEDEFAULT, CW_USEDEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT,
         NULL,
         NULL,

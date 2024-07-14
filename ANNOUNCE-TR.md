@@ -2,6 +2,56 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### July 13, 2024
+
+**Key changes related to Transcribe APP**
+* Added Meeting Bot that can join a meeting and record/transcribe it (beta)
+* Added Rediarize option
+* LLM Playground and LLM Query available on Cloud
+  * Note there is a limit of 16K tokens - about 1.5h of audio
+* LLM Query results now show which transcripts were used in answering the query
+* Added LLM Service authorization header settings
+* Improved Action Items LLM query
+* Show which users have Zoom Meeting Assistant installed
+
+New:
+* BE-2468	TA: Add a meeting_bot tag to meetings recorded using Bot
+* BE-2470	TA: Add BOT selector on the home page
+* BE-2345	TA: Add Meeting Bot
+* BE-2412	TA: Add Re-diarize option for a meeting
+* QA-766	TA: Added search to time-zone selector
+* QA-1281	TA: Better error message when inviting user with invalid domain
+* BE-2545	TA: Do not hide LLM Playground on the Cloud
+* BE-2546	TA: Do not hide LLM Query on the Cloud
+* QA-1377	TA: Fix after-login redirect URL on Edge
+* BE-2508	TA: For first time login, after creating first project, we should take user to the page with the Zoom Meeting Assistant
+* BE-2529	TA: Handle 429 response from /llm/chat API and /asr/meeting/llm/query
+* BE-2467	TA: Identify Meeting Bot recordings as such in Transcribe App
+* BE-1998	TA: Improved 404 Error handling
+* BE-2394	TA: Improvements to LLM Playground UI
+* BE-2495	TA: In LLM settings add Authorization header settings
+* BE-1094	TA: Information about the use of Shared links is displayed
+* BE-2514	TA: Make the request for Action Items be similar to the request made from the LLM Playground
+* BE-2487	TA: Modify the LLM Query page to have the same look and feel as the new LLM Playground
+* BE-2392	TA: New widgets to set number of speakers for Saving microphone recording
+* BE-2391	TA: New widgets to set number of speakers for Upload
+* QA-1416	TA: Remove language selector on Project Settings page on Edge
+* BE-2339	TA: Show on Users page if the user has Zoom Meeting Assistant installed
+* BE-2486	TA: Show relevant meetings if they are returned by the /llm/query API
+* BE-2207	TA: Show share usage
+* QA-321	TA: When a new user creates his first project there is now an option for change language for page translation
+
+Fixes:
+* QA-1298	TA: Fix - Admin User is unable to update the LLM setting.
+* QA-1277	TA: Fix - After submitting a microphone recording, no success or upload message is shown. It should display a success message.
+* BE-2331	TA: Fix - Browser Capture Pop-Up seems to load bunch of stuff that it does not need
+* QA-1304	TA: Fix - For browser share and microphone capture recording, the Success message is not displaying after saving the recording.
+* QA-1357	TA: Fix - LLM Query is not working
+* QA-1359	TA: Fix - Redux is not clearing up in case of session logout
+* QA-1196	TA: Fix - Sometimes, the login process gets stuck on the login page.
+* QA-1384	TA: Fix - Three dot menu are not visible for the account users table.
+* QA-965	TA: Fix - Within account share is not working properly.
+
 ### June 18, 2024
 
 **Key changes related to Transcribe APP**

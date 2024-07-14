@@ -54,7 +54,7 @@ WEBSOCKET_SERVER=wss://mydomain.com:8765
 # names for the left and right channel sessions
 LEFT_CHANNEL_NAME=CALLER1
 RIGHT_CHANNEL_NAME=CALLER2
-# optiions are words OR segments
+# options are words OR segments
 CONTENT_INCREMENTAL=words
 ```
 # 6) Obtain FreeSWITCH proxy docker

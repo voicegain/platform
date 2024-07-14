@@ -1,4 +1,4 @@
-### Minor release 1.106.0 is scheduled for 7/12/2024 between 10pm and 12am CDT
+### Minor release 1.106.0 is scheduled for 7/13/2024 between 7pm and 10pm CDT
 
 Content TBD...
 

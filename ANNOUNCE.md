@@ -5,7 +5,7 @@
 * Improved diarization
 * Improvements in /asr/meeting/join API (for Meeting Bot)
 * Improvements to /asr/meeting/llm/query API (return relevant meetings)
-* Outbound dialing needs to be enabled per account (it is a cmpliance feature)
+* Outbound dialing needs to be enabled per account (it is a compliance feature)
 * Added AIVR (Voicebot) Integration to Speech Analytics App
 * Added webhook to Aircall integration
 * Added HA Freeswitch support

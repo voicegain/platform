@@ -130,7 +130,7 @@ In this node pool, we use `n1-standard-16` instance with one T4 GPU.
 <pre>
 gcloud container node-pools create [GPU_NODE_POOL_NAME] --region [REGION] --cluster [CLUSTER_NAME] \
 --disk-size=100GB --num-nodes=1 --machine-type=n1-standard-16 \
---accelerator type=nvidia-tesla-t4,count=1
+--accelerator type=nvidia-tesla-t4,count=1,gpu-driver-version=default
 </pre>
 
 <pre>

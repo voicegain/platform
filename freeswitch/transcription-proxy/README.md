@@ -42,11 +42,9 @@ A sample config.ini can be found in this repository.
 FREESWITCH_HOST_DOMAIN=fs1lab.ascalon.ai
 # This is the final SIP destination domain where will be proxying to.
 DESTINATION_DOMAIN=fs.ascalon.ai:5080
-#this is the URI that where SIP call should be redirected in case voicegain services are down to bypass Voicegain, in this case no transcriptions results will be posted to your webserver
-REDIRECT_URI=df3d29f1-856d-470d-887d-445f01541dcb@fs.ascalon.ai:5080;transport=tcp
 # this main voicegain API gateway URL 
 VG_GATEWAY_URL=https://api.voicegain.ai/v1/asr/transcribe/async
-JWT_TOKEN=XXXXXXXXXXCcccccccyJhbGciOiJIUzx1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5Y2QxN2I0NS03MzI2LTRiODEtYTQzNi1jYThlOTgxOWYyNWMiLCJhdWQiOiIqLmFzY2Fsb24uYWkiLCJzdWIixiIyZjI5Mj
+JWT_TOKEN=XXXXXXXXXXCcccccccyJhbGciOiJIUzx1NiIsInR5cCI6IkpXVCJ9.
 # this is the Auth Configuration name that you have created in previous steps above, so the Voicegain gateway will use this name and pickup credential and auth type mentioned in the portal and make a connection to your websocket server so that you can validate it. 
 AUTH_NAME=fsproxy
 # This is your websocket server URL where transcription results are posted in real-time
@@ -55,6 +53,8 @@ WEBSOCKET_SERVER=wss://mydomain.com:8765
 LEFT_CHANNEL_NAME=CALLER1
 RIGHT_CHANNEL_NAME=CALLER2
 # options are words OR segments
+#words - words with confidence and timing info [also sent over websocket]
+#segments -- segments (or partial hypotheses) [also sent over websocket, note that latency of segments is higher than that of words by about 300-500ms]]
 CONTENT_INCREMENTAL=words
 ```
 # 6) Obtain FreeSWITCH proxy docker
@@ -69,8 +69,9 @@ cat vg-customer-private-ro-key.json | sudo docker login -u _json_key --password-
 With host networking:
 ```sh
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
+-m to limit memory usage by freewitch docker so below example puts 1GB limit
 ```sh
-docker run -d --name fsproxy --network=host -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.5.0
+docker run -d --name fsproxy --network=host -m 1g -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.7.0
 ```
 With bridge networking:
 ```sh

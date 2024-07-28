@@ -55,7 +55,7 @@ asr_body = {
     },
     "settings": {
         "asr": {
-            "languages" : ["es", "en"],
+            "languages" : ["en"],
             #"languages" : ["de"],
             "acousticModelNonRealTime" : model,
             "noInputTimeout": -1,

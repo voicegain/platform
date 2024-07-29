@@ -71,12 +71,12 @@ With host networking:
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
 -m to limit memory usage by freewitch docker so below example puts 1GB limit
 ```sh
-docker run -d --name fsproxy --network=host -m 1g -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.7.0
+docker run -d --name fsproxy --network=host -m 1g -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.8.0
 ```
 With bridge networking:
 ```sh
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
-docker run -d --name fsproxy -p -p 5060:5060/tcp -p 5060:5060/udp -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.5.0
+docker run -d --name fsproxy -p -p 5060:5060/tcp -p 5060:5060/udp -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.8.0
 ```
 
 Note 1: Be cartefull with the path to the config.ini on Windows systems

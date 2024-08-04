@@ -2,6 +2,32 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### August 5, 2024
+
+**Key changes related to Transcribe APP**
+* Meeting metadata used in LLM Playground
+* LLM Query uses history of previous Q and As
+* More detail for the relevant meeting display in LLM Query
+* Enhancements to text file download
+
+New:
+* BE-2633	TA: Add metadata information to LLM Playground query
+* BE-2724	TA: Add option to include header in the downloaded text file
+* BE-2651	TA: Add Project information to the relevant-meeting list in LLM Query page
+* BE-2687	TA: API Key entry boxes should be set to not remember history
+* BE-2634	TA: For text transcript download, add configurable transcript timestamp
+* BE-2725	TA: Improve the rules to show the speakers and non-speaking participants
+* BE-2577	TA: Indicate the relevance of the relevantMeetings returned from /asr/meeting/llm/query
+* BE-2717	TA: Make sure that the transcript submitted to LLM Playground has timestamps (interval parameter)
+* BE-2601	TA: Remember sorting on home page when returning to it from open meeting details
+* BE-2589	TA: Replace HighCharts WordCloud with another library
+* BE-2570	TA: Show the scope of the LLM query in the Answer
+
+Fixes:
+* BE-2560	TA: Fix - After latest change the Meeting Bot does not distinguish between progress Processing or Done
+* BE-2630	TA: Fix - Meeting search seems to not always return the newest first
+* QA-1485	TA: Fix - Error page when opening rediarized transcript (partial fix)
+
 ### July 13, 2024
 
 **Key changes related to Transcribe APP**

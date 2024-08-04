@@ -1,3 +1,124 @@
+## Release 1.107.0
+
+**Key changes related to the core APIs**
+* Changes in AIVR API to support Aircall integration
+* Changes in AIVR API to support multiple languages
+* Agents and Queues now correcty handles in SA APIs and SA App
+* Improved Advanced Search in SA App
+* Ability to use single session on websocket receiving server for both left and right transcription channels.
+* Ability to add external UUID to any transcription session
+* Full HA setups for FreeSWITCH and Kamailio
+
+**Key changes related to Transcribe APP**
+* Meeting metadata used in LLM Playground
+* LLM Query uses history of previous Q and As
+* More detail for the relevant meeting display in LLM Query
+* Enhancements to text file download
+
+New or changed functionality in the Transcribe App:
+* BE-2633	TA: Add metadata information to LLM Playground query
+* BE-2724	TA: Add option to include header in the downloaded text file
+* BE-2651	TA: Add Project information to the relevant-meeting list in LLM Query page
+* BE-2687	TA: API Key entry boxes should be set to not remember history
+* BE-2634	TA: For text transcript download, add configurable transcript timestamp
+* BE-2725	TA: Improve the rules to show the speakers and non-speaking participants
+* BE-2577	TA: Indicate the relevance of the relevantMeetings returned from /asr/meeting/llm/query
+* BE-2717	TA: Make sure that the transcript submitted to LLM Playground has timestamps (interval parameter)
+* BE-2601	TA: Remember sorting on home page when returning to it from open meeting details
+* BE-2589	TA: Replace HighCharts WordCloud with another library
+* BE-2570	TA: Show the scope of the LLM query in the Answer
+
+New or changed functionality in other platform components:
+* BE-2673	Web Console Add search by email to user management page
+* BE-2617	Web Console: Add 3 new Aircall parameters to the AIVR App settings
+* BE-2605	Web Console: Add language to the logic settings on the AIVR App
+* BE-2604	Web Console: In AIVR App settings - support multiple voices (one per language)
+* BE-2598	Web Console: Make number of rows per page in the Phone Apps table configurable
+* BE-2667	Web Console: New Voice Connector status column in AIVR App view
+* BE-2666	Web Console: Shortcuts from Phone Management page plus modified status field
+* BE-2669	Web Console: Show event metadata (if present) for AIVR Session Events
+* BE-2012	Web Console: Transcribe+ now uses /sa/offline API
+* BE-2649	Web Console: When querying AIVR (telephone) session set the limit parameter to 500
+* BE-2675	SA: Add a refresh button to the page with the list of Calls
+* BE-2635	SA: Add Description to Project
+* BE-2631	SA: Add tooltips on 1D, 7D, 30D
+* BE-2607	SA: Improvements to AIVR App selector
+* BE-2608	SA: Make the selected Project indicator have 2 instead of 1 letter
+* BE-2380	SA: On project general settings highlight the color and show time settings preview
+* BE-2606	SA: Preselect time settings on the page where we create new project
+* BE-2621	SA: Show headline in /sa/call search results if the search included text search
+* BE-2636	SA: Show project name on the Integration settings page
+* BE-2590	SA: Show the integration Icon on the Project selection list
+* BE-2647	SA: Use the new GET /sa/call/agent to map agent_user_id to the name of the Agent
+* BE-2646	SA: Use the new GET /sa/call/queue method to provide names for queues in the Advanced Search Queue filter
+* BE-2645	SA: When querying fields for advanced search pass the contextId for the current Project
+* BE-2611	Admin Tool: Convert Account Activity chart to Chart.js
+* BE-2664	Add a verify query parameter to GET/account/{uuid}/phone-number
+* BE-2643	Add contexId parameter to GET /sa/call/search/fields
+* BE-2650	Add contextId to the content of the relevantMeetings returned from GET /asr/meeting/llm/query
+* BE-2603	Add default TTS/ASR language for logic in AIVR App
+* BE-2623	Add externalSaSession flag to AIVR Session
+* BE-2648	Add limit parameter to the API that returns AIVR sessions
+* BE-2660	Add metadata field to the AIVR Event
+* BE-2665	Add new verify query parameter to GET /aivr-app
+* BE-2720	Add optional metadata parameter to method that GETs meeting transcript
+* BE-2614	Add to AIVR App: aircallApiUsername and aircallApiPassword
+* BE-1783	AIVR API now can enable real-time transcription on transferred leg
+* BE-2221	Allow the AIVR logic to send an alternative callback url in the response
+* BE-2503	Associate and external ID to transcribe session on post in order to be able to retrieve the session using that ID later
+* BE-2618	DAO for a database that will be storing data about recordings from S3 that need to be transcribed
+* BE-2602	Define default voice for each language supported by AIVR App
+* BE-2559	Delete embedding vectors if meeting is deleted.
+* BE-2296	Deploy HA Kamailio Setup in Cloud
+* BE-2644	Implement GET /sa/call/agent
+* BE-2642	Implement GET /sa/call/queue
+* BE-2571	In FreeSwitch transcribe proxy remove REDIRECT_URI and create SIP uri used in deflect from SIP URI name and DESTINATION DOMAIN
+* BE-2715	More accurate control over the number of tokens submitted to LLM Service with all the embeddings
+* BE-2563	Move meeting-join docker image from public repo to private repo
+* BE-2526	New settings for voiceconnector origination and termination
+* BE-2482	Pass intents from AIVR Session to /sa/offline via topics in /sa/call
+* BE-1366	RedisConnectionException: Unable to init enough connections amount! Only 0 of 24 were initialized. 
+* BE-2627	Remove xml:lang from the SSML template in audio-server
+* BE-2641	Report Aircall Agent to the /sa/call
+* BE-2640	Report Aircall Queue to the /sa/call
+* BE-2620	Return headline as part of the /sa/call search results
+* BE-2573	Send Call Notes to Aircall when AIVR call ends
+* BE-2572	Send Caller Insight to Aircall as part of handling call.created webhook
+* BE-2531	Send multiple asr session results to a single websocket receiver server session
+* BE-2659	Split post-processing of AIVR sessions into immediate step and the delayed step
+* BE-1786	Store copilot notes in /sa/call
+* BE-2579	Store meeting speaker timeline in the database
+* BE-2676	Support follow up queries in the /asr/meeting/llm/query - add history parameter and use it
+* BE-2406	Support language switching setting in telephony bot logic callback
+* BE-2652	Sync AIVR session with Aircall callId at transfer
+* BE-2583	Use meeting.join.puppeteer.imagePullSecret property to pull puppeteer docker image
+
+Changes related to Integrity of Processing (fixes):
+* BE-2034	Admin Tool: Fix - failed to decode request body: organization name "telegraf" not found"
+* BE-2600	Fix - Aircall webhook is unable to find an AIVR session
+* BE-2674	Fix - Error when saving queue field data in /sa/call API
+* BE-2705	Fix - fail to get fsPodName from the db for outbound calls
+* BE-2628	Fix - In case of AIVR/SA integration the saConfig is retrieved from AIVR App context instead of from the SA Project
+* BE-1354	Fix - NatsEndpoint fails to reconnect to NATS when its connection is lost
+* BE-2637	Fix - realTimeAsrTranscribeSession is set on AIVR Session, but processing after the call terminates claims that "no RT asr transcribe session"
+* BE-2629	Fix - Still seeing default text in the sa_call table
+* BE-2638	Fix - Transcript text is not being saved into text field in sa_call
+* BE-2592	Fix filebeat logging on cloud
+* BE-2594	SA: Fix - Incorrect message shown after Voicebot Integration Project created
+* BE-2373	SA: Fix - Name validations for project settings are required. 
+* BE-2691	SA: Fix - Swapped channels in SA AIVR Integration
+* BE-2560	TA: Fix - After latest change the Meeting Bot does not distinguish between progress Processing or Done
+* BE-2630	TA: Fix - Meeting search seems to not always return the newest first
+* QA-1485	TA: Fix - Error page when opening rediarized transcript (partial fix)
+* BE-2692	Web Console: Fix - Error when listing some sessions Call Session view
+* BE-2693	Web Console: Fix - Filter on the App Name in the Call Sessions table does not work
+* BE-2525	Web Console: Fix - Label validation issues in Transcribe+
+* BE-2534	Web Console: Fix - Provide correct value of the SIP URI on QA
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.106.0
 
 **Key changes related to the core APIs**

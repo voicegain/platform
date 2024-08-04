@@ -3,7 +3,7 @@
 **Key changes related to the core APIs**
 * Changes in AIVR API to support Aircall integration
 * Changes in AIVR API to support multiple languages
-* Agents and Queues now correcty handles in SA APIs and SA App
+* Agents and Queues now correctly handles in SA APIs and SA App
 * Improved Advanced Search in SA App
 * Ability to use single session on websocket receiving server for both left and right transcription channels.
 * Ability to add external UUID to any transcription session

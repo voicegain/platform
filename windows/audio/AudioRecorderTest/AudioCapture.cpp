@@ -1,5 +1,4 @@
 #include "framework.h"
-#include "AudioCapture.h"
 #include <audioclient.h>
 #include <mmdeviceapi.h>
 #include <avrt.h>
@@ -7,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <vector>
 #include <windows.h>
 #include "DebugUtils.h"
 #include "WaveFileWriter.h"
@@ -110,11 +110,11 @@ void CaptureAudio() {
     DebugOutput("Audio clients started.\n");
 
     // Create WaveFileWriter
-    WaveFileWriter waveFileWriter("output.wav", pRenderFormat);
+    WaveFileWriter fileWriter("output.pcm");
 
     // Capture loop for 10 seconds
-    BYTE* pRenderData;
-    BYTE* pCaptureData;
+    uint8_t* pRenderData = nullptr;  // Initialize to nullptr
+    uint8_t* pCaptureData = nullptr; // Initialize to nullptr
     UINT32 renderNumFramesAvailable;
     UINT32 captureNumFramesAvailable;
     DWORD renderFlags;
@@ -136,15 +136,6 @@ void CaptureAudio() {
                 DebugOutput("Failed to get render buffer.\n");
                 break;
             }
-
-            UINT32 renderNumBytes = renderNumFramesAvailable * pRenderFormat->nBlockAlign;
-            waveFileWriter.writeData(pRenderData, renderNumBytes);
-
-            hr = pRenderCaptureClient->ReleaseBuffer(renderNumFramesAvailable);
-            if (FAILED(hr)) {
-                DebugOutput("Failed to release render buffer.\n");
-                break;
-            }
         }
 
         // Capture microphone audio
@@ -160,10 +151,29 @@ void CaptureAudio() {
                 DebugOutput("Failed to get capture buffer.\n");
                 break;
             }
+        }
 
-            UINT32 captureNumBytes = captureNumFramesAvailable * pCaptureFormat->nBlockAlign;
-            waveFileWriter.writeData(pCaptureData, captureNumBytes);
+        // Interleave render and capture data and write to PCM file
+        UINT32 numFramesToWrite = min(renderNumFramesAvailable, captureNumFramesAvailable);
+        UINT32 numBytesToWrite = numFramesToWrite * pRenderFormat->nBlockAlign;
+        std::vector<uint8_t> interleavedData(numBytesToWrite * 2); // Ensure this line exists
 
+        for (UINT32 i = 0; i < numFramesToWrite; ++i) {
+            memcpy(&interleavedData[i * 4], &pRenderData[i * 2], 2); // Copy render sample
+            memcpy(&interleavedData[i * 4 + 2], &pCaptureData[i * 2], 2); // Copy capture sample
+        }
+
+        fileWriter.writeData(interleavedData.data(), interleavedData.size());
+
+        if (renderNumFramesAvailable > 0) {
+            hr = pRenderCaptureClient->ReleaseBuffer(renderNumFramesAvailable);
+            if (FAILED(hr)) {
+                DebugOutput("Failed to release render buffer.\n");
+                break;
+            }
+        }
+
+        if (captureNumFramesAvailable > 0) {
             hr = pCaptureCaptureClient->ReleaseBuffer(captureNumFramesAvailable);
             if (FAILED(hr)) {
                 DebugOutput("Failed to release capture buffer.\n");
@@ -174,8 +184,8 @@ void CaptureAudio() {
         Sleep(10); // Sleep for a short period before checking again
     }
 
-    // Finalize the WAV file
-    waveFileWriter.finalize();
+    // Finalize the PCM file
+    fileWriter.finalize();
 
     pRenderAudioClient->Stop();
     pCaptureAudioClient->Stop();

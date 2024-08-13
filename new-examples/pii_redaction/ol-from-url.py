@@ -99,7 +99,7 @@ asr_body = {
         ,{
             "type": "redact",
             "parameters": {
-                #"CC": "[CC]",
+                "CC": "[CC]",
                 "ZIP": "[ZIP]",
                 "PERSON": "[PERSON]",
                 "EMAIL" : "[EMAIL]",
@@ -213,22 +213,22 @@ asr_body = {
         #         "options": "IA"
         #     }
         # }   
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b\d{4}\b",
-                "mask": "[CVV4]",
-                "options": "IA"
-            }
-        }   
-        ,{
-            "type": "regex",
-            "parameters": {
-                "pattern": r"\b\d{3}\b",
-                "mask": "[CVV3]",
-                "options": "IA"
-            }
-        }   
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b\d{4}\b",
+        #         "mask": "[CVV4]",
+        #         "options": "IA"
+        #     }
+        # }   
+        # ,{
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b\d{3}\b",
+        #         "mask": "[CVV3]",
+        #         "options": "IA"
+        #     }
+        # }   
         ]
     }
 }

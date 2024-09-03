@@ -1,3 +1,22 @@
+### Minor release 1.108.0 is scheduled for 9/2/2024 between 10pm and 12am CDT
+
+**Key changes related to the core APIs**
+* TBD
+
+**Key changes related to Transcribe APP**
+* TBD
+
+New or changed functionality in the Transcribe App:
+* TBD
+
+New or changed functionality in other platform components:
+* TBD
+
+Changes related to Integrity of Processing (fixes):
+* TBD
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.107.0 is scheduled for 8/5/2024 between 8pm and 11pm CDT
 
 **Key changes related to the core APIs**

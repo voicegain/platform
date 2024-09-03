@@ -14,9 +14,9 @@ inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 inputFname = cfg.get("DEFAULT", "INPUTFILE")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
-model = "VoiceGain-omega"
+#model = "VoiceGain-omega"
 #model = None
-#model = "whisper:medium"
+model = "whisper:medium"
 
 print("model: {}".format(model))
 

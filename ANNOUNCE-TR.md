@@ -2,6 +2,52 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### September 2, 2024
+
+**Key changes related to Transcribe APP**
+* Cloud only: Major improvememnt to capabilities of LLM Query
+* Major makover of the look of the UI
+* Added UI dark mode
+* Added Configurable Meeting Minutes (via LLM prompt)
+* Added tracking of LLM tokens (in the Cloud)
+* On Edge: Added ability to retrieve speaker data (incl. email) using Zoom API
+
+New:
+* BE-2798	TA: Added new LLM Prompts for Meeting Minutes
+* BE-2811	TA: Added Purple project color (instead of black).
+* QA-1003	TA: Add option to rename transcripts.
+* BE-2668	TA: Change Key Items to Meeting Minutes : Add more categories in addition to Action Items
+* BE-2762	TA: Change naming from Key Items to Meeting Minutes.
+* BE-2786	TA: Changed border radius on avatars.
+* BE-2718	TA: Dark mode is enabled for transcribe app.
+* BE-2763	TA: On LLM Settings have two tabs - one for Prompts and one for Services
+* BE-2797	TA: Post signup to Transcribe App, sending signup email.  
+* QA-1515	TA: Show creator avatar on the transcript detail page
+* BE-2781	TA: Show usage of LLM Tokens
+* BE-2789	TA: Showing email icon next to the speaker/participant if there it an email field for that speaker/participant.
+* BE-2810	TA: Switch Black Project color to Purple (for dark mode)
+* BE-2329	TA: Track LLM token use in Transcribe App Cloud
+* BE-2739	TA: Tracking used time on Transcribe App.
+* BE-2791	TA: Update look and feel of transcribe app
+
+Fixes:
+* QA-1443	TA: Fix - Error message is wrong for the password reset page.
+* QA-1638	TA: Fix - Getting 500 server error when Users use Special characters in search bar on Advanced search page.
+* BE-1388	TA: Fix - Getting identical values of confidence when running transcript/{session-id} REAL-TIME
+* QA-1493	TA: Fix - HTML element showing in overview section on production.
+* QA-1613	TA: Fix - In Advance search Filter, tag is not working.
+* BE-2756	TA: Fix - List of transcripts on Home page loads twice
+* QA-1511	TA: Fix - LLM prompt box on transcript should not be available for shares.
+* QA-910	TA: Fix - Search by numbers is not working properly.
+* QA-1454	TA: Fix - Text "Undefined" populate when user left blank while signup
+* QA-1593	TA: Fix - The Advanced Search functionality breaking on searching more than one word.
+* QA-1461	TA: Fix - There should be a limit for the expiry time limit for shared transcript.
+* QA-1481	TA: Fix - There should be warning Dialog when user click on Back Button or Close Browser
+* BE-2330	TA: Fix - Transcribe is showing one-line per word.
+* QA-1636	TA: Fix - Unable to check the creator on the advanced search filter.
+* QA-1462	TA: Fix - Walk through wizard breaks when user switch language between walkthroughs.
+* QA-764	TA: Fix - When a whole sentence entered in search box, it is not working and overlapping with close icon.
+
 ### August 5, 2024
 
 **Key changes related to Transcribe APP**

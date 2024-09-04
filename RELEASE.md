@@ -1,3 +1,142 @@
+## Release 1.108.0
+
+**Key changes related to the core APIs**
+* More accurate offline transcription model
+  * Removed artifacts from training data
+  * Added additional Call Center data to training set
+* Finalized warm transfer support in Telephony Bot API
+* Support for pushing Voicebot data and Call Notes to Copilot
+
+**Key changes related to Transcribe APP**
+* Cloud only: Major improvememnt to capabilities of LLM Query
+* Major makover of the look of the UI
+* Added UI dark mode
+* Added Configurable Meeting Minutes (via LLM prompt)
+* Added tracking of LLM tokens (in the Cloud)
+* On Edge: Added ability to retrieve speaker data (incl. email) using Zoom API
+
+
+New or changed functionality in the Transcribe App:
+* BE-2798	TA: Added new LLM Prompts for Meeting Minutes
+* BE-2811	TA: Added Purple project color (instead of black).
+* QA-1003	TA: Add option to rename transcripts.
+* BE-2668	TA: Change Key Items to Meeting Minutes : Add more categories in addition to Action Items
+* BE-2762	TA: Change naming from Key Items to Meeting Minutes.
+* BE-2786	TA: Changed border radius on avatars.
+* BE-2718	TA: Dark mode is enabled for transcribe app.
+* BE-2763	TA: On LLM Settings have two tabs - one for Prompts and one for Services
+* BE-2797	TA: Post signup to Transcribe App, sending signup email.  
+* QA-1515	TA: Show creator avatar on the transcript detail page
+* BE-2781	TA: Show usage of LLM Tokens
+* BE-2789	TA: Showing email icon next to the speaker/participant if there it an email field for that speaker/participant.
+* BE-2810	TA: Switch Black Project color to Purple (for dark mode)
+* BE-2329	TA: Track LLM token use in Transcribe App Cloud
+* BE-2739	TA: Tracking used time on Transcribe App.
+* BE-2791	TA: Update look and feel of transcribe app
+
+New or changed functionality in other platform components:
+* BE-2758	Add codec restrictions to the dial string for outbound
+* BE-2045	Add to AIVR API subReturn action.
+* BE-1782	Added Copilot Call Notes support.
+* BE-2777	Added info about LLM tokens to GET account new-billing method.
+* BE-2698	Added information regarding Member being Verified to the Call Notes
+* BE-2695	Added realTimeTranscriptText to AIVR Session and store the transcript from real-time transcription in it.
+* BE-1757	Added required features for Inbound Bot.
+* BE-2821	Added secondary voice connector id to AIVR App api.
+* BE-2768	Added speaker email value in the meeting data (ASR Meeting API)
+* BE-2404	Added support for language switching in telephony bot.
+* BE-1761	Added to AIVR API warmTransfer action.
+* BE-2767	Added to Edge Configuration parameters for connecting to Zoom Service.
+* QA-1319	Admin Tool: Added email validation on add account page.
+* BE-2657	Admin Tool: Convert API Use chart to chart-js
+* BE-2114	Check if we are within phone number quota on AWS before creating a new one
+* BE-2749	Check Voice Connector number against quota before creating a new one.
+* BE-2765	Demo: Collect events to Matomo from the voicebot part of the demo
+* BE-2761	For confGroups of type other than Transcription do not delete them if the creator is deleted
+* BE-2726	Get available information about participants of the specified Zoom meeting.
+* BE-2776	Grouping segments by meeting and attaching meeting metadata for /asr/meeting/llm/query
+* BE-2712	If the rex sessions are stuck (in error) do not count them towards the live session count during shutdown
+* BE-2759	If user deletion fails for any reason, we should still audit log it.
+* BE-2737	In AIVR, send vg::sub-return Event to Lua script (Freeswitch)
+* BE-2799	Introduced wew llmSettings.prompts for Meeting minutes.
+* BE-2733	Push data from Aircall Integration to the Copilot.
+* BE-2754	SA: Add extra confirmation before deleting a user who has the Admin role.
+* BE-2678	SA: Added API - GET /sa/offline/{id}/transcript 
+* BE-2713	SA: Added context to the return values from GET /sa/call/agent
+* BE-2703	SA: Added contextId to the request for /sa/call
+* BE-2677	SA: Added download ability to the transcript view.
+* QA-1427	SA: Added search feature to transcript page.
+* BE-2689	SA: Addedd contextId to the GET /sa/call/{callId}
+* QA-1534	SA: New project gets default time settings from the Account.
+* BE-2774	SA: Supporting accounts with INVOICE billing on first login.
+* BE-2697	SA: When submitting /sa/offline request to as part of SA AIVR Integration set correct formatting parameters.
+* BE-2572	Send Caller Insight to Aircall as part of handling call.created webhook
+* BE-2790	Set the non-Speaker email value in the meeting data.
+* BE-2670	Transcribe App Client can get notified over websocket of any meeting join events instantaneously.
+* BE-2732	Using Pusher to push information to the Copilot Browser Extension.
+* BE-2736	Web Console: Added editable description to Edge Cluster
+* BE-2622	Web Console: AIVR Sessions table show which sessions have SA integration.
+* BE-2755	Web Console: Do not allow spaces in the names of AIVR Apps.
+* BE-2696	Web Console: Show real-time transcript text in the AIVR session detail view
+* BE-2747	Web Console: Showing AIVR App Id on the AIVR App detail drawer.
+* QA-1472	Web Console: Unable to add second URL in logic when its name is same as first.
+
+Changes related to Integrity of Processing (fixes):
+* BE-2822	Fix - Can't play audio from URL in bot logic callback
+* BE-2741	Fix - Duplicate data in meeting_vector database on Edge
+* BE-2727	Fix - Error when leaving a meeting (meeting join API).
+* BE-2721	Fix - Large vocabulary BUILT-IN grammar is not working in telephony bot
+* BE-2760	Fix - Origination data is not properly set for a new Voice Connector.
+* BE-2753	Fix - Outbound calling does not work anymore.
+* BE-2204	Fix - Percolator stop request ignored if sent immediately after start
+* BE-2806	Fix - The hidden checkbox stops working on ascalon TranscribeApp in some cases
+* BE-2817	Fix - Voice Connector quota check is not working OK
+* BE-2752	Fix - voiceConnectorId is not set on AIVR App if a phone gets added to AIVR App that did not have any phone
+* BE-2700	Fix - Weird Agent Composite values for the Demo Project /sa/calls
+* BE-2766	Fix prompt for Action Items.
+* BE-2729	Fix the shutdown of ascalon-asr-api
+* BE-2773	SA: Fix - Clicking on Terms of Service during SA Signup messes up signup
+* BE-2550	SA: Fix - Incorrect default time in file upload.
+* BE-2595	SA: Fix - JWT is not automatically inserted into the selected AIVR App.
+* QA-1475	SA: Fix - Pagination on Users page looks weird.
+* QA-1531	SA: Fix - Queue filter in Advanced search is not working for Uploaded file.
+* QA-1474	SA: Fix - Score filter is still available in advanced search even when score has been removed.
+* QA-1373	SA: Fix - The Continue button should remain disabled until all mandatory fields have been filled out.
+* QA-1541	SA: Fix - The login button should remain disabled until all required fields are filled.
+* QA-1437	SA: Fix - The role "Coach" is displayed as "QA" after being saved in Users.
+* QA-1480	SA: Fix - Unable to clear the description in General settings.
+* BE-2701	SA: Fix - undefined:undefined on the Topic chart
+* QA-1476	SA: Fix - User deletion is not working properly.
+* QA-1467	SA: Fix - User is able to set Persistence time more than 365 days in AIVR app.
+* QA-1446	SA: Fix - When a user goes back, they are redirected to the calls page instead of the Advanced Search.
+* BE-2699	SA: Fix - When I add a new keyword the dialog opens prepopulated with the name of the previous keyword I created
+* QA-1525	TA: Fix - Accepting only digits in the domain name for the "Allow signup with emails from the following domains:" field.
+* QA-1443	TA: Fix - Error message is wrong for the password reset page.
+* QA-1638	TA: Fix - Getting 500 server error when Users use Special characters in search bar on Advanced search page.
+* BE-1388	TA: Fix - Getting identical values of confidence when running transcript/{session-id} REAL-TIME
+* QA-1493	TA: Fix - HTML element showing in overview section on production.
+* QA-1613	TA: Fix - In Advance search Filter, tag is not working.
+* BE-2756	TA: Fix - List of transcripts on Home page loads twice
+* QA-1511	TA: Fix - LLM prompt box on transcript should not be available for shares.
+* QA-910	TA: Fix - Search by numbers is not working properly.
+* QA-1454	TA: Fix - Text "Undefined" populate when user left blank while signup
+* QA-1593	TA: Fix - The Advanced Search functionality breaking on searching more than one word.
+* QA-1461	TA: Fix - There should be a limit for the expiry time limit for shared transcript.
+* QA-1481	TA: Fix - There should be warning Dialog when user click on Back Button or Close Browser
+* BE-2330	TA: Fix - Transcribe is showing one-line per word.
+* QA-1636	TA: Fix - Unable to check the creator on the advanced search filter.
+* QA-1462	TA: Fix - Walk through wizard breaks when user switch language between walkthroughs.
+* QA-764	TA: Fix - When a whole sentence entered in search box, it is not working and overlapping with close icon.
+* BE-2828	Web Console: Fix - AIVR App creation allows you to pick phone numbers that are not yet ready for use.
+* QA-1425	Web Console: Fix - Double error showing when phone number purchase.
+* BE-2716	Web Console: Fix - Error page when trying to open AIVR session details.
+* QA-1513	Web Console: Fix - Transcript play time exceeds than actual time when playback speed increases.
+* QA-1575	Web Console: Fix - User is unable to Logout properly.
+* QA-1483	Web Console: Fix - User Management Search - When user searches with leading or trailing whitespace with email then no results come.
+* QA-1526	Web Console: Fix - When user switch context on Profile page then 2FA pop-up keeps showing each time context is changed.
+
+
+
 ## Release 1.107.0
 
 **Key changes related to the core APIs**

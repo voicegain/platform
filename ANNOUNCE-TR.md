@@ -5,8 +5,8 @@ If you encounter any problems, just give us a shout at [support@voicegain.ai](ma
 ### September 2, 2024
 
 **Key changes related to Transcribe APP**
-* Cloud only: Major improvememnt to capabilities of LLM Query
-* Major makover of the look of the UI
+* Cloud only: Major improvement to capabilities of LLM Query
+* Major makeover of the look of the UI
 * Added UI dark mode
 * Added Configurable Meeting Minutes (via LLM prompt)
 * Added tracking of LLM tokens (in the Cloud)

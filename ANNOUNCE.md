@@ -1,3 +1,10 @@
+### Maintenance Window starts Tonight at 10pm and will last till 12am (US Central Time)
+
+During maintenance the Voicegain **APIs may be unavailable**.
+
+The purpose of the maintenance is to reconfigure Voicegain Google Cloud setup for improved High Availability.
+
+
 ### Maintenance Window is scheduled for 9/15/2024 between 10pm and 12am US Central Time
 
 Next Sunday, September 15th between 10pm and midnight Central Time a maintenance window is scheduled during which Voicegain **APIs may be unavailable**.

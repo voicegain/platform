@@ -1,4 +1,4 @@
-### Maintenance Window starts Tonight at 10pm and will last till 12am (US Central Time)
+### Maintenance Window starts Tonight at 10pm and will last till 2am next day (US Central Time)
 
 During maintenance the Voicegain **APIs may be unavailable**.
 

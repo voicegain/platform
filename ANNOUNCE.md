@@ -1,8 +1,6 @@
-### Maintenance Window starts Tonight at 10pm and will last till 2am next day (US Central Time)
+### Minor release 1.109.0 is scheduled for 9/17/2024 between 12am and 2am US Central Time
 
-During maintenance the Voicegain **APIs may be unavailable**.
-
-The purpose of the maintenance is to reconfigure Voicegain Google Cloud setup for improved High Availability.
+Details of the changes in this release to be provided...
 
 
 ### Maintenance Window is scheduled for 9/15/2024 between 10pm and 12am US Central Time

@@ -2,6 +2,54 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+## Spetember 17, 2024
+
+**Key changes related to Transcribe APP**
+* Support Webhook API (phase 1) - Edge only.
+* Added third set of LLM service settings and add model name field to all 3 LLM services - Edge only.
+* Including transcript metadata together with transcript when using LLM to generate meeting minutes items.
+* Improved reliability of the Meeting Bot on longer meetings
+
+New:
+* BE-2798	TA: Added new LLM Prompts for Meeting Minutes.
+* BE-2855	TA: Added third set of LLM service settings and add model name field to all 3 LLM services.
+* BE-2805	TA: Added user's status column in users lists
+* BE-2860	TA: Added Webhook settings page.
+* BE-2857	TA: Addition to the LLM Prompts Settings.
+* QA-849	TA: Consistent password complexity requirements.
+* BE-2812	TA: Enforced LLM token limit.
+* BE-2850	TA: Including transcript metadata together with transcript when using LLM to generate meeting minutes items.
+* BE-2874	TA: Introduced fallback error page for Loading Chunk Issue.
+* BE-2875	TA: Introduced fallback page for error boundary case.
+* QA-1228	TA: Sorting given for users by name, for the Login all session table.
+
+Fixes:
+* QA-1635	TA: Fix - "MINE/SHARED/ALL" option should not be visible to Basic account on LLM Query page.
+* QA-1225	TA: Fix - Clicking on backward icon of any transcript results in value of time getting negative.
+* QA-1665	TA: Fix - Clicking on microphone capture save recording page showing, it should show the start recording pop-up page.
+* BE-2842	TA: Fix - Dialog to reset password.
+* QA-1485	TA: Fix - Error page when opening rediarized transcript (partial fix)
+* BE-2906	TA: Fix - error when searching for a phrase with an apostrophe 
+* QA-1604	TA: Fix - Footer of Document should not overlap with transcript in downloaded PDF.
+* QA-1689	TA: Fix - For longer meetings, after it ends, the transcript isn't processing properly.
+* BE-2900	TA: Fix - If a Zoom meeting is long and is eventually ended by the host the bot does not notice that meeting has ended.
+* QA-1605	TA: Fix - In share meeting pop -up , month name is not translating and always show in default language.
+* QA-1497	TA: Fix - Invalid date and year showing for the last active under account users.
+* QA-1672	TA: Fix - LLM Query not working and returning 500 error (Internal Server Error).
+* QA-1718	TA: Fix - Meeting bot icon should also show as disabled when the maximum allowed minutes limit is exceeded.
+* QA-1490	TA: Fix - Meeting Bot were unable to join Webex meeting.
+* BE-2845	TA: Fix - Meeting platform selection tiles were too indistinct.
+* QA-1677	TA: Fix - Some old transcripts still showing the queued status and user can not delete or remove them.
+* BE-2195	TA: Fix - Stuck on login.
+* QA-1662	TA: Fix - The error message should be displayed in the selected language after the maximum allowed minutes have been exceeded.
+* QA-1667	TA: Fix - The walkthrough wizard is not functioning properly for new users.
+* QA-1600	TA: Fix - Unable to join the webex meeting by meeting bot.
+* BE-2834	TA: Fix - Unexpected Application Error! Loading chunk failed.
+* QA-1609	TA: Fix - Voicegain logo is not fully visible in the 100% zoom.
+* QA-1668	TA: Fix - When a user selects more than 12 speakers, the submit button becomes disabled however we have limit for 20 speakers.
+* QA-1560	TA: Fix - When user try to invite user, it shows an invalid email address error but when user re-click on the save button it showing "User already exists".
+
+
 ### September 2, 2024
 
 **Key changes related to Transcribe APP**

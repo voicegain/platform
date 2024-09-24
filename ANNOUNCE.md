@@ -1,3 +1,157 @@
+### Minor release 1.109.0 is scheduled for 9/17/2024 between 12am and 2am US Central Time
+
+**Key changes related to the core APIs**
+* Added Webhook API (phase 1)
+* UI redesign for the Speech Analytics App
+* Speech Analytics app now supports Warm Transfer scenario
+* Copilot Browser Extension for Agent Assist
+
+**Key changes related to Transcribe APP**
+* Support Webhook API (phase 1)
+* Added third set of LLM service settings and add model name field to all 3 LLM services.
+* Including transcript metadata together with transcript when using LLM to generate meeting minutes items.
+* Improved reliability of the Meeting Bot on longer meetings
+
+New or changed functionality in the Transcribe App:
+* BE-2798	TA: Added new LLM Prompts for Meeting Minutes.
+* BE-2855	TA: Added third set of LLM service settings and add model name field to all 3 LLM services.
+* BE-2805	TA: Added user's status column in users lists
+* BE-2860	TA: Added Webhook settings page.
+* BE-2857	TA: Addition to the LLM Prompts Settings.
+* QA-849	TA: Consistent password complexity requirements.
+* BE-2812	TA: Enforced LLM token limit.
+* BE-2850	TA: Including transcript metadata together with transcript when using LLM to generate meeting minutes items.
+* BE-2874	TA: Introduced fallback error page for Loading Chunk Issue.
+* BE-2875	TA: Introduced fallback page for error boundary case.
+* QA-1228	TA: Sorting given for users by name, for the Login all session table.
+
+New or changed functionality in other platform components:
+* BE-2856	Add Korean (ko) as one other possible value of switchLanguage in AIVR callback response.
+* BE-1043	Add secure SIP and RTP to freeswitch.
+* BE-2450	Added ability to obtain temporary JWT token from AIVR session using authToken
+* BE-2891	Added metadata value to the speakers field in API /sa/offline
+* BE-2714	Added new Group of items sent to Aircall as Caller Insight.
+* BE-2843	Added originatingCallId and spawnedCalls to API - /sa/call
+* BE-2819	Added processing status to API -  /sa/call
+* BE-2226	Added Webhook Notification APIs.
+* BE-2896	Adding in API - /sa/call an Agency tag, If AIVR inbound call is an Agency call (warm transfer bridged).
+* QA-1633	Admin Tool: Updated Terms and Conditions page.
+* BE-2832	API - /public/aircall/user-check used to check if user info matches data in Aircall.
+* BE-2904	Copilot: Create a web interface to host the .crx download links
+* BE-2884	Copilot: Implemented override of the Intent by Agent.
+* BE-2861	Copilot: Implemented the Login.
+* BE-2888	Copilot: Remove the dev/qa/prod selector and /dev/qa indicators.
+* BE-2847	Copilot: Show Intent card with Agency Transfer data.
+* BE-2876	Edge: If Action Items LLM prompt is not defined, then do not generate Action Items at all.
+* BE-2897	For real-time transcription sending metadata over results websocket, also every time metadata is added/modified.
+* BE-2886	Generate full call notes for the agency call that was bridged to the caller (not transferred to Aircall)
+* BE-2826	Handling 2x2 audio channels from warm transfer call in API - /sa/offline.
+* BE-2824	Improved design of Copilot.
+* BE-2825	In AIVR session allowing for caller id to be any of the secondary phone numbers attached to the AIVR App.
+* BE-2889	Included aivr_authToken and aivr_sessionId variables when pushing the AIVR Voicebot variables to the Copilot.
+* BE-2787	INVALID_ARGUMENT: Sample rate must be empty or 24khz for this voice.
+* BE-2929	Log the response payload from the Zoom API method that gets info about Zoom Meeting participants
+* BE-2320	Make AIVR Sessions expire (use expiry period from AIVR App)
+* BE-2928	Make sure that all calls in SA Demo project have progressPhase=DONE
+* BE-2775	make sure that user deletion does not fail if context deletion takes too much time
+* BE-2854	Modifications to llmSettings field (introduced premiumLlmService) on the onPrem cluster API.
+* BE-2710	New version of the Sidepanel (Copilot Browser Extension) that integrates with Aircall.
+* BE-2892	Populate speaker metadata in API - /sa/offline/call/{callId}
+* BE-2844	POST /sa/offline/call/{callId} need to be able handle calls with spawnedCalls (from warm transfer).
+* BE-1366	RedisConnectionException: Unable to init enough connections amount! Only 0 of 24 were initialized. 
+* BE-2829	Return 400 Bad Request if someone tries to create a new AIVR App or assign a phone to existing App if the phone is not available.
+* QA-1695	SA : Highlighting any calls that had error in processing
+* BE-2885	SA: Added a Export button for the Advanced Search Results.
+* QA-1623	SA: Added limit of 1024 characters against description under General settings. 
+* BE-1796	SA: App should be customisable per account.
+* BE-2808	SA: Enabled currency formatting for /sa/offline in AIVR sessions.
+* QA-1587	SA: Enhancement - Downloaded call transcript should have Call ID as name instead of timestamp.
+* BE-2933	SA: For call overview, render in processing page rather error page if call is in progress.
+* BE-2704	SA: For the call sessions that are being processed, adding a subtle overlay that says processing
+* QA-1695	SA: Highlighting any calls that had error in processing
+* QA-1533	SA: Optimized call page & made fields small enough to fit all data without scrolling.
+* QA-1690	SA: Provide correct information for Aircall Integration
+* BE-2818	SA: Redesign of Speech Analytics App UI
+* BE-2916	SA: Show first and last name in the user table
+* BE-2862	SA: Showing more than 2 channels in the SA Call Detail view if present.
+* BE-2907	SA: UI changes to implement the new design
+* BE-2879	Setting ANI correctly on calls coming from AIVR Voicebot to Aircall.
+* BE-2881	Submitting tags to Aircall when doing the call handshake between AIVR and Aircall.
+* BE-2728	support auto-reconnect if fssk loses connection to Freeswitch
+* BE-2836	Supporting Korean Prompt in telephony bot and in audio server.
+* BE-2883	Taking the Voicebot intent and insert it into /sa/offline and /sa/call.
+* BE-2880	Updated Advanced Search API - /sa/call/search  to return results in CSV format.
+* BE-2859	Use premium LLM Service with the new LLM Query logic and use standard with the old LLM Query logic.
+* QA-1536	Web Console: Added popup after adding or deleting a user under User management.
+* QA-1540	Web Console: Added popup for deleting a WebSocket under Live Broadcasting.
+* BE-2001	Web Console: Notify about inability to to microphone capture on HTTP urls.
+* BE-2830	Web Console: Remember last items per page setting on the Call Sessions page.
+* BE-2831	Web Console: Remember the last value of items-per-page setting on the Phone Apps page.
+
+Changes related to Integrity of Processing (fixes):
+* QA-1635	TA: Fix - "MINE/SHARED/ALL" option should not be visible to Basic account on LLM Query page.
+* QA-1225	TA: Fix - Clicking on backward icon of any transcript results in value of time getting negative.
+* QA-1665	TA: Fix - Clicking on microphone capture save recording page showing, it should show the start recording pop-up page.
+* BE-2842	TA: Fix - Dialog to reset password.
+* QA-1485	TA: Fix - Error page when opening rediarized transcript (partial fix)
+* BE-2906	TA: Fix - error when searching for a phrase with an apostrophe 
+* QA-1604	TA: Fix - Footer of Document should not overlap with transcript in downloaded PDF.
+* QA-1689	TA: Fix - For longer meetings, after it ends, the transcript isn't processing properly.
+* BE-2900	TA: Fix - If a Zoom meeting is long and is eventually ended by the host the bot does not notice that meeting has ended.
+* QA-1605	TA: Fix - In share meeting pop -up , month name is not translating and always show in default language.
+* QA-1497	TA: Fix - Invalid date and year showing for the last active under account users.
+* QA-1672	TA: Fix - LLM Query not working and returning 500 error (Internal Server Error).
+* QA-1718	TA: Fix - Meeting bot icon should also show as disabled when the maximum allowed minutes limit is exceeded.
+* QA-1490	TA: Fix - Meeting Bot were unable to join Webex meeting.
+* BE-2845	TA: Fix - Meeting platform selection tiles were too indistinct.
+* QA-1677	TA: Fix - Some old transcripts still showing the queued status and user can not delete or remove them.
+* BE-2195	TA: Fix - Stuck on login.
+* QA-1662	TA: Fix - The error message should be displayed in the selected language after the maximum allowed minutes have been exceeded.
+* QA-1667	TA: Fix - The walkthrough wizard is not functioning properly for new users.
+* QA-1600	TA: Fix - Unable to join the webex meeting by meeting bot.
+* BE-2834	TA: Fix - Unexpected Application Error! Loading chunk failed.
+* QA-1609	TA: Fix - Voicegain logo is not fully visible in the 100% zoom.
+* QA-1668	TA: Fix - When a user selects more than 12 speakers, the submit button becomes disabled however we have limit for 20 speakers.
+* QA-1560	TA: Fix - When user try to invite user, it shows an invalid email address error but when user re-click on the save button it showing "User already exists".
+* BE-2809	Fix - Bad currency formatting for thousands plus
+* BE-2722	Fix - Bot logic doesn't get input callback if the caller hangup immediately after saying something.
+* BE-2436	Fix - In meeting Join if the pod/puppeteer leaves the meeting because it is not progressing there is no info about that event
+* BE-2814	Fix - MS-Teams puppet bot were not terminating if the meeting gets ended.
+* BE-1354	Fix - NatsEndpoint fails to reconnect to NATS when its connection is lost
+* BE-2869	Fix - Not working error prompt in telephony-bot LUA
+* BE-2927	Fix - Pusher sending DNIS instead of the ANI
+* BE-2663	Fix - Several calls where the merged meeting audio is missing a speaker.
+* BE-2923	Fix Demo Prod
+* BE-2913	SA: Fix - Agent and Caller labels are incorrect
+* BE-2918	SA: Fix - Call Transcript page failing in case of single speakers
+* QA-1699	SA: Fix - Exports in advanced search is not working with filters.
+* QA-1686	SA: Fix - Getting error on Call's Transcript page.
+* QA-1733	SA: Fix - Issues when Agent/Manager user try to edit/delete Admin user.
+* BE-2915	SA: Fix - New User Dialog starts with values of the previously created user
+* BE-2917	SA: Fix - Save button not activated for all values on Profile page
+* QA-1729	SA: Fix - Selected duration is not shown in applied filters in advanced search page.
+* BE-2898	SA: Fix - Spinning forever if the /sa/call has no saSesisonId.
+* BE-2898	SA: Fix - Spinning forever if the /sa/call has no saSesisonId.
+* QA-1719	SA: Fix - The added user role changes to "User" even if a different role was assigned while inviting.
+* QA-1725	SA: Fix - The calls continue to load and display an error icon when hovered over, but the call itself is still accessible.
+* QA-1622	SA: Fix - Timestamp interval dropdown have values that are more than transcript runtime.
+* BE-2914	SA: Fix - Unable to add Admin Users
+* QA-1710	SA: Fix - Unable to edit role of user under Profile users.
+* BE-2926	SA: Fix - User Edit dialog has just First Name and it does not even populate it
+* QA-1596	SA: Fix - User is unable to modify AIVR app getting "400 Bad Request".
+* QA-1687	SA: Fix - User is unable to upload file under Integration section.
+* QA-1528	SA: Fix - When a user uploads a corrupted audio file, an error message repeatedly appears.
+* QA-1535	Web Console: Fix - Audio URL field box is too small.
+* QA-1625	Web Console: Fix - For Phone Management, clickable area is too small. 
+* QA-1571	Web Console: Fix - Logs - When a user tries to filter logs, filter not working.
+* BE-2908	Web Console: Fix - Phone number deletion from AIVR App does not work
+* BE-2813	Web Console: Fix - Playback timeline cut off after the last word.
+* QA-1509	Web Console: Fix - 'Speed and Audio' control panels should be in proper size.
+* QA-1392	Web Console: Fix - When we click the back button more than once, the time interval goes to minus and after that the video pauses.
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.108.0 is scheduled for 9/2/2024 between 10pm and 12am CDT
 
 **Key changes related to the core APIs**

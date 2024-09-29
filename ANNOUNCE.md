@@ -1,3 +1,8 @@
+### Maintenance release 1.109.1 is scheduled for 9/29/2024 between 11pm and 12am US Central Time
+
+Details TDB...
+
+
 ### Minor release 1.109.0 is scheduled for 9/17/2024 between 12am and 2am US Central Time
 
 **Key changes related to the core APIs**

@@ -1,7 +1,110 @@
 ### Maintenance release 1.109.1 is scheduled for 9/29/2024 between 11pm and 12am US Central Time
 
-Details TDB...
+New or changed functionality in other platform components:
+* BE-3088	Add dailyRepeatCalls to /sa/calls
+* BE-3011	Add dtmfEvents field to /sa/call
+* BE-2968	Add fallback in case of Azure TTS issues
+* BE-2877	Added new variable in /sa/call that stores the type of transfer - Internal, Agency, None.
+* BE-3087	Additional fields added to the Pusher messages to be sent to Copilot
+* BE-2966	Allow Managers to get results of advanced search POST /sa/call/search and GET /sa/call/search/fields
+* BE-3065	API for text redaction POST /text/redact
+* BE-2961	API introduced to get Zoom Server API access_token.
+* BE-1820	Ascalon-cleanup to support removing expired sa_offline sessions.
+* BE-2957	At the end of the AIVR session, set language field of the /sa/call based on the language of the AIVR session.
+* BE-2959	Copilot: If not logged in show message about need to login.
+* BE-2974	Copilot: Implementation for updating co-pilot extension for Edge/Chrome browser. 
+* BE-2985	Copilot: Improvements in settings page.
+* BE-3016	If a call came from a provider then prepend to the GPT Call Notes the info about provider from Voicebot
+* BE-3012	In /sa/offline obtained from /sa/call add DTMF values into the words returned
+* BE-2958	In POST /sa/offline/call/{callId} use the language specified in /sa/call unless overridden by settings.asr
+* BE-2944	Modify how we match names of meeting participants to the names obtained from Zoom API.
+* BE-3015	New API method to modify sa call tags
+* BE-2902	Poll URL returned from POST /asr/transcribe/async is a sticky url.
+* BE-3010	Record DTMF detected in AIVR session
+* BE-3023	SA: Add a direction column to call tables
+* BE-3040	SA: Add Regex formatter to the PII Redaction settings
+* BE-3064	SA: Add search functionality in Filters
+* BE-2945	SA: Added ANI and DNIS to the Call table and Advanced Search table
+* BE-2941	SA: Added callCenterCallId to /sa/call and set it from aivr session aircallId.
+* BE-2956	SA: Added language field to /sa/call.
+* QA-1730	SA: Added spinner when deleting admin user to show admin user is being deleted.
+* BE-2936	SA: Added status of the Users in the Users Table.
+* QA-1732	SA: Added user's role in the profile section.
+* BE-3000	SA: Browser-specific text on the extension download page
+* BE-3057	SA: Change the number of calls retrieved on the Calls page to max 1000
+* BE-3022	SA: Consistent ANI/Dialed Number and CLI/DNIS naming
+* BE-2939	SA: If no sentiment value is returned from the API we are showing "N/A" along with icon/emoji.
+* QA-1751	SA: Improved design for Agents & Agents Detail page.
+* BE-2954	SA: In Call Details added a Debug page that is visible to the Admins.
+* BE-3070	SA: Increase the limit for number of calls in the Export query from 1000 to 2000
+* QA-1752	SA: Made company details in profile read-only for Manager 
+* BE-2962	SA: New design introduced for Agent pages.
+* BE-3044	SA: Remember number of items per page setting till user modify.
+* BE-2999	SA: Show callCenterCallId in the Call in Calls list
+* BE-3013	SA: Show DTMF words in a distinct way in the Call transcript view
+* BE-3014	SA: Show tags and allow adding new or editing existing ones
+* BE-3027	SA: Show the next/prev buttons also on a call details page that is in processing right now
+* BE-2652	Sync AIVR session with Aircall callId at transfer
+* QA-1693	TA: If the number of speakers exceeds the expected amount, providing a scroll bar. This will not affect the transcript view.
+* BE-3017	Web Console: Add a refresh button on the AIVR Call Session Details page
+* BE-3004	Web Console: In AIVR session list, remove Version column, and add IVR Sid and FS UUID columns - both searchable
+* BE-3048	Web Console: In the Call Sessions page, On the ANI column, instead of a Selection Filter we will have Search option.
 
+Changes related to Integrity of Processing (fixes):
+* QA-1734	Demo: Fix - For Long transcripts- text were overlapping with buttons.
+* QA-1735	Demo: Fix - Typography issue on the demo healthcare call details page.
+* BE-3043	Fix - Bad Event Bus configuration causing some events being dropped
+* BE-3041	Fix - Did not report Queue and Agent in /sa/call
+* BE-2991	Fix - Enforce non-empty name on Contexts in a correct way
+* BE-3045	Fix - GET /aivr-app/uuid/jwt fails to return JWT tokens using authToken in some cases
+* BE-2996	Fix - GET /asr/transcribe/uuid/transcript returns 500
+* BE-2987	Fix - Glitch in business operating hours/days
+* BE-3024	Fix - Issue with ascalon-asr-api starting on Edge deployment (specifically smopqa)
+* BE-2780	Fix - netty.io Buffer leak in Java FreeSWITCH ESL library
+* BE-3061	Fix - NPE when reading IvrSession.Recordings from Firestore
+* BE-2943	Fix - NullPointerException in Aircall webhook
+* BE-3058	Fix - Phone number formatter StringIndexOutOfBoundsException
+* BE-3003	Fix - PII redaction does not work for /sa/offline transcript
+* BE-3009	Fix - Real-time transcript possibly available too late for Call Notes
+* BE-1366	Fix - RedisConnectionException: Issues with Redis Marshalling Codec
+* BE-3020	Fix - Some Voicebot calls that get transferred end up in Disconnect instead of Hangup
+* BE-3060	Fix - START-INPUT-TIMERS is sent to Rex right after RECOGNITION-COMPLETE is received
+* BE-3050	Fix - The Users that we create when saving /sa/calls that have Agent data, do not have accountId
+* BE-3066	Fix - Voicebot to Aircall call transfer handshake error.
+* BE-2953	Fix - Voicegain call incorrectly matched to data from Aircall.
+* QA-1784	SA: Fix - Admin account user is able to change Owner account user's role.
+* BE-3047	SA: Fix - Advance search is not working for ANI/Dialed Number
+* QA-1740	SA: Fix - After successfully deleting a user through the checkbox, another user gets selected. 
+* QA-1761	SA: Fix - Agents and Manager should not delete project created by Admin.
+* BE-3018	SA: Fix - Download from Advanced Search does not use the same max calls setting as the search
+* BE-3037	SA: Fix - If we are using a 12 hour format we should show AM/PM in the time displayed
+* BE-3046	SA: Fix - Need to access next/previous call transcript, if there is no call audio available.
+* QA-1753	SA: Fix - No calls are showing on Advanced search page getting 500 (Internal Server Error).
+* QA-1769	SA: Fix - Placeholder text does not disappear when the user enters data.
+* QA-1831	SA: Fix - Sorting is not working for ANI and DNIS fields on Calls and Advanced search page.
+* QA-1698	SA: Fix - The Call's Overview page is not responsive when zoomed in, causing text to overlap.
+* QA-1706	SA: Fix - The Queue option in the file upload under Integration displays duplicate entries.
+* BE-3076	SA: Fix - The search query in the Advanced Search Page should by default include sort by date so that most recent calls are retrieved first
+* QA-1738	SA: Fix - Unable to delete multiple users when there are admin users among them.
+* QA-1528	SA: Fix - When a user uploads a corrupted audio file, an error message repeatedly appears.
+* QA-1157	TA Edge: Fix - For some audio URL showing something went wrong issue.
+* QA-1800	TA Edge: Fix - Meeting Minutes missing
+* BE-2951	TA Edge: Fix - Projects returned from the back-end are ignored. 
+* QA-1723	TA: Fix - "Meeting Minutes" string  should not appear two times.
+* QA-1708	TA: Fix - [Dark Theme] When the owner attempts to rename the transcript, the cancel icon is not visible.
+* QA-1717	TA: Fix - After file uploading, the 'File uploaded' text weren't translated. 
+* QA-1757	TA: Fix - Edit transcript icon overlapping with the transcripts name.
+* QA-1701	TA: Fix - Hindi translation in "Delete Transcribe" pop-up.
+* QA-1707	TA: Fix - Made Phrases visible for the dark theme.
+* QA-1716	TA: Fix - Meeting Bot Placeholder text translation according to selected language.
+* QA-1709	TA: Fix - No space between "Timezone" text and the dropdown box border.
+* QA-1702	TA: Fix - Time zone pop-up was hiding the left menu.
+* QA-1724	TA: Fix - When owner unable to join meeting bot receive "Failed to join meeting" string was not translated as per selected language.
+* QA-1663	TA: Fix - When the Hindi language is selected, the 'Apply' button overlaps with the participants dropdown on the advanced search page.
+* BE-2984	Web Console: Fix - Timezone prompt not taking spaces as input
+* QA-1685	Web Console: Fix - When admin try to create "Add broadcast websocket" receive 400 bad request error.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.109.0 is scheduled for 9/17/2024 between 12am and 2am US Central Time
 
@@ -153,7 +256,6 @@ Changes related to Integrity of Processing (fixes):
 * BE-2813	Web Console: Fix - Playback timeline cut off after the last word.
 * QA-1509	Web Console: Fix - 'Speed and Audio' control panels should be in proper size.
 * QA-1392	Web Console: Fix - When we click the back button more than once, the time interval goes to minus and after that the video pauses.
-
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 

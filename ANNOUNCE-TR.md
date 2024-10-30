@@ -2,6 +2,43 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+## October 30, 2024
+
+**Key changes related to Transcribe APP**
+* Improvements to the Webhook functionality
+* UI improvements
+
+New:
+* BE-3075	TA: Added time-to-live (TTL) setting for the webhook JWT.
+* BE-2983	TA: Check the Error Boundary implementation and catch all errors
+* QA-1760	TA: Improved Profile page layout.
+* QA-1721	TA: Provide way to identify Zoom, MS Teams or Webex meeting. 
+* QA-1821	TA: Removed Edit Tag functionality for the shared transcript for both public and account share pages.
+* QA-1851	TA: The password menu is available under the profile settings, so removed it from the "My Profile" menu.
+* BE-2940	TA: Updated Transcribe App styles.
+
+Fixes:
+* BE-3103	TA Edge: Fix -  Webhook page refresh is taking time and render page with no web-hook defined even there is existing web-hook.
+* QA-1791	TA: Fix -  Cancel icon visibility is low in dark theme.
+* QA-1846	TA: Fix - "Title" field should be editable for Admin account user in profile.
+* QA-1780	TA: Fix - A type error page is showing on the advanced search page when the user tries to apply a filter.
+* QA-1826	TA: Fix - advanced search - The selected start and end dates are not populated in the UI, but they appear when saved in Date filter.
+* QA-1805	TA: Fix - Allowed domain settings are now visible for the Cloud version, whereas they were previously exclusive to Edge.
+* QA-1819	TA: Fix - An "unexpected character" error is displayed during signup on Transcribe Cloud
+* QA-1773	TA: Fix - An unexpected error page appears when a user tries to delete a device after changing its status to "Rejected."
+* QA-1823	TA: Fix - Basic user should not be allowed to create share.
+* BE-2994	TA: Fix - Does not allow entry of valid hints.
+* QA-1812	TA: Fix - If the user is on the basic plan, the allowed email domain settings should not be displayed, as users on the basic plan cannot invite new users.
+* QA-1845	TA: Fix - In Dark theme input field text is not visible.
+* QA-1781	TA: Fix - Meeting Bot: If a user fails to join the meeting, they are unable to leave the meeting.
+* QA-1783	TA: Fix - Missing "Allow signup with the domain" field
+* QA-1833	TA: Fix - Partial translation when join a meeting by meeting bot.
+* QA-1797	TA: Fix - PDF Download: The meeting details table should be properly sized to fit the screen.
+* QA-1764	TA: Fix - Text was not translated based on selected language.
+* QA-1883	TA: Fix - The 'Click here' hyperlink appears on the login page immediately after entering the email.
+* QA-1856	TA: Fix - The user is able to add a Webhook without providing any details.
+* BE-3104	TA: Fix - Webhook jwtTTL information weren't consistent.
+
 ## Spetember 17, 2024
 
 **Key changes related to Transcribe APP**

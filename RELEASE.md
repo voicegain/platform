@@ -1,3 +1,106 @@
+## Release 1.110.0
+
+**Key changes related to the core APIs**
+* Multiple improvements and fixes to the Speech Analytics App
+
+**Key changes related to Transcribe APP**
+* Improvements to the Webhook functionality
+* UI improvements
+
+New or changed functionality in the Transcribe App:
+* BE-3075	TA: Added time-to-live (TTL) setting for the webhook JWT.
+* BE-2983	TA: Check the Error Boundary implementation and catch all errors
+* QA-1760	TA: Improved Profile page layout.
+* QA-1721	TA: Provide way to identify Zoom, MS Teams or Webex meeting. 
+* QA-1821	TA: Removed Edit Tag functionality for the shared transcript for both public and account share pages.
+* QA-1851	TA: The password menu is available under the profile settings, so removed it from the "My Profile" menu.
+* BE-2940	TA: Updated Transcribe App styles.
+
+
+New or changed functionality in other platform components:
+* BE-3074	Added jwtTTL parameter to Webhook API.
+* BE-2966	Allow Managers to get results of advanced search POST /sa/call/search and GET /sa/call/search/fields
+* BE-3101	Implement API to get all tags attached to /sa/calls in a given Context.
+* BE-3086	Implemented trace field on the AIVR session.
+* BE-2964	In the confGroup API throw Bad Request if someone tries to create a new confGroup without a name or with empty name.
+* BE-2986	Made SpeechAnalyticsCallDao optional so that asr-api can start without it in CHD environment.
+* BE-2978	Play audio while AIVR is making an outbound call triggered by warm-transfer.
+* BE-3052	SA: Added "Resend Invite" in menu under account Users.
+* BE-3039	SA: Added a cancel button in profile page.
+* BE-3088	SA: Added dailyRepeatCalls to API - /sa/calls
+* BE-3102	SA: Added filter for DNIS and a search for ANI.
+* BE-3073	SA: Added hours:minutes to the date filter in Advanced Search.
+* QA-1881	SA: In the login page, "Email Address" text is overlap on error message or pending approval message.
+* QA-1854	SA: Introduced option to delete "Examples", "Keywords" and "Entity".
+* BE-2938	SA: On Users table added filtering by Role.
+* QA-1766	SA: The status filter should function like the role filter, using predefined values instead of working like email filter on the Users page.
+* BE-3077	SA: Time-query to the back-end from the Advanced Search should use UTC.
+* BE-2863	Separate fav-icons for each product.
+* QA-1852	Web Console: Added maximum length limit validation for Business Configuration name.
+* QA-1827	Web Console: Added pop-up/ alert message appears when edit a user in User Management.
+* BE-2976	Web Console: In Phone number table, added a filter on Status column. 
+* BE-2981	Web Console: In the AIVR App list, if the App has many phone numbers, then wrap them over multiple lines.
+* BE-3049	Web Console: In the Call Sessions page, DNIS column is now sorted in ascending order.
+* QA-1839	Web Console: Prevent Duplicate Shortcut Keys to Avoid Interference with Audio Playback.
+
+Changes related to Integrity of Processing (fixes):
+* QA-1768	Admin Portal: Fix - Special characters and numbers are accepted in the "First Name" field.
+* BE-3096	Fix - Newly created Contexts from Web Console get type Transcription.
+* BE-3093	Fix - Syntax error in tsquery
+* BE-2944	Fix/Modify how we match names of meeting participants to the names obtained from Zoom API.
+* QA-1765	SA: Fix - Agents and Manager are able to access Users and Time setting page via URL manipulation.
+* QA-1802	SA: Fix - All demo calls are failing in processing and returning an error.
+* QA-1739	SA: Fix - ANI and DNIS fields in upload file should not accept characters as inputs.
+* QA-1840	SA: Fix - Call ID icon is overlapping with filter selector on Advanced search page.
+* QA-1888	SA: Fix - Call Time Breakdown in Call Overview is not showing for uploaded call with single channel.
+* QA-1855	SA: Fix - Calls tables column header and cell data are not aligned properly [1920 X 1080]
+* QA-1873	SA: Fix - Color inconsistency in delete project modal.
+* QA-1789	SA: Fix - Debug page is not clearly visible in Dark theme in call details.
+* QA-1850	SA: Fix - Direction filter shows is not working properly.
+* BE-3083	SA: Fix - Filter dates are reported in wrong format.
+* QA-1804	SA: Fix - PII Redaction feature not working.
+* BE-3100	SA: Fix - PII redaction in /sa/offline does not redact audio.
+* QA-1849	SA: Fix - Resolution field column is missing from calls table.
+* QA-1825	SA: Fix - The agent created during the upload is not appearing in the Agent filter on Advanced search page.
+* QA-1880	SA: Fix - The country flag icons are not showing up in the ANI and DNIS fields during call uploads.
+* BE-3095	SA: Fix - The date range component doesn't work in Chrome.
+* QA-1857	SA: Fix - User should not be allowed to create two projects with same name.
+* BE-3006	SA: Fix - Weird chars on the Calls list pagination.
+* QA-1836	SA: Fix - Wrong pop-up msg on copying Voicebot ID.
+* BE-3103	TA Edge: Fix -  Webhook page refresh is taking time and render page with no web-hook defined even there is existing web-hook.
+* QA-1791	TA: Fix -  Cancel icon visibility is low in dark theme.
+* QA-1846	TA: Fix - "Title" field should be editable for Admin account user in profile.
+* QA-1780	TA: Fix - A type error page is showing on the advanced search page when the user tries to apply a filter.
+* QA-1826	TA: Fix - advanced search - The selected start and end dates are not populated in the UI, but they appear when saved in Date filter.
+* QA-1805	TA: Fix - Allowed domain settings are now visible for the Cloud version, whereas they were previously exclusive to Edge.
+* QA-1819	TA: Fix - An "unexpected character" error is displayed during signup on Transcribe Cloud
+* QA-1773	TA: Fix - An unexpected error page appears when a user tries to delete a device after changing its status to "Rejected."
+* QA-1823	TA: Fix - Basic user should not be allowed to create share.
+* BE-2994	TA: Fix - Does not allow entry of valid hints.
+* QA-1812	TA: Fix - If the user is on the basic plan, the allowed email domain settings should not be displayed, as users on the basic plan cannot invite new users.
+* QA-1845	TA: Fix - In Dark theme input field text is not visible.
+* QA-1781	TA: Fix - Meeting Bot: If a user fails to join the meeting, they are unable to leave the meeting.
+* QA-1783	TA: Fix - Missing "Allow signup with the domain" field
+* QA-1833	TA: Fix - Partial translation when join a meeting by meeting bot.
+* QA-1797	TA: Fix - PDF Download: The meeting details table should be properly sized to fit the screen.
+* QA-1764	TA: Fix - Text was not translated based on selected language.
+* QA-1883	TA: Fix - The 'Click here' hyperlink appears on the login page immediately after entering the email.
+* QA-1856	TA: Fix - The user is able to add a Webhook without providing any details.
+* BE-3104	TA: Fix - Webhook jwtTTL information weren't consistent.
+* QA-1869	Web Console [Edge]: Fix - Showing Transcribe App projects as context on the customer portal and user can also delete the projects.
+* QA-1700	Web Console: Fix - A vague error occurs when trying to upload files with long names.
+* QA-1870	Web Console: Fix - Creating a new context and switching to the other context shows a type error page on the customer portal.
+* QA-1859	Web Console: Fix - Creating a new context on the customer portal displays a type error and shows a blank page.
+* QA-1853	Web Console: Fix - 'Open' and 'Close' time can't be same time of 'Normal Opening Hours' in Business Configuration.
+* BE-2980	Web Console: Fix - Sorting of the Phone Numbers by App name does not work.
+* QA-1897	Web Console: Fix - The Change Password page UI has layout and alignment issues.
+* QA-1882	Web Console: Fix - User is unable to select a time for "Open time" if "Close time" is not set
+* QA-1904	Web Console: Fix - When a user hover at billing label in header section, no cursor:pointer
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.109.1
 
 New or changed functionality in other platform components:

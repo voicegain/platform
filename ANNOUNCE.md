@@ -1,3 +1,8 @@
+### Minor release 1.110.0 is scheduled for 10/29/2024 between 11pm and 12am US Central Time
+
+Details ***TBD**
+
+
 ### Maintenance release 1.109.1 is scheduled for 9/29/2024 between 11pm and 12am US Central Time
 
 New or changed functionality in other platform components:

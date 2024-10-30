@@ -36,8 +36,8 @@ class ApiClient:
         return response
 
 
-TOTAL = 3
-SLEEP = 8
+TOTAL = 10
+SLEEP = 7
 for _ in range(TOTAL):
     api_client = ApiClient()
     api_client.dial(

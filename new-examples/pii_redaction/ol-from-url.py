@@ -26,7 +26,8 @@ asr_body = {
     "sessions": [
         {
             "asyncMode": "OFF-LINE",
-            "audioChannelSelector": "two-channel",
+            #"audioChannelSelector": "two-channel",
+            "audioChannelSelector": "mix",
             "poll": {
                 # will delete the session after 1 minute
                 "afterlife": 60000
@@ -100,15 +101,166 @@ asr_body = {
             "type": "redact",
             "parameters": {
                 "CC": "[CC]",
-                "ZIP": "[ZIP]",
+                #"ZIP": "[ZIP]",
                 "PERSON": "[PERSON]",
-                "EMAIL" : "[EMAIL]",
-                "PHONE" : "[PHONE]",
-                "SSN" : "[SSN]",
+                #"EMAIL" : "[EMAIL]",
+                #"PHONE" : "[PHONE]",
+                "SSN" : "partial",
                 "DMY" : "[DMY]"
             }
-        }
-        # ,
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bcv is )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bcv )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bcvv is )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bcvv )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bcv number is )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bcv number )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bcvv number is )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bcvv number )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bpin is )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bpin )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bpin number is )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bpin number )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bsecurity is )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bsecurity )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bsecurity pin is )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bsecurity pin )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bsecurity number is )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        },
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bsecurity number )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        }, 
+        { 
+            "type": "regex",
+            "parameters": {
+                "pattern": r"(?<=\bsecurity number. )\d{3,4}\b",
+                "mask": "[CVV]",
+                "options": "IA"
+            }
+        }        # ,
         # {
         #     "type": "regex",
         #     "parameters": {

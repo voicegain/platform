@@ -1,4 +1,4 @@
-### Minor release 1.111.0 is scheduled for 11/10/2024 between 11pm and 12am US Central Time
+### Minor release 1.111.0 is scheduled for 11/11/2024 between 11pm and 12am US Central Time
 
 Details TBD ...
 

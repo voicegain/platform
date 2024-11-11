@@ -25,7 +25,7 @@ inputFilePath = f"{inputFolder}/{inputFile}"
 vgFormat = "L16"
 #ffmpegFormat = "mulaw"
 ffmpegFormat = "s16le"
-sampleRate = 48000
+sampleRate = 16000
 channels = 2
 bytesPerSample = 2
 

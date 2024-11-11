@@ -52,7 +52,7 @@ body = {
                 "minimumDelay": 0
             },
             "content": {
-                "incremental": ['words'],
+                "incremental": ['segments'],
                 "full": []
             }
         }
@@ -70,13 +70,9 @@ body = {
             "noInputTimeout": 59999,
             "incompleteTimeout": 3599999,
             "sensitivity": 0.95
-            # ,"hints": [
-            #     "Starburst:10",
-            #     "Mars_Wrigley:10",
-            #     "contacting:8",
-            #     "Mars_Consumer_Care:10",
-            #     "mints:8"
-            # ]
+            #  ,"hints": [
+            #      "HealthCheck360[health_check_three_sixty|health_check_three_hundred_sixty|health_check_three_hundred_and_sixty]:10"
+#             ]
         }
         # ,"formatters": [
         #     {

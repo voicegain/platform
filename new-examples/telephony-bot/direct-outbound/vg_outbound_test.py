@@ -37,7 +37,7 @@ class ApiClient:
 
 
 TOTAL = 10
-SLEEP = 7
+SLEEP = 8
 for _ in range(TOTAL):
     api_client = ApiClient()
     api_client.dial(

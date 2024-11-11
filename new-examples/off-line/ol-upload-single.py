@@ -61,9 +61,9 @@ asr_body = {
             "noInputTimeout": -1,
             "completeTimeout": -1,
             "sensitivity" : 0.5,
-            # , "hints" : [
-                # "rupees[roopiece|ruppes]"
-            # ]
+            "hints" : [
+                "you'would[you'd]"
+            ]
             #, "diarization" : {
             #  "minSpeakers" : 2,
             #  "maxSpeakers" : 2

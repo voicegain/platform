@@ -1,3 +1,50 @@
+## Release 1.111.0
+
+New or changed functionality in other platform components:
+* BE-3136	Copilot: Acknowledge all messages received via Pusher back to Voicegain.
+* BE-3130	Copilot: Added "Mark Call Transferred" button.
+* BE-3082	Implement mechanism to delete recordings from FreeSWITCH after they have been uploaded for processing
+* BE-3135	Implement POST /public/aircall/user/message-ack
+* BE-3086	Implemented trace field on the AIVR session.
+* BE-3123	New API that can be invoked from Copilot that Agent can use to indicate transferred calls, so that Call Notes are generated and pushed.
+* BE-3126	SA: Added the JWT token generation/management features as we have in Developer Web Console.
+* QA-1847	SA: Agents should not be allowed to edit PII Redaction in settings.
+* BE-2950	SA: Enhance the visibility of un-selectable rows for the user in both dark and light modes.
+* BE-3068	SA: Improve tag entry/edit - show existing tags already used within project.
+* BE-3125	SA: New SA project type - Generic Project
+* BE-3078	SA: Showing DTMF words in a distinct way in the Call audio timeline view.
+* BE-2863	Separate fav-icons for each product.
+* QA-1914	Web Console: Made Business Configuration UI user-friendly, so that users can manually enter the start and closing times.
+
+Changes related to Integrity of Processing (fixes):
+* BE-3145	Fix - Hints with apostrophes should be allowed to be set on a context
+* BE-3114	SA: Fix - App may get into a loop
+* QA-1908	SA: Fix - Checkboxes are overlapping on advanced search filter pop-up.
+* BE-3035	SA: Fix - Credit card numbers are not being masked out in spite of NER redaction being turned on
+* QA-1787	SA: Fix - Demo calls are not generating for Demo projects.
+* QA-1909	SA: Fix - DNIS search is not working on calls page.
+* QA-1910	SA: Fix - Getting "Sorry, there was an error." when using DNIS search.
+* QA-1822	SA: Fix - Password reset button were not responding.
+* BE-3113	SA: Fix - Sentry Integration for SA app as source-maps are not working for recent events.
+* QA-1809	SA: Fix - The agent created during the upload is not appearing on the Agents page.
+* QA-1813	SA: Fix - The owner is unable to edit their first and last name on the user page.
+* QA-1935	SA: Fix - The save button should stay disabled until changes are made on configuration page.
+* QA-1778	SA: Fix - Unable to access Demo calls getting "Sorry, there was an error! We were unable to download the call audio.
+* QA-1934	SA: Fix - Unable to edit project configuration name in settings.
+* QA-1927	SA: Fix - User is able to access integration page for Generic projects through left menu.
+* QA-1921	SA: Fix - When the keywords field is empty, it overlaps with 'Average Handle Time'.
+* BE-2973	TA: Enhance the visibility of un-selectable rows (User table).
+* QA-1917	TA: Fix - 'Continue' button shouldn't be enabled if project name is empty at first time login after signup. 
+* QA-1901	TA: Fix - Delete Device text is not translated in German, Spanish and Hindi languages.
+* QA-1912	TA: Fix - Getting error while meeting Bot joining Webex meetings, "failed to join the meeting" even when the bots are present in the meeting.
+* QA-1906	TA: Fix - If a user tries to forget the meeting, the message 'The Bot is not in the meeting' should also be translated into languages other than English.
+* QA-1886	TA: Fix - Showing something went wrong page for the account setting.
+* QA-1913	Web Console: Fix - New User Wizard were not working properly.
+* BE-3131	Web Console: Fix - Removed hardcoded sensitivity setting from mic capture.
+* QA-1915	Web Console: Fix - When the user tries to explore the left menu for the telephone bot API, the business configuration text is overlapping and hidden.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.110.0
 
 **Key changes related to the core APIs**

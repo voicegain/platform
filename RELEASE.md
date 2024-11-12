@@ -1,5 +1,7 @@
 ## Release 1.111.0
 
+This release prepares for upgrade to Mongo 6 in 1.112.0
+
 New or changed functionality in other platform components:
 * BE-3136	Copilot: Acknowledge all messages received via Pusher back to Voicegain.
 * BE-3130	Copilot: Added "Mark Call Transferred" button.

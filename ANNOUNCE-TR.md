@@ -2,6 +2,15 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+## December 4, 2024
+
+New:
+* QA-1628	TA: Search functionality provided for Admin users when they delete any other user and transfer their projects to another user.
+* BE-2934	TA: Improved design of the Webhook Settings.
+
+Fixes:
+* QA-1931	TA: Fix - For accounts with OIDC enabled we should not show normal Signup page, instead we should show info about logging in with the OIDC creds.
+
 ## October 30, 2024
 
 **Key changes related to Transcribe APP**

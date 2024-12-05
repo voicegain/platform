@@ -2,7 +2,7 @@ import requests
 import time
 
 
-JWT = "<JWT>"
+JWT = "JWT"
 APP_ID = "6fa817d0-de45-4e95-8f40-f4256af0316d"
 
 
@@ -36,9 +36,12 @@ class ApiClient:
         return response
 
 
-TOTAL = 10
-SLEEP = 8
+TOTAL = 20
+SLEEP = 2
+remain = TOTAL
 for _ in range(TOTAL):
+    print("Remain: {}".format(remain))
+    remain -= 1
     api_client = ApiClient()
     api_client.dial(
         # Prod bot

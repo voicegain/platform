@@ -1,3 +1,95 @@
+### Minor release 1.112.0 is scheduled for 12/04/2024 between 11pm and 12am US Central Time
+
+This release upgrades Mongo on Edge from version 5 to 6.
+
+**Key changes related to the core APIs**
+* Improver Web Console UI.
+* /sa/call API supports call event marking which is utilized in the SA App to highlight various parts of the call
+  * NOTE: there is a known issue with the offset for the markers being somewhat off - this will be fixed in a patch
+* API for outbound calling that is used by Copilot
+* Copilot User may reques Call Notes genration after internal transfer
+
+**Key changes related to Transcribe APP**
+
+New or changed functionality in the Transcribe App:
+* QA-1628	TA: Search functionality provided for Admin users when they delete any other user and transfer their projects to another user.
+* BE-2934	TA: Improved design of the Webhook Settings.
+
+New or changed functionality in other platform components:
+* BE-3173	Add markers field to /sa/call
+* BE-3199	Added ignore_early_media parameter to POST /aivr/dial/{destination}
+* BE-2320	AIVR sessions will expire (using expiry period from AIVR App).
+* BE-3149	API that will be used to launch outbound call from the Copilot
+* BE-3197	Avoid storing null values under trace in each ivr_session document
+* BE-3204	Flag as error sa calls that will never recover from pending status
+* BE-3189	Implement the call-section marking
+* BE-3117	Improve performance of /sa/call-stats
+* BE-3161	Mark Meetings stuck in Processing as Error within 6 hours
+* BE-3109	Migrated Mongo 5 to Mongo 6 on Edge.
+* BE-3156	Modify account creation code to not create grafana org if type=SPEECH-WORKS
+* BE-3123	New API that can be invoked from Copilot that Agent can use to indicate transferred calls, so that Call Notes are generated and pushed.
+* BE-3021	Outbound Calling from Copilot with call submitted to SA App Project
+* BE-3186	Populate fields in the markers field after a call is completed
+* BE-3159	SA: Add "VB Transfer" column
+* BE-3203	SA: Add indicator for Fields data still loading
+* BE-3163	SA: Added a filter on Call Center Call Id
+* BE-3164	SA: Added more quick time period selectors for the calls
+* BE-3165	SA: Do not set sorting on the search query if query includes TxtSearchTerm
+* BE-3205	SA: Improved Tag editing
+* QA-1874	SA: More compact columns in the Calls table
+* BE-3154	SA: New design for the Keyword settings
+* BE-3125	SA: New SA project type - Generic Project
+* BE-3162	SA: On Call Details page show the time of the call including seconds
+* BE-3158	SA: Reduce the width of columns by shrinking displayed content and headers
+* BE-3201	SA: Replace Topic Cloud with a pie/bar chart showing topics
+* BE-3176	SA: Show playback position and total time in audio player
+* BE-3178	SA: Show Word Cloud
+* BE-3193	Store only top 100 words for WordCloud on the /sa/call
+* BE-2899	User records that have never been activated are actually deleted by DELETE api
+* BE-3184	Web Console: Added "Last Deployment Date" column to table of Edge deployments
+* BE-3198	Web Console: Added shortcut from app name in call session to the app definition
+* BE-3181	Web Console: Added UUID column to the table with Contexts
+* QA-1942	Web Console: Allowed User to enter time manually rather bound to select 'Open' and 'Close' time from clock selection in Business Configuration
+* QA-1988	Web Console: Better error messages in case of uploading bad grammar to GREG
+* BE-3216	Web Console: Improved Mode Switcher
+* QA-1984	Web Console: Improvements to Create GREG Question dialog
+* QA-1985	Web Console: Improvements to Create new GREG experiment dialog
+* QA-1616	Web Console: Move Transcribe+ from /sa API to /sa/offline API
+* BE-2997	Web Console: Redesign of customer portal.
+* QA-1998	Web Console: Switched Transcribe+ from /sa API to /sa/offline API
+* QA-1981	Web Console: Trim spaces from entries into login form
+
+Changes related to Integrity of Processing (fixes):
+Issue key	Custom field (Release Notes)
+* BE-3166	Fix - /sa/call/search when instructed to search NOTES seems to be searching the transcript text
+* BE-3168	Fix - aivrTransferDestType field on /sa/call does not seem to be populated
+* BE-3192	Fix - Cases where /sa/call is missing /sa/offline session
+* BE-3133	Fix - Hints in real-time word-for-word transcription mess up the results
+* BE-3222	Fix - redis memory leak caused by EventBus in Services that were not consuming events (only sending)
+* BE-3209	Fix - Unrecognized field "sessionDuration" during warm-transfer
+* BE-3170	SA: Fix - Error loop due to expired nonces
+* QA-1889	SA: Fix - In some cases call's transcript only recognizes the agent and fails to identify the caller and their dialogues.
+* QA-2026	SA: Fix - Missing Tag Edit icon if call does not have any tags already
+* BE-3175	SA: Fix - Selectable items in search Filters should be show closer together and they should be sorted
+* BE-3183	SA: Fix - spacing between call id and search box
+* QA-1930	SA: Fix - The same number should not be allowed for both ANI and DNIS fields during call upload.
+* BE-3160	SA: Fix - Warm transfer audio (4 tracks) are incorrectly labeled
+* BE-3174	SA: Fix how the IDs are displayed on hover
+* QA-1931	TA: Fix - For accounts with OIDC enabled we should not show normal Signup page, instead we should show info about logging in with the OIDC creds.
+* QA-1950	Web Console: Fix - CLEAR FILTER button not clearing text from input fields in GREG Experiment Browser
+* BE-3180	Web Console: Fix - Context search is doing search also on date - it should search only Name
+* QA-1965	Web Console: Fix - Date range handling on the Logs page
+* QA-1949	Web Console: Fix - Experiment Browser Filter is not working
+* QA-1971	Web Console: Fix - If the imported GREG Experiment file does not match the required format, the import button should be disabled.
+* QA-1964	Web Console: Fix - Missing tooltips for the elements in the header
+* BE-3172	Web Console: Fix - Referrer Policy for https://console.ascalon.ai
+* QA-1972	Web Console: Fix - Search Reset behavior on User Management page
+* QA-2002	Web Console: Fix - Unable to upload Grammar file for creating Grammar under MRCP ASR.
+* BE-3157	Web Console: Fix AIVR App table width
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Minor release 1.111.0 is scheduled for 11/11/2024 between 11pm and 12am US Central Time
 
 This release prepares for upgrade to Mongo 6 in 1.112.0

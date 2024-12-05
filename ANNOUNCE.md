@@ -7,7 +7,7 @@ This release upgrades Mongo on Edge from version 5 to 6.
 * /sa/call API supports call event marking which is utilized in the SA App to highlight various parts of the call
   * NOTE: there is a known issue with the offset for the markers being somewhat off - this will be fixed in a patch
 * API for outbound calling that is used by Copilot
-* Copilot User may reques Call Notes genration after internal transfer
+* Copilot User may request Call Notes generation after internal transfer
 
 **Key changes related to Transcribe APP**
 

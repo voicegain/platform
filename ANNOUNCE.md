@@ -1,4 +1,4 @@
-### Minor release 1.112.0 is scheduled for 12/04/2024 between 11pm and 12am US Central Time
+### Minor release 1.112.0 is scheduled for 12/06/2024 between 12:00am and 1:00am US Central Time
 
 This release upgrades Mongo on Edge from version 5 to 6.
 

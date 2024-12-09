@@ -24,6 +24,7 @@ New or changed functionality in other platform components:
 * BE-3204	Flag as error sa calls that will never recover from pending status
 * BE-3189	Implement the call-section marking
 * BE-3117	Improve performance of /sa/call-stats
+* BE-3202	In redaction, modify partial masking algorithm to always do a full mask if we have 4 or fewer digits total
 * BE-3161	Mark Meetings stuck in Processing as Error within 6 hours
 * BE-3109	Migrated Mongo 5 to Mongo 6 on Edge.
 * BE-3156	Modify account creation code to not create grafana org if type=SPEECH-WORKS

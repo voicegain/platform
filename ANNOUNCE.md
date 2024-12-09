@@ -1,4 +1,4 @@
-### Minor release 1.112.0 is scheduled for 12/07/2024 between 12am and 1am US Central Time
+### Minor release 1.112.0 is scheduled for 12/06/2024 between 12:00am and 1:00am US Central Time
 
 This release upgrades Mongo on Edge from version 5 to 6.
 
@@ -7,7 +7,7 @@ This release upgrades Mongo on Edge from version 5 to 6.
 * /sa/call API supports call event marking which is utilized in the SA App to highlight various parts of the call
   * NOTE: there is a known issue with the offset for the markers being somewhat off - this will be fixed in a patch
 * API for outbound calling that is used by Copilot
-* Copilot User may reques Call Notes genration after internal transfer
+* Copilot User may request Call Notes generation after internal transfer
 
 **Key changes related to Transcribe APP**
 
@@ -24,6 +24,7 @@ New or changed functionality in other platform components:
 * BE-3204	Flag as error sa calls that will never recover from pending status
 * BE-3189	Implement the call-section marking
 * BE-3117	Improve performance of /sa/call-stats
+* BE-3202	In redaction, modify partial masking algorithm to always do a full mask if we have 4 or fewer digits total
 * BE-3161	Mark Meetings stuck in Processing as Error within 6 hours
 * BE-3109	Migrated Mongo 5 to Mongo 6 on Edge.
 * BE-3156	Modify account creation code to not create grafana org if type=SPEECH-WORKS
@@ -88,7 +89,6 @@ Issue key	Custom field (Release Notes)
 * BE-3157	Web Console: Fix AIVR App table width
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
 
 ### Minor release 1.111.0 is scheduled for 11/11/2024 between 11pm and 12am US Central Time
 
@@ -241,10 +241,9 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-
 ### Maintenance release 1.109.1 is scheduled for 9/29/2024 between 11pm and 12am US Central Time
 
-New or changed functionality in other platform components:
+New or changed functionality in platform components:
 * BE-3088	Add dailyRepeatCalls to /sa/calls
 * BE-3011	Add dtmfEvents field to /sa/call
 * BE-2968	Add fallback in case of Azure TTS issues
@@ -501,8 +500,12 @@ Changes related to Integrity of Processing (fixes):
 * QA-1509	Web Console: Fix - 'Speed and Audio' control panels should be in proper size.
 * QA-1392	Web Console: Fix - When we click the back button more than once, the time interval goes to minus and after that the video pauses.
 
-
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+### Maintenance Window is scheduled for 9/15/2024 between 10pm and 12am US Central Time
+
+Next Sunday, September 15th between 10pm and midnight Central Time a maintenance window is scheduled during which Voicegain **APIs may be unavailable**.
+This is to reconfigure Voicegain Google Cloud setup to improve High Availability.
 
 ### Minor release 1.108.0 is scheduled for 9/2/2024 between 10pm and 12am CDT
 
@@ -514,8 +517,8 @@ All changes affecting Security, Availability, Integrity of Processing, Confident
 * Support for pushing Voicebot data and Call Notes to Copilot
 
 **Key changes related to Transcribe APP**
-* Cloud only: Major improvememnt to capabilities of LLM Query
-* Major makover of the look of the UI
+* Cloud only: Major improvement to capabilities of LLM Query
+* Major makeover of the look of the UI
 * Added UI dark mode
 * Added Configurable Meeting Minutes (via LLM prompt)
 * Added tracking of LLM tokens (in the Cloud)
@@ -642,6 +645,9 @@ Changes related to Integrity of Processing (fixes):
 * QA-1526	Web Console: Fix - When user switch context on Profile page then 2FA pop-up keeps showing each time context is changed.
 
 
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.107.0 is scheduled for 8/5/2024 between 8pm and 11pm CDT
 
 **Key changes related to the core APIs**
@@ -761,7 +767,6 @@ Changes related to Integrity of Processing (fixes):
 
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
 
 ### Minor release 1.106.0 is scheduled for 7/13/2024 between 7pm and 10pm CDT
 
@@ -1052,6 +1057,7 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
+
 ### Minor release 1.104.0 is scheduled for 5/29/2024 between 7:30am and 9:00am CDT
 
 **Key changes related to the core APIs**
@@ -1160,8 +1166,6 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-
-
 ### Maintenance release 1.103.1 is scheduled for 5/16/2024 between 4pm and 5pm CDT
 
 New or changed functionality in the Transcribe App:
@@ -1268,11 +1272,10 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-
 ### Minor release 1.102.0 is scheduled for 4/16/2024 between 6:00pm and 10:00pm CDT
 
 **Key changes related to the core APIs**
-* MRCP ASR no supports GARBAGE grammars (Nuance syntax)
+* MRCP ASR now supports GARBAGE grammars (Nuance syntax)
 * Removal of Prompt Manager in Web Console - not used due to popularity of TTS
 * /sa/offline API is now available in beta - this is for Offline Transcription and Speech Analytics
 * Telephony Bot API supports A/B testing using multiple logic URLs
@@ -1392,7 +1395,6 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-
 ### Maintenance release 1.101.1 is scheduled for 4/4/2024 between 5:00pm and 7:00pm CDT
 
 New or changed functionality:
@@ -1403,13 +1405,13 @@ New or changed functionality:
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-### Minor release 1.101.0 is scheduled for 3/25/2024 between 6:00pm and 10:00pm CST
+### Minor release 1.101.0 is scheduled for 3/25/2024 between 6:00pm and 10:00pm CDT
 
 IMPORTANT Note for Edge users: 
 If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 
 This is because the compatibility setting on the Mongo DB has been changed in 1.97.0 and influxDB version has changed in 1.98.0
 
-**Key changes releated to the core APIs**
+**Key changes related to the core APIs**
 * Revised User deletion logic - will retain deleted User info so that any remaining references can be resolved.
 * Added ability to enforce 2FA account-wide via a Web Console setting
 * Connected Web Console to Sentry service for error tracking
@@ -1417,7 +1419,7 @@ This is because the compatibility setting on the Mongo DB has been changed in 1.
 * Websocket version of the Telephony Bot API
 * Improved NLU model for understanding IVR prompts
 
-**Key changes releated to Transcribe APP**
+**Key changes related to Transcribe APP**
 * Improved User deletion logic functionality.
 * Added LLM Settings to Account profile
 * Action Items tables now correctly rendered in PDF and DOCX
@@ -1497,7 +1499,6 @@ Changes related to Integrity of Processing (fixes):
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 
-
 ### Minor release 1.100.0 is scheduled for 3/4/2024 between 7:00pm and 10:00pm CST
 
 IMPORTANT Note for Edge users: 
@@ -1573,7 +1574,6 @@ Changes related to Integrity of Processing (fixes):
 * QA-983	Web Console: Fix - After reset password- Web console button is not clickable
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
 
 ### Minor release 1.99.0 is scheduled for 2/13/2024 between 7:00pm and 10:00pm CST
 
@@ -1653,7 +1653,6 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-
 ### Minor release 1.98.0 is scheduled for 2/1/2024 between 4:00pm and 6:00pm CST
 
 IMPORTANT Note for Edge users: 
@@ -1711,9 +1710,9 @@ Changes related to Integrity of Processing (fixes):
 * BE-1278	Fix - If no sort order in specified then the advanced text search results should be ordered by rank											
 * BE-1334	Fix - results from the GET /asr/meeting/search API are not sorted by rank if no sorting is specified											
 * BE-1436	Fix - Recognition doesn't work in AIVR sessions if influxDB is down											
-* BE-1490	Fix - AIVR should start recognition only after the non-bargineable text prompt
-* BE-1563	Fix - Missing `<instance>` value in the result of `builtin:speech/transcribe` (and all lvoc "grammars")									
-* QA-847	Web Console: Fix - After uploading a file, the label field should be automatically filled.	
+* BE-1490	Fix - AIVR should start recognition only after the non-bargineable text prompt					
+* BE-1563	Fix - Missing `<instance>` value in the result of `builtin:speech/transcribe` (and all lvoc "grammars")	
+* QA-847	Web Console: Fix - After uploading a file, the label field should be automatically filled.											
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
@@ -1736,7 +1735,7 @@ All changes affecting Security, Availability, Integrity of Processing, Confident
 Changes related to Integrity of Processing (fixes):
 * BE-1412 Fix - uhhuh recognition with low confidence messing up the flow (early barge-in) 
 * BE-1443 Fix endpointing of low confidence recognitions in Telephony Bot API
-* BE-1473 Fix - NPE in Meeting Search if any account context does not have type set
+* BE-1473 TA: Fix - NPE in Meeting Search if any account context does not have type set
 * BE-1476 TA: Fix - Something Went Wrong page not loading correctly on Edge
 * BE-1477 Fix - Invalid value: null error when retrieving transcript in Web Console
 * BE-1479 TA: Fix - missingKey translation "Uploaded File" logged in a loop
@@ -1811,7 +1810,6 @@ Changes related to Integrity of Processing (fixes):
 * QA-824	Web Console: Fix - Delete functionality is not working Properly for 90% page zoom.
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
 
 
 

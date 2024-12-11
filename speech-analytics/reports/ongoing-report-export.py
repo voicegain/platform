@@ -16,12 +16,13 @@ def export_data(max_exported_call_id, jwt_token, host, per_page, consecutive, fr
     headers = {
         'Authorization': f'Bearer {jwt_token}'
     }
+    to_time = '2525-01-01T00:00:00Z'
 
     while True:
         print(f"Fetching page {page_num}...", flush=True)
         ## within the loop we run constant value of afterCallId
         ## only the page gets incremented
-        url = f"https://{host}/v1/sa/call?format=csv&per_page={per_page}&page={page_num}&afterCallId={max_exported_call_id}&consecutive={str(consecutive).lower()}&fromTime={from_time}"
+        url = f"https://{host}/v1/sa/call?format=csv&per_page={per_page}&page={page_num}&afterCallId={max_exported_call_id}&consecutive={str(consecutive).lower()}&fromTime={from_time}&toTime={to_time}"
         print(f"Making API request to: {url}", flush=True)  # Added print statement
         response = requests.get(url, headers=headers)
         

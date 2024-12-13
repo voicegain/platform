@@ -1,14 +1,23 @@
 import requests
 import time
+import configparser
 
+# Load configuration
+config = configparser.ConfigParser()
+config.read('config.ini')
+CONF_NAME="CLOUD-DEV"
 
-JWT = "JWT"
-APP_ID = "6fa817d0-de45-4e95-8f40-f4256af0316d"
-
+# Read values from the DEFAULT section
+JWT = config[CONF_NAME]['JWT']
+APP_ID = config[CONF_NAME]['AIVRAPPID']
+DESTINATION = config['DEFAULT']['DESTPHONE']
 
 class ApiClient:
     def __init__(self):
-        self.base_url = "https://api.ascalon.ai/v1/"
+        self.base_url = "https://{hostport}/{urlprefix}/".format(
+            hostport=config[CONF_NAME]['HOSTPORT'],
+            urlprefix=config[CONF_NAME]['URLPREFIX']
+        )
         self.jwt = JWT
 
     def dial(self, destination, app_id=APP_ID):
@@ -35,20 +44,18 @@ class ApiClient:
         )
         return response
 
-
-TOTAL = 20
+TOTAL = 5
 SLEEP = 2
 remain = TOTAL
 for _ in range(TOTAL):
     print("Remain: {}".format(remain))
     remain -= 1
     api_client = ApiClient()
-    api_client.dial(
-        # Prod bot
-        # To call prod bot, add "prod=true" appData to ahcm-inbound-traversal-bot in Dev env
-        # destination="+13464760718"  # Prod bot
+    # Prod bot
+    # To call prod bot, add "prod=true" appData to ahcm-inbound-traversal-bot in Dev env
+    # destination="+13464760718"  # Prod bot
 
-        # Dev bot
-        destination="+14693333606"
-    )
+    # Dev bot
+    # destination="+14693333606"
+    api_client.dial(destination=DESTINATION)
     time.sleep(SLEEP)

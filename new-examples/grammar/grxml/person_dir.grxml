@@ -22,28 +22,28 @@
         <tag>out.name="Jose Pacheco"; out.ext="007";</tag>
     </item>
 </rule>
-<rule id="julio_iglecias"><item><one-of><item weight="0.66">Julio</item><item weight="0.33">Hulio</item><item weight="0.33">Yoolio</item><item weight="0.33">Hoolio</item><item weight="0.33">Joolio</item></one-of> <one-of><item weight="0.66">Iglecias</item><item weight="0.33">Eglezias</item><item weight="0.33">Eglesias</item><item weight="0.33">Eglecias</item><item weight="0.33">Igleesias</item><item weight="0.33">Iglesias</item></one-of><tag>out.name="Julio Iglecias"; out.ext="008";</tag></item></rule>
+<rule id="julio_iglecias"><item><one-of><item weight="1.00">Julio</item><item weight="1.00">Hulio</item><item weight="1.00">Yoolio</item><item weight="1.00">Hoolio</item><item weight="1.00">Joolio</item></one-of> <one-of><item weight="1.00">Iglecias</item><item weight="1.00">Eglezias</item><item weight="1.00">Eglesias</item><item weight="1.00">Eglecias</item><item weight="1.00">Igleesias</item><item weight="1.00">Iglesias</item></one-of><tag>out.name="Julio Iglecias"; out.ext="008";</tag></item></rule>
 <rule id="giovanni_davare">
     <item>
         <one-of>
-            <item weight="0.66">Giovanni</item>
-            <item weight="0.33">Jovanni</item>
-            <item weight="0.33">Geovanni</item>
-            <item weight="0.33">Jiohvany</item>
-            <item weight="0.33">Jovani</item>
+            <item weight="1.00">Giovanni</item>
+            <item weight="1.00">Jovanni</item>
+            <item weight="1.00">Geovanni</item>
+            <item weight="1.00">Jiohvany</item>
+            <item weight="1.00">Jovani</item>
         </one-of>
         <one-of>
-            <item weight="0.66">Davare</item>
-            <item weight="0.33">Davary</item>
-            <item weight="0.33">Davarey</item>
-            <item weight="0.33">Davaray</item>
-            <item weight="0.33">Dahvarey</item>
-            <item weight="0.33">Dahvahray</item>
-            <item weight="0.33">Davari</item>
+            <item weight="1.00">Davare</item>
+            <item weight="1.00">Davary</item>
+            <item weight="1.00">Davarey</item>
+            <item weight="1.00">Davaray</item>
+            <item weight="1.00">Dahvarey</item>
+            <item weight="1.00">Dahvahray</item>
+            <item weight="1.00">Davari</item>
         </one-of><tag>out.name="Giovanni Davare"; out.ext="009";</tag>
     </item>
 </rule>
-<rule id="john_smith"><item><one-of><item weight="0.66">John</item><item weight="0.33">Jonn</item><item weight="0.33">Jon</item><item weight="0.33">Jawn</item></one-of> <one-of><item weight="0.66">Smith</item><item weight="0.33">Smithe</item><item weight="0.33">Smyth</item><item weight="0.33">Smit</item></one-of><tag>out.name="John Smith"; out.ext="010";</tag></item></rule>
+<rule id="john_smith"><item><one-of><item weight="1.00">John</item><item weight="1.00">Jonn</item><item weight="1.00">Jon</item><item weight="1.00">Jawn</item></one-of> <one-of><item weight="1.00">Smith</item><item weight="1.00">Smithe</item><item weight="1.00">Smyth</item><item weight="1.00">Smit</item></one-of><tag>out.name="John Smith"; out.ext="010";</tag></item></rule>
 <rule id="person">
     <one-of>
         <item><ruleref uri="#jose_pacheco"/><tag>out.name=rules.jose_pacheco.name; out.ext=rules.jose_pacheco.ext;</tag></item>

@@ -55,18 +55,19 @@ asr_body = {
     },
     "settings": {
         "asr": {
-            "acousticModelRealTime" : acousticModelRealTime,
+            "acousticModelNonRealTime" : acousticModelRealTime,
             "grammars" : [
                 {
                     "type": "GRXML",
-                    "name" : "zip-codes",
+                    "name" : "persons",
                     "fromUrl":{
                         # "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/zip_code_no_refs.grxml"
                         # "url" : "https://grammar.host/zip_code_no_refs.grxml"
                         # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/examples/grammars/grxml/member_id_type_1.grxml"
                         # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/examples/grammars/grxml/taxonomy.grxml"
                         # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/zip_code_no_refs3.grxml"
-                        "url" : "https://support.voicegain.ai/hc/en-us/article_attachments/360062920832"
+                        # "url" : "https://support.voicegain.ai/hc/en-us/article_attachments/360062920832"
+                        "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/person_dir_large.grxml"
                     }
                 }
             ],
@@ -74,7 +75,7 @@ asr_body = {
             "completeTimeout": 2000,
             "incompleteTimeout" : 5000,
             "sensitivity" : 0.5,
-            "speedVsAccuracy" : 0.5,
+            "speedVsAccuracy" : 0.9,
             "maxAlternatives" : 5,
             "confidenceThreshold" : 0.0001 
             , "languages" : ["en"]			
@@ -148,6 +149,7 @@ def process_one_file(audio_fname):
     print("making asr request ...", flush=True)
     url = "{}://{}/{}/asr/recognize".format(protocol, hostPort, urlPrefix)
     print(f"making POST request to {url}", flush=True)
+    # print(f"body: {asr_body}", flush=True)
 
     asr_response_raw = requests.post(url, json=asr_body, headers=headers)
 

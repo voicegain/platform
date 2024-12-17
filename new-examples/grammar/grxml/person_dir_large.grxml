@@ -5,7 +5,22 @@
 <rule id="stan_wilczynski"><item><one-of><item weight="0.66">Stan</item><item weight="0.33">Stann</item><item weight="0.33">Stahnne</item><item weight="0.33">Stahn</item></one-of> <one-of><item weight="0.66">Wilczynski</item><item weight="0.33">Vilchinsky</item><item weight="0.33">Wilchinski</item><item weight="0.33">Vilchinski</item></one-of><tag>out.name="Stan Wilczynski"; out.ext="283";</tag></item></rule>
 <rule id="frank_domizio"><item><one-of><item weight="0.66">Frank</item><item weight="0.33">Fraenk</item><item weight="0.33">Franck</item><item weight="0.33">Frangk</item><item weight="0.33">Frannk</item><item weight="0.33">Franch</item><item weight="0.33">Franke</item></one-of> <one-of><item weight="0.66">Domizio</item><item weight="0.33">Domizioh</item><item weight="0.33">Domisio</item><item weight="0.33">Domitio</item><item weight="0.33">Domeezio</item><item weight="0.33">Domizioe</item></one-of><tag>out.name="Frank Domizio"; out.ext="301";</tag></item></rule>
 <rule id="daniel_cho"><item><one-of><item weight="0.66">Daniel</item><item weight="0.33">Danyal</item><item weight="0.33">Danial</item><item weight="0.33">Danyell</item><item weight="0.33">Danieel</item><item weight="0.33">Danyel</item></one-of> <one-of><item weight="0.66">Cho</item><item weight="0.33">Choh</item><item weight="0.33">Choe</item></one-of><tag>out.name="Daniel Cho"; out.ext="380";</tag></item></rule>
-<rule id="arun_santhebennur"><item><one-of><item weight="0.66">Arun</item><item weight="0.33">Aroon</item><item weight="0.33">Aruhn</item><item weight="0.33">Arune</item><item weight="0.33">Arin</item><item weight="0.33">Ahroon</item></one-of> <one-of><item weight="0.66">Santhebennur</item><item weight="0.33">Santhebenoor</item><item weight="0.33">Santhebenner</item><item weight="0.33">Santhibennur</item><item weight="0.33">Santhebenur</item><item weight="0.33">Santhebennor</item></one-of><tag>out.name="Arun Santhebennur"; out.ext="399";</tag></item></rule>
+<rule id="arun_santhebennur"><item>
+<one-of>
+    <item weight="0.66">Arun</item>
+    <item weight="0.33">Aroon</item>
+    <item weight="0.33">Aruhn</item>
+    <item weight="0.33">Arune</item>
+    <item weight="0.33">Arin</item>
+    <item weight="0.33">Ahroon</item>
+    </one-of> <one-of>
+    <item weight="0.66">Santhebennur</item>
+    <item weight="0.33">Santhebenoor</item>
+    <item weight="0.33">Santhebenner</item>
+    <item weight="0.33">Santhibennur</item>
+    <item weight="0.33">Santhebenur</item>
+    <item weight="0.33">Santhebennor</item>
+    </one-of><tag>out.name="Arun Santhebennur"; out.ext="399";</tag></item></rule>
 <rule id="diego_klajner"><item><one-of><item weight="0.66">Diego</item><item weight="0.33">Deeago</item><item weight="0.33">Deego</item><item weight="0.33">Dyego</item><item weight="0.33">Deyego</item><item weight="0.33">Deehego</item></one-of> <one-of><item weight="0.66">Klajner</item><item weight="0.33">Klayner</item><item weight="0.33">Klyner</item><item weight="0.33">Kleiner</item><item weight="0.33">Klainer</item></one-of><tag>out.name="Diego Klajner"; out.ext="400";</tag></item></rule>
 <rule id="jacek_jarmulak"><item><one-of><item weight="0.66">Jacek</item><item weight="0.33">Yatzik</item><item weight="0.33">Yacek</item><item weight="0.33">Yatzek</item><item weight="0.33">Yasek</item><item weight="0.33">Yahsek</item></one-of> <one-of><item weight="0.66">Jarmulak</item><item weight="0.33">Jarmoolak</item><item weight="0.33">Yarmulack</item><item weight="0.33">Yarmoolak</item><item weight="0.33">Yarmulak</item></one-of><tag>out.name="Jacek Jarmulak"; out.ext="005";</tag></item></rule>
 <rule id="sergey_kuznetsov"><item><one-of><item weight="0.66">Sergey</item><item weight="0.33">Sirgay</item><item weight="0.33">Sairgay</item><item weight="0.33">Sergay</item><item weight="0.33">Sergei</item></one-of> <one-of><item weight="0.66">Kuznetsov</item><item weight="0.33">Coosnetsov</item><item weight="0.33">Kuznyetsov</item><item weight="0.33">Kooznetsov</item></one-of><tag>out.name="Sergey Kuznetsov"; out.ext="006";</tag></item></rule>

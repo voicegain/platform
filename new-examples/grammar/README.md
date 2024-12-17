@@ -27,4 +27,16 @@ https://github.com/voicegain/platform/tree/master/examples/grammars
 
 Uses synchronous /asr/recognize API which returns recognition result in the response.
 
+This script will run grammar-based recognition on all utterance audio files contained in INPUTFOLDER (see Configuration).
+
+You can change the grammar used inside the script
+
 **Note**, the first run will be slower, in particular when using a large grammar, because the grammar needs to be compiled. Subsequent runs will use a compiled grammar from a grammar cache.
+
+**Configuration**
+
+* Rename `config-example.ini` to `config.ini`
+* Set values of `INPUTFOLDER` and `OUTPUTFOLDER`
+  * Your utterance recording files will be in `INPUTFOLDER`
+* Set JWT token, for more info see: https://support.voicegain.ai/hc/en-us/articles/360028023691-JWT-Authentication  
+

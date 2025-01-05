@@ -67,7 +67,9 @@ asr_body = {
                         # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/examples/grammars/grxml/taxonomy.grxml"
                         # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/zip_code_no_refs3.grxml"
                         # "url" : "https://support.voicegain.ai/hc/en-us/article_attachments/360062920832"
-                        "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/person_dir_large.grxml"
+                        # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/person_dir_large.grxml"
+                        # "url" : "https://raw.githubusercontent.com/TrevorIPI/special-octo-guide/refs/heads/main/transcribe2.grxml"
+                        "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
                     }
                 }
             ],

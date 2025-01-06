@@ -1,3 +1,63 @@
+### Release 1.113.0
+
+This release prepares Edge deployments for Mongo upgrade from version 6 to 7.
+
+New or changed functionality in the Transcribe App:
+* BE-3226	TA: Add a title and heading to LLM Page.
+* BE-3229	TA: Disable invoices button if there are no invoices available
+* QA-2045	TA: When no speaker is present, the dropdown now displays the text 'No speaker present' under project creation
+
+New or changed functionality in other platform components:
+* BE-3220	Add comfort noise to AIVR lua app
+* BE-3137	Added consecutive mode to GET /sa/call
+* BE-3240	ASR API now return urls with local host names and ports for internal requests
+* BE-3186	Populate fields in the markers field after a call is completed
+* BE-3188	Remove inactive login sessions faster
+* BE-3206	SA/TA: Better design for PII Redaction settings
+* BE-3255	SA: Add a card that shows time distribution of various parts of the call
+* QA-2052	SA: Add a search box for selecting the time zone under account settings.
+* BE-3215	SA: Add search on Time Zone selector
+* BE-3269	SA: Add sorting to the lists of values in Filters for Advanced Search
+* BE-3230	SA: Implement the call-section marking - audio line
+* BE-3258	SA: In the Call Detail view on Debug page show the date when the call will expire
+* BE-3253	SA: Mark sections of the call also on the timeline of the expanded audio view
+* BE-3233	SA: New icons for Inbound Call and Outbound Call
+* BE-3234	SA: On Call Detail Debug page show a link to the AIVR Session in Web Console
+* QA-1989	SA: On Calls page - improved data range selector
+* BE-3201	SA: Replace Topic Cloud with a pie/bar chart showing topics
+* BE-3283	SA: Support for phrase text queries in Advanced Search
+* BE-3237	Speed up the agent stats API
+* BE-3286	Web Console: Added clarification about formatter applicability to different transcription modes
+* QA-2004	Web Console: Added success message when creating a GREG Grammar
+* BE-3235	Web Console: Changes on AIVR session page: 1) obtain name from session, 2) add link to SA call details
+* BE-3243	Web Console: Improved ASR settings
+* BE-3146	Web Console: Improve look of the User profile page
+* BE-3254	Web Console: On the Context page make the languages the 1st column under ASR Transcription/Recognition grouping
+* QA-1982	Web Console: Remember selected column fields so that they survive page refresh
+* QA-2028	Web Console: Validate IP Address entered for IVR Proxy download
+
+Changes related to Integrity of Processing (fixes):
+* BE-3250	Copilot: Fix - Refresh of the Pusher button does not work - but logout and login back works
+* BE-3252	Fix - Call-stats method sometimes fails with 500 error
+* QA-1999	SA: Fix - Call Center ID filter is not working in advanced search filters.
+* QA-1919	SA: Fix - Demo Calls are not generating in Demo calls in PROD.
+* BE-3214	SA: Fix - Gender and Word Cloud toggles do not work
+* BE-3212	SA: Fix - Mood selection does not work
+* BE-3259	SA: Fix - Sorting Calls by VB Transfer does not work
+* BE-3213	SA: Fix - Tooltip on NER behavior weird
+* QA-2011	TA: Fix - Downloading audio file with text file issue
+* QA-2046	TA: Fix - Microphone capture: The transcript scrollbar is overlapping with the start time.
+* QA-2064	TA: Fix - Zoom Meeting Bot is not working properly as it is failing even after joining a Zoom meeting.
+* BE-3261	TA: Fix speaker activity detection in Webex Meeting Bot if screen is being shared
+* QA-1952	Web Console: Fix - "Clear Filters" button is missing in Console log Filter section
+* BE-3185	Web Console: Fix - Collapsed LH menu icons are identical for many items
+* QA-2058	Web Console: Fix - Password Change button should disable after first click it should not invoke two calls
+* QA-1958	Web Console: Fix - Sorting of 'Business Configuration' is not working as expected
+* QA-2017	Web Console: Fix - Unable to change the speed of the transcript.
+* QA-2065	Web Console: Fix - Unable to download transcript under Transcribe+(beta) getting 403 (Forbidden) error.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Release 1.112.0
 
 This release upgrades Mongo on Edge from version 5 to 6.

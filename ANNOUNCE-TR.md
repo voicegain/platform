@@ -2,6 +2,19 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+## January 5, 2025
+
+New:
+* BE-3226	TA: Add a title and heading to LLM Page.
+* BE-3229	TA: Disable invoices button if there are no invoices available
+* QA-2045	TA: When no speaker is present, the dropdown now displays the text 'No speaker present' under project creation
+
+Fixes:
+* QA-2011	TA: Fix - Downloading audio file with text file issue
+* QA-2046	TA: Fix - Microphone capture: The transcript scrollbar is overlapping with the start time.
+* QA-2064	TA: Fix - Zoom Meeting Bot is not working properly as it is failing even after joining a Zoom meeting.
+* BE-3261	TA: Fix speaker activity detection in Webex Meeting Bot if screen is being shared
+
 ## December 4, 2024
 
 New:

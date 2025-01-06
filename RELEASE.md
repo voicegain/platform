@@ -2,6 +2,8 @@
 
 This release prepares Edge deployments for Mongo upgrade from version 6 to 7.
 
+This release reduces the scope of the permissions needed by pods that e.g. launch K8s tasks.
+
 New or changed functionality in the Transcribe App:
 * BE-3226	TA: Add a title and heading to LLM Page.
 * BE-3229	TA: Disable invoices button if there are no invoices available
@@ -35,6 +37,8 @@ New or changed functionality in other platform components:
 * BE-3254	Web Console: On the Context page make the languages the 1st column under ASR Transcription/Recognition grouping
 * QA-1982	Web Console: Remember selected column fields so that they survive page refresh
 * QA-2028	Web Console: Validate IP Address entered for IVR Proxy download
+* MST-350 Deploy the new Spacy NER model to replace the trained NN model in ml-svc and offline-main task
+* MST-352 Dockerize the latest RT ASR, REX and unimrcp
 
 Changes related to Integrity of Processing (fixes):
 * BE-3250	Copilot: Fix - Refresh of the Pusher button does not work - but logout and login back works

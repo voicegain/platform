@@ -21,7 +21,7 @@ We are converting them to new updates examples. Most of the old examples should 
 https://github.com/voicegain/platform/tree/master/examples/grammars
 
 
-## /ars/recognize API
+## /asr/recognize API
 
 ### sync-reco-grxml-url-en.py
 

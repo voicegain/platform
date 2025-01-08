@@ -36,6 +36,7 @@ class ApiClient:
                 "aivrAppId": app_id
             }
         )
+        print("Dial response: {}".format(response.text))
         json_response = response.json()
         print("Dial response: {}".format(json_response))
         print("Dial response code: {}".format(response.status_code))
@@ -52,8 +53,8 @@ class ApiClient:
         )
         return response
 
-TOTAL = 2
-SLEEP = 5
+TOTAL = 10
+SLEEP = 3
 remain = TOTAL
 for _ in range(TOTAL):
     print("Remain: {}".format(remain))

@@ -14,9 +14,11 @@ import asyncio
 import websockets
 import datetime
 
+JWT = "<your JWT token here>"
+
 ## specify here the directory with files to test
-#input_path = "./cc-wav/"
-input_path = "../../new-examples/data/Recordings/Netcall/"
+input_path = "../../new-examples/data/Recordings/UK-Lic/"
+
 list_of_files = []
 
 for root, dirs, files in os.walk(input_path):
@@ -38,7 +40,6 @@ bytesPerSample = 1
 
 
 
-JWT = "<Your JWT here>"
 
 headers = {"Authorization":JWT}
 # new transcription session request
@@ -67,9 +68,9 @@ body = {
       "grammars" : [
           {
             "type": "GRXML",
-            "name" : "persons",
+            "name" : "uk-license-plate",
             "fromUrl":{
-                "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/PID3_IID9.grxml"             
+                "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
             }
           ##  "type" : "BUILT-IN",
           ## credit card recognition ##
@@ -84,12 +85,13 @@ body = {
             # "name" : "boolean"
           }
       ],
-      "maxAlternatives" : 5,
+      "maxAlternatives" : 10,
       "noInputTimeout": 10000,
-      "incompleteTimeout" : 4000,
+      "incompleteTimeout" : 5000,
       "completeTimeout": 2000,
-      "speedVsAccuracy" : 0.5,
+      "speedVsAccuracy" : 0.9,
       "sensitivity" : 0.5,
+      "confidenceThreshold" : 0.0001,
       "acousticModelRealTime" : "VoiceGain-kappa" 
     }
   }
@@ -168,8 +170,8 @@ async def stream_audio(conv_fname, audio_ws_url):
         elapsed_time_fl = (time.time() - start)
         print("done streaming audio in "+str(time.time()-startTime), flush=True)
         print("ellapsed time "+str(elapsed_time_fl), flush=True)
-        print("Waiting 10 seconds for processing to finish...", flush=True)  
-        time.sleep(10.0)
+        print("Waiting 5 seconds for processing to finish...", flush=True)  
+        time.sleep(5.0)
         print("done waiting", flush=True)  
         global keep_running
         keep_running = False
@@ -208,7 +210,10 @@ async def websocket_receive(uri, fname):
 def process_audio(file_name):
   print("START processing: "+file_name)
 
-  conv_fname = (file_name+'.ulaw').replace(input_path, "./")
+  conv_fname = (file_name+'.ulaw').replace(input_path, "./tmp/")
+  if not os.path.exists(os.path.dirname(conv_fname)):
+    os.makedirs(os.path.dirname(conv_fname))
+
   ff = FFmpeg(
       inputs={file_name: []},
       outputs={conv_fname : ['-ar', '8000', '-f', 'mulaw', '-y', '-map_channel', '0.0.0']}

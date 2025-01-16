@@ -1,3 +1,7 @@
+## Release 1.114.0
+
+Scheduled for January 19th, 2025.
+
 ## Release 1.113.0
 
 This release prepares Edge deployments for Mongo upgrade from version 6 to 7.

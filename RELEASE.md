@@ -1,8 +1,8 @@
-### Release 1.114.0
+## Release 1.114.0
 
 Future release scheduled for 1/19/25.
 
-### Release 1.113.0
+## Release 1.113.0
 
 This release prepares Edge deployments for Mongo upgrade from version 6 to 7.
 
@@ -66,7 +66,7 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-### Release 1.112.0
+## Release 1.112.0
 
 This release upgrades Mongo on Edge from version 5 to 6.
 

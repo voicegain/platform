@@ -2,6 +2,30 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+## January 20, 2025
+
+New:
+* QA-2183	TA: Advanced Search - Improve filter for selecting languages
+* QA-2190	TA: Advanced Search - Improve filter for selecting participants
+* QA-2189	TA: Advanced Search - Improve filter for selecting speakers
+* QA-2181	TA: Advanced Search - Improve filter for selecting tags
+* QA-2130	TA: The speakers table under account settings now has sorting functionality by Email.
+* BE-2874	TA: Introduced fallback error page for Loading Chunk Issue
+* QA-2137	TA: Show 'Copy to clipboard' message when hovering the mouse over the copy icon for the project ID
+* QA-2083	TA: Until a profile picture is updated by the user, display the avatar image in the profile settings
+* QA-2142	TA: When no group is available for the keyword to merge, display the option to create a new group
+
+Fixes:
+* QA-1498	TA Edge: Fix  - Unable to detect the Browser OS Device IP for all login sessions.
+* QA-2113	TA: Fix - Advanced Search: Project filter having extra white space that is covering whole page
+* QA-2129	TA: Fix - behavior of the tag entry box
+* QA-2110	TA: Fix - Duplicate tags shouldn't be allowed
+* QA-2209	TA: Fix - Meeting Bot - Displaying 'Forgot Meeting' instead of 'Leave Meeting' for a Webex call."
+* QA-2204	TA: Fix - Occasional unable to join Zoom meeting bot - Error: “Failed to join meeting"
+* QA-2120	TA: Fix - Project names should not be allowed to start with spaces
+* QA-2163	TA: Fix - Properly handle Projects with missing saConfig
+* QA-2160	TA: Fix - Unable to move multiple files across all projects, as the pop-up page displays differently and does not allow selecting the destination.
+
 ## January 5, 2025
 
 New:

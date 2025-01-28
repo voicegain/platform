@@ -7,8 +7,7 @@ Required Steps, Azure Provided documentation, and recommended best practices
 - [Step 2: (Optional) Setup Azure Storage Account](#step2) #ToDo
 - [Step 3: Create Cluster and Node Pools](#step3)
 - [Step 4: Reserve an Public IP for Voicegain API](#step4)
-- [Step 5: (Optional) Configure ip-masq-agent](#step5)
-- [Step 6: Continue on Voicegain Web Console](#step6)
+- [Step 6: Continue on Voicegain Web Console](#step5)
 
 
 ## <a id="step0"></a>Step 0: Request GPUs from AZURE
@@ -62,7 +61,7 @@ Needed Parameters:-
 
 Optional Parameters:-
 [REGION]: AZURE region to create cluster in
-[VOICEGAIN_NAT_IP]: Voicegain IP allowed to connect GKE Master
+[VOICEGAIN_NAT_IP]: Voicegain IP allowed to connect Kubernetes Master
 [LINUX_TERMINAL_IP]: IP of linux terminal being used to run kubectl
 [DEFAULT_NODE_POOL_NAME]: Name of default nodepool attached to Cluster
 [TIER]: free or standard
@@ -90,7 +89,7 @@ Needed Parameters:-
 
 Optional Parameters:-
 [REGION]: AZURE region to create cluster in
-[VOICEGAIN_NAT_IP]: Voicegain IP allowed to connect GKE Master
+[VOICEGAIN_NAT_IP]: Voicegain IP allowed to connect Kubernetes Master
 [LINUX_TERMINAL_IP]: IP of linux terminal being used to run kubectl
 [DEFAULT_NODE_POOL_NAME]: Name of default nodepool attached to Cluster
 [TIER]: free or standard
@@ -106,7 +105,7 @@ Optional Parameters:-
 
 AZURE Link: [az aks create](https://learn.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-create())
 
-### (Optional) Add new IP to existing authorised list for GKE Master Control Plane
+### (Optional) Add new IP to existing authorised list for Kubernetes Master Control Plane
 
 1) Open Azure Portal
 2) Navigate to Kubernetes Services
@@ -180,13 +179,7 @@ az network public-ip show --name [VOICEGAIN_API_IP_NAME] --resource-group [AKS_R
 
 All done here!
 
-## <a id="step5"></a>Step 5: (Optional) Configure ip-masq-agent
-
-This step is only needed if the new cluster has to interact with sources/destinations located on [RFC 1918](https://tools.ietf.org/html/rfc1918)  IP ranges, e.g. 10.0.0.0/8. If that is the case, then the GKE Default SNAT will not work as desired and we need to configure **ip-masq-agent**.
-
-[Steps to configure ip-masq-agent](./ip-masq-agent.md)
-
-## <a id="step6"></a>Step 6: Continue on Voicegain Web Console 
+## <a id="step5"></a>Step 5: Continue on Voicegain Web Console 
 
 [Continue with universal deployment guide Step 2](./universal-deployment-guide.md#Step2)
 

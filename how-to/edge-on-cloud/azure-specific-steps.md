@@ -7,7 +7,7 @@ Required Steps, Azure Provided documentation, and recommended best practices
 - [Step 2: (Optional) Setup Azure Storage Account](#step2) #ToDo
 - [Step 3: Create Cluster and Node Pools](#step3)
 - [Step 4: Reserve an Public IP for Voicegain API](#step4)
-- [Step 6: Continue on Voicegain Web Console](#step5)
+- [Step 5: Continue on Voicegain Web Console](#step5)
 
 
 ## <a id="step0"></a>Step 0: Request GPUs from AZURE

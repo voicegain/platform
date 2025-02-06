@@ -121,12 +121,6 @@ You will create two more node pools.
 Here is the command to create the first node pool. 
 In this node pool, we use `Standard_NC16as_T4_v3` instance with one T4 GPU.
 <pre>
-az extension add --name aks-preview
-az extension update --name aks-preview
-az feature register --namespace "Microsoft.ContainerService" --name "GPUDedicatedVHDPreview"
-az feature show --namespace "Microsoft.ContainerService" --name "GPUDedicatedVHDPreview"
-az provider register --namespace Microsoft.ContainerService
-
 az aks nodepool add --resource-group [RESOURCE_GROUP_NAME] --cluster-name [CLUSTER_NAME] --name [GPU_NODE_POOL_NAME] --node-count 1 --node-vm-size Standard_NC16as_T4_v3 --node-osdisk-size 100 --aks-custom-headers UseGPUDedicatedVHD=true
 </pre>
 
@@ -162,7 +156,7 @@ Now you will reserve an Public IP address.
 This IP address will be used as the Voicegain API endpoint.
 
 <pre>
-az network public-ip create --resource-group myNetworkResourceGroup --name [VOICEGAIN_API_IP_NAME] --sku Standard --allocation-method static
+az network public-ip create --resource-group [AKS_RESOURCE_GROUP_NAME] --name [VOICEGAIN_API_IP_NAME] --sku Standard --allocation-method static
 </pre>
 
 <pre>

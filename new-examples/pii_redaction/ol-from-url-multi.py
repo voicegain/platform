@@ -95,167 +95,169 @@ asr_body = {
         ,{
             "type": "redact",
             "parameters": {
-                "CC": "partial",
+                "CC": "[CC]]",
+                "CVV": "[CVV]",
                 #"ZIP": "[ZIP]",
                 #"PERSON": "[PERSON]",
                 #"EMAIL" : "[EMAIL]",
                 #"PHONE" : "[PHONE]",
-                "SSN" : "partial"
+                "SSN" : "[SSN]"
                 #,"DMY" : "[DMY]"
             }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bcv )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bcv[v|b|c] is )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bcv[v|b|c] )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bcv number is )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bcv number )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bcv[v|b|c] number is )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bcv[v|b|c] number )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bpin is )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bpin )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bpin number is )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bpin number )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bsecurity is )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bsecurity )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bsecurity[.] )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bsecurity pin is )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bsecurity pin )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bsecurity number is )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        },
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bsecurity number )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        }, 
-        { 
-            "type": "regex",
-            "parameters": {
-                "pattern": r"(?<=\bsecurity number[.] )\d{3,4}\b",
-                "mask": "full",
-                "options": "IA"
-            }
-        }        
+        }
+        # ,
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bcv )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bcv[v|b|c] is )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bcv[v|b|c] )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bcv number is )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bcv number )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bcv[v|b|c] number is )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bcv[v|b|c] number )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bpin is )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bpin )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bpin number is )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bpin number )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bsecurity is )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bsecurity )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bsecurity[.] )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bsecurity pin is )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bsecurity pin )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bsecurity number is )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # },
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bsecurity number )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # }, 
+        # { 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"(?<=\bsecurity number[.] )\d{3,4}\b",
+        #         "mask": "full",
+        #         "options": "IA"
+        #     }
+        # }        
         ]
     }
 }

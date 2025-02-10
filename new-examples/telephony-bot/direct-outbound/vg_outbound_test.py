@@ -53,8 +53,8 @@ class ApiClient:
         )
         return response
 
-TOTAL = 10
-SLEEP = 3
+TOTAL = 3
+SLEEP = 5
 remain = TOTAL
 for _ in range(TOTAL):
     print("Remain: {}".format(remain))

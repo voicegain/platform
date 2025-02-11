@@ -14,10 +14,10 @@ import asyncio
 import websockets
 import datetime
 
-JWT = "<your JWT token here>"
+JWT = "<JWT here>"
 
 ## specify here the directory with files to test
-input_path = "../../new-examples/data/Recordings/UK-Lic/"
+input_path = "../../new-examples/data/Recordings/numbers/"
 
 list_of_files = []
 
@@ -68,9 +68,10 @@ body = {
       "grammars" : [
           {
             "type": "GRXML",
-            "name" : "uk-license-plate",
+            "name" : "menu-selection",
             "fromUrl":{
-                "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
+                #"url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
+                "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/Menu0to9Voice.grxml"
             }
           ##  "type" : "BUILT-IN",
           ## credit card recognition ##
@@ -92,7 +93,7 @@ body = {
       "speedVsAccuracy" : 0.9,
       "sensitivity" : 0.5,
       "confidenceThreshold" : 0.0001,
-      "acousticModelRealTime" : "VoiceGain-kappa" 
+      "acousticModelRealTime" : "VoiceGain-Rho" 
     }
   }
 }

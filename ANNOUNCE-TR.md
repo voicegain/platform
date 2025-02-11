@@ -2,7 +2,31 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
-## January 20, 2025
+### Februry 10, 2025
+
+New:
+* BE-3377	TA: Add In User Profile for Admin users ability to generate and manage user-bound JWT tokens
+* QA-2077	TA: Add success message when deleting a voice signature from account settings
+* BE-1468	TA: Add to Transcribe App Cloud an option to delete account
+* QA-2196	TA: Added input data validation for Webhook URL, Name, Token fields
+* QA-2143	TA: Change design for Keywords settings
+* QA-2225	TA: Voice signature - Play button now is disabled till the status turns into ready.
+
+Fixes:
+* QA-1992	SA: Fix - Inconsistent date format on call's page.
+* QA-2119	SA: Fix - Project names should not be allowed to start with spaces or dots
+* BE-3379	TA: Fix -  Project name entry cursor with strange behavior
+* QA-2092	TA: Fix - Add tag field is missing on the zoom directory upload page.
+* QA-2217	TA: Fix - Language dropdown is not centrally aligned during project creation
+* QA-2094	TA: Fix - Recomputing overlaping with size in storage.
+* QA-2253	TA: Fix - Settings- 'Keyword' name shouldn't accept the blank space
+* QA-2252	TA: Fix - Settings- 'Phrase' name shouldn't accept the blank space
+* QA-2073	TA: Fix - The tag field is not available when the user tries to save a browser share recording
+* QA-2220	TA: Fix - walkthrough wizard does not properly highlight features as expected
+* QA-2159	TA: Fix - When the owner downloads a transcript as a docs file, the transcript's background color is not included in the file.
+
+
+### January 20, 2025
 
 New:
 * QA-2183	TA: Advanced Search - Improve filter for selecting languages
@@ -26,7 +50,7 @@ Fixes:
 * QA-2163	TA: Fix - Properly handle Projects with missing saConfig
 * QA-2160	TA: Fix - Unable to move multiple files across all projects, as the pop-up page displays differently and does not allow selecting the destination.
 
-## January 5, 2025
+### January 5, 2025
 
 New:
 * BE-3226	TA: Add a title and heading to LLM Page.
@@ -39,7 +63,7 @@ Fixes:
 * QA-2064	TA: Fix - Zoom Meeting Bot is not working properly as it is failing even after joining a Zoom meeting.
 * BE-3261	TA: Fix speaker activity detection in Webex Meeting Bot if screen is being shared
 
-## December 4, 2024
+### December 4, 2024
 
 New:
 * QA-1628	TA: Search functionality provided for Admin users when they delete any other user and transfer their projects to another user.
@@ -48,7 +72,7 @@ New:
 Fixes:
 * QA-1931	TA: Fix - For accounts with OIDC enabled we should not show normal Signup page, instead we should show info about logging in with the OIDC creds.
 
-## October 30, 2024
+### October 30, 2024
 
 **Key changes related to Transcribe APP**
 * Improvements to the Webhook functionality
@@ -85,7 +109,7 @@ Fixes:
 * QA-1856	TA: Fix - The user is able to add a Webhook without providing any details.
 * BE-3104	TA: Fix - Webhook jwtTTL information weren't consistent.
 
-## Spetember 17, 2024
+### Spetember 17, 2024
 
 **Key changes related to Transcribe APP**
 * Support Webhook API (phase 1) - Edge only.

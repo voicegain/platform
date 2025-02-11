@@ -1,3 +1,8 @@
+### Minor release 1.115.0 is scheduled for 2/10/2025 between 11:00pm and 12:00am US Central Time
+
+TBD...
+
+
 ### Minor release 1.114.0 is scheduled for 1/20/2025 between 11:00pm and 12:00am US Central Time
 
 This release updates Edge deployments from Mongo version 6 to 7.

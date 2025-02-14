@@ -44,6 +44,10 @@ print(f"   Host Auth: {hostAuth}", flush=True)
 print(f"    Host API: {hostApi}", flush=True)
 
 email_to_find = "jj@gmail.com"
+user_fname = "Jacek"
+user_lname = "Jankowski"
+user_role = "User"
+user_notification = "oidc"
 project_name_to_find = "Webex Project"
 meeting_label = "Webex Meeting from " + time.strftime(" %Y-%m-%d %H_%M_%S")
 audio_mime_type = "audio/m4a"
@@ -81,6 +85,39 @@ def find_user_by_email(email):
     else:
         print(f"User with email {email} not found", flush=True)
         return None
+
+##
+## create_user
+##
+def create_user(email, first_name, last_name, role, initial_notification):
+    permissions = None
+    if(role == "User"):
+        permissions = ["user"]
+    elif(role == "Admin"):
+        permissions = ["user","admin"]
+    else:
+        print(f"Invalid role: {role}", flush=True)
+        return None
+
+    url = f"{hostAuth}/user"
+    body = {
+        "email": email,
+        "firstName": first_name,
+        "lastName": last_name,
+        "role": role,
+        "permissions": f"[{",".join(permissions)}]",
+        "initialNotification": initial_notification
+    }
+    print(f"Creating user with email {email}", flush=True)
+    response = requests.post(url, json=body, headers=headers)
+    if response.status_code != 200:
+        print(f"Failed to create user: {response.status_code}", flush=True)
+        print(response.text, flush=True)
+        return None
+
+    user_response = response.json()
+    print(f"User created: {user_response}", flush=True)
+    return user_response.get("userId")
 
 ##
 ## find_user_project_by_name
@@ -367,6 +404,15 @@ def create_meeting(context_id, label, creator, video_id, audio_id, num_speakers=
 user_uuid = find_user_by_email(email_to_find)
 print(f"User UUID for email {email_to_find}: {user_uuid}", flush=True)
 
+if(user_uuid == None):
+    print(f"User with email `{email_to_find}` not found, creating a new one", flush=True)
+    user_uuid = create_user(email_to_find, user_fname, user_lname, user_role, user_notification)
+    print(f"New User UUID: {user_uuid}", flush=True)
+
+if(user_uuid == None):
+    print(f"Failed to create or find user", flush=True)
+    exit()
+
 project_uuid = find_user_project_by_name(user_uuid, project_name_to_find)
 print(f"Project UUID for project name {project_name_to_find}: {project_uuid}", flush=True)
 
@@ -374,6 +420,10 @@ if(project_uuid == None):
     print(f"Project with name `{project_name_to_find}` not found, creating a new one", flush=True)
     project_uuid = create_new_project(user_uuid, project_name_to_find, "Project created for Webex meeting import")
     print(f"New Project UUID: {project_uuid}", flush=True)
+
+if(project_uuid == None):
+    print(f"Failed to create or find project", flush=True)
+    exit()
 
 audio_id = upload_data_file(project_uuid, audio_fname, audio_mime_type)
 print(f"Audio ID for file {audioFile}: {audio_id}", flush=True)

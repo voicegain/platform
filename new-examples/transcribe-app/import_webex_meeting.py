@@ -43,12 +43,14 @@ print(f"  Video file: {video_fname}", flush=True)
 print(f"   Host Auth: {hostAuth}", flush=True)
 print(f"    Host API: {hostApi}", flush=True)
 
+verify_ssl_certs = True
+
 email_to_find = "jj@gmail.com"
 user_fname = "Jacek"
 user_lname = "Jankowski"
 user_role = "User"
 user_notification = "oidc"
-project_name_to_find = "Webex Project"
+project_name_to_find = "Webex Project 2"
 meeting_label = "Webex Meeting from " + time.strftime(" %Y-%m-%d %H_%M_%S")
 audio_mime_type = "audio/m4a"
 video_mime_type = "video/mp4"
@@ -65,7 +67,7 @@ project_hints=[]
 def find_user_by_email(email):
     url = f"{hostAuth}/user"
     print(f"Fetching users from {url}", flush=True)
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, verify=verify_ssl_certs)
     if response.status_code != 200:
         print(f"Failed to fetch users: {response.status_code}", flush=True)
         return None
@@ -109,7 +111,7 @@ def create_user(email, first_name, last_name, role, initial_notification):
         "initialNotification": initial_notification
     }
     print(f"Creating user with email {email}", flush=True)
-    response = requests.post(url, json=body, headers=headers)
+    response = requests.post(url, json=body, headers=headers, verify=verify_ssl_certs)
     if response.status_code != 200:
         print(f"Failed to create user: {response.status_code}", flush=True)
         print(response.text, flush=True)
@@ -130,7 +132,7 @@ def find_user_project_by_name(userUuid, projectName):
     
     url = f"{hostApi}/confgroup?type=Transcription&userId={userUuid}"
     print(f"Fetching projects from {url}", flush=True)
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, verify=verify_ssl_certs)
     if response.status_code != 200:
         print(f"Failed to fetch projects: {response.status_code}", flush=True)
         return None
@@ -172,7 +174,7 @@ def create_new_sa_config(context_id):
         "wordCloud": True
     }
     print(f"Creating new SA config for context {context_id}", flush=True)
-    response = requests.post(url, json=body, headers=headers)
+    response = requests.post(url, json=body, headers=headers, verify=verify_ssl_certs)
     if response.status_code != 200:
         print(f"Failed to create SA config: {response.status_code}", flush=True)
         print(response.text, flush=True)
@@ -195,7 +197,7 @@ def create_user_group(context_id, user_id):
         "lead": user_id
     }
     print(f"Creating new user group for context {context_id}", flush=True)
-    response = requests.post(url, json=body, headers=headers)
+    response = requests.post(url, json=body, headers=headers, verify=verify_ssl_certs)
     if response.status_code != 200:
         print(f"Failed to create user group: {response.status_code}", flush=True)
         print(response.text, flush=True)
@@ -214,7 +216,7 @@ def add_user_to_group(group_id, user_id):
         "addUsers": [user_id]
     }
     print(f"Adding user {user_id} to group {group_id}", flush=True)
-    response = requests.put(url, json=body, headers=headers)
+    response = requests.put(url, json=body, headers=headers, verify=verify_ssl_certs)
     if response.status_code != 200:
         print(f"Failed to add user to group: {response.status_code}", flush=True)
         print(response.text, flush=True)
@@ -236,7 +238,7 @@ def modify_project(project_id, sa_config_id, user_group_id):
         }
     }
     print(f"Modifying project {project_id}", flush=True)
-    response = requests.put(url, json=body, headers=headers)
+    response = requests.put(url, json=body, headers=headers, verify=verify_ssl_certs)
     if response.status_code != 200:
         print(f"Failed to modify project: {response.status_code}", flush=True)
         print(response.text, flush=True)
@@ -255,6 +257,7 @@ def create_new_project(userUuid, projectName, description):
         "name": projectName,
         "description": description,
         "type": "Transcription",
+        "creator": userUuid,
         "color": project_color,
         "timeZone": project_timezone,
         "weekStartsOn": project_week_starts_on,
@@ -285,7 +288,7 @@ def create_new_project(userUuid, projectName, description):
         ]
     }
     print(f"Creating new project with name {projectName}", flush=True)
-    response = requests.post(url, json=body, headers=headers)
+    response = requests.post(url, json=body, headers=headers, verify=verify_ssl_certs)
     if response.status_code != 200:
         print(f"Failed to create project: {response.status_code}", flush=True)
         print(response.text, flush=True)
@@ -333,7 +336,7 @@ def upload_data_file(project_id, data_fname, mime_type):
     max_retries = 5
     retry_count = 0
     while retry_count < max_retries:
-        data_response_raw = requests.post(data_url, files=multipart_form_data, headers=headers)
+        data_response_raw = requests.post(data_url, files=multipart_form_data, headers=headers, verify=verify_ssl_certs)
         code = data_response_raw.status_code
         print("   response code: {}".format(code))
 
@@ -390,7 +393,7 @@ def create_meeting(context_id, label, creator, video_id, audio_id, num_speakers=
         ]
     }
     print(f"Creating meeting with label {label} for context {context_id}", flush=True)
-    response = requests.post(url, json=body, headers=headers)
+    response = requests.post(url, json=body, headers=headers, verify=verify_ssl_certs)
     if response.status_code != 200:
         print(f"Failed to create meeting: {response.status_code}", flush=True)
         print(response.text, flush=True)

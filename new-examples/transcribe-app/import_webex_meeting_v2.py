@@ -45,14 +45,12 @@ print(f"    Host API: {hostApi}", flush=True)
 
 verify_ssl_certs = False
 
-#email_to_find = "jacek.jarmulak.edge@voicegain.ai"
 email_to_find = "foo2.jacek.jarmulak.edge@voicegain.ai"
-
 user_fname = "Jacek Edge"
 user_lname = "Jarmulak"
 user_role = "User"
 user_notification = "oidc"
-project_name_to_find = "Webex Project Jacek new 2"
+project_name_to_find = "Webex Project Jacek foo 6"
 meeting_label = "Webex Meeting from " + time.strftime(" %Y-%m-%d %H_%M_%S")
 audio_mime_type = "audio/m4a"
 video_mime_type = "video/mp4"
@@ -62,6 +60,24 @@ project_timezone="America/Chicago"
 project_week_starts_on="Monday"
 project_languages=["en"]
 project_hints=[]
+
+
+def generate_short_lived_jwt(context_id):
+    url = f"{hostApi}/security/jwt"
+    params = {
+        "contextId": context_id,
+        "expInSec": 15,
+        "aud" : hostPort
+    }
+    response = requests.get(url, headers=headers, params=params, verify=verify_ssl_certs)
+    if response.status_code != 200:
+        print(f"Failed to fetch short-lived JWT: {response.status_code}", flush=True)
+        print(response.text, flush=True)
+        return None
+
+    short_lived_token = response.text.strip()
+    print(f"Short-lived token: {short_lived_token[:16]}...{short_lived_token[-16:]}", flush=True)
+    return short_lived_token
 
 ##
 ## find_user_by_email
@@ -232,6 +248,17 @@ def add_user_to_group(group_id, user_id):
 ## modify_project
 ##
 def modify_project(project_id, sa_config_id, user_group_id):
+
+    sl_jwt = generate_short_lived_jwt(project_id)
+
+    if(sl_jwt == None):
+        print(f"Failed to generate short-lived JWT", flush=True)
+        return None
+    
+    print(f"Short-lived JWT generated: {sl_jwt[:16]}...{sl_jwt[-16:]}", flush=True)
+
+    l_headers = {"Authorization": sl_jwt}
+
     url = f"{hostApi}/confgroup/{project_id}"
     body = {
         "defaultSaConfig": sa_config_id,
@@ -240,15 +267,16 @@ def modify_project(project_id, sa_config_id, user_group_id):
         }
     }
     print(f"Modifying project {project_id}", flush=True)
-    response = requests.put(url, json=body, headers=headers, verify=verify_ssl_certs)
+    response = requests.put(url, json=body, headers=l_headers, verify=verify_ssl_certs)
     if response.status_code != 200:
-        print(f"ERROR: Failed to modify project: {response.status_code}", flush=True)
+        print(f"Failed to modify project: {response.status_code}", flush=True)
         print(response.text, flush=True)
         return None
 
     modify_project_response = response.json()
     print(f"Project modified: {modify_project_response}", flush=True)
     return modify_project_response.get("confGroupId")
+
 
 ##
 ## create_new_project

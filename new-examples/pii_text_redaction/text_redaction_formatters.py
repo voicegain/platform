@@ -45,16 +45,18 @@ body = {
                 "ZIP" : "[ZIP]",
                 "PERSON": "partial",
                 "DMY": "[DMY]",
-            }
-        },
-        {
-            "type": "regex",
-            "parameters": {
-                "mask": "[CODE]",
-                "options" : "IA",
-                "pattern": "[1-9][0-9]{3}[ ]?[a-zA-Z]{2}"
+                "CVV" : "[CVV]",
+                "ADDRESS": "partial",
             }
         }
+        # , {
+        #     "type": "regex",
+        #     "parameters": {
+        #         "mask": "[CODE]",
+        #         "options" : "IA",
+        #         "pattern": "[1-9][0-9]{3}[ ]?[a-zA-Z]{2}"
+        #     }
+        # }
     ],
     "debug": {"level": "7"}  
 }

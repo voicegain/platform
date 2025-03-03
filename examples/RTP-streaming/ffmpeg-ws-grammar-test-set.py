@@ -14,10 +14,15 @@ import asyncio
 import websockets
 import datetime
 
-JWT = "<JWT here>"
+import configparser
+
+# Read JWT from config.ini
+config = configparser.ConfigParser()
+config.read('config.ini')
+JWT = config['auth']['jwt']
 
 ## specify here the directory with files to test
-input_path = "../../new-examples/data/Recordings/numbers/"
+input_path = "../../new-examples/data/Recordings/es-Digits/"
 
 list_of_files = []
 
@@ -67,23 +72,36 @@ body = {
     "asr": {
       "grammars" : [
           {
-            "type": "GRXML",
-            "name" : "menu-selection",
-            "fromUrl":{
-                #"url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
-                "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/Menu0to9Voice.grxml"
-            }
-          ##  "type" : "BUILT-IN",
+            # "type": "GRXML",
+            # "name" : "menu-selection",
+            # "fromUrl":{
+            #     #"url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
+            #     "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/Menu0to9Voice.grxml"
+            # }
+
+            "type" : "BUILT-IN",
           ## credit card recognition ##
           ##  "name" : "creditcard"
           ## digit sequence recognition ##
-            # "name" : "digit",
-            # "parameters" : {
-            #   "minlength" : 16,
-            #   "maxlength" : 19
-            # }
+            "name" : "digit",
+            "parameters" : {
+              # "length" : 4, 
+              "minlength" : 9,
+              "maxlength" : 11,
+             "lang" : "es-es"
+            }
+          ## number recognition ##
+            #"name" : "number",
+            #"parameters" : {
+#              "minallowed" : 0,
+#              "maxallowed" : 5000,
+             # "lang" : "es-es"
+            #}
           ## Yes/No recognition ##
-            # "name" : "boolean"
+          #   "name" : "boolean",
+          #   "parameters" : {
+          #     "lang" : "es-es"
+          #   }
           }
       ],
       "maxAlternatives" : 10,
@@ -93,7 +111,8 @@ body = {
       "speedVsAccuracy" : 0.9,
       "sensitivity" : 0.5,
       "confidenceThreshold" : 0.0001,
-      "acousticModelRealTime" : "VoiceGain-Rho" 
+      "acousticModelRealTime" : "VoiceGain-kappa",
+      "languages" : ["es"]
     }
   }
 }
@@ -102,7 +121,9 @@ def web_api_request(headers, body):
   global startTime
   startTime = time.time()
 
-  init_response_raw = requests.post("https://api.voicegain.ai/v1/asr/recognize/async", json=body, headers=headers)
+  host_url = config['api']['host']
+  print("Invoking URL: ", host_url + "/v1/asr/recognize/async", flush=True)
+  init_response_raw = requests.post(host_url + "/v1/asr/recognize/async", json=body, headers=headers)
   init_response = init_response_raw.json()
   if(init_response.get("sessions") is None):
     print("did not obtain session")

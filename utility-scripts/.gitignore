@@ -1,0 +1,5 @@
+download/
+config.ini
+*.txt
+*.csv
+*.json

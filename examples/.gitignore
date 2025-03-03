@@ -1,4 +1,6 @@
+tmp/
 microphone-websocket-node-js/
 new-offline-transcription-demo/
+config.ini
 from-lambda.js
 from-lambda.py

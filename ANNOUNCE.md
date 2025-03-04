@@ -1,3 +1,8 @@
+### Minor release 1.116.0 is scheduled for 3/3/2025 between 11:00pm and 12:00am US Central Time
+
+Details TBD
+
+
 ### Minor release 1.115.0 is scheduled for 2/10/2025 between 11:00pm and 12:00am US Central Time
 
 **Key changes related to the core APIs**

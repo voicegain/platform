@@ -1,7 +1,85 @@
 ### Minor release 1.116.0 is scheduled for 3/3/2025 between 11:00pm and 12:00am US Central Time
 
-Details TBD
+**Key changes related to the core APIs**
+* Nuance SWI_ slots supported in MRCP NLSML return
+* Added DTMF tone redaction
+* Added ADDRESS to redaction options
+* Added recompute support to /sa/offline API
 
+New or changed functionality in the Transcribe App:
+* BE-3382	TA: Implementation of a new design for Phrase Settings
+* QA-2203	TA: Improved error handling in the steps of Project creation
+* BE-3417	TA: Refactoring of Project Creation Flow and Project Settings for better separation of concerns
+* BE-3386	TA: Show the owner of the account in the user profile
+
+New or changed functionality in other platform components:
+* BE-3399	Add option to our MRCP ASR to return NLSML in complete Nuance format
+* BE-3395	Add saAppHiddenFeatures to POST and PUT on the account.
+* BE-3362	Add to /asr/transcribe/async OFFLINE API ability to redact DTMF tones out of audio.
+* BE-3372	Added a method to apply redaction to existing /sa/offline transcription and audio
+* BE-3427	Added ADDRESS entity type to the redacting formatter (both transcribe and sa/offline)
+* BE-3408	Added POST /sa/call/context/{contextId}/recompute
+* BE-3407	Added POST /sa/offline/{saSessionId}/recompute
+* BE-3434	Added recomputePhase query parameter to GET /sa/call
+* BE-3426	Added two new read-only fields to sa/call -- recomputePhase and lastRecomputeTime
+* BE-2920	Admin Tool: Add ability to control settings for Speech Analytics accounts
+* BE-2989	API for setting hidden features for SA Account
+* BE-3412	App Selector / Web Console: Inform about $5 credit for personal email 
+* QA-2185	Demo Voicebot: Removed collecting user feedback
+* BE-3437	For Genesys platform support builtin grammars with languages other than English
+* BE-3279	In Webex Meeting Bot obtain email from the participants and store it
+* BE-3436	Made the language parameter for the builtin grammars case-insensitive and make it check only the language part of locale
+* BE-3322	Migrate Java services to spring-boot-3.2.11 (spring 6.1.16)
+* BE-3400	Remove asr-api as a dependency from sa-call-api
+* QA-2228	SA: Added a hover msg over Call Time Breakdown pie chart.
+* BE-3410	SA: Added CVV and ADDRESS PII Redaction type
+* BE-3432	SA: Added Recompute option to calls in the Call table
+* BE-3387	SA: Improve the time period selectors plus other Dashboard issues
+* QA-2270	SA: When searching for something not found in the transcript, now it displays 0/0.
+* QA-2020	SSO: Hide Forgot Password option on Edge
+* BE-3363	The artificial delay at Login API applies now only in case of non-200 response
+* QA-758	Updated messaging for App Selector
+* BE-3413	Web Console: Account signup - apply lower Credit to gmail and outlook.
+* QA-2268	Web Console: Add a back button on transcript page.
+* QA-2283	Web Console: Edit Phone App - A Close icon is provided to close the edit page.
+* QA-2306	Web Console: Meetings section displays 'No Data Available' instead of 'No rows' when there is no data for better user experience.
+* QA-2305	Web Console: Transcription section displays 'No Data Available' instead of 'No rows' when there is no data for better user experience.
+
+Changes related to Integrity of Processing (fixes):
+* BE-3402	App Selector: Fix - Signup url takes me to login select page
+* BE-3447	Demo Voicebot: Fix - Bad Content Security Policy
+* QA-2333	Demo Voicebot: Fix - During the call, the voice assistant reports an error from the AIVR logic.
+* BE-3448	Demo Voicebot: Fix - Not loading the transcript (transcriptError)
+* QA-2246	Demo: Fix - file upload layout needs to be modified as the filename text is not properly aligned and appears cluttered.
+* BE-3438	Fix - /sa/call-stats is slow for the 30D period
+* BE-3371	Fix - If there are only 2 speakers, make sure that mergedAudio has 100% channel spearation
+* BE-3431	Fix - The vars returned in the Telephony bot DELETE callback are not stored
+* BE-3388	Fix recent vulnerabilities in 3rd-party Java Libraries
+* BE-3425	Fix: If using whisper model, Audio selector is ignored when creating stereo audio in offline-sa
+* BE-3391	SA: Fix -  Do not show "+1 More" for tags, use that only with "+2 More" or higher
+* QA-2282	SA: Fix - Getting error while processing the uploaded file
+* BE-3445	SA: Fix - Sentiment weird for on certain screen sizes
+* QA-2266	SA: Fix - Settings -> Configurations : 'Overtalk Percentage' of 'Incidents Threshold' % value shouldn't be more that 100%
+* QA-2265	SA: Fix - Settings -> Configurations : 'Silence Percentage' of 'Incidents Threshold' % value shouldn't be more that 100%
+* QA-1811	SA: Fix -The user is logged out when deleting larger number of users at the same time from Users page.
+* QA-2237	TA: Fix - Input fields behave as if the user has entered special characters after adding a tag, as the tag requirements are being displayed.
+* QA-2259	TA: Fix - Latest News page, text formatting, background color and bullet point is missing.
+* QA-2336	TA: Fix - Meeting bot - not working for MS-Teams and Webex
+* QA-2116	TA: Fix - Project name should have a limit of 200 characters.
+* QA-2223	TA: Fix - Some participants' details are hidden on mouse over when a large number of filters are selected
+* QA-2218	TA: Fix - The content on the zoom background light SVG image may appear confusing to users on the Zoom-App page
+* QA-2288	TA: Fix - Unable to Re-diarize transcripts for zoom upload directories.
+* QA-2331	TA: Fix - When the Regex Example tab is selected, the 'Add Neural Network Example' button should not be displayed, as it creates confusion about whether it is clickable.
+* QA-2102	TA: Fix - Zoom Meeting Bot is not recognizing that meeting has ended (for long meetings)
+* QA-2330	Web Console: Fix - "###" Extra text present in reslease notes section .
+* QA-2337	Web Console: Fix - Listen button clickable even though there is no saSessionId
+* QA-2284	Web Console: Fix - Telephony Bot API -> Business Configuration || 'Special Dates' name shouldn't accept the blank space
+* QA-2277	Web Console: Fix - Transcribe -> SA Configuration : 'Overtalk %' of 'Incidents Threshold' % value shouldn't be more that 100%
+* QA-2276	Web Console: Fix - Transcribe -> SA Configuration : 'Silence %' of 'Incidents Threshold' % value shouldn't be more that 100%
+* QA-2285	Web Console: Fix -Telephony Bot API -> Business Configuration || 'Named Prompts' name shouldn't accept the blank space
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.115.0 is scheduled for 2/10/2025 between 11:00pm and 12:00am US Central Time
 

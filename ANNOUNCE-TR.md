@@ -2,6 +2,25 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### March 3, 2025
+
+New:
+* BE-3382	TA: Implementation of a new design for Phrase Settings
+* QA-2203	TA: Improved error handling in the steps of Project creation
+* BE-3417	TA: Refactoring of Project Creation Flow and Project Settings for better separation of concerns
+* BE-3386	TA: Show the owner of the account in the user profile
+
+Fixes:
+* QA-2237	TA: Fix - Input fields behave as if the user has entered special characters after adding a tag, as the tag requirements are being displayed.
+* QA-2259	TA: Fix - Latest News page, text formatting, background color and bullet point is missing.
+* QA-2336	TA: Fix - Meeting bot - not working for MS-Teams and Webex
+* QA-2116	TA: Fix - Project name should have a limit of 200 characters.
+* QA-2223	TA: Fix - Some participants' details are hidden on mouse over when a large number of filters are selected
+* QA-2218	TA: Fix - The content on the zoom background light SVG image may appear confusing to users on the Zoom-App page
+* QA-2288	TA: Fix - Unable to Re-diarize transcripts for zoom upload directories.
+* QA-2331	TA: Fix - When the Regex Example tab is selected, the 'Add Neural Network Example' button should not be displayed, as it creates confusion about whether it is clickable.
+* QA-2102	TA: Fix - Zoom Meeting Bot is not recognizing that meeting has ended (for long meetings(
+
 ### Februry 10, 2025
 
 New:

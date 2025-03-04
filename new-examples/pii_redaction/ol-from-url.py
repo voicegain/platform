@@ -46,7 +46,7 @@ asr_body = {
             }
         },
         "callback": {
-            "uri": " https://01ae-2600-1702-5563-6e00-d088-6b77-e0d5-891d.ngrok-free.app/upload",
+            "uri": "https://e572-162-199-63-33.ngrok-free.app/upload",
             "method": "POST",
             "multipartFormData": [{
                 "name": "return_object",
@@ -56,6 +56,10 @@ asr_body = {
         }
     },
     "settings": {
+        "dtmf": {
+            "recognize": False,
+            "redact": True
+        },
         "asr": {
             "languages" : ["en"],
             "acousticModelNonRealTime" : "VoiceGain-omega",

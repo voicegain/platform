@@ -9,7 +9,7 @@ NOTE 2: We also now support an install on a machine or a VM that has no GPU (thu
 Under the hood:
 This guide will have you do the following:
 * Configure your server BIOS
-* Install Ubuntu **Server 22.04 LTS** (Ubuntu Server 24.04 not yet officially supported by us) with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs (support for non-GPU/CPU-Only also available. See [Step 8](#step8) for --gpu flag)
+* Install Ubuntu **Server 24.04 LTS** with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs (support for non-GPU/CPU-Only also available. See [Step 8](#step8) for --gpu flag)
 * Provision your server using the Voicegain EZ Init script.
 * Deploy the Voicegain Application to your environment. 
 

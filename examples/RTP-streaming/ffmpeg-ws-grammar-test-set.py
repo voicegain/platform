@@ -22,7 +22,7 @@ config.read('config.ini')
 JWT = config['auth']['jwt']
 
 ## specify here the directory with files to test
-input_path = "../../new-examples/data/Recordings/es-Digits/"
+input_path = "../../new-examples/data/Recordings/es-Boolean/"
 
 list_of_files = []
 
@@ -83,13 +83,13 @@ body = {
           ## credit card recognition ##
           ##  "name" : "creditcard"
           ## digit sequence recognition ##
-            "name" : "digit",
-            "parameters" : {
-              # "length" : 4, 
-              "minlength" : 9,
-              "maxlength" : 11,
-             "lang" : "es-es"
-            }
+            # "name" : "digit",
+            # "parameters" : {
+            #   # "length" : 4, 
+            #   "minlength" : 2,
+            #   "maxlength" : 5,
+            #  "lang" : "es-es"
+            # }
           ## number recognition ##
             #"name" : "number",
             #"parameters" : {
@@ -98,13 +98,13 @@ body = {
              # "lang" : "es-es"
             #}
           ## Yes/No recognition ##
-          #   "name" : "boolean",
-          #   "parameters" : {
-          #     "lang" : "es-es"
-          #   }
+             "name" : "boolean",
+             "parameters" : {
+               "lang" : "es-es"
+             }
           }
       ],
-      "maxAlternatives" : 10,
+      "maxAlternatives" : 1,
       "noInputTimeout": 10000,
       "incompleteTimeout" : 5000,
       "completeTimeout": 2000,

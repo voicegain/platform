@@ -45,12 +45,12 @@ print(f"    Host API: {hostApi}", flush=True)
 
 verify_ssl_certs = False
 
-email_to_find = "foo2.jacek.jarmulak.edge@voicegain.ai"
+email_to_find = "foo4.jacek.jarmulak.edge@voicegain.ai"
 user_fname = "Jacek Edge"
 user_lname = "Jarmulak"
 user_role = "User"
 user_notification = "oidc"
-project_name_to_find = "Webex Project Jacek foo 6"
+project_name_to_find = "Webex Project Jacek foo 12"
 meeting_label = "Webex Meeting from " + time.strftime(" %Y-%m-%d %H_%M_%S")
 audio_mime_type = "audio/m4a"
 video_mime_type = "video/mp4"
@@ -112,7 +112,7 @@ def find_user_by_email(email):
 def create_user(email, first_name, last_name, role, initial_notification):
     permissions = None
     if(role == "User"):
-        permissions = ["user"]
+        permissions = ["user", "download"]
     elif(role == "Admin"):
         permissions = ["user","admin"]
     else:

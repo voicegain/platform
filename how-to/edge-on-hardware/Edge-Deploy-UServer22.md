@@ -9,7 +9,7 @@ NOTE 2: We also now support an install on a machine or a VM that has no GPU (thu
 Under the hood:
 This guide will have you do the following:
 * Configure your server BIOS
-* Install Ubuntu **Server 22.04 LTS** (Ubuntu Server 24.04 not yet officially supported by us) with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs (support for non-GPU/CPU-Only also available. See [Step 8](#step8) for --gpu flag)
+* Install Ubuntu **Server 24.04 LTS** with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs (support for non-GPU/CPU-Only also available. See [Step 8](#step8) for --gpu flag)
 * Provision your server using the Voicegain EZ Init script.
 * Deploy the Voicegain Application to your environment. 
 
@@ -42,7 +42,7 @@ Ensure that this node will have access to an NTP Clock endpoint. By default, thi
 
 ## <a name="step1"></a>Step 1: Configure your Server BIOS 
 
-*Step 1 is relevant only for a bare hardware deployment (not a VM). Proceed to [Step 2](#step2) if manually installing on VM. If the VM was autoprovisioned with Ubuntu Server 22.04 proceed to [Step 5](#step5) to ensure storage partitions are configured correctly.*
+*Step 1 is relevant only for a bare hardware deployment (not a VM). Proceed to [Step 2](#step2) if manually installing on VM. If the VM was autoprovisioned with Ubuntu Server 24.04 proceed to [Step 5](#step5) to ensure storage partitions are configured correctly.*
 
 Boot your server and enter BIOS Configuration Menu: [Common Manufacturer BIOS Keys](https://www.tomshardware.com/reviews/bios-keys-to-access-your-firmware,5732.html#:~:text=BIOS%20Keys%20by%20Manufacturer%201%20ASRock%3A%20F2%20or,Lenovo%20%28ThinkPads%29%3A%20Enter%20then%20F1.%20More%20items...%20)
 
@@ -61,7 +61,7 @@ If not enabled the card will not be detected by Nvidia driver and you may see er
 
 *Step 2 may have to be done differently if installing on a VM - the instructions below focus on bare hardware.*
 
-If you have not already; you can download the Ubuntu 22.04 LTS Server Image [here](https://releases.ubuntu.com/22.04.4/ubuntu-22.04.4-live-server-amd64.iso).
+If you have not already; you can download the Ubuntu 24.04 LTS Server Image [here](https://releases.ubuntu.com/24.04.2/ubuntu-24.04.2-live-server-amd64.iso).
 
 You can burn the installation image on to DVD, however, we recommend creating a Bootable USB drive as it is faster and becoming the new standard.
 
@@ -120,13 +120,23 @@ Kubernetes doesn't support Swap, and the NFS and log Storage should not impact t
 
 1. Hightlight the intended disk and select "Use as boot device"
 
-### Partition Layout: 
+### Recommended Partitioning for Ubuntu Installation:
+
+For disk sizes of **1TB, 2TB, and 4TB**, the following partitioning scheme is recommended:
+
+| Mount Point   | 1TB  | 2TB  | 4TB  |
+|--------------|------|------|------|
+| `/boot/efi`  | 1.05G | 1.05G | 1.05G |
+| `/`          | 250G  | 425G  | 500G  |
+| `/var/log`   | 64G   | 96G   | 128G  |
+| `/nfs`       | Remainder | Remainder | Remainder |
+
+- `/boot/efi` is always **1.05GB**.
+- The **root (`/`)** partition size increases as disk capacity grows.
+- `/var/log` is allocated for logging purposes.
+- `/nfs` uses the remaining space.
 
 * **NOTE:** *If this disk has previous partitions you will want to select the drive itself (show by UUID and size) and then select "Reformat" this WILL destroy all data previously on the disk.*
-
-#### Allotment:
-
-**Recommendation:** *We recommend using at least 250 GB for the / (root) partition and 750 GB (at least) for the storage partition `/nfs`. In the below example we are using a single 1TB Drive*
 
 * **For Each Partition we create do the following:** scroll down and highlight "**free space**" which should be the entire disk, hit enter and select "Add GPT Partition".
 

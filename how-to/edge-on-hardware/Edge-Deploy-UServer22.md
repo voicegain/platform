@@ -120,13 +120,23 @@ Kubernetes doesn't support Swap, and the NFS and log Storage should not impact t
 
 1. Hightlight the intended disk and select "Use as boot device"
 
-### Partition Layout: 
+### Recommended Partitioning for Ubuntu Installation:
+
+For disk sizes of **1TB, 2TB, and 4TB**, the following partitioning scheme is recommended:
+
+| Mount Point   | 1TB  | 2TB  | 4TB  |
+|--------------|------|------|------|
+| `/boot/efi`  | 1.05G | 1.05G | 1.05G |
+| `/`          | 250G  | 425G  | 500G  |
+| `/var/log`   | 64G   | 96G   | 128G  |
+| `/nfs`       | Remainder | Remainder | Remainder |
+
+- `/boot/efi` is always **1.05GB**.
+- The **root (`/`)** partition size increases as disk capacity grows.
+- `/var/log` is allocated for logging purposes.
+- `/nfs` uses the remaining space.
 
 * **NOTE:** *If this disk has previous partitions you will want to select the drive itself (show by UUID and size) and then select "Reformat" this WILL destroy all data previously on the disk.*
-
-#### Allotment:
-
-**Recommendation:** *We recommend using at least 250 GB for the / (root) partition and 750 GB (at least) for the storage partition `/nfs`. In the below example we are using a single 1TB Drive*
 
 * **For Each Partition we create do the following:** scroll down and highlight "**free space**" which should be the entire disk, hit enter and select "Add GPT Partition".
 

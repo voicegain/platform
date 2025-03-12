@@ -22,7 +22,7 @@ TODO: Manual provisioning requirements and steps to upload your preexisting kube
 - [Step 3: Configure Installation](#step4)
 - [Step 4: Configure Network](#step3)
 - [Step 5: Manually Create Partitions](#step5)
-- [Step 6: Finalize Provisioning](#step6)
+- [Step 6: Finalize Configuration and Provisioning](#step6)
 - [Step 7: Create Cluster on VoiceGain](#step7)
 - [Step 8: Run EZInit Script](#step8)
 - [Flags and Arguments](#flags)
@@ -87,21 +87,23 @@ Choose your language/keyboard etc...
 
 On the "Choose type of install" screen, select "Ubuntu Server" and and leave other options unchecked. See Below:
 
-![Install Settings](https://github.com/voicegain/platform/assets/14049448/43ce0265-f6f7-467b-9fbf-05d193ac1cae)
+![Install Settings](https://github.com/user-attachments/assets/bc1b9695-35f8-473a-938a-5c6ee9671c07)
 
 ### Networking ###
 This guide assumes you will be statically assigning a dedicated IP address to your K8s node. 
 
 Determine Network Interface if you do not already know it by the interface that doesn't have a "not connected" note, and highlight it, press enter and select "Edit IPv4"
-![Network Interfaces](https://github.com/voicegain/platform/assets/14049448/eb04e552-63dc-47e3-859f-0744f0d2e51f)
+![Network Interfaces](https://github.com/user-attachments/assets/0d5f2b18-1219-4156-9081-c88524315064)
+
 
 Then define the IPv4 configuration as it pertains to your network:
-![image](https://github.com/voicegain/platform/assets/14049448/6d66bb1d-a200-425e-be44-5b6f5b16f49d)
+![IPv4 Settings](https://github.com/voicegain/platform/assets/14049448/6d66bb1d-a200-425e-be44-5b6f5b16f49d)
 
 After selecting next, if you require use of an HTTP Proxy you can configure it here.
 
-This guide was written with the Installer Version 24.04.1. You may be prompted to update the installer to a new version. Ideally this should pose any issues, however, it is not unheard of for an installer update to break some unforeseen functionality. You may choose to update the isntaller, but if you encounter an issue you may consider installing without updating the installer.
-![image](https://github.com/voicegain/platform/assets/14049448/74e8cfcb-94b9-417b-aa2d-cdfb30a3442d)
+This guide was written with the Installer Version 24.04.2. You may be prompted to update the installer to a new version. Ideally this should pose any issues, however, it is not unheard of for an installer update to break some unforeseen functionality. You may choose to update the isntaller, but if you encounter an issue you may consider installing without updating the installer.
+![Installer Selection](https://github.com/user-attachments/assets/09670b73-8410-46de-a722-35031f8dd6d0)
+
 
 
 ## <a name="step5"></a>Step 5: Manually Create Partitions
@@ -109,16 +111,16 @@ This guide was written with the Installer Version 24.04.1. You may be prompted t
 In short, the spirit behind the partitions are as such: 
 - EFI partition: Required 
 - **No Swap**: Kubernetes requires swap to be off so no need to waste disk space here.
-- Partition for NFS: dynamically provisioned storage consumed by the k8s cluster.
-- Partition for /var/log: prevent overactive logs from filling root filesystem and rendering the system inaccessible. 
+- Partition for **NFS**: dynamically provisioned persistent storage consumed by the k8s cluster.
+- Partition for **/var/lib**: The majority of runtime data is stored in /var/lib/containerd and /var/lib/kubelet so /var/lib/ is partitioned separately to avoid filling the / (root) filesystem and rendering the system system inaccessible. 
+- Partition for **/var/log**: prevent overactive logs from filling root filesystem and rendering the system inaccessible. 
  
-Kubernetes doesn't support Swap, and the NFS and log Storage should not impact the host system if they're ever filled. Detailed walk-through follows:
+Kubernetes requires Swap to be disabled. The NFS persistent volumes, k8s runtime, and log storage should not impact the host system if they're ever filled. Detailed walk-through follows:
 
 ### Guided storage configuration:
 * On the "Guided storage configuration" screen: Choose "Custom storage layout" and then "Done"
-![Server-Guided-Storage](https://github.com/voicegain/platform/assets/14049448/2ea019b1-f397-4632-a486-49cbb8e3d9de)
+![Server-Guided-Storage](https://github.com/user-attachments/assets/618ec654-7555-4652-ae61-43c198617954)
 
-1. Hightlight the intended disk and select "Use as boot device"
 
 ### Recommended Partitioning for Ubuntu Installation:
 
@@ -127,51 +129,61 @@ For disk sizes of **1TB, 2TB, and 4TB**, the following partitioning scheme is re
 | Mount Point   | 1TB  | 2TB  | 4TB  |
 |--------------|------|------|------|
 | `/boot/efi`  | 1.05G | 1.05G | 1.05G |
-| `/`          | 250G  | 425G  | 500G  |
-| `/var/log`   | 64G   | 96G   | 128G  |
+| `/`          | 64G  | 96G  | 128G  |
+| `/var/lib`   | 256G  | 384G  | 512G  |
+| `/var/log`   | 48G   | 64G   | 96G  |
 | `/nfs`       | Remainder | Remainder | Remainder |
 
 - `/boot/efi` is always **1.05GB**.
 - The **root (`/`)** partition size increases as disk capacity grows.
+- `/var/lib` is partitioned to avoid k8s runtime from filling the **root (`/`)**
 - `/var/log` is allocated for logging purposes.
 - `/nfs` uses the remaining space.
 
-* **NOTE:** *If this disk has previous partitions you will want to select the drive itself (show by UUID and size) and then select "Reformat" this WILL destroy all data previously on the disk.*
+#### Partitioning: 
+* **NOTE:** *If this disk has previous partitions you will want to select the drive itself (show by UUID and size) and then select "Reformat" this WILL destroy all data previously on the disk. If this disk had an existing LVM volume group you will need to delete the LVM Volume Group before you can "Reformat"*
 
-* **For Each Partition we create do the following:** scroll down and highlight "**free space**" which should be the entire disk, hit enter and select "Add GPT Partition".
+- **/boot/efi** : Hightlight the intended disk and select "Use as boot device"
+![Use As Boot Device](https://github.com/user-attachments/assets/7ee93016-9b05-4b73-be97-2681bed8fe37)
 
-Leave it as ext4 format and the first drive will automatically be chosen to mount '/' a.k.a. the root partition.
+* **For Each Subsequent Partition we create; do the following:** scroll down and highlight "**free space**" which should be the entire disk, hit enter and select "Add GPT Partition". Enter the size and mount point using the table above as a guide.
 
-Then we want to create a dedicated partition for logs so that logs will not fill the server and prevent it from functioning. 64GB should be sufficient for this.
-Select Mount as "Other" and enter `var/log` (the / will already be prepended so it should read as `/var/log`)
+- **root (`/`)** : Add GPT Partition, Populate Size according to table above. Leave it as ext4 format and the Mount point should be  '/' a.k.a. the root partition. Create.
+![root partition](https://github.com/user-attachments/assets/ce6538c0-5513-4dd2-a38f-6a41fd1622e2)
 
-Next choose your dedicated storage drive's free space (this can be the same device or another one. And select Mount as "Other" and enter 'nfs' (the / will already be prepended)
+- **/var/lib** : Add GPT Partition, Populate Size according to table above. Leave it as ext4 format and select Mount as "/var/lib". Create.
+ ![var-lib](https://github.com/user-attachments/assets/34a103e4-41ed-4336-b921-4dae976e4318)
 
-* For the remaining ~750GB (or however much you have left over), create a new partition and manually type the *Mount point* as: `/nfs`  
-**NOTE:** *Obviously this could also be done with multiple drives. Dedicating a device to `/` and another solely to `/nfs`. Another option would be to combine multiple partitions/disks into a single LVM for `/nfs`*
+- **/var/log** : Add GPT Partition, Populate Size according to table above. Leave it as ext4 format and select Mount as "Other" and enter `var/log` (the / will already be prepended so it should read as `/var/log`). Create.
+![var-log](https://github.com/user-attachments/assets/916fca17-7f20-43dd-9d46-ebac8faa65aa)
 
-![image](https://github.com/voicegain/platform/assets/14049448/95e3d9aa-f471-4378-81fc-ba0c9d53e31e)
+- **/nfs** : Add GPT Partition, Leave size empty to utilize the remaining disk space. Leave it as ext4 format and select Mount as "Other and enter `nfs` (as the / is already prepended). Create.
+ ![nfs](https://github.com/user-attachments/assets/67ae468c-5c67-46b1-8225-e0339fe17158)
 
- **Install Now** -> Continue -> Continue and finish the remainder of the install (create user and password. Assign hostname, etc...). Choose to require password to log in, and restart the system when prompted (remove installation media or otherwise ensure that the boot drive is higher in the boot order).
+**NOTE:** *Indeed, this could also be done with multiple drives. Dedicating a device to `/` and another solely to `/nfs`. Another option would be to combine multiple partitions/disks into a single LVM for `/nfs`*
 
+![Filesystem Summary](https://github.com/user-attachments/assets/3c563985-e448-45a9-9b8e-4e4592a43acd)
+
+ **Continue** -> (If disk was previously formated you will need to confirm the destructive action) -> Profile Configuration 
+
+## <a name="step6"></a>Step 6: Finalize Configuration and Provisioning
 **A NOTE ABOUT USERS:**
 
 During the EZInit Script process a system user named `voicegain` will be created (if one does not already exist). The `voicegain` user will be used for interacting with and running the voicegain application. If this is going to be a single user system (you do not need multple user logins) then you can (if you wish) create the `voicegain` user yourself during the Ubuntu installation process. If this system will be accessed by multple people you may wish to simply create the first admin account during the Ubuntu installation and allow the EZInit script to automatically generate the `voicegain` user. 
 
 ![User Creation](https://github.com/voicegain/platform/assets/14049448/6b994fe6-ae4a-4a48-8264-05cbd889cf96)
+Click Continue.
 
-Additionally, if you are subscribed to Ubuntu Pro you may enable it in the next step.
+** Upgrade to Ubuntu Pro **: If you are subscribed to Ubuntu Pro you may enable it in this step. Continue.
 
-On the following page you can choose to install OpenSSH server, which in most cases is ideal, unless you will have direct access to the system as needed. 
+** SSH configuration **: On this page you can choose to install OpenSSH server, which in most cases is ideal, unless you will have direct access to the system as needed. Depending on your existing conditions and requirements you can choose the default of Allowing password authentication over SSH, or you can Import an SSH Key if your environment requires it. Click Done. 
 
-* **IMPORTANT:** Do not install anything from the "Freatured server snaps" page. Snap uses different versios of software with custom configuration locations and this will break the intended functionality of our cluster
+* **IMPORTANT: Featured Server Snaps** Do not install anything from the "Freatured server snaps" page. Snap uses different versios of software with custom configuration locations and this will break the intended functionality of our cluster.
 
-## <a name="step6"></a>Step 6: Finalize Provisioning
+* Click DONE to begin the Installation
 
-Your first boot into Ubuntu will prompt you to set up some features: Connecting online accounts, Livepatch and Help Ubuntu. Skip these steps or approve the default choices. (Naturally, you can choose to not send any data to Canonical)
-
-You will likely also be prompted by the "Software Updater" to, well, update. Close out of this **without** updating. The packages will be updated during the cluster provisioning phase via our EZInitScript.
-
+* Reboot and remove the installation media. 
+ 
 ***OPTIONAL:*** If you did not choose to install OpenSSH Server during the provisioning phase, time you may wish to install it now and complete the process over an SSH session. 
 
 In the terminal execute: `sudo apt install openssh-server -y`

@@ -31,7 +31,6 @@ TODO: Manual provisioning requirements and steps to upload your preexisting kube
 - [Step 11: Deploy Voicegain Application](#step11)
 - [Step 12: Reboots, Notes and Caveats](#step12)
 - [CRITICAL NOTE ON SYSTEM UPDATES](#updates)
-- [Billing and Licensing](#license)
 
 ## <a name="before"></a>Before you Start 
 In order to deploy Voicegain on Edge your account needs to have the Edge feature enabled - otherwise you will not see the relevant pages in the [Voicegain Web Console](https://www.voicegain.ai). Please contact support@voicegain.ai to have that enabled.
@@ -340,16 +339,5 @@ Again: **system-wide updates are highly discouraged. Instead, individual package
 ### All done!
 
 ---
-
-## <a name="license"></a>Billing and Licensing
-
-By default the Edge Setup will be deployed with usage based biling (per minute of the API time).
-
-If you would rather be billed per port please contact us to setup a per port license for you Edge cluster.
-
-All that we need is your account id, the name of the cluster that you would like to apply the license to (see image below), and of course the number of ports you would like to license.
-
-![List of Edge Clusters with names](./Edge-clusters-list.PNG)
-
 
 Goto: [top of document](#top)

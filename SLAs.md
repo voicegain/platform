@@ -26,9 +26,9 @@ The following definitions apply to the SLA:
 
   |Covered Service     |Monthly Uptime Percentage	|Percentage credit if SLO not met<sup>1</sup>|
   |--------------------|---------------------------|---------------------------------------|
-  |Web API             |99% – < 99.9%	 |10% |
-  |Web API             |95.0% – < 99.0%  |20% |
-  |Web API             |< 95.0%	         |35% |
+  |Web API             |99% – < 99.9%	 |5% |
+  |Web API             |95.0% – < 99.0%  |10% |
+  |Web API             |< 95.0%	         |25% |
 
 
 <sup>1</sup> Percentage of monthly bill for Covered Service which does not meet SLO that will be credited to future monthly bills of Customer

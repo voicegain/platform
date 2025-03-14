@@ -223,6 +223,7 @@ The EZInitCommand provided above should look something like:
 <a name="flags"></a>  
 ## FLAGS and ARGUMENTS
 * **GPU Operator Mode (`--gpu|-g`):** Controls how GPU support is configured. Use -g false (or --gpu false) to install Nvidia drivers directly on the host. Default (true) uses the GPU-Operator to manage driver deployment.
+* **CPU Only (No GPU) (`--cpu|-c`):** Use this flag for CPU-only installations. Disables all GPU-related installations (both host drivers and GPU-Operator). Cannot be used with `--gpu`.
 * **Multi-node (`--multi|-m`) [DEPRECATED]:** By default the EZInit script assumes a single node cluster is being deployed. In order to receive follow-up instructions and commands for multi-node clusters provide the -m or --multi flag [DEPRECATED]
 * **Custom NFS (`--server|-s` and `--nfsdir|-d`):** By default the local server 127.0.0.1 and the /nfs directory are set for dynamic storage provisioning. If you have another NFS server within your network you can provide the IP via the -s 8.8.8.8 or --server 8.8.4.4 arguments. If you have a different local partition you wish to serve from you can provide the -d /mystorage or --nfsdir /storage arguments. (replacing 8.8.8.8, 8.8.4.4, /mystroage, and /storage with your destinations)
 * **Legacy Mode (`--legacy|-l`):** Enables compatibility mode for older systems and Kubernetes versions

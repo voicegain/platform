@@ -2,6 +2,29 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### March 23, 2025
+
+New:
+* BE-3452	TA Edge: Pages for Webex OAuth handshake
+* BE-3530	TA: Add LLM Model to LLM settings
+* BE-3488	TA: Add support for Chinese language for transcription (beta)
+* BE-3496	TA: Added extra info to the Project delete dialog
+
+Fixes:
+* QA-1786	TA Edge: Fix - LLM Query is not working giving 500 Internal Server Error.
+* BE-3500	TA: Fix bug with pop-confirm while deleting a phrase or phrase group
+* QA-2395	TA: Fix - getting something went wrong page for the first time login after signup to the application.
+* QA-2180	TA: Fix - LLM playground always returns summary in response to first question even if the question is not about a summary
+* QA-2339	TA: Fix - Phrase settings- the Min Word field should not accept negative or zero values.
+* BE-3515	TA: Fix - Rules for phrases too restrictive
+* QA-2397	TA: Fix - The toaster message 'API token created successfully' is incorrect, as the token is not actually created
+* QA-2363	TA: Fix - The user is unable to update the Relation Parameter for the phrase group.
+* QA-2343	TA: Fix - When a tag is separated by a comma, it should be added properly and should not remain visible in the input field after being added.
+* QA-2387	TA: Fix - When a user tries to create an API token without entering a name, the displayed message is incorrect. It should indicate that "Name is a required field."
+* QA-2344	TA: Fix - When a user uploads a file with an invalid tag value, field validation should be applied to prevent submission.
+* QA-2369	TA: Fix - When User Click on Voice signature page than showing on page "speaker not found".
+
+
 ### March 3, 2025
 
 New:

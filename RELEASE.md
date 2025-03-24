@@ -1,3 +1,88 @@
+## Release 1.117.0 
+
+**Key changes related to the core APIs**
+* All builtin grammars are now available in Spanish version
+* Second dashboard for the Speech Analytics App
+* Errors in AIVR callback are now reported as events associated with a session
+* Beta version of Webex bot for the TRanscribe App
+
+New or changed functionality in the Transcribe App:
+* BE-3452	TA Edge: Pages for Webex OAuth handshake
+* BE-3530	TA: Add LLM Model to LLM settings
+* BE-3488	TA: Add support for Chinese language for transcription (beta)
+* BE-3496	TA: Added extra info to the Project delete dialog
+
+New or changed functionality in other platform components:
+* BE-3471	Add a billingCode parameter to /asr/transcribe/async API
+* BE-3497	Add to onPremCluster API fields to define external Postgre
+* BE-3408	Added POST /sa/call/context/{contextId}/recompute
+* BE-3450	API methods needed for Webex OAuth hanshake
+* BE-3381	APIs to generate data for the generic dashboard on SA App
+* BE-3453	Bot that joins Webex meeting using SDK to collect speaker activity, audio, and video.
+* BE-3491	Implemented DELETE /sa/call
+* BE-3526	In AIVR Session, log Error events for bad Callback responses
+* BE-3527	In AIVR Session, log Error events for failed Callback requests
+* BE-3469	On Edge in influxDB measurements that have context - store context as a tag instead of a field
+* BE-3498	On Edge, all code using Postgres will use external Postgres if it is specified in onPremCluster Settings
+* BE-3464	Reopen transcribe-results websocket connection if connection is lost
+* QA-2338	SA/TA: Improve UI for Phrase detection config
+* QA-2342	SA/TA: Pre-set default value for the Location Channel under Phrases settings.
+* BE-3255	SA: Add a card that shows time distribution of various parts of the call
+* BE-3519	SA: Condense Agent Sentiment card to show 5+5 agents (5 best and 5 worst) in one view
+* BE-3332	SA: Generic Call Stats Dashboard
+* QA-2166	SA: Improved Keyword selection filter on Search Page
+* BE-3525	SA: Improvements in phrase settings
+* BE-3258	SA: In the Call Detail view on Debug page show the date when the call will expire
+* BE-3518	SA: In the Dashboard requests for call-stats change keywordGroup to "dissatisfied"
+* BE-3529	SA: Make smaller the icons in the top-right corner of the cards on the call detail page
+* QA-2275	SA: Make the toaster message for Add/Edit and Delete JWT disappear after 5-10 seconds.
+* BE-3512	SA: Swap Agents and Keyword cards on Dash
+* BE-3451	Store in the onPremCluster the UserId of the User who did Webex OAuth to obtain auth_token
+* BE-3349	Submit CRM notes at the end of Voicebot call (Claims Automation use case)
+* BE-3360	Universal HTTP webhook proxy via Cloud to Edge
+* BE-3499	Web Console: Add settings for specifying Internal/External Postgres
+* BE-3487	Web Console: Added Avatars
+* BE-3485	Web Console: On Edge view show Cluster Id
+* QA-2368	Web Console: Show Avatar of the Context creator on the page that lists all the Contexts
+
+Changes related to Integrity of Processing (fixes):
+* BE-3457	Demo Voicebot: Fix - Start Over leaves the old polling still running if I make another call immediately
+* BE-3480	Fix builtin grammar for currency
+* BE-2835	Fix - API GET /share/{shareId} for a "within account" share, executed on a different account return 401 Forbidden, instead of 200 and empty response.
+* BE-3516	Fix - OOM from production asr-api 
+* BE-3515	SA/TA: Fix - Rules for phrases too restrictive
+* QA-2363	SA/TA: Fix - The user is unable to update the Relation Parameter for the phrase group.
+* BE-3500	SA/TA: Fix bug with pop-confirm while deleting a phrase or phrase group
+* BE-3548	SA: Fix - Agent Dashboard - Top card's text and line graph should be aligned to baseline
+* QA-2086	SA: Fix - Call Center ID filter has incorrect validation
+* QA-2398	SA: Fix - Overlapping issues on call overview page.
+* BE-3099	SA: Fix - PII redaction broken in /sa/offline
+* BE-3467	SA: Fix - Sentiment card keeps shrinking if there is not data in a chosen period
+* QA-2224	SA: Fix - The end date of the demo project is earlier than the start date.
+* BE-3513	SA: Fix - Top Dashboard cards look bad on a wide screen
+* QA-2399	SA: Fix - Unable to apply "Agent and Queue" filters in Advance search filter.
+* BE-3534	SA: Fix - Upload - Selected Queue name does not show on input field upon creation of new option
+* QA-1857	SA: Fix - User should not be allowed to create two projects with same name.
+* BE-3510	SA: Fix issues with Sentiment Card on the Dash
+* BE-3511	SA: Fix issues with the Topic Distribution card
+* BE-3505	SA: Fix the Call Time Breakdown
+* QA-1786	TA Edge: Fix - LLM Query is not working giving 500 Internal Server Error.
+* QA-2395	TA: Fix - getting something went wrong page for the first time login after signup to the application.
+* QA-2180	TA: Fix - LLM playground always returns summary in response to first question even if the question is not about a summary
+* QA-2339	TA: Fix - Phrase settings- the Min Word field should not accept negative or zero values.
+* QA-2397	TA: Fix - The toaster message 'API token created successfully' is incorrect, as the token is not actually created
+* QA-2343	TA: Fix - When a tag is separated by a comma, it should be added properly and should not remain visible in the input field after being added.
+* QA-2387	TA: Fix - When a user tries to create an API token without entering a name, the displayed message is incorrect. It should indicate that "Name is a required field."
+* QA-2344	TA: Fix - When a user uploads a file with an invalid tag value, field validation should be applied to prevent submission.
+* QA-2369	TA: Fix - When User Click on Voice signature page than showing on page "speaker not found".
+* QA-2359	Web Console: Fix - When the user clicks on 'Transcription' and uploads a file, the placeholder text for 'Hint' does not disappear after entering input.
+* QA-2360	Web Console: Fix - When the user clicks on 'Transcription,' uploads a file, and enters input in the 'Hint' field, the input text goes outside the box.
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
+
 ## Release 1.116.0
 
 **Key changes related to the core APIs**

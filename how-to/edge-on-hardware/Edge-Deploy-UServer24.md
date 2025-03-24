@@ -31,7 +31,6 @@ TODO: Manual provisioning requirements and steps to upload your preexisting kube
 - [Step 11: Deploy Voicegain Application](#step11)
 - [Step 12: Reboots, Notes and Caveats](#step12)
 - [CRITICAL NOTE ON SYSTEM UPDATES](#updates)
-- [Billing and Licensing](#license)
 
 ## <a name="before"></a>Before you Start 
 In order to deploy Voicegain on Edge your account needs to have the Edge feature enabled - otherwise you will not see the relevant pages in the [Voicegain Web Console](https://www.voicegain.ai). Please contact support@voicegain.ai to have that enabled.
@@ -197,19 +196,21 @@ This will automatically start the server and update the local firewall to permit
 2. If you do not have a developer account, you would need to sign up first. Detailed instructions are provided [here](https://www.voicegain.ai/post/how-to-signup-for-a-developer-account-and-start-using-voicegain-voice-ai).
 3. Log in to the console and go to the "[Edge Deployment](https://console.voicegain.ai/specific/edge-deployments)" view. Click "**+ ADD**" and name your Cluster and choose **EZ Setup**.
 
-![Add new Edge Deployment](./7-1.png)
+![Add new Edge Deployment](https://github.com/user-attachments/assets/7895a046-c1b5-49f6-99a3-ca514e57bfa1)
+
+4. Find your newly created cluster in the Edge Deployment list and Load it by clicking the button to the right of the entry (left of the Delete/Trash button) 
+![Load Cluster](https://github.com/user-attachments/assets/107c82ca-3bf1-4129-a607-acc6e53d69e4)
 
 
-3. Find your newly created cluster in the Edge Deployment list and Load it by clicking the button to the right of the entry (left of the Delete/Trash button) 
-![Load Cluster](./7-2.png)
 
 
-4. Define the Connection parameters relevant to your circumstance. Ideally your Edge Deployment will be in your DMZ or "Edge" and, as such, is reachable from the internet. If so, choose the top radio button: "Reachable from internet" and provide the IP Address or Fully Qualified Domain Name as well as the K8S API port (by default this is 6443). Alternatively, if you do not have a DMZ or the ability to add a pinhole in your firewall; you should choose: "Set up control tunnel". Then Click "**Apply**" and "**> Next**"
+5. Define the Connection parameters relevant to your circumstance. Ideally your Edge Deployment will be in your DMZ or "Edge" and, as such, is reachable from the internet. If so, choose the top radio button: "Reachable from internet" and provide the IP Address or Fully Qualified Domain Name as well as the K8S API port (by default this is 6443). Alternatively, if you do not have a DMZ or the ability to add a pinhole in your firewall; you should choose: "Set up control tunnel". Then Click "**Apply**" and "**> Next**"
 > **What is the control tunnel?:** In order to connect to systems behind a strict Firewall your Edge system will leverage autossh to establish an SSH tunnel with our network over the HTTPS (port 443) protocol. This is a non interactive shell session that solely creates a reverse port forward so that we can reach your Kubernetes API from within our network.
-![Connection Parameters](./7-3.png)
+![Connection Parameters](https://github.com/user-attachments/assets/2b94a6bb-7893-4001-821f-7eac52389ab2)
 
-5. Click "**Generate**" and then "**Copy**". You now have the Command script in your clipboard. 
-![Generate Command Script](./7-4.png)
+6. Click "**Generate**" and then "**Copy**". You now have the Command script in your clipboard. 
+![Generate Command Script](https://github.com/user-attachments/assets/64b772ed-9856-47ca-92c6-3edcb5c300af)
+
 
 ## <a name="step8"></a>Step 8: Run EZInit Script
 
@@ -221,12 +222,16 @@ The EZInitCommand provided above should look something like:
 
 <a name="flags"></a>  
 ## FLAGS and ARGUMENTS
-* **CPU-Only (`--gpu|-g`):** If you are installing on a machine or VM **without GPU** you will need to append the following option to the EZInit Script  `-g false` or `--gpu false` ; otherwise the EZInit script will attempt to install Nvidia Cuda drivers and will fail.
-* **Multi-node (`--multi|-m`)** By default the EZInit script assumes a single node cluster is being deployed. In order to receive follow-up instructions and commands for multi-node clusters provide the `-m` or `--multi` flag
-* **Custom NFS (`--server|s` and `--nfsdir|-d`)** By default the local server `127.0.0.1` and the `/nfs` directory are set for dynamic storage provisioning. If you have another NFS server within your network you can provide the IP via the `-s 8.8.8.8` or `--server 8.8.4.4` arguments. If you have a different local partition you wish to serve from you can provide the `-d /mystorage` or `--nfsdir /storage` arguments. (replacing 8.8.8.8, 8.8.4.4, /mystroage, and /storage with your destinations)
+* **GPU Operator Mode (`--gpu|-g`):** Controls how GPU support is configured. Use -g false (or --gpu false) to install Nvidia drivers directly on the host. Default (true) uses the GPU-Operator to manage driver deployment.
+* **CPU Only (No GPU) (`--cpu|-c`):** Use this flag for CPU-only installations. Disables all GPU-related installations (both host drivers and GPU-Operator). Cannot be used with `--gpu`.
+* **Multi-node (`--multi|-m`) [DEPRECATED]:** By default the EZInit script assumes a single node cluster is being deployed. In order to receive follow-up instructions and commands for multi-node clusters provide the -m or --multi flag [DEPRECATED]
+* **Custom NFS (`--server|-s` and `--nfsdir|-d`):** By default the local server 127.0.0.1 and the /nfs directory are set for dynamic storage provisioning. If you have another NFS server within your network you can provide the IP via the -s 8.8.8.8 or --server 8.8.4.4 arguments. If you have a different local partition you wish to serve from you can provide the -d /mystorage or --nfsdir /storage arguments. (replacing 8.8.8.8, 8.8.4.4, /mystroage, and /storage with your destinations)
+* **Legacy Mode (`--legacy|-l`):** Enables compatibility mode for older systems and Kubernetes versions
+* **Existing Cluster (`--exists|-x`):** Allows management of pre-existing clusters, including reset options
+* **Verbose Mode (`--verbose|-v`):** Enables detailed output during installation and configuration
+* **Help (`--help|-h`):** Displays usage information and available options
 
-
-Paste the copied EZInit Command into a terminal/ssh session on the Edge System, **append any required flags outlined above for your use-case** and hit enter and provide your password for sudo when prompted. 
+Paste the copied EZInit Command into a terminal/ssh session on the Edge System, **Defaults are generally correct unless instucted otherwise by your Voicegain Contact.** and hit enter and provide your password for sudo when prompted. 
 
 
 
@@ -243,12 +248,10 @@ vginstall
 **INFO:** if the EZInit script is used to create the `voicegain` user, it will be created as a system user with passwordless sudo and no password. **This user cannot log into the system directly or remotely**. The script will then be copied to the system user directory `/opt/voicegain/bin/` and aliased as `vginstall`
 
 ## <a name="step9"></a>Step 9: Reboot
-
-NOTE: In principle this step is not needed if the machine or VM has no GPU. But it will not hurt to reboot either.
-
+ 
 ### The details: 
 #### Why Reboot?
-We are rebooting in order to ensure the Nvidia drivers are loaded into the kernel. This can be done manually, however, this is not always reliable as changes are made in future updates, and if you are logged in to the graphical interface this is even more complicated.
+In principle this step is not needed if the default GPU-Operator is installed or if the machine or VM has no GPU. If the Voicegain Installer was executed with the --gpu=false flag, it will have installed NVIDIA drivers to the host. Requireing a reboot in order to load the required kernel modules. In any event; it will not hurt to reboot.
 
 #### Single-Node Cluster
 If this is a single node cluster, press any key when prompted to reboot. Congrats! Your cluster is configured!
@@ -295,22 +298,28 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
 - (Ignore the external Storage settings. This applies to custom large configurations only.)
 - Choose to (Re)Build cluster to begin the deployment
 
-![Deploy1](./11-1-1.png)
+![Deploy1](https://github.com/user-attachments/assets/85400741-c2d9-4033-b2f0-2fdc762a26ec)
 ![Deploy2](./11-1-2.png)
-![Deploy3](./11-1-3.png)
+![Deploy3](https://github.com/user-attachments/assets/4ef78b38-843a-4096-94ce-bf137a9a799e)
+
 - Monitor the progress on the terminal session we created in step 10.
 - Check the status on the Console to see when the deployment is finished, then you can click the link to open your local portal.
 
 ![Portal](./11-2.png)
-- Choose "Log In(Cloud)" and use your Voicegain credentials
+- Choose "Login" and use your Voicegain credentials
 
-![Login](./11-3.png)
+![Login](https://github.com/user-attachments/assets/ad94e8a8-1717-4989-9710-7239066e9f9f)
+
 
 - Now you can test your new deployment. 
   - On the home page click on the "Run test" button on the Function Tests card.
+    ![Run test](https://github.com/user-attachments/assets/cf8a6ba9-dc57-4498-b220-7c659f6a55e8)
+
+
   - If you chose an off-line acoustic model you can also test by uploading a file for transcription.
 
-![Transcribe](./11-4.png)
+![Transcribe](https://github.com/user-attachments/assets/7298ea6c-4bce-489c-ad2c-37804c8a70e5)
+
 
 ## <a name="step12"></a>Step 12: Reboots, Notes and Caveats
 
@@ -340,16 +349,5 @@ Again: **system-wide updates are highly discouraged. Instead, individual package
 ### All done!
 
 ---
-
-## <a name="license"></a>Billing and Licensing
-
-By default the Edge Setup will be deployed with usage based biling (per minute of the API time).
-
-If you would rather be billed per port please contact us to setup a per port license for you Edge cluster.
-
-All that we need is your account id, the name of the cluster that you would like to apply the license to (see image below), and of course the number of ports you would like to license.
-
-![List of Edge Clusters with names](./Edge-clusters-list.PNG)
-
 
 Goto: [top of document](#top)

@@ -1,3 +1,87 @@
+### Minor release 1.117.0 is scheduled for 3/23/2025 between 11:00pm and 12:00am US Central Time
+
+**Key changes related to the core APIs**
+* All builtin grammars are now available in Spanish version
+* Second dashboard for the Speech Analytics App
+* Errors in AIVR callback are now reported as events associated with a session
+* Beta version of Webex bot for the TRanscribe App
+
+New or changed functionality in the Transcribe App:
+* BE-3452	TA Edge: Pages for Webex OAuth handshake
+* BE-3530	TA: Add LLM Model to LLM settings
+* BE-3488	TA: Add support for Chinese language for transcription (beta)
+* BE-3496	TA: Added extra info to the Project delete dialog
+
+New or changed functionality in other platform components:
+* BE-3471	Add a billingCode parameter to /asr/transcribe/async API
+* BE-3497	Add to onPremCluster API fields to define external Postgre
+* BE-3408	Added POST /sa/call/context/{contextId}/recompute
+* BE-3450	API methods needed for Webex OAuth hanshake
+* BE-3381	APIs to generate data for the generic dashboard on SA App
+* BE-3453	Bot that joins Webex meeting using SDK to collect speaker activity, audio, and video.
+* BE-3491	Implemented DELETE /sa/call
+* BE-3526	In AIVR Session, log Error events for bad Callback responses
+* BE-3527	In AIVR Session, log Error events for failed Callback requests
+* BE-3469	On Edge in influxDB measurements that have context - store context as a tag instead of a field
+* BE-3498	On Edge, all code using Postgres will use external Postgres if it is specified in onPremCluster Settings
+* BE-3464	Reopen transcribe-results websocket connection if connection is lost
+* QA-2338	SA/TA: Improve UI for Phrase detection config
+* QA-2342	SA/TA: Pre-set default value for the Location Channel under Phrases settings.
+* BE-3255	SA: Add a card that shows time distribution of various parts of the call
+* BE-3519	SA: Condense Agent Sentiment card to show 5+5 agents (5 best and 5 worst) in one view
+* BE-3332	SA: Generic Call Stats Dashboard
+* QA-2166	SA: Improved Keyword selection filter on Search Page
+* BE-3525	SA: Improvements in phrase settings
+* BE-3258	SA: In the Call Detail view on Debug page show the date when the call will expire
+* BE-3518	SA: In the Dashboard requests for call-stats change keywordGroup to "dissatisfied"
+* BE-3529	SA: Make smaller the icons in the top-right corner of the cards on the call detail page
+* QA-2275	SA: Make the toaster message for Add/Edit and Delete JWT disappear after 5-10 seconds.
+* BE-3512	SA: Swap Agents and Keyword cards on Dash
+* BE-3451	Store in the onPremCluster the UserId of the User who did Webex OAuth to obtain auth_token
+* BE-3349	Submit CRM notes at the end of Voicebot call (Claims Automation use case)
+* BE-3360	Universal HTTP webhook proxy via Cloud to Edge
+* BE-3499	Web Console: Add settings for specifying Internal/External Postgres
+* BE-3487	Web Console: Added Avatars
+* BE-3485	Web Console: On Edge view show Cluster Id
+* QA-2368	Web Console: Show Avatar of the Context creator on the page that lists all the Contexts
+
+Changes related to Integrity of Processing (fixes):
+* BE-3457	Demo Voicebot: Fix - Start Over leaves the old polling still running if I make another call immediately
+* BE-3480	Fix builtin grammar for currency
+* BE-2835	Fix - API GET /share/{shareId} for a "within account" share, executed on a different account return 401 Forbidden, instead of 200 and empty response.
+* BE-3516	Fix - OOM from production asr-api 
+* BE-3515	SA/TA: Fix - Rules for phrases too restrictive
+* QA-2363	SA/TA: Fix - The user is unable to update the Relation Parameter for the phrase group.
+* BE-3500	SA/TA: Fix bug with pop-confirm while deleting a phrase or phrase group
+* BE-3548	SA: Fix - Agent Dashboard - Top card's text and line graph should be aligned to baseline
+* QA-2086	SA: Fix - Call Center ID filter has incorrect validation
+* QA-2398	SA: Fix - Overlapping issues on call overview page.
+* BE-3099	SA: Fix - PII redaction broken in /sa/offline
+* BE-3467	SA: Fix - Sentiment card keeps shrinking if there is not data in a chosen period
+* QA-2224	SA: Fix - The end date of the demo project is earlier than the start date.
+* BE-3513	SA: Fix - Top Dashboard cards look bad on a wide screen
+* QA-2399	SA: Fix - Unable to apply "Agent and Queue" filters in Advance search filter.
+* BE-3534	SA: Fix - Upload - Selected Queue name does not show on input field upon creation of new option
+* QA-1857	SA: Fix - User should not be allowed to create two projects with same name.
+* BE-3510	SA: Fix issues with Sentiment Card on the Dash
+* BE-3511	SA: Fix issues with the Topic Distribution card
+* BE-3505	SA: Fix the Call Time Breakdown
+* QA-1786	TA Edge: Fix - LLM Query is not working giving 500 Internal Server Error.
+* QA-2395	TA: Fix - getting something went wrong page for the first time login after signup to the application.
+* QA-2180	TA: Fix - LLM playground always returns summary in response to first question even if the question is not about a summary
+* QA-2339	TA: Fix - Phrase settings- the Min Word field should not accept negative or zero values.
+* QA-2397	TA: Fix - The toaster message 'API token created successfully' is incorrect, as the token is not actually created
+* QA-2343	TA: Fix - When a tag is separated by a comma, it should be added properly and should not remain visible in the input field after being added.
+* QA-2387	TA: Fix - When a user tries to create an API token without entering a name, the displayed message is incorrect. It should indicate that "Name is a required field."
+* QA-2344	TA: Fix - When a user uploads a file with an invalid tag value, field validation should be applied to prevent submission.
+* QA-2369	TA: Fix - When User Click on Voice signature page than showing on page "speaker not found".
+* QA-2359	Web Console: Fix - When the user clicks on 'Transcription' and uploads a file, the placeholder text for 'Hint' does not disappear after entering input.
+* QA-2360	Web Console: Fix - When the user clicks on 'Transcription,' uploads a file, and enters input in the 'Hint' field, the input text goes outside the box.
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Minor release 1.116.0 is scheduled for 3/3/2025 between 11:00pm and 12:00am US Central Time
 
 **Key changes related to the core APIs**
@@ -1699,186 +1783,6 @@ Changes related to Integrity of Processing (fixes):
 * BE-1925	Fix - AIVR playback of audio from an HTTPs URL stops after 30 seconds
 * BE-1999	Fix - Exception in case of many failed logins
 * BE-926	Fix - EqTerm is not properly handled in meeting search for some fields
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Maintenance release 1.101.1 is scheduled for 4/4/2024 between 5:00pm and 7:00pm CDT
-
-New or changed functionality:
-* BE-1877: Enable VAD on Whisper
-* BE-1886: Make node affinity configurable in offline-whisper
-* BE-1889: Deploy whisper model to the edge cluster without internet connection
-* BE-1938: Initial whisper prompt to ensure punctuation is generated  
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Minor release 1.101.0 is scheduled for 3/25/2024 between 6:00pm and 10:00pm CDT
-
-IMPORTANT Note for Edge users: 
-If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 
-This is because the compatibility setting on the Mongo DB has been changed in 1.97.0 and influxDB version has changed in 1.98.0
-
-**Key changes related to the core APIs**
-* Revised User deletion logic - will retain deleted User info so that any remaining references can be resolved.
-* Added ability to enforce 2FA account-wide via a Web Console setting
-* Connected Web Console to Sentry service for error tracking
-* Improved session logs
-* Websocket version of the Telephony Bot API
-* Improved NLU model for understanding IVR prompts
-
-**Key changes related to Transcribe APP**
-* Improved User deletion logic functionality.
-* Added LLM Settings to Account profile
-* Action Items tables now correctly rendered in PDF and DOCX
-* Upload audio data directly to storage without sending data through data API service
-* Improved tables with lists of Shared transcripts (User and Admin view)
-
-
-New or changed functionality in the Transcribe App:
-* BE-1189	TA: Add option for Admins to see what others have shared
-* BE-1271	TA: Support a workflow for the Admin to delete a user account and take over the user's project
-* BE-1536	TA: Improved Splash page after login which shows the different stages
-* BE-1646	TA: If there are no devices we show 2 options: download and phone app setup
-* BE-1708	TA: On All Shares table, added sorting and filter on the Creator column, and filters on the Scope and Expires columns
-* BE-1709	TA: In account users show Own Projects and Shared Projects columns in place of the current single Projects column
-* BE-1713	TA: Modify the PDF output to render markdown tables
-* BE-1714	TA: Modify the DOCX output to render markdown tables
-* BE-1721	TA: Improved error message on the Zoom directory upload
-* BE-1733	TA: Generate avatar based on user name if they have not uploaded a picture for avatar
-* BE-1741	TA: Add extra parameter to /asr/transcribe/async request used in Microphone transcription
-* BE-1744	TA: Upload files using the POST /data/s3 API
-* BE-1807	TA: Add LLM Settings to Account profile
-* BE-1810	TA: More functional user delete
-* BE-1818	TA: Show info of users that have been deleted
-* BE-1823	TA: Add Polish language transcription
-* BE-1834	TA: Remove "Sync From Cloud" button
-* QA-1009	TA: Increase max number of transcripts shown on home page from 100 to 250
-* QA-1010	TA: Show the Upgrade button only to the Owner role
-* QA-1017	TA: Better error message in case of an error resetting password
-* QA-1021	TA: When user is deleted all user sessions will be invalidated.
-
-New or changed functionality in other platform components:
-* BE-1194	Advanced Search: Add new column `bucket` to the meeting_session table
-* BE-1579	Collect session_duration for realtime ASR sessions
-* BE-1663	Web Console: When deleting Users in the Cloud and if there are Edge deployments warn that also users on the Edge will be deleted
-* BE-1687	Websocket version of AIVR API: support question.audioResponse.streaming
-* BE-1693	Support Zoom Breakout Rooms in Meeting Join
-* BE-1695	New /sa/call/search API
-* BE-1697	New /sa/call/search/fields API
-* BE-1691	Web Console: Add internal refresh to the page with Edge Deployment details
-* BE-1705	Web Console: Add ability to enforce 2FA account-wide
-* BE-1706	Add to Account API a field that controls 2FA enforcement
-* BE-1707	Web Console: Better error message in case of creating a GREG experiment with duplicate name
-* BE-1715	Support model_name measurement for offline sessions (offline transcribe, offline meeting, offline SA)
-* BE-1716	Add session ID to all log messages in offline-task
-* BE-1722	Web Console: Improved inactivity timeout processing
-* BE-1728	Update code to use the latest Azure OpenAI Service preview API
-* BE-1732	Web Console: Connect to Sentry
-* BE-1739	Connect authentication-client to Sentry
-* BE-1743	Add llmSettings to /cluster/ API
-* BE-1809	Add deleteUserContexts parameter to DELETE /user
-* BE-1817	New inclDeleted parameter on GET /user API method
-* BE-1822	Support inclDeleted for GET /account/uuid/users
-* BE-814	Improved NLU model for IVR prompts
-* BE-978	Removed contextId and fromAllContexts parameters from the Advanced Meeting Search API method
-* QA-1046	Demo: Improved error message in case of internal issues.
-
-Changes related to Integrity of Processing (fixes):
-* BE-1629	TA: Fix - It is impossible to share a project with an Owner of the account
-* BE-1734	TA: Fix - Sorting of devices by date broken if any device is deleted
-* BE-1802	TA: Fix - Search for creator by name in Advanced Search filter
-* QA-1012	TA: Fix -  Project setting- Save button enabled when there is no change
-* QA-1022	TA: Fix - In some rare cases Voice Signature page is showing white page.
-* QA-887	TA: Fix - Walk through wizard should get automatically initiated when new user logs in for the first time.
-* QA-929	TA: Fix -  Project (number) information is confusing
-* QA-967	TA: Fix - User is able to add invalid keywords under project setting.
-* BE-1672	Web Console: Fix - Sliders too small at console.ascalon.ai/specific/meetings
-* QA-992	Web Console: Fix - User is able to play the audio when no voice is selected while creating a phone app.
-* QA-993	Web Console: Fix - After clicking on view button of call session, it's showing blank page.
-* QA-997	Web Console: Fix - Transcript is not getting skip by specified seconds as expected and onClick function is also not a function as in console tab.
-* QA-999	Web Console: Fix - When User click on Cancel button of add context it should be close.
-* BE-1735	Mobile App: Fix - order of projects in the list
-* BE-1736	Mobile App: Fix - My project returns transcripts from other projects
-* BE-1812	AIVR: Fix - getting MATCH but no recognized utterance
-* BE-1831	ASR API: Fix - ValueError: Invalid value for `type` (), must be one of ['ner', 'regex']
-* QA-1005	SA App: Fix - use the correct time format enum values
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-### Minor release 1.100.0 is scheduled for 3/4/2024 between 7:00pm and 10:00pm CST
-
-IMPORTANT Note for Edge users: 
-If you update from any prior release to 1.98.0 and you need to roll-back please contact Voicegain for support with the rollback process. 
-This is because the compatibility setting on the Mongo DB has been changed in 1.97.0 and influxDB version has changed in 1.98.0
-
-New functionality in the Transcribe App:
-* BE-1559	TA: Automatically update the currently installed Zoom App version
-* BE-1582	TA: Add "Mine | Shared | All" selector to the home page
-* BE-1625	TA: Add a logout confirmation dialog.
-* BE-1642	TA: Show avatars on Account Users table
-* BE-1659	TA: Support action items using GPT for cloud Transcribe App
-* BE-1665	TA: Support action items using custom LLM for Edge 
-* BE-1669	TA: Advance Search  - Type filters populated dynamically from audio_src in fields api.
-* BE-1671	TA: Hide the project settings for the Key Items
-
-New functionality in other platform components:
-* BE-1315	Move rexConfig from xml to properties file in Rex
-* BE-1348	After password reset in AuthenticationClient provide link(s) to the correct App(s) for a given user
-* BE-1527	Switch to yaml rex configuration file on K8s
-* BE-1567	Web Console Edge: Add splash page after login and before home page shows up
-* BE-1578	Changes to get app.voicegain.ai score A on https://securityheaders.com
-* BE-1593	Web Console: Remove Clouds from ACP Header on Cloud
-* BE-1628	Meeting Join API - add parameter to control which js script is run (zoom, teams, etc)
-* BE-1638	Changes to the Voicebot Demo Instructions page
-* BE-1648	Web Console: Disable old MRCP Experiment Analyze - the new will become the only one
-
-Changes related to Integrity of Processing (fixes):
-* BE-1596	TA: Fix - Zoom Device Approvals pop up on wrong accounts
-* BE-1629	TA: Fix - It is impossible to share a project with an Owner of the account
-* BE-1649	TA: Fix - When the delete button is clicked in advanced search, it triggers an incorrect API, leading to inaccurate transcript result, Furthermore, post-deletion, filtered and searched data fail to display accurately.
-* BE-1652	TA: Fix - Reload button does not work on Firefox
-* BE-1664	TA: Fix - deleting a project should also remove its meetings from databases
-* BE-1702	TA: Fix - Advanced Search page goes blank with TypeError: Cannot read properties of undefined (reading 'split')
-* QA-822	TA Edge: Fix - User (Role) is able to access Account settings.
-* QA-853	TA: Fix - No options to select under "creator" filter in advanced search.
-* QA-856	TA: Fix - Alert msg of "maximum allowed minutes exceeded" is not translating in other languages.
-* QA-888	TA: Fix - In Advanced search deleted transcript are not getting removed from list, unless we refresh the page.
-* QA-892	TA: Fix - partial Translation is there while uploading a file
-* QA-903	TA: Fix - There should be proper translation on the share pop-up page.
-* QA-913	TA: Fix - Walk through wizard gets hidden after few steps, when left menu is locked.
-* QA-920	TA: Fix - For a single project, the move should be disabled 
-* QA-931	TA: Fix - User is able to de-select all filters on home page for shared.
-* QA-938	TA: Fix - Different loading screens when deleting a single share in compared to deleting multiple shares.
-* QA-940	TA: Fix - User is unable to "generate " the JWT token.
-* QA-944	TA: Fix - Owner should not be allowed to delete all of its project if any user have shared any project with him.
-* QA-946	TA: Fix - Unable to Invite user after we edit a user in account section.
-* QA-947	TA: Fix - Voicegain splash screen showing when project user adds other users to a project.
-* QA-949	TA: Fix - Unable to close the dialog pop-up for added phrase.
-* QA-950	TA: Fix - Project setting- save button overlaps with text when Spanish language is selected.
-* QA-953	TA: Fix - Account with only user access can invite other account.
-* QA-961	TA: Fix - While creating the first project(new project wizards) Word cloud toggle not showing properly.
-* QA-962	TA: Fix - User with Admin role is not able to update address in profile section
-* QA-963	TA: Fix - Language reminder- Close icon not showing properly cutting with boundary of the pop-up.
-* QA-964	TA: Fix - During Signup user given company name and title, after login title missing under profile section
-* QA-970	TA: Fix - Date filter is not working on advanced search page.
-* QA-972	TA: Fix - Invited User is able to change "May Download" setting in account.
-* QA-973	TA: Fix - Language filter under advanced search should show full language name
-* QA-985	TA: Fix - Save button not working properly under profile setting.
-* BE-1512	Fix - Occasionally k8s lost gpu and we need to restart nvidia-device-plugin-daemonset
-* BE-1591	Web Console: Fix - Audio display in Meeting Detail page messed up
-* BE-1641	Web Console: Fix - GREG is not showing recognition results
-* BE-1644	Fix - Something wrong with keyword advanced search 
-* BE-1650	Fix - accounts are getting revoked on QA even though the setting is 0 which means do not revoke
-* BE-1654	Fix - Misleading error response of POST API asr/meeting/join
-* BE-1668	Fix - Zoom Meeting join api cannot handle a case where the waiting room is disabled
-* BE-1674	Fix -  NullPointerException from JoinedMeetingEvent
-* BE-1675	Fix - NullPointerException is thrown from ascalon-cleanup
-* QA-748	Demo: Fix - Double confirmation is required to browse audio file in the upload demo file
-* QA-797	Web Console: Fix - On Websocket Details on live broadcasting getting the blank page
-* QA-894	Web Console: Fix - Page is not responsive enough for the 90% zoom, all the pop-up are vibrating.
-* QA-943	Web Console: Fix - Unable to set "Disable inactive users" as Not Enabled.
-* QA-983	Web Console: Fix - After reset password- Web console button is not clickable
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 

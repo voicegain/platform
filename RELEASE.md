@@ -4,7 +4,7 @@
 * All builtin grammars are now available in Spanish version
 * Second dashboard for the Speech Analytics App
 * Errors in AIVR callback are now reported as events associated with a session
-* Beta version of Webex bot for the TRanscribe App
+* Beta version of Webex bot for the Transcribe App
 
 New or changed functionality in the Transcribe App:
 * BE-3452	TA Edge: Pages for Webex OAuth handshake

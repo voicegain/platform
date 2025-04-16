@@ -22,7 +22,7 @@ config.read('config.ini')
 JWT = config['auth']['jwt']
 
 ## specify here the directory with files to test
-input_path = "../../new-examples/data/Recordings/es-Boolean/"
+input_path = "../../new-examples/data/Recordings/en-Boolean"
 
 list_of_files = []
 
@@ -30,7 +30,7 @@ for root, dirs, files in os.walk(input_path):
 	for file in files:
 		list_of_files.append(os.path.join(root,file))
 
-print("files to test")
+print("files to test from path: "+input_path)
 for name in list_of_files:
     print(name)
 
@@ -72,14 +72,15 @@ body = {
     "asr": {
       "grammars" : [
           {
-            # "type": "GRXML",
-            # "name" : "menu-selection",
-            # "fromUrl":{
+             "type": "GRXML",
+             "name" : "menu-selection",
+             "fromUrl":{
             #     #"url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
             #     "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/Menu0to9Voice.grxml"
-            # }
+                "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/YesNoAgent.grxml"
+             }
 
-            "type" : "BUILT-IN",
+          #  "type" : "BUILT-IN",
           ## credit card recognition ##
           ##  "name" : "creditcard"
           ## digit sequence recognition ##
@@ -98,21 +99,21 @@ body = {
              # "lang" : "es-es"
             #}
           ## Yes/No recognition ##
-             "name" : "boolean",
-             "parameters" : {
-               "lang" : "es-es"
-             }
+          #   "name" : "boolean",
+          #   "parameters" : {
+          #     "lang" : "es-es"
+          #   }
           }
       ],
-      "maxAlternatives" : 1,
+      "maxAlternatives" : 10,
       "noInputTimeout": 10000,
       "incompleteTimeout" : 5000,
       "completeTimeout": 2000,
-      "speedVsAccuracy" : 0.9,
+      "speedVsAccuracy" : 0.5,
       "sensitivity" : 0.5,
       "confidenceThreshold" : 0.0001,
       "acousticModelRealTime" : "VoiceGain-kappa",
-      "languages" : ["es"]
+      "languages" : ["en"]
     }
   }
 }

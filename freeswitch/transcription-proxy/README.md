@@ -41,31 +41,43 @@ A sample config.ini can be found in this repository.
 ```ini
 # This is the SIP proxy host where you will be sending SIP traffic to
 FREESWITCH_HOST_DOMAIN=fs1lab.ascalon.ai
+
 # This is the final SIP destination domain where calls will be proxying to just like sending SIP INVITE to domain.
 DESTINATION_DOMAIN=fs.ascalon.ai:5080
+
+# This is useful only when you want to dial calls to SIP_GATEWAY_IP using sip gateway instead of DESTINATION_DOMAIN.
+# It works much like sip trunk so for this feature to work you must comment out or put DESTINATION_DOMAIN=(empty)
+SIP_GATEWAY_IP=SIPTRUNK_IP:64793
+
+# Incoming caller when dialing call as 1233@FREESWITCH_HOST_DOMAIN translates to 4567@SIP_GATEWAY_IP. This might be useful in call center evnvironment. 
+DIALED_NUMBER_MAPPING=1233:4567
+
 # this main voicegain API gateway URL 
 VG_GATEWAY_URL=https://api.voicegain.ai/v1/asr/transcribe/async
+
 JWT_TOKEN=XXXXXXXXXXCcccccccyJhbGciOiJIUzx1NiIsInR5cCI6IkpXVCJ9.
-# this is the Auth Configuration name that you have created in previous steps above, so the Voicegain gateway will use this name and pickup credential and auth type mentioned in the portal and make a connection to your websocket server so that you can validate it. 
+
+# this is the Auth Configuration name that you have created in previous steps above,
+# so the Voicegain gateway will use this name and pickup credential and auth typementioned in the portal
+# and make a connection to your websocket server so that you can validate it. 
 AUTH_NAME=fsproxy
+
 # This is your websocket server URL where transcription results are posted in real-time
 WEBSOCKET_SERVER=wss://mydomain.com:8765
+
 # names for the left and right channel sessions
 LEFT_CHANNEL_NAME=CALLER1
 RIGHT_CHANNEL_NAME=CALLER2
+
 # options are words OR segments
 #words - words with confidence and timing info [also sent over websocket]
 #segments -- segments (or partial hypotheses) [also sent over websocket, note that latency of segments is higher than that of words by about 300-500ms]]
-
 CONTENT_INCREMENTAL=words
-# This is useful only when you want to dial calls to SIP_GATEWAY_IP using sip gateway instead of DESTINATION_DOMAIN. It works much like sip trunk so for this feature to work you mish #disable or put DESTINATION_DOMAIN=(empty).
-#incoming caller when dialing call as 1233@FREESWITCH_HOST_DOMAIN trasalates to 4567@SIP_GATEWAY_IP. This might be useful in call center evnvironment. 
-DIALED_NUMBER_MAPPING=1233:4567
-SIP_GATEWAY_IP=SIPTRUNK_IP:64793
-#now, if you want you can change the sensitivity value on the Context from which the JWT is obtained
+
+# now, if you want you can change the sensitivity value on the Context from which the JWT is obtained
 SENSITIVITY=1
 AUDIO_CAPTURE=true
-#configurable noAudioTimeout parameter to the freeswitch docker that can disconnect webscocket session in case no audio in 30 secs, if this param is omiited it takes default value of #30 sec.
+# configurable noAudioTimeout parameter to the freeswitch docker that can disconnect webscocket session in case no audio in 30 secs, if this param is ommitted it takes default value of 30 sec.
 NOAUDIOTIMEOUT=30000 
 
 ```

@@ -5,22 +5,22 @@ If you encounter any problems, just give us a shout at [support@voicegain.ai](ma
 ## April 15, 2025
 
 New:
-BE-3634	TA: Added call duration in header on transcript details page
-QA-2236	TA: Disable LLM Playground box while the transcript is playing
-QA-2461	TA: Improved role filter in Project Settings to display all options when any filter is selected for easier selection
+* BE-3634	TA: Added call duration in header on transcript details page
+* QA-2236	TA: Disable LLM Playground box while the transcript is playing
+* QA-2461	TA: Improved role filter in Project Settings to display all options when any filter is selected for easier selection
 
 Fixes:
-QA-1800	TA Edge: Fix - Meeting Minutes missing
-QA-2468	TA: Fix - 'Last Active' column sorting not working in Project Settings
-QA-2426	TA: Fix - Resolved overlapping 'beta' label issue in 'Download as PDF' pop-up on Transcribe Details page
-QA-2427	TA: Fix - The Chinese flag displayed in the project settings is different from the project flag shown on the homepage
-QA-2463	TA: Fix - The dropdown icon overlap with the exclamation (!) icon for the expected speakers field.
-QA-2460	TA: Fix - The selected timezone is not visible in the timezone field after selection.
-QA-2488	TA: Fix - Webex bot joins the meeting but doesn't show as admitted on UI until the meeting ends where it then shows as admitted and failed to join.
-QA-2365	TA: Fixed - The bot has already left the meeting but is still appearing in the meeting. This issue occurs for all three bots: Zoom, Teams, and Webex.
-QA-2362	TA: Fixed - The meeting bot encounters a 500 Internal Server Error when attempting to leave a meeting.
-QA-2072	TA: Fixed - The meeting bot is showing as admitted even though the meeting organizer has not admitted the bot.
-QA-2364	TA: Fixed - The recording bot appears as admitted in the meeting, even though the organizer did not admit it.
+* QA-1800	TA Edge: Fix - Meeting Minutes missing
+* QA-2468	TA: Fix - 'Last Active' column sorting not working in Project Settings
+* QA-2426	TA: Fix - Resolved overlapping 'beta' label issue in 'Download as PDF' pop-up on Transcribe Details page
+* QA-2427	TA: Fix - The Chinese flag displayed in the project settings is different from the project flag shown on the homepage
+* QA-2463	TA: Fix - The dropdown icon overlap with the exclamation (!) icon for the expected speakers field.
+* QA-2460	TA: Fix - The selected timezone is not visible in the timezone field after selection.
+* QA-2488	TA: Fix - Webex bot joins the meeting but doesn't show as admitted on UI until the meeting ends where it then shows as admitted and failed to join.
+* QA-2365	TA: Fixed - The bot has already left the meeting but is still appearing in the meeting. This issue occurs for all three bots: Zoom, Teams, and Webex.
+* QA-2362	TA: Fixed - The meeting bot encounters a 500 Internal Server Error when attempting to leave a meeting.
+* QA-2072	TA: Fixed - The meeting bot is showing as admitted even though the meeting organizer has not admitted the bot.
+* QA-2364	TA: Fixed - The recording bot appears as admitted in the meeting, even though the organizer did not admit it.
 
 ### March 23, 2025
 

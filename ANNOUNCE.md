@@ -1,7 +1,5 @@
 ### Minor release 1.118.0 is scheduled for 4/15/2025 between 11:00pm and 12:00am US Central Time
 
-**Key changes related to the core APIs**
-
 New or changed functionality in the Transcribe App:
 BE-3634	TA: Added call duration in header on transcript details page
 QA-2236	TA: Disable LLM Playground box while the transcript is playing

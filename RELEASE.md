@@ -1,82 +1,82 @@
 ## Release 1.118.0
 
 New or changed functionality in the Transcribe App:
-BE-3634	TA: Added call duration in header on transcript details page
-QA-2236	TA: Disable LLM Playground box while the transcript is playing
-QA-2461	TA: Improved role filter in Project Settings to display all options when any filter is selected for easier selection
+* BE-3634	TA: Added call duration in header on transcript details page
+* QA-2236	TA: Disable LLM Playground box while the transcript is playing
+* QA-2461	TA: Improved role filter in Project Settings to display all options when any filter is selected for easier selection
 
 New or changed functionality in other platform components:
-BE-3482	Add epochReportedMsec to k8sStatus field on the onPremCluster API
-BE-3626	Added llm field to question in the Call Review Config
-BE-3577	Allow use of normal JWT token in GET /sa/call/search/fields and POST /sa/call/search
-BE-3031	Copilot: Added ability to pull up notes after internal transfer.
-BE-3628	Demo Voicebot: Display payment related fields in demo copilot
-BE-3564	In AIVR App added openAiRealtimeApi as value of logicConnectMethod
-BE-3526	In AIVR Session, log Error events for bad Callback responses
-BE-3566	In POST /aivr add handling of VACA init if openAiRealtimeApi is value of logicConnectMethod
-BE-3571	Modify mod_vg_tap to work without the rex_sid parameter (so that it can open socket to VACA)
-BE-3621	Most read-only sql queries can now use the replica DB instead of the master.
-QA-2464	Prevent the default JWT token for a Context from deletion via the Web UI
-BE-3641	Return only 6 digits after the decimal point for confidence values
-QA-2465	SA: Added option to delete Criteria in project configuration under project setting.
-BE-3584	SA: Added trendlines to Yearly call trends chart on call stats dash
-QA-2391	SA: Changed delete option from text to button on users settings page
-BE-3586	Sa: Changed the zoom of the Yearly call trends chart to be along the x-axis only on the call stats dash
-BE-3637	SA: Changed times in Call Sections card from timestamps to time durations on Call Details page
-QA-2388	SA: Improved column spacing on user settings page to better fit longer fields like email
-BE-3558	SA: Improved dark mode styling for Call Stats Dashboard
-BE-3458	SA: Improved Design for 'Confirm Configuration Changes' Dialog on project configuration page
-BE-3585	SA: Improved look of the charts on the Call Stats Dain in dark mode
-BE-3617	SA: Improved performance of advanced search page
-BE-3582	SA: Larger fonts used in Call Duration Statistics card on stats dash
-BE-3593	SA: Make QA Call Review form visible
-BE-3654	SA: Removed call selection checkboxes from all calls table to improve UX
-BE-3583	SA: Removed extra gap on x-axis and increased line thickness in Call Duration Statistics card on Stats Dash
-BE-3594	SA: Removed unnecessary scroll on advanced search page
-QA-2469	SA: 'Select All' in advanced search filters now selects only the filtered results
-BE-3624	Switch to using mod_shout for playback in AIVR
-BE-3640	Web Console: Added 404 Error Page for api path which does not exist.
-QA-2446	Web Console: Added first and last name validations on user profile page
-QA-2447	Web Console: Changed filtering 'No rows' placeholder text to "No Logs Data Found" in case of no match on Logs Page
-QA-2410	Web Console: Copy button not working for SIP URI field in Phone apps drawer on Phone apps page
-QA-2313	Web Console: Improved design of account management page to show all columns of login sessions section in a single view
-QA-2168	Web Console: Improved language selection widget on the Settings Speech Recognition
-QA-2431	Web Console: Improved placeholder messaging from "No rows" to "No Phone apps found" on phone apps page
-QA-2414	Web Console: Increased font size of helper text for 'Session ID' and 'Messages' field on Logs Page for better visibility
-BE-3559	Web Console: Replaced heavy background.svg to lighter png file
-QA-2433	Web Console: Save button now remains disabled until the data cleanup interval is changed on settings page
+* BE-3482	Add epochReportedMsec to k8sStatus field on the onPremCluster API
+* BE-3626	Added llm field to question in the Call Review Config
+* BE-3577	Allow use of normal JWT token in GET /sa/call/search/fields and POST /sa/call/search
+* BE-3031	Copilot: Added ability to pull up notes after internal transfer.
+* BE-3628	Demo Voicebot: Display payment related fields in demo copilot
+* BE-3564	In AIVR App added openAiRealtimeApi as value of logicConnectMethod
+* BE-3526	In AIVR Session, log Error events for bad Callback responses
+* BE-3566	In POST /aivr add handling of VACA init if openAiRealtimeApi is value of logicConnectMethod
+* BE-3571	Modify mod_vg_tap to work without the rex_sid parameter (so that it can open socket to VACA)
+* BE-3621	Most read-only sql queries can now use the replica DB instead of the master.
+* QA-2464	Prevent the default JWT token for a Context from deletion via the Web UI
+* BE-3641	Return only 6 digits after the decimal point for confidence values
+* QA-2465	SA: Added option to delete Criteria in project configuration under project setting.
+* BE-3584	SA: Added trendlines to Yearly call trends chart on call stats dash
+* QA-2391	SA: Changed delete option from text to button on users settings page
+* BE-3586	Sa: Changed the zoom of the Yearly call trends chart to be along the x-axis only on the call stats dash
+* BE-3637	SA: Changed times in Call Sections card from timestamps to time durations on Call Details page
+* QA-2388	SA: Improved column spacing on user settings page to better fit longer fields like email
+* BE-3558	SA: Improved dark mode styling for Call Stats Dashboard
+* BE-3458	SA: Improved Design for 'Confirm Configuration Changes' Dialog on project configuration page
+* BE-3585	SA: Improved look of the charts on the Call Stats Dain in dark mode
+* BE-3617	SA: Improved performance of advanced search page
+* BE-3582	SA: Larger fonts used in Call Duration Statistics card on stats dash
+* BE-3593	SA: Make QA Call Review form visible
+* BE-3654	SA: Removed call selection checkboxes from all calls table to improve UX
+* BE-3583	SA: Removed extra gap on x-axis and increased line thickness in Call Duration Statistics card on Stats Dash
+* BE-3594	SA: Removed unnecessary scroll on advanced search page
+* QA-2469	SA: 'Select All' in advanced search filters now selects only the filtered results
+* BE-3624	Switch to using mod_shout for playback in AIVR
+* BE-3640	Web Console: Added 404 Error Page for api path which does not exist.
+* QA-2446	Web Console: Added first and last name validations on user profile page
+* QA-2447	Web Console: Changed filtering 'No rows' placeholder text to "No Logs Data Found" in case of no match on Logs Page
+* QA-2410	Web Console: Copy button not working for SIP URI field in Phone apps drawer on Phone apps page
+* QA-2313	Web Console: Improved design of account management page to show all columns of login sessions section in a single view
+* QA-2168	Web Console: Improved language selection widget on the Settings Speech Recognition
+* QA-2431	Web Console: Improved placeholder messaging from "No rows" to "No Phone apps found" on phone apps page
+* QA-2414	Web Console: Increased font size of helper text for 'Session ID' and 'Messages' field on Logs Page for better visibility
+* BE-3559	Web Console: Replaced heavy background.svg to lighter png file
+* QA-2433	Web Console: Save button now remains disabled until the data cleanup interval is changed on settings page
 
 Changes related to Integrity of Processing (fixes):
-BE-3648	Fix a potential vulnerability where the session id for a new ASR session could be provided in the request
-BE-3650	Fixed - Call Review Section name is not being saved
-BE-3671	Fixed - GET /confgroup?type=SpeechAnalytics returns a plain JWT token instead of displayJwt
-BE-3578	Fixed - GET /sa/call-stats does not seem to use the keywordGroup parameter
-BE-3560	Fixed - StackOverflowException from a realtime SA session when no web socket connection is established for results
-BE-3579	SA: Fix - Date and Time on stats dashboard should be in the format defined in the Project settings
-BE-3580	SA: Fix - In stats dash, the duration display should support values larger than 59:59
-QA-2466	SA: Fix - Negation toggle not working in Criterion Dialog in project configuration settings
-QA-2389	SA: Fix - On API Security page, success message no longer shown without JWT creation. 'Create' button now requires valid name with note field validation
-QA-2486	SA: Fix - Selected role not displayed in 'Add User' form on User Settings page after selection
-QA-2224	SA: Fix - The end date of the demo project is earlier than the start date.
-QA-2443	SA: Fix - The text inside call time breakdown card getting cut off on call details dash
-BE-3581	SA: Fix - Total Call card values vertically aligned on call stats dash
-BE-3627	SA: Fix issues in Call Review Form Configuration in settings
-QA-1800	TA Edge: Fix - Meeting Minutes missing
-QA-2468	TA: Fix - 'Last Active' column sorting not working in Project Settings
-QA-2426	TA: Fix - Resolved overlapping 'beta' label issue in 'Download as PDF' pop-up on Transcribe Details page
-QA-2427	TA: Fix - The Chinese flag displayed in the project settings is different from the project flag shown on the homepage
-QA-2463	TA: Fix - The dropdown icon overlap with the exclamation (!) icon for the expected speakers field.
-QA-2460	TA: Fix - The selected timezone is not visible in the timezone field after selection.
-QA-2488	TA: Fix - Webex bot joins the meeting but doesn't show as admitted on UI until the meeting ends where it then shows as admitted and failed to join.
-QA-2365	TA: Fixed - The bot has already left the meeting but is still appearing in the meeting. This issue occurs for all three bots: Zoom, Teams, and Webex.
-QA-2362	TA: Fixed - The meeting bot encounters a 500 Internal Server Error when attempting to leave a meeting.
-QA-2072	TA: Fixed - The meeting bot is showing as admitted even though the meeting organizer has not admitted the bot.
-QA-2364	TA: Fixed - The recording bot appears as admitted in the meeting, even though the organizer did not admit it.
-BE-3638	Web Console: Fix - 'Clear Filters' button on Logs page did not clear Session ID and Messages fields
-QA-2436	Web Console: Fix - Large extra space observed at the beginning of message when copied to clipboard and pasted on logs page
-QA-2374	Web Console: Fix - Removed unnecessary scrollbar from the signup dialog
-QA-2473	Web Console: Fix - Validation for numeric fields like 'Max alternatives', 'Incomplete Timeout' etc. on Speech Recognition Settings Page to not accept 0 as manual input
-QA-2448	Web Console: Fixed - On the logs page, searching by message displays random errors and an internal service error in the console.
+* BE-3648	Fix a potential vulnerability where the session id for a new ASR session could be provided in the request
+* BE-3650	Fixed - Call Review Section name is not being saved
+* BE-3671	Fixed - GET /confgroup?type=SpeechAnalytics returns a plain JWT token instead of displayJwt
+* BE-3578	Fixed - GET /sa/call-stats does not seem to use the keywordGroup parameter
+* BE-3560	Fixed - StackOverflowException from a realtime SA session when no web socket connection is established for results
+* BE-3579	SA: Fix - Date and Time on stats dashboard should be in the format defined in the Project settings
+* BE-3580	SA: Fix - In stats dash, the duration display should support values larger than 59:59
+* QA-2466	SA: Fix - Negation toggle not working in Criterion Dialog in project configuration settings
+* QA-2389	SA: Fix - On API Security page, success message no longer shown without JWT creation. 'Create' button now requires valid name with note field validation
+* QA-2486	SA: Fix - Selected role not displayed in 'Add User' form on User Settings page after selection
+* QA-2224	SA: Fix - The end date of the demo project is earlier than the start date.
+* QA-2443	SA: Fix - The text inside call time breakdown card getting cut off on call details dash
+* BE-3581	SA: Fix - Total Call card values vertically aligned on call stats dash
+* BE-3627	SA: Fix issues in Call Review Form Configuration in settings
+* QA-1800	TA Edge: Fix - Meeting Minutes missing
+* QA-2468	TA: Fix - 'Last Active' column sorting not working in Project Settings
+* QA-2426	TA: Fix - Resolved overlapping 'beta' label issue in 'Download as PDF' pop-up on Transcribe Details page
+* QA-2427	TA: Fix - The Chinese flag displayed in the project settings is different from the project flag shown on the homepage
+* QA-2463	TA: Fix - The dropdown icon overlap with the exclamation (!) icon for the expected speakers field.
+* QA-2460	TA: Fix - The selected timezone is not visible in the timezone field after selection.
+* QA-2488	TA: Fix - Webex bot joins the meeting but doesn't show as admitted on UI until the meeting ends where it then shows as admitted and failed to join.
+* QA-2365	TA: Fixed - The bot has already left the meeting but is still appearing in the meeting. This issue occurs for all three bots: Zoom, Teams, and Webex.
+* QA-2362	TA: Fixed - The meeting bot encounters a 500 Internal Server Error when attempting to leave a meeting.
+* QA-2072	TA: Fixed - The meeting bot is showing as admitted even though the meeting organizer has not admitted the bot.
+* QA-2364	TA: Fixed - The recording bot appears as admitted in the meeting, even though the organizer did not admit it.
+* BE-3638	Web Console: Fix - 'Clear Filters' button on Logs page did not clear Session ID and Messages fields
+* QA-2436	Web Console: Fix - Large extra space observed at the beginning of message when copied to clipboard and pasted on logs page
+* QA-2374	Web Console: Fix - Removed unnecessary scrollbar from the signup dialog
+* QA-2473	Web Console: Fix - Validation for numeric fields like 'Max alternatives', 'Incomplete Timeout' etc. on Speech Recognition Settings Page to not accept 0 as manual input
+* QA-2448	Web Console: Fixed - On the logs page, searching by message displays random errors and an internal service error in the console.
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 

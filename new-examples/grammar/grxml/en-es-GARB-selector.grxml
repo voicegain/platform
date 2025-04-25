@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar
+    xmlns="http://www.w3.org/2001/06/grammar"
+    xml:base="http://roclvpgvp01.corp.suth.com:8080/IVRFrameWorkDevelopment/src/"
+    xml:lang="en"
+    mode="voice"
+    root="voiceInlineGrammar"
+    version="1.0">
+
+    <rule id="voiceInlineGrammar" scope="public">
+        <ruleref special="GARBAGE" />
+        <one-of>
+            <item>
+                <tag>out='English'</tag>
+                <one-of>
+                    <item>English</item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='Spanish'</tag>
+                <one-of>
+                    <item>espanol</item>
+                </one-of>
+            </item>
+        </one-of>
+        <ruleref special="GARBAGE" />
+    </rule>
+
+</grammar>

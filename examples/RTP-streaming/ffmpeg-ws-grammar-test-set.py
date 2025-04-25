@@ -22,7 +22,7 @@ config.read('config.ini')
 JWT = config['auth']['jwt']
 
 ## specify here the directory with files to test
-input_path = "../../new-examples/data/Recordings/en-Boolean"
+input_path = "../../new-examples/data/Recordings/en-GARBAGE"
 
 list_of_files = []
 

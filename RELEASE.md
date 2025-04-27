@@ -35,7 +35,7 @@ New or changed functionality in other platform components:
 * BE-3594	SA: Removed unnecessary scroll on advanced search page
 * QA-2469	SA: 'Select All' in advanced search filters now selects only the filtered results
 * BE-3624	Switch to using mod_shout for playback in AIVR
-* BE-3640	Web Console: Added 404 Error Page for api path which does not exist.
+* BE-3640	Web Console: Added 404 Error Page for api path which does not exist
 * QA-2446	Web Console: Added first and last name validations on user profile page
 * QA-2447	Web Console: Changed filtering 'No rows' placeholder text to "No Logs Data Found" in case of no match on Logs Page
 * QA-2410	Web Console: Copy button not working for SIP URI field in Phone apps drawer on Phone apps page

@@ -2,7 +2,7 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
-## April 15, 2025
+### April 15, 2025
 
 New:
 * BE-3634	TA: Added call duration in header on transcript details page

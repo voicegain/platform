@@ -22,7 +22,7 @@ config.read('config.ini')
 JWT = config['auth']['jwt']
 
 ## specify here the directory with files to test
-input_path = "../../new-examples/data/Recordings/en-GARBAGE"
+input_path = "../../new-examples/data/Recordings/en-DATE"
 
 list_of_files = []
 
@@ -72,15 +72,17 @@ body = {
     "asr": {
       "grammars" : [
           {
-             "type": "GRXML",
-             "name" : "menu-selection",
-             "fromUrl":{
-            #     #"url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
-            #     "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/Menu0to9Voice.grxml"
-                "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/YesNoAgent.grxml"
-             }
+            #  "type": "GRXML",
+            #  "name" : "menu-selection",
+            #  "fromUrl":{
+            # #     #"url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
+            # #     "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/Menu0to9Voice.grxml"
+            # #    "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/YesNoAgent.grxml"
+            # "url" : "https://raw.githubusercontent.com/voicegain/platform/refs/heads/master/new-examples/grammar/grxml/en-es-GARB-selector.grxml"
+            #  }
 
-          #  "type" : "BUILT-IN",
+           "type" : "BUILT-IN",
+           "name" : "date"
           ## credit card recognition ##
           ##  "name" : "creditcard"
           ## digit sequence recognition ##
@@ -106,11 +108,11 @@ body = {
           }
       ],
       "maxAlternatives" : 10,
-      "noInputTimeout": 10000,
-      "incompleteTimeout" : 5000,
-      "completeTimeout": 2000,
+      "noInputTimeout": 60000,
+      "incompleteTimeout" : 1000,
+      "completeTimeout": 1000,
       "speedVsAccuracy" : 0.5,
-      "sensitivity" : 0.5,
+      "sensitivity" : 0.3,
       "confidenceThreshold" : 0.0001,
       "acousticModelRealTime" : "VoiceGain-kappa",
       "languages" : ["en"]

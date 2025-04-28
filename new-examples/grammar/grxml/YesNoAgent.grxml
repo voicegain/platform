@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="en" root="Confirm" version="1.0" mode="voice" tag-format="semantics/1.0">
+    <rule scope="public" id="Confirm">   
+        <one-of>
+            <item>
+                <tag>out='Yes'</tag>
+                <one-of>                                       
+                 	<item>Yes</item>  
+                    <item>one</item>                                               
+                </one-of>
+            </item>
+            <item>
+                <tag>out='No'</tag>
+                <one-of>
+                   <item>no</item>
+                   <item>cancel</item>
+                   <item>two</item>                   
+                </one-of>
+            </item>
+            <item>
+                <tag>out='Agent'</tag>
+                <one-of>
+                   <item>agent</item>    
+                   <item>representative</item> 
+                </one-of>
+            </item>            
+         </one-of>            
+    </rule>    
+</grammar>

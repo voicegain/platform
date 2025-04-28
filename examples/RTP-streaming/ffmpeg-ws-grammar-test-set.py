@@ -22,7 +22,7 @@ config.read('config.ini')
 JWT = config['auth']['jwt']
 
 ## specify here the directory with files to test
-input_path = "../../new-examples/data/Recordings/en-DATE"
+input_path = "../../new-examples/data/Recordings/en-Number"
 
 list_of_files = []
 
@@ -82,7 +82,7 @@ body = {
             #  }
 
            "type" : "BUILT-IN",
-           "name" : "date"
+           "name" : "number"
           ## credit card recognition ##
           ##  "name" : "creditcard"
           ## digit sequence recognition ##

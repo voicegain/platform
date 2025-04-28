@@ -15,7 +15,7 @@ inputUrl = cfg.get(configSection, "INPUTURL")
 
 print(f"inputUrl: {inputUrl}")
 
-filesToProcess = 5
+filesToProcess = 35
 
 if not os.path.exists(outputFolder):
     os.makedirs(outputFolder)
@@ -429,7 +429,7 @@ print("START", flush=True)
 with open(combined_file_path, 'w', encoding='utf-8') as combined_file:
     combined_file.write("")
 
-for i in range(1, 33+1):
+for i in range(1, 36+1):
     print("processing file {}".format(i), flush=True)
 
     retry_after = process_one_file(i)

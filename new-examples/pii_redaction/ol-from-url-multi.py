@@ -95,7 +95,7 @@ asr_body = {
         ,{
             "type": "redact",
             "parameters": {
-                "CC": "[CC]]",
+                "CC": "[CC]",
                 "CVV": "[CVV]",
                 #"ZIP": "[ZIP]",
                 #"PERSON": "[PERSON]",

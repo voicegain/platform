@@ -3,12 +3,19 @@ import csv
 from datetime import datetime
 import configparser
 
-# ...existing code...
 
 CONFIG_FILE_PATH = 'config.ini'
 
-# ...existing code...
 
+## we are exporting all the data until consecutive parameter makes it stop
+## export format is CSV
+## there may be multiple pages of data to export
+## max_exported_call_id is the starting point for the export
+## jwt_token is the authentication token for the API
+## host is the API endpoint
+## per_page is the number of records to fetch per page
+## consecutive is a boolean that indicates this is a consecutive type export - it stop on first call the is still being processed
+## from_time is the start time for the export in ISO 8601 format
 def export_data(max_exported_call_id, jwt_token, host, per_page, consecutive, from_time):
     page_num = 1
     new_max_exported_call_id = max_exported_call_id
@@ -16,7 +23,7 @@ def export_data(max_exported_call_id, jwt_token, host, per_page, consecutive, fr
     headers = {
         'Authorization': f'Bearer {jwt_token}'
     }
-    to_time = '2525-01-01T00:00:00Z'
+    to_time = '2525-01-01T00:00:00Z' ## dummy data far in the fiture to get all the data
 
     while True:
         print(f"Fetching page {page_num}...", flush=True)
@@ -40,7 +47,7 @@ def export_data(max_exported_call_id, jwt_token, host, per_page, consecutive, fr
         print(f"Number of rows returned (excluding header): {len(rows) - 1}", flush=True)  # Added print statement
         
         file_name = f'export_{timestamp}_page_{page_num}.csv'
-        with open(file_name, 'w', newline='') as file:
+        with open(file_name, 'w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerows(rows)
         
@@ -94,4 +101,4 @@ with open(CONFIG_FILE_PATH, 'w') as configfile:
     config.write(configfile)
 print(f"Updated max_exported_call_id to {new_max_exported_call_id}", flush=True)
 
-# ...existing code...
+

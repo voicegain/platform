@@ -191,11 +191,6 @@ sa_data_params = {
     'phrases': True,
 }
 
-sa_transcript_params = {
-    'format': 'text',
-    #'interval': 5 # Only applicable for text format
-}
-
 # Delete functions to clean up after the test
 def delete_sa_config(id):
     delete_sa_config = requests.delete(
@@ -218,17 +213,23 @@ def delete_audio(id):
         print(f'Info: {delete_audio.json()}')
 
 def delete_sa_session(id):
-    delete_sa_session = requests.delete(
-        url + '/sa/offline/' + id,
-        headers={'Authorization': 'Bearer ' + jwt},
-    )
-    print('SA Session Deletion...')
-    print(f'Status code: {delete_sa_session.status_code}')
-    if delete_sa_session.status_code != 200:
-        print(f'Info: {delete_sa_session.json()}')
+    while True:
+        delete_sa_session = requests.delete(
+            url + '/sa/offline/' + id,
+            headers={'Authorization': 'Bearer ' + jwt},
+        )
+        print('SA Session Deletion...')
+        print(f'Status code: {delete_sa_session.status_code}')
+        if delete_sa_session.status_code != 200:
+            print(f'Info: {delete_sa_session.json()}')
+            print('Sleeping for 10 seconds...')
+            time.sleep(10)
+        else:
+            break
+
 
 # Test function
-def test(sa_config, audio, sa_session, sa_data, sa_transcript):
+def test(sa_config, audio, sa_session, sa_data):
     # 1. Create SA config
     create_sa_config = requests.post(
         url + '/sa/config',
@@ -281,6 +282,7 @@ def test(sa_config, audio, sa_session, sa_data, sa_transcript):
     sa_session_id = create_sa_session.json()['saSessionId']
 
     # 4. Poll for SA session status until done or error
+    print('Polling for SA session status...')
     polls = 0
     while True:
         polls += 1
@@ -317,39 +319,10 @@ def test(sa_config, audio, sa_session, sa_data, sa_transcript):
         
         time.sleep(sleep_time)
 
-    if get_sa_session.json()['progress']['phase'] != 'ERROR':
-        # 5. Get SA session Data:
-        get_sa_session_data = requests.get(
-            url + '/sa/offline/' + sa_session_id + '/data',
-            headers={'Authorization': 'Bearer ' + jwt},
-            params=sa_data
-        )
-
-        print('Getting SA session data...')
-        print(f'Status code: {get_sa_session_data.status_code}')
-        if get_sa_session_data.status_code != 200:
-            print(f'Info: {get_sa_session_data.json()}')
-
-        # 6. Get transcript:
-        get_transcript = requests.get(
-            url + '/sa/offline/' + sa_session_id + '/transcript',
-            headers={'Authorization': 'Bearer ' + jwt},
-            params=sa_transcript
-        )
-
-        print('Getting transcript...')
-        print(f'Status code: {get_transcript.status_code}')
-
-        if get_transcript.status_code == 200:
-            with open('transcript.txt', 'w') as f:
-                f.write(get_transcript.json())
-        else:
-            print(f'Info: {get_transcript.json()}')
-
-    # 7. Final cleanup
+    # 5. Final cleanup
     delete_sa_session(sa_session_id)
     delete_audio(audio_id)
     delete_sa_config(sa_config_id)
     print('Test complete!')
 
-test(sa_config_body, audio_body, sa_session_body, sa_data_params, sa_transcript_params)
+test(sa_config_body, audio_body, sa_session_body, sa_data_params)

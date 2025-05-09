@@ -1,0 +1,186 @@
+from configparser import ConfigParser
+import requests
+import base64
+import time
+
+config = ConfigParser()
+config.read(r'C:\Users\FilipJarmulak\API_testing\MISC-68\platform\speech-analytics\examples-offline\config.ini')
+
+conf = config['DEFAULT']['CONFIG']
+jwt = config[conf]['JWT']
+url = config[conf]['PROTOCOL'] + '://' + config[conf]['HOSTPORT'] + '/' + config[conf]['URLSUFFIX']
+audio = config['DEFAULT']['INPUTFILE']
+max_polls = int(config['DEFAULT']['MAX_POLLS'])
+sleep_time = int(config['DEFAULT']['SLEEP_TIME'])
+with open(audio, 'rb') as f:
+    audio64 = base64.b64encode(f.read()).decode('utf-8')
+
+
+audio_body = {
+    'name': 'testing_audio',
+    'contentType': 'audio/wav',
+    'encryption': 'none',
+    'tags': ['testing', 'audio'],
+    'audio': {
+        'source': {
+            'inline': {
+                'data': audio64,
+            },
+        },
+        'format': 'PCMA',
+        'rate': 8000,
+    },
+}
+audio_id = None
+
+
+sa_session_body = {
+    'label': 'test_sa_session',
+    #'saConfig': sa_config_id, # If none given, default config will be used
+    'settings': {
+        'asr': {
+            'languages': ['en-us'],
+            'sensitivity': 0.5,
+            'speedVsAccuracy': 0.5,
+        },
+    },
+    'tags': ['testing'],
+    'audio': [{
+        'source': {
+            'dataObjectUuid': audio_id,
+        },
+    }],
+}
+sa_session_id = None
+
+# Modify this to get the data you want. True means the data is returned, False means it is not.
+sa_data_params = {
+    'words': True,
+    'audio': True,
+    'meta': True,
+    'wordcloud': True,
+    'summary': True,
+    'keywords': True,
+    'entities': True,
+    'phrases': True,
+}
+
+# Delete functions to clean up after the test
+def delete_audio(id):
+    delete_audio = requests.delete(
+        url + '/data/' + id,
+        headers={'Authorization': 'Bearer ' + jwt},
+    )
+    print('File Deletion...')
+    print(f'Status code: {delete_audio.status_code}')
+    if delete_audio.status_code != 200:
+        print(f'Info: {delete_audio.json()}')
+
+def delete_sa_session(id):
+    while True:
+        delete_sa_session = requests.delete(
+            url + '/sa/offline/' + id,
+            headers={'Authorization': 'Bearer ' + jwt},
+        )
+        print('SA Session Deletion...')
+        print(f'Status code: {delete_sa_session.status_code}')
+        if delete_sa_session.status_code != 200:
+            print(f'Info: {delete_sa_session.json()}')
+            print('Sleeping for 10 seconds...')
+            time.sleep(10)
+        else:
+            break
+
+
+# Test function
+def test(audio, sa_session, sa_data):
+    # 1. Upload audio to datastore
+    upload_audio = requests.post(
+        url + '/data/audio',
+        headers={'Authorization': 'Bearer ' + jwt},
+        json=audio,
+    )
+
+    print('File Upload...')
+    print(f'Status code: {upload_audio.status_code}')
+
+    if upload_audio.status_code != 200:
+        print(f'Info: {upload_audio.json()}')
+        exit()
+        
+    audio_id = upload_audio.json()['objectId']
+
+    # 2. Create SA session
+    create_sa_session = requests.post(
+        url + '/sa/offline',
+        headers={'Authorization': 'Bearer ' + jwt},
+        json=sa_session,
+    )
+
+    print('SA Session Creation...')
+    print(f'Status code: {create_sa_session.status_code}')
+
+    if create_sa_session.status_code != 200:
+        print(f'Info: {create_sa_session.json()}')
+        delete_audio(audio_id)
+        exit()
+
+    sa_session_id = create_sa_session.json()['saSessionId']
+
+    # 3. Poll for SA session status until done or error
+    print('Polling for SA session status...')
+    polls = 0
+    while True:
+        polls += 1
+        get_sa_session = requests.get(
+            url + '/sa/offline/' + sa_session_id,
+            headers={'Authorization': 'Bearer ' + jwt},
+        )
+
+        if get_sa_session.status_code == 200:
+            if get_sa_session.json()['progress']['phase'] == 'DONE':
+                print('SA Session Done!')
+                print(f'Status code: {get_sa_session.status_code}')
+                #print(f'Info: {get_sa_session.json()}')
+                break
+            elif get_sa_session.json()['progress']['phase'] == 'ERROR':
+                print('Error while processing SA session:')
+                print(f'Status code: {get_sa_session.status_code}')
+                print(f'Info: {get_sa_session.json()}')
+                break
+            else:
+                print('SA Session still processing...')
+                print(f'Status code: {get_sa_session.status_code}')
+                #print(f'Info: {get_sa_session.json()}')
+                print('Sleeping for 10 seconds...')
+        else:
+            print('Error getting SA session:')
+            print(f'Status code: {get_sa_session.status_code}')
+            print(f'Info: {get_sa_session.json()}')
+            break
+
+        if polls >= max_polls:
+            print('Max number of polls reached. Deleting SA session...')
+            break
+        
+        time.sleep(sleep_time)
+
+    if get_sa_session.json()['progress']['phase'] != 'ERROR':
+        # 4. Get SA session Data:
+        get_sa_session_data = requests.get(
+            url + '/sa/offline/' + sa_session_id + '/data',
+            headers={'Authorization': 'Bearer ' + jwt},
+            params=sa_data
+        )
+
+        print('Getting SA session data...')
+        print(f'Status code: {get_sa_session_data.status_code}')
+        if get_sa_session_data.status_code != 200:
+            print(f'Info: {get_sa_session_data.json()}')
+
+    # 5. Final cleanup
+    delete_sa_session(sa_session_id)
+    delete_audio(audio_id)
+    print('Test complete!')
+
+test(audio_body, sa_session_body, sa_data_params)

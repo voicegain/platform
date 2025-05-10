@@ -2,3 +2,4 @@ config.ini
 *.cvs
 reports/*.csv
 reports/config.ini
+cleanup.py

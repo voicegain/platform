@@ -3,7 +3,8 @@ import requests
 import base64
 import time
 import os
-
+import json
+import re
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 config = ConfigParser()
@@ -12,27 +13,23 @@ config.read(os.path.join(dir_path, 'config.ini'))
 conf = config['DEFAULT']['CONFIG']
 jwt = config[conf]['JWT']
 url = config[conf]['PROTOCOL'] + '://' + config[conf]['HOSTPORT'] + '/' + config[conf]['URLSUFFIX']
+file_name = re.sub("[^A-Za-z0-9]+", "-", config['DEFAULT']['INPUTFILE'])
 audio = os.path.join(dir_path, config['DEFAULT']['INPUTFILE'])
 max_polls = int(config['DEFAULT']['MAX_POLLS'])
 sleep_time = int(config['DEFAULT']['SLEEP_TIME'])
-with open(audio, 'rb') as f:
-    audio64 = base64.b64encode(f.read()).decode('utf-8')
 
 
 audio_body = {
-    'name': 'testing_audio',
-    'contentType': 'audio/wav',
-    'encryption': 'none',
-    'tags': ['testing', 'audio'],
-    'audio': {
-        'source': {
-            'inline': {
-                'data': audio64,
-            },
-        },
-        'format': 'PCMA',
-        'rate': 8000,
-    },
+    'file': (file_name, open(audio, 'rb').read(), 'audio/wav'),
+    'objectdata': (
+        None,
+        json.dumps({
+            'name': file_name,
+            'description' : file_name,
+            'contentType' : 'audio/wav',
+        }),
+        'application/json'
+    ),
 }
 audio_id = None
 
@@ -94,9 +91,9 @@ def delete_sa_session(id):
 def test(audio, sa_session, sa_query):
     # 1. Upload audio to datastore
     upload_audio = requests.post(
-        url + '/data/audio',
+        url + '/data/file',
         headers={'Authorization': 'Bearer ' + jwt},
-        json=audio,
+        files=audio,
     )
 
     print('File Upload...')

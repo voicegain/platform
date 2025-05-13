@@ -1,6 +1,5 @@
 from configparser import ConfigParser
 import requests
-import base64
 import time
 import os
 import json
@@ -64,7 +63,7 @@ sa_query_params = {
 def delete_audio(id):
     delete_audio = requests.delete(
         url + '/data/' + id,
-        headers={'Authorization': 'Bearer ' + jwt},
+        headers={'Authorization': jwt},
     )
     print('File Deletion...')
     print(f'Status code: {delete_audio.status_code}')
@@ -75,7 +74,7 @@ def delete_sa_session(id):
     while True:
         delete_sa_session = requests.delete(
             url + '/sa/offline/' + id,
-            headers={'Authorization': 'Bearer ' + jwt},
+            headers={'Authorization': jwt},
         )
         print('SA Session Deletion...')
         print(f'Status code: {delete_sa_session.status_code}')
@@ -92,15 +91,15 @@ def test(audio, sa_session, sa_query):
     # 1. Upload audio to datastore
     upload_audio = requests.post(
         url + '/data/file',
-        headers={'Authorization': 'Bearer ' + jwt},
+        headers={'Authorization': jwt},
         files=audio,
     )
 
     print('File Upload...')
     print(f'Status code: {upload_audio.status_code}')
+    print(f'Info: {upload_audio.json()}')
 
     if upload_audio.status_code != 200:
-        print(f'Info: {upload_audio.json()}')
         exit()
         
     audio_id = upload_audio.json()['objectId']
@@ -108,7 +107,7 @@ def test(audio, sa_session, sa_query):
     # 2. Create SA session
     create_sa_session = requests.post(
         url + '/sa/offline',
-        headers={'Authorization': 'Bearer ' + jwt},
+        headers={'Authorization': jwt},
         json=sa_session,
     )
 
@@ -125,7 +124,7 @@ def test(audio, sa_session, sa_query):
     # 3. Query SA sessions
     query_sa_sessions = requests.get(
         url + '/sa/offline',
-        headers={'Authorization': 'Bearer ' + jwt},
+        headers={'Authorization': jwt},
         params=sa_query
     )
 

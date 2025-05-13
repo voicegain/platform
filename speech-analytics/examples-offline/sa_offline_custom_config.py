@@ -1,6 +1,5 @@
 from configparser import ConfigParser
 import requests
-import base64
 import time
 import os
 import json
@@ -195,7 +194,7 @@ sa_data_params = {
 def delete_sa_config(id):
     delete_sa_config = requests.delete(
         url + '/sa/config/' + id,
-        headers={'Authorization': 'Bearer ' + jwt},
+        headers={'Authorization': jwt},
     )
     print('SA Config Deletion...')
     print(f'Status code: {delete_sa_config.status_code}')
@@ -205,7 +204,7 @@ def delete_sa_config(id):
 def delete_audio(id):
     delete_audio = requests.delete(
         url + '/data/' + id,
-        headers={'Authorization': 'Bearer ' + jwt},
+        headers={'Authorization': jwt},
     )
     print('File Deletion...')
     print(f'Status code: {delete_audio.status_code}')
@@ -216,7 +215,7 @@ def delete_sa_session(id):
     while True:
         delete_sa_session = requests.delete(
             url + '/sa/offline/' + id,
-            headers={'Authorization': 'Bearer ' + jwt},
+            headers={'Authorization': jwt},
         )
         print('SA Session Deletion...')
         print(f'Status code: {delete_sa_session.status_code}')
@@ -233,15 +232,15 @@ def test(sa_config, audio, sa_session, sa_data):
     # 1. Create SA config
     create_sa_config = requests.post(
         url + '/sa/config',
-        headers={'Authorization': 'Bearer ' + jwt},
+        headers={'Authorization': jwt},
         json=sa_config,
     )
 
     print('SA Config Creation...')
     print(f'Status code: {create_sa_config.status_code}')
+    print(f'Info: {create_sa_config.json()}')
 
     if create_sa_config.status_code != 200:
-        print(f'Info: {create_sa_config.json()}')
         exit()
 
     sa_config_id = create_sa_config.json()['saConfId']
@@ -249,7 +248,7 @@ def test(sa_config, audio, sa_session, sa_data):
     # 2. Upload audio to datastore
     upload_audio = requests.post(
         url + '/data/file',
-        headers={'Authorization': 'Bearer ' + jwt},
+        headers={'Authorization': jwt},
         files=audio,
     )
 
@@ -266,7 +265,7 @@ def test(sa_config, audio, sa_session, sa_data):
     # 3. Create SA session
     create_sa_session = requests.post(
         url + '/sa/offline',
-        headers={'Authorization': 'Bearer ' + jwt},
+        headers={'Authorization': jwt},
         json=sa_session,
     )
 
@@ -288,7 +287,7 @@ def test(sa_config, audio, sa_session, sa_data):
         polls += 1
         get_sa_session = requests.get(
             url + '/sa/offline/' + sa_session_id,
-            headers={'Authorization': 'Bearer ' + jwt},
+            headers={'Authorization': jwt},
         )
 
         if get_sa_session.status_code == 200:
@@ -315,7 +314,10 @@ def test(sa_config, audio, sa_session, sa_data):
 
         if polls >= max_polls:
             print('Max number of polls reached. Deleting SA session...')
-            break
+            delete_sa_session(sa_session_id)
+            delete_audio(audio_id)
+            delete_sa_config(sa_config_id)
+            exit()
         
         time.sleep(sleep_time)
 

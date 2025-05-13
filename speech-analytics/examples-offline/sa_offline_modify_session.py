@@ -4,7 +4,6 @@ import time
 import os
 import json
 import re
-
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 config = ConfigParser()
@@ -17,18 +16,21 @@ file_name = re.sub("[^A-Za-z0-9]+", "-", config['DEFAULT']['INPUTFILE'])
 audio = os.path.join(dir_path, config['DEFAULT']['INPUTFILE'])
 max_polls = int(config['DEFAULT']['MAX_POLLS'])
 sleep_time = int(config['DEFAULT']['SLEEP_TIME'])
-with open(audio, 'rb') as audio_file:
-    audio_content = audio_file.read()
 
 
 audio_body = {
-    'file': (file_name, audio_content, 'audio/wav'),
+    'file': (
+        file_name,
+        open(audio, 'rb').read(),
+        'audio/wav'
+    ),
     'objectdata': (
         None,
         json.dumps({
             'name': file_name,
             'description' : file_name,
             'contentType' : 'audio/wav',
+            'tags': ['test'],
         }),
         'application/json'
     ),
@@ -55,16 +57,11 @@ sa_session_body = {
 }
 sa_session_id = None
 
-# Modify this to get the data you want. True means the data is returned, False means it is not.
-sa_data_params = {
-    'words': True,
-    'audio': True,
-    'meta': True,
-    'wordcloud': True,
-    'summary': True,
-    'keywords': True,
-    'entities': True,
-    'phrases': True,
+
+sa_modify_body = {
+    'label': 'test_sa_session_modified',
+    'persistSeconds': 400000,
+    #'context': context_id
 }
 
 # Delete functions to clean up after the test
@@ -93,8 +90,9 @@ def delete_sa_session(id):
         else:
             break
 
+
 # Test function
-def test(audio, sa_session, sa_data):
+def test(audio, sa_session, sa_modify_session):
     # 1. Upload audio to datastore
     upload_audio = requests.post(
         url + '/data/file',
@@ -139,16 +137,19 @@ def test(audio, sa_session, sa_data):
         )
 
         if get_sa_session.status_code == 200:
-            print(get_sa_session.json())
             if get_sa_session.json()['progress']['phase'] == 'DONE':
                 print('SA Session Done!')
                 print(f'Status code: {get_sa_session.status_code}')
+                sa_session_persist = get_sa_session.json()['persist']
+                sa_session_label = get_sa_session.json()['label']
                 #print(f'Info: {get_sa_session.json()}')
                 break
             elif get_sa_session.json()['progress']['phase'] == 'ERROR':
                 print('Error while processing SA session:')
                 print(f'Status code: {get_sa_session.status_code}')
                 print(f'Info: {get_sa_session.json()}')
+                sa_session_persist = get_sa_session.json()['persist']
+                sa_session_label = get_sa_session.json()['label']
                 break
             else:
                 print('SA Session still processing...')
@@ -169,20 +170,50 @@ def test(audio, sa_session, sa_data):
         
         time.sleep(sleep_time)
 
-    # 4. Get SA session Data:
-    get_sa_session_data = requests.get(
-        url + '/sa/offline/' + sa_session_id + '/data',
+    # 4. modify session
+    modify_sa_session = requests.put(
+        url + '/sa/offline/' + sa_session_id,
         headers={'Authorization': jwt},
-        params=sa_data
+        json=sa_modify_session,
     )
 
-    print('Getting SA session data...')
-    print(f'Status code: {get_sa_session_data.status_code}')
-    print(f'Info: {get_sa_session_data.json()}')
+    print('SA Session Modification...')
+    print(f'Status code: {modify_sa_session.status_code}')
 
-    # 5. Final cleanup
+    if modify_sa_session.status_code != 200:
+        print(f'Info: {modify_sa_session.json()}')
+        delete_sa_session(sa_session_id)
+        delete_audio(audio_id)
+        exit()
+
+    # 5. Poll again and check if modification was successful
+    get_sa_session = requests.get(
+        url + '/sa/offline/' + sa_session_id,
+        headers={'Authorization': jwt},
+    )
+
+    print('Checking if modification was successful...')
+    print(f'Status code: {get_sa_session.status_code}')
+
+    if get_sa_session.status_code != 200:
+        print(f'Info: {modify_sa_session.json()}')
+        delete_sa_session(sa_session_id)
+        delete_audio(audio_id)
+        exit()
+    
+    if get_sa_session.json()['persist'] != sa_session_persist or get_sa_session.json()['label'] != sa_session_label:
+        print('Modification was successful!')
+    else:
+        print('Modification was not successful!')
+
+    print(f'New persist: {get_sa_session.json()["persist"]}')
+    print(f'Old persist: {sa_session_persist}')
+    print(f'New label: {get_sa_session.json()["label"]}')
+    print(f'Old label: {sa_session_label}')
+
+    # 6. Final cleanup
     delete_sa_session(sa_session_id)
     delete_audio(audio_id)
     print('Test complete!')
 
-test(audio_body, sa_session_body, sa_data_params)
+test(audio_body, sa_session_body, sa_modify_body)

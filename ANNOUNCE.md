@@ -1,6 +1,73 @@
 ### Minor release 1.119.0 is scheduled for 5/10/2025 between 11:00pm and 12:00am US Central Time
 
-TBD ...
+New or changed functionality in the Transcribe App:
+* BE-3538	TA Edge: added a Test Chat on the LLM Settings page
+* BE-3741	TA: Added a setting on the Profile Settings page to hide video on the Transcript Details page
+* BE-3757	TA: Added an info message on the LLM Settings page to indicate that changes may take a few minutes to take effect
+* BE-3702	TA: Added context size text box to each LLM service settings
+* BE-3767	TA: Added support to disable copying and remove all clipboard icons in the Transcript Detail view based on app's disableCopy settings
+* BE-3737	TA: Added X-VG-Audit header for asr meeting APIs
+* QA-2493	TA: Removed the 'Others' tab from the project selection menu in the basic plan, as there are no shared projects
+* BE-3707	TA: Removed the unnecessary Key column from the API Token page
+* QA-2089	SA/TA: Added deletion animation for regex settings and repositioned the Save button on the Redaction Settings page
+* QA-2520	SA/TA: Added validation error message for phrase name field in the add keyword modal
+
+New or changed functionality in other platform components:
+* BE-3643	Added expiryDate to /sa/call
+* BE-3408	Added POST /sa/call/context/{contextId}/recompute
+* BE-3644	Compute call duration histogram data in GET /sa/call-stats-overall API
+* MST-338	Concatenate stereo audio to improve whisper, and fix the boundary words issue
+* BE-3784	Demo Voicebot: Enhanced error handling screen for transcript errors and added a "Try Again" button on the transcript details page
+* QA-2479	Demo: Made the entire upload box clickable for uploading a file on the main demo page
+* BE-3618	Implemented PUT /aivr/{ivrSid}/command API method
+* MST-563	Improve English NER model on lower case and digits
+* MST-585	Improved diarization model
+* BE-3565	In dialplan that launches aivr lua pass new argument called: mod_vg_tap with possible values: rex or vaca
+* MST-551	Integrate OpenAI realtime audio API in llm-svc
+* BE-3570	Modify aivr.lua to invoke mod_vg_tap without the ivrSid parameter if connecting to VACA socket instead of Rex socket
+* BE-3351	On-Prem License Server
+* BE-3730	SA: Added LLM-generated QA form answers
+* BE-3521	SA: Added new 'Voicebot Data' card on the Calls dashboard, replacing the "Date and Time" card for valid calls
+* BE-3736	SA: Added optimizeForWebUi:level2 parameter to POST offline requests
+* QA-2552	SA: Added validation to prevent creating duplicate keywords on the configuration page
+* QA-2546	SA: Added validation to prevent creating phrase names with only empty spaces in the Keywords modal
+* BE-3771	SA: Improved the call counts weekly comparison graph on the Call Stats dashboard to highlight current week data more clearly
+* QA-2467	SA: Increased the visibility of the search box on the Agents page
+* QA-2540	SA: Prevented hiding all columns in the Agents table via the column filter
+* QA-2458	SA: Removed duplicate table filter from the Users table on the Users page
+* BE-3646	SA: Removed the review button if the review answer form is not available
+* BE-3782	SA: Removed the SA config name field and made the LLM prompt field multi-line on the configuration page
+* BE-3706	SA: Removed the unnecessary Key column from the API security page
+* BE-3663	SA: Replaced the boxplot with a histogram plot in the call duration statistics chart on the Call Stats dashboard page
+* QA-2523	SA: Updated the placeholder text in the Phrase Groups modal from "No rows" to "No phrases added"
+* MST-531	Support QA form automatically in ml-svc
+* MST-543	Use context to improve the accuracy of NER
+* BE-3724	Voicebot Demo: Implemented the new design which includes full automation for the Healthcare page in both English and Spanish versions
+* QA-2476	Web Console: Added cancel icons to the language selection dropdown's closed state on the Web ASR Settings page for better UX
+* BE-3460	Web Console: Added confirmation dialog for changes and enabled in-place editing in the Configure AIVR App modal for better UX
+* BE-3622	Web Console: Added OpenAI Realtime API support to configure new AIVR App
+* QA-2432	Web Console: Added profile avatar in the header's profile menu
+* QA-2542	Web Console: Added validation for the app name in the Configure AIVR App modal
+* BE-3786	Web Console: Improved email validation in the signup form to support addresses like jackson@replay.sale
+* QA-2561	Web Console: Improved UX on the ASR Settings page by hiding Real-Time Acoustic Model fields for unsupported languages and adding info messages
+* BE-3658	Web Console: Redesigned the logic creation/edit flow in the Configure AIVR App modal and added support for default logic with enhanced validation
+
+Changes related to Integrity of Processing (fixes):
+* BE-2083	Fix for negative duration of words
+* BE-3645	Fixed - Mod Review Config has no way of deleting sections
+* QA-2551	SA: Fix - Added validations to prevent creating keywords with only empty spaces
+* QA-2481	SA: Fix - Call Time Breakdown chart on the Call Details page not showing data correctly
+* BE-3685	SA: Fix - Data selectors not working correctly in the Yearly Call Trends chart on the Call Stats dashboard
+* QA-2518	SA: Fix - Removed duplicate success toasts when copying the configuration ID on the Configuration page
+* QA-2470	TA: Fix - Amount '0' missing for the first time user on the billing page
+* QA-2532	TA: Fix - API Security page was inaccessible from Project Settings for some projects.
+* QA-2062	TA: Fix - In downloaded PDF - some speaker name is "null"
+* BE-3780	TA: Fix - Meeting URL box became unresponsive on the Meeting Bot page for long URLs.
+* QA-1987	TA: Fix - PDF download showing Something Went Wrong
+* QA-2587	Web Console: Fix - Updated the user profile menu from a hyperlink to a dropdown menu item
+* BE-3727	Web Console: Removed the extra Cancel button from the phone number purchase success modal
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release
 
 ### Minor release 1.118.0 is scheduled for 4/15/2025 between 11:00pm and 12:00am US Central Time
 
@@ -1535,341 +1602,4 @@ Changes related to Integrity of Processing (fixes):
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
-
-### Minor release 1.104.0 is scheduled for 5/29/2024 between 7:30am and 9:00am CDT
-
-**Key changes related to the core APIs**
-* Add diarization to Whisper model in offline task
-* Autoscale real-time REX on GCP
-* Automatically detect agent channel in offline SA API
-* Improved Kappa (real-time) model trained on additional call-center data (health insurance domain)
-* Switch Analytics App from /sa API to /sa/offline APIs
-* Extend the use of allowSignupsFromDomain to allowed user invites
-
-**Key changes related to Transcribe APP**
-* Add Korean Language option for Edge
-* Enhanced LLM Playground to support temperature setting and markdown rendering
-* Added "Automatic" setting for number of speakers in diarization
-* In Advanced Search added Relative Time filter
-* Add pages with list of login sessions (for user and for all account)
-
-New or changed functionality in the Transcribe App:
-* BE-2133	TA: Add "Go to Home" button on "Something Went Wrong" page
-* BE-2202	TA: Add a 3 second timeout on the request to ipfy
-* BE-2134	TA: Add Korean Language option for Edge
-* BE-2078	TA: Add page with list of all logged-in sessions on the account
-* BE-2182	TA: Add support for m4a files in file upload
-* BE-2155	TA: Add temperature to LLM Settings
-* QA-680	TA: Better reporting of Recompute in progress on Advanced Search page
-* BE-2125	TA: LLM playground able to render markdown format in LLM responses
-* BE-2190	TA: Modify message template used LLM Playground to work with Mixtral
-* BE-2141	TA: Modify the number of speakers selector for diarization on Upload
-* BE-2184	TA: Remove diarization from Live Microphone recording preview
-* BE-2118	TA: Remove previous error message from the login screen as soon as the user clicks the login button
-* QA-848	TA: Show all login sessions of the current user
-* BE-2136	TA: Show PC Name when hovering over Installed-Connected
-* BE-2164	TA: Support Relative Time search filter on Start Time in Advanced Search
-* BE-1885	TA: Use Mixtral for Summarization on Edge
-
-New or changed functionality in other platform components:
-* BE-2142	Add ability to save Meeting Search queries
-* BE-1698	Add diarization to Whisper model in offline task
-* BE-2062	Add percolatorThreshold to the output response in AIVR callback
-* BE-2139	Add regex syntax and group references to the url prefix matching in grammar fetcher
-* BE-2137	Add RelTimeTerm query term to Advanced Meeting Search API
-* BE-2138	Add RelTimeTerm query term to Call Search API
-* BE-2144	Add temperature parameter to llmSettings in the /cluster API
-* BE-2092	Admin Tool: Show login error messages to user
-* BE-1601	API to email link to the results of Voicebot Demo session - make the link url configurable
-* BE-2127	Autoscale real-time REX on GCP
-* BE-2120	Demo Voicebot: Show the page with trancript/audio/sidepanel immediately after the end of the call
-* BE-2158	Demo Voicebot: Support Spanish version of Casey demo
-* BE-2187	Demo: Use the new urlLink parameter in the API used to send the link
-* BE-2089	Detect agent channel in offline SA API
-* BE-2175	Extend the use of allowSignupsFromDomain to user invites
-* BE-2135	Improve /llm/chat API to handle transcript longer than the token limit
-* BE-1792	Improved Kappa (real-time) model trained on additional call-center data (health insurance domain)
-* BE-2041	Limit maximum number of nonces that can be active for a login session at any time
-* BE-1678	Migrate Java Applications from Java 11 to Java 17
-* BE-2172	Modify the GET method for the Business Config API which takes Auth Token
-* BE-2108	Monitor and restart asr container if it loses GPU
-* BE-2126	Retire old billing-utility
-* BE-2117	Return a specific http error response if we get ResourceLimitExceededException when creating new Voice Connector.
-* BE-2149	SA: Add filter on User Role
-* BE-2129	SA: Add JWT token generation to SA
-* BE-2157	SA: Add option to Delete a user
-* BE-2156	SA: Add option to Edit the User
-* BE-2057	SA: Invoke correct new APIs when uploading single file on SA App
-* BE-1712	SA: New Advanced Search Page
-* BE-1794	Switch Analytics App from /sa API to /sa/offline APIs
-* BE-1997	Tie collecting storage information to activity on account
-* BE-2109	Upgrade openai package to version 1.*
-* QA-1165	Web Console: Add a filter for the 2FA enabled on the user management page.
-* QA-1188	Web Console: Add Calendar to date selection in Business Config
-* BE-2080	Web Console: Add sorting on columns showing available Edge configurations
-* BE-2121	Web Console: Edge deployment filter - bring the search box in focus as soon as I open the filter
-* BE-2075	Web Console: Show telcoData.fsUUID on the AIVR session details page
-* BE-2176	Web Console: Show value of allowSignupsFromDomain in account profile
-
-Changes related to Integrity of Processing (fixes):
-* BE-98	Fix - Bug in telco service with Apps that are sip-only and we try add a phone number
-* BE-2170	Fix - Float overflow issue in rex RNNT search
-* BE-2166	Fix - Incorrect column count: expected 1, actual 38 in getCallCount in /sa/call API
-* BE-1971	Fix - NoSuchFieldError: LUCENE_7_7_3
-* BE-2167	Fix - Speakers merged into streaks of other speaker utterances in /sa/offline API
-* QA-1133	SA: Fix - Weird behavior on the configurations page.
-* QA-1200	TA Edge: Fix - Invitation email is not coming to the provided email address.
-* QA-1236	TA: Fix - After editing any expired shared transcript to Never Expire, the save button is not working.
-* QA-1223	TA: Fix - Back button is not working on Walkthrough Wizard
-* QA-1153	TA: Fix - Blank page is showing for the login for one account.
-* QA-1211	TA: Fix - Hover msg over Never share Expiry status is wrong.
-* BE-1989	TA: Fix - Inconsistent Project membership as shown in the UI
-* QA-1076	TA: Fix - Personal projects are not showing in the destination projects while moving any transcript.
-* QA-1122	TA: Fix - Resend invites to bad email address throwing the something went wrong issue.
-* BE-2146	TA: Fix - Right-click not working on Edge
-* QA-1227	TA: Fix - Showing the American flag for all project language projects.
-* QA-1197	TA: Fix - Specific No. of Speakers field is accepting blank inputs.
-* BE-1987	TA: Fix - Stuck on Import/Upload page after Submit
-* QA-1231	TA: Fix - There is no limit given for the Time range in advanced search.
-* QA-1209	TA: Fix - Walkthrough wizards not working properly on 90% page zoom.
-* QA-586	TA: Fix - When a user clicks on “edit” of a Share it automatically increases its “Expires in” time by a day.
-* QA-1174	Web Console: Fix - On Experiment Browser section- ‘Apply filter' button is not working, user getting ‘e.preventDefault’ is not a function.
-* QA-1191	Web Console: Fix - Only one success message should be displayed when adding a 'Business Configuration'.
-* QA-1186	Web Console: Fix - Past date entry should not allowed in adding Business Config records.
-* BE-2148	Web Console: Fix - Unable to save the URL of the outbound AIVR logic
-* QA-1176	Web Console: Fix - User getting blank page, either clicked on True text or ascending- descending filter or when searching something.
-* QA-1177	Web Console: Fix - When a user click on copy icon under A of Utterance, he does not get any copied data but getting Type Error
-* QA-1179	Web Console: Fix - When users try to delete ID’s under Interpretation column by clicking on delete icon, it’ s not getting deleted.
-* QA-1175	Web Console: Fix - When users try to edit any ID under True column, since at the time of editing Reset and Save button is disable but still it is clickable.
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Maintenance release 1.103.1 is scheduled for 5/16/2024 between 4pm and 5pm CDT
-
-New or changed functionality in the Transcribe App:
-* BE-2143: (TA) Show Recompute option also if status Error under certain conditions
-
-Changes related to Integrity of Processing (fixes):
-* BE-2163: Fix - Incorrect nginx routing for auth-svc from admin app
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Minor release 1.103.0 is scheduled for 5/7/2024 between 9:30pm and 11:30pm CDT
-
-**Key changes related to the core APIs**
-* Support for url rewrite and HTTP proxy for grammar fetching for /asr/recognize API and for MRCP ASR.
-* Switch Speech Analytics App from old /sa api to new /sa/offline API
-* New APIs to manage user login sessions
-* New API to define business specific settings for a Voicebot
-
-**Key changes related to Transcribe APP**
-* LLM Playground for Edge Deployments - ask a LLM any questions about the transcript.
-* Fix for negative duration of words which was impacting recomputing data from transcripts.
-
-New or changed functionality in the Transcribe App:
-* BE-2068	TA: Add LLM Playground page to Transcribe App (on Edge only)
-* QA-1054	TA: Add validator for keyword group names
-* BE-2060	TA: Option to set share within account to not expire
-
-New or changed functionality in other platform components:
-* BE-2101	/sa/offline API - generate talk and overtalk data for each speaker
-* BE-2076	Add AIVR API method to reserve rex for already started outbound aivr session
-* BE-1953	Add AIVR Business Config API with opening-hours information and other info
-* BE-2036	Add aivrAppId to the initial callback for the AIVR session (also the websocket version)
-* QA-1071	Add API to logout user from some/all login sessions
-* QA-1070	Add API to show User's all login sessions
-* BE-2061	Add audioOffset option to audio in /sa/offline
-* BE-1878	Add localization in llm-svc
-* BE-2044	Add parent AIVR session to POST /aivr/dial/{destination}
-* BE-1917	Add to Account a read-only field to store customization settings for SA App
-* BE-1974	Add to Account API saAppHiddenFeatures
-* BE-2020	Add version field to /sa/call
-* BE-2033	Associate Business Config with AIVR App
-* BE-1850	Casey Demo Voicebot in Spanish
-* BE-2058	Configure demoPhoneNumber for demo app on dev qa and prod environments
-* BE-2011	Convert auth-svc from tomcat+war to SpringBoot
-* BE-1985	Enhancements to grammar fetcher (http proxy, url rewrite)
-* BE-1972	Hide/Show features of the Speech Analytics App based on the settings on the account
-* BE-1909	Hook up Speech Analytics App to Sentry
-* BE-1954	Implement API to query existing login sessions
-* BE-2035	Implement GET /aivr-app/{aivrAppId}/business
-* BE-1992	Implement GET and DELETE /auth/login/{sessionId}
-* BE-1497	Implement getContextStats method on SearchableMeetingDao that returns statistics for contexts
-* BE-2074	Implement POST /llm/chat API
-* BE-1598	Implement proper queue priority for transcription
-* BE-2003	Implement safe shutdown for freeswitch/fssk pod
-* BE-2031	Improve nonce handling in Customer Management Portal (Admin Tool)
-* BE-2030	Improve nonce handling in Customer Portal
-* BE-2032	Improve nonce handling in Speech Analytics App
-* BE-2116	In Share APIs -- make expires value of 0 mean that the share never expires
-* BE-2052	Modify REX to stop storing usages in Redis
-* BE-2051	Move sentryEnvironment to global setting in onprem-cluster-deployment task
-* BE-1073	New API: POST /asr/meeting/{meetingId}/rerun
-* BE-1520	Stop storing usages in Redis after billing-utility is no longer needed on production
-* BE-1981	Support cluster specific service account key in onprem-cluster-deployment task
-* BE-1794	Switch Analytics App from /sa API to /sa/offline APIs
-* BE-1966	Update k8sNodes in firestore automatically when changing cluster setup
-* BE-2069	Web Console: add "outbound" option to pull-down for logic
-* BE-1994	Web Console: Add audio download button to AIVR call audio page
-* BE-2038	Web Console: Add page to configure Business settings for use in AIVR
-* BE-2006	Web Console: include ;transport=tcp in the sip URI shown in Telephony Bot App
-* BE-2002	Web Console: Place cursor and focus on the highlighted textbox right after the context dialog is shown
-* BE-1492	Web Console: Show Edge configuration in the table that shows all Edge deployments
-* BE-1951	Web Console: Telephony Bot mode in Call Session table - make it remember previous state when returning from the detailed session view
-
-Changes related to Integrity of Processing (fixes):
-* QA-1111	TA: Fix - "ID to Clipboard" option is missing in Advanced Search.
-* QA-1125	TA: Fix - After deleting any transcript, success message not showing.
-* BE-2022	TA: Fix - bad http request URLs in Edge deployments 
-* QA-1140	TA: Fix - Project numbers going blank after filtering role in Users under Account.
-* QA-1081	TA: Fix - Proper translation should be there for mouse hovering on error.
-* BE-2021	TA: Fix - running out of nonces in some scenarios
-* BE-2027	TA: Fix - Sentry errors when sending to Glitchtip
-* QA-1184	TA: Fix - Shared transcript page getting refresh continuously(Public share)
-* QA-1141	TA: Fix - Sorting in Users under Account section is not working properly.
-* QA-1143	TA: Fix - The duration filter is not working as intended, having issues setting it up manually, and also not showing the transcripts.
-* QA-1167	TA: Fix - The owner is unable to log in to below mentioned IP addresses and the "Failed to fetch" error is being received.
-* QA-786	TA: Fix - Transcripts with no duration are not available in advanced search.
-* QA-1117	TA: Fix - Unable to edit "Users" when creating a new project.
-* QA-685	TA: Fix - Updated User name is not showing on the admin Speaker screen
-* QA-1116	TA: Fix - Walkthrough wizard not working properly, back button not working when user tries to go back from the transcripts.
-* BE-2013	TA: Fix - When inviting the user to the account, if we provide an invalid email it throws a 500 error and goes to the "Something went wrong" page
-* QA-1114	TA: Fix back button from transcript opened from Advanced Search results
-* BE-2084	Web Console: Fix - Audio is fresh-uploaded GREG experiment not playing
-* BE-2119	Web Console: Fix - certain Edge Configurations showing blank page instead
-* QA-1142	Web Console: Fix - Context dash filter by status is not working properly.
-* BE-1955	Web Console: Fix - In user Profile show permissions and not the Role
-* BE-2007	Web Console: Fix - Narrow window does not render transcript text in telephony call detail view
-* BE-2077	Web Console: Fix - Requests for GREG audio stuck in "pending" and then failing
-* BE-2087	Web Console: Fix - Showing Training mode even though account does not have Training enabled
-* BE-2053	Fix - Glitchtip cannot handle larger headers (cookies)
-* BE-1982	Fix - NPE found in new-billing-utility logs on voicegain
-* BE-2103	Fix - Queue info is not getting saved and/or returned from /sa/call API
-* BE-2083	Fix for negative duration of words
-* BE-655	Fix for onprem-cluster-deployment task stuck when pods are in unexpected status
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Minor release 1.102.0 is scheduled for 4/16/2024 between 6:00pm and 10:00pm CDT
-
-**Key changes related to the core APIs**
-* MRCP ASR now supports GARBAGE grammars (Nuance syntax)
-* Removal of Prompt Manager in Web Console - not used due to popularity of TTS
-* /sa/offline API is now available in beta - this is for Offline Transcription and Speech Analytics
-* Telephony Bot API supports A/B testing using multiple logic URLs
-* Improvements to accuracy of the whisper model
-
-**Key changes related to Transcribe APP**
-* Cloud version uses whisper:small for English (it already used whisper:medium for foreign languages)
-* Generating just one Action Items table per entire transcript instead of one per Section.
-* Fixed errors in PDF and DOCX generation for some meetings
-
-New or changed functionality in the Transcribe App:
-* BE-1595	TA: Improve the User Edit Dialog - project selection
-* BE-1699	TA: Better message if there are no other users on the Project
-* BE-1870	TA: Improve the User Delete dialog
-* BE-1871	TA: Make the Avatar icons larger
-* BE-1881	TA: Display Release Version in the app.
-* BE-1893	TA: Upload Zoom files using POST/data/s3 API
-* BE-1913	TA: Add option to copy session id to Clipboard
-* BE-1936	TA: Add browser client info to login request
-* BE-1975	TA Cloud: Enable whisper:small on English language
-* QA-1036	TA: Show allowed characters when entering a tag
-* QA-1041	TA: Added 365 days time limit for expiry of shared transcript.
-* QA-1089	TA: Added sorting by email to Users table
-
-New or changed functionality in other platform components:
-* BE-1842	Web Console: Changes to API Security setting
-* BE-1843	Web Console: Better text in Settings -> Speech Recognition
-* BE-1844	Web Console: Hide Tools-> Prompt Manager menu option
-* BE-1882	Web Console: Display Release Version in the app.
-* BE-1896	Web Console: Switch Telephony Bot Call Audio+Transcript view from old /sa to new /sa/offline style
-* BE-1928	Web Console: Add configuration for multiple URLs to AIVR App Settings
-* BE-1929	Web Console: Add support for logic event in AIVR session
-* BE-506	Support removing objects with multiple versions in Google Storage
-* BE-857	Add `key-match` option to Query Terms in Advanced Search
-* BE-858	Add `key` field to Query Term in Advanced Search
-* BE-1150	Implement Offline SA Task in offline task project (Python)
-* BE-1406	Improvements to prvention of SQL injection in the Advanced Meeting Search API
-* BE-1514	Add to each of our API methods optional X-Request-ID header
-* BE-1550	Freeswitch: discontinue using modified mod_shout file
-* BE-1560	Update Freeswitch to use latest Debian 12
-* BE-1579	Collect session_duration for realtime ASR sessions
-* BE-1718	Implement POST /sa/offline/call/{callId}
-* BE-1719	Implement POST /sa/call
-* BE-1742	Mobile: Add extra parameter to /asr/transcribe/async request used in Microphone transcription
-* BE-1788	Switch AIVR recording processing from /sa to /sa/offline
-* BE-1789	AIVR to create /sa/call records if requested
-* BE-1816	As of Redis version 6.2.0, ZRANGEBYSCORE is regarded as deprecated
-* BE-1828	Add roles parameter to GET /user API method
-* BE-1848	(Demo-Voicebot) Convert voicebot demo details view to use /sa/offline
-* BE-1861	MRCP ASR: Add support for GARBAGE rule
-* BE-1862	Add initialPrompt to POST /asr/transcribe/async
-* BE-1867	For some internal APIs - ignore unknown fields, and not return 400 error, instead return X-Warning header
-* BE-1883	SSO: Display Release Version in authentication-client app.
-* BE-1884	Demo: Display Release Version in the app.
-* BE-1888	Add X-Request-ID to all API requests from all Web Apps
-* BE-1891	Support llm-svc rolling deployment -- websocket sessions
-* BE-1903	Add version field to the AIVR session
-* BE-1904	Store the GCP service account key in edge cluster document in firestore
-* BE-1908	Add read-only offlineQueuePriority field to Account
-* BE-1910	Support POST /auth-svc/zendesk/jwt
-* BE-1912	Increase the size of concurrent websocket connections in asr-api
-* BE-1914	Add Client Params to the login API
-* BE-1919	Add numAudioChannels and numSpkChannels to POST /sa/call and GET
-* BE-1927	Add support for multiple call-back URL in AIVR App
-* BE-1940	Use default init prompt on Whisper if initPrompt is not set
-* BE-1942	In Meeting API, generate action items from entire meeting transcript
-* BE-1944	Add keySentencesByType to PUT /internal/asr/meeting/{meetingId}
-* BE-1956	Admin Tool: Add support for login using 2FA
-* BE-1959	Report license expiration time in edge-debugger
-* BE-1983	Improve the efficiency of relation extraction algorithm for IVR Prompt NLU to support long input
-* BE-2019   Modify sip settings of unimrcp server
-
-Changes related to Integrity of Processing (fixes):
-* BE-1585	TA: Inspect all cases of using "dangerouslySetInnerHTML"
-* BE-1724	TA: Fix - SyntaxError: The string did not match the expected pattern, during fetchVersion in AppReloadModal
-* BE-1725	TA: Fix - TypeError: Failed to fetch version.json
-* BE-1727	TA: Fix - TypeError: c is not a function at handleDelete in components/ProjectsList/DeleteMultiSelectDialog
-* BE-1835	TA: Fix - Try Again button has no effect after a failed upload
-* BE-1841	TA: Fix - Unable to select audio files for upload on iPad
-* BE-1857	TA: Fix - Generated Avatar not working ok for single user account where use has no avatar picture uploaded
-* BE-1932	TA: Fix - Bad content security policy for GlitchTip
-* BE-1937	TA: Fix - After logging in, the home page initially loads but then suddenly goes blank
-* BE-1941	TA: Fix - TypeError: Cannot read properties of undefined (reading 'includes')
-* BE-1945	TA: Fix - TypeError: Cannot read properties of undefined (reading 'value') on Settings page
-* QA-1027	TA: Fix - Close Icon is missing on "Pair Voicegain Phone App" pop up
-* QA-1031	TA: Fix - User is able to set value above 365 days on Archival Text Redaction.
-* QA-1039	TA: Fix - User is able to set blank or invalid names as external speakers names.
-* QA-1044	TA: Fix - bad link in the guide
-* QA-1069   TA: Fix - Errors in PDF and DOCX generation for some meetings
-* QA-1083	TA: Fix - Inconsistent Upload success message on upload page
-* QA-1088	TA: Fix - Sorting indicators are broken for the Owned Projects and Shared Projects
-* QA-1092	TA: Fix - Projects with same names getting automatically selected in Advanced Search project filter.
-* QA-1093	TA: Fix - Player disappear when user clicks on anywhere near to the play button.
-* QA-1100	TA: Fix - Assigning a role for invited user should be a must required filed.
-* QA-1113	TA: Fix - Do not allow a tag with only underscores 
-* QA-1114	TA: Fix back button from transcript opened from Advanced Search results
-* QA-641	TA: Fix - Account Owner should be irremovable for any the project under Account Users.
-* QA-800	TA: Improve behavior of resize on browser-share pop-up window
-* BE-1703	Web Console: Fix - Wrong error message in GREG
-* BE-1869	Web Console Edge: Fix - failed to decode request body: organization name \"api_test\" not found"
-* BE-1872	Web Console: Fix - TypeError: Cannot read properties of undefined (reading 'ac')
-* BE-1920	Web Console: Fix - Loss of filtering info in AIVR view
-* BE-1943	Web Console: Fix - context switcher does not correctly support duplicate-named project
-* BE-1962	Web Console: Fix -  Error on Edge management page (properties of undefined)
-* QA-997	Web Console: Fix - Transcript is not getting skip by specified seconds as expected and onClick function is also not a function as in console tab.
-* QA-1086	Web Console: Only CMP users may modify CMP permissions
-* QA-1063	App Selector: Fix - Language selector should not be transparent.
-* QA-1066	SA: Fix - User is unable to change profile photo
-* BE-1478	Fix - Failed to execute 'decodeAudioData' on 'BaseAudioContext': Unable to decode audio data
-* BE-1840	Fix - PUT /sa/call/review/answers/{crAnswersId} Spec and Implementation are different
-* BE-1854	Fix - AIVR - prompt playback of audio from http url not working
-* BE-1902	Fix - llm-svc does not handle SIGTERM properly
-* BE-1907	Fix - uuid_vg_tap_ws at CLI not showing UUIDs to be started
-* BE-1925	Fix - AIVR playback of audio from an HTTPs URL stops after 30 seconds
-* BE-1999	Fix - Exception in case of many failed logins
-* BE-926	Fix - EqTerm is not properly handled in meeting search for some fields
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 

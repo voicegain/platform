@@ -37,18 +37,18 @@ audio_id = None
 
 # This is a simplified call body
 call_body = {
-  "startTime": "2019-08-24T14:15:22Z",
-  "endTime": "2019-08-24T14:25:22Z",
-  "direction": "inbound",
-  "recording": audio_id,
-  "numAudioChannels": 1,
-  "numSpkChannels": 2,
-  "callCenterCallId": "string",
-  "agent": None,
-  "queue": None,
-  "tags": [
-    "test"
-  ],
+    "startTime": "2019-08-24T14:15:22Z",
+    "endTime": "2019-08-24T14:25:22Z",
+    "direction": "inbound",
+    "recording": audio_id,
+    "numAudioChannels": 1,
+    "numSpkChannels": 2,
+    "callCenterCallId": "string",
+    "agent": None,
+    "queue": None,
+    "tags": [
+        "test"
+    ],
 }
 
 

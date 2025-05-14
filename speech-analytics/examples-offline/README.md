@@ -34,3 +34,4 @@ Currently there are three test scripts:
     * changing how long the session should persist. This can only be modified after the session is done processing but not after the session has expired.
     * moving the session into a different context. The destination and source context must be of the same type, and the users must have access to both of the contexts.
 * for recomputing SA session.
+* for retrieving the transcript of the SA session. There are four available formats: "text" for plain text, "pdf", "docx" and "vtt". When retrieving "text", you can also set the "interval" parameter to add timestamps to the transcript.

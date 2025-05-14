@@ -19,7 +19,7 @@ sleep_time = int(config['DEFAULT']['SLEEP_TIME'])
 
 
 sa_config_body = {
-    "name": 'sa_config_name',
+    "name": 'sa_config_name_1',
     "sentiment": True,
     "summary": False,
     "wordCloud": False,
@@ -261,8 +261,11 @@ def test(sa_config, audio, sa_session, sa_data):
         exit()
         
     audio_id = upload_audio.json()['objectId']
+    print(f'Audio ID: {audio_id}', flush=True)
 
     # 3. Create SA session
+    sa_session["audio"][0]["source"]["dataObjectUuid"] = audio_id
+
     create_sa_session = requests.post(
         url + '/sa/offline',
         headers={'Authorization': jwt},
@@ -294,7 +297,7 @@ def test(sa_config, audio, sa_session, sa_data):
             if get_sa_session.json()['progress']['phase'] == 'DONE':
                 print('SA Session Done!')
                 print(f'Status code: {get_sa_session.status_code}')
-                #print(f'Info: {get_sa_session.json()}')
+                print(f'Info: {get_sa_session.json()}')
                 break
             elif get_sa_session.json()['progress']['phase'] == 'ERROR':
                 print('Error while processing SA session:')

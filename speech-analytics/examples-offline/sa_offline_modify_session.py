@@ -118,8 +118,8 @@ def test(audio, sa_session, sa_modify_session, sa_data):
     if upload_audio.status_code != 200:
         exit()
         
-    print(f'Audio ID: {audio_id}')
     audio_id = upload_audio.json()['objectId']
+    print(f'Audio ID: {audio_id}')
 
     # 2. Create SA session
     sa_session["audio"][0]["source"]["dataObjectUuid"] = audio_id

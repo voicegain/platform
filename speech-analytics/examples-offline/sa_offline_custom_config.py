@@ -260,8 +260,8 @@ def test(sa_config, audio, sa_session, sa_data):
         delete_sa_config(sa_config_id)
         exit()
         
-    print(f'Audio ID: {audio_id}')
     audio_id = upload_audio.json()['objectId']
+    print(f'Audio ID: {audio_id}')
 
     # 3. Create SA session
     sa_session["audio"][0]["source"]["dataObjectUuid"] = audio_id

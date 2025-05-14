@@ -33,3 +33,4 @@ Currently there are three test scripts:
     * changing the label. Follows the same naming rules as file names. Can contain any unicode character, except for control characters and these: < > : " / \ | ? *. It cannot include dots and spacse at the end or front of the name, so a name like ".file_name " is not allowed but a name like "file. name" is.
     * changing how long the session should persist. This can only be modified after the session is done processing but not after the session has expired.
     * moving the session into a different context. The destination and source context must be of the same type, and the users must have access to both of the contexts.
+* for recomputing SA session.

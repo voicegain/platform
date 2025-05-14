@@ -22,7 +22,7 @@ config.read('config.ini')
 JWT = config['auth']['jwt']
 
 ## specify here the directory with files to test
-input_path = "../../new-examples/data/Recordings/en-Number"
+input_path = "../../new-examples/data/Recordings/greeting-options"
 
 list_of_files = []
 
@@ -72,17 +72,18 @@ body = {
     "asr": {
       "grammars" : [
           {
-            #  "type": "GRXML",
+            "type": "GRXML",
             #  "name" : "menu-selection",
-            #  "fromUrl":{
+            "fromUrl":{
             # #     #"url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
             # #     "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/Menu0to9Voice.grxml"
             # #    "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/YesNoAgent.grxml"
-            # "url" : "https://raw.githubusercontent.com/voicegain/platform/refs/heads/master/new-examples/grammar/grxml/en-es-GARB-selector.grxml"
-            #  }
+            #"url" : "https://raw.githubusercontent.com/voicegain/platform/refs/heads/master/new-examples/grammar/grxml/YesNoAgent.grxml"
+            "url" : "https://raw.githubusercontent.com/voicegain/platform/refs/heads/master/new-examples/grammar/grxml/en-es-GARB-selector.grxml"
+            }
 
-           "type" : "BUILT-IN",
-           "name" : "number"
+          # "type" : "BUILT-IN",
+          # "name" : "number"
           ## credit card recognition ##
           ##  "name" : "creditcard"
           ## digit sequence recognition ##
@@ -108,12 +109,12 @@ body = {
           }
       ],
       "maxAlternatives" : 10,
-      "noInputTimeout": 60000,
-      "incompleteTimeout" : 1000,
+      "noInputTimeout": 10000,
+      "incompleteTimeout" : 2000,
       "completeTimeout": 1000,
       "speedVsAccuracy" : 0.5,
       "sensitivity" : 0.3,
-      "confidenceThreshold" : 0.0001,
+      "confidenceThreshold" : 0.050,
       "acousticModelRealTime" : "VoiceGain-kappa",
       "languages" : ["en"]
     }

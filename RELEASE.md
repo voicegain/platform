@@ -1,3 +1,74 @@
+## Release 1.119.0
+
+New or changed functionality in the Transcribe App:
+* BE-3538	TA Edge: added a Test Chat on the LLM Settings page
+* BE-3741	TA: Added a setting on the Profile Settings page to hide video on the Transcript Details page
+* BE-3757	TA: Added an info message on the LLM Settings page to indicate that changes may take a few minutes to take effect
+* BE-3702	TA: Added context size text box to each LLM service settings
+* BE-3767	TA: Added support to disable copying and remove all clipboard icons in the Transcript Detail view based on app's disableCopy settings
+* BE-3737	TA: Added X-VG-Audit header for asr meeting APIs
+* QA-2493	TA: Removed the 'Others' tab from the project selection menu in the basic plan, as there are no shared projects
+* BE-3707	TA: Removed the unnecessary Key column from the API Token page
+* QA-2089	SA/TA: Added deletion animation for regex settings and repositioned the Save button on the Redaction Settings page
+* QA-2520	SA/TA: Added validation error message for phrase name field in the add keyword modal
+
+New or changed functionality in other platform components:
+* BE-3643	Added expiryDate to /sa/call
+* BE-3408	Added POST /sa/call/context/{contextId}/recompute
+* BE-3644	Compute call duration histogram data in GET /sa/call-stats-overall API
+* MST-338	Concatenate stereo audio to improve whisper, and fix the boundary words issue
+* BE-3784	Demo Voicebot: Enhanced error handling screen for transcript errors and added a "Try Again" button on the transcript details page
+* QA-2479	Demo: Made the entire upload box clickable for uploading a file on the main demo page
+* BE-3618	Implemented PUT /aivr/{ivrSid}/command API method
+* MST-563	Improve English NER model on lower case and digits
+* MST-585	Improved diarization model
+* BE-3565	In dialplan that launches aivr lua pass new argument called: mod_vg_tap with possible values: rex or vaca
+* MST-551	Integrate OpenAI realtime audio API in llm-svc
+* BE-3570	Modify aivr.lua to invoke mod_vg_tap without the ivrSid parameter if connecting to VACA socket instead of Rex socket
+* BE-3351	On-Prem License Server
+* BE-3730	SA: Added LLM-generated QA form answers
+* BE-3521	SA: Added new 'Voicebot Data' card on the Calls dashboard, replacing the "Date and Time" card for valid calls
+* BE-3736	SA: Added optimizeForWebUi:level2 parameter to POST offline requests
+* QA-2552	SA: Added validation to prevent creating duplicate keywords on the configuration page
+* QA-2546	SA: Added validation to prevent creating phrase names with only empty spaces in the Keywords modal
+* BE-3771	SA: Improved the call counts weekly comparison graph on the Call Stats dashboard to highlight current week data more clearly
+* QA-2467	SA: Increased the visibility of the search box on the Agents page
+* QA-2540	SA: Prevented hiding all columns in the Agents table via the column filter
+* QA-2458	SA: Removed duplicate table filter from the Users table on the Users page
+* BE-3646	SA: Removed the review button if the review answer form is not available
+* BE-3782	SA: Removed the SA config name field and made the LLM prompt field multi-line on the configuration page
+* BE-3706	SA: Removed the unnecessary Key column from the API security page
+* BE-3663	SA: Replaced the boxplot with a histogram plot in the call duration statistics chart on the Call Stats dashboard page
+* QA-2523	SA: Updated the placeholder text in the Phrase Groups modal from "No rows" to "No phrases added"
+* MST-531	Support QA form automatically in ml-svc
+* MST-543	Use context to improve the accuracy of NER
+* BE-3724	Voicebot Demo: Implemented the new design which includes full automation for the Healthcare page in both English and Spanish versions
+* QA-2476	Web Console: Added cancel icons to the language selection dropdown's closed state on the Web ASR Settings page for better UX
+* BE-3460	Web Console: Added confirmation dialog for changes and enabled in-place editing in the Configure AIVR App modal for better UX
+* BE-3622	Web Console: Added OpenAI Realtime API support to configure new AIVR App
+* QA-2432	Web Console: Added profile avatar in the header's profile menu
+* QA-2542	Web Console: Added validation for the app name in the Configure AIVR App modal
+* BE-3786	Web Console: Improved email validation in the signup form to support addresses like jackson@replay.sale
+* QA-2561	Web Console: Improved UX on the ASR Settings page by hiding Real-Time Acoustic Model fields for unsupported languages and adding info messages
+* BE-3658	Web Console: Redesigned the logic creation/edit flow in the Configure AIVR App modal and added support for default logic with enhanced validation
+
+Changes related to Integrity of Processing (fixes):
+* BE-2083	Fix for negative duration of words
+* BE-3645	Fixed - Mod Review Config has no way of deleting sections
+* QA-2551	SA: Fix - Added validations to prevent creating keywords with only empty spaces
+* QA-2481	SA: Fix - Call Time Breakdown chart on the Call Details page not showing data correctly
+* BE-3685	SA: Fix - Data selectors not working correctly in the Yearly Call Trends chart on the Call Stats dashboard
+* QA-2518	SA: Fix - Removed duplicate success toasts when copying the configuration ID on the Configuration page
+* QA-2470	TA: Fix - Amount '0' missing for the first time user on the billing page
+* QA-2532	TA: Fix - API Security page was inaccessible from Project Settings for some projects.
+* QA-2062	TA: Fix - In downloaded PDF - some speaker name is "null"
+* BE-3780	TA: Fix - Meeting URL box became unresponsive on the Meeting Bot page for long URLs.
+* QA-1987	TA: Fix - PDF download showing Something Went Wrong
+* QA-2587	Web Console: Fix - Updated the user profile menu from a hyperlink to a dropdown menu item
+* BE-3727	Web Console: Removed the extra Cancel button from the phone number purchase success modal
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release
+
 ## Release 1.118.0
 
 New or changed functionality in the Transcribe App:

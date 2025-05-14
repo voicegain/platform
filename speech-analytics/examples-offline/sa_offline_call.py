@@ -35,7 +35,7 @@ audio_body = {
 }
 audio_id = None
 
-
+# This is a simplified call body
 call_body = {
   "startTime": "2019-08-24T14:15:22Z",
   "endTime": "2019-08-24T14:25:22Z",

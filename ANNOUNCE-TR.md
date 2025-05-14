@@ -2,6 +2,31 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### May 10, 2025
+
+New:
+* BE-3538	TA Edge: added a Test Chat on the LLM Settings page
+* BE-3741	TA: Added a setting on the Profile Settings page to hide video on the Transcript Details page
+* BE-3757	TA: Added an info message on the LLM Settings page to indicate that changes may take a few minutes to take effect
+* BE-3702	TA: Added context size text box to each LLM service settings
+* BE-3767	TA: Added support to disable copying and remove all clipboard icons in the Transcript Detail view based on app's disableCopy settings
+* BE-3737	TA: Added X-VG-Audit header for asr meeting APIs
+* QA-2493	TA: Removed the 'Others' tab from the project selection menu in the basic plan, as there are no shared projects
+* BE-3707	TA: Removed the unnecessary Key column from the API Token page
+* QA-2089	TA: Added deletion animation for regex settings and repositioned the Save button on the Redaction Settings page
+* QA-2520	TA: Added validation error message for phrase name field in the add keyword modal
+
+Fixes:
+* QA-2551	SA: Fix - Added validations to prevent creating keywords with only empty spaces
+* QA-2481	SA: Fix - Call Time Breakdown chart on the Call Details page not showing data correctly
+* BE-3685	SA: Fix - Data selectors not working correctly in the Yearly Call Trends chart on the Call Stats dashboard
+* QA-2518	SA: Fix - Removed duplicate success toasts when copying the configuration ID on the Configuration page
+* QA-2470	TA: Fix - Amount '0' missing for the first time user on the billing page
+* QA-2532	TA: Fix - API Security page was inaccessible from Project Settings for some projects.
+* QA-2062	TA: Fix - In downloaded PDF - some speaker name is "null"
+* BE-3780	TA: Fix - Meeting URL box became unresponsive on the Meeting Bot page for long URLs.
+* QA-1987	TA: Fix - PDF download showing Something Went Wrong
+
 ### April 15, 2025
 
 New:

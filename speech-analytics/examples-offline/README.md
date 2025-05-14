@@ -18,7 +18,7 @@ Explanation of config.ini fields:
 The scripts build the API url using PROTOCOL, HOSTPORT and URLSUFFIX.
 
 Currently there are three test scripts:
-* for custom SA configurations. For a full documentation on this API, see [THIS_LINK](https://doc1web7b0888269764aux1.ascalon.ai/#tag/sa/operation/saConfigPost)
+* for custom SA configurations. For a full documentation on this API, see [THIS_LINK](https://doc1web7b0888269764aux1.ascalon.ai/#tag/sa/operation/saConfigPost).
 * for getting SA sessions data. The query parameters include:
     * words, with timing and confidences.
     * audio, original and combined.
@@ -36,3 +36,4 @@ Currently there are three test scripts:
 * for recomputing SA session.
 * for retrieving the transcript of the SA session. There are four available formats: "text" for plain text, "pdf", "docx" and "vtt". When retrieving "text", you can also set the "interval" parameter to add timestamps to the transcript.
 * for modifying speakers inside the SA session.
+* for cerating SA sessions based on existing calls. For how to create calls, see [THIS_LINK](https://doc1web7b0888269764aux1.ascalon.ai/#tag/sa-internal/operation/saCallPost).

@@ -6,6 +6,17 @@ How to set up the config.ini file:
 3. Place the audio file you want to use into the same folder as the script you want to run and add its name to "INPUTFILES".
 4. Set the "MAX_POLLS" and "SLEEP_TIME".
 
+Explanation of config.ini fields:
+* CONFIG - what environment to use for the test: CLOUD-PROD for voicegain or DEV for ascalon.
+* INPUTFILE - the name of the audio file you want to use.
+* MAX_POLLS - the number of unsuccessful polls after wich the script will go onto the next step.
+* SLEEP_TIME - length of the downtime between each polling attempt.
+* PROTOCOL - what web protocol to use with the API.
+* HOSTPORT - what port to use between ascalon and voicegain API.
+* JWT - this is where you paste your corresponding JWT token.
+* URLSUFFIC - the suffix at the end of the API url.
+The scripts build the API url using PROTOCOL, HOSTPORT and URLSUFFIX.
+
 Currently there are three test scripts:
 * for custom SA configurations.
 * for polling SA sessions.

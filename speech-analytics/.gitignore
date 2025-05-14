@@ -3,3 +3,5 @@ config.ini
 reports/*.csv
 reports/config.ini
 cleanup.py
+__pycache__/
+*.pyc

@@ -4,6 +4,7 @@ import time
 import os
 import json
 import re
+
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 config = ConfigParser()
@@ -16,10 +17,12 @@ file_name = re.sub("[^A-Za-z0-9]+", "-", config['DEFAULT']['INPUTFILE'])
 audio = os.path.join(dir_path, config['DEFAULT']['INPUTFILE'])
 max_polls = int(config['DEFAULT']['MAX_POLLS'])
 sleep_time = int(config['DEFAULT']['SLEEP_TIME'])
+with open(audio, 'rb') as audio_file:
+    audio_content = audio_file.read()
 
 
 audio_body = {
-    'file': (file_name, open(audio, 'rb').read(), 'audio/wav'),
+    'file': (file_name, audio_content, 'audio/wav'),
     'objectdata': (
         None,
         json.dumps({
@@ -64,13 +67,6 @@ sa_data_params = {
     'phrases': True,
 }
 
-
-sa_query_params = {
-    'fromAllContexts': False,
-    'limit': 10,
-    'detailed': True,
-}
-
 # Delete functions to clean up after the test
 def delete_audio(id):
     delete_audio = requests.delete(
@@ -97,9 +93,8 @@ def delete_sa_session(id):
         else:
             break
 
-
 # Test function
-def test(audio, sa_session, sa_query, sa_data):
+def test(audio, sa_session, sa_data):
     # 1. Upload audio to datastore
     upload_audio = requests.post(
         url + '/data/file',
@@ -188,20 +183,70 @@ def test(audio, sa_session, sa_query, sa_data):
         print(f'Status code: {get_sa_session_data.status_code}')
         print(f'Info: {get_sa_session_data.json()}')
 
-    # 5. Query SA sessions
-    query_sa_sessions = requests.get(
-        url + '/sa/offline',
+    # 5. Recompute SA session
+    recompute_sa_session = requests.put(
+        url + '/sa/offline/' + sa_session_id + '/recompute',
         headers={'Authorization': jwt},
-        params=sa_query
     )
 
-    print('Query SA sessions...')
-    print(f'Status code: {query_sa_sessions.status_code}')
-    print(f'Info: {query_sa_sessions.json()}')
+    print('Recomputing SA session...')
+    print(f'Status code: {recompute_sa_session.status_code}')
 
-    # 6. Final cleanup
+    # 6. Poll for SA session status until done or error
+    print('Polling for recomputed SA session status...')
+    polls = 0
+    while True:
+        polls += 1
+        get_sa_recompute = requests.get(
+            url + '/sa/offline/' + sa_session_id,
+            headers={'Authorization': jwt},
+        )
+
+        if get_sa_recompute.status_code == 200:
+            if get_sa_recompute.json()['progress']['phase'] == 'DONE':
+                print('Recomputed SA Session Done!')
+                print(f'Status code: {get_sa_recompute.status_code}')
+                #print(f'Info: {get_sa_recompute.json()}')
+                break
+            elif get_sa_recompute.json()['progress']['phase'] == 'ERROR':
+                print('Error while processing SA session:')
+                print(f'Status code: {get_sa_recompute.status_code}')
+                print(f'Info: {get_sa_recompute.json()}')
+                break
+            else:
+                print('SA Session still processing...')
+                print(f'Status code: {get_sa_recompute.status_code}')
+                #print(f'Info: {get_sa_recompute.json()}')
+                print('Sleeping for 10 seconds...')
+        else:
+            print('Error getting SA session:')
+            print(f'Status code: {get_sa_recompute.status_code}')
+            print(f'Info: {get_sa_recompute.json()}')
+            break
+
+        if polls >= max_polls:
+            print('Max number of polls reached. Deleting SA session...')
+            delete_sa_session(sa_session_id)
+            delete_audio(audio_id)
+            exit()
+        
+        time.sleep(sleep_time)
+
+    # 7. Get recomputed SA session Data:
+    if get_sa_recompute.status_code == 200:
+        get_sa_recompute_data = requests.get(
+            url + '/sa/offline/' + sa_session_id + '/data',
+            headers={'Authorization': jwt},
+            params=sa_data
+        )
+
+        print('Getting recomputed SA session data...')
+        print(f'Status code: {get_sa_recompute_data.status_code}')
+        print(f'Info: {get_sa_recompute_data.json()}')
+
+    # 8. Final cleanup
     delete_sa_session(sa_session_id)
     delete_audio(audio_id)
     print('Test complete!')
 
-test(audio_body, sa_session_body, sa_query_params, sa_data_params)
+test(audio_body, sa_session_body, sa_data_params)

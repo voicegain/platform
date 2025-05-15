@@ -4,6 +4,7 @@ import time
 import os
 import json
 import re
+
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 config = ConfigParser()
@@ -16,10 +17,12 @@ file_name = re.sub("[^A-Za-z0-9]+", "-", config['DEFAULT']['INPUTFILE'])
 audio = os.path.join(dir_path, config['DEFAULT']['INPUTFILE'])
 max_polls = int(config['DEFAULT']['MAX_POLLS'])
 sleep_time = int(config['DEFAULT']['SLEEP_TIME'])
+with open(audio, 'rb') as audio_file:
+    audio_content = audio_file.read()
 
 
 audio_body = {
-    'file': (file_name, open(audio, 'rb').read(), 'audio/wav'),
+    'file': (file_name, audio_content, 'audio/wav'),
     'objectdata': (
         None,
         json.dumps({
@@ -31,6 +34,22 @@ audio_body = {
     ),
 }
 audio_id = None
+
+# This is a simplified call body
+call_body = {
+    "startTime": "2019-08-24T14:15:22Z",
+    "endTime": "2019-08-24T14:25:22Z",
+    "direction": "inbound",
+    "recording": audio_id,
+    "numAudioChannels": 1,
+    "numSpkChannels": 2,
+    "callCenterCallId": "string",
+    "agent": None,
+    "queue": None,
+    "tags": [
+        "test"
+    ],
+}
 
 
 sa_session_body = {
@@ -44,11 +63,6 @@ sa_session_body = {
         },
     },
     'tags': ['testing'],
-    'audio': [{
-        'source': {
-            'dataObjectUuid': audio_id,
-        },
-    }],
 }
 sa_session_id = None
 
@@ -62,13 +76,6 @@ sa_data_params = {
     'keywords': True,
     'entities': True,
     'phrases': True,
-}
-
-
-sa_query_params = {
-    'fromAllContexts': False,
-    'limit': 10,
-    'detailed': True,
 }
 
 # Delete functions to clean up after the test
@@ -97,9 +104,18 @@ def delete_sa_session(id):
         else:
             break
 
+def delete_call(id):
+    delete_call = requests.delete(
+        url + '/sa/call/' + id,
+        headers={'Authorization': jwt},
+    )
+    print('Call Deletion...')
+    print(f'Status code: {delete_call.status_code}')
+    if delete_call.status_code != 200:
+        print(f'Info: {delete_call.json()}')
 
 # Test function
-def test(audio, sa_session, sa_query, sa_data):
+def test(audio, sa_session, sa_data, call):
     # 1. Upload audio to datastore
     upload_audio = requests.post(
         url + '/data/file',
@@ -116,11 +132,28 @@ def test(audio, sa_session, sa_query, sa_data):
     audio_id = upload_audio.json()['objectId']
     print(f'Audio ID: {audio_id}')
 
-    # 2. Create SA session
-    sa_session["audio"][0]["source"]["dataObjectUuid"] = audio_id
+    # 2. Create Call
+    call["recording"] = audio_id
+    create_call = requests.post(
+        url + '/sa/call',
+        headers={'Authorization': jwt},
+        json=call,
+    )
 
+    print('Call Creation...')
+    print(f'Status code: {create_call.status_code}')
+
+    if create_call.status_code != 200:
+        print(f'Info: {create_call.json()}')
+        delete_audio(audio_id)
+        exit()
+
+    call_id = create_call.json()['callId']
+    print(f'Call ID: {call_id}')
+
+    # 3. Create SA session
     create_sa_session = requests.post(
-        url + '/sa/offline',
+        url + '/sa/offline/call/' + call_id,
         headers={'Authorization': jwt},
         json=sa_session,
     )
@@ -131,12 +164,13 @@ def test(audio, sa_session, sa_query, sa_data):
     if create_sa_session.status_code != 200:
         print(f'Info: {create_sa_session.json()}')
         delete_audio(audio_id)
+        delete_call(call_id)
         exit()
 
     print(f'SA Session ID: {create_sa_session.json()["saSessionId"]}')
     sa_session_id = create_sa_session.json()['saSessionId']
 
-    # 3. Poll for SA session status until done or error
+    # 4. Poll for SA session status until done or error
     print('Polling for SA session status...')
     polls = 0
     while True:
@@ -160,7 +194,7 @@ def test(audio, sa_session, sa_query, sa_data):
             else:
                 print('SA Session still processing...')
                 print(f'Status code: {get_sa_session.status_code}')
-                #print(f'Info: {get_sa_session.json()}')
+                print(f'Info: {get_sa_session.json()["progress"]["phase"]}')
                 print('Sleeping for 10 seconds...')
         else:
             print('Error getting SA session:')
@@ -172,11 +206,12 @@ def test(audio, sa_session, sa_query, sa_data):
             print('Max number of polls reached. Deleting SA session...')
             delete_sa_session(sa_session_id)
             delete_audio(audio_id)
+            delete_call(call_id)
             exit()
         
         time.sleep(sleep_time)
 
-    # 4. Get SA session Data:
+    # 5. Get SA session Data:
     if get_sa_session.status_code == 200:
         get_sa_session_data = requests.get(
             url + '/sa/offline/' + sa_session_id + '/data',
@@ -188,20 +223,10 @@ def test(audio, sa_session, sa_query, sa_data):
         print(f'Status code: {get_sa_session_data.status_code}')
         print(f'Info: {get_sa_session_data.json()}')
 
-    # 5. Query SA sessions
-    query_sa_sessions = requests.get(
-        url + '/sa/offline',
-        headers={'Authorization': jwt},
-        params=sa_query
-    )
-
-    print('Query SA sessions...')
-    print(f'Status code: {query_sa_sessions.status_code}')
-    print(f'Info: {query_sa_sessions.json()}')
-
     # 6. Final cleanup
     delete_sa_session(sa_session_id)
     delete_audio(audio_id)
+    delete_call(call_id)
     print('Test complete!')
 
-test(audio_body, sa_session_body, sa_query_params, sa_data_params)
+test(audio_body, sa_session_body, sa_data_params, call_body)

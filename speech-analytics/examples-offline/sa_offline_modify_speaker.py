@@ -4,6 +4,7 @@ import time
 import os
 import json
 import re
+
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 config = ConfigParser()
@@ -16,10 +17,12 @@ file_name = re.sub("[^A-Za-z0-9]+", "-", config['DEFAULT']['INPUTFILE'])
 audio = os.path.join(dir_path, config['DEFAULT']['INPUTFILE'])
 max_polls = int(config['DEFAULT']['MAX_POLLS'])
 sleep_time = int(config['DEFAULT']['SLEEP_TIME'])
+with open(audio, 'rb') as audio_file:
+    audio_content = audio_file.read()
 
 
 audio_body = {
-    'file': (file_name, open(audio, 'rb').read(), 'audio/wav'),
+    'file': (file_name, audio_content, 'audio/wav'),
     'objectdata': (
         None,
         json.dumps({
@@ -64,12 +67,22 @@ sa_data_params = {
     'phrases': True,
 }
 
+sa_speaker_body = {
+        'name': 'John Smith',
+        #'userId': 'UUID', # Optional. If given, the speaker will be linked to the specifieduser.
+        'creator': 'UUID', # Optional. If given, the speaker will be linked to the specifiedcreator. If not, the user who made the request will be used (only from MAC session).
+    }
+speaker_id = None
 
-sa_query_params = {
-    'fromAllContexts': False,
-    'limit': 10,
-    'detailed': True,
-}
+
+sa_speaker_modify = [
+    {
+        'spk': 1,
+        'spkName': 'John Smith',
+        'speakerId': speaker_id,
+        'vsConf': None,
+    },
+]
 
 # Delete functions to clean up after the test
 def delete_audio(id):
@@ -97,9 +110,18 @@ def delete_sa_session(id):
         else:
             break
 
+def delete_speaker(id):
+    delete_speaker = requests.delete(
+        url + '/speaker/' + id,
+        headers={'Authorization': jwt},
+    )
+    print('Speaker Deletion...')
+    print(f'Status code: {delete_speaker.status_code}')
+    if delete_speaker.status_code != 200:
+        print(f'Info: {delete_speaker.json()}')
 
 # Test function
-def test(audio, sa_session, sa_query, sa_data):
+def test(audio, sa_session, sa_data, speaker_modify, speaker_body):
     # 1. Upload audio to datastore
     upload_audio = requests.post(
         url + '/data/file',
@@ -188,20 +210,41 @@ def test(audio, sa_session, sa_query, sa_data):
         print(f'Status code: {get_sa_session_data.status_code}')
         print(f'Info: {get_sa_session_data.json()}')
 
-    # 5. Query SA sessions
-    query_sa_sessions = requests.get(
-        url + '/sa/offline',
+    # 5. Create speaker
+    create_speaker = requests.post(
+        url + '/speaker',
         headers={'Authorization': jwt},
-        params=sa_query
+        json=speaker_body,
     )
 
-    print('Query SA sessions...')
-    print(f'Status code: {query_sa_sessions.status_code}')
-    print(f'Info: {query_sa_sessions.json()}')
+    print('Speaker Creation...')
+    print(f'Status code: {create_speaker.status_code}')
+
+    if create_speaker.status_code != 200:
+        print(f'Info: {create_speaker.json()}')
+        delete_sa_session(sa_session_id)
+        delete_audio(audio_id)
+        exit()
+
+    speaker_id = create_speaker.json()['speakerId']
+    print(f'Speaker ID: {speaker_id}')
+    speaker_modify['speakerId'] = speaker_id
+
+    # 6. Modify speaker
+    modify_speaker = requests.put(
+        url + '/sa/offline/' + sa_session_id + '/spk',
+        headers={'Authorization': jwt},
+        json=speaker_modify,
+    )
+
+    print('Modify Speaker...')
+    print(f'Status code: {modify_speaker.status_code}')
+    print(f'Info: {modify_speaker.json()}')
 
     # 6. Final cleanup
     delete_sa_session(sa_session_id)
     delete_audio(audio_id)
+    delete_speaker(speaker_id)
     print('Test complete!')
 
-test(audio_body, sa_session_body, sa_query_params, sa_data_params)
+test(audio_body, sa_session_body, sa_data_params, sa_speaker_modify, sa_speaker_body)

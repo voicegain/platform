@@ -57,6 +57,18 @@ sa_session_body = {
 }
 sa_session_id = None
 
+# Modify this to get the data you want. True means the data is returned, False means it is not.
+sa_data_params = {
+    'words': True,
+    'audio': True,
+    'meta': True,
+    'wordcloud': True,
+    'summary': True,
+    'keywords': True,
+    'entities': True,
+    'phrases': True,
+}
+
 
 sa_modify_body = {
     'label': 'test_sa_session_modified',
@@ -92,7 +104,7 @@ def delete_sa_session(id):
 
 
 # Test function
-def test(audio, sa_session, sa_modify_session):
+def test(audio, sa_session, sa_modify_session, sa_data):
     # 1. Upload audio to datastore
     upload_audio = requests.post(
         url + '/data/file',
@@ -102,14 +114,16 @@ def test(audio, sa_session, sa_modify_session):
 
     print('File Upload...')
     print(f'Status code: {upload_audio.status_code}')
-    print(f'Info: {upload_audio.json()}')
 
     if upload_audio.status_code != 200:
         exit()
         
     audio_id = upload_audio.json()['objectId']
+    print(f'Audio ID: {audio_id}')
 
     # 2. Create SA session
+    sa_session["audio"][0]["source"]["dataObjectUuid"] = audio_id
+
     create_sa_session = requests.post(
         url + '/sa/offline',
         headers={'Authorization': jwt},
@@ -124,6 +138,7 @@ def test(audio, sa_session, sa_modify_session):
         delete_audio(audio_id)
         exit()
 
+    print(f'SA Session ID: {create_sa_session.json()["saSessionId"]}')
     sa_session_id = create_sa_session.json()['saSessionId']
 
     # 3. Poll for SA session status until done or error
@@ -170,7 +185,19 @@ def test(audio, sa_session, sa_modify_session):
         
         time.sleep(sleep_time)
 
-    # 4. modify session
+    # 4. Get SA session Data:
+    if get_sa_session.status_code == 200:
+        get_sa_session_data = requests.get(
+            url + '/sa/offline/' + sa_session_id + '/data',
+            headers={'Authorization': jwt},
+            params=sa_data
+        )
+
+        print('Getting SA session data...')
+        print(f'Status code: {get_sa_session_data.status_code}')
+        print(f'Info: {get_sa_session_data.json()}')
+
+    # 5. modify session
     modify_sa_session = requests.put(
         url + '/sa/offline/' + sa_session_id,
         headers={'Authorization': jwt},
@@ -186,7 +213,7 @@ def test(audio, sa_session, sa_modify_session):
         delete_audio(audio_id)
         exit()
 
-    # 5. Poll again and check if modification was successful
+    # 6. Poll again and check if modification was successful
     get_sa_session = requests.get(
         url + '/sa/offline/' + sa_session_id,
         headers={'Authorization': jwt},
@@ -211,9 +238,9 @@ def test(audio, sa_session, sa_modify_session):
     print(f'New label: {get_sa_session.json()["label"]}')
     print(f'Old label: {sa_session_label}')
 
-    # 6. Final cleanup
+    # 7. Final cleanup
     delete_sa_session(sa_session_id)
     delete_audio(audio_id)
     print('Test complete!')
 
-test(audio_body, sa_session_body, sa_modify_body)
+test(audio_body, sa_session_body, sa_modify_body, sa_data_params)

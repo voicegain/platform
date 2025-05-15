@@ -4,6 +4,7 @@ import time
 import os
 import json
 import re
+
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 config = ConfigParser()
@@ -16,10 +17,12 @@ file_name = re.sub("[^A-Za-z0-9]+", "-", config['DEFAULT']['INPUTFILE'])
 audio = os.path.join(dir_path, config['DEFAULT']['INPUTFILE'])
 max_polls = int(config['DEFAULT']['MAX_POLLS'])
 sleep_time = int(config['DEFAULT']['SLEEP_TIME'])
+with open(audio, 'rb') as audio_file:
+    audio_content = audio_file.read()
 
 
 audio_body = {
-    'file': (file_name, open(audio, 'rb').read(), 'audio/wav'),
+    'file': (file_name, audio_content, 'audio/wav'),
     'objectdata': (
         None,
         json.dumps({
@@ -65,10 +68,9 @@ sa_data_params = {
 }
 
 
-sa_query_params = {
-    'fromAllContexts': False,
-    'limit': 10,
-    'detailed': True,
+sa_transcript_body = {
+    'format': 'text',
+    'interval': 5, # applicable only to plain text format
 }
 
 # Delete functions to clean up after the test
@@ -97,9 +99,8 @@ def delete_sa_session(id):
         else:
             break
 
-
 # Test function
-def test(audio, sa_session, sa_query, sa_data):
+def test(audio, sa_session, sa_data, sa_transcript_params):
     # 1. Upload audio to datastore
     upload_audio = requests.post(
         url + '/data/file',
@@ -188,20 +189,21 @@ def test(audio, sa_session, sa_query, sa_data):
         print(f'Status code: {get_sa_session_data.status_code}')
         print(f'Info: {get_sa_session_data.json()}')
 
-    # 5. Query SA sessions
-    query_sa_sessions = requests.get(
-        url + '/sa/offline',
+    # 5. Get SA session transcript:
+    get_sa_session_transcript = requests.get(
+        url + '/sa/offline/' + sa_session_id + '/transcript',
         headers={'Authorization': jwt},
-        params=sa_query
+        params=sa_transcript_params,
     )
 
-    print('Query SA sessions...')
-    print(f'Status code: {query_sa_sessions.status_code}')
-    print(f'Info: {query_sa_sessions.json()}')
+    print('Getting SA session transcript...')
+    print(f'Status code: {get_sa_session_transcript.status_code}')
+    print('Transcript:')
+    print(f'{get_sa_session_transcript.text}')
 
     # 6. Final cleanup
     delete_sa_session(sa_session_id)
     delete_audio(audio_id)
     print('Test complete!')
 
-test(audio_body, sa_session_body, sa_query_params, sa_data_params)
+test(audio_body, sa_session_body, sa_data_params, sa_transcript_body)

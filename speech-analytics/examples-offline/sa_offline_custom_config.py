@@ -238,11 +238,11 @@ def test(sa_config, audio, sa_session, sa_data):
 
     print('SA Config Creation...')
     print(f'Status code: {create_sa_config.status_code}')
-    print(f'Info: {create_sa_config.json()}')
 
     if create_sa_config.status_code != 200:
         exit()
-
+    
+    print(f'Config ID: {create_sa_config.json()["saConfId"]}')
     sa_config_id = create_sa_config.json()['saConfId']
 
     # 2. Upload audio to datastore
@@ -261,7 +261,7 @@ def test(sa_config, audio, sa_session, sa_data):
         exit()
         
     audio_id = upload_audio.json()['objectId']
-    print(f'Audio ID: {audio_id}', flush=True)
+    print(f'Audio ID: {audio_id}')
 
     # 3. Create SA session
     sa_session["audio"][0]["source"]["dataObjectUuid"] = audio_id
@@ -281,6 +281,7 @@ def test(sa_config, audio, sa_session, sa_data):
         delete_audio(audio_id)
         exit()
 
+    print(f'SA Session ID: {create_sa_session.json()["saSessionId"]}')
     sa_session_id = create_sa_session.json()['saSessionId']
 
     # 4. Poll for SA session status until done or error
@@ -297,7 +298,7 @@ def test(sa_config, audio, sa_session, sa_data):
             if get_sa_session.json()['progress']['phase'] == 'DONE':
                 print('SA Session Done!')
                 print(f'Status code: {get_sa_session.status_code}')
-                print(f'Info: {get_sa_session.json()}')
+                #print(f'Info: {get_sa_session.json()}')
                 break
             elif get_sa_session.json()['progress']['phase'] == 'ERROR':
                 print('Error while processing SA session:')
@@ -324,7 +325,19 @@ def test(sa_config, audio, sa_session, sa_data):
         
         time.sleep(sleep_time)
 
-    # 5. Final cleanup
+    # 5. Get SA session Data:
+    if get_sa_session.status_code == 200:
+        get_sa_session_data = requests.get(
+            url + '/sa/offline/' + sa_session_id + '/data',
+            headers={'Authorization': jwt},
+            params=sa_data
+        )
+
+        print('Getting SA session data...')
+        print(f'Status code: {get_sa_session_data.status_code}')
+        print(f'Info: {get_sa_session_data.json()}')
+
+    # 6. Final cleanup
     delete_sa_session(sa_session_id)
     delete_audio(audio_id)
     delete_sa_config(sa_config_id)

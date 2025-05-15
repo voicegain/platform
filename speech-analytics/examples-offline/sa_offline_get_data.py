@@ -104,14 +104,16 @@ def test(audio, sa_session, sa_data):
 
     print('File Upload...')
     print(f'Status code: {upload_audio.status_code}')
-    print(f'Info: {upload_audio.json()}')
 
     if upload_audio.status_code != 200:
         exit()
         
     audio_id = upload_audio.json()['objectId']
+    print(f'Audio ID: {audio_id}')
 
     # 2. Create SA session
+    sa_session["audio"][0]["source"]["dataObjectUuid"] = audio_id
+
     create_sa_session = requests.post(
         url + '/sa/offline',
         headers={'Authorization': jwt},
@@ -126,6 +128,7 @@ def test(audio, sa_session, sa_data):
         delete_audio(audio_id)
         exit()
 
+    print(f'SA Session ID: {create_sa_session.json()["saSessionId"]}')
     sa_session_id = create_sa_session.json()['saSessionId']
 
     # 3. Poll for SA session status until done or error
@@ -139,7 +142,6 @@ def test(audio, sa_session, sa_data):
         )
 
         if get_sa_session.status_code == 200:
-            print(get_sa_session.json())
             if get_sa_session.json()['progress']['phase'] == 'DONE':
                 print('SA Session Done!')
                 print(f'Status code: {get_sa_session.status_code}')
@@ -170,15 +172,16 @@ def test(audio, sa_session, sa_data):
         time.sleep(sleep_time)
 
     # 4. Get SA session Data:
-    get_sa_session_data = requests.get(
-        url + '/sa/offline/' + sa_session_id + '/data',
-        headers={'Authorization': jwt},
-        params=sa_data
-    )
+    if get_sa_session.status_code == 200:
+        get_sa_session_data = requests.get(
+            url + '/sa/offline/' + sa_session_id + '/data',
+            headers={'Authorization': jwt},
+            params=sa_data
+        )
 
-    print('Getting SA session data...')
-    print(f'Status code: {get_sa_session_data.status_code}')
-    print(f'Info: {get_sa_session_data.json()}')
+        print('Getting SA session data...')
+        print(f'Status code: {get_sa_session_data.status_code}')
+        print(f'Info: {get_sa_session_data.json()}')
 
     # 5. Final cleanup
     delete_sa_session(sa_session_id)

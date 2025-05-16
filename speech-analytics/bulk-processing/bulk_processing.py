@@ -212,18 +212,19 @@ def process_row(row):
             "Authorization": f"Bearer {JWT}"
         }
         params = {
-            "name": row.get('name', '')
+            "name": row.get('name', '') # query by config name since it's unique
         }
         response = requests.get(sa_url, headers=headers, params=params)
         print(f"Response: {response.json()}", flush=True)
-        if response.status_code == 200 and len(response.json()) > 0:
+        if response.status_code == 200 and len(response.json()) > 0: # if the query returns an existing config
             saConfigId = response.json()[0].get("saConfId")
             print(f"Config already exists: {saConfigId}", flush=True)
 
-        elif response.status_code == 200:
+        elif response.status_code == 200: # if the query returns no such config we create a new one
             print(f"Config does not exist. Creating new config...", flush=True)
 
             # create /sa/config
+            # these are simplified for now. I will add support for more complex request bodies later on
             keywords_tags = row.get('keywordsTags', '')
             keywords_phrases = row.get('keywordsPhrases', '')
             keywords = [{
@@ -288,7 +289,7 @@ def process_row(row):
                     log_error(row)
                     return  # we should log all failed files and retry them later
                 
-        else:
+        else: # if the query fails
             print(f"Error creating config", flush=True)
             log_error(row)
             return

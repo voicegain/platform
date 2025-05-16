@@ -205,170 +205,64 @@ def process_row(row):
         audio_uuid = upload_result
         print(f"audio_uuid: {audio_uuid}", flush=True)
 
-        # create /sa/config
-        sa_config_body = { #TODO: change this based on the row data
-            "contextId": "84451116-c600-49e2-9c60-5b6b34fae0d6",
-            "published": False,
-            "entities": [
-                "ADDRESS",
-                "PERSON"
-            ],
-            "keywords": [
-                {
-                "tag": "CANCEL",
-                "examples": [
-                    {
-                    "phrase": "cancel"
-                    },
-                    {
-                    "phrase": "terminate"
-                    }
-                ]
-                }
-            ],
-            "keywordGroups": [
-                {
-                "groupTag": "Competition",
-                "keywordTags": [
-                    "Acme",
-                    "MiningSupplies"
-                ]
-                }
-            ],
-            "phrases": [
-                {
-                "tag": "call_resolved",
-                "disabled": False,
-                "builtIn": False,
-                "examples": [
-                    {
-                    "sentence": "Was I able to resolve your concerns up to your satisfaction today?",
-                    "sensitivity": 0.5,
-                    "state": "default",
-                    "negativeExample": False
-                    }
-                ],
-                "regex": [
-                    "Thank you .*"
-                ],
-                "advancedRegex": [
-                    {
-                    "positiveRule": "Let's",
-                    "negativeRule": "Let's say",
-                    "minimumWords": 1,
-                    "state": "default",
-                    "negativeRegex": False
-                    }
-                ],
-                "sentenceType": "statement",
-                "mustBeNounPhrase": False,
-                "slots": {
-                    "entities": [
-                    {
-                        "entity": "ORG",
-                        "required": True
-                    }
-                    ],
-                    "keywords": [
-                    {
-                        "tag": "Canon",
-                        "required": False
-                    }
-                    ]
-                },
-                "location": {},
-                "meetingMinutes": False,
-                "hideIfGroup": False
-                }
-            ],
-            "criteria": [
-                {
-                "tag": "CALLER_GREETED",
-                "requiredSubCriteria": [
-                    {
-                    "metrics": [
-                        "string"
-                    ],
-                    "regex": [
-                        "string"
-                    ],
-                    "keywords": [
-                        "string"
-                    ],
-                    "ner": [
-                        "GPE"
-                    ],
-                    "phrases": [
-                        "string"
-                    ],
-                    "dialogElements": [
-                        "string"
-                    ],
-                    "channel": "caller",
-                    "callLocation": 0,
-                    "negation": True
-                    }
-                ]
-                }
-            ],
-            "phraseGroups": [
-                {
-                "groupTag": "Apology",
-                "phraseTags": [
-                    "GREETING",
-                    "THANK_YOU"
-                ],
-                "relation": "any"
-                }
-            ],
-            "competitorKeywordGroups": [
-                "string"
-            ],
-            "profanity": False,
-            "gender": False,
-            "age": False,
-            "sentiment": False,
-            "summary": False,
-            "wordCloud": False,
-            "moods": [
-                "neutral"
-            ],
-            "callResolutionQuestionId": None,
-            "callResolutionCriteria": [
-                "string"
-            ],
-            "overtalkTotalPercentageThreshold": 3,
-            "overtalkSingleDurationMaximumThreshold": 750,
-            "silenceTotalPercentageThreshold": 5,
-            "silenceSingleDurationMaximumThreshold": 5000,
-            "piiRedaction": [
-                {
-                "namedEntity": "GPE",
-                "redactTranscript": "[CC]",
-                "redactAudio": "silence"
-                }
-            ],
-            "meetingMinutes": {
-                "enabled": False,
-                "syncedToReleaseVersion": {
-                "version": "1.10.7",
-                "majorVer": 1,
-                "minorVer": 10,
-                "maintenanceVer": 7
-                }
-            },
-            "name": "Auto-Insurance-SA-Conf"
-        }
-        print(f"sa_config_body: {sa_config_body}", flush=True)
-
+        # check if the config exists already
+        print(f"Checking if the config exists already", flush=True)
         sa_url = "{}/sa/config".format(host)
-
         headers = {
-            "Authorization": f"Bearer {JWT}"    
+            "Authorization": f"Bearer {JWT}"
         }
+        params = {
+            "name": row.get('name', '')
+        }
+        response = requests.get(sa_url, headers=headers, params=params)
+        print(f"Response: {response.json()}", flush=True)
+        if response.status_code == 200 and len(response.json()) > 0:
+            saConfigId = response.json()[0].get("saConfId")
+            print(f"Config already exists: {saConfigId}", flush=True)
 
-        print(f"Sending config data to Speech Analytics...", flush=True)
-        saConfigId = None
+        elif response.status_code == 200:
+            print(f"Config does not exist. Creating new config...", flush=True)
+
+            # create /sa/config
+            keywords_tags = row.get('keywordsTags', '')
+            keywords_phrases = row.get('keywordsPhrases', '')
+            keywords = [{
+                "tag": keywords_tags,
+                "examples": [{"phrase": keywords_phrases}]
+            }]
+            phrases_tags = row.get('phrasesTags', '')
+            phrases_examples = row.get('phrasesExamples', '')
+            phrases_entities = row.get('phrasesEntities', '')
+            phrases_keyword_tags = row.get('phrasesKeywordTags', '')
+            phrases = [{
+                "tag": phrases_tags,
+                "examples": [{"sentence": phrases_examples}],
+                "slots": {
+                    "entities": [{"entity": phrases_entities}],
+                    "keywords": [{"tag": phrases_keyword_tags}]
+                }
+            }]
+            name = row.get('name', '')
+            sa_config_body = {
+                "keywords": keywords,
+                "phrases": phrases,
+                "name": name
+            }
+            print(f"sa_config_body: {sa_config_body}", flush=True)
+
+            sa_url = "{}/sa/config".format(host)
+
+            headers = {
+                "Authorization": f"Bearer {JWT}"    
+            }
+
+            print(f"Sending config data to Speech Analytics...", flush=True)
+            saConfigId = None
+
+        else:
+            print(f"Error creating config", flush=True)
+            log_error(row)
+            return
 
         # we will try multiple times in case of rate limit exceeded
         while True:
@@ -392,7 +286,7 @@ def process_row(row):
                     return
                 sa_response = response.json()
                 print(f"SA response: {sa_response}", flush=True)
-                saConfigId = sa_response.get("saConfigId")
+                saConfigId = sa_response.get("saConfId")
                 break
             except Exception as e:
                 print(f"Exception occurred: {e}", flush=True)

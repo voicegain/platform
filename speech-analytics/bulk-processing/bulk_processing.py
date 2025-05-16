@@ -206,7 +206,7 @@ def process_row(row):
         print(f"audio_uuid: {audio_uuid}", flush=True)
 
         # check if the config exists already
-        print(f"Checking if the config exists already", flush=True)
+        print(f"Checking if the config exists already...", flush=True)
         sa_url = "{}/sa/config".format(host)
         headers = {
             "Authorization": f"Bearer {JWT}"
@@ -259,39 +259,39 @@ def process_row(row):
             print(f"Sending config data to Speech Analytics...", flush=True)
             saConfigId = None
 
+            # we will try multiple times in case of rate limit exceeded
+            while True:
+                try:
+                    response = requests.post(sa_url, json=sa_config_body, headers=headers)
+                    code = response.status_code
+                    print(f"Response code: {code}", flush=True)
+                    if code == 429:
+                        retry_after = response.headers.get("Retry-After")
+                        if retry_after is None:
+                            print("Rate limit exceeded but response missing Retry-After", flush=True)
+                            log_error(row)
+                            return
+                        print(f"Rate limit exceeded. Retrying after {retry_after} seconds...", flush=True)
+                        time.sleep(int(retry_after))
+                        continue
+                    if code != 200:
+                        print("Unexpected response code", flush=True)
+                        print(response.text, flush=True)
+                        log_error(row)
+                        return
+                    sa_response = response.json()
+                    print(f"SA response: {sa_response}", flush=True)
+                    saConfigId = sa_response.get("saConfId")
+                    break
+                except Exception as e:
+                    print(f"Exception occurred: {e}", flush=True)
+                    log_error(row)
+                    return  # we should log all failed files and retry them later
+                
         else:
             print(f"Error creating config", flush=True)
             log_error(row)
             return
-
-        # we will try multiple times in case of rate limit exceeded
-        while True:
-            try:
-                response = requests.post(sa_url, json=sa_config_body, headers=headers)
-                code = response.status_code
-                print(f"Response code: {code}", flush=True)
-                if code == 429:
-                    retry_after = response.headers.get("Retry-After")
-                    if retry_after is None:
-                        print("Rate limit exceeded but response missing Retry-After", flush=True)
-                        log_error(row)
-                        return
-                    print(f"Rate limit exceeded. Retrying after {retry_after} seconds...", flush=True)
-                    time.sleep(int(retry_after))
-                    continue
-                if code != 200:
-                    print("Unexpected response code", flush=True)
-                    print(response.text, flush=True)
-                    log_error(row)
-                    return
-                sa_response = response.json()
-                print(f"SA response: {sa_response}", flush=True)
-                saConfigId = sa_response.get("saConfId")
-                break
-            except Exception as e:
-                print(f"Exception occurred: {e}", flush=True)
-                log_error(row)
-                return  # we should log all failed files and retry them later
         
         if saConfigId is None:
             print("Error sending config data to Speech Analytics", flush=True)
@@ -309,7 +309,7 @@ def send_offline_request(saConfigId):
 
     sa_offline_body = {
         "label" : "AHCM-Archival",
-        "saConfigId" : saConfigId,
+        "saConfig" : saConfigId,
         "persistSeconds" : persist_days*(24*3600), 
         "tags" : ["AHCM", "Archival"],
         "settings" : {

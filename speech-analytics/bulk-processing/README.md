@@ -1,0 +1,1 @@
+This script illustrates creating many /sa/offline sessions from list of audio with call metadata.

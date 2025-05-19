@@ -1,2 +1,2 @@
-keywordsTags,keywordsPhrases,phrasesTags,phrasesExamples,phrasesEntities,phrasesKeywordTags,name,fileName,audioDuration,directory
-CANCEL,cancel,call_resolved,Was I able to resolve your concerns up to your satisfaction today?,ORG,Canon,Auto-Insurance-SA-Conf,1102202310452655901.wav,146,2023\11\02\
+contextId,entities,keywordsTags,keywordsPhrases,phrasesTags,phrasesExamples,phrasesEntities,phrasesKeywordTags,profanity,gender,age,sentiment,summary,wordCloud,moods,name,fileName,audioDuration,directory
+14132bf5-4de1-4733-a4b8-c05933e84140,"CC, SSN, URL, PHONE, EMAIL",CANCEL,cancel,call_resolved,Was I able to resolve your concerns up to your satisfaction today?,ORG,Canon,True,True,True,True,True,True,True,Auto-Insurance-SA-Conf,1102202310452655901.wav,146,2023\11\02\

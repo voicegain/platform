@@ -20,6 +20,7 @@ host = config['DEFAULT']['host']
 JWT = config['DEFAULT']['JWT']
 error_log_file = config['DEFAULT']['error_log_file']
 upload_log_file = config['DEFAULT']['upload_log_file']
+config_log_file = config['DEFAULT']['config_log_file']
 seconds_per_hour_dbh = int(config['DEFAULT']['hours_per_hour_dbh']) * 3600
 seconds_per_hour_obh = int(config['DEFAULT']['hours_per_hour_obh']) * 3600
 persist_days = config.getint('DEFAULT', 'persist_days')
@@ -115,6 +116,14 @@ def log_upload(row):
             writer.writeheader()  # Write the header if the file doesn't exist
         writer.writerow(row)
 
+def log_config(name, saConfigId):
+    log_exists = os.path.exists(config_log_file)
+    with open(config_log_file, mode='a', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=["name", "id"])
+        if not log_exists:
+            writer.writeheader()  # Write the header if the file doesn't exist
+        writer.writerow({"name": name, "id": saConfigId})
+
 # Load the upload log file and extract uniqueIDs to a set
 def load_uploaded_ids(upload_log_file):
     uploaded_ids = set()
@@ -128,7 +137,22 @@ def load_uploaded_ids(upload_log_file):
 
     return uploaded_ids
 
+# load the config log file and extract the config id for each config name
+def load_created_configs(config_log_file):
+    created_configs = {}
+    if os.path.exists(config_log_file):
+        with open(config_log_file, mode='r', newline='', encoding='utf-8') as file:
+            csv_reader = csv.DictReader(file)
+            for row in csv_reader:
+                created_configs[row['name']] = row['id']
+
+    print(f"Number of created configs: {len(created_configs)}", flush=True)
+
+    return created_configs
+
+
 uploaded_ids = load_uploaded_ids(upload_log_file)
+created_configs = load_created_configs(config_log_file)
 count_skipped = 0
 
 # process each row in the CSV file
@@ -207,24 +231,16 @@ def process_row(row):
 
         # check if the config exists already
         print(f"Checking if the config exists already...", flush=True)
-        sa_url = "{}/sa/config".format(host)
-        headers = {
-            "Authorization": f"Bearer {JWT}"
-        }
-        params = {
-            "name": row.get('name', '') # query by config name since it's unique
-        }
-        response = requests.get(sa_url, headers=headers, params=params)
-        print(f"Response: {response.json()}", flush=True)
-        if response.status_code == 200 and len(response.json()) > 0: # if the query returns an existing config
-            saConfigId = response.json()[0].get("saConfId")
+        if row.get('name', '') in created_configs:
+            saConfigId = created_configs[row.get('name', '')]
             print(f"Config already exists: {saConfigId}", flush=True)
-
-        elif response.status_code == 200: # if the query returns no such config we create a new one
+        else:
             print(f"Config does not exist. Creating new config...", flush=True)
 
             # create /sa/config
             # these are simplified for now. I will add support for more complex request bodies later on
+            context_id = row.get('contextId', '')
+            entities = row.get('entities', '').split(', ')
             keywords_tags = row.get('keywordsTags', '')
             keywords_phrases = row.get('keywordsPhrases', '')
             keywords = [{
@@ -243,10 +259,27 @@ def process_row(row):
                     "keywords": [{"tag": phrases_keyword_tags}]
                 }
             }]
+            profanity = row.get('profanity', '')
+            gender = row.get('gender', '')
+            age = row.get('age', '')
+            sentiment = row.get('sentiment', '')
+            summary = row.get('summary', '')
+            word_cloud = row.get('wordCloud', '')
+            moods = row.get('moods', '')
             name = row.get('name', '')
+            
             sa_config_body = {
+                "contextId": context_id,
+                "entities": entities,
                 "keywords": keywords,
                 "phrases": phrases,
+                "profanity": profanity,
+                "gender": gender,
+                "age": age,
+                "sentiment": sentiment,
+                "summary": summary,
+                "wordCloud": word_cloud,
+                "moods": moods,
                 "name": name
             }
             print(f"sa_config_body: {sa_config_body}", flush=True)
@@ -283,28 +316,23 @@ def process_row(row):
                     sa_response = response.json()
                     print(f"SA response: {sa_response}", flush=True)
                     saConfigId = sa_response.get("saConfId")
+                    log_config(row.get('name', ''), saConfigId)
                     break
                 except Exception as e:
                     print(f"Exception occurred: {e}", flush=True)
                     log_error(row)
                     return  # we should log all failed files and retry them later
-                
-        else: # if the query fails
-            print(f"Error creating config", flush=True)
+            
+        if saConfigId is None:
+            print("Error creating config", flush=True)
             log_error(row)
             return
-        
-        if saConfigId is None:
-            print("Error sending config data to Speech Analytics", flush=True)
-            log_error(row)
-        else:
-            print(f"SA config ID: {saConfigId}", flush=True)
-            if not send_offline_request(saConfigId):
-                log_error(row)
-                return
+
+        print(f"SA config ID: {saConfigId}", flush=True)
+        send_offline_request(saConfigId, audio_uuid)
 
 # submit /sa/offline request
-def send_offline_request(saConfigId):
+def send_offline_request(saConfigId, audio_uuid):
     sa_offline_url = "{}/sa/offline".format(host)
     print(f"sa_offline_url: {sa_offline_url}", flush=True)
 
@@ -324,8 +352,8 @@ def send_offline_request(saConfigId):
             "formatters" : [
                 {
                     "type": "digits"
-                }
-                , {
+                },
+                {
                     "type": "enhanced",
                     "parameters": {
                         "CC": True,
@@ -336,7 +364,10 @@ def send_offline_request(saConfigId):
                     }
                 }
             ]
-        }
+        },
+        "audio" : [{
+            "source" : {"dataObjectUuid" : audio_uuid},
+        }]
     }
 
     headers = {

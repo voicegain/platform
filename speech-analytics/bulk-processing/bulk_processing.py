@@ -38,6 +38,7 @@ print(f'MAX_ROWS_TO_PROCESS: {MAX_ROWS_TO_PROCESS}')
 print(f'host: {host}')
 print(f'error_log_file: {error_log_file}')
 print(f'upload_log_file: {upload_log_file}')
+print(f'config_log_file: {config_log_file}')
 print(f'seconds_per_hour_dbh: {seconds_per_hour_dbh}')
 print(f'seconds_per_hour_obh: {seconds_per_hour_obh}')
 print(f'persist_days: {persist_days}')
@@ -365,6 +366,7 @@ def send_offline_request(saConfigId, audio_uuid):
                 }
             ]
         },
+        "optimizeForWebUi": "level2", # Set to level2 to support Voicegain Speech Analytics App. If you do not need the additional fields then set to none to save resources and speed up processing.
         "audio" : [{
             "source" : {"dataObjectUuid" : audio_uuid},
         }]

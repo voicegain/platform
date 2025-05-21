@@ -30,9 +30,7 @@ sa_config_body = {
     "overtalkSingleDurationMaximumThreshold": 1,
     "silenceTotalPercentageThreshold": 10.0,
     "silenceSingleDurationMaximumThreshold": 3,
-    "moods": [
-        "anger"
-    ],
+    "moods": ["anger"],
     "entities": [
         "ADDRESS",
         "PHONE",

@@ -62,6 +62,7 @@ sa_session_body = {
             'speedVsAccuracy': 0.5,
         },
     },
+    'optimizeForWebUi': 'level2', # Set to level2 to support Voicegain Speech Analytics App. If you do not need the additional fields then set to none to save resources and speed up processing.
     'tags': ['testing'],
 }
 sa_session_id = None

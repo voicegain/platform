@@ -58,7 +58,7 @@ body = {
         #     }
         # }
     ],
-    "debug": {"level": "7"}  
+    "debug": {"level": "5"}  
 }
 
 url = "{}/text/redact".format(host)

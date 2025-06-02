@@ -1,4 +1,4 @@
-### Minor release 1.120.0 is scheduled for 6/2/2025 between 12:00am and 3:00am US Central Time
+### Minor release 1.120.0 is scheduled for 6/2/2025 between 11:00pm and 1:00am US Central Time
 
 TBD ...
 

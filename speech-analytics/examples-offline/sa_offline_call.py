@@ -58,8 +58,10 @@ sa_session_body = {
     'settings': {
         'asr': {
             'languages': ['en-us'],
+            'acousticModel': 'VoiceGain-omega',
             'sensitivity': 0.5,
             'speedVsAccuracy': 0.5,
+            'hints' : ['Pentium:10']
         },
     },
     'optimizeForWebUi': 'level2', # Set to level2 to support Voicegain Speech Analytics App. If you do not need the additional fields then set to none to save resources and speed up processing.

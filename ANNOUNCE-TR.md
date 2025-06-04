@@ -2,6 +2,26 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### June 2, 2025
+
+New:
+* BE-3795	TA Edge: Disable Test LLM button if any settings in standard LLM are changed but not yet saved
+* BE-3777	TA: Added support for a keyword to belong to multiple groups and improved keyword designs on the configuration page
+* BE-3892	TA: Improved action cards with new icons and layouts on home page
+* QA-2462	TA: Improved design of Project Users page and moved current user to the top of the list
+* BE-3891	TA: Updated Meeting Bot and Zoom icons, and adjusted ordering in the left-hand menu
+* BE-3837	TA: Updated the YAML file that is driving the "What do you want to do?"
+
+Fixes:
+* QA-2602	TA: Fix - Added translations for error messages in invite user during project creation
+* QA-2660	TA: Fix - Delete confirmation popup showed total selection count instead of filtered count
+* QA-2634	TA: Fix - HTML <br> tag present between the paragraph content in PDF.
+* QA-2616	TA: Fix - LLM Playground input field was getting disabled on Transcribe Details page when disabling the video in the profile section
+* QA-2604	TA: Fix - Text was attributed to a single speaker even when multiple speakers were present in browser share audio
+* QA-2596	TA: Fix - User is able to set Public Share to never expire by manually modifying the expiration year to 0000
+* QA-2609	TA: Fix - Zoom Meeting Bot – If the bot fails to join the meeting at the same time it requests admission, multiple instances of the bot may appear as participants. Eventually, the bot shows a "failed to join the meeting" status.
+
+
 ### May 10, 2025
 
 New:

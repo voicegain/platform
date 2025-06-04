@@ -58,7 +58,7 @@ body = {
         #     }
         # }
     ],
-    "debug": {"level": "5"}  
+    "debug": {"level": "3"}  
 }
 
 url = "{}/text/redact".format(host)
@@ -83,4 +83,4 @@ print(response.get("redactedText"), flush=True)
 redactions = response.get("redactions", [])
 print("\nRedactions:")
 for redaction in redactions:
-    print(f"Type: {redaction['type']}, Pattern: {redaction['pattern']},\n\tOriginal: {redaction['originalValue']}\n\tRedacted: {redaction['redactedValue']}", flush=True)
+    print(f"Type: {redaction.get('type', 'Unknown')}, Pattern: {redaction.get('pattern', 'N/A')},\n\tOriginal: {redaction.get('originalValue', '---')}\n\tRedacted: {redaction.get('redactedValue', 'N/A')}", flush=True)

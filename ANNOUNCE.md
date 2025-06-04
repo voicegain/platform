@@ -1,3 +1,100 @@
+### Minor release 1.120.0 is scheduled for 6/2/2025 between 11:00pm and 1:00am US Central Time
+
+New or changed functionality in the Transcribe App:
+* BE-3795	TA Edge: Disable Test LLM button if any settings in standard LLM are changed but not yet saved
+* BE-3777	TA: Added support for a keyword to belong to multiple groups and improved keyword designs on the configuration page
+* BE-3892	TA: Improved action cards with new icons and layouts on home page
+* QA-2462	TA: Improved design of Project Users page and moved current user to the top of the list
+* BE-3891	TA: Updated Meeting Bot and Zoom icons, and adjusted ordering in the left-hand menu
+* BE-3837	TA: Updated the YAML file that is driving the "What do you want to do?"
+
+New or changed functionality in other platform components:
+* BE-3813	Add new fields to /sa/call: businessOpenState, voicebotDuration, and voicebotVars
+* BE-2449	Added account API methods to add/remove Grafana support to account
+* BE-3875	Added ccaasIntegration and five9 fields to the AIVR App API
+* BE-3850	Added new logicConnectMethod method - adapter - to AIVR App API
+* BE-3874	Added optimizeFor setting to transcribe and sa offline APIs
+* BE-3883	Added Redis Cache also to the Audio Server API that is used by the Telephony Bot
+* BE-3807	Added to /sa/config API checks for uniqueness and disjointness of keyword and phrase tags
+* BE-3562	Connected AIVR to Open AI Realtime API (Inbound calling)
+* BE-3788	Copilot: Show claim-related information if provided by Pusher
+* BE-3867	Demo Voicebot: Made design and copy changes to Casey Healthcare page in both English and Spanish versions
+* BE-3812	If AIVR App has BusinessConfig attached then we report in AIVR session if the call was within or outside of business hours
+* BE-3814	Implemented /sa/voicebot-stats API method
+* BE-3866	Implemented Webhook listener for Five9 webhooks
+* MST-634	Improve phone number entity (NER) context detection
+* BE-3763	Improved validation of keywords and keywordGroups in each SA Config
+* BE-3884	Made /sa/offline use the hints specified in the context and in the request
+* BE-3909	Made loading of our AIVR Apps more robust 
+* MST-535	Reduce Spanish NER model memory usage on offline-main
+* BE-3898	Return Bad Request Error if POST /sa/offline is invoked with both speakers and diarization for single audio
+* BE-3606	SA Call Resolution now uses LLM
+* BE-3605	SA QA Form now supports LLM
+* QA-2548	SA: Added API Security option and improved design of Project options page
+* BE-3859	SA: Added Call Hold and Hold Removed states to both call transcript and audio timelines on Call Details page
+* BE-3789	SA: Added claim-related information to Voicebot Data card on the Call Details page
+* BE-3815	SA: Added new Voicebot Dashboard in beta for Voicebot projects
+* BE-3517	SA: Added support for a keyword to belong to multiple groups and improved keyword designs on the configuration page
+* BE-3776	SA: Added support for a keyword to belong to multiple groups and improved keyword designs on the configuration page
+* BE-3857	SA: Added support for a phrase to belong to multiple groups and improved phrase designs on the configuration page
+* BE-3849	SA: Added time spent in HOLD to call sections card on call details dashboard
+* BE-3313	SA: Added Voicebot Dash
+* BE-3430	SA: Improved design of Criterion Configuration dialog on Project Configuration page
+* BE-3775	SA: Improved design of Criterion Configuration dialog on Project Configuration page
+* BE-3796	SA: Improved layout of Voicebot Data card on Call Details dashboard
+* QA-2564	SA: Improved project name and description field validations on both Project Settings and Creation pages
+* BE-3811	SA: Improved topic distribution pie chart sizing and labels on the Agent Stats dashboard
+* QA-2615	SA: Improvements for the QA Form configuration
+* BE-3797	SA: Optimized Call Duration Statistics histogram on Call Stats dashboard to support large data sets
+* BE-3647	SA: Redesigned left-hand menu navigation with menu collapse support and updated project selector
+* BE-3774	SA: Redesigned left-hand menu navigation with menu collapse support and updated project selector
+* BE-3888	SA: Updated call duration and call count colors on call stats dashboard for consistency across all charts
+* BE-3893	SA: Updated demo and generic project type icons in project creation flow and project switcher
+* BE-3682	Store AIVR markers for Aircall HOLD (start and stop)
+* BE-3721	Support flavor (genesys or other) for each builtin grammar
+* MST-589	Support N/A in QA form
+* MST-565	Support signature in licensing service
+* BE-3854	Support streaming for Google TTS for the streaming-capable voices
+* MST-593	Train and test Omega model using SA and Australian accents dataset
+* BE-3603	TTS stats are collected into influxDB
+* MST-597	Update demo bot to support claim automation features 
+* BE-3802	Web Console: Added a download button for voice sample in Phone App configuration dialog
+* BE-3870	Web Console: Added AIVR app name to the delete confirmation dialog
+* BE-3801	Web Console: Added common email field validations to both signup and login forms
+* BE-3869	Web Console: Added new 'Adapter' connect mode in Telephony Bot app configuration
+* BE-3880	Web Console: Implemented support for assigning different voices to multiple languages in Phone app configuration
+* QA-2556	Web Console: Save button disabled if any input error on Speech Analytics configuration page
+
+Changes related to Integrity of Processing (fixes):
+* BE-3885	Cleanup all TTS voices available in Audio Server
+* QA-2592	Demo Voicebot: Fix - Improved routing for /voicebot/ page to correctly redirect to Voicebot options page
+* QA-2632	Demo Voicebot: Fix - Made all fonts consistent in Copilot sections on Call Details page
+* QA-2657	Demo Voicebot: Fixed - Unable to access the voicebot call transcript.
+* BE-3899	Fixed - /text/redact API does not check the debug.level value and always returns the redactions.originalValue
+* MST-656	Fixed - DTMF grammar is not enabled by default when asking for date
+* BE-3868	Fixed - TextUtils in pdfGen is not thread-safe
+* BE-3673	Fixed behavior of incremental transcribe polling
+* BE-3832	SA: Fix - "other" topic was incorrectly grouped into the "Other" slice of the pie chart on Call Stats dashboard
+* QA-1588	SA: Fix - Downloaded PDF issues for call transcript.
+* QA-2664	SA: Fixed - Sorting on QA Form page is not working.
+* QA-2602	TA: Fix - Added translations for error messages in invite user during project creation
+* QA-2660	TA: Fix - Delete confirmation popup showed total selection count instead of filtered count
+* QA-2634	TA: Fix - HTML <br> tag present between the paragraph content in PDF.
+* QA-2616	TA: Fix - LLM Playground input field was getting disabled on Transcribe Details page when disabling the video in the profile section
+* QA-2604	TA: Fix - Text was attributed to a single speaker even when multiple speakers were present in browser share audio
+* QA-2596	TA: Fix - User is able to set Public Share to never expire by manually modifying the expiration year to 0000
+* QA-2609	TA: Fix - Zoom Meeting Bot – If the bot fails to join the meeting at the same time it requests admission, multiple instances of the bot may appear as participants. Eventually, the bot shows a "failed to join the meeting" status.
+* BE-3897	Web Console: Fix - Fixed issue with retrieving AIVR session details by ID
+* QA-2554	Web Console: Fix - Straight line cutting through row on Phone app page
+* QA-2002	Web Console: Fix - Unable to upload Grammar file for creating Grammar under MRCP ASR.
+* QA-2608	Web Console: Fix - Unable to view all sessions on user profile page due to table scroll not working
+* QA-2643	Web Console: Fix - Users are no longer allowed to delete the default context on context dashboard
+* QA-2672	Web Console: Fix - Voice field was showing blank in edit flow in the phone app drawer for some projects
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release
+
+
 ### Minor release 1.119.0 is scheduled for 5/10/2025 between 11:00pm and 12:00am US Central Time
 
 New or changed functionality in the Transcribe App:

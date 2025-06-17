@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar version="1.0" xml:lang="en-US" root="person" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+<rule id="jose_pacheco">
+    <item>
+        <one-of>
+            <item >Jose</item>
+            <item >Hosse</item>
+            <item >Hozay</item>
+            <item >Hoseh</item>
+            <item >Hosay</item>
+            <item >Hoze</item>
+            <item >Hose</item>
+        </one-of> 
+        <one-of>
+            <item >Pacheco</item>
+            <item >Patsheko</item>
+            <item >Patchayko</item>
+            <item >Pachayco</item>
+            <item >Pacheko</item>
+            <item >Pachecho</item>
+            <item >Pachecko</item>
+            <item >Pachayko</item>
+        </one-of>
+        <tag>out.name="Jose Pacheco"; out.ext="007";</tag>
+    </item>
+</rule>
+<rule id="julio_iglecias"><item><one-of><item weight="1.00">Julio</item><item weight="1.00">Hulio</item><item weight="1.00">Yoolio</item><item weight="1.00">Hoolio</item><item weight="1.00">Joolio</item></one-of> <one-of><item weight="1.00">Iglecias</item><item weight="1.00">Eglezias</item><item weight="1.00">Eglesias</item><item weight="1.00">Eglecias</item><item weight="1.00">Igleesias</item><item weight="1.00">Iglesias</item></one-of><tag>out.name="Julio Iglecias"; out.ext="008";</tag></item></rule>
+<rule id="giovanni_davare">
+    <item>
+        <one-of>
+            <item weight="1.00">Giovanni</item>
+            <item weight="1.00">Jovanni</item>
+            <item weight="1.00">Geovanni</item>
+            <item weight="1.00">Jiohvany</item>
+            <item weight="1.00">Jovani</item>
+        </one-of>
+        <one-of>
+            <item weight="1.00">Davare</item>
+            <item weight="1.00">da Vare</item>
+            <item weight="1.00">Davary</item>
+            <item weight="1.00">Davarey</item>
+            <item weight="1.00">Davaray</item>
+            <item weight="1.00">Dahvarey</item>
+            <item weight="1.00">Dahvahray</item>
+            <item weight="1.00">Davari</item>
+        </one-of><tag>out.name="Giovanni Davare"; out.ext="009";</tag>
+    </item>
+</rule>
+<rule id="john_smith"><item><one-of><item weight="1.00">John</item><item weight="1.00">Jonn</item><item weight="1.00">Jon</item><item weight="1.00">Jawn</item></one-of> <one-of><item weight="1.00">Smith</item><item weight="1.00">Smithe</item><item weight="1.00">Smyth</item><item weight="1.00">Smit</item></one-of><tag>out.name="John Smith"; out.ext="010";</tag></item></rule>
+<rule id="person">
+    <one-of>
+        <item><ruleref uri="#jose_pacheco"/><tag>out.name=rules.jose_pacheco.name; out.ext=rules.jose_pacheco.ext;</tag></item>
+        <item><ruleref uri="#julio_iglecias"/><tag>out.name=rules.julio_iglecias.name; out.ext=rules.julio_iglecias.ext;</tag></item>
+        <item><ruleref uri="#giovanni_davare"/><tag>out.name=rules.giovanni_davare.name; out.ext=rules.giovanni_davare.ext;</tag></item>
+        <item><ruleref uri="#john_smith"/><tag>out.name=rules.john_smith.name; out.ext=rules.john_smith.ext;</tag></item>
+    </one-of>
+</rule>
+</grammar>

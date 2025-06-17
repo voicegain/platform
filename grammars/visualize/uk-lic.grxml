@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" version="1.0" xml:lang="en-gb" tag-format="semantics/1.0" root="_ROOT_">
+
+<rule id="_ROOT_" scope="public">
+    <item repeat="0-1"><ruleref uri="#PREAMBLE"/></item>
+    <one-of>
+     <item weight=".1"> <ruleref uri="#NUMLET"/><tag>out='NUMLET_'+rules.NUMLET; </tag></item>
+     <item weight=".1"> <ruleref uri="#LETNUM"/><tag>out='LETNUM_'+rules.LETNUM; </tag></item>
+     <item weight=".1"> <ruleref uri="#PRE82"/><tag>out='PRE82_'+rules.PRE82; </tag></item>
+     <item weight=".1"> <ruleref uri="#PRE2001"/><tag>out='PRE2001_'+rules.PRE2001; </tag></item>
+     <item weight=".9"> <ruleref uri="#CURRENT"/><tag>out='CURRENT_'+rules.CURRENT; </tag></item>
+     <item weight=".5"> <ruleref uri="#DK"/><tag>out='DK_'+rules.DK; </tag></item>
+    </one-of>
+  </rule>
+
+  <rule id="PREAMBLE">
+     <item repeat="0-1">yes</item>
+    <one-of>
+      <item>its</item>
+      <item>it is</item>
+      <item>the reg is</item>
+      <item>the registration is</item>
+    </one-of>
+  </rule>
+
+  <rule id="NUMLET">
+    <tag> out = '';</tag>
+    <item repeat="1-3">
+       <ruleref uri="#specialDigit"/>
+       <tag>out += rules.specialDigit</tag>
+    </item>
+    <item repeat="1-3">
+       <ruleref uri="#specialAlpha"/>
+       <tag>out += rules.specialAlpha</tag>
+    </item>
+  </rule>
+
+  <rule id="LETNUM">
+    <tag> out = '';</tag>
+    <item repeat="1-3">
+       <ruleref uri="#specialAlpha"/>
+       <tag>out += rules.specialAlpha</tag>
+    </item>
+    <item repeat="1-3">
+       <ruleref uri="#specialDigit"/>
+       <tag>out += rules.specialDigit</tag>
+    </item>
+  </rule>
+  <rule id="PRE82">
+    <tag> out = '';</tag>
+    <item repeat="3">  <ruleref uri="#ALPHA"/><tag>out += rules.ALPHA</tag></item>
+    <item>             <ruleref uri="#SINGLES"/><tag>out += rules.SINGLES</tag></item>
+    <item repeat="0-2"><ruleref uri="#DIGIT"/><tag>out += rules.DIGIT</tag></item>
+    <item>             <ruleref uri="#ALPHA"/><tag>out += rules.ALPHA</tag></item>
+  </rule>
+  <rule id="PRE2001">
+    <tag> out = '';</tag>
+    <item>             <ruleref uri="#ALPHA"/><tag>out += rules.ALPHA</tag></item>
+    <item>             <ruleref uri="#SINGLES"/><tag>out += rules.SINGLES</tag></item>
+    <item repeat="0-2"><ruleref uri="#DIGIT"/><tag>out += rules.DIGIT</tag></item>
+    <item repeat="3">  <ruleref uri="#ALPHA"/><tag>out += rules.ALPHA</tag></item>
+  </rule>
+  <rule id="CURRENT">
+    <tag> out = '';</tag>
+    <item repeat="2"><ruleref uri="#ALPHA"/><tag>out += rules.ALPHA</tag></item>
+    <item><ruleref uri="#AGEID"/><tag>out += rules.AGEID</tag></item>
+    <!-- <item repeat="2"><ruleref uri="#DIGIT"/><tag>out += rules.DIGIT</tag></item> -->
+    <item repeat="3"><ruleref uri="#ALPHA"/><tag>out += rules.ALPHA;</tag></item>
+  </rule>
+
+  <rule id="specialDigit">
+     <one-of>
+        <item> <ruleref uri="#DIGIT"/> <tag>out = rules.DIGIT</tag></item>
+        <item> double <ruleref uri="#DIGIT"/><tag>out = rules.DIGIT + rules.DIGIT</tag></item>
+        <item> triple <ruleref uri="#DIGIT"/><tag>out = rules.DIGIT + rules.DIGIT  + rules.DIGIT</tag></item>
+        <item> treble <ruleref uri="#DIGIT"/><tag>out = rules.DIGIT + rules.DIGIT  + rules.DIGIT</tag></item>
+     </one-of>
+  </rule>
+  <rule id="specialAlpha">
+     <one-of>
+        <item> <ruleref uri="#ALPHA"/> <tag>out = rules.ALPHA</tag></item>
+        <item> double <ruleref uri="#ALPHA"/><tag>out = rules.ALPHA + rules.ALPHA</tag></item>
+        <item> triple <ruleref uri="#ALPHA"/><tag>out = rules.ALPHA + rules.ALPHA  + rules.ALPHA</tag></item>
+        <item> treble <ruleref uri="#ALPHA"/><tag>out = rules.ALPHA + rules.ALPHA  + rules.ALPHA</tag></item>
+     </one-of>
+  </rule>
+
+  <rule id="ALPHA">
+    <one-of>
+       <item> A <tag>out='A'</tag></item>
+       <item> B <tag>out='B'</tag></item>
+       <item> C <tag>out='C'</tag></item>
+       <item> D <tag>out='D'</tag></item>
+       <item> E <tag>out='E'</tag></item>
+       <item> F <tag>out='F'</tag></item>
+       <item> G <tag>out='G'</tag></item>
+       <item> H <tag>out='H'</tag></item>
+       <item> I <tag>out='I'</tag></item>
+       <item> J <tag>out='J'</tag></item>
+       <item> K <tag>out='K'</tag></item>
+       <item> L <tag>out='L'</tag></item>
+       <item> M <tag>out='M'</tag></item>
+       <item> N <tag>out='N'</tag></item>
+       <item> O <tag>out='O'</tag></item>
+       <item> P <tag>out='P'</tag></item>
+       <item> R <tag>out='R'</tag></item>
+       <item> S <tag>out='S'</tag></item>
+       <item> T <tag>out='T'</tag></item>
+       <item> U <tag>out='U'</tag></item>
+       <item> V <tag>out='V'</tag></item>
+       <item> W <tag>out='W'</tag></item>
+       <item> X <tag>out='X'</tag></item>
+       <item> Y <tag>out='Y'</tag></item>
+       <item> Z <tag>out='Z'</tag></item>
+       <item> ALPHA <tag>out='A'</tag></item>
+       <item> BRAVO <tag>out='B'</tag></item>
+       <item> CHARLIE <tag>out='C'</tag></item>
+       <item> DELTA <tag>out='D'</tag></item>
+       <item> ECHO <tag>out='E'</tag></item>
+       <item> FOXTROT <tag>out='F'</tag></item>
+       <item> GOLF <tag>out='G'</tag></item>
+       <item> HOTEL <tag>out='H'</tag></item>
+       <item> INDIA <tag>out='I'</tag></item>
+       <item> JULIET <tag>out='J'</tag></item>
+       <item> KILO <tag>out='K'</tag></item>
+       <item> LIMA <tag>out='L'</tag></item>
+       <item> MIKE <tag>out='M'</tag></item>
+       <item> NOVEMBER <tag>out='N'</tag></item>
+       <item> OSCAR <tag>out='O'</tag></item>
+       <item> PAPA <tag>out='P'</tag></item>
+       <item> PETER <tag>out='P'</tag></item>
+       <item> ROMEO <tag>out='R'</tag></item>
+       <item> ROGER <tag>out='R'</tag></item>
+       <item> SUGAR <tag>out='S'</tag></item>
+       <item> SIERRA <tag>out='S'</tag></item>
+       <item> TANGO <tag>out='T'</tag></item>
+       <item> UNIFORM <tag>out='U'</tag></item>
+       <item> VICTOR <tag>out='V'</tag></item>
+       <item> WHISKEY <tag>out='W'</tag></item>
+       <item> X-RAY <tag>out='X'</tag></item>
+       <item> YANKEE <tag>out='Y'</tag></item>
+       <item> ZULU <tag>out='Z'</tag></item>
+       <item> ZEBRA <tag>out='Z'</tag></item>
+    </one-of>
+  </rule>
+
+<rule id="AGEID">
+    <tag> out = '';</tag>
+    <one-of>
+      <item repeat="2"><ruleref uri="#DIGIT"/><tag>out += rules.DIGIT</tag></item>
+      <item><ruleref uri="#TEENS"/><tag>out = rules.TEENS </tag></item>
+      <item>
+	<item><ruleref uri="#TENS"/><tag>out = (10 * rules.TENS);</tag></item>
+        <item repeat="0-1"><ruleref uri="#SINGLES"/><tag>out += rules.SINGLES;</tag></item>
+      </item>
+    </one-of>
+  </rule>
+
+<rule id="TEENS">
+    <one-of>
+      <item> <tag>out='19'</tag>nineteen</item>
+      <item> <tag>out='18'</tag>eighteen</item>
+      <item> <tag>out='17'</tag>seventeen</item>
+      <item> <tag>out='16'</tag>sixteen</item>
+      <item> <tag>out='15'</tag>fifteen</item>
+      <item> <tag>out='14'</tag>fourteen</item>
+      <item> <tag>out='13'</tag>thirteen</item>
+      <item> <tag>out='12'</tag>twelve</item>
+    </one-of>
+  </rule>
+
+<rule id="TENS">
+    <one-of>
+      <item>twenty <tag>out=2</tag></item>
+      <item>fifty <tag>out=5</tag></item>
+      <item> sixty <tag>out=6</tag></item>
+      <item> seventy <tag>out=7</tag></item>
+    </one-of>
+  </rule>
+
+<rule id="SINGLES">
+    <one-of>
+      <item> one <tag>out=1</tag></item>
+      <item> two <tag>out=2</tag></item>
+      <item> three <tag>out=3</tag></item>
+      <item> four <tag>out=4</tag></item>
+      <item> five <tag>out=5</tag></item>
+      <item> six <tag>out=6</tag></item>
+      <item> seven <tag>out=7</tag></item>
+      <item> eight <tag>out=8</tag></item>
+      <item> nine <tag>out=9</tag></item>
+    </one-of>
+  </rule>
+
+
+ <rule id="DIGIT">
+    <one-of>
+      <item>
+        <ruleref uri="#ZERO"/>
+        <tag>out='0'</tag>
+      </item>
+      <item>
+        one <tag>out='1'</tag>
+      </item>
+      <item>
+        two <tag>out='2'</tag>
+      </item>
+      <item>
+        three <tag>out='3'</tag>
+      </item>
+      <item>
+        four <tag>out='4'</tag>
+      </item>
+      <item>
+        five <tag>out='5'</tag>
+      </item>
+      <item>
+        six <tag>out='6'</tag>
+      </item>
+      <item>
+        seven <tag>out='7'</tag>
+      </item>
+      <item>
+        eight <tag>out='8'</tag>
+      </item>
+      <item>
+        nine <tag>out='9'</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="ZERO">
+    <one-of>
+      <item>oh</item>
+      <item>zero</item>
+    </one-of>
+  </rule>
+<rule id="DK">
+<tag>out='dontknow'</tag>
+<one-of>
+	<item>
+		<item repeat="0-1"> I </item>
+		<item> don't know </item>
+		<item repeat="0-1"> 
+			<one-of>
+				<item> it </item>
+				<item> that </item>
+			</one-of>
+		</item>
+	</item>
+	<item> I don't have it </item>
+	<item>
+		<item repeat="0-1"> I have </item>
+		<item> no idea </item>
+	    <item repeat="0-1"> where it is </item>
+	</item>
+</one-of>
+</rule>
+</grammar>

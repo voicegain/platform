@@ -9,7 +9,7 @@ NOTE 2: We also now support an install on a machine or a VM that has no GPU (thu
 Under the hood:
 This guide will have you do the following:
 * Configure your server BIOS
-* Install Ubuntu **Server 22.04 LTS** (Ubuntu Server 24.04 not yet officially supported by us) with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs (support for non-GPU/CPU-Only also available. See [Step 8](#step8) for --gpu flag)
+* Install Ubuntu **Server 24.04 LTS** with custom Partitioning onto a server with NVIDIA CUDA Capable GPUs (support for non-GPU/CPU-Only also available. See [Step 8](#step8) for --gpu flag)
 * Provision your server using the Voicegain EZ Init script.
 * Deploy the Voicegain Application to your environment. 
 
@@ -22,7 +22,7 @@ TODO: Manual provisioning requirements and steps to upload your preexisting kube
 - [Step 3: Configure Installation](#step4)
 - [Step 4: Configure Network](#step3)
 - [Step 5: Manually Create Partitions](#step5)
-- [Step 6: Finalize Provisioning](#step6)
+- [Step 6: Finalize Configuration and Provisioning](#step6)
 - [Step 7: Create Cluster on VoiceGain](#step7)
 - [Step 8: Run EZInit Script](#step8)
 - [Flags and Arguments](#flags)
@@ -31,7 +31,6 @@ TODO: Manual provisioning requirements and steps to upload your preexisting kube
 - [Step 11: Deploy Voicegain Application](#step11)
 - [Step 12: Reboots, Notes and Caveats](#step12)
 - [CRITICAL NOTE ON SYSTEM UPDATES](#updates)
-- [Billing and Licensing](#license)
 
 ## <a name="before"></a>Before you Start 
 In order to deploy Voicegain on Edge your account needs to have the Edge feature enabled - otherwise you will not see the relevant pages in the [Voicegain Web Console](https://www.voicegain.ai). Please contact support@voicegain.ai to have that enabled.
@@ -42,7 +41,7 @@ Ensure that this node will have access to an NTP Clock endpoint. By default, thi
 
 ## <a name="step1"></a>Step 1: Configure your Server BIOS 
 
-*Step 1 is relevant only for a bare hardware deployment (not a VM). Proceed to [Step 2](#step2) if manually installing on VM. If the VM was autoprovisioned with Ubuntu Server 22.04 proceed to [Step 5](#step5) to ensure storage partitions are configured correctly.*
+*Step 1 is relevant only for a bare hardware deployment (not a VM). Proceed to [Step 2](#step2) if manually installing on VM. If the VM was autoprovisioned with Ubuntu Server 24.04 proceed to [Step 5](#step5) to ensure storage partitions are configured correctly.*
 
 Boot your server and enter BIOS Configuration Menu: [Common Manufacturer BIOS Keys](https://www.tomshardware.com/reviews/bios-keys-to-access-your-firmware,5732.html#:~:text=BIOS%20Keys%20by%20Manufacturer%201%20ASRock%3A%20F2%20or,Lenovo%20%28ThinkPads%29%3A%20Enter%20then%20F1.%20More%20items...%20)
 
@@ -61,7 +60,7 @@ If not enabled the card will not be detected by Nvidia driver and you may see er
 
 *Step 2 may have to be done differently if installing on a VM - the instructions below focus on bare hardware.*
 
-If you have not already; you can download the Ubuntu 22.04 LTS Server Image [here](https://releases.ubuntu.com/22.04.4/ubuntu-22.04.4-live-server-amd64.iso).
+If you have not already; you can download the Ubuntu 24.04 LTS Server Image [here](https://releases.ubuntu.com/24.04.2/ubuntu-24.04.2-live-server-amd64.iso).
 
 You can burn the installation image on to DVD, however, we recommend creating a Bootable USB drive as it is faster and becoming the new standard.
 
@@ -87,21 +86,23 @@ Choose your language/keyboard etc...
 
 On the "Choose type of install" screen, select "Ubuntu Server" and and leave other options unchecked. See Below:
 
-![Install Settings](https://github.com/voicegain/platform/assets/14049448/43ce0265-f6f7-467b-9fbf-05d193ac1cae)
+![Install Settings](https://github.com/user-attachments/assets/bc1b9695-35f8-473a-938a-5c6ee9671c07)
 
 ### Networking ###
 This guide assumes you will be statically assigning a dedicated IP address to your K8s node. 
 
 Determine Network Interface if you do not already know it by the interface that doesn't have a "not connected" note, and highlight it, press enter and select "Edit IPv4"
-![Network Interfaces](https://github.com/voicegain/platform/assets/14049448/eb04e552-63dc-47e3-859f-0744f0d2e51f)
+![Network Interfaces](https://github.com/user-attachments/assets/0d5f2b18-1219-4156-9081-c88524315064)
+
 
 Then define the IPv4 configuration as it pertains to your network:
-![image](https://github.com/voicegain/platform/assets/14049448/6d66bb1d-a200-425e-be44-5b6f5b16f49d)
+![IPv4 Settings](https://github.com/voicegain/platform/assets/14049448/6d66bb1d-a200-425e-be44-5b6f5b16f49d)
 
 After selecting next, if you require use of an HTTP Proxy you can configure it here.
 
-This guide was written with the Installer Version 24.04.1. You may be prompted to update the installer to a new version. Ideally this should pose any issues, however, it is not unheard of for an installer update to break some unforeseen functionality. You may choose to update the isntaller, but if you encounter an issue you may consider installing without updating the installer.
-![image](https://github.com/voicegain/platform/assets/14049448/74e8cfcb-94b9-417b-aa2d-cdfb30a3442d)
+This guide was written with the Installer Version 24.04.2. You may be prompted to update the installer to a new version. Ideally this should pose any issues, however, it is not unheard of for an installer update to break some unforeseen functionality. You may choose to update the isntaller, but if you encounter an issue you may consider installing without updating the installer.
+![Installer Selection](https://github.com/user-attachments/assets/09670b73-8410-46de-a722-35031f8dd6d0)
+
 
 
 ## <a name="step5"></a>Step 5: Manually Create Partitions
@@ -109,59 +110,79 @@ This guide was written with the Installer Version 24.04.1. You may be prompted t
 In short, the spirit behind the partitions are as such: 
 - EFI partition: Required 
 - **No Swap**: Kubernetes requires swap to be off so no need to waste disk space here.
-- Partition for NFS: dynamically provisioned storage consumed by the k8s cluster.
-- Partition for /var/log: prevent overactive logs from filling root filesystem and rendering the system inaccessible. 
+- Partition for **NFS**: dynamically provisioned persistent storage consumed by the k8s cluster.
+- Partition for **/var/lib**: The majority of runtime data is stored in /var/lib/containerd and /var/lib/kubelet so /var/lib/ is partitioned separately to avoid filling the / (root) filesystem and rendering the system system inaccessible. 
+- Partition for **/var/log**: prevent overactive logs from filling root filesystem and rendering the system inaccessible. 
  
-Kubernetes doesn't support Swap, and the NFS and log Storage should not impact the host system if they're ever filled. Detailed walk-through follows:
+Kubernetes requires Swap to be disabled. The NFS persistent volumes, k8s runtime, and log storage should not impact the host system if they're ever filled. Detailed walk-through follows:
 
 ### Guided storage configuration:
 * On the "Guided storage configuration" screen: Choose "Custom storage layout" and then "Done"
-![Server-Guided-Storage](https://github.com/voicegain/platform/assets/14049448/2ea019b1-f397-4632-a486-49cbb8e3d9de)
+![Server-Guided-Storage](https://github.com/user-attachments/assets/618ec654-7555-4652-ae61-43c198617954)
 
-1. Hightlight the intended disk and select "Use as boot device"
 
-### Partition Layout: 
+### Recommended Partitioning for Ubuntu Installation:
 
-* **NOTE:** *If this disk has previous partitions you will want to select the drive itself (show by UUID and size) and then select "Reformat" this WILL destroy all data previously on the disk.*
+For disk sizes of **1TB, 2TB, and 4TB**, the following partitioning scheme is recommended:
 
-#### Allotment:
+| Mount Point   | 1TB  | 2TB  | 4TB  |
+|--------------|------|------|------|
+| `/boot/efi`  | 1.05G | 1.05G | 1.05G |
+| `/`          | 64G  | 96G  | 128G  |
+| `/var/lib`   | 256G  | 384G  | 512G  |
+| `/var/log`   | 48G   | 64G   | 96G  |
+| `/nfs`       | Remainder | Remainder | Remainder |
 
-**Recommendation:** *We recommend using at least 250 GB for the / (root) partition and 750 GB (at least) for the storage partition `/nfs`. In the below example we are using a single 1TB Drive*
+- `/boot/efi` is always **1.05GB**.
+- The **root (`/`)** partition size increases as disk capacity grows.
+- `/var/lib` is partitioned to avoid k8s runtime from filling the **root (`/`)**
+- `/var/log` is allocated for logging purposes.
+- `/nfs` uses the remaining space.
 
-* **For Each Partition we create do the following:** scroll down and highlight "**free space**" which should be the entire disk, hit enter and select "Add GPT Partition".
+#### Partitioning: 
+* **NOTE:** *If this disk has previous partitions you will want to select the drive itself (show by UUID and size) and then select "Reformat" this WILL destroy all data previously on the disk. If this disk had an existing LVM volume group you will need to delete the LVM Volume Group before you can "Reformat"*
 
-Leave it as ext4 format and the first drive will automatically be chosen to mount '/' a.k.a. the root partition.
+- **/boot/efi** : Hightlight the intended disk and select "Use as boot device"
+![Use As Boot Device](https://github.com/user-attachments/assets/7ee93016-9b05-4b73-be97-2681bed8fe37)
 
-Then we want to create a dedicated partition for logs so that logs will not fill the server and prevent it from functioning. 64GB should be sufficient for this.
-Select Mount as "Other" and enter `var/log` (the / will already be prepended so it should read as `/var/log`)
+* **For Each Subsequent Partition we create; do the following:** scroll down and highlight "**free space**" which should be the entire disk, hit enter and select "Add GPT Partition". Enter the size and mount point using the table above as a guide.
 
-Next choose your dedicated storage drive's free space (this can be the same device or another one. And select Mount as "Other" and enter 'nfs' (the / will already be prepended)
+- **root (`/`)** : Add GPT Partition, Populate Size according to table above. Leave it as ext4 format and the Mount point should be  '/' a.k.a. the root partition. Create.
+![root partition](https://github.com/user-attachments/assets/ce6538c0-5513-4dd2-a38f-6a41fd1622e2)
 
-* For the remaining ~750GB (or however much you have left over), create a new partition and manually type the *Mount point* as: `/nfs`  
-**NOTE:** *Obviously this could also be done with multiple drives. Dedicating a device to `/` and another solely to `/nfs`. Another option would be to combine multiple partitions/disks into a single LVM for `/nfs`*
+- **/var/lib** : Add GPT Partition, Populate Size according to table above. Leave it as ext4 format and select Mount as "/var/lib". Create.
+ ![var-lib](https://github.com/user-attachments/assets/34a103e4-41ed-4336-b921-4dae976e4318)
 
-![image](https://github.com/voicegain/platform/assets/14049448/95e3d9aa-f471-4378-81fc-ba0c9d53e31e)
+- **/var/log** : Add GPT Partition, Populate Size according to table above. Leave it as ext4 format and select Mount as "Other" and enter `var/log` (the / will already be prepended so it should read as `/var/log`). Create.
+![var-log](https://github.com/user-attachments/assets/916fca17-7f20-43dd-9d46-ebac8faa65aa)
 
- **Install Now** -> Continue -> Continue and finish the remainder of the install (create user and password. Assign hostname, etc...). Choose to require password to log in, and restart the system when prompted (remove installation media or otherwise ensure that the boot drive is higher in the boot order).
+- **/nfs** : Add GPT Partition, Leave size empty to utilize the remaining disk space. Leave it as ext4 format and select Mount as "Other and enter `nfs` (as the / is already prepended). Create.
+ ![nfs](https://github.com/user-attachments/assets/67ae468c-5c67-46b1-8225-e0339fe17158)
 
+**NOTE:** *Indeed, this could also be done with multiple drives. Dedicating a device to `/` and another solely to `/nfs`. Another option would be to combine multiple partitions/disks into a single LVM for `/nfs`*
+
+![Filesystem Summary](https://github.com/user-attachments/assets/3c563985-e448-45a9-9b8e-4e4592a43acd)
+
+ **Continue** -> (If disk was previously formated you will need to confirm the destructive action) -> Profile Configuration 
+
+## <a name="step6"></a>Step 6: Finalize Configuration and Provisioning
 **A NOTE ABOUT USERS:**
 
 During the EZInit Script process a system user named `voicegain` will be created (if one does not already exist). The `voicegain` user will be used for interacting with and running the voicegain application. If this is going to be a single user system (you do not need multple user logins) then you can (if you wish) create the `voicegain` user yourself during the Ubuntu installation process. If this system will be accessed by multple people you may wish to simply create the first admin account during the Ubuntu installation and allow the EZInit script to automatically generate the `voicegain` user. 
 
 ![User Creation](https://github.com/voicegain/platform/assets/14049448/6b994fe6-ae4a-4a48-8264-05cbd889cf96)
+Click Continue.
 
-Additionally, if you are subscribed to Ubuntu Pro you may enable it in the next step.
+** Upgrade to Ubuntu Pro **: If you are subscribed to Ubuntu Pro you may enable it in this step. Continue.
 
-On the following page you can choose to install OpenSSH server, which in most cases is ideal, unless you will have direct access to the system as needed. 
+** SSH configuration **: On this page you can choose to install OpenSSH server, which in most cases is ideal, unless you will have direct access to the system as needed. Depending on your existing conditions and requirements you can choose the default of Allowing password authentication over SSH, or you can Import an SSH Key if your environment requires it. Click Done. 
 
-* **IMPORTANT:** Do not install anything from the "Freatured server snaps" page. Snap uses different versios of software with custom configuration locations and this will break the intended functionality of our cluster
+* **IMPORTANT: Featured Server Snaps** Do not install anything from the "Freatured server snaps" page. Snap uses different versios of software with custom configuration locations and this will break the intended functionality of our cluster.
 
-## <a name="step6"></a>Step 6: Finalize Provisioning
+* Click DONE to begin the Installation
 
-Your first boot into Ubuntu will prompt you to set up some features: Connecting online accounts, Livepatch and Help Ubuntu. Skip these steps or approve the default choices. (Naturally, you can choose to not send any data to Canonical)
-
-You will likely also be prompted by the "Software Updater" to, well, update. Close out of this **without** updating. The packages will be updated during the cluster provisioning phase via our EZInitScript.
-
+* Reboot and remove the installation media. 
+ 
 ***OPTIONAL:*** If you did not choose to install OpenSSH Server during the provisioning phase, time you may wish to install it now and complete the process over an SSH session. 
 
 In the terminal execute: `sudo apt install openssh-server -y`
@@ -169,25 +190,27 @@ In the terminal execute: `sudo apt install openssh-server -y`
 This will automatically start the server and update the local firewall to permit SSH connections over port 22.
 
 ## <a name="step7"></a>Step 7: Create Cluster on VoiceGain
-> **System Provisioning Considerations:** For the sake of simplicity; the remainder of this guide will assume we are solely using the Ubuntu system we have just installed to access the Voicegain Console UI and complete all the remaining steps. However, it is entirely possible to complete this remotely via SSH (as mentioned in the previous step). You can, then, create the Cluster on the Voicegain portal from the system of your choosing and paste the EZInitCommand to the Ubuntu system over SSH.
+> **System Provisioning Considerations:** As we are now using Ubuntu Server; there is not a Desktop Environment by default. As such, we will be using SSH so we can copy and paste into our terminal. For the sake of simplicity; the guide is assuming that you are on a Desktop with a browser and SSH access to the Edge Cluster. 
 
-1. On your new Ubuntu system: open Firefox and go to: https://console.voicegain.ai
+1. On your desktop system; go to: https://console.voicegain.ai
 2. If you do not have a developer account, you would need to sign up first. Detailed instructions are provided [here](https://www.voicegain.ai/post/how-to-signup-for-a-developer-account-and-start-using-voicegain-voice-ai).
 3. Log in to the console and go to the "[Edge Deployment](https://console.voicegain.ai/specific/edge-deployments)" view. Click "**+ ADD**" and name your Cluster and choose **EZ Setup**.
 
-![Add new Edge Deployment](./7-1.png)
+![Add new Edge Deployment](https://github.com/user-attachments/assets/7895a046-c1b5-49f6-99a3-ca514e57bfa1)
+
+4. Find your newly created cluster in the Edge Deployment list and Load it by clicking the button to the right of the entry (left of the Delete/Trash button) 
+![Load Cluster](https://github.com/user-attachments/assets/107c82ca-3bf1-4129-a607-acc6e53d69e4)
 
 
-3. Find your newly created cluster in the Edge Deployment list and Load it by clicking the button to the right of the entry (left of the Delete/Trash button) 
-![Load Cluster](./7-2.png)
 
 
-4. Define the Connection parameters relevant to your circumstance. Ideally your Edge Deployment will be in your DMZ or "Edge" and, as such, is reachable from the internet. If so, choose the top radio button: "Reachable from internet" and provide the IP Address or Fully Qualified Domain Name as well as the K8S API port (by default this is 6443). Alternatively, if you do not have a DMZ or the ability to add a pinhole in your firewall; you should choose: "Set up control tunnel". Then Click "**Apply**" and "**> Next**"
+5. Define the Connection parameters relevant to your circumstance. Ideally your Edge Deployment will be in your DMZ or "Edge" and, as such, is reachable from the internet. If so, choose the top radio button: "Reachable from internet" and provide the IP Address or Fully Qualified Domain Name as well as the K8S API port (by default this is 6443). Alternatively, if you do not have a DMZ or the ability to add a pinhole in your firewall; you should choose: "Set up control tunnel". Then Click "**Apply**" and "**> Next**"
 > **What is the control tunnel?:** In order to connect to systems behind a strict Firewall your Edge system will leverage autossh to establish an SSH tunnel with our network over the HTTPS (port 443) protocol. This is a non interactive shell session that solely creates a reverse port forward so that we can reach your Kubernetes API from within our network.
-![Connection Parameters](./7-3.png)
+![Connection Parameters](https://github.com/user-attachments/assets/2b94a6bb-7893-4001-821f-7eac52389ab2)
 
-5. Click "**Generate**" and then "**Copy**". You now have the Command script in your clipboard. 
-![Generate Command Script](./7-4.png)
+6. Click "**Generate**" and then "**Copy**". You now have the Command script in your clipboard. 
+![Generate Command Script](https://github.com/user-attachments/assets/64b772ed-9856-47ca-92c6-3edcb5c300af)
+
 
 ## <a name="step8"></a>Step 8: Run EZInit Script
 
@@ -199,12 +222,16 @@ The EZInitCommand provided above should look something like:
 
 <a name="flags"></a>  
 ## FLAGS and ARGUMENTS
-* **CPU-Only (`--gpu|-g`):** If you are installing on a machine or VM **without GPU** you will need to append the following option to the EZInit Script  `-g false` or `--gpu false` ; otherwise the EZInit script will attempt to install Nvidia Cuda drivers and will fail.
-* **Multi-node (`--multi|-m`)** By default the EZInit script assumes a single node cluster is being deployed. In order to receive follow-up instructions and commands for multi-node clusters provide the `-m` or `--multi` flag
-* **Custom NFS (`--server|s` and `--nfsdir|-d`)** By default the local server `127.0.0.1` and the `/nfs` directory are set for dynamic storage provisioning. If you have another NFS server within your network you can provide the IP via the `-s 8.8.8.8` or `--server 8.8.4.4` arguments. If you have a different local partition you wish to serve from you can provide the `-d /mystorage` or `--nfsdir /storage` arguments. (replacing 8.8.8.8, 8.8.4.4, /mystroage, and /storage with your destinations)
+* **GPU Operator Mode (`--gpu|-g`):** Controls how GPU support is configured. Use -g false (or --gpu false) to install Nvidia drivers directly on the host. Default (true) uses the GPU-Operator to manage driver deployment.
+* **CPU Only (No GPU) (`--cpu|-c`):** Use this flag for CPU-only installations. Disables all GPU-related installations (both host drivers and GPU-Operator). Cannot be used with `--gpu`.
+* **Multi-node (`--multi|-m`) [DEPRECATED]:** By default the EZInit script assumes a single node cluster is being deployed. In order to receive follow-up instructions and commands for multi-node clusters provide the -m or --multi flag [DEPRECATED]
+* **Custom NFS (`--server|-s` and `--nfsdir|-d`):** By default the local server 127.0.0.1 and the /nfs directory are set for dynamic storage provisioning. If you have another NFS server within your network you can provide the IP via the -s 8.8.8.8 or --server 8.8.4.4 arguments. If you have a different local partition you wish to serve from you can provide the -d /mystorage or --nfsdir /storage arguments. (replacing 8.8.8.8, 8.8.4.4, /mystroage, and /storage with your destinations)
+* **Legacy Mode (`--legacy|-l`):** Enables compatibility mode for older systems and Kubernetes versions
+* **Existing Cluster (`--exists|-x`):** Allows management of pre-existing clusters, including reset options
+* **Verbose Mode (`--verbose|-v`):** Enables detailed output during installation and configuration
+* **Help (`--help|-h`):** Displays usage information and available options
 
-
-Paste the copied EZInit Command into a terminal/ssh session on the Edge System, **append any required flags outlined above for your use-case** and hit enter and provide your password for sudo when prompted. 
+Paste the copied EZInit Command into a terminal/ssh session on the Edge System, **Defaults are generally correct unless instucted otherwise by your Voicegain Contact.** and hit enter and provide your password for sudo when prompted. 
 
 
 
@@ -221,12 +248,10 @@ vginstall
 **INFO:** if the EZInit script is used to create the `voicegain` user, it will be created as a system user with passwordless sudo and no password. **This user cannot log into the system directly or remotely**. The script will then be copied to the system user directory `/opt/voicegain/bin/` and aliased as `vginstall`
 
 ## <a name="step9"></a>Step 9: Reboot
-
-NOTE: In principle this step is not needed if the machine or VM has no GPU. But it will not hurt to reboot either.
-
+ 
 ### The details: 
 #### Why Reboot?
-We are rebooting in order to ensure the Nvidia drivers are loaded into the kernel. This can be done manually, however, this is not always reliable as changes are made in future updates, and if you are logged in to the graphical interface this is even more complicated.
+In principle this step is not needed if the default GPU-Operator is installed or if the machine or VM has no GPU. If the Voicegain Installer was executed with the --gpu=false flag, it will have installed NVIDIA drivers to the host. Requireing a reboot in order to load the required kernel modules. In any event; it will not hurt to reboot.
 
 #### Single-Node Cluster
 If this is a single node cluster, press any key when prompted to reboot. Congrats! Your cluster is configured!
@@ -273,22 +298,28 @@ Repeat the process in [Step 7](#step7) to load your Cluster in the Voicegain Con
 - (Ignore the external Storage settings. This applies to custom large configurations only.)
 - Choose to (Re)Build cluster to begin the deployment
 
-![Deploy1](./11-1-1.png)
+![Deploy1](https://github.com/user-attachments/assets/85400741-c2d9-4033-b2f0-2fdc762a26ec)
 ![Deploy2](./11-1-2.png)
-![Deploy3](./11-1-3.png)
+![Deploy3](https://github.com/user-attachments/assets/4ef78b38-843a-4096-94ce-bf137a9a799e)
+
 - Monitor the progress on the terminal session we created in step 10.
 - Check the status on the Console to see when the deployment is finished, then you can click the link to open your local portal.
 
 ![Portal](./11-2.png)
-- Choose "Log In(Cloud)" and use your Voicegain credentials
+- Choose "Login" and use your Voicegain credentials
 
-![Login](./11-3.png)
+![Login](https://github.com/user-attachments/assets/ad94e8a8-1717-4989-9710-7239066e9f9f)
+
 
 - Now you can test your new deployment. 
   - On the home page click on the "Run test" button on the Function Tests card.
+    ![Run test](https://github.com/user-attachments/assets/cf8a6ba9-dc57-4498-b220-7c659f6a55e8)
+
+
   - If you chose an off-line acoustic model you can also test by uploading a file for transcription.
 
-![Transcribe](./11-4.png)
+![Transcribe](https://github.com/user-attachments/assets/7298ea6c-4bce-489c-ad2c-37804c8a70e5)
+
 
 ## <a name="step12"></a>Step 12: Reboots, Notes and Caveats
 
@@ -318,16 +349,5 @@ Again: **system-wide updates are highly discouraged. Instead, individual package
 ### All done!
 
 ---
-
-## <a name="license"></a>Billing and Licensing
-
-By default the Edge Setup will be deployed with usage based biling (per minute of the API time).
-
-If you would rather be billed per port please contact us to setup a per port license for you Edge cluster.
-
-All that we need is your account id, the name of the cluster that you would like to apply the license to (see image below), and of course the number of ports you would like to license.
-
-![List of Edge Clusters with names](./Edge-clusters-list.PNG)
-
 
 Goto: [top of document](#top)

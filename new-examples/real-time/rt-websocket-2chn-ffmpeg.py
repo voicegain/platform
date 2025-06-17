@@ -21,12 +21,13 @@ inputFile = cfg.get("DEFAULT", "INPUTFILE")
 
 inputFilePath = f"{inputFolder}/{inputFile}"
 
-vgFormat = "PCMU"
-ffmpegFormat = "mulaw"
-#ffmpegFormat = "s16le"
-sampleRate = 8000
+##vgFormat = "PCMU"
+vgFormat = "L16"
+#ffmpegFormat = "mulaw"
+ffmpegFormat = "s16le"
+sampleRate = 16000
 channels = 2
-bytesPerSample = 1
+bytesPerSample = 2
 
 sendingWSProtocol = "WSS"
 #sendingWSProtocol = "WEBSOCKET"

@@ -22,7 +22,7 @@ config.read('config.ini')
 JWT = config['auth']['jwt']
 
 ## specify here the directory with files to test
-input_path = "../../new-examples/data/Recordings/en-Date"
+input_path = "../../new-examples/data/Recordings/hospital"
 
 list_of_files = []
 
@@ -72,18 +72,19 @@ body = {
     "asr": {
       "grammars" : [
           {
-            #"type": "GRXML",
-            #  "name" : "menu-selection",
-            #"fromUrl":{
+            "type": "GRXML",
+            "name" : "hospital",
+            "fromUrl":{
             # #     #"url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
-            # #     "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/Menu0to9Voice.grxml"
+                 #"url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/Menu0to9Voice.grxml"
             # #    "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/YesNoAgent.grxml"
             #"url" : "https://raw.githubusercontent.com/voicegain/platform/refs/heads/master/new-examples/grammar/grxml/YesNoAgent.grxml"
             #"url" : "https://raw.githubusercontent.com/voicegain/platform/refs/heads/master/new-examples/grammar/grxml/en-es-GARB-selector.grxml"
-            #}
+            "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/hospital.grxml"
+            }
 
-           "type" : "BUILT-IN",
-           "name" : "date"
+           #"type" : "BUILT-IN",
+           #"name" : "date"
           ## credit card recognition ##
           ##  "name" : "creditcard"
           ## digit sequence recognition ##
@@ -127,6 +128,7 @@ def web_api_request(headers, body):
 
   host_url = config['api']['host']
   print("Invoking URL: ", host_url + "/v1/asr/recognize/async", flush=True)
+  print("with body: ", json.dumps(body, indent=2), flush=True)
   init_response_raw = requests.post(host_url + "/v1/asr/recognize/async", json=body, headers=headers)
   init_response = init_response_raw.json()
   if(init_response.get("sessions") is None):

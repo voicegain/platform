@@ -1,5 +1,9 @@
 ![FSProxy](./FSProxy.png)
 
+# Voicegain SIP Media Stream B2BUA
+Voicegain offers a highly scalable, reliable and fully contained SIP Media Stream B2BUA to address the challenge discussed above. This B2BUA is a containerized network element that is deployed in the same network as the premise-based contact center. From a SIP Protocol standpoint, this Media Stream Back-to-Back User Agent (B2BUA)  acts as a transparent media relay while forking SIP RTP media streams to real-time Speech-to-Text..
+
+Please refer to this link for more information https://www.voicegain.ai/post/accessing-real-time-media-streams-generative-ai 
 # FreeSWITCH Transcription Proxy
 Proxy your SIP call via our FreeSWITCH docker and get the transcript of the call audio submitted to a websocket service.
 This works basically in two modes 1) if SIP_GATEWAY_IP is configured in config.ini it works in sip trunk mode otherwise 2) send SIP INVITE to DESTINATION_DOMAIN
@@ -39,8 +43,12 @@ python ws_server.py
 # 5) Modify config.ini for Freeswitch docker 
 A sample config.ini can be found in this repository.
 ```ini
-# This is the SIP proxy host where you will be sending SIP traffic to
+# This is the SIP B2BUA host where you will be sending SIP traffic to 
 FREESWITCH_HOST_DOMAIN=fs1lab.ascalon.ai
+# If this value is present then this IP used as SIP trunk to make outbound calls
+SIP_GATEWAY_IP=10.1.0.4:64793
+# This is the final SIP destination domain where will be proxying to.
+#if SIP_GATEWAY_IP is ip mentioned above then this below value will be ignored 
 
 # This is the final SIP destination domain where calls will be proxying to just like sending SIP INVITE to domain.
 DESTINATION_DOMAIN=fs.ascalon.ai:5080
@@ -73,6 +81,7 @@ RIGHT_CHANNEL_NAME=CALLER2
 #words - words with confidence and timing info [also sent over websocket]
 #segments -- segments (or partial hypotheses) [also sent over websocket, note that latency of segments is higher than that of words by about 300-500ms]]
 CONTENT_INCREMENTAL=words
+DIALED_NUMBER_MAPPING=1233:4567
 
 # now, if you want you can change the sensitivity value on the Context from which the JWT is obtained
 SENSITIVITY=1
@@ -89,10 +98,15 @@ cat vg-customer-private-ro-key.json | sudo docker login -u _json_key --password-
 ```
 
 # 7) Run FreeSWITCH docker
-=======
 ```sh
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
 -m to limit memory usage by freewitch docker so below example puts 1GB limit
+```sh
+docker run -d --name fsproxy --network=host -m 1g -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.14.6
+```
+With bridge networking:
+```sh
+
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
 docker run -d --name fstp1  -m 1g -p 5060:5060/tcp -p 5060:5060/udp -p 5080:5080/tcp -p 5080:5080/udp -p 16000-16100:16000-16100/udp -v .\config.ini:/etc/config.ini --env-file .\envfile us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.14.4
 ```

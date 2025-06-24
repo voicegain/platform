@@ -1,0 +1,9 @@
+config.ini
+download/L/*.wav
+download/R/*.wav
+download/more/L/*.wav
+download/more/R/*.wav
+download/more/2/*.wav
+*.csv
+*.txt
+*.json

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" 
+     version="1.0" xml:lang="en-US" tag-format="semantics/1.0" 
+     root="__TRANSCRIBE__">
+  <rule id="__TRANSCRIBE__">
+    <item>transcribe</item>
+  </rule>
+</grammar>

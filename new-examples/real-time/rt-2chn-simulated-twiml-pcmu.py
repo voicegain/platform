@@ -64,6 +64,7 @@ body = {
   },
   "settings": {
     "asr": {
+      "acousticModelRealTime": "VoiceGain-kappa",
       "noInputTimeout": 60000,
       "completeTimeout": 0
     }
@@ -266,8 +267,8 @@ async def stream_audio():
               }
 
               # to trigger issue
-              if(outb_chk != 5 ):
-                time.sleep(0.222)
+#              if(outb_chk != 5 ):
+#                time.sleep(0.222)
 
               try:
                 #print("send media outbound {}".format(outb_ts), flush=True)

@@ -1,0 +1,8 @@
+config.ini
+*.cvs
+reports/*.csv
+reports/config.ini
+cleanup.py
+__pycache__/
+*.pyc
+notes.txt

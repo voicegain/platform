@@ -1,5 +1,7 @@
 import xml.etree.ElementTree as ET
 import re
+import railroad
+print(dir(railroad))
 from railroad import Diagram, Choice, Sequence, Optional, Terminal, NonTerminal, Skip, Comment
 
 
@@ -183,3 +185,5 @@ def grxmlToRailroad(file_name):
   grxml_content=f.read()
   all_rules = extract_rules(grxml_content)
   createDiagram(all_rules)
+
+grxmlToRailroad("uk-lic.grxml")

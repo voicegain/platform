@@ -1,22 +1,92 @@
-![FSProxy](./FSProxy.png)
+Received JSON message: {'metadata': ![FSProxy](./FSProxy.png)
 
 # Voicegain SIP Media Stream B2BUA
 Voicegain offers a highly scalable, reliable and fully contained SIP Media Stream B2BUA to address the challenge discussed above. This B2BUA is a containerized network element that is deployed in the same network as the premise-based contact center. From a SIP Protocol standpoint, this Media Stream Back-to-Back User Agent (B2BUA)  acts as a transparent media relay while forking SIP RTP media streams to real-time Speech-to-Text..
 
 Please refer to this link for more information https://www.voicegain.ai/post/accessing-real-time-media-streams-generative-ai 
 # FreeSWITCH Transcription Proxy
+Proxy your SIP call via our FreeSWITCH docker and get the transcript of the call audio submitted to a websocket service for both Inbound and Outbound calls.
+
+# 1) FreeSWITCH Inbound and Outbound Calling with Dynamic Gateway Handling
+
+This setup enables handling of both **inbound** and **outbound** SIP calls using Lua scripting in FreeSWITCH. It dynamically configures outbound gateways based on runtime variables and supports routing logic based on dialed numbers.
+
+---
+## 📥 Inbound Calling Logic
+
+### Flow Summary:
+
+1. Parses `config.ini` to load settings like:
+   - `FREESWITCH_HOST_DOMAIN`
+   - `DESTINATION_DOMAIN`
+   - `SIP_GATEWAY_IP`
+   - `DIALED_NUMBER_MAPPING`
+2. Checks if SIP URI matches `FREESWITCH_HOST_DOMAIN`. If not, call is rejected.
+3. If `DIALED_NUMBER_MAPPING` is defined, looks up the mapped URI using the dialed number.
+4. Sets the following channel variables:
+   - `SIP_PROFILE` (internal/external based on domain/IP)
+   - `REDIRECT_URI` (full SIP URI to forward the call)
+5. Optional: Initiates Voicegain transcription via WebSocket and attaches custom SIP headers (`uniqueCallId`, `OUTBOUND_CALL_SESSION_ID`, etc).
+
+### Config Parameters (config.ini):
+
+- `FREESWITCH_HOST_DOMAIN`
+- `DESTINATION_DOMAIN`
+- `SIP_GATEWAY_IP`
+- `DIALED_NUMBER_MAPPING`
+- `VG_GATEWAY_URL`, `JWT_TOKEN`, `WEBSOCKET_SERVER`, etc. (for Voicegain integration)
+
+---
+
+## 📤 Outbound Calling Logic
+
+### Flow Summary:
+
+1. Checks if the `destination_number` is longer than 10 digits.
+2. Optionally matches and strips the `OUTBOUND_CALL_PREFIX`.
+3. Validates the presence of outbound config:
+   - `OUT_SIP_GATEWAY_IP`
+   - `OUTBOUND_CALL_EXT`
+   - `OUTBOUND_CALLS_SECRET`
+4. Checks if gateway `outbound_gateway` exists and is registered.
+5. If not registered:
+   - Dynamically creates gateway XML under `sip_profiles/internal/`
+   - Triggers `sofia profile internal rescan`
+6. Sets outbound call variables:
+   - `SIP_PROFILE = gateway/outbound_gateway`
+   - `REDIRECT_URI = sip:<number>@<OUT_SIP_GATEWAY_IP>`
+   - `VG_GATEWAY_URL`, `JWT_TOKEN`, `WEBSOCKET_SERVER`, etc. (for Voicegain integration)
+---
+
+## 🔧 Gateway Dynamic Creation
+
+- A `<gateway>` XML is written to disk with credentials and proxy info.
+- Automatically registered via `sofia profile internal rescan`.
+- Works only if the FreeSWITCH profile includes:
+  ```xml
+  <include>conf/sip_profiles/internal/*.xml</include>
+  ```
+---
+## 📁 File Overview
+
+### Lua Script (e.g. `check_api.lua`)
+
+- Parses `config.ini`
+- Implements logic described above
+- Handles transcription API (optional)
+
 Proxy your SIP call via our FreeSWITCH docker and get the transcript of the call audio submitted to a websocket service.
 This works basically in two modes 1) if SIP_GATEWAY_IP is configured in config.ini it works in sip trunk mode otherwise 2) send SIP INVITE to DESTINATION_DOMAIN
 
 ```Steps for setting up websocket service to receive transciption results in realtime```
-# 1) Install required python pacakges
+# 2) Install required python pacakges
 Assuming you have already setup virtual enviornment(not manadatory) and installed required python packages asyncio, websockets,json and ssl. OS can be any linux distribution preferably debian 12 and above.
 ```sh
 apt install python3.11-venv
 python -m venv myenv
 source myenv/bin/activate
 ```
-# 2) Create new domain and get certficates :
+# 3) Create new domain and get certficates :
 
 (Important if you want to access your websocket service using encrypted wss:// instead of ws://)
 
@@ -32,15 +102,15 @@ replace these lines with your path to certs in python code
 ssl_cert = "/etc/letsencrypt/live/mydomain.com/fullchain.pem"
 ssl_key ="/etc/letsencrypt/live/mydomain.com/privkey.pem"
 ```
-# 3) How to obtain secret key mentioned in python code
+# 4) How to obtain secret key mentioned in python code
 
 Go to and login into https://console.voicegain.ai Under API Security create Auth Configuration and select type as Bearer and enter a random string string as credential - note that it should be the same as the SECRET_KEY mentioned in python script. When call is bridged Voicegain gateway will make connection to your websocket server and it will pass this secrect key as Bearer in header request then on the websocket server side upon receving this key you should validate and proceed further. This has already been done in the python example code. 
 
-# 4) Launch Websocket Server
+# 5) Launch Websocket Server
 ```sh
 python ws_server.py
 ```
-# 5) Modify config.ini for Freeswitch docker 
+# 6) Modify config.ini for Freeswitch docker 
 A sample config.ini can be found in this repository.
 ```ini
 # This is the SIP B2BUA host where you will be sending SIP traffic to 
@@ -81,6 +151,10 @@ RIGHT_CHANNEL_NAME=CALLER2
 #words - words with confidence and timing info [also sent over websocket]
 #segments -- segments (or partial hypotheses) [also sent over websocket, note that latency of segments is higher than that of words by about 300-500ms]]
 CONTENT_INCREMENTAL=words
+OUT_SIP_GATEWAY_IP=10.1.0.4
+OUTBOUND_CALL_PREFIX=33
+OUTBOUND_CALL_EXT=1000
+OUTBOUND_CALLS_SECRET=1234
 DIALED_NUMBER_MAPPING=1233:4567
 
 # now, if you want you can change the sensitivity value on the Context from which the JWT is obtained
@@ -90,14 +164,15 @@ AUDIO_CAPTURE=true
 NOAUDIOTIMEOUT=30000 
 
 ```
-# 6) Obtain FreeSWITCH proxy docker
+# 7) Obtain FreeSWITCH proxy docker
 
 You will need to request from Voicegain a key vg-customer-private-ro-key.json that will give you access to Voicegain artifact repository. Run below command at linux terminal.
 ```sh
 cat vg-customer-private-ro-key.json | sudo docker login -u _json_key --password-stdin https://us-docker.pkg.dev
 ```
 
-# 7) Run FreeSWITCH docker
+# 8) Run FreeSWITCH docker
+With host networking:
 ```sh
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
 -m to limit memory usage by freewitch docker so below example puts 1GB limit
@@ -108,14 +183,14 @@ With bridge networking:
 ```sh
 
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
-docker run -d --name fstp1  -m 1g -p 5060:5060/tcp -p 5060:5060/udp -p 5080:5080/tcp -p 5080:5080/udp -p 16000-16100:16000-16100/udp -v .\config.ini:/etc/config.ini --env-file .\envfile us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.14.4
+docker run -d --name fsproxy -p -p 5060:5060/tcp -p 5060:5060/udp -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.15.0
 ```
 
 Note 1: Be cartefull with the path to the config.ini and env file on Windows systems
 
 Note 2: If you get an error mentioning `parseConfigFile` and `Is a directory` the most likely the path to config.ini was incorrectly provided
 
-# 8) Prepare sip phone to make call to SIP URI
+# 9) Prepare sip phone to make call to SIP URI
 
 You can use, for example, [Linphone](./LINPHONE.md)
 
@@ -124,7 +199,7 @@ where the domain will be same where the docker is running and the part before @ 
 
 NOTE: if you are testing on localhost and your SIP Phone is also on localhost, make sure that the phone is not listening on port 5060 which is needed by FreeSWITCH
 
-# 9) Testing
+# 10) Testing
 After setting up the application, make a call from any SIP Softphone or Linphone to URL. Once the B party answers the call, you will see live audio text messages on the ws_server.py console.
 
 ```log
@@ -196,3 +271,7 @@ Received JSON message: {'utt': 'assistant', 'conf': 0.9907, 'gap': 240, 'start':
 	1718768974.878 CH2 	your smart assistant
 
 ```
+}
+
+
+

@@ -14,9 +14,9 @@ inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 inputFname = cfg.get("DEFAULT", "INPUTFILE")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
-model = "VoiceGain-omega"
+#model = "VoiceGain-omega"
 #model = None
-#model = "whisper:medium"
+model = "whisper:medium"
 
 print("model: {}".format(model))
 
@@ -55,15 +55,15 @@ asr_body = {
     },
     "settings": {
         "asr": {
-            "languages" : ["es", "en"],
+            "languages" : ["en"],
             #"languages" : ["de"],
             "acousticModelNonRealTime" : model,
             "noInputTimeout": -1,
             "completeTimeout": -1,
             "sensitivity" : 0.5,
-            # , "hints" : [
-                # "rupees[roopiece|ruppes]"
-            # ]
+            "hints" : [
+                "you'would[you'd]"
+            ]
             #, "diarization" : {
             #  "minSpeakers" : 2,
             #  "maxSpeakers" : 2

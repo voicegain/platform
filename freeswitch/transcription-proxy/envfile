@@ -1,0 +1,9 @@
+internal_sip_port=5060
+external_sip_port=5080
+rtp_start_port=16000
+rtp_end_port=16100
+SIP_GATEWAY_IP=10.1.0.4:63477
+ext_public_ip=10.1.0.4
+internal_ip=127.0.0.1
+instance_start_id=0
+total_instances=2

@@ -24,11 +24,11 @@ sampleRate = 16000
 channels = 1
 bytesPerSample = 2
 
-sendingWSProtocol = "WSS"
-#sendingWSProtocol = "WS"
+#sendingWSProtocol = "WSS"
+sendingWSProtocol = "WS"
 
-receivingWSProtocol = "wss"
-#receivingWSProtocol = "ws"
+#receivingWSProtocol = "wss"
+receivingWSProtocol = "ws"
 
 #acousticModelRealTime = "VoiceGain-rho-en-us"
 #acousticModelRealTime = "VoiceGain-rho"
@@ -69,7 +69,7 @@ body = {
             "acousticModelRealTime" : acousticModelRealTime,
             "noInputTimeout": 59999,
             "incompleteTimeout": 3599999,
-            "sensitivity": 0.5
+            "sensitivity": 0.95
             # ,"hints": [
             #     "Starburst:10",
             #     "Mars_Wrigley:10",

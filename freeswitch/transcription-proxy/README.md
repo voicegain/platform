@@ -1,5 +1,9 @@
 Received JSON message: {'metadata': ![FSProxy](./FSProxy.png)
 
+# Voicegain SIP Media Stream B2BUA
+Voicegain offers a highly scalable, reliable and fully contained SIP Media Stream B2BUA to address the challenge discussed above. This B2BUA is a containerized network element that is deployed in the same network as the premise-based contact center. From a SIP Protocol standpoint, this Media Stream Back-to-Back User Agent (B2BUA)  acts as a transparent media relay while forking SIP RTP media streams to real-time Speech-to-Text..
+
+Please refer to this link for more information https://www.voicegain.ai/post/accessing-real-time-media-streams-generative-ai 
 # FreeSWITCH Transcription Proxy
 Proxy your SIP call via our FreeSWITCH docker and get the transcript of the call audio submitted to a websocket service for both Inbound and Outbound calls.
 
@@ -71,6 +75,9 @@ This setup enables handling of both **inbound** and **outbound** SIP calls using
 - Implements logic described above
 - Handles transcription API (optional)
 
+Proxy your SIP call via our FreeSWITCH docker and get the transcript of the call audio submitted to a websocket service.
+This works basically in two modes 1) if SIP_GATEWAY_IP is configured in config.ini it works in sip trunk mode otherwise 2) send SIP INVITE to DESTINATION_DOMAIN
+
 ```Steps for setting up websocket service to receive transciption results in realtime```
 # 2) Install required python pacakges
 Assuming you have already setup virtual enviornment(not manadatory) and installed required python packages asyncio, websockets,json and ssl. OS can be any linux distribution preferably debian 12 and above.
@@ -106,20 +113,40 @@ python ws_server.py
 # 6) Modify config.ini for Freeswitch docker 
 A sample config.ini can be found in this repository.
 ```ini
-# This is the SIP proxy host where you will be sending SIP traffic to
+# This is the SIP B2BUA host where you will be sending SIP traffic to 
 FREESWITCH_HOST_DOMAIN=fs1lab.ascalon.ai
+# If this value is present then this IP used as SIP trunk to make outbound calls
+SIP_GATEWAY_IP=10.1.0.4:64793
 # This is the final SIP destination domain where will be proxying to.
+#if SIP_GATEWAY_IP is ip mentioned above then this below value will be ignored 
+
+# This is the final SIP destination domain where calls will be proxying to just like sending SIP INVITE to domain.
 DESTINATION_DOMAIN=fs.ascalon.ai:5080
+
+# This is useful only when you want to dial calls to SIP_GATEWAY_IP using sip gateway instead of DESTINATION_DOMAIN.
+# It works much like sip trunk so for this feature to work you must comment out or put DESTINATION_DOMAIN=(empty)
+SIP_GATEWAY_IP=SIPTRUNK_IP:64793
+
+# Incoming caller when dialing call as 1233@FREESWITCH_HOST_DOMAIN translates to 4567@SIP_GATEWAY_IP. This might be useful in call center evnvironment. 
+DIALED_NUMBER_MAPPING=1233:4567
+
 # this main voicegain API gateway URL 
 VG_GATEWAY_URL=https://api.voicegain.ai/v1/asr/transcribe/async
+
 JWT_TOKEN=XXXXXXXXXXCcccccccyJhbGciOiJIUzx1NiIsInR5cCI6IkpXVCJ9.
-# this is the Auth Configuration name that you have created in previous steps above, so the Voicegain gateway will use this name and pickup credential and auth type mentioned in the portal and make a connection to your websocket server so that you can validate it. 
+
+# this is the Auth Configuration name that you have created in previous steps above,
+# so the Voicegain gateway will use this name and pickup credential and auth typementioned in the portal
+# and make a connection to your websocket server so that you can validate it. 
 AUTH_NAME=fsproxy
+
 # This is your websocket server URL where transcription results are posted in real-time
 WEBSOCKET_SERVER=wss://mydomain.com:8765
+
 # names for the left and right channel sessions
 LEFT_CHANNEL_NAME=CALLER1
 RIGHT_CHANNEL_NAME=CALLER2
+
 # options are words OR segments
 #words - words with confidence and timing info [also sent over websocket]
 #segments -- segments (or partial hypotheses) [also sent over websocket, note that latency of segments is higher than that of words by about 300-500ms]]
@@ -128,6 +155,13 @@ OUT_SIP_GATEWAY_IP=10.1.0.4
 OUTBOUND_CALL_PREFIX=33
 OUTBOUND_CALL_EXT=1000
 OUTBOUND_CALLS_SECRET=1234
+DIALED_NUMBER_MAPPING=1233:4567
+
+# now, if you want you can change the sensitivity value on the Context from which the JWT is obtained
+SENSITIVITY=1
+AUDIO_CAPTURE=true
+# configurable noAudioTimeout parameter to the freeswitch docker that can disconnect webscocket session in case no audio in 30 secs, if this param is ommitted it takes default value of 30 sec.
+NOAUDIOTIMEOUT=30000 
 
 ```
 # 7) Obtain FreeSWITCH proxy docker
@@ -138,21 +172,21 @@ cat vg-customer-private-ro-key.json | sudo docker login -u _json_key --password-
 ```
 
 # 8) Run FreeSWITCH docker
-=======
 With host networking:
 ```sh
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
 -m to limit memory usage by freewitch docker so below example puts 1GB limit
 ```sh
-docker run -d --name fsproxy --network=host -m 1g -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.8.0
+docker run -d --name fsproxy --network=host -m 1g -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.14.6
 ```
 With bridge networking:
 ```sh
+
 -v option specifies local file path where config.ini is located this needs to be changed to where the file was copied.
 docker run -d --name fsproxy -p -p 5060:5060/tcp -p 5060:5060/udp -v /Path_to/config.ini:/etc/config.ini us-docker.pkg.dev/voicegain-prod/vg-customer-private/freeswitch-transcription-proxy:0.15.0
 ```
 
-Note 1: Be cartefull with the path to the config.ini on Windows systems
+Note 1: Be cartefull with the path to the config.ini and env file on Windows systems
 
 Note 2: If you get an error mentioning `parseConfigFile` and `Is a directory` the most likely the path to config.ini was incorrectly provided
 

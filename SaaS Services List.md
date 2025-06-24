@@ -2,7 +2,7 @@
 # Voicegain Software SKU List - Can be delivered as a SaaS Service or Edge/On-Prem Subscription Product
 Effective: June 20th, 2019
 
-Last Updated: March 20th, 2024
+Last Updated: March 26th, 2025
 
 ## A. Developer PaaS Services
 Developer PaaS Services are accessed through Voicegain Developer Web Console. Voicegain offers the following PaaS Services
@@ -29,3 +29,5 @@ they can also invoke these APIs with Speech Grammars.
 ## B2. Voicegain Speech Analytics:
 **Voicegain Speech Analytics** is a web application that uses Voicegain Speech Analytics APIs to analyze audio recordings of voice customer service interactions in contact centers with an objective of automated quality management, compliance verification and gathering customer experience and business insights. These recordings get accurately transcribed and analyzed using AI. We analyze both audio and the text transcript using AI to extract keywords, sentiment, named entities and topics. 
 
+## B3. Voicegain Casey:
+**Voicegain Casey** is a suite of three (3) SaaS Applications - AI Voice Assistant, AI Co-Pilot and AI QA and Coach - that are focused on healthcare payer call centers. All the three SaaS applications are built on Voicegain Developer APIs that integrated with Generative AI technologies. The AI Voice Assistant replaces a touchtone IVR with a fully conversational IVR experience. It can perform customer validation, triaging and automation of routine inquiries. For calls that require live assistance, the AI Co-Pilot guides the front-line call center stadff in real-time. The AI QA and Coach automates the quality assurance and coaching function in the call center. Voicegain Casey includes a telephony stack that integrates with the client's CCaaS platform and other backend systems so that the AI Voice Assistant/Agent can engage in a meaningful conversation with the caller.

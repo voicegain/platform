@@ -225,7 +225,27 @@ All done here!
 
 This step is only needed if the new cluster has to interact with sources/destinations located on [RFC 1918](https://tools.ietf.org/html/rfc1918)  IP ranges, e.g. 10.0.0.0/8. If that is the case, then the GKE Default SNAT will not work as desired and we need to configure **ip-masq-agent**.
 
-[Steps to configure ip-masq-agent](./ip-masq-agent.md)
+Note:-
+
+* `ip-masq-agent` install is independent of GKE Default SNAT
+* If `ip-masq-agent` DaemonSet is deployed, Default SNAT is irrelevant
+
+* `ip-masq-agent` can be installed either:
+  * **Manually** ([Steps to configure ip-masq-agent Manually](./ip-masq-agent.md))
+  * **Automatically** by GKE in the following scenario:
+    * Default SNAT is enabled **and** the cluster uses one of the following:
+      * The cluster does **not** use GKE Dataplane V2, and network policy enforcement is enabled
+      * The cluster uses a Pod IP address range that does **not** fit within `10.0.0.0/8`
+
+
+## GKE SNAT Behavior
+
+| Row | ip-masq-agent Installed | Default SNAT Enabled (`--disable-default-snat=false` by default) | Custom nonMasqueradeCIDRs Configured | SNAT Behavior |
+|-----|--------------------------|--------------------------------------------------------------------|--------------------------------------|------------------|
+| 1   | Yes                      | Not Relevant                                                       | Yes                                  | Pod IP preserved for custom CIDRs, SNAT for rest |
+| 2   | Yes                      | Not Relevant                                                       | No                                   | Pod IP preserved for [GKE default CIDRs](https://cloud.google.com/kubernetes-engine/docs/concepts/ip-masquerade-agent#default-non-masq-dests), SNAT for rest |
+| 3   | No                       | Yes                                                                | N/A                                  | Pod IP preserved for [GKE default CIDRs](https://cloud.google.com/kubernetes-engine/docs/concepts/ip-masquerade-agent#default-non-masq-dests), SNAT for rest |
+| 4   | No                       | No                                                                 | N/A                                  | Pod IP preserved for all destinations (No SNAT at all) |
 
 ## <a id="step6"></a>Step 6: Continue on Voicegain Web Console 
 

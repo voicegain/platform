@@ -1,3 +1,7 @@
+### Minor release 1.121.0 is scheduled for 6/25/2025 between 11:00pm and 1:00am US Central Time
+
+TBD ...
+
 ### Minor release 1.120.0 is scheduled for 6/2/2025 between 11:00pm and 1:00am US Central Time
 
 New or changed functionality in the Transcribe App:

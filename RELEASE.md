@@ -1,3 +1,113 @@
+## Release 1.121.0
+
+New or changed functionality:
+* BE-3926	Add none value to ccaasIntegration field in AIVR App API
+* BE-4011	Added appData to AIVR App API
+* BE-4010	Added initialPrompt for adapterLogic field in AIVR App API
+* BE-3937	Added optional prompt to the AIVR record command in callback response
+* BE-3882	Added support for sa_offline resource in /webhook API
+* BE-3973	Added usage tracking for the license server
+* BE-3944	Added voicemail fields to /sa/call API
+* BE-3281	Admin Tool: Added ability to Add and Remove Grafana from Account
+* QA-2691	Admin Tool: Fix - Account count remains constant despite account changes
+* BE-3962	Copilot: handle combination of the new standardized vars and customer-specific vars
+* BE-3958	Copilot: Implement a new login flow
+* BE-3994	Copilot: Improved update check with "Check for updates" button in settings
+* BE-3961	Copilot: Update all the old apis to new api paths specific to CCaaS platform used
+* BE-3929	Generalize Utility APIs that used to be aircall only and replace fixed aircall path with a ccaas path parameter
+* BE-3936	Implemented POST /public/{ccaas}/user-login API
+* BE-3957	Implemented POST and GET /license methods in license-svc
+* BE-3866	Implemented Webhook listener for Five9 webhooks
+* BE-3935	Improve input validation in POST /sa/offline API method
+* BE-3945	In GET /sa/call API method added a voicemail query parameter
+* BE-4006	Increased max llmJustification length to 1024 chars
+* BE-3843	Modified the call transfer handshake scheme that we use for Aircall so that it can support either Aircall or Five9
+* BE-3972	Modified the POST and GET /license to support the network parameters (interface, mac, ip)
+* BE-3992	Modify POST /confgroup/uuid/integrationSecret to return JWT tokens that work with both /aivr and /data apis
+* BE-3982	Optimize Five9 webhooks by immediately ignoring all webhook requests not matching the domain of the X-F9-APIKEY
+* BE-4030	SA: Added a new page on the Call Details for Survey
+* BE-3999	SA: Added direct callback number for provider on Voicebot card in Call Overview page
+* BE-4012	SA: Added HC provider Tax ID to Voicebot card on Call Overview page, if available
+* BE-3946	SA: Added new Voicemail Calls page to the main menu
+* BE-3947	SA: Added new Voicemail page to detailed Call View
+* QA-2563	SA: Added proper validations for First Name and Last Name fields on Users page
+* BE-3920	SA: Customer-specific download pages for Copilot Extension
+* BE-3931	SA: Improved Agents Dashboard layout and styling for consistency with other dashboards
+* BE-3985	SA: Improved Call Review form highlighting colors and added total score alongside questions
+* QA-2564	SA: Improved project name and description field validations on both Project Settings and Creation pages
+* QA-2678	SA: Improved Review form styling and spacing on Call Detail page for consistency with the app
+* QA-2521	SA: Replaced spinner with 'In Progress' label with tooltip while call is in progress
+* MST-667	SA: Review Voicebot dashboard and provide better vars to get more accurate data on the dashboard
+* BE-3989	SA: Tweaks and corrections to Voicebot Dashboard
+* QA-2504	TA: Improved speaker color scheme with support for up to 60 distinct speaker colors in both light and dark mode
+* QA-2719	TA: Removed "Others" project tab for accounts on Individual plan
+* QA-2684	Voicebot Demo: Improved audio playback interface layout for clearer design on main demo page
+* BE-3930	Voicebot Demo: Updated copy and design on Casey Healthcare page for improved UX
+* MST-744	Voicebot Logic: Let caller leave voicemail if the call is outside business hour
+* MST-710	Voicebot: Allow user to transfer to agent at any time on claim info collection block
+* MST-699	Voicebot: Answer eligibility follow-up questions in the bot
+* MST-638	Voicebot: Automate eligibility calls
+* MST-708	Voicebot: Fix - The follow-up question in info collection block sometimes asks for wrong info
+* MST-711	Voicebot: Improved the agent transfer condition detection in claim faq block
+* MST-641	Voicebot: Option to leave voicemail if we can't automate the call
+* MST-668	Voicebot: Provide more information in the claim upfront prompt
+* MST-639	Voicebot: Provide reference number and portal url after automation
+* MST-640	Voicebot: Survey at the end of the call flow
+* BE-3983	Web Console: Added "Connection Logic" column to Telephony Bot App table
+* BE-3871	Web Console: Added Advanced tab to Telephony App Settings with CCaaS Integration settings
+* BE-3942	Web Console: Added new "record" event in AIVR Call Session detail view
+* BE-3943	Web Console: Added new Voicemail (VM) column to Call Sessions page to highlight calls with voicemail
+* BE-4003	Web Console: Changed "Save" to "Save..." in Phone App drawer to indicate upcoming preview step
+* BE-3933	Web Console: Changed API method used to get TTS prompts - from /synthesize to /get with dl=true option
+* QA-2514	Web Console: Improved AIVR Sessions page layout by displaying 'VUI Alternative' in a table correctly and reducing empty space
+* QA-2620	Web Console: Improved Edit button positioning on Account Settings page
+* BE-3980	Web Console: Updated ASR settings to support only English and Spanish recognition
+* BE-3939	Web Console: Updated language options in AIVR app add logic to match available voices
+
+Changes related to Integrity of Processing (fixes):
+* BE-3981	Fix - AudioSocketManagerTest.testOpenSocket_OneAvailablePort() fails in some cases
+* BE-3925	Fix - crQuestionId needs to be returned from GET /sa/call/review/config/{ID} request
+* BE-3991	Fix - DTMF barge-in is not working on dev cloud in Telephony Bot API
+* BE-3905	Fix - In rex-grpc-proxy IOException: Could not create directory /var/rex/log 
+* BE-3984	SA: Fix – Call Review Config form now correctly shows Responders as LLM instead of Manual
+* BE-3740	SA: Fix – Corrected inaccurate Call Time Breakdown chart on Call Overview page
+* BE-3735	SA: Fix – Corrected inaccurate Overtalk data in Call Time Breakdown chart on Call Overview page
+* BE-3995	SA: Fix – Corrected titles of Call Duration Histograms chart on Call Stats dashboard
+* BE-4035	SA: Fix - do not pass answerValue if we are doing human override of AI and the question type is choice
+* BE-4032	SA: Fix - Duplicate sections in QA Form Config
+* BE-4026	SA: Fix – Error message no longer shown prematurely on Voicebot data card in Call Overview page
+* BE-4034	SA: Fix - Individual providers are not begin shown on Voicebot Card
+* QA-2731	SA: Fix – Member ID verification status now updates correctly on Voicebot card in Call Overview page
+* BE-4028	SA: Fix – Replaced provider name with member name in Voicebot data card on Call Overview page
+* QA-2723	SA: Fix – Resolved cursor jumping to end when editing ANI and DNIS fields in the middle in Upload File modal
+* QA-2714	SA: Fix – Timezone for calls is now consistent between Calls page and Call Overview page
+* BE-4016	SA: Fix - Trimmed leading and trailing whitespace in context name and description fields
+* QA-2736	SA: Fix - Unable to edit or add questions to the QA form, receiving a '400 Bad Request' error.
+* BE-3932	SA: Fix - Voicebot Dashboard card now returns appropriate error for any 400 response from the backend
+* BE-4018	SA: Fix - Voicebot data card verification status shows incorrect values
+* QA-2651	TA Edge: Fix – Resolved issue causing shared transcript to refresh periodically
+* QA-2675	TA: Fix – Add button for Regex no longer hidden when left menu is expanded on Text Redaction page
+* QA-2679	TA: Fix - After Webex Meeting end, App not automatically submitting for Transcription
+* QA-2674	TA: Fix – Edit icon for name field no longer visible on shared Transcribed page
+* QA-2729	TA: Fix - LLM playground chat box prompt on Transcribe page is not working properly.
+* QA-2668	TA: Fix – LLM Playground now works correctly on shared transcripts
+* QA-2706	TA: Fix – Long project names no longer overlap with buttons on Upload page
+* QA-2659	TA: Fix – Previously played Voice Signature no longer continues after clicking 'Add' on Users Speakers page
+* QA-2682	TA: Fix - Right Side Border is Missing on Action Items Table in Zoom Meeting Assistance PDF
+* QA-2655	TA: Fix – Tags added in 'Browser Share' now correctly appear on transcripts
+* QA-2685	TA: Fix - The Action Items table appears blank in the downloaded .docx file.
+* QA-2601	TA: Fix – Users with only user-level permissions can no longer access the 'Invite Other Users to Project' pop-up
+* QA-2727	TA: Fix - Webex meeting bot failed to connect
+* QA-2686	TA: Fix - Zoom Meeting Bot – The bot initially fails to join the Zoom meeting, displaying a "Failed to join the meeting" message. After some time, it requests permission to be admitted, but the transcript is not generated even after joining.
+* BE-3968	Web Console: Fix – English (IN) was incorrectly auto-selected when clicking the Voice selection box in Telephony Bot App modal
+* QA-2676	Web Console: Fix – Prevented duplicate apps when Save button is clicked multiple times while creating AIVR App
+* BE-4002	Web Console: Fix – Resolved unexpected scroll behavior on Phone Management page
+* BE-3856	Web Console: Fix – Speaker info now correctly displayed in Transcribe text view for affected calls
+* BE-3967	Web Console: Fix – Suggestion box no longer appears outside modal when selecting voice language in Telephony Bot App modal
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release
+
+
 ## Release 1.120.0
 
 New or changed functionality in the Transcribe App:

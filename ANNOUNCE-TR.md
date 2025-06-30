@@ -2,6 +2,29 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### June 25, 2025
+
+New:
+* QA-2504	TA: Improved speaker color scheme with support for up to 60 distinct speaker colors in both light and dark mode
+* QA-2719	TA: Removed "Others" project tab for accounts on Individual plan
+
+Fixes:
+* QA-2651	TA Edge: Fix – Resolved issue causing shared transcript to refresh periodically
+* QA-2675	TA: Fix – Add button for Regex no longer hidden when left menu is expanded on Text Redaction page
+* QA-2679	TA: Fix - After Webex Meeting end, App not automatically submitting for Transcription
+* QA-2674	TA: Fix – Edit icon for name field no longer visible on shared Transcribed page
+* QA-2729	TA: Fix - LLM playground chat box prompt on Transcribe page is not working properly.
+* QA-2668	TA: Fix – LLM Playground now works correctly on shared transcripts
+* QA-2706	TA: Fix – Long project names no longer overlap with buttons on Upload page
+* QA-2659	TA: Fix – Previously played Voice Signature no longer continues after clicking 'Add' on Users Speakers page
+* QA-2682	TA: Fix - Right Side Border is Missing on Action Items Table in Zoom Meeting Assistance PDF
+* QA-2655	TA: Fix – Tags added in 'Browser Share' now correctly appear on transcripts
+* QA-2685	TA: Fix - The Action Items table appears blank in the downloaded .docx file.
+* QA-2601	TA: Fix – Users with only user-level permissions can no longer access the 'Invite Other Users to Project' pop-up
+* QA-2727	TA: Fix - Webex meeting bot failed to connect
+* QA-2686	TA: Fix - Zoom Meeting Bot – The bot initially fails to join the Zoom meeting, displaying a "Failed to join the meeting" message. After some time, it requests permission to be admitted, but the transcript is not generated even after joining.
+
+
 ### June 2, 2025
 
 New:

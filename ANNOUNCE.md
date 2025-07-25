@@ -1,7 +1,98 @@
 ### Minor release 1.122.0 is scheduled for 7/24/2025 between 11:00pm and 1:00am US Central Time
 
-TBD ...
+New or changed functionality in the Transcribe App:
+* QA-2722	TA: Added URL validation for meeting links on the Meeting Bot page
+* QA-2761	TA: Changed banner text colors for better visibility in dark mode on the import page
 
+New or changed functionality:
+* BE-4053	Add a new Reason tag value - R_Unknown
+* BE-4021	Add vg_aivr_cb_count variable to CDR
+* BE-4095	Added API for reading Freeswitch CDR records
+* BE-4109	Added configurable format for webhook
+* BE-4129	Added modifiableNote to /sa/call
+* BE-4107	Added voicemail markers to /sa/call
+* BE-4093	Adjust the reported start of the AIVR session to be equal to the start of the recording.
+* BE-4045	API to generate temp JWT to access SA account from ACP
+* BE-4023	DAO for reading CDR data form Postgres table
+* MST-761	Don't redact short sequence of digits when using approximate redaction
+* BE-4152	Extract information from the CDR table and set the whoHungUp field in /aivr and /sa/call
+* BE-4027	Implement deletion of data Objects attached to AIVR appData items
+* BE-4060	Implement influxDB measurements for /sa/offline sessions
+* BE-4135	Improved speed of GET /sa/call-stats API method
+* BE-3694	In error messages returned from the APIs do not include full java types
+* BE-3890	License server retains ticket information through shutdown and restart
+* BE-4056	Miscellaneous improvements to MS Teams Meeting Bot
+* MST-478	Moved Spanish basic formatter to text-ml-utils
+* MST-772	New NER for bank numbers
+* BE-4136	Pass vgContext to aivr.lua to be stored in CDR
+* BE-3186	Populate fields in the markers field after a SA call is completed
+* MST-538	Provider search full automation demo using VACA
+* BE-4161	Return 504 code rather then 401 if a request is made with a nonce that is being currently used by a request in progress
+* BE-4147	SA: Added "CRM Notes" column with filtering in the call sessions table
+* BE-4149	SA: Added "My Notes" column in the call sessions table
+* QA-2753	SA: Added a maximum limit of 100 points for both Individual and Total scores in QA form questions
+* BE-4137	SA: Added ability to add "My Note" for each call on the call transcript page
+* QA-2738	SA: Added assistive tooltips to audio player action icons
+* BE-4066	SA: Added display of selected time range on the agents dashboard
+* BE-4108	SA: Added markers indicating voicemail start and end in the call audio player
+* BE-4065	SA: Added strike-through on LLM justification when a human override occurs in the QA review form
+* BE-4155	SA: Added support to mark a QA review question as "N/A" if the question allows it
+* BE-4101	SA: Added voicemail text preview on the voicemail calls page and full transcript display in the playback popup
+* BE-4099	SA: Added voicemail transcript on the voicemail detail page
+* BE-4100	SA: Displaying voicemail icon and page only when voicemail is present
+* BE-4017	SA: Hide Provider callback field on the VoiceBot data card in the call overview page if the caller type is not provided
+* BE-4025	SA: Improved voicemail audio player styling for better appearance in both light and dark modes
+* BE-4052	SA: Refreshing the call resolution value after changes to the call resolution question in the QA/CR form
+* QA-2418	SA: Removed Speaker field from advanced search filters as Agent field is already present
+* BE-4132	SA: The survey details page is now hidden when no survey data is present
+* BE-4019	Store RTCP stats in CDR
+* BE-4114	Support two more entities (BAN and BRN) for all redact formatter
+* MST-803	Upgrade python packages and services that have high / medium vulnerabilities
+* BE-4009	Use default whisper as acoustic model instead of whisper:medium for offline SA sessions derived from AIVR sessions
+* QA-2579	Voicebot Demo: Improved subject line for the "Contact Sales" email call-to-action
+* QA-2644	Web Console: Added a custom 404 page for handling unavailable URLs
+* BE-4022	Web Console: Added a new "App Data" tab in the Telephony Bot drawer for configuring app data
+* BE-4051	Web Console: Added an Initial Prompt field to adapter settings in the Telephony Bot drawer
+* BE-4120	Web Console: Added caching for calls on the call sessions page for better UX
+* BE-4069	Web Console: Added error screens on the call review transcript detail page to improve handling and visibility of API errors
+* QA-2555	Web Console: Added support to delete Speech Analytic Configuration on the SA Configuration page
+* BE-4127	Web Console: Added the ability to create user-bound JWT tokens (only for Admins) on the profile page
+* BE-4123	Web Console: Added toast messages and redirect to login page in case of session expiry
+* QA-2704	Web Console: Enforced mandatory password reset without the possibility to bypass the "Password reset required"
+* BE-4138	Web Console: Improved cancel confirmation modal copy for the Telephony Bot drawer for better UX
+* QA-1980	Web Console: Prevented users from de-selecting all columns in the calls table to ensure at least one column is always visible
+* BE-4085	Web Console: Removed transcribe mode
+
+Changes related to Integrity of Processing (fixes):
+* BE-4116	Fix - AIVR fails to store output events in db for record.prompt and record.playtone
+* BE-4117	Fix - Audio-Server /get and /sclip API method does not use Transfer-Encoding chunked in case of streaming TTS
+* BE-4102	Fix - externalSaSession set incorrectly to true
+* BE-4122	Fixed Hints with misspellings for whisper model.
+* BE-4140	SA: Fix - Added the missing no-sorting state in the call sessions table
+* QA-2743	SA: Fix – Enabled Save button when "LLM" is selected as responder and "Use Questions as LLM Prompt" is toggled in the QA form
+* QA-2752	SA: Fix – Improved facility name visibility in dark mode on the VoiceBot data card in call overview and voicemail views
+* BE-4031	SA: Fix – Resolved "Review config not found" error when saving the first question in the QA form without a name
+* BE-3997	SA: Fix – Resolved display issue with the VoiceBot card for certain calls
+* QA-2744	SA: Fix – Resolved issue preventing adding questions in QA form sections using the top "New Question" button
+* QA-2757	SA: Fix – Resolved issue where the sentiment graph gets compressed when the score field is present on the call overview page
+* QA-2758	SA: Fix - Resolved issue with the call resolution filter not working in the call sessions table
+* QA-2789	SA: Fix – The Voicebot data card now shows "Not Acquired" instead of "Provided" when no Member ID is present
+* QA-2772	TA: Fix - MS Teams meeting validation failing for valid meeting links on the Meeting Bot page
+* QA-2721	TA: Fix – Resolved cursor jumping to the end issue when editing password on the login page
+* QA-2562	TA: Fix – Resolved issue where language flag icons for projects were not showing on the advanced search page
+* QA-2725	TA: Fix – Resolved issue with a few words not visible in dark mode on the call transcript page
+* BE-4070	TA: Fix – Resolved issue with multicolor transcription on the audio timeline
+* QA-2724	TA: Fix – Resolved save button enable behavior in the voice signature modal when a tag is removed or a speaker is edited
+* QA-2741	TA: Fix – Stopped previously played voice signature from continuing when a new voice signature is edited
+* QA-2737	TA: Fix - The Zoom meeting bot does not automatically leave the meeting when the time limit for a free meeting is reached.
+* QA-2774	TA: Fix - Unable to join meetings on the Meeting Bot page due to incorrect validation of valid Webex meeting links
+* QA-1970	Web Console: Fix - Filters and search gets reset after deleting a context
+* BE-4089	Web Console: Fix – Removed extra blue Modified label in the Telephony Bot preview modal when no modification changes are made
+* BE-4040	Web Console: Fix – Resolved loading issue on the call review page for calls integrated with the SA app
+* QA-2776	Web Console: Fix - The Listen icon is disabled if a call has no audio on the call sessions page
+* QA-2770	Web Console: Fix - Unable to remove or change phone numbers from a phone (AIVR) app.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release
 
 ### Minor release 1.121.0 is scheduled for 6/25/2025 between 11:00pm and 1:00am US Central Time
 

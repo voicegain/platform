@@ -2,6 +2,23 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### July 24, 2025
+
+New:
+* QA-2722	TA: Added URL validation for meeting links on the Meeting Bot page
+* QA-2761	TA: Changed banner text colors for better visibility in dark mode on the import page
+
+Fixes:
+* QA-2772	TA: Fix - MS Teams meeting validation failing for valid meeting links on the Meeting Bot page
+* QA-2721	TA: Fix – Resolved cursor jumping to the end issue when editing password on the login page
+* QA-2562	TA: Fix – Resolved issue where language flag icons for projects were not showing on the advanced search page
+* QA-2725	TA: Fix – Resolved issue with a few words not visible in dark mode on the call transcript page
+* BE-4070	TA: Fix – Resolved issue with multicolor transcription on the audio timeline
+* QA-2724	TA: Fix – Resolved save button enable behavior in the voice signature modal when a tag is removed or a speaker is edited
+* QA-2741	TA: Fix – Stopped previously played voice signature from continuing when a new voice signature is edited
+* QA-2737	TA: Fix - The Zoom meeting bot does not automatically leave the meeting when the time limit for a free meeting is reached.
+* QA-2774	TA: Fix - Unable to join meetings on the Meeting Bot page due to incorrect validation of valid Webex meeting links
+
 ### June 25, 2025
 
 New:

@@ -39,14 +39,14 @@ body = {
         {
             "type": "redact",
             "parameters": {
-                "SSN": "[SSN]",
-                "PHONE": "partial",
-                "CC": "partial",
-                "ZIP" : "[ZIP]",
-                "PERSON": "partial",
-                "DMY": "[DMY]",
-                "CVV" : "[CVV]",
-                "ADDRESS": "partial",
+                "SSN": "partial:4",
+                #"PHONE": "partial",
+                "CC": "partial:4",
+                #"ZIP" : "[ZIP]",
+                #"PERSON": "partial",
+                #"DMY": "[DMY]",
+                "CVV" : "full",
+                #"ADDRESS": "partial",
             }
         }
         # , {
@@ -58,7 +58,7 @@ body = {
         #     }
         # }
     ],
-    "debug": {"level": "3"}  
+    "debug": {"level": "7"}  
 }
 
 url = "{}/text/redact".format(host)

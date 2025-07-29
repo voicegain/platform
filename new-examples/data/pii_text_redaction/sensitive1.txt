@@ -1,0 +1,22 @@
+Speaker 1: May I have your SSN?
+Speaker 2: Sure, it is 123-45-6789.
+Speaker 1: May I have your phone number and zip code?
+Speaker 2: Sure, it is 123-456-7890 and 76162.
+Speaker 1: Any credit card number you want to share?
+Speaker 2: 4111-1111-1111-1111
+Speaker 1: what are the lst 4 digits of the credit card number
+Speaker 2: 1111.
+Speaker 1: what is the confirmation number?
+Speaker 2: 123456789.
+Speaker 1: What are the last 4 digits of your Social?
+Speaker 2: it is 6789
+Speaker 1: And what is your name?
+Speaker 2: They call me Yevgeniy Dobson.
+Speaker 1: What is your date of birth?
+Speaker 2: I was born 11/11/1911
+Speaker 1: And what is the secret code?
+Speaker 2: The code that may not be uttered is: 1234 AB
+Speaker 1: What is your postal address?
+Speaker 2: My address is: 1333 Corporate Dr. Suite 211, Irving, TX 75038.
+Speaker 1: What is the CVV code on your card?
+Speaker 2: The CVV is 135.

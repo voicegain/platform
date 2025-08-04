@@ -379,7 +379,7 @@ def process_one_file(audio_fname):
         print("Phase: {} Final: {}".format(phase, is_final), flush=True)
         poll_response_path = os.path.join(output_path, "{}--{}.json".format(session_id, index))
         with open(poll_response_path, 'w',  encoding='utf-8') as outfile:
-            json.dump(poll_response, outfile, ensure_ascii=False)
+            json.dump(poll_response, outfile, ensure_ascii=False, indent=4)
         print("Save final result to {}".format(poll_response_path), flush=True)
 
     #get result as text file
@@ -394,16 +394,22 @@ def process_one_file(audio_fname):
     print("Save final transcript text to {}".format(transcript_text_path))
     print("", flush=True)
 
-    #get result as json file
+    #get result as json-mc file
 
-    txt_url = "{}/asr/transcribe/{}/transcript?format=json".format(host, session_id)
+    txt_url = "{}/asr/transcribe/{}/transcript?format=json-mc".format(host, session_id)
     print("Retrieving transcript using url: {}".format(txt_url), flush=True)
     txt_response = requests.get(txt_url, headers=headers)
     txt_response.encoding = txt_response.apparent_encoding ## << needed to get the encoding correct
     transcript_text_path = os.path.join(output_path, "{}.json".format(fname))
     with open(transcript_text_path, 'w',  encoding='utf-8') as file_object:
-        file_object.write(txt_response.text)
-    print("Save final transcript json to {}".format(transcript_text_path))
+        # Parse and pretty-format the JSON response
+        try:
+            json_data = txt_response.json()
+            file_object.write(json.dumps(json_data, indent=4, ensure_ascii=False))
+        except json.JSONDecodeError:
+            # If response is not valid JSON, write as-is
+            file_object.write(txt_response.text)
+    print("Save final transcript json-mc to {}".format(transcript_text_path))
     print("", flush=True)
 
     printTranscribeQueueStatus()
@@ -426,11 +432,13 @@ print("START", flush=True)
 
 list_of_files = []
 
-for root, dirs, files in os.walk(inputFolder):
-    for file in files:
+# Only process files in the input folder directly, not subdirectories
+for file in os.listdir(inputFolder):
+    file_path = os.path.join(inputFolder, file)
+    if os.path.isfile(file_path):
         maxFilesToProcess -= 1
         if(maxFilesToProcess >= 0): 
-            list_of_files.append(os.path.join(root,file))
+            list_of_files.append(file_path)
 
 print("files to test")
 for name in list_of_files:

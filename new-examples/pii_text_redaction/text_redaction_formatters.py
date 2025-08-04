@@ -30,7 +30,9 @@ with open(inputFilePath, 'r') as file:
 
 print(f"Loaded text content from {inputFilePath}:\n{text_content}")
 
-headers = {"Authorization":JWT}
+headers = {"Authorization":JWT
+           , "application/json": "application/json"
+           }
 
 body = {
     "text": text_content,
@@ -69,12 +71,15 @@ if(response_raw.status_code != 200):
     print("unexpected response code {} for asr request".format(response_raw.status_code), flush=True)
     print(response_raw, flush=True)
     print(response_raw.text, flush=True)
+    # print response headers
+    print(f"Response headers: {response_raw.headers}", flush=True)
     print("EXIT", flush=True)
     exit()
 
 response = response_raw.json()
 
 print(f"response: {response}", flush=True)
+
 
 print("Redacted text:")
 print(response.get("redactedText"), flush=True)

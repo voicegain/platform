@@ -36,7 +36,7 @@ headers = {"Authorization":JWT
 
 body = {
     "text": text_content,
-    "speakers": ["Speaker 1", "Speaker 2"],
+    "speakers": ["Agent", "Customer"],
     "formatters" : [
         {
             "type": "redact",

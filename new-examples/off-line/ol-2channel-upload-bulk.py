@@ -13,7 +13,7 @@ urlPrefix = cfg.get(configSection, "URLPREFIX")
 inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
-model = "VoiceGain-omega"
+model = "VoiceGain-omega-x"
 #model = None
 #model = "whisper:basic"
 
@@ -54,14 +54,15 @@ asr_body = {
     "settings": {
         "asr": {
             #"languages" : ["es", "en"],
-            "languages" : ["en"],
+            "languages" : ["en-us"],
+            "confidenceThreshold": 0.01,
             "acousticModelNonRealTime" : model,
-            "noInputTimeout": -1,
-            "completeTimeout": -1,
+            #"noInputTimeout": -1,
+            #"completeTimeout": -1,
             "sensitivity" : 0.5
-            , "hints" : [
-                "date_of_birth[dana_birth|data_birth]:10"
-            ]
+            # , "hints" : [
+            #     "date_of_birth[dana_birth|data_birth]:10"
+            # ]
             #, "diarization" : {
             #  "minSpeakers" : 2,
             #  "maxSpeakers" : 2

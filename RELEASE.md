@@ -1,3 +1,110 @@
+## Release 1.123.0
+
+New or changed functionality:
+* BE-4231	Add 3 new query params to GET /sa/call - userGroup, internalEndpoint, direction
+* BE-4256	Add 4 new vars to POST /sa/call: voicebotVars, aivrVars, whuHungUp, businessOpenState
+* BE-4222	Add appliesToQueues field to QA Review questions and answers
+* BE-4181	Add tenureStartDate to User API
+* BE-4001	Add to audio-server support for streamed Azure TTS Audio
+* BE-4125	Apply misspelling correction to offline ASR sessions if a whisper model is used
+* MST-822	Collect Tax ID from Caller When Not Available in System After NPI Lookup
+* BE-3988	Copilot: Update help docs to support customer-specific copilot extensions
+* BE-4096	Extract voicemail transcript from /sa/offline transcript and store in /sa/call
+* BE-4258	For AIVR Session events - set timeMsec to when the event ends and add new actionStartMsec to event
+* BE-4265	GET /sa/call/review/answers/{crAnswersId} - added normalizedScore and minTotalValue read-only fields
+* MST-834	Identify Some Blocks in llm-svc to Use GPT-4.1 Mini for Performance and Cost Efficiency
+* MST-742	Improve Confirmation Handling for Irrelevant or Ambiguous Yes/No Answers
+* MST-569	Improve Handling of "Yes/Okay/no" Responses When Asking for Information
+* BE-4257	In /sa/call compute voicebotDuration and voicemailDuration from markers
+* MST-703	Integrate Provider Search Callback Logic into Demo Bot from OpenAI Realtime Bot
+* BE-4276	Limit number of histogram bins to max 100
+* BE-4180	Make all AIVR vars available in sa/call API
+* BE-4151	Modify /synthesis method in audio-server to use ResponseEntity<StreamingResponseBody> return type
+* BE-4154	Move llmCopilotNotesPrompt from /sa/config to /aivr-app
+* BE-4254	Provide Bot Info to Non-AIVR Calls in POST /sa/call API
+* BE-4185	Remove sa-call-api from Edge deployments by default
+* BE-4148	SA: Add CSAT
+* BE-4244	SA: Added ability to enter and edit agent tenure on Add/Edit User modals
+* BE-4182	SA: Added agent email, role, creation date, tenure, and team details on Agent Details page
+* BE-4225	SA: Added annotatedTranscript fields to Calls Debug page
+* BE-4269	SA: Added avatars to the Team Lead selection dropdown
+* BE-4236	SA: Added CSAT configuration option on Context Configuration page
+* BE-4240	SA: Added CSAT field to Calls table and Call Detail page
+* BE-4264	SA: Added delete functionality for teams
+* BE-4201	SA: Added edit and remove avatar functionality in Edit User modal
+* BE-4124	SA: Added error screens for request timeouts and internal server errors
+* BE-4108	SA: Added markers indicating voicemail start and end in the call audio player
+* BE-4270	SA: Added minimum points possible to the QA form creation page
+* BE-4200	SA: Added upload avatar functionality in Add User modal
+* BE-4203	SA: Added user avatars for agents in Calls table on Recent Calls and Calls History pages
+* BE-4202	SA: Added user avatars in Users table on Users page
+* BE-4204	SA: Added user avatars to Agents table on Agents page
+* QA-2849	SA: Added voicemail column for voicemail calls on Call History page
+* BE-4101	SA: Added voicemail text preview on the voicemail calls page and full transcript display in the playback popup
+* BE-4223	SA: Changed default Incident threshold values for new projects on Context Configuration page
+* QA-2804	SA: Enhanced visibility of My Notes and CRM Notes icons in Calls table Dark mode
+* BE-4214	SA: Handled No Teams state in Add/Edit User modals for improved UX
+* QA-2814	SA: Improved alert toast messages for QA form actions to provide better context
+* BE-4213	SA: Improved empty state on Teams Creation page when no teams are present
+* QA-2803	SA: Improved error message copy on QA form creation page for better UX
+* BE-4111	SA: Improved PII redaction design for better UX
+* QA-2813	SA: Improved QA form to disable only the current question during edit and not the full form
+* BE-4229	SA: Improved QA Review form section and question flow; added queue support for sections
+* BE-4211	SA: Improved Team creation flow and design consistency for better UX
+* BE-4215	SA: Improved Teams column to display team names in Users table on Users page
+* BE-4266	SA: Improved Teams Settings table design and dark mode support
+* BE-4241	SA: Improved Yearly Call Trends chart to show data from oldest call if under one year on Call Stats dashboard
+* BE-4221	SA: Move C_, R_, V_ tags to fields in voicebotVars
+* BE-4159	SA: Renamed Calls page to Recent Calls, Advanced page to Call History, and improved table design for better UX
+* BE-4084	SA: Support different set of call QA review questions per Queue
+* BE-4260	SA: Updated Calls to Recent Calls page; added Today and Last 24 calls filters; improved No Calls state
+* BE-4271	SA: Updated QA Review Form by replacing Section Count with Normalized Score
+* BE-4212	SA: Updated Team Performance page with improved table and headers for better UX
+* BE-4209	SA: Updated Teams icon and improved design consistency
+* BE-4259	SA: Use /sa/call aivrVars to display Voicebot Card if aivrVars are available
+* MST-800	Support "One of" Input Prompts in Info Query Block (e.g., "Can I have A or B?")
+* MST-614	Support Metadata in QA Form by Decoupling Transcript Submission in Offline Transcribe
+* MST-833	Switch Default GPT Model to GPT-4.1 on Demo Bot
+* BE-4282	Use annotated transcript as realTimeTranscriptText for CRM Call Notes
+* MST-821	Use GPT to Generate Natural Response for Intent Detection without Revealing Internal Categories
+* QA-2579	Voicebot Demo: Improved subject line for the "Contact Sales" email call-to-action
+* BE-4234	Web Console: Adapter Settings language choices updated to match Default Voices for languages
+* BE-4128	Web Console: Added Call Detail Record page
+* QA-2768	Web Console: Added 'click to copy' tooltip for app ID copy icon in Telephony Bot App modal
+* BE-4169	Web Console: Added Copilot Notes LLM Prompt field to AIVR app advanced settings
+* QA-2802	Web Console: Improved error message to clearly indicate when a JWT token name is already in use
+
+Changes related to Integrity of Processing (fixes):
+* BE-3906	Fix - In the outbound bot, the "input" event before "hangup" event is missing
+* BE-4253	Fix - SA config is not included in the offline-sa task when creating the offline session from a call using JWT
+* BE-3704	Fix - Telephony bot API didn't make the next PUT request after DTMF NO-MATCH callback
+* BE-4115	Fix - The recording captured by FS is shorter than the actual call duration
+* BE-3660	Fix - Transcript submitted for after-call Call Note/Summary is wrong - FS removes silences from audio
+* BE-4233	Fix - Unable to delete user avatar from PUT method on /user/{uuid}
+* BE-4267	Fix - UserGroup deletion API method does not seen to work
+* BE-4198	Fix - Voicemail transcript is incorrectly extracted.
+* BE-4189	Fix issues with AIVR websocket
+* BE-4262	SA: Fix - API Security page loading issue
+* BE-4013	SA: Fix - Call playback timestamp can go beyond call duration
+* QA-2837	SA: Fix - Calls are going into error after Re-compute.
+* BE-4032	SA: Fix - Duplicate sections in QA Form Config
+* BE-4227	SA: Fix - Edit Teams modal pre-fill, lead selection, validation, and display issues
+* QA-2786	SA: Fix - email domains not shown correctly in toast messages
+* BE-4179	SA: Fix - Resolved loading issue on Call Detail Analytics page when incidents are not defined
+* BE-4268	SA: Fix - Review Form not updating when switching context from QA Form page
+* BE-4210	SA: Fix - Team lead addition fixed in Team Creation wizard
+* QA-2778	SA: Fix - Uploaded calls are going into error if Omega model is being used
+* QA-2693	SA: Fixed metrics call detail loading issue for some voicebot calls
+* QA-2825	SA: Fixed time selector resetting to D‑Today after visiting Recent Calls on the Voicebot Dashboard
+* QA-2815	TA Edge: Fix - Real-time transcription shows an error when the user tries to save the recording.
+* QA-2788	Web Console: Fix - Fixed 404 error when switching modes when the previous left-menu option isn’t valid in new mode
+* QA-2771	Web Console: Fix - Issue where unauthenticated users were redirected to a 404 page for valid URLs; now they are redirected to the login page
+* BE-4170	Web Console: Fix - Request to include contextId when fetching AIVR Apps, ensuring correct app filtering
+* BE-4261	Web Console: Fix - Transcript page loading issue in Speech Analytics App
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release
+
+
 ## Release 1.122.0
 
 New or changed functionality in the Transcribe App:

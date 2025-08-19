@@ -1,6 +1,108 @@
 ### Minor release 1.123.0 is scheduled for 8/17/2025 between 11:00pm and 1:00am US Central Time
 
-TBD ..
+New or changed functionality:
+* BE-4231	Add 3 new query params to GET /sa/call - userGroup, internalEndpoint, direction
+* BE-4256	Add 4 new vars to POST /sa/call: voicebotVars, aivrVars, whuHungUp, businessOpenState
+* BE-4222	Add appliesToQueues field to QA Review questions and answers
+* BE-4181	Add tenureStartDate to User API
+* BE-4001	Add to audio-server support for streamed Azure TTS Audio
+* BE-4125	Apply misspelling correction to offline ASR sessions if a whisper model is used
+* MST-822	Collect Tax ID from Caller When Not Available in System After NPI Lookup
+* BE-3988	Copilot: Update help docs to support customer-specific copilot extensions
+* BE-4096	Extract voicemail transcript from /sa/offline transcript and store in /sa/call
+* BE-4258	For AIVR Session events - set timeMsec to when the event ends and add new actionStartMsec to event
+* BE-4265	GET /sa/call/review/answers/{crAnswersId} - added normalizedScore and minTotalValue read-only fields
+* MST-834	Identify Some Blocks in llm-svc to Use GPT-4.1 Mini for Performance and Cost Efficiency
+* MST-742	Improve Confirmation Handling for Irrelevant or Ambiguous Yes/No Answers
+* MST-569	Improve Handling of "Yes/Okay/no" Responses When Asking for Information
+* BE-4257	In /sa/call compute voicebotDuration and voicemailDuration from markers
+* MST-703	Integrate Provider Search Callback Logic into Demo Bot from OpenAI Realtime Bot
+* BE-4276	Limit number of histogram bins to max 100
+* BE-4180	Make all AIVR vars available in sa/call API
+* BE-4151	Modify /synthesis method in audio-server to use ResponseEntity<StreamingResponseBody> return type
+* BE-4154	Move llmCopilotNotesPrompt from /sa/config to /aivr-app
+* BE-4254	Provide Bot Info to Non-AIVR Calls in POST /sa/call API
+* BE-4185	Remove sa-call-api from Edge deployments by default
+* BE-4148	SA: Add CSAT
+* BE-4244	SA: Added ability to enter and edit agent tenure on Add/Edit User modals
+* BE-4182	SA: Added agent email, role, creation date, tenure, and team details on Agent Details page
+* BE-4225	SA: Added annotatedTranscript fields to Calls Debug page
+* BE-4269	SA: Added avatars to the Team Lead selection dropdown
+* BE-4236	SA: Added CSAT configuration option on Context Configuration page
+* BE-4240	SA: Added CSAT field to Calls table and Call Detail page
+* BE-4264	SA: Added delete functionality for teams
+* BE-4201	SA: Added edit and remove avatar functionality in Edit User modal
+* BE-4124	SA: Added error screens for request timeouts and internal server errors
+* BE-4108	SA: Added markers indicating voicemail start and end in the call audio player
+* BE-4270	SA: Added minimum points possible to the QA form creation page
+* BE-4200	SA: Added upload avatar functionality in Add User modal
+* BE-4203	SA: Added user avatars for agents in Calls table on Recent Calls and Calls History pages
+* BE-4202	SA: Added user avatars in Users table on Users page
+* BE-4204	SA: Added user avatars to Agents table on Agents page
+* QA-2849	SA: Added voicemail column for voicemail calls on Call History page
+* BE-4101	SA: Added voicemail text preview on the voicemail calls page and full transcript display in the playback popup
+* BE-4223	SA: Changed default Incident threshold values for new projects on Context Configuration page
+* QA-2804	SA: Enhanced visibility of My Notes and CRM Notes icons in Calls table Dark mode
+* BE-4214	SA: Handled No Teams state in Add/Edit User modals for improved UX
+* QA-2814	SA: Improved alert toast messages for QA form actions to provide better context
+* BE-4213	SA: Improved empty state on Teams Creation page when no teams are present
+* QA-2803	SA: Improved error message copy on QA form creation page for better UX
+* BE-4111	SA: Improved PII redaction design for better UX
+* QA-2813	SA: Improved QA form to disable only the current question during edit and not the full form
+* BE-4229	SA: Improved QA Review form section and question flow; added queue support for sections
+* BE-4211	SA: Improved Team creation flow and design consistency for better UX
+* BE-4215	SA: Improved Teams column to display team names in Users table on Users page
+* BE-4266	SA: Improved Teams Settings table design and dark mode support
+* BE-4241	SA: Improved Yearly Call Trends chart to show data from oldest call if under one year on Call Stats dashboard
+* BE-4221	SA: Move C_, R_, V_ tags to fields in voicebotVars
+* BE-4159	SA: Renamed Calls page to Recent Calls, Advanced page to Call History, and improved table design for better UX
+* BE-4084	SA: Support different set of call QA review questions per Queue
+* BE-4260	SA: Updated Calls to Recent Calls page; added Today and Last 24 calls filters; improved No Calls state
+* BE-4271	SA: Updated QA Review Form by replacing Section Count with Normalized Score
+* BE-4212	SA: Updated Team Performance page with improved table and headers for better UX
+* BE-4209	SA: Updated Teams icon and improved design consistency
+* BE-4259	SA: Use /sa/call aivrVars to display Voicebot Card if aivrVars are available
+* MST-800	Support "One of" Input Prompts in Info Query Block (e.g., "Can I have A or B?")
+* MST-614	Support Metadata in QA Form by Decoupling Transcript Submission in Offline Transcribe
+* MST-833	Switch Default GPT Model to GPT-4.1 on Demo Bot
+* BE-4282	Use annotated transcript as realTimeTranscriptText for CRM Call Notes
+* MST-821	Use GPT to Generate Natural Response for Intent Detection without Revealing Internal Categories
+* QA-2579	Voicebot Demo: Improved subject line for the "Contact Sales" email call-to-action
+* BE-4234	Web Console: Adapter Settings language choices updated to match Default Voices for languages
+* BE-4128	Web Console: Added Call Detail Record page
+* QA-2768	Web Console: Added 'click to copy' tooltip for app ID copy icon in Telephony Bot App modal
+* BE-4169	Web Console: Added Copilot Notes LLM Prompt field to AIVR app advanced settings
+* QA-2802	Web Console: Improved error message to clearly indicate when a JWT token name is already in use
+
+Changes related to Integrity of Processing (fixes):
+* BE-3906	Fix - In the outbound bot, the "input" event before "hangup" event is missing
+* BE-4253	Fix - SA config is not included in the offline-sa task when creating the offline session from a call using JWT
+* BE-3704	Fix - Telephony bot API didn't make the next PUT request after DTMF NO-MATCH callback
+* BE-4115	Fix - The recording captured by FS is shorter than the actual call duration
+* BE-3660	Fix - Transcript submitted for after-call Call Note/Summary is wrong - FS removes silences from audio
+* BE-4233	Fix - Unable to delete user avatar from PUT method on /user/{uuid}
+* BE-4267	Fix - UserGroup deletion API method does not seen to work
+* BE-4198	Fix - Voicemail transcript is incorrectly extracted.
+* BE-4189	Fix issues with AIVR websocket
+* BE-4262	SA: Fix - API Security page loading issue
+* BE-4013	SA: Fix - Call playback timestamp can go beyond call duration
+* QA-2837	SA: Fix - Calls are going into error after Re-compute.
+* BE-4032	SA: Fix - Duplicate sections in QA Form Config
+* BE-4227	SA: Fix - Edit Teams modal pre-fill, lead selection, validation, and display issues
+* QA-2786	SA: Fix - email domains not shown correctly in toast messages
+* BE-4179	SA: Fix - Resolved loading issue on Call Detail Analytics page when incidents are not defined
+* BE-4268	SA: Fix - Review Form not updating when switching context from QA Form page
+* BE-4210	SA: Fix - Team lead addition fixed in Team Creation wizard
+* QA-2778	SA: Fix - Uploaded calls are going into error if Omega model is being used
+* QA-2693	SA: Fixed metrics call detail loading issue for some voicebot calls
+* QA-2825	SA: Fixed time selector resetting to D‑Today after visiting Recent Calls on the Voicebot Dashboard
+* QA-2815	TA Edge: Fix - Real-time transcription shows an error when the user tries to save the recording.
+* QA-2788	Web Console: Fix - Fixed 404 error when switching modes when the previous left-menu option isn’t valid in new mode
+* QA-2771	Web Console: Fix - Issue where unauthenticated users were redirected to a 404 page for valid URLs; now they are redirected to the login page
+* BE-4170	Web Console: Fix - Request to include contextId when fetching AIVR Apps, ensuring correct app filtering
+* BE-4261	Web Console: Fix - Transcript page loading issue in Speech Analytics App
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release
 
 ### Minor release 1.122.0 is scheduled for 7/24/2025 between 11:00pm and 1:00am US Central Time
 
@@ -1495,415 +1597,6 @@ Changes related to Integrity of Processing (fixes):
 * QA-1526	Web Console: Fix - When user switch context on Profile page then 2FA pop-up keeps showing each time context is changed.
 
 
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Minor release 1.107.0 is scheduled for 8/5/2024 between 8pm and 11pm CDT
-
-**Key changes related to the core APIs**
-* Changes in AIVR API to support Aircall integration
-* Changes in AIVR API to support multiple languages
-* Agents and Queues now correctly handles in SA APIs and SA App
-* Improved Advanced Search in SA App
-* Ability to use single session on websocket receiving server for both left and right transcription channels.
-* Ability to add external UUID to any transcription session
-* Full HA setups for FreeSWITCH and Kamailio
-
-**Key changes related to Transcribe APP**
-* Meeting metadata used in LLM Playground
-* LLM Query uses history of previous Q and As
-* More detail for the relevant meeting display in LLM Query
-* Enhancements to text file download
-
-New or changed functionality in the Transcribe App:
-* BE-2633	TA: Add metadata information to LLM Playground query
-* BE-2724	TA: Add option to include header in the downloaded text file
-* BE-2651	TA: Add Project information to the relevant-meeting list in LLM Query page
-* BE-2687	TA: API Key entry boxes should be set to not remember history
-* BE-2634	TA: For text transcript download, add configurable transcript timestamp
-* BE-2725	TA: Improve the rules to show the speakers and non-speaking participants
-* BE-2577	TA: Indicate the relevance of the relevantMeetings returned from /asr/meeting/llm/query
-* BE-2717	TA: Make sure that the transcript submitted to LLM Playground has timestamps (interval parameter)
-* BE-2601	TA: Remember sorting on home page when returning to it from open meeting details
-* BE-2589	TA: Replace HighCharts WordCloud with another library
-* BE-2570	TA: Show the scope of the LLM query in the Answer
-
-New or changed functionality in other platform components:
-* BE-2673	Web Console Add search by email to user management page
-* BE-2617	Web Console: Add 3 new Aircall parameters to the AIVR App settings
-* BE-2605	Web Console: Add language to the logic settings on the AIVR App
-* BE-2604	Web Console: In AIVR App settings - support multiple voices (one per language)
-* BE-2598	Web Console: Make number of rows per page in the Phone Apps table configurable
-* BE-2667	Web Console: New Voice Connector status column in AIVR App view
-* BE-2666	Web Console: Shortcuts from Phone Management page plus modified status field
-* BE-2669	Web Console: Show event metadata (if present) for AIVR Session Events
-* BE-2012	Web Console: Transcribe+ now uses /sa/offline API
-* BE-2649	Web Console: When querying AIVR (telephone) session set the limit parameter to 500
-* BE-2675	SA: Add a refresh button to the page with the list of Calls
-* BE-2635	SA: Add Description to Project
-* BE-2631	SA: Add tooltips on 1D, 7D, 30D
-* BE-2607	SA: Improvements to AIVR App selector
-* BE-2608	SA: Make the selected Project indicator have 2 instead of 1 letter
-* BE-2380	SA: On project general settings highlight the color and show time settings preview
-* BE-2606	SA: Preselect time settings on the page where we create new project
-* BE-2621	SA: Show headline in /sa/call search results if the search included text search
-* BE-2636	SA: Show project name on the Integration settings page
-* BE-2590	SA: Show the integration Icon on the Project selection list
-* BE-2647	SA: Use the new GET /sa/call/agent to map agent_user_id to the name of the Agent
-* BE-2646	SA: Use the new GET /sa/call/queue method to provide names for queues in the Advanced Search Queue filter
-* BE-2645	SA: When querying fields for advanced search pass the contextId for the current Project
-* BE-2611	Admin Tool: Convert Account Activity chart to Chart.js
-* BE-2664	Add a verify query parameter to GET/account/{uuid}/phone-number
-* BE-2643	Add contexId parameter to GET /sa/call/search/fields
-* BE-2650	Add contextId to the content of the relevantMeetings returned from GET /asr/meeting/llm/query
-* BE-2603	Add default TTS/ASR language for logic in AIVR App
-* BE-2623	Add externalSaSession flag to AIVR Session
-* BE-2648	Add limit parameter to the API that returns AIVR sessions
-* BE-2660	Add metadata field to the AIVR Event
-* BE-2665	Add new verify query parameter to GET /aivr-app
-* BE-2720	Add optional metadata parameter to method that GETs meeting transcript
-* BE-2614	Add to AIVR App: aircallApiUsername and aircallApiPassword
-* BE-1783	AIVR API now can enable real-time transcription on transferred leg
-* BE-2221	Allow the AIVR logic to send an alternative callback url in the response
-* BE-2503	Associate and external ID to transcribe session on post in order to be able to retrieve the session using that ID later
-* BE-2618	DAO for a database that will be storing data about recordings from S3 that need to be transcribed
-* BE-2602	Define default voice for each language supported by AIVR App
-* BE-2559	Delete embedding vectors if meeting is deleted.
-* BE-2296	Deploy HA Kamailio Setup in Cloud
-* BE-2644	Implement GET /sa/call/agent
-* BE-2642	Implement GET /sa/call/queue
-* BE-2571	In FreeSwitch transcribe proxy remove REDIRECT_URI and create SIP uri used in deflect from SIP URI name and DESTINATION DOMAIN
-* BE-2715	More accurate control over the number of tokens submitted to LLM Service with all the embeddings
-* BE-2563	Move meeting-join docker image from public repo to private repo
-* BE-2526	New settings for voiceconnector origination and termination
-* BE-2482	Pass intents from AIVR Session to /sa/offline via topics in /sa/call
-* BE-1366	RedisConnectionException: Unable to init enough connections amount! Only 0 of 24 were initialized. 
-* BE-2627	Remove xml:lang from the SSML template in audio-server
-* BE-2641	Report Aircall Agent to the /sa/call
-* BE-2640	Report Aircall Queue to the /sa/call
-* BE-2620	Return headline as part of the /sa/call search results
-* BE-2573	Send Call Notes to Aircall when AIVR call ends
-* BE-2572	Send Caller Insight to Aircall as part of handling call.created webhook
-* BE-2531	Send multiple asr session results to a single websocket receiver server session
-* BE-2659	Split post-processing of AIVR sessions into immediate step and the delayed step
-* BE-1786	Store copilot notes in /sa/call
-* BE-2579	Store meeting speaker timeline in the database
-* BE-2676	Support follow up queries in the /asr/meeting/llm/query - add history parameter and use it
-* BE-2406	Support language switching setting in telephony bot logic callback
-* BE-2652	Sync AIVR session with Aircall callId at transfer
-* BE-2583	Use meeting.join.puppeteer.imagePullSecret property to pull puppeteer docker image
-
-Changes related to Integrity of Processing (fixes):
-* BE-2034	Admin Tool: Fix - failed to decode request body: organization name "telegraf" not found"
-* BE-2600	Fix - Aircall webhook is unable to find an AIVR session
-* BE-2674	Fix - Error when saving queue field data in /sa/call API
-* BE-2705	Fix - fail to get fsPodName from the db for outbound calls
-* BE-2628	Fix - In case of AIVR/SA integration the saConfig is retrieved from AIVR App context instead of from the SA Project
-* BE-1354	Fix - NatsEndpoint fails to reconnect to NATS when its connection is lost
-* BE-2637	Fix - realTimeAsrTranscribeSession is set on AIVR Session, but processing after the call terminates claims that "no RT asr transcribe session"
-* BE-2629	Fix - Still seeing default text in the sa_call table
-* BE-2638	Fix - Transcript text is not being saved into text field in sa_call
-* BE-2592	Fix filebeat logging on cloud
-* BE-2594	SA: Fix - Incorrect message shown after Voicebot Integration Project created
-* BE-2373	SA: Fix - Name validations for project settings are required. 
-* BE-2691	SA: Fix - Swapped channels in SA AIVR Integration
-* BE-2560	TA: Fix - After latest change the Meeting Bot does not distinguish between progress Processing or Done
-* BE-2630	TA: Fix - Meeting search seems to not always return the newest first
-* QA-1485	TA: Fix - Error page when opening rediarized transcript (partial fix)
-* BE-2692	Web Console: Fix - Error when listing some sessions Call Session view
-* BE-2693	Web Console: Fix - Filter on the App Name in the Call Sessions table does not work
-* BE-2525	Web Console: Fix - Label validation issues in Transcribe+
-* BE-2534	Web Console: Fix - Provide correct value of the SIP URI on QA
-
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-### Minor release 1.106.0 is scheduled for 7/13/2024 between 7pm and 10pm CDT
-
-**Key changes related to the core APIs**
-* Offline model (omega) trained on additional data from call center calls (health insurance, retail customer support)
-* Improved diarization
-* Improvements in /asr/meeting/join API (for Meeting Bot)
-* Improvements to /asr/meeting/llm/query API (return relevant meetings)
-* Outbound dialing needs to be enabled per account (it is a compliance feature)
-* Added AIVR (Voicebot) Integration to Speech Analytics App
-* Added webhook to Aircall integration
-* Added HA Freeswitch support
-* Collecting TTS character and LLM token usage
-* Fixed a configuration issue where Grafana was not available on Edge
-
-**Key changes related to Transcribe APP**
-* Added Meeting Bot that can join a meeting and record/transcribe it (beta)
-* Added Rediarize option
-* LLM Playground and LLM Query available on Cloud
-  * Note there is a limit of 16K tokens - about 1.5h of audio
-* LLM Query results now show which transcripts were used in answering the query
-* Added LLM Service authorization header settings
-* Improved Action Items LLM query
-* Show which users have Zoom Meeting Assistant installed
-
-New or changed functionality in the Transcribe App:
-* BE-2468	TA: Add a meeting_bot tag to meetings recorded using Bot
-* BE-2470	TA: Add BOT selector on the home page
-* BE-2345	TA: Add Meeting Bot
-* BE-2412	TA: Add Re-diarize option for a meeting
-* QA-766	TA: Added search to time-zone selector
-* QA-1281	TA: Better error message when inviting user with invalid domain
-* BE-2545	TA: Do not hide LLM Playground on the Cloud
-* BE-2546	TA: Do not hide LLM Query on the Cloud
-* QA-1377	TA: Fix after-login redirect URL on Edge
-* BE-2508	TA: For first time login, after creating first project, we should take user to the page with the Zoom Meeting Assistant
-* BE-2529	TA: Handle 429 response from /llm/chat API and /asr/meeting/llm/query
-* BE-2467	TA: Identify Meeting Bot recordings as such in Transcribe App
-* BE-1998	TA: Improved 404 Error handling
-* BE-2394	TA: Improvements to LLM Playground UI
-* BE-2495	TA: In LLM settings add Authorization header settings
-* BE-1094	TA: Information about the use of Shared links is displayed
-* BE-2514	TA: Make the request for Action Items be similar to the request made from the LLM Playground
-* BE-2487	TA: Modify the LLM Query page to have the same look and feel as the new LLM Playground
-* BE-2392	TA: New widgets to set number of speakers for Saving microphone recording
-* BE-2391	TA: New widgets to set number of speakers for Upload
-* QA-1416	TA: Remove language selector on Project Settings page on Edge
-* BE-2339	TA: Show on Users page if the user has Zoom Meeting Assistant installed
-* BE-2486	TA: Show relevant meetings if they are returned by the /llm/query API
-* BE-2207	TA: Show share usage
-* QA-321	TA: When a new user creates his first project there is now an option for change language for page translation
-
-New or changed functionality in other platform components:
-* BE-2524	Add a failsafe to all meeting bots
-* BE-2481	Add aircallId field to AIVR Session
-* BE-2480	Add aircallWebhookToken to AIVR App
-* BE-2367	Add audio websocket URL to response from POST aivr logic callback
-* BE-2494	Add authHeader parameter to llmSettings in /cluster API methods
-* BE-2343	Add avirAppId and aivrSessionId to /sa/call API
-* BE-2469	Add BOT value to AUDIO_SRC in meeting search API
-* BE-2520	Add date field to relevantMeetings
-* BE-2383	Add diarization parameter to re-run meeting API
-* BE-2477	Add fsPodName to the POST /aivr
-* BE-2368	Add read-only field llmCopilotNotesPrompt to saConfig
-* BE-2444	Add relevantMeetings to the response from GET /asr/meeting/llm/query
-* BE-2439	Add reviewNotes field to /sa/call API
-* BE-2351	Add to GET /sa/call API ability to query by AIVR App Ids
-* BE-2400	Add to storage measurement an explicit multiply column
-* BE-2452	Allow Outbound Dialing only of OutboundDialing is set on the account
-* BE-1785	At end of call, AIVR to submit real-time transcript to GPT to generate copilot notes
-* BE-2232	Better handling of ServiceUnavailableException from cloud Influxdb
-* BE-2338	Collect LLM statistics in InfluxDB
-* BE-2042	Collect TTS statistics in InfluxDB
-* BE-2516	Do not launch new /meeting/join if there are already N running meeting join K8s tasks
-* BE-2466	Enforce Meeting Join limits on Transcribe App Cloud accounts
-* BE-2458	For all AIVR sessions use POST /sa/offline/call/{callId}
-* BE-2437	Generate call summary using llmSummaryPrompt setting in saConfig (offline)
-* BE-2536	If the underlying LLM service behind /asr/meeting/llm/query API returns 429 error, the API should also return 429
-* BE-2479	Implement POST /public/awebhook/aircall
-* BE-2362	Implemented PUT /asr/meeting/{meetingId}/leave
-* BE-2270	Improved AIVR Session Start Time
-* BE-2358	Increase diarization.maxSpeakers from 12 to 20
-* BE-2548	Increase max number audio on meeting API from 25 to 35
-* BE-2438	Increase SA shortSummary length to 2048
-* BE-2533	Make cleanup property configurable
-* BE-2390	Modifications to how we configure Voice Connectors in Telco Service
-* BE-2352	Modify GET /account/{uuid}/new-billing to obtain usage data from influx DG rather than from the account
-* BE-2411	Modify pagination style for GET /sa/call
-* BE-2433	New debug event and tweaks to the existing events in meeting join API
-* BE-2482	Pass intents from aIVR Session to /sa/offline via topics in /sa/call
-* BE-2549	POST /llm/chat now works in Cloud as well as Edge
-* BE-2213	Removed Prompt Manager from audio server API
-* BE-2501	Request to /llm/chat should use the authHeader settings from llmSettings
-* BE-2502	Request to compute action items and any other llm requests for the transcript should use authHeader from llmSettings
-* BE-2500	Request to Embeddings API should use the new authHeader parameter
-* BE-2463	Return different 404 error code in case "No pods found for job: meeting-join-krxuobktp3kyez2uuqo3"
-* BE-2371	SA: Add filtering by Agents
-* BE-2422	SA: Add filtering on Call List page for Agent, Queue, and Resolution
-* BE-2374	SA: Added a placeholder image for default profile avatar.
-* BE-2228	SA: Added AIVR (Voicebot) Integration
-* QA-1289	SA: Added success/alert notification after settings are updated or saved.
-* BE-2370	SA: After selecting a custom date, show it on the page
-* QA-1316	SA: Highlight Project name while deleting project.
-* BE-2423	SA: Improve the Date Picker (e.g. on the Call List Page)
-* BE-2380	SA: On project general settings highlight the color and show time settings preview
-* BE-2420	SA: Remove the search box from the Call list page
-* BE-2455	SA: Show notes about the Call
-* BE-2378	SA: Show preview of Time Settings
-* BE-2507	Set aivrSessionId and AivrAppId on /sa/call when we create it at the end of the aivr session even if there is no AIVR Integration
-* QA-1390	Set the correct text on sa/call at the end of /sa/offline processing
-* BE-2377	Support for multiple FreeSWITCH services
-* BE-2506	Switch to new sentence embedding model in ml-svc
-* BE-1557	Track use of /asr/meeting API for billing
-* BE-2526	Two new settings for voiceconnector origination and termination
-* BE-2519	Update the omega model to the latest version
-* BE-2543	Use the weighted average on the similarity scores on agent detection
-* BE-2440	Voicebot logic to start real-time transcription sessions and submit audio WS URL and asr session IDs in response
-* BE-2429	Voicebot: Detect intents using examples
-* BE-2409	Voicebot: Translate prompt on the fly and store to firestore
-* BE-2344	Web Console: Add Calls page to Telephony Bot mode
-* BE-2297	Web Console: Add filter by name to the list of Edge Configurations
-* BE-2307	Web Console: Add view like 'kubectl get pods'
-* QA-1042	Web Console: Added an option for Log out from all devices under account settings.
-* BE-2454	Web Console: In the list of phone Apps mark those that have SA Project integration
-
-Changes related to Integrity of Processing (fixes):
-* BE-2478	Address issue where some users end up in Main Org. in Grafana
-* BE-2385	Admin Tool: Fix - CMP user get 401 error when retrieving user data from some other account
-* BE-2427	Fix - Cannot store some data in sa_call table
-* BE-2456	Fix - GET /asr/transcribe/{sid}/transcript?format=text" hangs is many hints are used and audio is over 30 minutes
-* BE-2498	Fix - Meeting join is not working on Edge
-* BE-2204	Fix - Percolator stop request ignored if sent immediately after start
-* BE-2415	Fix - Sentiment values have now narrower range than they used to be
-* QA-1388	Fix Grafana on Edge
-* BE-2457	Fix: Bot cannot join meeting in multiple participant scenario
-* BE-2280	Remove speakers field from POST /sa/offline/call/{callId} method
-* BE-2474	SA: Fix duration filter
-* QA-1206	SA: Fix - Advanced Search is not working
-* BE-2381	SA: Fix - Agent statistics page needs a spinner as soon as one of the time periods get selected
-* BE-2348	SA: Fix - Call duration has wrong values
-* BE-2418	SA: Fix - Cancel on Edit use simply closes the window without restoring the state
-* BE-2379	SA: Fix - Configuring of Silence and Overtalk thresholds is messed up
-* BE-2419	SA: Fix - Double loading of the call details page
-* QA-1318	SA: Fix - Duration filter is not working in Advanced search.
-* BE-2416	SA: Fix - Icons and Letters are getting cut off in the Call List view
-* BE-2373	SA: Fix - Name validations for project settings are required. 
-* BE-2346	SA: Fix - Next button works only on the 1st call loaded
-* QA-1309	SA: Fix - Pagination on Agents page have Chinese letters instead of "per page".
-* BE-2369	SA: Fix - Style issue on number of pages selection in modal.
-* QA-1275	SA: Fix - Unknown symbols instead of "Next" and "Back" buttons
-* QA-1066	SA: Fix - User is unable to change profile photo
-* BE-2372	SA: Fix - When using current time as default time, if I don’t change the value it gives me the error: ‘Start Time is required’, it should be set as current date by default.
-* QA-1298	TA: Fix - Admin User is unable to update the LLM setting.
-* QA-1277	TA: Fix - After submitting a microphone recording, no success or upload message is shown. It should display a success message.
-* BE-2331	TA: Fix - Browser Capture Pop-Up seems to load bunch of stuff that it does not need
-* QA-1304	TA: Fix - For browser share and microphone capture recording, the Success message is not displaying after saving the recording.
-* QA-1357	TA: Fix - LLM Query is not working
-* QA-1359	TA: Fix - Redux is not clearing up in case of session logout
-* QA-1196	TA: Fix - Sometimes, the login process gets stuck on the login page.
-* QA-1384	TA: Fix - Three dot menu are not visible for the account users table.
-* QA-965	TA: Fix - Within account share is not working properly.
-* QA-1286	Web Console: Fix - "Create" button for Context should be disabled after first click and loader should show
-* QA-1280	Web Console: Fix - Edit issues on API Secrets page
-* BE-2322	Web Console: Fix - Error when I modify AIVR APP (Change CSID Callback from Path to Query)
-* QA-1282	Web Console: Fix - Getting error message when user starts recoding but does not save it
-* QA-1181	Web Console: Fix - GREG: When users try to filter True column of Interpretation and Review Status getting blank page
-* QA-1358	Web Console: Fix - Pagination Control/Sessions per page is not working under Account management.
-* QA-1178	Web Console: Fix - Text "Undefined" coming in "Main DNIS" dropdown
-* QA-1180	Web Console: Fix - Unable to Edit AIVR App Settings getting 500 error
-* BE-2461	Web Console: Fix - Unable to log into grafana on Edge on dev and QA
-* QA-1272	Web Console: Fix - When user logout and login again, get Authorization error and login failed
-
-All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
-
-
-### Minor release 1.105.0 is scheduled for 6/18/2024 between 7:30pm and 9:00pm CDT
-
-**Key changes related to the core APIs**
-* Offline model (omega) trained on additional data from call center calls (health insurance, retail customer support)
-* Telephony Bot API now supports outbound calling and setting ANI caller id on transfer
-* Added a parameter that controls language detection in offline transcribe API
-* Added ability to send real-time transcription results to a websocket server (previously only supported websocket client)
-* Web Console now shows all login sessions and supports forced logout.
-
-**Key changes related to Transcribe APP**
-* Added basic LLM Query over data stored in vector database
-* User-level time settings (previously time settings were only account-wide)
-* Korean transcription should now be less likely to shift to translation
-* Summary LLM prompts are customizable on Edge
-
-New or changed functionality in the Transcribe App:
-* QA-1230	TA: Active login sessions now displayed and highlighted at the top by default.
-* BE-2276	TA: Add 3 more LLM prompts to LLM settings
-* BE-2224	TA: Add 'copy to clipboard' for action items
-* BE-2278	TA: Add time settings also on User Profile
-* QA-1237	TA: Added an option for Logout from all devices on My Login sessions.
-* BE-2217	TA: Added basic Vector LLM Query
-* BE-2284	TA: Apply MD formatting to the section summaries
-* BE-2314	TA: If a user clicks the LLM Query button on the home page - take them to the LLM settings if needed
-* BE-2240	TA: Implement page for Vector based querying - Edge Only
-* BE-2196	TA: Make sure that whenever we discard the login session in the browser we do call logout API
-* BE-2218	TA: Provide immediate feedback of the Start mic capture button being clicked
-* BE-2282	TA: Use the customer overrides (if specified) for the summary prompts
-
-New or changed functionality in other platform components:
-* BE-2198	Web Console: Add login sessions view in Account Profile page
-* BE-2197	Web Console: Make sure that whenever we discard the login session in the browser we do call logout API
-* BE-2001	Web Console: Notify about inability to to microphone capture on HTTP urls
-* QA-1274	Web Console: Removed Prompt and TTS Settings
-* BE-2233	Web Console: Show the list of languages sorted
-* BE-2229	Web Console: Use the new change password API
-* BE-2199	SA: Added created date and UUID to the page with Project details
-* BE-2200	SA: Added name of the project to the Delete dialog
-* BE-2256	SA: Contact Support now opens in a new browser tab
-* BE-2290	SA: Implement AIVR Integration (configuration)
-* BE-2206	SA: Improve PII Redaction Config page
-* BE-2255	SA: Use the Account Time settings as the time defaults when creating a new Project
-* BE-2254	SA: Use the new change password API in SA App
-* BE-2252	SA: Hide (comment out) the setting for Age detection
-* BE-2299	Demo: Add a note about the models used in the Voicebot Demo
-* BE-2300	Demo: Copy to clipboard icons need tool-tip and there needs to be confirmation after copy
-* BE-2211	Admin Tool: Add tab/page to control SA activation
-* BE-2301	Add languageDetection parameter to asr settings in the transcribe API
-* BE-1749	Add Outbound Calling to AIVR API
-* BE-2277	Add to cluster API new LLM Settings for the Embeddings
-* BE-2177	Added support for 11labs voices in TTS
-* BE-2225	Added transfer to extension option in the AIVR transfer action
-* BE-2291	AIVR Transfer should give option to use DNIs or Original ANI for the caller id for the transferred call
-* BE-2312	Better handling of HTTP 502 from Fusebill
-* BE-2279	Changes on agent field in request to POST /sa/call
-* BE-2085	Do not return "user not found" from the forgot password API
-* BE-1972	Hide/Show features of the Speech Analytics App based on the settings on the account
-* BE-2239	Implement POST /asr/meeting/llm/query
-* BE-2286	Improve (speedup) lookup of AIVR App by DNIS
-* BE-2216	Improve diarization sentence boundary
-* BE-2209	Language detection for offline sessions using Omega model
-* BE-2273	LLM meeting section summary now returned raw
-* BE-2193	Modified GET /greg/experiment to return only the experiments that are from the specified Context
-* BE-673	Modify password change API to encrypt password parameters
-* BE-2081	Move caching of TTS prompts from memory to redis
-* BE-2185	Move mod_xml_curl service to fssk
-* BE-1791	Omega model trained on Health Insurance Call Center data
-* BE-2230	Speedup the response time of POST /asr/transcribe/async
-* BE-2191	Support 'external' websocket mode for /asr/transcribe/async and /asr/recognize/async
-* BE-2192	Support new returned Content type - metadata
-* BE-2261	Tie AIVR App and Context to form AIVR Integration (Context side)
-* BE-1680	Update jdk version to 17 in docker images
-
-Changes related to Integrity of Processing (fixes):
-* QA-1185	TA Edge: Fix - Unable to recognize transcript's project on homepage. 
-* QA-1252	TA Edge: Fix - Port Number is missing in invitation link
-* BE-2269	TA: Fix - Action Items are no longer included in the PDF and Docx
-* QA-1198	TA: Fix - Advanced Search View does not update after clicking ReRun.
-* QA-1263	TA: Fix - After deleting any share, it still shows in the table until the user performs a hard refresh of the page
-* QA-1240	TA: Fix - Downloaded pdf for Korean transcript does not open in Acrobat Reader
-* QA-1248	TA: Fix - Duplicate transcripts are showing in advance search.
-* BE-2275	TA: Fix - Korean sometimes being translated in addition to transcribed
-* BE-2274	TA: Fix - LLM Playground needs to be able to get transcript even if user is User role and has no Download permission
-* QA-1279	TA: Fix - Microphone recording and browser share menu should not be shown under actions for languages that do not have permissions for browser capture and microphone recording.
-* QA-1126	TA: Fix - Null projects displayed for some meetings.
-* QA-1199	TA: Fix - Some transcripts are missing a options under the 3-dot menu.
-* QA-1232	Ta: Fix - Sorting is not working on MY Login sessions page.
-* QA-1219	TA: Fix - The 'Incorrect Password' message should appear when a user tries to download the password recovery key with the wrong password.
-* BE-838	TA: Fix - Tracking of time used does not seem to work anymore
-* QA-1242	TA: Fix - User gets stuck on Upload page after submitting a file.
-* QA-912	TA: Fix - User is able to upload the audio file even when the allotted storage is fully used.
-* BE-2313	TA: Fix - User unable to move recording from one project to another
-* QA-1205	TA: Fix - Warning not showing for upload of large file.
-* BE-2169	Web Console: Fix - Clicking on the date range in Logs page triggers an error in the console
-* QA-1220	Web Console: Fix - New user Account getting error on log search
-* BE-2271	Web Console: Fix - Output AIVR prompts are not expanding
-* BE-2219	Web Console: Fix - recorded audio chart should start from 0:00
-* QA-1243	Web Console: Fix - Unable to edit 'App Name'
-* QA-1273	Web Console: Fix - When user click on the No. of node of 'No edge deployments loaded' table getting blank page
-* QA-1258	SA: Fix - Audio forward/backward buttons are not working as expected.
-* BE-2316	SA: Fix - Avatar not getting saved
-* BE-2250	SA: Fix - Back Button should take us back to Settings overview and not to main page
-* QA-1226	SA: Fix - Fails to show the new project wizard if there are not Projects on account
-* BE-2260	SA: Fix - Missing parameters for uploaded Call
-* QA-1159	SA: Fix - User is unable to select the time and time dropdown text is overlap.
-* QA-1068	SA: Fix - User unable to update location , Company Position, and Name, as save button disabled.
-* QA-1133	SA: Fix - Weird behavior on the configurations page.
-* BE-2288	Fix - AIVR stopped listening in the middle of a my answer
-* BE-2208	Fix - asr-api fails to submit DEL callback request after disconnect is processed
-* BE-2181	Fix - ml-svc performance degradation since release 103 after we upgrade to python 3.11
-* BE-2214	Demo: Fix - Getting 401 error when trying to send a link from the demo app
-* QA-1213	Admin Tool: Fix - Showing a blank page when the admin user tries to check the API usage.
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 

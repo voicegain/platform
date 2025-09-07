@@ -15,7 +15,7 @@ inputUrl = cfg.get(configSection, "INPUTURL")
 
 print(f"inputUrl: {inputUrl}")
 
-filesToProcess = 35
+filesToProcess = 5
 
 if not os.path.exists(outputFolder):
     os.makedirs(outputFolder)
@@ -95,26 +95,33 @@ asr_body = {
         ,{
             "type": "redact",
             "parameters": {
-                "CC": "[CC]",
-                "CVV": "[CVV]",
+                "CC": "partial:4",
+                "CVV": "full:2",
                 #"ZIP": "[ZIP]",
                 #"PERSON": "[PERSON]",
                 #"EMAIL" : "[EMAIL]",
                 #"PHONE" : "[PHONE]",
-                "SSN" : "[SSN]"
+                "SSN" : "partial:4"
                 #,"DMY" : "[DMY]"
             }
         }
-        # ,
-        # { 
+        # ,{ 
         #     "type": "regex",
         #     "parameters": {
-        #         "pattern": r"(?<=\bcv )\d{3,4}\b",
-        #         "mask": "full",
+        #         "pattern": r"\b(?:\d{4}-){3}\d{4}\b",
+        #         "mask": "partial",
         #         "options": "IA"
         #     }
-        # },
-        # { 
+        # }
+        # ,{ 
+        #     "type": "regex",
+        #     "parameters": {
+        #         "pattern": r"\b(?:3[47]\d{13}|4\d{14,15}|5[1-5]\d{14}|6(?:011|5\d{2})\d{12})\b",
+        #         "mask": "partial",
+        #         "options": "IA"
+        #     }
+        # }
+        # ,{ 
         #     "type": "regex",
         #     "parameters": {
         #         "pattern": r"(?<=\bcv[v|b|c] is )\d{3,4}\b",
@@ -429,7 +436,7 @@ print("START", flush=True)
 with open(combined_file_path, 'w', encoding='utf-8') as combined_file:
     combined_file.write("")
 
-for i in range(1, 36+1):
+for i in range(38, 38+1):
     print("processing file {}".format(i), flush=True)
 
     retry_after = process_one_file(i)

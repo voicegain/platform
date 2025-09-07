@@ -53,8 +53,9 @@ class ApiClient:
         )
         return response
 
-TOTAL = 2
+TOTAL = 100
 SLEEP = 5
+
 remain = TOTAL
 for _ in range(TOTAL):
     print("Remain: {}".format(remain))
@@ -66,6 +67,6 @@ for _ in range(TOTAL):
 
     # Dev bot
     # destination="+14693333606"
-    print("Dialing to destination: {}".format(DESTINATION))
+    print("Dialing to destination: {}, remaining: {}".format(DESTINATION, remain))
     api_client.dial(destination=DESTINATION)
     time.sleep(SLEEP)

@@ -79,7 +79,7 @@ Proxy your SIP call via our FreeSWITCH docker and get the transcript of the call
 This works basically in two modes 1) if SIP_GATEWAY_IP is configured in config.ini it works in sip trunk mode otherwise 2) send SIP INVITE to DESTINATION_DOMAIN
 
 ```Steps for setting up websocket service to receive transciption results in realtime```
-# 2) Install required python pacakges
+# 2) Install required python packages
 Assuming you have already setup virtual enviornment(not manadatory) and installed required python packages asyncio, websockets,json and ssl. OS can be any linux distribution preferably debian 12 and above.
 ```sh
 apt install python3.11-venv

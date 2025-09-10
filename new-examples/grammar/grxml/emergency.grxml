@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<grammar xmlns=http://www.w3.org/2001/06/grammar xml:lang="en" root="test" version="1.0" mode="voice">
+    <rule id="test" scope="public">
+        <one-of>
+            <item>
+                <tag>out='Emergency'</tag>
+                <one-of>
+                    <item>
+                        <token>emergency</token>
+                    </item>
+                </one-of>
+            </item>
+        </one-of>
+    </rule>
+</grammar>

@@ -53,8 +53,8 @@ class ApiClient:
         )
         return response
 
-TOTAL = 100
-SLEEP = 5
+TOTAL = 40
+SLEEP = 3
 
 remain = TOTAL
 for _ in range(TOTAL):

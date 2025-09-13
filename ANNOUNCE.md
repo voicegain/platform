@@ -1,3 +1,79 @@
+### Minor release 1.124.0 is scheduled for 9/6/2025 between 11:00pm and 1:00am US Central Time
+
+New or changed functionality:
+* BE-4363	Added 7 new fields to GET/sa/call/search API method
+* BE-4362	Added 7 new fields to GET/sa/call/search/fields API method
+* BE-4094	Added Metadata to the transcript used for QA Call Review by LLM
+* BE-4279	Added support for longer expiry time for SA Calls
+* BE-4392	Added uuid= parameter to calls to shout://
+* BE-4329	APIs that report for a given Context how many AIVR sessions or Calls will expire when
+* MST-867	Bot: Streamline Provider Lookup (NPI, TaxID)
+* BE-4352	Doubled the amount of data objects processed by cleanup task at each execution.
+* MST-870	Enable Edge Deployment for llm-svc with Optional Env-Based Bot Activation
+* BE-4333	Expose transcriptionExpireAt in GET /sa/offline and GET /sa/offline/{sid}/data
+* MST-863	Implement Eligibility Disclaimer Prompt with Variant Logic
+* BE-4328	In AIVR-App API allow for expiry to be older than 365 days.
+* BE-4338	Increase allowed combined size of clientSideProperties in in User object to 64KB
+* BE-4411	SA: Added a note about QA score normalization
+* BE-4280	SA: Added AIVR prompt from AIVR app for Voicebot app on Configuration page
+* BE-3607	SA: Added call expiry date column to Call History table
+* BE-4384	SA: Added CSAT score to Call Resolution card on Call Overview page
+* QA-2844	SA: Added Show/Hide All option for columns on Recent Calls page to prevent deselecting all
+* QA-2888	SA: Added Time column to Recent Calls page
+* BE-4219	SA: Added user name and email to profile menu
+* QA-2840	SA: Changed all Calls table background to white for better UX
+* BE-4326	SA: Delayed call audio loading for calls older than 90 days on Call Details page
+* BE-4290	SA: Hid analytics option from Call Details view
+* BE-4297	SA: Improved applying filters and search UX on Call History page
+* QA-2898	SA: Improved auto-fill color in login input fields for better visibility
+* BE-4335	SA: Improved Call Resolution card timeline to match AHT timeline on Agent Dashboard page
+* BE-4380	SA: Improved card responsiveness on Call Overview page
+* QA-2875	SA: Improved dark mode handling for QA form name and selected queues
+* QA-2871	SA: Improved dark mode handling for voicemail audio popup on Voicemail page
+* BE-4298	SA: Improved empty state for Voicebot Data Card on Call Overview page
+* BE-4316	SA: Improved masking of PII redaction fields for partial examples
+* QA-2869	SA: Updated display of oldest and newest call times in account format on Call Stats dashboard
+* BE-4332	SA: Updated multi-select dropdown to display +x filters for better UX
+* QA-2893	SA: User column preferences now persist on Recent Calls page after refresh
+* BE-4218	SSO: Made login box wider to support longer email addresses
+* BE-4397	TA: Added 'Copy Debug Info' button on Meeting Bot page in debug mode
+* BE-4087	Voicebot Demo: Displaying AIVR session events on transcript wait page
+* BE-4370	Voicebot Demo: Updated design and copy on Demo Healthcare page
+* BE-4317	Web Console: Added Duration column to Call Sessions table
+* QA-2812	Web Console: Added edit button to modify logic when creating AIVR app in Telephony Bot modal
+* BE-4327	Web Console: Allowed entry of Telephone App call expiry greater than 365 days
+* BE-4272	Web Console: Displaying actionStart and event time for all AIVR events
+* QA-2795	Web Console: Do not show Mode Selector if only one mode is available
+
+Changes related to Integrity of Processing (fixes):
+* MST-892	Bot: Fixed - bot reads NPI number like a normal number.
+* MST-924	Bot: Test and Fix Spanish Member Flow
+* MST-903	Fix - Bot Intent Reply: Distinguish Member vs Provider
+* BE-4281	Fix issue with channel_id in Words for Text Redaction API Requests to ml-svc
+* BE-4386	Fix issues with memory leak when webhook retries are processed
+* MST-902	Fixed - Bot stuck talking about account validation
+* QA-2769	Fixed - Voicebot calls are failing to process and going in Error state due to empty formatter definition
+* BE-4372	Fixed issue invalid audio duration would break processing of SA calls
+* BE-4307	Fixed issue with audio-server returning 504 for invalid JWT tokens
+* BE-4404	Fixed issue with some of the voicebot prompts getting stuck on terminate.
+* BE-4369	SA: Fix - Call loading issue for Manager role on some accounts
+* BE-4373	SA: Fix - Calls incorrectly showing failed status while still in progress
+* QA-2894	SA: Fix - File upload failure on Integration page when selecting languages
+* QA-2851	SA: Fix - Internal Server Error when modifying AIVR app Integration
+* BE-4319	SA: Fix - Missing IDs for error calls in Calls table resolved
+* BE-4406	SA: Fix - Navigation issue after sorting/filtering on Recent Call
+* QA-2876	SA: Fix - Save button disabled when option points exceeded max points in QA Review form
+* BE-4351	SA: Fix - Section name in QA Review form allowed saving empty strings
+* BE-4275	SA: Fix - UI crashing after multiple date changes on Voicebot dashboard page
+* QA-2848	SA: Fix - Voicebot Data Card information not fully visible on Call Overview page
+* BE-4228	SA: Fixed issue where front-end code would overwrite the integration JWT
+* QA-2834	TA: Fix - Microphone Recording – Transcription is failing intermittently for microphone recordings.
+* QA-2846	TA: Fix - Save button remaining enabled while entering tag and added helper text
+* QA-2809	Web Console: Fix - Unable to edit AIVR app when 'Connection Logic' is an Adapter
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release
+
+
 ### Minor release 1.123.0 is scheduled for 8/17/2025 between 11:00pm and 1:00am US Central Time
 
 New or changed functionality:

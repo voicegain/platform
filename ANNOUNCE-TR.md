@@ -2,6 +2,13 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### September 6, 2025
+
+Fixes:
+* QA-2834	TA: Fix - Microphone Recording – Transcription is failing intermittently for microphone recordings.
+* QA-2846	TA: Fix - Save button remaining enabled while entering tag and added helper text
+
+
 ### July 24, 2025
 
 New:

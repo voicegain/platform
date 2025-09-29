@@ -1,15 +1,18 @@
-#
 # VOICEGAIN PRIVACY POLICY
 
-Last updated June 25th, 2023
+Last updated Septemner 29th, 2025
+
+---
 
 **INTRODUCTION**
 
-Welcome to the websites of Voicegain (Resolvity, Inc). Voicegain (&quot;we&quot; or &quot;us&quot; or &quot;our&quot;) respects the privacy of our users (&quot;user&quot; or &quot;you&quot;). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.voicegain.ai and Voicegain online application, including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the &quot;Site&quot;). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
+Welcome to the websites of Voicegain (Resolvity, Inc). Voicegain ("we" or "us" or "our") respects the privacy of our users ("user" or "you"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.voicegain.ai and Voicegain online application, including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the "Site"). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
 
-We reserve the right to make changes to this Privacy Policy at any time and for any reason. We will alert you about any changes by updating the &quot;Last Updated&quot; date of this Privacy Policy. Any changes or modifications will be effective immediately upon posting the updated Privacy Policy on the Site, and you waive the right to receive specific notice of each such change or modification.
+We reserve the right to make changes to this Privacy Policy at any time and for any reason. We will alert you about any changes by updating the "Last Updated" date of this Privacy Policy. Any changes or modifications will be effective immediately upon posting the updated Privacy Policy on the Site, and you waive the right to receive specific notice of each such change or modification.
 
-You are encouraged to periodically review this Privacy Policy to stay informed of updates. You will be deemed to have been made aware of, will be subject to, and will be deemed to have accepted the changes in any revised Privacy Policy by your continued use of the Site after the date such revised Privacy Policy is posted. 
+You are encouraged to periodically review this Privacy Policy to stay informed of updates. You will be deemed to have been made aware of, will be subject to, and will be deemed to have accepted the changes in any revised Privacy Policy by your continued use of the Site after the date such revised Privacy Policy is posted.  
+
+---
 
 # COLLECTION OF YOUR INFORMATION
 
@@ -25,68 +28,92 @@ Information our servers automatically collect when you access the Site, such as 
 
 ## Financial Data
 
-Financial information, such as data related to your payment method (e.g. valid credit card number, card brand, expiration date) that we may collect when you purchase, order, or request information about our services from the Site or our application]. We store only very limited, if any, financial information that we collect. Otherwise, all financial information is stored by our payment processor, [Fusebill](https://www.fusebill.com/), and you are encouraged to review their privacy policy and contact them directly for responses to your questions.
+Financial information, such as data related to your payment method (e.g. valid credit card number, card brand, expiration date), that we may collect when you purchase, order, or request information about our services from the Site or our application.  
+We do **not** store full payment card details. All financial information is securely processed and stored by our payment processor, [Fusebill](https://www.fusebill.com/). You are encouraged to review their privacy policy and contact them directly for responses to your questions.
 
 ## Data From Contests, Giveaways, and Surveys
 
 Personal and other information you may provide when entering contests or giveaways and/or responding to surveys.
 
+---
+
 # COLLECTION OF YOUR CUSTOMERS INFORMATION
 
-We may collect information about your customers as described below. 
+We may collect and process information about your customers strictly as described below.
 
-## Audio Derived Customer Data 
+## Audio Derived Customer Data
 
-Personal data of your customers that you ask us to process on your behalf, which will include any personal data of your customers that you provide to us to transcribe, caption, recognize, or otherwise process for them. When Voicegain processes personal data on behalf of you, Voicegain is just the processor of the data under applicable law, and you are the controller. You will solely control the extent of storage of such data in our systems.
+Personal data of your customers that you ask us to process on your behalf, including any audio, transcripts, or related information you provide to us to transcribe, caption, recognize, or otherwise process.
+
+When Voicegain processes personal data on your behalf, you are the **data controller** and Voicegain is the **data processor** under applicable law. You determine how long such data is retained in our systems. Unless you configure longer storage, we delete audio and derived data in accordance with our [Data Processing Addendum](https://github.com/voicegain/platform/blob/master/DATA-PROCESSING-ADDENDUM.md).
+
+**Security Measures:** Audio Derived Customer Data is encrypted in transit and at rest, and access is limited to authorized personnel only.
+
+**International Transfers:** If Audio Derived Customer Data is transferred outside the country of origin (e.g., to the United States), such transfers are made under appropriate legal mechanisms (such as Standard Contractual Clauses).
+
+---
 
 # DATA QUALITY
+
 Quality and Accuracy of Data: We strive to keep your Personal Data accurately recorded. The quality of the data we collect and process is a priority to us, and we make every reasonable effort to ensure it. However, maintaining the accuracy and completeness of your data is a shared responsibility. We rely on you, the data subject, to inform us if your personal data changes during your relationship with us.
 
-* **Your Responsibility:**
+* **Your Responsibility:**  
 As a data subject, you have a responsibility to ensure that the data you provide to us is accurate, complete, and up-to-date. Incorrect information can impact the quality of the services we provide, and inaccurate or false information can have serious repercussions. In cases where the data you provide is used for legal, financial, or safety-related purposes, the impact of inaccurate information can be significantly greater.
 
-* **Updating Your Data:**
+* **Updating Your Data:**  
 You are encouraged to review your data periodically and update it as necessary. Most platforms we operate provide options for you to access and update your personal data. In cases where such a provision does not exist, or if you encounter any issues, please contact us at [support@voicegain.ai](mailto:support@voicegain.ai)
 
 * **Rectifying Inaccurate Data:** If you believe any of your data in our possession is inaccurate or incomplete, please notify us immediately. We are committed to promptly correcting any inaccuracies in your Personal Data.
 
+---
+
 # USE OF YOUR INFORMATION
 
-Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. This section is not applicable to Audio Derived Customer Information. Specifically, we may use information collected about you via the Site or our application to:
+Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. This section is not applicable to Audio Derived Customer Information.  
 
-- Compile anonymous statistical data and analysis for use internally or with third parties.
-- Create and manage your account.
-- Deliver targeted advertising, coupons, newsletters, and other information regarding promotions and the Site and our application to you.
-- Email you regarding your account or order.
-- Fulfill and manage purchases, orders, payments, and other transactions related to the Site and our application.
-- Generate a personal profile about you to make future visits to the Site and our application more personalized.
-- Increase the efficiency and operation of the Site and our application.
-- Monitor and analyze usage and trends to improve your experience with the Site and our application.
-- Notify you of updates to the Site and our applications.
-- Offer new products, services, applications, and/or recommendations to you.
-- Perform other business activities as needed.
-- Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.
-- Process payments and refunds.
-- Request feedback and contact you about your use of the Site and our application.
-- Resolve disputes and troubleshoot problems.
-- Respond to product and customer service requests.
-- Send you a newsletter.
-- Solicit support for the Site and our application.
-- Administer sweepstakes, promotions, and contests.
-- Assist law enforcement and respond to subpoena.
+**Legal Bases for Processing (EU/EEA Users):**  
+If you are located in the European Economic Area or another jurisdiction requiring a legal basis, we process your information on one or more of the following bases:  
+- To perform a contract with you (e.g., to provide services you requested).  
+- With your consent (e.g., for marketing communications).  
+- To comply with legal obligations.  
+- For our legitimate interests (e.g., improving services, preventing fraud), provided such interests do not override your rights.  
 
+Specifically, we may use information collected about you via the Site or our application to:
+
+- Compile anonymous statistical data and analysis for use internally or with third parties.  
+- Create and manage your account.  
+- Deliver targeted advertising, coupons, newsletters, and other information regarding promotions and the Site and our application to you.  
+- Email you regarding your account or order.  
+- Fulfill and manage purchases, orders, payments, and other transactions related to the Site and our application.  
+- Generate a personal profile about you to make future visits to the Site and our application more personalized.  
+- Increase the efficiency and operation of the Site and our application.  
+- Monitor and analyze usage and trends to improve your experience with the Site and our application.  
+- Notify you of updates to the Site and our applications.  
+- Offer new products, services, applications, and/or recommendations to you.  
+- Perform other business activities as needed.  
+- Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.  
+- Process payments and refunds.  
+- Request feedback and contact you about your use of the Site and our application.  
+- Resolve disputes and troubleshoot problems.  
+- Respond to product and customer service requests.  
+- Send you a newsletter.  
+- Solicit support for the Site and our application.  
+- Administer sweepstakes, promotions, and contests.  
+- Assist law enforcement and respond to subpoena.  
+
+---
 
 # USE OF YOUR CUSTOMERS INFORMATION
 
-This section describes how Voicegain may strictly and narrowly use your Customers Information (i.e. Audio Derived Customer Data) 
+This section describes how Voicegain may strictly and narrowly use your Customers Information (i.e. Audio Derived Customer Data)
 
-- Provide, maintain and improve our services.
-- Resolve disputes and troubleshoot problems.
-- Respond to product and customer service requests.
-- Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.
-- Enforce legal terms that govern our services.
-- Comply with law.
-- Assist law enforcement and respond to subpoena.
+- Provide, maintain and improve our services.  
+- Resolve disputes and troubleshoot problems.  
+- Respond to product and customer service requests.  
+- Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.  
+- Enforce legal terms that govern our services.  
+- Comply with law.  
+- Assist law enforcement and respond to subpoena.  
 
 # DISCLOSURE OF YOUR INFORMATION 
 
@@ -200,41 +227,53 @@ If you no longer wish to receive correspondence, emails, or other communications
 
 # CALIFORNIA PRIVACY RIGHTS
 
-California Civil Code Section 1798.83, also known as the &quot;Shine The Light&quot; law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided below.
+If you are a California resident, you have rights under the California Consumer Privacy Act (CCPA), as amended by the California Privacy Rights Act (CPRA). These include:  
+- The right to know the categories and specific pieces of personal information we collect, use, disclose, and share.  
+- The right to request deletion of personal information, subject to exceptions.  
+- The right to correct inaccurate personal information.  
+- The right to opt out of the sale or sharing of personal information.  
+- The right to limit the use and disclosure of sensitive personal information.  
+- The right not to be discriminated against for exercising these rights.  
 
-If you are under 18 years of age, reside in California, and have a registered account with the Site or our application, you have the right to request removal of unwanted data that you publicly post on the Site or our application. To request removal of such data, please contact us using the contact information provided below, and include the email address associated with your account and a statement that you reside in California. We will make sure the data is not publicly displayed on the Site or our application, but please be aware that the data may not be completely or comprehensively removed from our systems.
+To exercise these rights, please contact us at [support@voicegain.ai](mailto:support@voicegain.ai). We will verify your identity before processing your request, and you may designate an authorized agent to submit a request on your behalf.  
 
-# YOUR EU RIGHTS AND CHOICES:
-We offer the options described below for exercising rights and choices under applicable law, which are subject to important limits or exceptions under applicable law.
+In addition, California Civil Code Section 1798.83 (“Shine the Light”) permits our users who are California residents to request information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes in the previous calendar year.  
 
-For Audio Derived Personal Data: To exercise rights or choices with respect to Audio Derived Personal Data, please make your request directly to our customer for whom we process the personal data.
+If you are under 18 years of age, reside in California, and have a registered account with the Site or our application, you may also request removal of data you publicly post by contacting us as described above.  
 
-For Your Information:
-To keep your personal data accurate, current, and complete, please contact us as specified below. We will take reasonable steps to update or correct personal data in our possession that you have previously submitted via this Site or Services.
-The law of your jurisdiction (for example, within the European Economic Area) may give you additional rights to request access to and rectification or erasure of certain of your personal data we hold. In some cases, you may be entitled to receive a copy of the personal data you provided to us in portable form or to request that we transmit it to a third party. The law may also give you the right to request restrictions on the processing of your personal data, to object to processing of your personal data, or to withdraw consent for the processing of your personal data (which will not affect the legality of any processing that happened before your request takes effect). You may contact us as described below to make these requests.
-For example, residents of the European Economic Area and certain other jurisdictions may have a right to opt out of our processing of Your Information for direct marketing purposes. You can exercise this right by contacting us as described below. Our marketing emails and certain other communications include unsubscribe instructions, which you can use to limit or stop the relevant communications. Opt-out processes may take some time to complete, consistent with applicable law. Certain communications (such as certain billing-related communications or emergency service messages) are not subject to opt-out.
+---
 
-You may contact us with any concern or complaint regarding our privacy practices, and you also may lodge a complaint with the relevant governmental authority.
+# YOUR EU RIGHTS AND CHOICES
 
-See [Data Processing Addendum](https://github.com/voicegain/platform/blob/master/DATA-PROCESSING-ADDENDUM.md) for details how we may process your data.
+If you are located in the European Economic Area, the UK, or another jurisdiction with similar laws, you may have the following rights under the General Data Protection Regulation (GDPR) or equivalent laws:  
+- Right of access to your personal data.  
+- Right to rectification of inaccurate or incomplete personal data.  
+- Right to erasure ("right to be forgotten").  
+- Right to restrict processing of your personal data.  
+- Right to data portability (receive a copy in structured, commonly used, machine-readable format).  
+- Right to object to processing, including processing for direct marketing.  
+- Right to withdraw consent at any time, without affecting the lawfulness of processing based on consent before withdrawal.  
 
+**Audio Derived Personal Data:** If you wish to exercise rights over Audio Derived Personal Data, please direct your request to our customer (the data controller).  
+
+You may also lodge a complaint with your local Data Protection Authority if you believe our processing of your personal data violates applicable law.  
+
+See our [Data Processing Addendum](https://github.com/voicegain/platform/blob/master/DATA-PROCESSING-ADDENDUM.md) for more details about how we process data.  
+
+---
 
 # CONTACT US
 
 If you have questions or comments about this Privacy Policy, please contact us at:
 
-Voicegain (Resolvity, Inc.)
-
-1333 Corporate Dr, Suite 211
-
-Irving, TX 75038
-
-972-518-0863
-
+Voicegain (Resolvity, Inc.)  
+1333 Corporate Dr, Suite 211  
+Irving, TX 75038  
+972-518-0863  
 [support@voicegain.ai](mailto:support@voicegain.ai)
 
-At the email above you can also contact Voicegain regaring any inquiries, complaints, and disputes. 
+At the email above you can also contact Voicegain regarding any inquiries, complaints, and disputes.  
 
 If you already have an account with Voicegain, you can contact us via the Voicegain Apps, e.g., Developer Web Console at [https://console.voicegain.ai](https://console.voicegain.ai)
 
-Last reviewed September 26th, 2023
+Last reviewed September 29th, 2025

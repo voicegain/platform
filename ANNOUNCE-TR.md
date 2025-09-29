@@ -2,6 +2,11 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### September 27, 2025
+
+Fixes:
+* QA-2853	TA: Fix - Error transcript from meeting bot shows a 'Something went wrong' page when the user tries to perform a full re-run.
+
 ### September 6, 2025
 
 Fixes:

@@ -1,6 +1,74 @@
 ### Minor release 1.125.0 is scheduled for 9/27/2025 between 11:00pm and 1:00am US Central Time
 
-TBD ...
+New or changed functionality:
+* MST-964	Added “Press 0” Check Before Transfer to Prevent Dead-End Calls
+* BE-4381	Added 4 new columns to the CDR API 
+* BE-4388	Added agentCallsOnly parameter to GET /sa/call-stats
+* BE-4245	Added aivrTransferDestType parameter to the /sa/call search API
+* BE-4336	Added chartData to agentScore in GET /sa/call-stats API method
+* BE-4387	Added csatStats to GET /sa/call-stats
+* BE-4458	Added mergedAudioId field to /sa/call
+* BE-4442	Added NPS computation for calls shown in Speech Analytics App
+* BE-4439	Added NullTerm to POST /sa/call/search
+* BE-4425	Added time period filter to GET /sa/call/search/fields
+* MST-954	Added Utility Code in llm-svc to Send Fax and SMS
+* BE-4453	Changes to User API to support new Roles and Permissions scheme
+* BE-4502	Copilot: Show real name instead of caller-provided name in member calls only
+* MST-955	Implemented “Fax Back” and “Text Back” Request Handling in Eligibility Automation
+* MST-975	Implemented NPS Support via QA Form Flow (Modeled After CSAT in Offline-Task Project)
+* MST-980	Improved "A or B" Info Query Handling: Ask for B If User Says They Don’t Have A
+* MST-873	Improved Alphanumeric Prompting for Voicebot in llm-svc
+* MST-918	Improved Date NER Model for Formatted Date Recognition
+* BE-4428	Modified /data API - added user and user group fields, support for fileBase64 parameter
+* BE-4436	Modified DELETE /asr/transcribe/{sid} to remove session from the Queue
+* BE-4509	Modified GET /cluster-version to return up to 120 entries instead on only 40
+* BE-4394	Order CDR rows returned from the CDR API by date
+* MST-973	Report Accurate Audio Duration in Offline-Main When Using Whisper Model
+* BE-4503	Report caller_faxId variable as a tag fax_sent
+* BE-4479	SA: Added corresponding labels in the Calls table for errored calls with missing SA offline sessions or merged audio
+* BE-4339	SA: Added filter saving and applying functionality on the Call History page
+* BE-4422	SA: Added global filters to the Recent Calls page with new filter design
+* BE-4385	SA: Added justification to the Call Resolution card on the Call Overview dashboard
+* BE-4424	SA: Added meaningful tooltips for actions on the Teams page and removed sentiment breakdown from the Sentiment card
+* QA-2852	SA: Added name validation for QA form section name
+* BE-4420	SA: Added sorting by duration to the Voicemail Audio column on the Voicemail Calls page
+* BE-4337	SA: Added timeline to the Average Agent Score card on the Agent Dashboard
+* QA-2850	SA: Added Verified column in the calls table
+* QA-2874	SA: Added warning to newly created QA form sections to include at least one question for better UX
+* QA-2862	SA: Columns in the calls table are now matched between the Recent Calls and Call History pages
+* BE-4431	SA: Improved Call History filters with new design and support for All Calls/Transferred Calls tabs
+* BE-4484	SA: Improved CSAT before/after preview for LLM prompts in the Preview Changes modal
+* BE-4423	SA: Improved Edit User modal with multi-select support for teams
+* BE-4426	SA: Made features like QA Form, Add Project, Teams page, etc. available for all, regardless of project settings
+* QA-2918	SA: Prevented users from creating duplicate team names
+* BE-4472	SA: Replaced Customer Dissatisfaction card with CSAT Scorecard on the Agent Dashboard
+* QA-2949	SA: Show Incident and Scorecard labels based on the displayed value on the Call Overview dashboard
+* BE-4309	SA: Showing call duration in mm:ss format on the Call Stats dashboard.
+* BE-4468	SA: Support multiple roles for users in Create/Edit modals and display them in the Users table
+* QA-2866	SA: Updated Billing Info page for improved dark mode support and design changes
+* MST-606	Use GPU UUID to enforce license on REX (GPU dockerized deployment)
+
+Changes related to Integrity of Processing (fixes):
+* BE-4485	Fix - Memory Leak issue with real-time transcript results submitted to a websocket server
+* BE-4506	Fix - set the mergedAudioId in /sa/call
+* BE-4417	Fixed - Before-last event missing from AIVR session
+* BE-4419	Fixed - Issue with prompt playback event arriving delayed.
+* MST-963	Resolved Remaining Issues in Audio & Text Redaction Test Cases
+* QA-2909	SA: Fix - Agent should not be allowed to add/edit/delete the JWT in API security.
+* QA-2945	SA: Fix - ANI/Dialed Number filter was not working when the country code was not provided explicitly
+* BE-4035	SA: Fix - do not pass answerValue if we are doing human override of AI and the question type is choice
+* BE-4508	SA: Fix - Filters now update correctly when refreshing calls on the Call History page
+* QA-2857	SA: Fix - Issues with adding and deleting conditions in Criteria Configuration on the Context Config page
+* QA-2854	SA: Fix - 'Select All' checkbox not working in the language dropdown on the Upload Call Audio modal
+* QA-2910	SA: Hide Settings tab for Agent role
+* QA-2853	TA: Fix - Error transcript from meeting bot shows a 'Something went wrong' page when the user tries to perform a full re-run.
+* MST-877	Updated Omega Model to correct "thank you" issue
+* QA-2922	Voicebot Demo: Disable "View My Transcript" button until a demo code is added
+* QA-2867	Voicebot Demo: Fix - Submenu overlap between tabs on the main demo page
+* QA-2923	Web Console: Fix - 500 Internal Server Error when clicking the time selector twice for ASR Web API requests on the Home page
+* QA-2863	Web Console: Fix - Form fields remain populated with previous values after creating a context in the Add Context modal
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release
 
 ### Minor release 1.124.0 is scheduled for 9/6/2025 between 11:00pm and 1:00am US Central Time
 

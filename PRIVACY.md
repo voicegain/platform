@@ -1,6 +1,6 @@
 # VOICEGAIN PRIVACY POLICY
 
-Last updated Septemner 29th, 2025
+Last updated September 29th, 2025
 
 ---
 

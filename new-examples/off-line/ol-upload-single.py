@@ -14,9 +14,9 @@ inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 inputFname = cfg.get("DEFAULT", "INPUTFILE")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
-#model = "VoiceGain-omega"
+model = "VoiceGain-omega"
 #model = None
-model = "whisper:medium"
+#model = "whisper:medium"
 
 print("model: {}".format(model))
 
@@ -32,7 +32,7 @@ asr_body = {
         {
             "asyncMode": "OFF-LINE",
             #"initialPrompt": "I am talking to a customer support agent.",
-            "audioChannelSelector" : "left",
+            "audioChannelSelector" : "two-channel",
             #"initialPrompt": "I am a support Agent talking to a customer.",
             #"audioChannelSelector" : "right",
             "poll": {
@@ -60,7 +60,7 @@ asr_body = {
             "acousticModelNonRealTime" : model,
             "noInputTimeout": -1,
             "completeTimeout": -1,
-            "sensitivity" : 0.5,
+            "sensitivity" : 0.333,
             "hints" : [
                 "you'would[you'd]"
             ]

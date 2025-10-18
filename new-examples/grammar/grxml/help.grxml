@@ -1,4 +1,4 @@
- <grammar mode="voice" root="root" version="1.0" xml:lang="en-US">
+ <grammar mode="voice" root="root" version="1.0" xml:lang="en-US" xmlns="http://www.w3.org/2001/06/grammar">
   <rule id="root" scope="public">
   <one-of>
   <item>

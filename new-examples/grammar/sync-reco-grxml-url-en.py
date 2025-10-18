@@ -134,7 +134,7 @@ def process_one_file(audio_fname):
     conv_fname = temp_path+"/{}.wav".format(fname)
     ff = FFmpeg(
         inputs={audio_fname: []},
-        outputs={conv_fname : ['-ar', str(sampleRate), '-f', 's16le', '-y', '-map_channel', '0.0.0']}
+        outputs={conv_fname : ['-ar', str(sampleRate), '-f', 's16le', '-y']}#, '-map_channel', '0.0.0']}
     )
     ff.cmd
     ff.run()

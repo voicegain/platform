@@ -27,7 +27,7 @@ for name in list_of_files:
 # map from filename to recognition result
 recognition_results = {}
 
-JWT = "<Your JWT HERE>"
+JWT = "<enter your JWT here>"
 headers = {"Authorization":JWT}
 # new transcription session request
 # it specifies audio input via an RTP stream
@@ -56,13 +56,14 @@ body = {
           {
             "type" : "BUILT-IN",
           ## credit card recognition ##
-            "name" : "creditcard"
+          ##  "name" : "creditcard" 
           ## CVV recognition ##
-            # "name" : "digit",
-            # "parameters" : {
+            "name" : "digit",
+             "parameters" : {
             #   "minlength" : 3,
             #   "maxlength" : 3
-            # }
+                "length" : 1
+             }
           ## Yes/No recognition ##
             # "name" : "boolean"
           }

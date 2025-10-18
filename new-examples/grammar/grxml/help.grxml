@@ -1,0 +1,9 @@
+ <grammar mode="voice" root="root" version="1.0" xml:lang="en-US">
+  <rule id="root" scope="public">
+  <one-of>
+  <item>
+  help
+  </item>
+  </one-of>
+  </rule>
+ </grammar>

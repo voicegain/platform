@@ -1,3 +1,125 @@
+### Minor release 1.126.0 is scheduled for 10/25/2025 between 10:00pm and 12:00am US Central Time
+
+New or changed functionality:
+* BE-4563	Added 2 new fields to /public-asr/{ccaas}/user/message-ack: email and app
+* BE-4565	Added arbitrary date time range to GET /sa/voicebot-stats query
+* BE-4481	Added CSAT and NPS search fields to POST /sa/call/search and GET /sa/call/search/fields
+* BE-4569	Added customValues to account
+* BE-4566	Added hasNullValue field to the response from GET /sa/call/search/fields
+* BE-4597	Added npsScore to GET /sa/call-stats
+* BE-4440	Added NullTerm to POST /asr/meeting/search
+* BE-4608	Added read-only fields to support HA for AIVR App
+* BE-4572	Added team field to /sa/call - also set it properly when agent field is set
+* BE-4580	Added team field to /sa/call - also set it properly when agent field is set
+* BE-4540	Added transferTime field to /sa/call
+* BE-4617	API method that returns Business Config now returns opening hours sorted by day of week
+* MST-1029	Attach ANI & DNIS metadata to llm-svc JSON logs and ensure metadata presence
+* BE-4483	Copilot: Add a test routine whenever we lose connection to Pusher
+* BE-3590	Copilot: Various improvements to the Pusher Client
+* MST-1034	Design and implement algorithm to solve Whisper hallucination issue in transcriptions
+* MST-1031	Ensure LLM extracts member IDs as digits (not spelled-out words) across all bots
+* BE-4609	Implemented redundant dial string in aivr.lua if two voice connectors are specified
+* BE-3916	Implemented redundant outbound dialing (using multiple voice connectors)
+* BE-4533	In /confgroup API methods return only content that the given user has access to
+* BE-4532	In /sa/call API methods return only content that the given user has access to
+* BE-4535	In /user API methods return only content that the given user has access to
+* BE-4534	In /user-group API methods return only content that the given user has access to
+* BE-4562	In POST /sa/call/search deprecate CONTEXT_ID term and add contextId query parameter
+* BE-4428	Modified /data API - added user and user group fields, support for fileBase64 parameter
+* BE-4596	Modified how null source values are handled in GET /sa/call-stats
+* BE-4452	New Roles and Permissions Scheme
+* BE-4610	Passing the secondary gateway to aivr.lua if applicable
+* BE-4542	Removed old MS TTS Server fetcher from audio server
+* BE-4644	Replace MarshallingCodec with JsonJacksonCodec
+* BE-4289	SA: Added a Repeat Calls tab on the call details page
+* QA-3016	SA: Added custom date filter to the Voicebot Dashboard page
+* BE-4498	SA: Added filter on caller, intent, and verified column
+* BE-4568	SA: Added support for selecting a custom date range on the Voicebot dashboard
+* QA-2961	SA: Added support to search for team lead and members by email in the Create Team wizard
+* QA-2982	SA: Added tooltips to Call Resolution, Average Agent Score, and CSAT Score cards on the Agent Dashboard
+* BE-4541	SA: Added view and edit options for Voicebot business configuration on the integration page
+* QA-3027	SA: Added view-only mode banner on pages for roles without edit permissions
+* BE-4620	SA: Added view-only mode for the profile page based on user roles
+* QA-2985	SA: Allowed users to create two custom filters with the same name on the call history page
+* BE-4643	SA: Changed the messages for Differential Word Cloud
+* BE-4619	SA: Hid edit and add-member buttons on the Teams page for roles without edit permissions
+* BE-4561	SA: Improved design of range filters on the call history page for cases when minimum and maximum values are the same
+* BE-4574	SA: Improved placeholder messages for differential cloud and no call cards on the agent dashboard for better UX
+* QA-2919	SA: Improved team name validation in the team creation wizard
+* BE-4488	SA: Improved transcript labels to correctly show Voicebot or System Speaker names instead of agent
+* BE-4441	SA: Improved x-axis with weekly day bands for call counts and duration charts on the call stats dashboard
+* QA-3038	SA: Increased 'Date' label font size on the CSAT score graph in the agent dashboard
+* QA-2899	SA: Language dropdown on file upload popup enabled only when multiple languages selected
+* QA-2990	SA: Made saved filter search on the call history page case-insensitive
+* BE-4538	SA: Migrated Settings and other screens from role-based to permission-based control
+* BE-4614	SA: Reduced search bar size on the agent detail page for better UX
+* BE-4625	SA: Removed 'Add Team' button for users without permission and updated empty screen message
+* BE-3210	SA: Showing currently selected AIVR apps on the voicebot integration page
+* BE-4468	SA: Support multiple roles for users in Create/Edit modals and display them in the Users table
+* BE-4218	SSO: Made login box wider to support longer email addresses
+* QA-2921	TA: Added hover messages for delete and share actions on the call transcript page
+* QA-2979	Update score field in /sa/call when the Call Review Answers associated with the /sa/offline session belonging to sa/call are updated
+* BE-4537	Use user.create. permissions in user creation API
+* BE-4600	Voicebot Demo: Added a Contact Sales form on the 'Contact Sales' button click
+* MST-1027	Voicebot: Improve no_information Detection in info_collection_block
+* BE-4612	Web Console: Added a Gateway tab to the Configure Telephony Bot App popup
+* QA-2897	Web Console: Added duplication alerts for callback URL and app data combinations in telephony bot app popup
+* QA-2954	Web Console: Improved validation messages for Name field in Edit API Secret popup on API Token Page
+* BE-4573	Web Console: Limited users with telco permission to a maximum of 10 phone numbers
+* BE-4611	When making outbound call for AIVR App that has 2nd Voice Connector defined, using it as the second gateway in the dial string
+
+Changes related to Integrity of Processing (fixes):
+* BE-4646	Address discrepancies in how user tokens are stored and fetched
+* QA-2925	Admin Tool: Fix - Selection of Users column in account details was showing a blank page for some accounts
+* QA-2959	Admin Tool: Made users table header full width to match the table body
+* MST-630	Better exception in offline-main task
+* BE-4634	Copilot: Fix - Call expiration timer settings does not work
+* BE-4587	Copilot: Fix bugs related to multiple event binding issue with pusher and other issues
+* BE-4546	Fixed - /sa/offline enforces the old persist limit on 365 days
+* BE-4648	Fixed - digit formatting for Spanish in segment mode not working
+* BE-4578	Fixed - Keyword annotations are not being populated for words in /sa/offline
+* BE-4632	Fixed - NullPointerException: Cannot invoke "java.lang.Comparable.compareTo(Object)" because the return value of "java.util.function.Function.apply(Object)" is null
+* BE-4500	Fixed - POST /public-asr/{ccaas}/user/message-ack with a body of incorrect JSON
+* BE-4605	Improve cleanup in the close of mod_vg_tap_ws
+* BE-4437	Properly report rate-limit utilization for /sa/offline sessions submitted in AIVR post-processing
+* QA-3043	SA: Fix - Agent, Team Lead and Coach should not be allowed to view all calls list.
+* QA-1763	SA: Fix - Agents are able to access calls by URL manipulation
+* BE-4555	SA: Fix - Agents page was not scrollable, hiding the agents list
+* QA-2948	SA: Fix - Call overview score did not update after QA form responses were changed
+* BE-2414	SA: Fix - Data for the Differential Word Cloud is not being generated.
+* QA-2958	SA: Fix - Editing saved filters on Call History page sometimes failed
+* QA-3003	SA: Fix - Getting Authorization error when trying to log into Digital QA user role account.
+* QA-3000	SA: Fix - Head of Operations user role cannot invite new users with any role other than Agent.
+* BE-4581	SA: Fix - Incorrect Average Handle Time chart for the current week on the Agent Dashboard
+* BE-4579	SA: Fix - Incorrect charts displayed for partial periods on the Agent Dashboard page
+* QA-3012	SA: Fix - Manager should not be allowed to edit project settings.
+* QA-3010	SA: Fix - Manager unable to Add and Edit team
+* QA-3007	SA: Fix - Manager unable to view invited user with agent role
+* QA-3004	SA: Fix - Manager user role cannot invite new users with any role other than Agent.
+* QA-2901	SA: Fix - Moved QA form name error message outside input box border
+* QA-2998	SA: Fix - Non-admin and non-owner roles were unable to access calls and other features
+* QA-3013	SA: Fix - Profile icon not displaying in the sidebar menu
+* BE-4548	SA: Fix - Project Setup Wizard wrongly shown to all new users even after setup
+* QA-2991	SA: Fix - Search button in the call history page search bar was not working
+* QA-3037	SA: Fix - Team Lead and Agent role are unable to view their Team lead and other users of their own Team.
+* QA-3064	SA: Fix - Team lead should not be allowed to have a Delete option to delete users.
+* QA-3052	SA: Fix - The "Last 24 Hours" filter in the Time Selector is not working on the Voicebot Dashboard page, when Month, Week or Today filter is selected initially.
+* QA-3009	SA: Fix - The Manager should be able to see all the users that they can invite/create.
+* QA-2997	SA: Fix - The Owner or Admin user role cannot invite new users with any role other than Admin.
+* QA-2993	TA: Fix - A user invited with an invalid email address should not be shown as active on the user page, even after receiving the alert message for the invalid email address.
+* QA-2992	TA: Fix - Projects are not showing in the 'Invite User' popup, even though the admin has existing projects.
+* QA-3005	TA: Fix - The admin is unable to invite users and receives an 'Access Denied' alert popup.
+* QA-2984	TA: Fix - Timer in Browser Share Page Does Not Reset After Stopping Previous Recording
+* QA-2916	Voicebot Demo: Fix - Text overlap issue on mobile call transcript page resolved
+* QA-3068	Voicebot Demo: Fix - Timer on Browser Share Page does not reset after stopping previous recording: Fix - When the user clicks on the “Contact Sales” page, the content does not display.
+* QA-2999	Web Console: Fix - Admin user is unable to add the new user(invite user).
+* QA-2966	Web Console: Fix - If the account status is locked from the admin side, the user should not be allowed to access the application.
+* QA-2988	Web Console: Fix - Profile icon was not displaying in the header for some accounts
+* QA-2896	Web Console: Fix - Unable to delete callback URL when creating phone app
+* QA-2955	Web Console: Fix - When the user does not make any changes on the API Security page, the submit button should be disabled.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release
+
 ### Minor release 1.125.0 is scheduled for 9/27/2025 between 11:00pm and 1:00am US Central Time
 
 New or changed functionality:

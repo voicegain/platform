@@ -2,6 +2,18 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### October 25, 25
+
+New:
+* QA-2921	TA: Added hover messages for delete and share actions on the call transcript page
+
+Fixes:
+* QA-2993	TA: Fix - A user invited with an invalid email address should not be shown as active on the user page, even after receiving the alert message for the invalid email address.
+* QA-2992	TA: Fix - Projects are not showing in the 'Invite User' popup, even though the admin has existing projects.
+* QA-3005	TA: Fix - The admin is unable to invite users and receives an 'Access Denied' alert popup.
+* QA-2984	TA: Fix - Timer in Browser Share Page Does Not Reset After Stopping Previous Recording
+
+
 ### September 27, 2025
 
 Fixes:

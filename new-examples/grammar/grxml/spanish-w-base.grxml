@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar mode="voice"
+         root="voiceInlineGrammar"
+         xml:lang="es"
+         xml:base="http://ivr.genesys.com:8080/IVRFrameWorkDevelopment/src/"
+         version="1.0"
+         xmlns="http://www.w3.org/2001/06/grammar">
+
+  <rule id="voiceInlineGrammar" scope="public">
+    <ruleref special="GARBAGE"/>
+    
+    <one-of>
+
+      <item>
+        <tag>out='Credit Card'</tag>
+        <one-of>
+          <item>tarjeta de credito</item>
+          <item>Credito</item>
+          <item>Tarjeta</item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out='Payment Arrangements'</tag>
+        <one-of>
+          <item>Arreglos de pago</item>
+          <item>Acuerdo de pago</item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out='Payment Locations'</tag>
+        <one-of>
+          <item>Payment Locations</item>
+          <item>Lugares de pago</item>
+          <item>Lugares</item>
+          <item>localidades de pago</item>
+          <item>localidades</item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out='Repeat'</tag>
+        <one-of>
+          <item>Repetir</item>
+          <item>Menú Repetir pago</item>
+          <item>menú de pago</item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out='Agent'</tag>
+        <one-of>
+          <item>representante</item>
+          <item>repre</item>
+          <item>persona de servicio</item>
+          <item>agente</item>
+          <item>atención al cliente</item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out='Checking Account'</tag>
+        <one-of>
+          <item>Cuenta de cheques</item>
+          <item>Cheque</item>
+        </one-of>
+      </item>
+
+    </one-of>
+
+    <ruleref special="GARBAGE"/>
+
+  </rule>
+</grammar>

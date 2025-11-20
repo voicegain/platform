@@ -71,7 +71,8 @@ asr_body = {
                         # "url" : "https://raw.githubusercontent.com/TrevorIPI/special-octo-guide/refs/heads/main/transcribe2.grxml"
                         # "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
                         # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/emergency-1.grxml"
-                        "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/help.grxml"
+                        # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/help.grxml"
+                        "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/spanish-w-base.grxml"
                     }
                 }
             ],

@@ -1,3 +1,7 @@
+### Minor release 1.127.0 is scheduled for 11/19/2025 between 10:45pm and 12:00am US Central Time
+
+TBD ...
+
 ### Minor release 1.126.0 is scheduled for 10/25/2025 between 10:00pm and 12:00am US Central Time
 
 New or changed functionality:

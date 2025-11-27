@@ -83,7 +83,7 @@ asr_body = {
             "speedVsAccuracy" : 0.9,
             "maxAlternatives" : 5,
             "confidenceThreshold" : 0.0001 
-            , "languages" : ["en"]			
+            , "languages" : ["es"]			
         }
         #,"formatters" : [{"type" : "digits"}]
     }

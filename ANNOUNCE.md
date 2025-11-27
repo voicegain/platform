@@ -1,6 +1,68 @@
 ### Minor release 1.127.0 is scheduled for 11/19/2025 between 10:45pm and 12:00am US Central Time
 
-TBD ...
+New or changed functionality:
+* BE-4607	Add namespace attribute to GRXML grammar if it's missing
+* QA-3119	Added code that fixes missing user groups for projects on Edge Transcribe
+* BE-4713	Added to /sa/call 2 read-only fields: copilotSent and copilotUnAck
+* QA-2977	Admin Tool: Added 'Assigned' filter to provisional status column on Phone page
+* BE-3872	Implemented proper fallback for streaming TTS (use correct frame-rate in returned audio)
+* BE-3916	Implemented redundant outbound dialing (using multiple voice connectors)
+* BE-4731	Implemented webhook receiver for Pusher webhook events
+* MST-1070	Inspect and Resolve Redaction Issues Reported Oct 2025
+* BE-4727	Keep track of user tokens in a 2nd redis map for 24 hours to improve reporting of expired tokens
+* BE-4545	Limited set of possible sample-rate values in audio server to 8, 16, 24, 48 kHz
+* BE-4559	Migrated from API keys to service accounts in Grafana
+* BE-4714	SA: Added "Copilot Sent" and "Copilot UnAck" columns to the Calls table on the Call History page
+* BE-4706	SA: Added AIVR Session and Call IDs to the Calls table on the Call History page
+* BE-4712	SA: Added the Copilot Details tab to the Call Debug page to help troubleshoot Copilot-related issues
+* QA-3094	SA: Added view-only mode section on Settings page for roles without edit permissions
+* BE-4653	SA: Improved average and trend line charts on the Agent Dashboard
+* BE-4642	SA: Improved colors for 0-value words in differential word cloud chart on Agent Dashboard
+* BE-4656	SA: Improved design and typography for better UX on Call Stats dashboard
+* QA-3080	SA: Improved Edit Team popup by combining edit and add members popups for better UX
+* QA-3069	SA: Improved placeholder screen for no matching calls on Call History page
+* BE-4654	SA: Improved Sentiment Chart and other charts on the Agent Dashboard
+* QA-3095	SA: Improved Teams table size to fit page for better UX
+* QA-2974	SA: Improved typography styling on Terms of Service page for better UX
+* QA-3117	SA: Improved UX by preventing hiding of all columns on the Teams page
+* QA-3125	Set the from field on the login from ACP, SA, TA
+* QA-3115	TA: Improved new user wizard walkthrough flow for better UX
+* BE-4521	Updated EZInit and related scripts to survive bitnami archival
+* MST-1033	Voicebot: Allow immediate agent transfer on user request after external query failure
+* MST-1050	Voicebot: Enable DTMF Input for Confirmation Block
+* MST-1032	Voicebot: Re-prompt user with recognized info when data lookup fails
+* MST-1035	Voicebot: Support multiple-member VARs in provider-call bot logic with backward compatibility to single-member vars
+* MST-1041	Voicebot: Transfer Caller to Agent When Same Provider Is Provided After “No” Response on Confirmation
+* BE-4486	Web Console: Added error toast notification for secret generation failures
+* QA-3049	Web Console: Highlighted current login session on the users login sessions page
+
+
+Changes related to Integrity of Processing (fixes):
+* BE-4702	Fixed - aivrTransferDestType not getting populated in some cases
+* BE-4700	Fixed - Call that was for more than 1 hour with Agent failed to process
+* BE-4523	Fixed - Failed to get data from context-cache
+* BE-4594	Fixed - Generating TTS at some sample rate and voice combinations does not have requested sample rate
+* BE-4735	Fixed - In an obscure scenario rate-limit tracker may be created with no TTL and value over threshold
+* BE-4728	Fixed - Incorrect values of trace.rcvAck 
+* BE-4739	Fixed - Race condition while updating AIVR trace in Firestore
+* BE-4143	Fixed - SA Call processing failed due to Google Storage glitch
+* QA-3050	SA: Fix - After updating a user’s role (e.g., from Agent to Admin), the visibility permissions do not update correctly, and lower roles like Manager and HOD can still view the user.
+* QA-3114	SA: Fix - Agent can view data of other users, which is not allowed as per role-based access
+* QA-3097	SA: Fix - Corrected active users count on Billing Page
+* QA-3131	SA: Fix - Error while creating a new project - unable to set project membership to self
+* QA-3070	SA: Fix - Getting 500 (Internal Server Error) error, when trying to access account with QA role.
+* BE-4711	SA: Fix - Inconsistent next and previous call numbering in Call Repeat navigation
+* QA-3111	SA: Fix - Resolved back navigation issues from sub-paths
+* QA-3129	SA: Fix - Resolved Teams page loading issue for some manager-role accounts
+* QA-3037	SA: Fix - Team Lead and Agent role are unable to view their Team lead and other users of their own Team.
+* QA-3132	SA: Fix - User is unable to create Teams getting 403 (Forbidden).
+* QA-3133	SA: Fix - User is unable to edit Teams getting 403 (Forbidden).
+* QA-2994	TA: Fix - Unable to open Chinese PDF file generated from the Chinese transcript.
+* QA-3124	TA: Fix - Users page is missing from account menus
+* QA-3105	Web console [Edge]; fix - Screen Blinking Issue on Login After Signup
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.126.0 is scheduled for 10/25/2025 between 10:00pm and 12:00am US Central Time
 

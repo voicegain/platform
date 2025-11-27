@@ -2,6 +2,12 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### November 19, 2025
+
+Fixes:
+* QA-2994	TA: Fix - Unable to open Chinese PDF file generated from the Chinese transcript.
+* QA-3124	TA: Fix - Users page is missing from account menus
+
 ### October 25, 25
 
 New:

@@ -2,6 +2,11 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### December 15, 2025
+
+* QA-3142	TA: Made voice signature text scrollable instead of scrolling the entire page during live transcript
+* QA-3172	TA: Fix - PDF file downloads and opens, but it shows the message “Failed to load PDF” for Chinese and Cantonese transcripts
+
 ### November 19, 2025
 
 Fixes:

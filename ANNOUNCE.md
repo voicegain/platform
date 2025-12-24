@@ -1,6 +1,57 @@
 ### Minor release 1.128.0 is scheduled for 12/15/2025 between 11:00pm and 12:00am US Central Time
 
-TBD ...
+New or changed functionality:
+* BE-4782	Add `ccaasAgentEmailDomains` and 'ccaasAgentEmailDomainsOutbound' field to Aivr App
+* BE-4765	Add agentCode to the response from POST /public/{ccaas}/user-login
+* BE-4806	Add copliotSettings to AIVR App and CCaas Login APIs
+* BE-4792	Add enum value and new field to AIVR App to support JustCall.io integration
+* BE-4781	Add 'generic' enum value to {ccaas} path parameter in several utility API methods called from the Copilot
+* BE-4780	Add 'generic" enum value to ccaasIntegration on AIVR App
+* BE-4722	Add maintenenceWindow parameter to the Account
+* MST-1128	Benefits Automation demo
+* MST-1043	Bot: LLM-Driven Member Info Collection with Dynamic Prompts
+* MST-1096	Bot: Optimize Benefits RAG to use vector database only when necessary
+* MST-1059	Bot: Standardize Intent Naming: Use () Only for Internal Descriptions, Never in Returned Intents
+* MST-857	Bot: Store phone number from member query to skip redundant HIPAA verification
+* MST-1058	Bot: Track and Return Count of Fully Automated Members in Bot Logic
+* MST-1112	Build outbound voice bot to collect HRA (Health Risk Assessment)
+* BE-4755	Copilot: Buffer and replay undelivered Copilot messages
+* BE-4766	Copilot: If POST /public/{ccaas}/user-login returns agentCode, show it in the Copilot
+* BE-4723	Daily, during maintenance windows, generate agentCode for Agent Users
+* BE-4764	Implement API features for AgentCode call handshake as well as the actual handshake code.
+* BE-4756	Implement redis map that tracks which AIVR session belongs to which Agent
+* BE-4775	Implement webhooks for justcall.io events
+* BE-4783	In POST /public/{ccaas}/user-login deprecate aivrAppId in the request, and instead lookup it using email and return in response
+* BE-4757	New API method POST /public-asr/{ccaas}/user/copilot
+* MST-1072	RAG Ingestion Pipeline: Upload & Process Plan PDFs in llm-svc
+* BE-4665	Replace aircallId with ccaasCallId in IvrSession
+* QA-3147	SA: Added support for searching team members by email in the edit team details popup
+* QA-3145	SA: Displaying “N/A” in the calls table when sentiment is missing or has a value of 0.0
+* BE-4797	SA: Displaying per-intent automation values in the Voicebot dashboard cards
+* QA-3152	SA: Editing the Teams option is now disabled for all roles except Agent in the edit user popup
+* QA-3150	SA: Removed the select/deselect all option when performing a search in multi-select component
+* BE-4762	Simple license server
+* BE-4740	Support playing a prompt into Leg-B immediately after transfer bridge success
+* BE-3833	Support Spanish in text redaction API
+* QA-3142	TA: Made voice signature text scrollable instead of scrolling the entire page during live transcript
+* BE-4721	Transfer to Agent using leg-b prompt and Agent code
+* BE-4789	Web Console: Added support for Generic in AIVR app CCaaS integration settings
+* BE-4793	Web Console: Added support for JustCall.io in AIVR app CCaaS integration settings
+* QA-2965	Web Console: Once the account is locked, the user will be logged out from all active sessions after the page is refreshed.
+* BE-4760	Web Console: Replaced select with autocomplete to allow clearing file-type selection for app data upload
+
+Changes related to Integrity of Processing (fixes):
+* BE-4812	Fix double RIFF headers in audio from some TTS voices
+* QA-3203	SA: Fix - Calls are not loading when a custom date range is selected in voicemail calls
+* BE-4839	SA: Fix - Duplicate X-Axis Month Labels in Yearly Call Trends Chart
+* QA-3160	SA: Fix - Filter for team lead search not working on the teams page
+* QA-3198	SA: Fix - Graphs do not load when expanded on the agent dashboard
+* BE-4796	SA: Fix - Max y-axis values exceed possible limits for charts on the agent dashboard
+* QA-3172	TA: Fix - PDF file downloads and opens, but it shows the message “Failed to load PDF” for Chinese and Cantonese transcripts
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 
 ### Minor release 1.127.0 is scheduled for 11/19/2025 between 10:45pm and 12:00am US Central Time
 

@@ -1,3 +1,45 @@
+## Release 1.129.0
+
+New or changed functionality:
+* BE-4805	Add call quality data to /sa/call
+* BE-4868	Add sentimentFinal and sentimentTrend to the response from GET /sa/offline/{saSessionId}/data 
+* BE-4869	Add sentiments field to /sa/call
+* QA-3218	Admin Tool: Removed the ability to delete assigned phone numbers
+* BE-4856	Demo App Casey healthcare page new design/copy changes - v.2.7
+* BE-4775	Implement webhooks for justcall.io events
+* BE-4879	Improved exceptions in case of license expiration or license retrieval issues
+* BE-4878	Log more details about RateLimitExceededException
+* BE-4820	Make the name of the Firestore configurable via env variable
+* BE-3368	Migrated to new Google reCaptcha on Google Cloud
+* BE-4807	SA: Add voicebot view on the Call Details Page
+* BE-4902	SA: Added ability to open call in new tab from calls table
+* BE-4867	SA: Draw both Agent and Caller Sentiment and make sure that the sentiment data points are correctly represented in chart
+* BE-4886	SA: Remove weekend dates from line graphs on Agent Dashboard
+* BE-4841	Support full set of date/time formats in the APIs (as per RFC 3339, section 5.6)
+* BE-4650	Tie Agent session to AIVR session by means of an AgentCode
+* BE-4649	Track Copilot events - sending and reception
+* MST-1136	Voicebot: Use LLM to generate natural, conversational repeat responses
+* QA-2964	Web Console: Added a success message when resending the password reset email to an invited user
+* QA-3171	Web Console: Added missing button labels on the call review page
+* BE-4855	Web Console: Implement Terms of Service Page in Console upon first login
+
+Changes related to Integrity of Processing (fixes):
+* BE-4870	Fix cases where the fullyAutomated[].varValue in voicebot stats response has a comma-separated list of values 
+* MST-1165	Fix: Should not concatenate two sequences of digits in consecutive answers
+* BE-4910	SA: Fix - Corrected the order of AIVR events on the call details AIVR events page
+* QA-3222	SA: Fix - Dark theme handling on the terms of service page
+* BE-4889	SA: Fix - DTMF keys not showing up on SA app
+* BE-4899	SA: Fix - Issues with Call History date filter
+* QA-3232	SA: Fix - The "Last 24 Hours" filter option in the Time Selector is not working on the Call History page.
+* BE-4875	SA: Fix - Voicebot Dashboard - Fully Automated Calls should compute claims percentage correctly
+* QA-3189	Voicebot Demo: Fix - Playback slider goes out of sync when adjusted manually
+* MST-1137	Voicebot: Ensure bot responses are plain text only (no rich formatting)
+* MST-1123	Voicebot: Fix misclassification of “fax number” questions as “new claim” intent
+* QA-3156	Web Console: Fix - “Error loading: grafana-clock-panel” is displayed when trying to navigate to Grafana.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ## Release 1.128.0
 
 New or changed functionality:
@@ -7,7 +49,7 @@ New or changed functionality:
 * BE-4792	Add enum value and new field to AIVR App to support JustCall.io integration
 * BE-4781	Add 'generic' enum value to {ccaas} path parameter in several utility API methods called from the Copilot
 * BE-4780	Add 'generic" enum value to ccaasIntegration on AIVR App
-* BE-4722	Add maintenenceWindow parameter to the Account
+* BE-4722	Add maintenanceWindow parameter to the Account
 * MST-1128	Benefits Automation demo
 * MST-1043	Bot: LLM-Driven Member Info Collection with Dynamic Prompts
 * MST-1096	Bot: Optimize Benefits RAG to use vector database only when necessary

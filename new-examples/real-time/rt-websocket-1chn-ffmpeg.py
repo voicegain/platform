@@ -24,11 +24,11 @@ sampleRate = 16000
 channels = 1
 bytesPerSample = 2
 
-#sendingWSProtocol = "WSS"
-sendingWSProtocol = "WS"
+sendingWSProtocol = "WSS"
+#sendingWSProtocol = "WS"
 
-#receivingWSProtocol = "wss"
-receivingWSProtocol = "ws"
+receivingWSProtocol = "wss"
+#receivingWSProtocol = "ws"
 
 #acousticModelRealTime = "VoiceGain-rho-en-us"
 #acousticModelRealTime = "VoiceGain-rho"
@@ -60,7 +60,8 @@ body = {
     "audio": {
         "source": {"stream": {"protocol": sendingWSProtocol}},
         "format": "L16",
-        "channels": "mono",
+        # if channels is 1 for mono, 2 for stereo
+        "channels": channels==1 and "mono" or "stereo", 
         "rate": sampleRate,
         "capture": 'true'
     },
@@ -108,6 +109,7 @@ body = {
 def web_api_request(headers, body):
   url = "{}://{}/{}/asr/transcribe/async".format(protocol, hostPort, urlPrefix)
   print(f"making POST request to {url}", flush=True)
+  print("with body: {}".format(json.dumps(body)), flush=True)
 
   init_response_raw = requests.post(url, json=body, headers=headers)
   init_response = init_response_raw.json()

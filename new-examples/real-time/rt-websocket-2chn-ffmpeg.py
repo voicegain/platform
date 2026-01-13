@@ -143,6 +143,7 @@ body = {
 def web_api_request(headers, body):
   url = "{}://{}/{}/asr/transcribe/async".format(protocol, hostPort, urlPrefix)
   print(f"making POST request to {url}", flush=True)
+  print("with body: {}".format(json.dumps(body)), flush=True)
 
   init_response_raw = requests.post(url, json=body, headers=headers)
   init_response = init_response_raw.json()

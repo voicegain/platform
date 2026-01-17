@@ -61,7 +61,7 @@ asr_body = {
             "redact": True
         },
         "asr": {
-            "languages" : ["en", "ar"],
+            "languages" : ["en"],
             #"acousticModelNonRealTime" : "VoiceGain-omega",
             "acousticModelNonRealTime" : "whisper:large-v3-turbo",
             "noInputTimeout": -1,

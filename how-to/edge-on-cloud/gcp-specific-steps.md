@@ -29,7 +29,7 @@ This is only needed if you want to use Google Storage for storing the submitted 
 ### Create Cluster and Default Node Pool
 
 In this step, you will create a Regional Private Kubernetes Cluster on GCP, 
-and create a default Node Pool of `n1-standard-8` instances.
+and create a default Node Pool of `n2d-standard-8` instances.
 
 #### Option A: Use the `default` network on the VPC and GCP suggested IP ranges 
 (Preferred for Quick setup with default values)
@@ -37,17 +37,16 @@ and create a default Node Pool of `n1-standard-8` instances.
 You can run the following command to create a few components:
 * a subnet in the default VPC
 * a secondary ip range in subnet for Kubernetes pods
-* a secondary ip range in subnet for Kubernetes services
 * a regional private Kubernetes Cluster in the subnet
-* a node pool of `n1-standard-8` instances
+* a node pool of `n2d-standard-8` instances
 * one compute instance in each zone in the specified region
 
 <pre>
 gcloud container clusters create [CLUSTER_NAME] \
---create-subnetwork name=[SUBNET_NAME] --enable-ip-alias --enable-private-nodes \
---enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP]/32,[LINUX_TERMINAL_IP]/32 --master-ipv4-cidr 172.19.0.0/28 --region [REGION] \
---num-nodes 1 --machine-type=n1-standard-8 --scopes=gke-default,datastore,storage-full \
---cluster-version "latest"
+--create-subnetwork name=[SUBNET_NAME] --enable-ip-alias --enable-private-nodes --enable-dataplane-v2 --no-enable-managed-prometheus \
+--enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP]/32,[LINUX_TERMINAL_IP]/32 --region [REGION] \
+--num-nodes 1 --machine-type=n2d-standard-8 --disk-size=100GB --disk-type=pd-standard \
+--release-channel "regular" --addons=BackupRestore --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -67,16 +66,16 @@ you can use this option. The following command will create a few components:
 * a secondary ip range in subnet for Kubernetes pods
 * a secondary ip range in subnet for Kubernetes services
 * a regional private Kubernetes Cluster in the subnet you specified
-* a node pool of `n1-standard-8` instances
+* a node pool of `n2d-standard-8` instances
 * one compute instance in each zone in the specified region
 
 <pre>
 gcloud container clusters create [CLUSTER_NAME] \
---network [NETWORK_NAME] --subnetwork [SUBNET_NAME] --enable-ip-alias --enable-private-nodes \
+--network [NETWORK_NAME] --subnetwork [SUBNET_NAME] --enable-ip-alias --enable-private-nodes --enable-dataplane-v2 --no-enable-managed-prometheus \
 --cluster-ipv4-cidr=[PODS_CIDR] --services-ipv4-cidr=[SERVICES_CIDR] \
---enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP]/32,[LINUX_TERMINAL_IP]/32 --master-ipv4-cidr 172.19.0.0/28 --region [REGION] \
---num-nodes 1 --machine-type=n1-standard-8 --scopes=gke-default,datastore,storage-full \
---cluster-version "1.27.3-gke.100"
+--enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP]/32,[LINUX_TERMINAL_IP]/32 --master-ipv4-cidr [MASTER_CONTROL_PLANE_CIDR] --region [REGION] \
+--num-nodes 1 --machine-type=n2d-standard-8 --disk-size=100GB --disk-type=pd-standard \
+--release-channel "regular" --addons=BackupRestore --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -89,15 +88,16 @@ Needed Parameters:-
 [LINUX_TERMINAL_IP]: IP of linux terminal being used to run kubectl
 
 Optional Parameters:-
-[PODS_CIDR]: IP Range for pods in kubernetes cluster
-[SERVICES_CIDR]: IP Range for services in kubernetes cluster
+[PODS_CIDR]: IP Range for pods in kubernetes cluster (default 'x.x.x.x/14')
+[SERVICES_CIDR]: IP Range for services in kubernetes cluster (default 'x.x.x.x/20')
+[MASTER_CONTROL_PLANE_CIDR]: IP Range for Master Control Plane in kubernetes cluster (default 'x.x.x.x/28') 
 </pre>
 
 **>> Contact Voicegain (support@voicegain.ai) to get value for VOICEGAIN_NAT_IP <<**
 
 **>> For LINUX_TERMINAL_IP value run "curl ifconfig.me" in Linux terminal <<**
 
-**>> While choosing region check if all zones in region have support for T4 GPU nodes as they will be created in next steps <<**
+**>> While choosing region check if all zones in region have support for L4 GPU nodes as they will be created in next steps <<**
 
 GCP Link: [GPU regions and zones availability](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones)
 
@@ -112,7 +112,7 @@ REGION=[REGION]
 
 OLD_CIDR=$(gcloud container clusters describe $CLUSTER --region $REGION --format json | jq -r '.masterAuthorizedNetworksConfig.cidrBlocks[] | .cidrBlock' | tr '\n' ',')
 echo "Existing master authorized networks $OLD_CIDR"
-gcloud container clusters update $CLUSTER --master-authorized-networks "$OLD_CIDR$NEW_CIDR" --enable-master-authorized-networks --region $REGION
+gcloud container clusters update $CLUSTER --master-authorized-networks "$OLD_CIDR$NEW_CIDR" --enable-master-authorized-networks --region $REGION --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -126,11 +126,11 @@ gcloud container clusters update $CLUSTER --master-authorized-networks "$OLD_CID
 You will create two more node pools. 
 
 Here is the command to create the first node pool. 
-In this node pool, we use `n1-standard-16` instance with one T4 GPU.
+In this node pool, we use `g2-standard-16` instance with one L4 GPU.
 <pre>
 gcloud container node-pools create [GPU_NODE_POOL_NAME] --region [REGION] --cluster [CLUSTER_NAME] \
---disk-size=100GB --num-nodes=1 --machine-type=n1-standard-16 \
---accelerator type=nvidia-tesla-t4,count=1,gpu-driver-version=default
+--disk-size=100GB --disk-type=pd-standard --num-nodes=1 --machine-type=g2-standard-16 \
+--accelerator type=nvidia-l4,count=1,gpu-driver-version=default --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -139,12 +139,12 @@ gcloud container node-pools create [GPU_NODE_POOL_NAME] --region [REGION] --clus
 [CLUSTER_NAME]: Name of the cluster you created
 </pre>
 
-In the second node pool, we use `n1-standard-16` instance. 
+In the second node pool, we use `n2d-standard-16` instance. 
 This node pool is reserved for further use, so we set `--num-nodes` to `0`.
 
 <pre>
 gcloud container node-pools create [NON_GPU_NODE_POOL_NAME] --region [REGION] --cluster [CLUSTER_NAME] \
---disk-size=100GB --num-nodes=0 --machine-type=n1-standard-16
+--disk-size=100GB --disk-type=pd-standard --num-nodes=0 --machine-type=n2d-standard-16 --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -253,3 +253,7 @@ Note:-
 
 ---
 Goto: [top of document](#top)
+
+
+
+

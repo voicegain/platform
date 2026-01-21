@@ -46,7 +46,7 @@ gcloud container clusters create [CLUSTER_NAME] \
 --create-subnetwork name=[SUBNET_NAME] --enable-ip-alias --enable-private-nodes --enable-dataplane-v2 --no-enable-managed-prometheus \
 --enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP]/32,[LINUX_TERMINAL_IP]/32 --region [REGION] \
 --num-nodes 1 --machine-type=n2d-standard-8 --disk-size=100GB --disk-type=pd-standard \
---release-channel "regular" --project [GCP_PROJECT_ID]
+--release-channel "regular" --addons=BackupRestore --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -75,7 +75,7 @@ gcloud container clusters create [CLUSTER_NAME] \
 --cluster-ipv4-cidr=[PODS_CIDR] --services-ipv4-cidr=[SERVICES_CIDR] \
 --enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP]/32,[LINUX_TERMINAL_IP]/32 --master-ipv4-cidr [MASTER_CONTROL_PLANE_CIDR] --region [REGION] \
 --num-nodes 1 --machine-type=n2d-standard-8 --disk-size=100GB --disk-type=pd-standard \
---release-channel "regular" --project [GCP_PROJECT_ID]
+--release-channel "regular" --addons=BackupRestore --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -253,6 +253,7 @@ Note:-
 
 ---
 Goto: [top of document](#top)
+
 
 
 

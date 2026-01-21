@@ -45,8 +45,8 @@ You can run the following command to create a few components:
 gcloud container clusters create [CLUSTER_NAME] \
 --create-subnetwork name=[SUBNET_NAME] --enable-ip-alias --enable-private-nodes \
 --enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP]/32,[LINUX_TERMINAL_IP]/32 --region [REGION] \
---num-nodes 1 --machine-type=n2d-standard-8 --scopes=gke-default,datastore,storage-full \
---release-channel "regular"
+--num-nodes 1 --machine-type=n2d-standard-8 --disk-size=100GB --disk-type=pd-standard --scopes=gke-default,datastore,storage-full \
+--release-channel "regular" --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -74,8 +74,8 @@ gcloud container clusters create [CLUSTER_NAME] \
 --network [NETWORK_NAME] --subnetwork [SUBNET_NAME] --enable-ip-alias --enable-private-nodes \
 --cluster-ipv4-cidr=[PODS_CIDR] --services-ipv4-cidr=[SERVICES_CIDR] \
 --enable-master-authorized-networks --master-authorized-networks [VOICEGAIN_NAT_IP]/32,[LINUX_TERMINAL_IP]/32 --master-ipv4-cidr [MASTER_CONTROL_PLANE_CIDR] --region [REGION] \
---num-nodes 1 --machine-type=n2d-standard-8 --scopes=gke-default,datastore,storage-full \
---release-channel "regular"
+--num-nodes 1 --machine-type=n2d-standard-8 --disk-size=100GB --disk-type=pd-standard --scopes=gke-default,datastore,storage-full \
+--release-channel "regular" --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -88,7 +88,7 @@ Needed Parameters:-
 [LINUX_TERMINAL_IP]: IP of linux terminal being used to run kubectl
 
 Optional Parameters:-
-[PODS_CIDR]: IP Range for pods in kubernetes cluster (default 'x.x.x.x/20')
+[PODS_CIDR]: IP Range for pods in kubernetes cluster (default 'x.x.x.x/14')
 [SERVICES_CIDR]: IP Range for services in kubernetes cluster (default 'x.x.x.x/20')
 [MASTER_CONTROL_PLANE_CIDR]: IP Range for Master Control Plane in kubernetes cluster (default 'x.x.x.x/28') 
 </pre>
@@ -112,7 +112,7 @@ REGION=[REGION]
 
 OLD_CIDR=$(gcloud container clusters describe $CLUSTER --region $REGION --format json | jq -r '.masterAuthorizedNetworksConfig.cidrBlocks[] | .cidrBlock' | tr '\n' ',')
 echo "Existing master authorized networks $OLD_CIDR"
-gcloud container clusters update $CLUSTER --master-authorized-networks "$OLD_CIDR$NEW_CIDR" --enable-master-authorized-networks --region $REGION
+gcloud container clusters update $CLUSTER --master-authorized-networks "$OLD_CIDR$NEW_CIDR" --enable-master-authorized-networks --region $REGION --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -129,8 +129,8 @@ Here is the command to create the first node pool.
 In this node pool, we use `g2-standard-16` instance with one L4 GPU.
 <pre>
 gcloud container node-pools create [GPU_NODE_POOL_NAME] --region [REGION] --cluster [CLUSTER_NAME] \
---disk-size=100GB --num-nodes=1 --machine-type=g2-standard-16 \
---accelerator type=nvidia-tesla-l4,count=1,gpu-driver-version=default
+--disk-size=100GB --disk-type=pd-standard --num-nodes=1 --machine-type=g2-standard-16 \
+--accelerator type=nvidia-l4,count=1,gpu-driver-version=default --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -144,7 +144,7 @@ This node pool is reserved for further use, so we set `--num-nodes` to `0`.
 
 <pre>
 gcloud container node-pools create [NON_GPU_NODE_POOL_NAME] --region [REGION] --cluster [CLUSTER_NAME] \
---disk-size=100GB --num-nodes=0 --machine-type=n2d-standard-16
+--disk-size=100GB --disk-type=pd-standard --num-nodes=0 --machine-type=n2d-standard-16 --project [GCP_PROJECT_ID]
 </pre>
 
 <pre>
@@ -253,4 +253,5 @@ Note:-
 
 ---
 Goto: [top of document](#top)
+
 

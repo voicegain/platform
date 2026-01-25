@@ -249,8 +249,6 @@ The list of Subprocessors approved by the data importer as of the effective date
 |Open AI | Open AI for LLM (Transcribe App summaries and action items; Voicebot logic; Speech Analytics summaries, insights, QA Form) |
 |New Relic | (Edge deployment only) logging and monitoring |
 |DataDog | (Cloud only) logging and monitoring |
-|Rev.com | Manual Labeling of Audio files for Model Training (on customer request / with customer permission)|
-|Transcription Hub LLC | Manual Labeling of Audio files for Model Training (on customer request / with customer permission)|
 
 
 # Appendix 2 to the Standard Contractual Clauses
@@ -267,4 +265,5 @@ Description of the technical and organizational security measures implemented by
 1. **Security Incident Procedures.**  Policies and procedures to detect, respond to, and otherwise address security incidents, including procedures to monitor systems and to detect actual and attempted attacks on or intrusions into Personal Data or information systems relating thereto, and procedures to identify and respond to suspected or known security incidents, mitigate harmful effects of security incidents, and document security incidents and their outcomes.
 1. **Contingency Planning** – Policies and procedures for responding to an emergency or other occurrence (for example, fire, vandalism, system failure, and natural disaster), including a data backup plan and a disaster recovery plan.
 1. **Testing and Monitoring.** Periodic testing and monitoring of the effectiveness of Supplier’s security program, and a process to implement updates and improvements to address findings and improve and adjust the security program as appropriate.
+
 

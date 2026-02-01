@@ -2,7 +2,7 @@
 
 Effective October 25th, 2021
 
-Last Modified January 30, 2026
+Last Modified January 31, 2026
 
 This Data Processing Addendum (“DPA”) forms part of the Software as a Service Agreement (“Agreement”) between Resolvity, Inc. d/b/a Voicegain.ai (“Supplier”) and the Customer named in the Agreement (“Customer”) and reflects the parties’ agreement with regard to the processing of Customer Personal Data (as applicable). All capitalized terms not defined herein shall have the meaning set forth in the Agreement. In providing the Services to Customer pursuant to the Agreement, Supplier may process Customer Personal Data on behalf of Customer, and the parties agree to comply with the following provisions with respect to the same.
 
@@ -244,7 +244,7 @@ The list of Subprocessors approved by the data importer as of the effective date
 |Subprocessor	| Purpose|
 |---|---|
 |StaxBill | Billing and Payment Processing |
-|Google | Google Cloud utilized for (1) Account and Session data storage in FireStore; (2) storage of call and meeting data in hosted Postgress; (3) Gemini AI for LLM (Transcribe App summaries and action items; Voicebot logic; Speech Analytics summaries, insights, QA Form); (4) logging and monitoring |
+|Google | Google Cloud utilized for (1) Account and Session data storage in FireStore; (2) storage of call and meeting data in hosted Postgress; (3) Gemini AI for LLM (Transcribe App summaries and action items; Voicebot logic; Speech Analytics summaries, insights, QA Form); (4) logging and monitoring; (5) Google TTS |
 |Amazon AWS | AWS SES: Email support system, used to send emails to users; AWS Chime: SIP Trunk; AWS S3: storing of audio and video chunks for Transcribe App and Speech Analytics|
 |Open AI | Open AI for LLM (Transcribe App summaries and action items; Voicebot logic; Speech Analytics summaries, insights, QA Form) |
 |New Relic | (Edge deployment only) logging and monitoring |
@@ -265,6 +265,7 @@ Description of the technical and organizational security measures implemented by
 1. **Security Incident Procedures.**  Policies and procedures to detect, respond to, and otherwise address security incidents, including procedures to monitor systems and to detect actual and attempted attacks on or intrusions into Personal Data or information systems relating thereto, and procedures to identify and respond to suspected or known security incidents, mitigate harmful effects of security incidents, and document security incidents and their outcomes.
 1. **Contingency Planning** – Policies and procedures for responding to an emergency or other occurrence (for example, fire, vandalism, system failure, and natural disaster), including a data backup plan and a disaster recovery plan.
 1. **Testing and Monitoring.** Periodic testing and monitoring of the effectiveness of Supplier’s security program, and a process to implement updates and improvements to address findings and improve and adjust the security program as appropriate.
+
 
 
 

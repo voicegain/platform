@@ -1,3 +1,74 @@
+### Minor release 1.130.0 is scheduled for 1/31/2026 between 11:00pm and 12:00am US Central Time
+
+
+New or changed functionality:
+* BE-4853	Added Call Insights computed from call transcript using LLM
+* BE-4939	Added Context default config for Insights and Segment Analytics 
+* MST-1185	Added Gemini API support to ml-svc
+* BE-4945	Added name field to the CR Question
+* BE-4918	Added OIDC SSO to SA App
+* BE-4955	Added POST /public-asr/{ccaas}/user/feedback API method for Copilot to use
+* BE-4948	Added POST /sa/offline/call/{callId}/fromTranscript which will do all the SA Offline processing on the input text words
+* QA-3256	Admin Tool: Updated column name from Provisioning Status to Status
+* BE-4956	Copilot: Added user feedback for call intent
+* BE-4984	Copilot: Displayed Call ID when included in a message
+* BE-4912	Copilot: Made call notes editable
+* BE-4883	Deprecated csatQuestion, npsQuestion, csatAnswer, and npsAnswer
+* BE-4977	If AIVR session is associated with SA Integration then create sa_call at start of session
+* BE-5002	If available use Call Insights Answers to populate some sentiment values in /sa/offline - also scale sentiment  from -10 to +10
+* BE-4874	Implemented conditional Call Review Questions
+* BE-4927	Implemented mechanism for obtaining a token for the embedded Superset dashboard that ensures Row Level Security 
+* BE-4934	In /auth-svc/openid-relay/login deprecated domain and introduced email instead
+* BE-4852	In every place where our APIs accept LLM prompts, now supporting centralized LLM prompt generation
+* BE-4983	Include saCallId from AIVR session into Pusher messages sent to copilot
+* BE-4873	Modified /sa/call/review API methods to use /sa/call/insights (llm field is being deprecated)
+* BE-4967	Periodically invoke the Agent Code generation service
+* BE-5001	Reduce socket connection timeout to 10 seconds in RexClient2
+* MST-1108	Resolved Redaction Issues Reported in Nov 2025
+* BE-4937	Retry redacted audio upload if first upload fails
+* BE-4941	SA: Added a fourth responder type (Call Insight) to the QA form configuration
+* BE-4946	SA: Added a Name field to the call review QA question form
+* BE-4958	SA: Added a new Call Insights Answers page
+* BE-4919	SA: Added a page to enable and configure OIDC SSO settings
+* BE-4942	SA: Added conditionals to the call review QA form configuration
+* BE-5013	SA: Added justification support for Resolution, CSAT, and NPS from call insights on the call overview page
+* BE-5023	SA: Added missing details on the Call AIVR Session page
+* BE-5019	SA: Added missing validations and UI updates in the QA Question form
+* BE-4929	SA: Added more filters to the call history table
+* BE-4935	SA: Added new permission settings.sso.edit
+* QA-3163	SA: Added predefined values for role filtering on the users page
+* BE-4940	SA: Added support for Call Insights configuration and questions
+* BE-4921	SA: Added support for OIDC login and updated the login flow accordingly
+* BE-4922	SA: Implemented purely local (fallback) login page on /login/local URL
+* BE-5029	SA: Improved Call Stats dashboard chart colors in dark mode
+* BE-4952	SA: Updated call header on call detail pages, including next and previous button positions
+* BE-5014	SA: Updated sentiment range from -1.0:+1.0 to -10:+10 across all pages
+* BE-5017	SA: Updated the sentiment graph on the call stats dashboard
+* BE-5024	Set call.callResolved to true based on a question whose name=RESOLVED
+* MST-1160	Support new summary algorithm in ml-svc
+* BE-4911	Support Vonage Real-Time Transcript input (VCCA Event)
+* BE-5004	TA: Added support for .webm audio format for audio uploads
+* BE-4998	TA: Allowed + in email address validation when inviting users
+* QA-3228	Web Console: Added validation to require a language model when a language is selected on the speech recognition settings page
+* BE-4908	Web Console: Now loading the previously selected context on login
+
+
+Changes related to Integrity of Processing (fixes):
+* BE-5042	Copilot: Fix - Agent code not refreshing in the side panel after long inactivity
+* BE-5022	Fix - Fail to push voicebot_vars to Copilot in Agent-Code transfer 
+* QA-3264	SA: Fix - Call audio playback is not working for calls.
+* BE-5025	SA: Fix - CRM notes not populating for some calls on the call transcript page
+* QA-3190	SA: Fix - Discrepancy in call counts between the voicebot dashboard and the call history page.
+* QA-3265	SA: Fix - Selecting an existing question shows the question ID instead of the question text
+* QA-3270	SA: Fix - The CSAT, NPS, and AIVR Transfer filters in Call History page are not working
+* BE-4900	TA: Fix - Unable to join Zoom meetings via the meeting bot
+* QA-3209	Web Console: Fix - API documentation page redirecting to the wrong URL
+* QA-3259	Web Console: Fix - Some users were unable to accept the terms and conditions
+
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
+
 ### Minor release 1.129.0 is scheduled for 1/10/2026 between 11:00pm and 12:00am US Central Time
 
 New or changed functionality:

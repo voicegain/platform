@@ -2,6 +2,12 @@
 
 If you encounter any problems, just give us a shout at [support@voicegain.ai](mailto:support@voicegain.ai)
 
+### January 31, 2026
+
+* BE-5004	TA: Added support for .webm audio format for audio uploads
+* BE-4998	TA: Allowed + in email address validation when inviting users
+* BE-4900	TA: Fix - Unable to join Zoom meetings via the meeting bot
+
 ### December 15, 2025
 
 * QA-3142	TA: Made voice signature text scrollable instead of scrolling the entire page during live transcript

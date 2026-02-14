@@ -108,7 +108,7 @@ Go to and login into https://console.voicegain.ai Under API Security create Auth
 
 # 5) Launch Websocket Server
 ```sh
-python ws_server.py
+python wss_server.py
 ```
 # 6) Modify config.ini for Freeswitch docker 
 A sample config.ini can be found in this repository.

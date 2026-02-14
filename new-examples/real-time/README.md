@@ -11,5 +11,6 @@ Scripts with `ffmpeg` in their name can transcode from any audio format to forma
   Note: if file is stereo, in this configuration the transcript will be of the merged audio. We will add a two-channel model example soon.
 * rt-websocket-transceiver-2chn-ffmpeg.py - streaming a stereo file using websocket, results are returned over the same websocket in word-by-word mode
 * rt-websocket-transceiver-2chn-segment-ffmpeg.py - streaming a stereo file using websocket, results are returned over the same websocket in segment-by-segment mode
+* rt-websocket-ws-client-2chn-segment-ffmpeg.py- streaming a stereo file using websocket, results are sent to a websocket server in segment-by-segment mode
 
 Note: sentence-by-sentence has been discontinued as of Release 1.88.0 and replaced by segment-by-segment.

@@ -3,7 +3,7 @@
     <rule id="YesOrNo" scope="public">
         <one-of>
             <item>
-                <tag>out='Yess'</tag>
+                <tag>out='aYes'</tag>
                 <one-of>
                     <item>
                         <token>yes</token>
@@ -14,7 +14,7 @@
                 </one-of>
             </item>
             <item>
-                <tag>out='Noo'</tag>
+                <tag>out='aNo'</tag>
                  <one-of>
                     <item>
                         <token>no</token>
@@ -25,8 +25,10 @@
                     <item>
                         <token>two</token>
                     </item>
-                </one-of>
-                
+                    <item>
+                        <token>too</token>
+                    </item>
+                </one-of>                
             </item>
         </one-of>
     </rule>

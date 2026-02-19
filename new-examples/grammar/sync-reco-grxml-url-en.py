@@ -59,7 +59,7 @@ asr_body = {
             "grammars" : [
                 {
                     "type": "GRXML",
-                    "name" : "persons",
+                    "name" : "yes-no",
                     "fromUrl":{
                         # "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/zip_code_no_refs.grxml"
                         # "url" : "https://grammar.host/zip_code_no_refs.grxml"

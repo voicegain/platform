@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="en" root="YesOrNo" version="1.0" mode="voice">
+    <rule id="YesOrNo" scope="public">
+        <one-of>
+            <item>
+                <tag>out='Yes'</tag>
+                <one-of>
+                    <item>
+                        <token>yes</token>
+                    </item>
+                    <item>
+                        <token>one</token>
+                    </item>
+                </one-of>
+            </item>
+            <item>
+                <tag>out='No'</tag>
+                 <one-of>
+                    <item>
+                        <token>no</token>
+                    </item>
+                    <item>
+                        <token>cancel</token>
+                    </item>
+                    <item>
+                        <token>two</token>
+                    </item>
+                </one-of>
+                
+            </item>
+        </one-of>
+    </rule>
+</grammar>

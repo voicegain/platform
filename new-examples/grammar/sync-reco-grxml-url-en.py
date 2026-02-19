@@ -72,7 +72,8 @@ asr_body = {
                         # "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/mystery.grxml"
                         # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/emergency-1.grxml"
                         # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/help.grxml"
-                        "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/spanish-w-base-B.grxml"
+                        # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/spanish-w-base-B.grxml"
+                       "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/yes-no-en-token.grxml"
                     }
                 }
             ],
@@ -83,7 +84,7 @@ asr_body = {
             "speedVsAccuracy" : 0.9,
             "maxAlternatives" : 5,
             "confidenceThreshold" : 0.0001 
-            , "languages" : ["es"]			
+            , "languages" : ["en"]			
         }
         #,"formatters" : [{"type" : "digits"}]
     }

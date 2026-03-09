@@ -1,4 +1,4 @@
-### Minor release 1.1.0 is scheduled for 2/23/2026 between 11:00pm and 12:00am US Central Time
+### Minor release 1.131.0 is scheduled for 2/23/2026 between 11:00pm and 12:00am US Central Time
 
 New or changed functionality:
 * BE-5225	Add sa_user and sa_group tables in Postgresql

@@ -1,6 +1,91 @@
 ### Minor release 1.1.0 is scheduled for 2/23/2026 between 11:00pm and 12:00am US Central Time
 
-TBD ...
+New or changed functionality:
+* BE-5225	Add sa_user and sa_group tables in Postgresql
+* BE-5102	Added a new table sa_project to postgresql DB to support reporting aggregation
+* BE-5217	Added aivrAppId to the Answered message sent via Pusher to Copilot
+* BE-5228	Added API to export Call Insights Config
+* BE-5204	Added Call Review Section columns to sa_project table and keep them updated
+* BE-5113	Added new aivrPlatform (aivr_platform) field to /sa/call (sa_call) and populate it when /sa/call is created when AIVR session starts
+* BE-5135	Added new topics field to the /sa/config
+* BE-5070	Added POST /confgroup/{uuid}/defaultInsightsConfig and POST /confgroup/{uuid}/defaultCallReviewConfig
+* BE-4955	Added POST /public-asr/{ccaas}/user/feedback API method for Copilot to use
+* BE-5072	Added POST /sa/call/review/config/{crConfigId}/section and PUT/DELETE /sa/call/review/config/{crConfigId}/section/{crSectionId}
+* BE-5073	Added POST /v1/sa/call/review/config/{crConfigId}/section/{crSectionId}/question and PUT/DELETE /sa/call/review/config/{crConfigId}/section/{crSectionId}/question/{crQuestionId}
+* BE-5071	Added to Call Insights API methods for creating (POST) , modifying (PUT), and deleting (DELETE) of Call Insights Questions
+* BE-5151	Added two new fields to the topic scores in the response from GET /sa/offline/{sSessionId}/data
+* QA-3169	Admin Tool: Removed edit notes actions for deleted accounts
+* BE-5172	All API methods for /sa/call/insights now support contextId query parameter
+* BE-5171	All API methods for /sa/call/review now support contextId query parameter
+* BE-5242	Better reporting of any errors related to URL access when accessing and processing GRXML grammars
+* BE-5082	Copilot: Added option to display real-time transcripts via Pusher when enabled
+* BE-5091	Copilot: Added option to display real-time transcripts via WebSockets when enabled
+* BE-5223	Copilot: Added support for automatic switching between Multi-AIVR apps per agent
+* BE-5212	Copilot: Added support to disable the Details tab based on Copilot settings
+* BE-4119	Copilot: Customize behavior using settings tied to AIVR App plus other Copilot improvements
+* BE-5181	Copilot: Made multiple UI improvements to the header, footer, and placeholder screens for improved UX
+* BE-5009	Copilot: show live transcript
+* BE-5169	Copilot: Support new Pusher message type with event=HungUp
+* BE-5010	Copilot: support SSO login via SA App
+* BE-5098	Demo App: Casey healthcare page new design/copy changes - v.2.8
+* BE-5291	Ensure that hold and retrieve events are handled properly for Vonage calls
+* BE-5229	Implemented export for Call Review Config
+* BE-5063	Implemented methods on ConfGroup to delete defaultInsightsConfig and defaultCallReviewConfig
+* BE-5207	Implemented POST and DELETE /confGroup/{uuid}/defaultSaConfig
+* BE-5206	Implemented POST and DELETE /confgroup/{uuid}/segment/{segmentType}/defaultCallReviewConfig
+* BE-5205	Implemented POST and DELETE /confgroup/{uuid}/segment/{segmentType}/defaultInsightsConfig
+* BE-5208	Implemented POST and DELETE /confgroup/{uuid}/segment/{segmentType}/defaultSaConfig
+* BE-5156	Implemented proper invite for the Speech Analytics Users with OIDC enabled
+* BE-5173	New APIs for reordering Call Review Sections and Questions
+* BE-4666	Reduce shutdown time for audio-server
+* BE-5103	Remove timeZone and weekStartsOn from PUT /confgroup (now can only be set in POSt)
+* BE-5175	SA: 4 new SuperSet Dashboards
+* BE-4919	SA: Added a page to enable and configure OIDC SSO settings
+* BE-5166	SA: Added an option to unlock locked user accounts on the Users page
+* BE-5174	SA: Added Dashboards and Pages visibility configuration in Project General Settings
+* BE-5062	SA: Added four new My Team Performance dashboards
+* BE-5112	SA: Added option to add or edit comments for answers in the QA Review form when enabled
+* BE-4947	SA: Added support to hide audio playback options for calls with no audio on the Call Details page
+* BE-5219	SA: Added topics configuration on the Context Configuration page
+* BE-5215	SA: Hidden date and time fields on the Recent Calls page
+* QA-3168	SA: Hidden the Billing icon for users without permission to view billing
+* BE-5159	SA: Implemented changes for Call Review Section
+* BE-5105	SA: Made Time Zone and Week Start fields read-only on the Project General Settings page
+* BE-4924	SA: Removed email as the default in initialNotification in user creation
+* BE-5196	SA: Updated Add/Edit User popup cancel behavior for improved UX
+* BE-4894	SA: Updated some filters to display selectable lists for improved UX
+* BE-5210	SA: Updated the side navigation to include the new configurable Dashboards and Calls pages
+* BE-5130	Set socket connection timeout to 10 seconds for connections between asr-api and rex
+* BE-5007	Speedup copilot call notes generation
+* BE-5221	SSO: Updated email validation on the Sign In page to allow '+' in email addresses
+* BE-4859	Support multi-segment calls
+* BE-4911	Support Vonage Real-Time Transcript input (VCCA Event)
+* MST-1255	Update topic extraction in ml-svc to use LLM-based processing
+* BE-4769	Use ClickHouse for call data aggregation for reporting
+* BE-4829	Use SuperSet for reporting dashboards
+* MST-1200	Voicebot: Improve re-prompt messaging for failed “A or B” info query questions
+* QA-2293	Web Console Edge: Hidden Retrieve Past Invoice option as it is not supported
+* BE-5209	Web Console: Added Copilot settings to the AIVR Telephony Bot popup
+* BE-5216	Web Console: Move Copilot related settings to a new tab on AIVR App
+* QA-3072	Web Console: Updated layout of the Speech Recognition Settings page for improved UX
+
+Changes related to Integrity of Processing (fixes):
+* BE-4628	Fix Agent lookup by switching from using agent.user_id instead of aget.agent_id
+* BE-5099	Fix:  Zoom meeting bot is in a loop
+* BE-5243	Fix: call-stats API seems to use the old scale for Sentiments
+* BE-5276	Fix: fail to match an agent's email due to case-sensitivity
+* BE-5182	Fix: issue with customValues defined in a context
+* BE-5284	Fix: OIDC SSO login fails if user types email in mixed case
+* BE-5090	Fix: Support phrases in this trigger function update_tsvector_columns()
+* QA-3269	SA: Fix - Agent sentiment graph was getting cropped on the Call Overview page
+* BE-5101	SA: Fix - In-progress calls were showing "offline sa missing" instead of "call in progress"
+* BE-5283	SA: Fix - In Recent Calls page, agent filter doesn't show all agents that received calls
+* QA-3272	SA: Fix - Unable to create or edit a question with Responder set to Auto-Populated in the QA form
+* BE-5031	SA: Fix - Voicebot Dashboard time should reflect backend response
+* QA-3077	TA Edge: Fix - Admin was able to reset the password for a user with an error status
+* BE-5026	Web Console: Fix - Copy changes and preview modal not showing emails correctly in the phone app configuration dialog
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.130.0 is scheduled for 1/31/2026 between 11:00pm and 12:00am US Central Time
 

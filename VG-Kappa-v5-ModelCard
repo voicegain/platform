@@ -6,17 +6,15 @@ We're providing some information about the automatic speech recognition model.
 Model Details
 The Voicegain Kappa model is trained for real-time speech-to-text (ASR) and is based on 
 
-This is the official codebase for running the automatic speech recognition models (Whisper models) trained and released by OpenAI.
 
-Following [Model Cards for Model Reporting (Mitchell et al.)](https://arxiv.org/abs/1810.03993), we're providing some information about the automatic speech recognition model. More information on how these models were trained and evaluated can be found [in the paper](https://arxiv.org/abs/2212.04356).
+Following [Model Cards for Model Reporting (Mitchell et al.)](https://arxiv.org/abs/1810.03993), we're providing some information about the automatic speech recognition model. 
 
 
 ## Model Details
 
-The Whisper models are trained for speech recognition and translation tasks, capable of transcribing speech audio into the text in the language it is spoken (ASR) as well as translated into English (speech translation). Researchers at OpenAI developed the models to study the robustness of speech processing systems trained under large-scale weak supervision. There are 9 models of different sizes and capabilities, summarized in the following table.
+The Voicegain Kappa models are trained for speech-to-text (ASR) , capable of transcribing speech audio into the text in the language it is spoken (ASR). Researchers at Voicegain developed the models to support production grade speech-to-text/transcription for telephony use cases. 
 
-|  Size  | Parameters | English Language | Spanish Language Support |  
-|:------:|:----------:|:------------------:|:------------------:|
+|  Size  | Parameters | English Language Support| Spanish Language Support |  
 |  Kappa-v5 |    75 M    |         ✓          |         ✓          |
 
 

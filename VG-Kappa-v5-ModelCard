@@ -25,32 +25,30 @@ June 2021 (Kappa-v1), Oct 2021 (`Kappa-v2`), Ocr 2022 ('Kappa-v3')
 
 ### Model type
 
-Sequence-to-sequence ASR (automatic speech recognition) and speech translation model
-
-### Paper & samples
-
-[Paper](https://arxiv.org/abs/2212.04356) / [Blog](https://openai.com/blog/whisper)
+Sequence-to-sequence ASR (automatic speech recognition) 
 
 
 ## Model Use
 
 ### Evaluated Use
 
-The primary intended users of these models are AI researchers studying the robustness, generalization, capabilities, biases, and constraints of the current model. However, Whisper is also potentially quite useful as an ASR solution for developers, especially for English speech recognition. We recognize that once models are released, it is impossible to restrict access to only “intended” uses or to draw reasonable guidelines around what is or is not research.
+The primary intended users of these models are enterprise developers using real-time Speech-to-Text in business context - whether to transcribe conversation in call centers or meetings. 
 
-The models are primarily trained and evaluated on ASR and speech translation to English tasks. They show strong ASR results in ~10 languages. They may exhibit additional capabilities, particularly if fine-tuned on certain tasks like voice activity detection, speaker classification, or speaker diarization but have not been robustly evaluated in these areas. We strongly recommend that users perform robust evaluations of the models in a particular context and domain before deploying them.
+The main use cases in Call Center are AI Voice Agents and Real-time transcription of calls.
 
-In particular, we caution against using Whisper models to transcribe recordings of individuals taken without their consent or purporting to use these models for any kind of subjective classification. We recommend against use in high-risk domains like decision-making contexts, where flaws in accuracy can lead to pronounced flaws in outcomes. The models are intended to transcribe and translate speech, use of the model for classification is not only not evaluated but also not appropriate, particularly to infer human attributes.
+The models are primarily trained and evaluated on ASR for English and Spanish Audio. They also include capabilities to perform additional tasks like voice activity detection, speaker classification, or speaker diarization. We strongly recommend that users perform robust evaluations of the models in a particular context and domain before deploying them.
+
+In particular, we caution against using Voicegain Kappa models to transcribe audio of individuals taken without their consent or purporting to use these models for any kind of subjective classification. We recommend against use in high-risk domains like decision-making contexts, where flaws in accuracy can lead to pronounced flaws in outcomes. The models are intended to transcribe and translate speech, use of the model for classification is not only not evaluated but also not appropriate, particularly to infer human attributes.
 
 
 ## Training Data
 
-The models are trained on 50,000 hours of audio and the corresponding transcripts developed by Voicegain. 75% of this data (or 37,500 hours) represents English-language audio and matched English transcripts, and 25% (or 12,500 hours) represents Spanish audio and Spanish transcripts, while the final 17% (or 117,000 hours) represents non-English audio and the corresponding transcript. This non-English data represents 98 different languages. 
+The models are trained on 50,000 hours of audio and the corresponding transcripts developed by Voicegain. These datasets are ethically sourced datasets from the internet and 75% of this data (or 37,500 hours) represents English-language audio and matched English transcripts, and 25% (or 12,500 hours) represents Spanish audio and Spanish transcripts, while the final 17% (or 117,000 hours) represents Spanish audio and the corresponding transcript. 
 
 
 ## Performance and Limitations
 
-Our studies show that, over many existing ASR systems, the models exhibit improved robustness to accents, background noise, and technical language, as well as zero-shot translation from multiple languages into English; and that accuracy on speech recognition and translation is near the state-of-the-art level. 
+Our studies show that, over many existing ASR systems, the models exhibit improved robustness to accents, background noise, and technical language and that accuracy on speech recognition is near the state-of-the-art level. 
 
 However, because the models are trained in a weakly supervised manner using large-scale noisy data, the predictions may include texts that are not actually spoken in the audio input (i.e. hallucination). We hypothesize that this happens because, given their general knowledge of language, the models combine trying to predict the next word in audio with trying to transcribe the audio itself.
 

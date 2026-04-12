@@ -1,0 +1,72 @@
+# Model Card: Voicegain Kappa
+This is the official modelcard for Voicegain Kappa real-time Speech-to-Text model trained and licensed by Voicegain as part of a licensing agreement between Voicegain Customer and Voicegain.
+
+We're providing some information about the automatic speech recognition model. 
+
+Model Details
+The Voicegain Kappa model is trained for real-time speech-to-text (ASR) and it offers both grammar based recognition and large vocabulary speech-to-text.
+
+Following [Model Cards for Model Reporting (Mitchell et al.)](https://arxiv.org/abs/1810.03993), we're providing some information about the automatic speech recognition model. 
+
+
+## Model Details
+
+The Voicegain Kappa models are trained for speech-to-text (ASR) , capable of transcribing speech audio into the text in the language it is spoken (ASR). 
+
+Researchers at Voicegain developed the models to support production grade speech-to-text/transcription for telephony use cases in call center. However Kappa can also support real-time audio
+from meeting platforms like Zoom, Teams and Webex. It can also support microphone based transcription.
+
+| Size | Parameters | English Language Support | Spanish Language Support |
+|------|------------|-------------------------|-------------------------|
+| Kappa-v7 | 75 M | ✓ | ✓ |
+
+
+
+### Release date
+
+- June 2021 — Kappa-v1
+- Oct 2021 — Kappa-v2
+- June 2022 — Kappa-v3
+- Oct 2022 — Kappa-v4
+- June 2023 — Kappa-v5
+- June 2024 — Kappa-v6
+- June 2025 — Kappa-v7
+
+### Model type
+
+Sequence-to-sequence ASR (automatic speech recognition) 
+
+
+## Model Use
+
+### Evaluated Use
+
+The primary intended users of these models are enterprise developers using real-time Speech-to-Text in business context - whether to transcribe conversation in call centers or meetings. 
+
+The main use cases in Call Center are AI Voice Agents and Real-time transcription of calls.
+
+The models are primarily trained and evaluated on ASR for English and Spanish Audio. They also include capabilities to perform additional tasks like voice activity detection, speaker classification, or speaker diarization. We strongly recommend that users perform robust evaluations of the models in a particular context and domain before deploying them.
+
+In particular, we caution against using Voicegain Kappa models to transcribe audio of individuals taken without their consent or purporting to use these models for any kind of subjective classification. We recommend against use in high-risk domains like decision-making contexts, where flaws in accuracy can lead to pronounced flaws in outcomes. The models are intended to transcribe and translate speech, use of the model for classification is not only not evaluated but also not appropriate, particularly to infer human attributes.
+
+
+## Training Data
+
+The models are trained on 50,000 hours of audio and the corresponding transcripts developed by Voicegain. These datasets are ethically sourced datasets from the internet and 75% of this data (or 37,500 hours) represents English-language audio and matched English transcripts, and 25% (or 12,500 hours) represents Spanish audio and Spanish transcripts, while the final 17% (or 117,000 hours) represents Spanish audio and the corresponding transcript. 
+
+
+## Performance and Limitations
+
+Our studies show that, over many existing ASR systems, the models exhibit improved robustness to accents, background noise, and technical language and that accuracy on speech recognition is near the state-of-the-art level. 
+
+However, because the models are trained in a weakly supervised manner using large-scale noisy data, the predictions may include texts that are not actually spoken in the audio input (i.e. hallucination). We hypothesize that this happens because, given their general knowledge of language, the models combine trying to predict the next word in audio with trying to transcribe the audio itself.
+
+Our models perform unevenly across languages. In general, we observe lower accuracy on low-resource and/or low-discoverability languages or languages where we have less training data. The models also exhibit disparate performance on different accents and dialects of particular languages, which may include a higher word error rate across speakers of different genders, races, ages, or other demographic criteria. 
+
+In addition, the sequence-to-sequence architecture of the model makes it prone to generating repetitive texts, which can be mitigated to some degree by beam search and temperature scheduling but not perfectly. 
+
+## Broader Implications
+
+We anticipate that Voicegain Kappa models’ transcription capabilities may be used for improving accessibility tools. 
+
+There are also potential dual-use concerns with Vociegain Kappa. While we hope the technology will be used primarily for beneficial purposes, making ASR technology more accessible could enable more actors to build capable surveillance technologies or scale up existing surveillance efforts, as the speed and accuracy allow for affordable automatic transcription and translation of large volumes of audio communication. Moreover, these models may have some capabilities to recognize specific individuals out of the box, which in turn presents safety concerns related both to dual use and disparate performance. In practice, we expect that the cost of transcription is not the limiting factor of scaling up surveillance projects.

@@ -33,7 +33,7 @@ Researchers at Voicegain developed the models to support production grade speech
 
 ### Model type
 
-Sequence-to-sequence ASR (automatic speech recognition) implemented as encoder-decoder transformer. . Input audio is split into 15-second chunks, converted into a log-Mel spectrogram, and then passed into an encoder. A decoder is trained to predict the corresponding text caption, intermixed with special tokens that direct the single model to perform tasks such as language identification, phrase-level timestamps, speech transcription in English and Spanish.
+Sequence-to-sequence ASR (automatic speech recognition) implemented as encoder-decoder transformer. Input audio is split into 15-second chunks, converted into a log-Mel spectrogram, and then passed into an encoder. A decoder is trained to predict the corresponding text caption, intermixed with special tokens that direct the single model to perform tasks such as language identification, phrase-level timestamps, speech transcription in English and Spanish.
 
 ### Model Diagram
 ![asr-summary-of-model-architecture-desktop](https://github.com/user-attachments/assets/159dc6b4-df7b-45a2-bffe-d34ee65d5c7e)
@@ -157,8 +157,6 @@ Sequence-to-sequence ASR (automatic speech recognition) implemented as encoder-d
 </defs>
 </svg>
 f-model-architecture-desktop.svg…]()
-
-
 
 ## Model Use
 

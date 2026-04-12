@@ -1,3 +1,110 @@
+### Minor release 1.133.0 is scheduled for 4/12/2026 between 10:00pm and 12:00am US Central Time
+
+TBD ...
+
+### Minor release 1.132.0 is scheduled for 3/19/2026 between 10:00pm and 12:00am US Central Time
+
+New or changed functionality:
+* BE-5315	Added "text" response format and "limit" field to Call Insights questions
+* BE-5299	Added dashboards field to Context for storing selected SA dashboards per project
+* BE-5297	Added defaultSaConfig query parameter to POST /confgroup to auto-create SA configs
+* BE-5066	Added new query parameter to GET /sa/call, GET /sa/call/{callId}, GET /sa/call/search called inclSegments
+* BE-5341	Added progress field to segment analytics results in SA offline responses
+* BE-5353	Added progressPhase field to call segment responses
+* BE-5361	Added segmentType query param to GET /sa/call/agent
+* BE-5360	Added segmentType query param to GET /sa/call/queue and use sa_queue table
+* BE-4904	Added support for multi-segment /sa/call (sa_call)
+* BE-5116	Added to /sa/call/segment a new field called agentFeedback
+* BE-5344	Allowed access to agent user for APIs /sa/call-stats and /sa/call/queue
+* BE-5349	Copilot: Added support for structured call notes where version 2 is enabled
+* BE-5363	Create a user for each Vonage agent
+* BE-5490	Demo: Casey Voicebot - correct the Claim amount shown
+* BE-5354	Deprecated VoiceCall sentiment field, compute from sentiments column
+* MST-1271	Enhance logging in llm-svc for critical issues (especially external request failures)
+* BE-5332	Enhanced Copilot Call Notes with Structured Multi-Field Call Note
+* BE-5355	Generate call/segment notes from llmSummaryPrompt in SA Config instead of llmCopilotNotesPrompt from AIVR App
+* BE-5258	Implemented API to query Pusher Events
+* BE-5359	Implemented externalUserId field on User entity 
+* BE-5314	Implemented GET /sa/call/insights/names endpoint for reserved question names
+* BE-5085	Implemented GET /sa/call/segment
+* BE-5064	Implemented GET /sa/call/segment/{segmentCallId}
+* BE-5092	Implemented GET /sa/call/segment/search/fields
+* BE-5298	Implemented GET /sa/dashboard endpoint in SpeechAnalyticsController
+* BE-5296	Implemented GET /sa/dashboard: New read-only API to return available SA dashboards
+* BE-5295	Implemented POST /confgroup: Add defaultSaConfig query parameter to create default SA configs on Context creation
+* BE-5093	Implemented POST /sa/call/segment/search
+* MST-1247	Integrate LLM-based diarization post-processing into the offline transcription pipeline
+* BE-5357	Made llmSummaryPrompt writable on SA Config endpoints
+* BE-5065	Modified GET /sa/call/{callId}, GET /sa/call, and GET /sa/call/search responses and add a new field numSegments
+* BE-5117	Populate sa_call_segment field agent_feedback from the AIVR Session agentFeedback
+* BE-4444	Populate topics field in /sa/offline and in /sa/call using LLM
+* MST-1343	Provide Built-in Prompt for Structured Copilot Call Notes (CRM Notes)
+* BE-5319	SA: Added agent codes to the users list page where available
+* BE-5300	SA: Added Superset analytics dashboard visibility configuration in project settings
+* BE-5316	SA: Added support for a third 'text' answer type for Call Insights questions
+* BE-5269	SA: Added support for agent segment detail view pages
+* QA-3324	SA: Added support for configuring dashboard visibility when creating a new project
+* BE-5317	SA: Added support for exporting and importing Call Insights questions
+* BE-5318	SA: Added support for exporting and importing the call review QA form
+* QA-3313	SA: Added support for exporting calls on the voicemail calls page
+* BE-5111	SA: Added support for multiple Call Review QA forms for agent and voicebot segments and removed full call review configuration
+* BE-5288	SA: Added support for the agent segment list view on the call history page
+* BE-5369	SA: Added support for up to 4 agents on the call transcript and call time breakdown detail pages
+* BE-5110	SA: Added support to create multiple Call Insights questions for agent and voicebot segments
+* BE-5290	SA: Added support to create multiple SA configs for each segment in configuration settings
+* BE-5279	SA: Added support to hide or show voicebot and voicemail features via project feature settings
+* BE-5356	SA: Added the LLM Summary Prompt setting to the configuration page
+* BE-5267	SA: Adjusted implementation of Toast messages and placements
+* BE-5412	SA: Change how the call segment page populates header call count
+* QA-3365	SA: Hid the agent performance dashboard for the agent role
+* BE-5327	SA: Increased the maximum number of calls retrieved on the call history page from 2,000 to 5,000
+* BE-5358	SA: Made minor UI changes to the debug info Copilot details tab for a better user experience
+* QA-3341	SA: Removed call insights config name change for a better user experience
+* BE-5348	SA: Replaced CRM Notes with Summary on the call transcript detail and call list pages
+* BE-5226	SA: Updated deletion confirmation popup to require project name before deletion
+* BE-5385	SA: Updated global filters for the new segment list history view
+* BE-5367	Separate Call Segment search fields from Call search fields in GET /sa/call/segment/search/fields
+* BE-5383	Skip offline queue limit check for text-based AIVRs
+* BE-5305	Support a new set of permissions for segments
+* BE-5370	Support new Chirp3-HD Google TTS voices
+* MST-1266	Support non-socket communication for derived offline processing in REX
+* BE-5347	Use lmSummaryPrompt and llmCopilotNotesPrompt according to rules from BE-5332
+* BE-5368	Use segment-specific field enums and sort options in POST /sa/call/segment/search
+* BE-5309	Web Console: Added HOTFIX and HACK icons for edge config based on description
+* BE-5252	Web Console: Improved app data tab entry fields for better user experience in the AIVR app popup
+
+Changes related to Integrity of Processing (fixes):
+* BE-5481	Copilot: Fix - Mixed-case email stored after SSO login causes Pusher channel subscription mismatch
+* BE-5465	Fixed: ascalon-asr-api fails to start with global.chd=true due to missing CallSegmentDao bean
+* BE-5337	Fixed: Call Review Config Export does not export the redFlag values
+* BE-5292	Fixed: copilotSent and copilotAck are not set in sa_call for Vonage calls
+* BE-5329	Fixed: Dashboard filters should show only those values for which records exist
+* BE-5443	Fixed: Fail to generate sentiments in call segments from InsightsAnswer
+* BE-5308	Fixed: Fail to send vonage HungUp event to copilot
+* BE-5345	Fixed: Invalid value for `answer_value`, must be a value greater than or equal to `0`
+* BE-5389	Fixed: No agent segment is generated for some Vonage calls
+* MST-1238	Investigate and fix Whisper hallucination issue and dropping words issue
+* BE-5425	SA: Fixed - Agents table is not rendering correctly when zooming out/scroll
+* QA-3319	SA: Fixed - Applied filters on new dashboards reset when the page is refreshed or when the user navigates to another page.
+* BE-5428	SA: Fixed - Call segment review form is re-rendering page on answer change
+* QA-3307	SA: Fixed - Calls in call list section are not rendering in PDF download for new dashboards.
+* QA-3387	SA: Fixed - Getting a 400 (Bad Request) error when modifying AIVR apps if any Superset dashboard is enabled.
+* QA-3388	SA: Fixed - Getting a 400 (Bad Request) error when modifying PII Redaction if any Superset dashboard is enabled.
+* QA-3311	SA: Fixed - Invalid call URL stuck in a loading state instead of showing an error
+* QA-3360	SA: Fixed - New Dashboards pages options are not available in Project settings page.
+* QA-3374	SA: Fixed - Pie Charts on Call Overview page are broken
+* QA-3386	SA: Fixed - Segment history export calls button not working, its exporting call history call list instead.
+* QA-3333	SA: Fixed - Sentiment, CSAT Score and Call Resolution - not calculating for Voicebot Projects
+* QA-3337	SA: Fixed - The name of the agent created through call upload is not appearing in the Agent column in the call list.
+* QA-3410	SA: Fixed - User details are not visible properly on hover on Teams page in Light Theme
+* QA-3146	SA: Fixed - Voicebot assistant is getting recognized as an Agent in CRM notes.
+* QA-3359	SA: Fixed- Call IDs on QA Dashboard page redirects to Dev (ascalon) env upon click.
+* QA-3320	TA Edge: Fixed - Admin was able to add users with invalid domain email addresses
+* BE-5250	TA: Fixed - Cursor jumps to the end when the email is edited from the middle on the signup page
+* QA-3296	TA: Fixed - HTML tags are appearing in the generated PDF documents instead of being properly rendered, which impacts the document formatting and user experience.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.131.0 is scheduled for 2/23/2026 between 11:00pm and 12:00am US Central Time
 
 New or changed functionality:

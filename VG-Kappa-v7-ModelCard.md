@@ -33,9 +33,11 @@ Researchers at Voicegain developed the models to support production grade speech
 
 ### Model type
 
-Sequence-to-sequence ASR (automatic speech recognition) implemented as encoder-decoder transformer. Input audio is split into 15-second chunks, converted into a log-Mel spectrogram, and then passed into an encoder. A decoder is trained to predict the corresponding text caption, intermixed with special tokens that direct the single model to perform tasks such as language identification, phrase-level timestamps, speech transcription in English and Spanish.
+Sequence-to-sequence ASR (automatic speech recognition) implemented as encoder-decoder transformer.
 
 ### Model Diagram
+Input audio is split into 15-second chunks, converted into a log-Mel spectrogram, and then passed into an encoder. A decoder is trained to predict the corresponding text caption, intermixed with special tokens that direct the single model to perform tasks such as language identification, phrase-level timestamps, speech transcription in English and Spanish.
+ 
 ![asr-summary-of-model-architecture-desktop](https://github.com/user-attachments/assets/159dc6b4-df7b-45a2-bffe-d34ee65d5c7e)
 ![Uploading asr-summary-o<svg width="648" height="522" viewBox="0 0 648 522" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_3571_158427)">
@@ -173,7 +175,7 @@ In particular, we caution against using Voicegain Kappa models to transcribe aud
 
 ## Training Data
 
-The models are trained on 60,000 hours of audio and the corresponding transcripts developed by Voicegain. These datasets are ethically sourced datasets from the internet and 75% of this data (or 40,000 hours) represents English-language audio and matched English transcripts, and 25% (or 15,000 hours) represents Spanish audio and Spanish transcripts, while the final 17% (or 117,000 hours) represents Spanish audio and the corresponding transcript. 
+The models are trained on 60,000 hours of audio and the corresponding transcripts developed by Voicegain. The audio datasets are ethically sourced legally compliant datasets from sources from the internet including  LibriSpeech, Common Voice, TED-LIUM and other internet sources. 75% of this data (or 40,000 hours) represents English-language audio and matched English transcripts, and 25% (or 15,000 hours) represents Spanish audio and Spanish transcripts, while the final 17% (or 117,000 hours) represents Spanish audio and the corresponding transcript. 
 
 
 ## Performance and Limitations

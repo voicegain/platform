@@ -1,4 +1,4 @@
-![asr-summary-of-model-architecture-desktop](https://github.com/user-attachments/assets/159dc6b4-df7b-45a2-bffe-d34ee65d5c7e)# Model Card: Voicegain Kappa
+# Model Card: Voicegain Kappa
 This is the official modelcard for Voicegain Kappa real-time Speech-to-Text model trained and licensed by Voicegain as part of a licensing agreement between Voicegain Customer and Voicegain.
 
 We're providing some information about the automatic speech recognition model. 
@@ -36,6 +36,7 @@ Researchers at Voicegain developed the models to support production grade speech
 Sequence-to-sequence ASR (automatic speech recognition) implemented as encoder-decoder transformer. . Input audio is split into 15-second chunks, converted into a log-Mel spectrogram, and then passed into an encoder. A decoder is trained to predict the corresponding text caption, intermixed with special tokens that direct the single model to perform tasks such as language identification, phrase-level timestamps, speech transcription in English and Spanish.
 
 ### Model Diagram
+![asr-summary-of-model-architecture-desktop](https://github.com/user-attachments/assets/159dc6b4-df7b-45a2-bffe-d34ee65d5c7e)
 ![Uploading asr-summary-o<svg width="648" height="522" viewBox="0 0 648 522" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_3571_158427)">
 <rect width="647" height="521" transform="translate(0.00195312 0.650391)" fill="white"/>

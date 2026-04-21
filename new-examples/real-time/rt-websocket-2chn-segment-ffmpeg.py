@@ -17,8 +17,11 @@ JWT = cfg.get(configSection, "JWT")
 urlPrefix = cfg.get(configSection, "URLPREFIX")
 inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 inputFile = cfg.get("DEFAULT", "INPUTFILE")
+outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
 inputFilePath = f"{inputFolder}/{inputFile}"
+inputFileBase = os.path.splitext(inputFile)[0]
+os.makedirs(outputFolder, exist_ok=True)
 
 sampleRate = 8000
 channels = 2
@@ -53,7 +56,10 @@ body = {
             },
             "content": {
                 "incremental": ['segments'],
-                "full": []
+                "full": ['segments']
+              },
+              "poll": {
+                "afterlife": 36000
             }
         },
         {
@@ -67,7 +73,10 @@ body = {
             },
             "content": {
                 "incremental": ['segments'],
-                "full": []
+                "full": ['segments']
+            },
+            "poll": {
+                "afterlife": 36000
             }
         }
     ],
@@ -161,7 +170,9 @@ def web_api_request(headers, body):
   web_res["ws_url_left"] = ws_url_left
   web_res["ws_url_right"] = ws_url_right
   web_res["audio_ws_url"] = audio_ws_url
-  return web_res 
+  web_res["session_id_left"] = session_id_left
+  web_res["session_id_right"] = session_id_right
+  return web_res
 
 msgCnt = 0
 startTime = 0
@@ -290,6 +301,22 @@ async def websocket_receive(uri, prefix):
 
 
 
+def fetch_and_save_transcript(session_id, suffix):
+  url = "{}://{}/{}/asr/transcribe/{}?full=true".format(protocol, hostPort, urlPrefix, session_id)
+  out_path = f"{outputFolder}/{inputFileBase}.{suffix}.json"
+  print(f"making GET request to {url}", flush=True)
+  try:
+    resp = requests.get(url, headers=headers)
+    if resp.status_code != 200:
+      print(f"GET transcript ({suffix}) failed: status={resp.status_code} body={resp.text}", flush=True)
+      return
+    with open(out_path, "w", encoding="utf-8") as f:
+      json.dump(resp.json(), f, indent=2, ensure_ascii=False)
+    print(f"saved {suffix} transcript to {out_path}", flush=True)
+  except Exception as e:
+    print(f"ERROR fetching/saving {suffix} transcript: {e}", flush=True)
+
+
 # stream audio
 def process_audio(file_name):
   print(f"START processing: {file_name}", flush=True)
@@ -305,9 +332,14 @@ def process_audio(file_name):
   # stream audio
   asyncio.get_event_loop().run_until_complete( stream_audio(file_name, web_res["audio_ws_url"]) )
 
-  # wait for websocket thread to join 
+  # wait for websocket thread to join
   threadWsLeft.join()
   threadWsRight.join()
+
+  # fetch full transcripts for both sessions and save to OUTPUTFOLDER
+  fetch_and_save_transcript(web_res["session_id_left"], "left")
+  fetch_and_save_transcript(web_res["session_id_right"], "right")
+
   print(f"END processing: {file_name}")
 
 ## end of function and variable definitions

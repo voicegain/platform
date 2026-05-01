@@ -56,7 +56,7 @@ body = {
             },
             "content": {
                 "incremental": ['segments'],
-                "full": ['segments']
+                "full": ['words']
               },
               "poll": {
                 "afterlife": 36000
@@ -73,7 +73,7 @@ body = {
             },
             "content": {
                 "incremental": ['segments'],
-                "full": ['segments']
+                "full": ['words']
             },
             "poll": {
                 "afterlife": 36000

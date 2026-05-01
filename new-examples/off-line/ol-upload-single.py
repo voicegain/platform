@@ -38,11 +38,11 @@ asr_body = {
             "poll": {
                 # will delete the session after 1 minute
                 #"afterlife": 60000
-                "persist" : 600000
+                "persist" : 599999
             },
             "content": {
                 "incremental": ["progress"],
-                "full" : ["progress", "words"]
+                "full" : ["transcript", "words"]
             }
         }
     ],
@@ -55,12 +55,13 @@ asr_body = {
     },
     "settings": {
         "asr": {
-            "languages" : ["en"],
+            "languages" : ["en-us"],
             #"languages" : ["de"],
             "acousticModelNonRealTime" : model,
-            "noInputTimeout": -1,
-            "completeTimeout": -1,
-            "sensitivity" : 0.333,
+            "confidenceThreshold": 0.01,
+            # "noInputTimeout": -1,
+            # "completeTimeout": -1,
+            "sensitivity" : 0.5,
             "hints" : [
                 "you'would[you'd]"
             ]
@@ -69,32 +70,32 @@ asr_body = {
             #  "maxSpeakers" : 2
             #}
         }
-        # ,"formatters" : [
-        # {
-        #     "type": "digits"
-        # }
+        ,"formatters" : [
+        {
+            "type": "digits"
+        }
         # ,{
         #     "type": "basic",
         #     "parameters": {"enabled": "true"}
         # },
-        # , {
-        #     "type": "enhanced",
-        #     "parameters": {
-        #         "CC": True,
+        , {
+            "type": "enhanced",
+            "parameters": {
+                "CC": True,
         #         "SSN": True,
         #         "URL": True,
         #         "PHONE": True,
-        #         "EMAIL": True
-        #     }
-        # }
+                "EMAIL": True
+            }
+        }
         # , {
         #     "type": "profanity",
         #     "parameters": {"mask": "partial"}
         # }
-        # ,{
-        #     "type": "spelling",
-        #     "parameters": {"lang": "en-US"}
-        # }
+        ,{
+            "type": "spelling",
+            "parameters": {"lang": "en-US"}
+        }
         # ,{
         #     "type": "redact",
         #     "parameters": {
@@ -203,7 +204,7 @@ asr_body = {
         #         "options": "IA"
         #     }
         # }   
-        #]
+        ]
     }
 }
 

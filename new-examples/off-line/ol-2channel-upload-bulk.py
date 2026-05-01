@@ -13,7 +13,7 @@ urlPrefix = cfg.get(configSection, "URLPREFIX")
 inputFolder = cfg.get("DEFAULT", "INPUTFOLDER")
 outputFolder = cfg.get("DEFAULT", "OUTPUTFOLDER")
 
-model = "VoiceGain-omega-x"
+model = "VoiceGain-omega"
 #model = None
 #model = "whisper:basic"
 
@@ -36,11 +36,11 @@ asr_body = {
             "poll": {
                 # will delete the session after 1 minute
                 #"afterlife": 60000
-                "persist" : 600000
+                "persist" : 599999
             },
             "content": {
                 "incremental": ["progress"],
-                "full" : ["progress", "words"]
+                "full" : ["transcript", "words"]
             }
         }
     ],
@@ -80,16 +80,16 @@ asr_body = {
             "type": "enhanced",
             "parameters": {
                 "CC": True,
-                "SSN": True,
-                "URL": True,
-                "PHONE": True,
+            #    "SSN": True,
+            #    "URL": True,
+            #    "PHONE": True,
                 "EMAIL": True
             }
         }
-        , {
-            "type": "profanity",
-            "parameters": {"mask": "partial"}
-        }
+        # , {
+        #     "type": "profanity",
+        #     "parameters": {"mask": "partial"}
+        # }
         ,{
             "type": "spelling",
             "parameters": {"lang": "en-US"}

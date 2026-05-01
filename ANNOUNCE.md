@@ -1,6 +1,102 @@
 ### Minor release 1.133.0 is scheduled for 4/12/2026 between 10:00pm and 12:00am US Central Time
 
-TBD ...
+New or changed functionality:
+* BE-5447	Added 2 new voicemail-related user permissions
+* BE-5471	Added audio field to POST /public/webhook/vonage to submit call recording via presigned S3 URLs
+* BE-5423	Added enabledByDefault field to SA Dashboard response
+* BE-5468	Added epochLastUsed and createdBy fields to confgroup newSecret responses
+* BE-5405	Added GET/PUT/DELETE /account/{accountId}/maintenance API endpoints
+* BE-5408	Added obfuscate parameter to SA offline API methods
+* BE-5418	Added obfuscate settings with queueNames to AIVR App
+* BE-5399	Added PUT /confgroup/{uuid}/newSecret/{secretId}/regenerate endpoint
+* BE-5406	Added text answerType and answerText field to Call Insights
+* BE-5451	Added text/csv response support to GET /user endpoint
+* BE-5466	Added waitForAudio field to PUT /aivr/{ivrSid}/vcca and new PUT /aivr/{ivrSid}/vcca/audio endpoint
+* BE-5495	Added wordsStartAtMs query parameter to GET /sa/offline/{saSessionId}/data
+* QA-3331	Admin Portal: Fixed - No Data Displayed on Terms and Service Page
+* BE-5417	Apply obfuscation to select groups of Vonage calls
+* MST-1234	Detect looped conversations in multi-agent flow and offer or trigger agent transfer
+* BE-5332	Enhanced Copilot Call Notes with Structured Multi-Field Call Note
+* BE-5422	Ensure that GET /sa/agent-stats returns only the Agents to which the User making the request has access to
+* BE-5478	Forward Vonage content.callRecording webhook to ascalon-asr-api /vcca/audio endpoint
+* BE-5460	Generate segments for non-transferred speech-based AIVR calls
+* BE-5496	GET /sa/call with voicemail flag - apply voicemail permissions
+* BE-5531	Implemented GET /sa/call/{callId}/segment/{segmentSeq}/aivr/trace
+* BE-5333	Implemented POST /user/bulk -- bulk user creation from CSV
+* BE-5562	Implemented PUT /sa/offline/call/{callId}/rerun -- rerun transcription and SA for a call
+* MST-1337	Improve Whisper throughput to >50 audio-hours per hour for large-turbo-v3
+* BE-5517	New rules for populating sa_call fields in presence of agent and voicebot segments
+* BE-5498	QA Score AGENT DASHBOARD - Superset refinement
+* BE-5375	Redesign Call Metrics Page in Superset
+* MST-1171	Redesign DTMF handling to support voice + DTMF per question when a DTMF grammar is provided
+* BE-5467	Returns audioInput in GET /sa/offline/{saSessionId}/data when audio=true
+* BE-5472	Returns toBeRecorded field in POST /public/webhook/vonage response
+* BE-5421	SA: Added maintenance window configuration on the Time Settings page
+* BE-5563	SA: Added re-run option to in Call History items
+* BE-5452	SA: Added support for bulk user export on the Users page
+* BE-5409	SA: Added support for bulk user import on the Users page
+* BE-5407	SA: Added support for the new text answer type when creating call insight questions
+* BE-5519	SA: Added support to show copilot debug info for agent segments
+* BE-5448	SA: Changed voicemail page visibility based on user permissions
+* BE-5432	SA: Hid the Segment History tab on the Call History page when agent config is not configured
+* BE-5518	SA: Hiding unrelated toggles/columns if voicebot features is disabled
+* BE-5449	SA: Made Call ID the first default column and renamed Segment History to Calls History for agents
+* BE-5433	SA: Redesigned the call review form on the Call and Segment Details pages
+* BE-5522	SA: Reordered sidebar options for agents after login and changed the landing page to calls
+* BE-5538	SA: Show Copilot Notes on the call detail page with Transcript
+* BE-5477	SA: Showed the last agent segment review form on the Call Details page
+* BE-5487	SA: Standardized date filters, URL state, and the agent refresh icon on the Agents page
+* BE-5434	SA: Updated side popup design and navigation for the Users and Account pages
+* BE-5491	Sanitize URLs in Cloud API requests (Cloud Only / Not Edge)
+* BE-5457	Superset Call Metric Dashboard with multiple tabs
+* MST-1333	Support mid-session config updates in ml-svc gRPC streaming
+* MST-1388	Support optional audio upload for transcript-generated SA sessions for playback in SA app
+* BE-5366	Support POST /rex/RecognizeAudio for ASR sessions derived from an offline ASR session
+* BE-5140	Support segment mode in real-time SA websocket payload
+* MST-1335	Support string insight extraction in ml-svc call review processor
+* BE-5464	toBeRecorded flag is returned from POST /aivr/vcca if the recording is enabled on the AIVR App
+* MST-1246	Upgrade llm-svc to GPT-5.2 / GPT-5-mini in all applicable places and ensure test pass
+* BE-5331	Voicebot Demo: Redesigned the desktop demo casey for improved UX
+* BE-5510	Web Console: Added the ability to configure queue names in the AIVR app for data obfuscation
+* QA-3433	Web Console: Hid the log page (unavailable until back-end is upgraded)
+
+Changes related to Integrity of Processing (fixes):
+* BE-5462	Fixed - [Voicebot] label incorrectly applied to agent in annotated transcript for some uploaded calls
+* BE-5571	Fixed - AivrService.processLoop throws SessionNotFoundException when IvrSession was evicted by onRemoval
+* BE-5506	Fixed - ArrayIndexOutOfBoundsException in MrcpStartLine when parsing MRCP start line
+* BE-5523	Fixed - Audio server is not batching bytes and adding wav header for download in case of streaming audio
+* BE-5535	Fixed - Azure Streaming TTS ignores voice parameter â€” all voices rendered as default
+* QA-3408	Fixed - Call Insights Answers are not getting generated for Vonage integration full calls.
+* BE-5552	Fixed - Call notes not pushed to copilot when waitForAudio=true (VCCA)
+* QA-3407	Fixed - Call summary is not getting generated for Vonage integration full calls.
+* QA-3404	Fixed - Call Time Breakdown chart is broken for Vonage integration projects full calls.
+* BE-5489	Fixed - Error Disclosure reveals java classes
+* BE-5503	Fixed - For Call Segment, speaker key is having value "caller" for both the entries of the sentiment.
+* BE-5576	Fixed - for some SA calls the saSessionId does not resolve to an existing sa offline session
+* BE-5579	Fixed - Looks like the RTP quality data is not being retrieved from CDR and put int sa call
+* BE-5539	Fixed - SegmentResultsProcessor sets callSegment.team to name instead of userGroupId
+* BE-5540	Fixed - sentiment field in CSV response from POST /sa/call/search is wrong
+* QA-3405	Fixed - Sentiments are not generating for full calls in Vonage integration project.
+* BE-5533	Fixed - SsmlDocument: SAXParseException on unescaped '&' in TTS input (e.g., "A&H")
+* BE-5446	Fixed conflicting getters for name isNotApplicable on class ReviewConfig.Question
+* QA-3411	SA: Fixed -  'Select All' option for Teams/Agents filter on Recent Calls page incorrectly displays and functions as 'De-Select All' when no items are selected.
+* QA-3413	SA: Fixed -  The "Checkbox Selection" option is currently visible in the menu, which should not be displayed.
+* QA-3436	SA: Fixed - Do not show Voicebot card for Vonage integration
+* BE-5486	SA: Fixed - File upload did not show all available agents in some cases
+* BE-5575	SA: Fixed - For some calls the sa/offline/{saSessionId}/data response returns 404, and the Call Details page gets stuck in an infinite loop
+* QA-3415	SA: Fixed - Incorrect sentiment value shown in Call History table if the call only has Agent speaking
+* QA-3462	SA: Fixed - Indicator text overlapping over selectable bar slider option.
+* BE-5419	SA: Fixed - Issue with generating a new secret API key
+* QA-3395	SA: Fixed - Normal silence indicator was not visible on the call overview chart for some projects
+* QA-3343	SA: Fixed - On Agents page only one agent is getting shown when multiple agents have the same name but different email.
+* QA-3416	SA: Fixed - Opening a segment call in a new tab via right-click loaded the full call instead of the segment call
+* QA-3375	SA: Fixed - Project Search field did not clear after switching to searched projects
+* QA-3428	SA: Fixed - Time Selector filters on Call History page are not working properly.
+* QA-3464	SA: Fixed - Weekly date labels are not in chronological order in Call resolution on Call metrics dashboard.
+* BE-5420	Web Console: Fix - Issue with generating a new secret API key
+* BE-5521	Web Console: Fix - TTS audio was being cached in Configure Telephony Bot Voices
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.132.0 is scheduled for 3/19/2026 between 10:00pm and 12:00am US Central Time
 

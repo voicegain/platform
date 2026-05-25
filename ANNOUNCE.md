@@ -5,7 +5,104 @@ TBD ...
 
 ### Minor release 1.134.0 is scheduled for 5/4/2026 between 11:00pm and 1:00am US Central Time
 
-TBD ...
+New or changed functionality:
+* BE-5582	Add and populate name column in sa_project table 
+* BE-5684	Add customUniqueId to AI Output (POST /internal/aiOutput, GET /aiOutput, GET /aiOutput/{aiOutputId}) with uniqueness per (contextId, customUniqueId)
+* BE-5685	Add maxWhisperTransferPlayTimeMs to AIVR App: cap whisper transfer prompt playback and DTMF Agent Code listening
+* BE-5623	Add optional userId on POST /sa/offline speakers[] (Voicegain User reference), echo back in GET /sa/offline/{saSessionId}/data and allow modify via PUT /sa/offline/{saSessionId}/spk
+* MST-1354	Add sentence-level streaming support in ml-svc alongside word stream
+* BE-5555	Added Call Resolved Filter on Call Metric Dashboard
+* BE-5617	Added CALL_INSIGHT_BOOL search field to Call and Call-Segment search
+* BE-5568	Added GET /security/find/jwt/stale endpoint to list stale JWT tokens in the caller's account
+* BE-5573	Added timeBreakdown response field and query parameter to GET /sa/offline/{saSessionId}/data
+* BE-5493	Added to aivr.lua ability to do direct bridge to failover destination if the AIVR API returns error.
+* BE-5587	Admin Tool: Hid logs page from the menu options
+* BE-5585	Annotated the APIs used by SA App with vgAuditLogger
+* BE-5558	Change the default value of the `discoverable` field in POST /user
+* BE-5664	Control sending data to salesforce using customValues setting on a Context
+* BE-5556	Created chart for visualizing QA score per agent over period of time
+* BE-5709	Customer cant see "moods" in the output. (deprecated properly)
+* BE-5544	Enabled download data as csv/xls for charts in superset dashboards
+* BE-5580	Ignore deprecated call-resolution fields in Call Review and SA Config (replaced by Call Insight `RESOLVED`)
+* BE-5642	Implemented AI Output Feedback API (POST/GET /aiOutput, POST /aiOutput/{aiOutputId}/feedback) with Postgres backing store
+* BE-5584	Implemented Key Pair APIs on Context (/confgroup/{uuid}/keyPair)
+* BE-5542	Implemented POST /security/find/jwt - look up account/context by JWT token
+* BE-5333	Implemented POST /user/bulk - bulk user creation from CSV
+* BE-3916	Implemented redundant outbound dialing (using multiple voice connectors)
+* BE-5557	Integrate SalesforceDao with AIVR
+* BE-5429	Obtain and use Vonage Audio
+* BE-5566	Populate read-only `createdBy` field on User when created via POST /user and POST /user/bulk
+* BE-5595	Populate saCallBackReference on Call Review Answers responses (back reference from crAnswers to Call / Call Segment)
+* BE-5603	Primary/replica datasource routing hardening in Postgres DAOs
+* MST-1347	Productize benefits automation using complete benefits summary data
+* BE-5498	QA Score AGENT DASHBOARD - Superset refinement
+* BE-5375	Redesign Call Metrics Page in Superset
+* BE-5622	Retrieve  Voicegain Response objects from SalesForce
+* BE-5547	SA: Added Created By and Last Used columns to the API Tokens page
+* BE-5589	SA: Added project switching based on the current call on the call detail page
+* BE-5592	SA: Added project timezone to the sidebar tooltip for the current project
+* BE-5537	SA: Added role display to the profile menu
+* BE-5641	SA: Added support for call insights search filters in call and segment history
+* BE-5598	SA: Added support for showing or hiding the call download button based on user permissions
+* BE-5727	SA: Clear filters when switching between tabs on recent calls page
+* QA-3451	SA: Highlighted expiry calls on the Call History page for better UX
+* QA-3438	SA: Improved validation for call review QA sections and questions
+* QA-3439	SA: Improved validation for creating call insight questions
+* BE-5618	SA: Migrate the project to Node version 24
+* BE-5435	SA: Redesigned Call History saved filters for better UX
+* BE-5438	SA: Redesigned the Agent Segment Detail page for better UX
+* BE-5437	SA: Redesigned the Full Call Detail page for better UX
+* BE-5588	SA: Removed unsupported isCallResolution option from QA and review forms
+* BE-5455	SA: Updated columns and filters for Call History and Segment History pages for better UX
+* BE-5683	SA: Use smoothSentiment instead of emotion.list for sentiment chart in CallSentimentCard
+* BE-5671	Split CallTimeBreakdown voicebot/caller fields on GET /sa/offline/{saSessionId}/data (add voicebotSegSec, callerInAgentSegSec; redefine voicebotSec, callerSec)
+* BE-5625	Store feedback for Voicegain Recommendation retrieved from Salesforce
+* BE-5457	Superset Call Metric Dashboard with multiple tabs
+* BE-5444	Superset Call Stats Dashboard
+* MST-1363	Switch demo bot upfront prompt to improved Google voice and remove SSML usage
+* BE-5548	TA: Added Created By and Last Used columns to the API Tokens page
+* BE-5520	Upgraded to Java 21
+* BE-5559	Utility that changes value of the discoverable field on users in account types other than SPEECH-WORKS
+* BE-5546	Web Console: Added Created By and Last Used columns to the API Tokens page
+
+Changes related to Integrity of Processing (fixes):
+* BE-5593	Fixed -   Missing talk field from speakers on segmentAnalyticsResults
+* BE-4613	Fixed - added missing failover gateways to FreeSWITCH
+* BE-5619	Fixed - call.download permissions are not included in responses of User APIs (also call.rerun)
+* BE-5553	Fixed - Invalid value for `overtalk_single_duration_maximum_threshold`, must be a value greater than or equal to `1`
+* BE-5680	Fixed - NPE in ascalon-cleanup on prod
+* BE-5607	Fixed - on SA Call segmentSeq not populated but saSessionSegmentSeq is there
+* BE-5615	Fixed - prompt caching on FreeSWITCH
+* BE-5545	Fixed - Sentiment KPI score chart not changing when changing Queue in Sentiment Dashboard
+* BE-5722	Fixed - SpeakerTimelineSentimentInfo.isAgent is not set under segmentAnalyticsResults for bulk upload
+* BE-5549	Fixed - Team filter is not populated in all dashboards
+* BE-5726	Fixed - VCCA post-processing fails when only one speaker captured (diarization validation error)
+* BE-5597	Fixed - Whenever normalizedScore changes on crAnswers need to update score on sa call (segment)
+* BE-5508	Fixed fssk recording delete permission: fssk container (UID 1001) cannot delete files owned by root in freeswitch container
+* QA-3441	SA: Fix - Bulk inviting of all users fails if any one of them has the Owner role.
+* BE-5569	SA: Fix - Call History page was stuck loading after context changes
+* QA-3489	SA: Fix - Call Recompute Button Missing in Call History Screen
+* BE-5586	SA: Fix - Call Review Form still processing isCallResolution despite of setting it to false in the QA Form question
+* QA-3491	SA: Fix - Caller percentage is missing in Call Time Breakdown in calls.
+* QA-3461	SA: Fix - Clear button for custom date filter did not work on the Call History page
+* QA-3487	SA: Fix - Error fetching agent stats (400 Bad Request) on opening Integration page
+* QA-3442	SA: Fix - Export functionality is not working in Coach Role. Data is available in the table but is missing in the exported CSV file.
+* BE-5575	SA: Fix - For some calls the sa/offline/{saSessionId}/data response returns 404, and the Call Details page gets stuck in an infinite loop
+* QA-3440	SA: Fix - Incorrect/Unclear error msg when trying to invite user with Owner role using Bulk user upload.
+* QA-3448	SA: Fix - In-progress calls were shown as dead air calls
+* BE-5645	SA: Fix - Issues in saving data to the LLM Summary Prompt Field on SA Config Settings
+* BE-5647	SA: Fix - LLM Prompt Summary does not switch to the correct value when changing tabs on the SA Config page
+* QA-3455	SA: Fix - Role filter showed fewer options for users with limited permissions
+* BE-5679	SA: Fix - Sentiment is not shown for a segment - in a call where the full call had no sentiment calculated
+* BE-5591	SA: Fix - Sorting by Last Active did not work properly in the Users table
+* BE-5646	SA: Fix - The backend does not persist saved value of LLM Prompt Summary field correctly
+* QA-3378	SA: Fix - Unable to load QA Score Dashboard for Agents, shows the error: â€œFailed to obtain Superset guest token.â€
+* QA-3432	SA: Fix - Unable to switch responder types when LLM was selected in the QA form
+* QA-3495	SA: Fix - Unexpected error on Repeat Call page scroll in Speech Analytics application
+* QA-3473	SA: Fix - Voicemail download option was not working on the voicemail detail tab
+* BE-5590	Web Console: Fix - Copy to Clipboard failed in the AIVR App Data table
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.133.0 is scheduled for 4/12/2026 between 10:00pm and 12:00am US Central Time
 

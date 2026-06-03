@@ -1,6 +1,43 @@
 ### Minor release 1.135.0 is scheduled for 5/24/2026 between 11:00pm and 1:00am US Central Time
 
-TBD ...
+New or changed functionality:
+* MST-1435	Added claim and eligibility automation rate line charts to Voicebot Superset dashboard
+* BE-5739	Added new realTimeTranscript copilotSetting in AIVR App
+* BE-5613	Added to /webhook API support for asr_realtime resource
+* BE-5698	Agent Announcement & Messaging Module â€” Backend API Implementation
+* BE-5141	Copilot: Added support for consuming caller and agent transcripts from a single /sa websocket
+* BE-5143	Generate call notes from transcription results in the RT SA session
+* BE-5734	GET /sa/dashboard: Added accountId field to SaDashboard for account-scoped filtering
+* MST-1334	Implemented real-time checklist validation for Agent Assist in ml-svc
+* BE-5673	Improved website description for each of our app links
+* BE-5725	Include speaker info in the message of RealTimeTranscript event
+* BE-5595	Populate saCallBackReference on Call Review Answers responses (back reference from crAnswers to Call / Call Segment)
+* MST-1433	Refactored Telnyx API integration to be stateless using presigned URLs and data object references
+* BE-5662	SA: Added Back to login and Resend email options on forgot password pages
+* QA-3434	SA: Calls count added on the Agents page
+* BE-5753	SA: User ID now displays in the edit user modal
+* BE-5627	SA: Users can no longer access hidden page routes directly via URL
+* MST-1437	Simplified voicebot WebSocket design to support wordstream-only communication
+* BE-5581	Standardize 400 / 404 responses on all /sa/call/{callId} and /sa/offline/call/{callId} endpoints
+* BE-5606	Support encrypted uploads on POST /data/file and POST /data/audio via keyPairId (CMS EnvelopedData / RSA-OAEP-SHA256 / AES-256-CBC)
+* BE-5142	Support SA session ID in the AIVR POST callback
+* BE-5745	Web Console: Added support for realTimeTranscript copilot setting in AIVR App
+* https://gitlab.com/voicegain/devops/environment-tracking/-/commit/e5ab1aa5bf4b170b4adbba657947267e27733a7c changed waveform_uri for onPrem
+
+Changes related to Integrity of Processing (fixes):
+* BE-5750	Fix - ml-svc ProcessText: ValueError on dollar-amount formatting (int('.07'))
+* BE-5795	Fix - POST /rex/RecognizeAudio is applied to requests derived from offline /asr/recognize/async requests by mistake
+* BE-5751	Fix - POST /sa/call creates users with an identical email if the email is in mixed case
+* QA-3483	SA: Fix - AIVR Integration disables Save when no valid app is configured and shows deleted apps as unavailable
+* QA-3519	SA: Fix - Call IDs on Call Metrics and Insights dashboard page redirects to PROD env upon click.
+* QA-3391	SA: Fix - Call Summary is labeled as Call Notes in downloaded PDF and DOCX.
+* BE-5651	SA: Fix - Date selector is now functioning correctly on the Voicebot Dashboard
+* BE-5723	SA: Fix - Last active date incorrectly showed the current date for some users in the users table
+* BE-5658	SA: Fix - Navigation issues with call count on the call details page
+* QA-3479	SA: Fix - PDF content is cropped when downloading QA Score Agent report
+* QA-3502	SA: Fix - The selected section on Call metrics dashboard is not visible in Dark mode.
+* BE-5712	Web Console: Fix - Lingering UI effect on a button
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 
 ### Minor release 1.134.0 is scheduled for 5/4/2026 between 11:00pm and 1:00am US Central Time

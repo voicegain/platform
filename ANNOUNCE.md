@@ -1,3 +1,52 @@
+### Minor release 1.136.0 is scheduled for 6/14/2026 between 11:00pm and 1:00am US Central Time
+
+New or changed functionality:
+* BE-5766	Added Announcements feature to SA App and Copilot
+* BE-5758	Added Name and Description to a Phone Number
+* BE-5609	Added on-device encryption to Desktop Recorder and smart phone Voicegain Recorder
+* BE-5550	API to check if asr-api is listening for a specific websocket endpoint
+* BE-5765	Bridge Vonage CCaaS transcripts into realtime SA pipeline for Copilot
+* BE-5852	Control kb recommendation generation and sending to Copilot using customValues setting on a Context
+* BE-5789	Copilot: Agents now see admin announcements as priority-ordered cards in the side panel before calls, with expiry date indicators, expandable content, and one-click acknowledgement to clear each message.
+* BE-5791	Copilot: Introduce new UI for AI Suggestions
+* BE-5774	Copilot: Real-time transcripts and speech analytics are now shown live during Vonage VCCA calls in the Copilot panel.
+* BE-5842	Deprecated detailed flag in GET /sa/offline API
+* BE-5752	Detecting abandon/disconnect calls for Vonage 
+* BE-5332	Enhanced Copilot Call Notes with Structured Multi-Field Call Note
+* MST-1353	Implemented Salesforce integration for Real-Time Agent Assist in ml-svc
+* MST-1438	Implemented service integration with the standard Casey client API
+* BE-5823	Optimized GET /sa/offline API
+* BE-5801	Realtime Knowledge Base recommendation for SA: config tenantName + websocket kbRecommendation list
+* BE-5761	Removed long-deprecated /sa & /asr request fields; mark /sa as real-time-only (deprecate OFF-LINE asyncMode and acousticModelNonRealTime)
+* QA-3532	SA: Added Tenure Start Date Field to Bulk User CSV Upload
+* QA-3335	SA: Use download permission to decide what user role will see the Download button
+* BE-5817	Salesforce Knowledge Base Recommendation Feature
+* MST-1464	Tuned Whisper parameters to prevent large transcript chunk drops
+* BE-5799	Validate grammars before consuming them
+
+Changes related to Integrity of Processing (fixes):
+* BE-5833	Fix - AivrRexClient looped-whisper wait is non-interruptible; 5h default leaks taskExecutor threads
+* BE-5805	Fix - AivrRexClient.parseCorrections throws UnsupportedOperationException on correction result that leads with addMark
+* BE-5746	Fix - NPE in BillingService.getCurrentBalance when Account.billingAccountId is null
+* BE-5804	Fix - Rex-bundle GrammarManager fails to resolve session: URI after DEFINE-GRAMMAR â€” Completion-Cause: 004 gram-load-failure
+* BE-5233	Fixed DTMF keypad inputs being displayed as bot/agent responses in the call transcript for AIVR calls.
+* QA-3541	SA: Fix - API Secret Creation Shows Success Message When Duplicate Key Name Validation Fails
+* QA-3512	SA: Fix - Date Range Filter Dropdown Does Not Open in â€œMore Filtersâ€ Panel on 1536Ã—730 Screen Resolution
+* QA-3526	SA: Fix - Duplicate Transfer Columns Displayed in Recent Calls Grid
+* QA-3513	SA: Fix - Error Popup Should Auto-Dismiss After Certain Time
+* QA-3542	SA: Fix - Getting error on Announcements page for Manager and Agent role.
+* QA-3514	SA: Fix - LOB Filter Dropdown Data is Not Clearly Visible
+* QA-3518	SA: Fix - QA Form questions with conditional logic set to "Review Question" type can now be saved without a validation error.
+* BE-5839	SA: Fix - Sidebar profile shows deprecated role field (Agent shown as "User")
+* QA-3515	SA: Fix - Topic Dropdown Values Are Truncated and Not Fully Visible
+* QA-3507	TA: Fix - Clearing a numeric metadata field set to "Use for Name of Recording" now fully removes the value from the recording Name field.
+* QA-3505	TA: Fix - Mandatory field indicator (*) in the recording metadata acknowledgement popup now displays in red, matching the required-field styling used throughout the product.
+* QA-3504	TA: Fix - Start and Cancel buttons in the Live Microphone Recording popup are now properly centered with balanced spacing.
+* QA-3509	TA: Fix - UI Alignment Issue â€“ â€œText to acknowledgeâ€ Label Overlaps Input Field When â€œAcknowledgeâ€ Type is Selected
+* BE-5788	Web Console: Fix - Audio playback now stops automatically when navigating away from the transcript Audio Player page.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ### Minor release 1.135.0 is scheduled for 5/24/2026 between 11:00pm and 1:00am US Central Time
 
 New or changed functionality:
@@ -37,6 +86,7 @@ Changes related to Integrity of Processing (fixes):
 * QA-3479	SA: Fix - PDF content is cropped when downloading QA Score Agent report
 * QA-3502	SA: Fix - The selected section on Call metrics dashboard is not visible in Dark mode.
 * BE-5712	Web Console: Fix - Lingering UI effect on a button
+
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 

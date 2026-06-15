@@ -1,4 +1,4 @@
-### Minor release 1.136.0 is scheduled for 6/14/2026 between 11:00pm and 1:00am US Central Time
+### Minor release 1.136.0 is scheduled for 6/15/2026 between 11:00pm and 1:00am US Central Time
 
 New or changed functionality:
 * BE-5766	Added Announcements feature to SA App and Copilot

@@ -1,6 +1,76 @@
 ### Minor release 1.137.0 is scheduled for 7/7/2026 between 11:00pm and 1:00am US Central Time
 
-TBD ...
+New or changed functionality:
+* BE-5889	/user API: added lastActive field to record last user activity on the platform
+* MST-1521	Add safety-screen trigger to realtime agent assist with suggested screening questions
+* MST-1540	Added digit formatter rule to convert spoken "dot" delimiters to literal dots (ddd dot ddd dot ddd -> ddd.ddd.ddd)
+* BE-5786	Added queue name to the transcript with annotation for call note generation
+* BE-5787	Added safety screening to Copilot call note
+* MST-1532	Built an interactive SMS chatbot using Telnyx
+* BE-5899	Built-in UK currency grammar
+* BE-5965	Call Metric dashboard now shows actual number of total calls instead of rounding off
+* MST-1523	Capture date of service in eligibility automation flow to select correct eligibility, accumulator, and benefits data
+* BE-5973	Changes to prevent OOM in data-api
+* BE-5968	Copilot: KB suggestion link needs to be opened in current tab & replace window.open with chrome.tabs.update
+* BE-6011	Copilot: Suggest tab now shows an unread count and scrolls to the first unread suggestion when opened, highlighting new ones as you reach them
+* MST-1502	Developed redaction algorithm to redact security-question answers from transcripts
+* BE-5941	Do proper validation of Call Review form and also the Call Insights config when doing import
+* MST-1506	Fallback to Claim ID query when DOS and billed amount search fails
+* BE-5927	Finalized new streaming TTS plugin for unimrcp
+* BE-5853	GET /sa/agent-stats: deprecated avgReviewScoreManual & avgReviewScoreAutomatic
+* MST-1526	Harden DOB parsing & improve extraction accuracy and reject partial dates
+* BE-5896	Implemented answer_redact formatter (security-question answer redaction) 
+* MST-1527	Interpret DTMF-entered claim amounts as both whole-dollar and decimal values
+* BE-5767	mrcp-rex: Add proper handling for errors writing to rex sockets mid session
+* BE-5937	Populate queue wait time in sa call also for not abandoned calls if we have queue wait time info available
+* BE-5950	POST /sa/call/search: added support for additional sort_by fields
+* BE-5960	POST /sa/call/segment/search: support for additional sort_by fields(sentiment, incidents, segmentSeq) added
+* MST-1546	Redact app data value if the key contains "password" or "token"
+* MST-1518	Redesigned eligibility data class to support multiple plan types, coverage ranges, and plan IDs
+* MST-1462	Research and migrate to a more responsive model for semantic endpointing in llm-svc
+* BE-5931	Returned per-agent acknowledgement details (name, team, status, timestamp) for active & archived announcements
+* BE-5900	SA call/segment search: implemented callId default sort + tie-breaker
+* BE-5930	SA: Added announcement acknowledgement tracking modal
+* BE-5867	SA: Added announcement preview for creating and editing announcements
+* BE-5915	SA: Added CCaaS Call ID to the Call History/Recent Calls page
+* BE-5989	SA: Added justification to NPS and CSAT scores on the call overview page
+* QA-3552	SA: Added relative time support for announcement filters for a better UX
+* BE-5650	SA: Added select/deselect all support to the call history column selector
+* BE-5849	SA: Added Submit a Support Ticket functionality via Freshdesk
+* BE-5929	SA: Added support for cloning existing announcements
+* BE-5676	SA: Improved pagination on the call history page and removed sorting from nonessential columns
+* BE-5898	SA: Updated the calendar icon for better UX
+* MST-1499	Support accumulator data in eligibility and benefits automation workflows
+* BE-5916	Synced deleted call records to analytics database
+* BE-5951	Vonage webhook: added support for accepting connectedCallData.transferredFrom / transferredTo fields
+* QA-3574	Web Console Edge: Removed billing page icon and access
+* QA-3565	Web Console: Showed success message after adding transcription keyboard shortcut
+
+Changes related to Integrity of Processing (fixes):
+* QA-3586	Copilot: Fix -  Unable to copy co-pilot notes from co-pilot extension.
+* BE-5962	Copilot: Fix - SSO login failed on the first try via the SA app due to an expired session
+* MST-1515	Diagnose and fix VAD early barge-in issue in MRCP ASR
+* MST-1529	Fix - discovered exception in llm-svc and guarantee exception fallback to agent transfer
+* BE-5864	Fix - asr-api - LEAK: ByteBuf.release() was not called before it's garbage-collected.
+* BE-5877	Fix - audio-server - LEAK: ByteBuf.release() was not called before it's garbage-collected.
+* MST-1528	Fix - DTMF digits captured into member NAME field during combined name+DOB verification prompt
+* BE-6014	Fix - Fields API is too slow
+* BE-5879	Fix - RejectedExecutionException is encountered soon after PUT /aivr/uuid with loop=stop is received
+* BE-5888	Fix - rex - LEAK: ByteBuf.release() was not called before it's garbage-collected.
+* QA-3582	Fixed 500 internal server error on Call History and Recent call pages
+* QA-3580	Fixed analytics dashboard showing white page error
+* QA-3575	Fixed Announcements acknowledgement bar showing higher total count that the actual number of agents in the account
+* QA-3572	Fixed empty-state cropped message text in Call Metrics Widgets
+* QA-3558	SA: Fix - Agent last name was not displayed on the upload call audio popup
+* BE-5759	SA: Fix - Full-size audio player overlaid call detail page content
+* BE-6013	SA: Fix - Help menu now shows a Knowledge Base Articles option
+* BE-5967	SA: Fix - Review form showed the wrong question count and updated the red flag icon
+* QA-3576	SA: Fix - Send To dropdown showed non-agent users when set to Agent
+* QA-3548	TA: Fix - Size in Storage column filtering and sorting did not work properly on the transcript list page
+* BE-5876	Web Console Edge: Fix - Copy did not work for API token on the API settings page for some users
+* BE-5788	Web Console: Fix - Audio playback now stops automatically when navigating away from the transcript Audio Player page.
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.136.0 is scheduled for 6/15/2026 between 11:00pm and 1:00am US Central Time
 

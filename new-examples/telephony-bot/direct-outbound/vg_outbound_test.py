@@ -53,7 +53,7 @@ class ApiClient:
         )
         return response
 
-TOTAL = 40
+TOTAL = 1
 SLEEP = 3
 
 remain = TOTAL

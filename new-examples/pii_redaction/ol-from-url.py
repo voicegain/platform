@@ -34,8 +34,8 @@ asr_body = {
                 #"persist" : 300000
             },
             "content": {
-                "incremental": ["progress"],
-                "full" : ["words"]
+                #"incremental": ["progress"],
+                "full" : ["words","transcript"]
             }
         }
     ],
@@ -61,11 +61,15 @@ asr_body = {
             "redact": True
         },
         "asr": {
-            "languages" : ["en"],
+            "languages" : [
+                                                                "es-mx"                                                
+                                                                ,"en-us"
+],
             "acousticModelNonRealTime" : "VoiceGain-omega",
             # acousticModelNonRealTime" : "whisper:large-v3-turbo",
             "noInputTimeout": -1,
             "completeTimeout": -1,
+            "confidenceThreshold": 0.01,
             "sensitivity" : 0.5,
             # , "hints" : [
                 # "rupees[roopiece|ruppes]"

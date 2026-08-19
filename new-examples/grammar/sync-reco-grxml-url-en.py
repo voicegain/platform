@@ -31,7 +31,7 @@ sampleRate = 8000
 #acousticModelRealTime = "VoiceGain-rho-en-us"
 
 ## kappa is most accurate byt also has the longest latency
-acousticModelRealTime = "VoiceGain-kappa"
+acousticModelRealTime = "VoiceGain-kappa-tel"
 
 headers = {"Authorization":JWT}
 
@@ -59,7 +59,7 @@ asr_body = {
             "grammars" : [
                 {
                     "type": "GRXML",
-                    "name" : "yes-no",
+                    "name" : "mainMenu",
                     "fromUrl":{
                         # "url" : "https://s3.us-east-2.amazonaws.com/files.public.voicegain.ai/zip_code_no_refs.grxml"
                         # "url" : "https://grammar.host/zip_code_no_refs.grxml"
@@ -77,6 +77,7 @@ asr_body = {
                        # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/main_menu.grxml"
                        # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/en-es-GARB-selector-example.grxml"
                        "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/new_or_existing.grxml"
+                       # "url" : "https://raw.githubusercontent.com/voicegain/platform/master/new-examples/grammar/grxml/MainMenuVoice-nuance-osr.grxml"
                     }
                 }
             ],

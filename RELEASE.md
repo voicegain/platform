@@ -1,3 +1,48 @@
+## Release 1.138.0
+
+New or changed functionality:
+* BE-5979	Call Review: implemented applyRedFlagPenalty setting at config and question level (per section or whole form)
+* BE-6010	Copilot: Added configuration-driven rendering for the Voicebot Details tab to improve the user experience
+* BE-6097	Copilot: Added EOL (end-of-life) support
+* BE-6029	Copilot: Added support for recording user feedback on AI suggestions
+* BE-6072	Copilot: Added support for saving a recommended Knowledge Base article to a Salesforce Case Article via Salesforce Notify, using the aiSuggestionsLink setting
+* BE-6089	Copilot: AI suggestions are now tracked end to end - the ML-minted suggestionId is forwarded in kbRecommendation and each suggestion is captured as an AI Output record (Salesforce Knowledge Base Recommendation feature)
+* BE-6062	Copilot: Live Voicebot events now carry copilotDisplay data used to render the Voicebot Details tab
+* BE-6012	Copilot: Updated the placement of the feedback and copy buttons on the Call Notes tab; Copy to clipboard is now disabled when there are no notes to copy
+* BE-5978	Copilot: Voicebot data shown in Copilot is now configurable per Telephony Bot (AIVR) App
+* BE-6037	Five9: Added SSO (OAuth2) support
+* BE-5977	Five9: Added webhook URL support for CTI and Stream Status/Event notifications
+* BE-6006	Five9: Completed webhook integration with Voicegain
+* BE-6056	Forerunner: Completed webhook integration with Voicegain in handshake mode
+* BE-6071	New endpoint POST /public-asr/{ccaas}/user/salesforce-notify, together with the new aiSuggestionsLink Copilot setting
+* BE-6039	New: Webhook notifications for async transcription sessions (transcribe resource) with optional per-Context filtering
+* BE-5974	POST /sa: added gRPC streaming audio source (Five9 Voice Stream) and return of the gRPC connect host/port
+* BE-5885	SA: Added Freshdesk login redirect and return support for logged-out users
+* BE-6024	SA: Added Freshdesk login redirect support based on the redirect query parameter
+* BE-6055	SA: Added support for applying red flag penalties per section or to the entire QA form
+* BE-6061	SA: Added support for draft and publish modes in Call Review configurations
+* BE-6060	SA: Call Review configurations are now versioned on edit, so previously submitted Call Review answers are not affected by later config changes
+* BE-6099	Web Console: Added export functionality for Telephony Bot (AIVR) App configurations via the new GET /aivr-app/{uuid}/export endpoint
+* BE-6008	Web Console: Added Forerunner as a CCaaS integration option for FreeSWITCH apps
+* BE-6100	Web Console: Added support for aiSuggestionsLink (webURL or salesforceArticle) in the AIVR App Copilot settings
+* BE-5959	Web Console: Added support for platform selection when creating a Telephony Bot App
+* BE-5976	Web Console: Added support for the Five9 Voice Stream platform in the Telephony Bot App dialog
+* BE-6054	Web Console: Added support for the new "trampoline" platform in the Telephony Bot App dialog
+* BE-6121	Web Console: Updated phone number formatting and added a loading screen to the phone management page
+
+Changes related to Integrity of Processing (fixes):
+* BE-6108	Copilot: Fix - Clear now works consistently, and transient error toasts no longer appear
+* BE-6025	Copilot: Fix - Intermittent issues with clearing call timeouts, which previously required the agent to clear the call manually
+* QA-3590	Copilot: Fix - Validation error was displayed after a successful login
+* QA-3618	SA: Fix - Added tags were not clearly visible in the dark theme on the call transcript page
+* BE-6004	SA: Fix - Back arrow now returns to Call History instead of Home, and is no longer shown for calls opened in a new tab
+* QA-3603	SA: Fix - Discrepancy in call counts between the Recent Calls and Call History pages
+* QA-3623	SA: Fix - Full-screen mode now works for dashboard graphs
+* BE-5967	SA: Fix - Review form showed the wrong question count and updated the red flag icon
+* QA-3598	Web Console: Fix - Data cleanup interval dropdown was hidden behind the menu; interval options were also updated for improved usability
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.137.0
 
 New or changed functionality:

@@ -52,23 +52,38 @@ spec:
       hostNetwork: true
       containers:
       - name: ip-masq-agent
-        image: gke.gcr.io/ip-masq-agent:v2.9.3-v0.2.4-gke.5
+        image: gke.gcr.io/ip-masq-agent:v2.12.6-gke.15@sha256:c51e89bdc5073fdbaaff8bf42b32765f7f1eb0fec7d6189de5f14c48ac489448
         args:
-            # The masq-chain must be IP-MASQ
-            - --masq-chain=IP-MASQ
+        - --v=2
+        - --logtostderr=false
+        - --log_file=/dev/stdout
+        - --log_file_max_size=0
+        # The masq-chain must be IP-MASQ
+        - --masq-chain=IP-MASQ
+        # To non-masquerade reserved IP ranges by default,
+        # uncomment the following line.
+        # - --nomasq-all-reserved-ranges
+        # Must be set to false when using Dataplane V2.
+        - --random-fully=false
         securityContext:
-          privileged: true
+          privileged: false
+          capabilities:
+            drop: ["ALL"]
+            add: ["NET_ADMIN", "NET_RAW"]
+          allowPrivilegeEscalation: false
+          seccompProfile:
+            type: RuntimeDefault
         volumeMounts:
-          - name: config-volume
-            mountPath: /etc/config
-      volumes:
         - name: config-volume
-          configMap:
-            name: ip-masq-agent
-            optional: true
-            items:
-              - key: config
-                path: ip-masq-agent
+          mountPath: /etc/config
+      volumes:
+      - name: config-volume
+        configMap:
+          name: ip-masq-agent
+          optional: true
+          items:
+          - key: config
+            path: ip-masq-agent
       tolerations:
       - effect: NoSchedule
         operator: Exists

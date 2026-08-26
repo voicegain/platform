@@ -1,6 +1,27 @@
 ### Minor release 1.139.0 is scheduled for 8/19/2026 between 11:00pm and 1:00am US Central Time
 
-TBD ...
+New or changed functionality:
+* BE-6170	New: RingCentral RingEX integration — new CCaaS integration
+* QA-3641	SA: Added a 10,000-call limit for exports on the Call History page
+* BE-6189	SA: Added manual call audits for QA forms and QA audit report export
+* BE-6134	SA: Enhanced the Voicebot display card in Call Details for consistency with Copilot
+* QA-3630	SA: Improved onboarding screen colors for a better user experience
+* BE-6096	Web Console: Added Voicebot display preview for live YAML
+* BE-6169	Web Console: Removed call recording and transcription settings from the AIVR App dialog as both are now always enabled
+* BE-6224	Web Console: Removed the Gateway tab from the Telephony Bot App configuration dialog
+* BE-6228	Web Console: Replaced the AIVR app selector with a context selector for the Five9 connect flow
+
+Changes related to Integrity of Processing (fixes):
+* BE-6205	Copilot: Fix - Improved Live Transcript reliability when the IVR app changes during call connection
+* QA-3643	SA: Fix - Agent names missing from Call History after the agent was deleted from Users
+* BE-6155	SA: Fix - Deleted QA Form sections remained visible until refresh
+* QA-3650	SA: Fix - Error when manually editing the scheduled time of an announcement
+* QA-3642	SA: Fix - Incorrect call count briefly displayed when switching between calls and segments in Call History
+* BE-6122	SA: Internal/queue transfers now split into bot + agent segments — fixes live agent labeled "Voicebot" and inflated voicebotDuration in analytics
+* BE-6248	Web Console: Fix - AIVR App changes are no longer silently overwritten when two people edit the same app at the same time; you'll now see a clear warning if someone else saved changes first.
+* QA-2870	Web Console: Fix - Dropdown arrows not clickable for some fields on the Speech Recognition Settings page
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.137.0 is scheduled for 7/7/2026 between 11:00pm and 1:00am US Central Time
 

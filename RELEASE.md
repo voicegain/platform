@@ -10,6 +10,17 @@ New or changed functionality:
 * BE-6169	Web Console: Removed call recording and transcription settings from the AIVR App dialog as both are now always enabled
 * BE-6224	Web Console: Removed the Gateway tab from the Telephony Bot App configuration dialog
 * BE-6228	Web Console: Replaced the AIVR app selector with a context selector for the Five9 connect flow
+* MST-1594	Add a generic counter in bot logic returning total characters spoken by each bot session
+* MST-1628	Add caller_id_number and caller_id_name columns to Campaign table and include them in the dial request when set
+* MST-1586	Design and implement bot A/B test framework — % traffic split between bot versions with logging
+* MST-1549	Implement Casey 2.0 intake stage composing the intent detection and collect-account skills + verify stage
+* MST-1573	Improve voicemail detection in the outbound bot and test against voicemail + iOS call screening
+* MST-1581	In multi-agent flow, reuse caller-provided query data instead of re-prompting for it
+* MST-1534	Include inbound calls in the member timeline via member's phone-number query
+* MST-1469	Inspect and Resolve Redaction Issues Reported by customer before July 2026
+* MST-1605	Integrate with the National DNC database and add a per-campaign scrub flag applied during the nightly scan
+* MST-1606	Integrate with the Reassigned Number Database (RND) and add a per-campaign scrub flag applied during the nightly scan
+* MST-1633	Reduce first-message latency in the outreach campaign bot
 
 Changes related to Integrity of Processing (fixes):
 * BE-6205	Copilot: Fix - Improved Live Transcript reliability when the IVR app changes during call connection
@@ -20,6 +31,8 @@ Changes related to Integrity of Processing (fixes):
 * BE-6122	SA: Internal/queue transfers now split into bot + agent segments — fixes live agent labeled "Voicebot" and inflated voicebotDuration in analytics
 * BE-6248	Web Console: Fix - AIVR App changes are no longer silently overwritten when two people edit the same app at the same time; you'll now see a clear warning if someone else saved changes first.
 * QA-2870	Web Console: Fix - Dropdown arrows not clickable for some fields on the Speech Recognition Settings page
+* MST-1621	Fix - multi-agent info collection bug - the clarify branch returns the follow-up question without ever running extraction
+* MST-1622	Fix - NPI question gets "No problem" and abandonment
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 

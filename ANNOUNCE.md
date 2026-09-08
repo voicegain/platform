@@ -1,4 +1,4 @@
-Minor release 1.140.0 is scheduled for 9/4/2026 between 10:30pm and 1:00am US Central Time
+### Minor release 1.140.0 is scheduled for 9/4/2026 between 10:30pm and 1:00am US Central Time
 
 TBD ...
 

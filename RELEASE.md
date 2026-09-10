@@ -1,6 +1,39 @@
 ## Release 1.140.0
 
-TBD ...
+New or changed functionality:
+* MST-1646	Add portal referral to prior-auth intake and prior-auth status-check flows
+* BE-6254	Copilot: Added account and SA session mismatch detection for SSO login
+* BE-6255	Copilot: Improved SSO login with a focused popup window for a better user experience
+* BE-6200	Copilot: Improved the release date and release notes mechanism for better accuracy
+* MST-1638	Enable YTD claim and claim-detail fax-back for all clients
+* MST-1649	Implement an advanced member filter (also on the campaign view)
+* MST-1650	Improve the engagement web app dashboard
+* MST-1534	Include inbound calls in the member timeline via member's phone-number query
+* MST-1469	Inspect and Resolve Redaction Issues Reported by customer before July 2026
+* MST-1606	Integrate with the Reassigned Number Database (RND) and add a per-campaign scrub flag applied during the nightly scan
+* MST-1633	Reduce first-message latency in the outreach campaign bot
+* BE-6269	SA: Added QA form versioning support in settings and the call review form
+* BE-6260	SA: Added the reference number to the call history page with filter support
+* BE-6273	SA: Added tooltips to each card on the voicebot dashboard for a better user experience
+* BE-6270	SA: Improved red flag question UX by hiding fractional values in the call review form
+* BE-6279	SA: Improved the display of multi-value questions in the call review form
+* BE-6261	SA: Made the channel name copyable in the Call Debug tab
+* BE-6256	SA: Redesigned the call details overview page for a better user experience
+* BE-6225	SA: Redesigned the team creation and editing flow for a better user experience
+* MST-1644	Update production dashboard bot list and group by client
+* BE-6262	Web Console: Added a percolator sound toggle in the telephony bot app
+* BE-6265	Web Console: Added support for bot, queue, and agent saConfig in settings and the telephony bot app
+* BE-6272	Web Console: Added support for RingCentral RingEX CCaaS integration in the phone app
+* QA-3649	Web Console: Unsupported pages now redirect to Home on mode switch
+
+Changes related to Integrity of Processing (fixes):
+* BE-6293	Copilot: Fix - Update notifications and the "Update now" button now reliably appear when a new version is available
+* QA-3690	Voicebot Demo: Fix - Blank screen with a content-blocked message displayed when clicking the Contact Sales button
+* QA-3668	Web Console: Fix - 2FA QR code was cut off at the corner at 100% browser zoom on smaller screens
+* QA-3662	Web Console: Fix - Both success and failure notifications appear when an incorrect OTP is entered
+* BE-6156	Web Console: Fix - Intermittent unexpected logout issue
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ## Release 1.139.0
 

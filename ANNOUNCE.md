@@ -1,6 +1,38 @@
-### Minor release 1.141.0 is scheduled for 9/26/2026 between 10:0pm and 1:00am US Central Time
+### Minor release 1.141.0 is scheduled for 9/26/2026 between 10:00pm and 1:00am US Central Time
 
-More details coming...
+New or changed functionality:
+* BE-6346	Copilot: Added support for automatically applying version updates and an "Ask again later" option for the update prompt
+* BE-6350	Copilot: Added support for automatically opening links in new tabs the first time they appear on a call
+* BE-6341	Copilot: Added support for range-based public announcements for highest priority updates
+* BE-6281	Copilot: Added support for Voicebot notes in the Details tab
+* BE-6331	Copilot: Retracted announcements now show the reason and note instead of being silently removed
+* BE-6319	Copilot: Transferred calls now show the transfer reason and destination agent on hang-up
+* BE-6326	SA: Added a Billing card to the Call Overview page for specific roles
+* BE-6306	SA: Added an Audit Status column filter to the Call History page
+* BE-6332	SA: Added support for announcement retraction reasons and expiry
+* BE-6307	SA: Added support for custom tags in agent and segment views
+* BE-6318	SA: Added support for section-level conditionals in QA forms
+* BE-6327	SA: Added support for Voicebot call segment views
+* BE-6339	SA: Added support for Voicebot segments in Call History
+* BE-6284	SA: Implemented logout on password change for other browser sessions
+* BE-6328	SA: Improved and corrected time breakdowns for agent segments
+* BE-6324	SA: Improved phone number formatting to E.164 format across the app
+* BE-6305	SA: Improved the call header design for a better user experience
+* BE-6285	SA: Improved the new project creation flow for a better user experience
+* MST-1593	Shorten safety screening questions in the call note output
+* MST-1770	Support per-day-of-week time ranges for campaigns (e.g. different Saturday range)
+* BE-6292	TA: Added support for logging out other browser sessions after a password change
+* MST-586	Upgrade pytorch and whisper to the latest version
+* BE-6290	Web Console: Added support for logging out other browser sessions after a password change
+
+Changes related to Integrity of Processing (fixes):
+* BE-6349	SA: Fix - Call History filter row no longer wraps to multiple lines in Firefox
+* BE-6304	SA: Fix - Calls list no longer briefly shows "No calls available" while call data is loading
+* BE-6303	SA: Fix - Incorrect "Call in progress" banner when loading Call Details
+* BE-6317	SA: Fix - Reordering columns now enables the Save Filter button on the Call History page
+* BE-6329	SA: Fix - Sentiment X-axis range exceeds the duration of an agent segment on the Call Overview page
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.140.0 is scheduled for 9/4/2026 between 10:30pm and 1:00am US Central Time
 

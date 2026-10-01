@@ -1,3 +1,12 @@
+## Release 1.141.0
+
+* Added Voicebot notes to the Details tab
+* Added support for automatically opening links in a new tab the first time they appear during a call
+* Added transfer reason and destination agent to the Details tab when a transferred call hangs up
+* Added support for showing announcements to a specific range of Copilot versions
+* Retracted announcements now display the retraction reason and note instead of disappearing silently
+* Improved version updates with automatic updates, an "Ask again later" option, and more reliable update notifications
+
 ## Release 1.140.0
 
 * Fixed silent SSO login failures from a mismatched Speech Analytics account

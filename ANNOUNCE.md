@@ -1,3 +1,7 @@
+### Minor release 1.142.0 is scheduled for 10/17/2026 between 10:00pm and 1:00am US Central Time
+
+TBD ...
+
 ### Minor release 1.141.0 is scheduled for 9/26/2026 between 10:00pm and 1:00am US Central Time
 
 New or changed functionality:

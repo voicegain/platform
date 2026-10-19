@@ -1,3 +1,39 @@
+## Release 1.142.0
+
+New or changed functionality:
+* MST-1792	(Bot Logic) Ask again for the full date of birth when a caller gives only the year, instead of verifying them on it
+* MST-1823	Add provider/member distinction to the Engage Portal — scope current campaigns to member
+* BE-6391	Copilot: Added support for safety screening triggered by AI and agents via actions
+* MST-1830	Extract member/provider metadata from call transcripts using insight
+* MST-1824	Identify and separate member calls from provider calls
+* MST-1828	Pull known providers from calls and show a searchable (by NPI) known-provider list on the Engage Portal
+* QA-3784	SA: Added a new account info page with more account details
+* BE-6374	SA: Added agent details card on name or avatar hover across the app
+* QA-3725	SA: Added an informational message for conditionals when dependent questions are deleted
+* BE-6387	SA: Added support for project-level blind and non-blind QA audits and an additional feedback section
+* BE-6400	SA: Added tooltips to unclear controls on the call history and call details pages
+* BE-6378	SA: Enforced unique question names on the QA form configuration page
+* BE-6401	SA: Hidden audit-related features on the call history and recent calls pages to improve UX
+* BE-6328	SA: Improved and corrected time breakdowns for agent segments
+* QA-3736	SA: Improved and standardized placeholder screens on Agent and Team Performance pages
+* BE-6415	SA: Redesigned the QA form page header to improve user experience
+* QA-3753	SA: Removed team lead from default member selection during team creation
+* QA-3764	SA: Restricted CSAT and NPS values to 0–10 in QA form conditionals
+* MST-1720	Support backward command on realtime SA session; agent can use it on Copilot to request safety-screening KB
+* MST-1818	Support sectioned summary prompt format outputting multi-section data for Copilot display
+* BE-6395	Web Console: Added Copilot safety screening and a built-in settings guide in the Telephony app settings
+* BE-6386	Web Console: Added descriptions, tags, and creator/modifier details to the Telephony Bot app popup
+* BE-6353	Web Console: Disabled mic transcription on the Transcription page when Kappa-Tel or Whisper models are selected
+* BE-6402	Web Console: Display the backend error message in a notification when a phone number purchase fails
+
+Changes related to Integrity of Processing (fixes):
+* QA-3771	SA: Fix - Error page displayed instead of the Voicebot segment for some calls on the Call Overview page
+* BE-6409	SA: Fix - Issues with saving, displaying, and clearing filters on the call history page
+* QA-3787	SA: Fix - QA score percentage was not readable in dark mode in the call details page header
+* QA-3747	SA: Fix - Unable to publish QA form changes when switching between Published and Draft while editing
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
+
 ## Release 1.141.0
 
 New or changed functionality:

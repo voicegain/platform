@@ -1,3 +1,8 @@
+## Release 1.142.0
+
+* Added support for safety screening triggered by AI and by agents from the new Actions button during a call
+* Fixed automatic version updates failing during the daily update check
+
 ## Release 1.141.0
 
 * Added Voicebot notes to the Details tab

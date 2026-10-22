@@ -3,7 +3,10 @@
 New or changed functionality:
 * MST-1792	(Bot Logic) Ask again for the full date of birth when a caller gives only the year, instead of verifying them on it
 * MST-1823	Add provider/member distinction to the Engage Portal — scope current campaigns to member
+* BST-185	API: For accounts with Medicare compliance, GET /sa/offline/{saSessionId}/data now returns 451 when called from outside the USA
+* BST-234	API: The score of a call now becomes the audited score once a QA audit is complete; the original score is available in the new unauditedScore field
 * BE-6391	Copilot: Added support for safety screening triggered by AI and agents via actions
+* BST-166	Copilot: When a call is transferred, the agent who transferred it now receives call notes for their part of the call
 * MST-1830	Extract member/provider metadata from call transcripts using insight
 * MST-1824	Identify and separate member calls from provider calls
 * MST-1828	Pull known providers from calls and show a searchable (by NPI) known-provider list on the Engage Portal
@@ -17,19 +20,31 @@ New or changed functionality:
 * BE-6328	SA: Improved and corrected time breakdowns for agent segments
 * QA-3736	SA: Improved and standardized placeholder screens on Agent and Team Performance pages
 * BE-6415	SA: Redesigned the QA form page header to improve user experience
+* BST-179	SA: Reference numbers are now shown without zero padding (for example CASY1044 instead of CASY00000001044)
 * QA-3753	SA: Removed team lead from default member selection during team creation
 * QA-3764	SA: Restricted CSAT and NPS values to 0–10 in QA form conditionals
 * MST-1720	Support backward command on realtime SA session; agent can use it on Copilot to request safety-screening KB
 * MST-1818	Support sectioned summary prompt format outputting multi-section data for Copilot display
+* BST-218	Telephony: When a voicebot error occurs, callers now hear a short message and are transferred to the fallback destination, or asked to call back later, instead of being dropped
 * BE-6395	Web Console: Added Copilot safety screening and a built-in settings guide in the Telephony app settings
 * BE-6386	Web Console: Added descriptions, tags, and creator/modifier details to the Telephony Bot app popup
+* BST-17	Web Console: Added Okta single sign-on (SSO) support, with a setup guide
 * BE-6353	Web Console: Disabled mic transcription on the Transcription page when Kappa-Tel or Whisper models are selected
 * BE-6402	Web Console: Display the backend error message in a notification when a phone number purchase fails
 
 Changes related to Integrity of Processing (fixes):
+* BST-247	API: Fix - A caller hang-up during a prompt was reported to the AIVR callback as a completed prompt with no input; the hang-up is now reported right away
+* BST-194	SA: Fix - Calls handled by more than one agent showed only one agent speaker; each agent now appears as a separate speaker with their name
+* BST-221	SA: Fix - Calls without a QA form showed a QA score of 0 instead of no score
 * QA-3771	SA: Fix - Error page displayed instead of the Voicebot segment for some calls on the Call Overview page
+* BST-250	SA: Fix - Five9 agent segments were not linked to the agent's user, so agents could not see their own calls
 * BE-6409	SA: Fix - Issues with saving, displaying, and clearing filters on the call history page
+* BST-174	SA: Fix - Keypad (DTMF) entries appeared at the wrong place in the call transcript
+* BST-248	SA: Fix - On transferred calls, an agent's first words could appear in the previous segment
 * QA-3787	SA: Fix - QA score percentage was not readable in dark mode in the call details page header
+* BST-190	SA: Fix - Question conditions were not included when exporting a QA form
+* BST-228	SA: Fix - Some Five9 VoiceStream calls were missing post-call analytics
+* BST-195	SA: Fix - The time breakdown of calls transferred between agents did not identify the agents
 * QA-3747	SA: Fix - Unable to publish QA form changes when switching between Published and Draft while editing
 
 All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.

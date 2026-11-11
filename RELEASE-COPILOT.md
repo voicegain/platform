@@ -1,3 +1,8 @@
+## Release 1.143.0
+
+* Added support for sending call notes to the agent who transferred a call, covering their part of the call
+* Fixed the cursor jumping to the end when pausing while editing call notes
+
 ## Release 1.142.0
 
 * Added support for safety screening triggered by AI and by agents from the new Actions button during a call

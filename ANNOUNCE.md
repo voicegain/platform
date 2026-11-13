@@ -1,6 +1,43 @@
 ### Minor release 1.143.0 is scheduled for 11/09/2026 between 10:30pm and 1:00am US Central Time
 
-TBD ...
+New or changed functionality:
+* BST-279	Copilot: Knowledge base recommendation items now carry the recommendation name
+* BST-69	Copilot: Knowledge base recommendations are now sent to Salesforce as they happen during the call, instead of only at the end
+* BST-254	Copilot: Knowledge base recommendations now appear in the Vonage agent desktop screen pop
+* BST-297	Copilot: The live transcript now starts as soon as the call is answered
+* MST-1372	Implemented specialized local digit extractor for 10-digit US phone numbers and other digits
+* MST-1389	Productize Silero VAD for telephony Bot with sensitivity tuning and load testing
+* BE-6466	SA: A Trampoline Telephony Bot App can now be linked to more than one Voicebot project
+* QA-3820	SA: Added a tooltip to the Call Sentiment graph explaining how positive and negative sentiment are plotted
+* BE-6467	SA: Advanced search can now filter calls by Call Insight answer: Yes/No, numeric ranges, text match, or no answer
+* BE-6476	SA: Advanced search on Voicebot and Agent segments can now filter by Call Insight answer value
+* BE-6432	SA: Call header now lets you jump between a call and its segments, with clearer Previous/Next controls and disabled items for restricted segments
+* BST-329	SA: Call Insights question names now have to be unique within the configuration rather than across the whole context
+* BST-267	SA: Call Insights questions can now return a structured JSON answer defined by your own JSON schema
+* BST-8	SA: Manual corrections of AI-generated Call Review answers, and completed audits, are now recorded as feedback on the AI's answer
+* BST-268	SA: Offline speech analytics now reports normal (non-excessive) silence for the call and for each segment
+* BE-6431	SA: Segment detail pages now use segment-specific wording; system segments hide Time Breakdown and Sentiment cards
+* BE-6428	SA: SSO configuration now supports the updated UserInfo request settings
+* BST-276	SA: The QA Audit Comparison Report (xlsx) now includes the audit feedback section - the check list and the review comment
+* MST-1781	Set request timeouts for all clients calling Triton (don't hang when Triton is down)
+* BST-246	Telephony: Added support for Vonage SIP trunks
+* BST-61	Telephony: Inbound SIP calls now fail over to a backup destination when the voice application cannot be reached
+* BST-295	Web Console: OIDC single sign-on can now be configured to call the userinfo endpoint with POST or GET
+* BE-6475	Web Console: Phone Number list now shows each number's purchase date and a description tooltip
+* BST-354	Web Console: Phone numbers now have a dedicated caller ID name (CNAM) field sent to the carrier, a free-form label and tags
+* BST-264	Web Console: Sign-up with a personal email domain (Gmail and similar) is no longer allowed for business accounts
+* BE-6469	Web Console: Signup referral dropdown no longer lists Twitter, Facebook, Reddit or Quora
+* BE-6465	Web Console: Telephony Bot App edit dialog now shows all linked Speech Analytics projects, each with its own queue map
+* BST-278	Web Console: You can now see where each configuration group secret is in use
+
+Changes related to Integrity of Processing (fixes):
+* BST-224	SA: Fix - A transferred call's segment recorded the call's own number instead of the number the call was transferred to
+* QA-3789	SA: Fix - Applied filters disappeared when switching from Last 24 Hours to Today's Calls if no calls matched them
+* BST-312	SA: Fix - Call segments are now numbered in the order in which they occurred
+* BST-332	SA: Fix - Transcripts of transferred Five9 calls could miss the agent's opening and show utterances out of order
+* BST-285	Telephony: Fix - An outbound call rejected by the called party could be dialed a second time through the backup gateway
+
+All changes affecting Security, Availability, Integrity of Processing, Confidentiality, Privacy are reported as such above. If nothing is reported in the specific category then it means there were no such relevant changes in this release.
 
 ### Minor release 1.142.0 is scheduled for 10/17/2026 between 10:00pm and 1:00am US Central Time
 
